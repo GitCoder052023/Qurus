@@ -1,0 +1,1 @@
+export { QuranScreen } from './QuranScreen';

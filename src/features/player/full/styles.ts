@@ -1,0 +1,226 @@
+import { Platform, StyleSheet } from 'react-native';
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+  },
+  headerBtn: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headerCenter: {
+    flex: 1,
+    alignItems: 'center',
+    paddingHorizontal: 12,
+  },
+  headerSurahEnglish: {
+    fontSize: 16,
+    fontWeight: '700',
+    letterSpacing: 0.2,
+  },
+  headerSurahArabic: {
+    fontSize: 12,
+    marginTop: 2,
+  },
+  headerRightGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  reciterCard: {
+    marginHorizontal: 20,
+    marginBottom: 12,
+    borderRadius: 16,
+    borderWidth: 1,
+    padding: 12,
+    elevation: 6,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    zIndex: 10,
+  },
+  reciterCardHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+    paddingHorizontal: 4,
+  },
+  reciterCardTitle: {
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  reciterOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 9,
+    paddingHorizontal: 12,
+    borderRadius: 10,
+  },
+  reciterOptionInfo: {
+    flex: 1,
+  },
+  reciterOptionName: {
+    fontSize: 13,
+  },
+  reciterOptionArabic: {
+    fontSize: 11,
+    marginTop: 1,
+  },
+  centerStage: {
+    flex: 1,
+    paddingHorizontal: 20,
+  },
+  ayahScrollView: {
+    flex: 1,
+  },
+  ayahScrollContent: {
+    paddingVertical: 12,
+    alignItems: 'center',
+  },
+  phaseBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+    borderRadius: 20,
+    borderWidth: 1,
+    marginBottom: 16,
+  },
+  phaseBadgeText: {
+    fontSize: 12,
+    fontWeight: '700',
+  },
+  arabicCanvasCard: {
+    width: '100%',
+    borderRadius: 20,
+    borderWidth: 1,
+    paddingVertical: 20,
+    paddingHorizontal: 18,
+    marginBottom: 14,
+  },
+  activePhaseCard: {
+    borderWidth: 1.5,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+  },
+  arabicVerseText: {
+    fontSize: 24,
+    lineHeight: 46,
+    textAlign: 'center',
+    writingDirection: 'rtl',
+    fontFamily: 'serif',
+  },
+  activeVerseGlow: {
+    fontWeight: '700',
+  },
+  urduCanvasCard: {
+    width: '100%',
+    borderRadius: 20,
+    borderWidth: 1,
+    paddingVertical: 16,
+    paddingHorizontal: 18,
+    marginBottom: 10,
+  },
+  urduVerseText: {
+    fontSize: 16,
+    lineHeight: 28,
+    textAlign: 'center',
+    writingDirection: 'rtl',
+    fontFamily: 'serif',
+  },
+  urduAuthorFootnote: {
+    fontSize: 11,
+    textAlign: 'center',
+    marginTop: 8,
+  },
+  bottomSection: {
+    paddingHorizontal: 24,
+    paddingTop: 8,
+    paddingBottom: Platform.OS === 'ios' ? 12 : 20,
+  },
+  scrubberSection: {
+    width: '100%',
+    marginBottom: 18,
+  },
+  trackBg: {
+    height: 5,
+    borderRadius: 2.5,
+    overflow: 'hidden',
+  },
+  trackFill: {
+    height: '100%',
+    borderRadius: 2.5,
+  },
+  timeRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 6,
+  },
+  timeText: {
+    fontSize: 11,
+    fontWeight: '600',
+  },
+  controlsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 12,
+    marginBottom: 20,
+  },
+  skipBtn: {
+    padding: 8,
+  },
+  seekBtn: {
+    padding: 8,
+  },
+  mainPlayBtn: {
+    width: 68,
+    height: 68,
+    borderRadius: 34,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 8,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.28,
+    shadowRadius: 10,
+  },
+  utilitiesRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 10,
+  },
+  utilChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 16,
+    borderWidth: 1,
+  },
+  readerJumpChip: {
+    borderWidth: 1,
+  },
+  utilChipText: {
+    fontSize: 12,
+    fontWeight: '600',
+  },
+});

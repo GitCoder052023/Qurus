@@ -1143,55 +1143,6 @@ export const SURAHS: SurahMetadata[] = [
   }
 ];
 
-export const RECITERS = [
-  {
-    id: 'alafasy',
-    name: 'Mishary Rashid Alafasy',
-    arabicName: 'مشاري بن راشد العفاسي',
-    subfolder: 'Alafasy_128kbps',
-  },
-  {
-    id: 'abdulbasit',
-    name: 'Abdul Basit Abdul Samad (Murattal)',
-    arabicName: 'عبد الباسط عبد الصمد',
-    subfolder: 'Abdul_Basit_Murattal_192kbps',
-  },
-  {
-    id: 'husary',
-    name: 'Mahmoud Khalil Al-Husary',
-    arabicName: 'محمود خليل الحصري',
-    subfolder: 'Husary_128kbps',
-  },
-  {
-    id: 'shatri',
-    name: 'Abu Bakr Al-Shatri',
-    arabicName: 'أبو بکر الشاطري',
-    subfolder: 'Abu_Bakr_Ash-Shaatree_128kbps',
-  },
-  {
-    id: 'ghamadi',
-    name: 'Saad Al-Ghamdi',
-    arabicName: 'سعد الغامدي',
-    subfolder: 'Ghamadi_40kbps',
-  }
-];
-
-export function getAudioUrl(reciterSubfolder: string, surahNumber: number, ayahNumber: number): string {
-  const surahPadded = String(surahNumber).padStart(3, '0');
-  const ayahPadded = String(ayahNumber).padStart(3, '0');
-  return `https://everyayah.com/data/${reciterSubfolder}/${surahPadded}${ayahPadded}.mp3`;
-}
-
-export const URDU_TRANSLATION_RECITER = {
-  id: 'urdu_shamshad',
-  name: 'Shamshad Ali Khan',
-  arabicName: 'ترجمہ: شمشاد علی خان (جالندہری)',
-  subfolder: 'translations/urdu_shamshad_ali_khan_46kbps',
-};
-
-export function getUrduAudioUrl(surahNumber: number, ayahNumber: number): string {
-  const surahPadded = String(surahNumber).padStart(3, '0');
-  const ayahPadded = String(ayahNumber).padStart(3, '0');
-  return `https://everyayah.com/data/translations/urdu_shamshad_ali_khan_46kbps/${surahPadded}${ayahPadded}.mp3`;
-}
+export { RECITERS, URDU_TRANSLATION_RECITER } from '../config/reciters';
+export { getAudioUrl, getUrduAudioUrl } from '../services/audio/urls';
 

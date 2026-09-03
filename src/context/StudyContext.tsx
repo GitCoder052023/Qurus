@@ -8,27 +8,12 @@ import {
   LastStudiedState,
   ReadingPreferences,
 } from '../types';
-
-const STORAGE_KEYS = {
-  LAST_STUDIED: '@qurus_last_studied_v1',
-  HISTORY: '@qurus_history_v1',
-  BOOKMARKS: '@qurus_bookmarks_v1',
-  HIGHLIGHTS: '@qurus_highlights_v1',
-  NOTES: '@qurus_notes_v1',
-  PREFERENCES: '@qurus_preferences_v1',
-  HAS_ONBOARDED: '@qurus_has_onboarded_v1',
-};
-
-const DEFAULT_PREFERENCES: ReadingPreferences = {
-  arabicFontSize: 28,
-  urduFontSize: 16,
-  showTranslation: true,
-  theme: 'light',
-  reciterId: 'alafasy',
-  playbackSpeed: 1.0,
-  autoScroll: true,
-  playbackMode: 'both',
-};
+import { STORAGE_KEYS } from '../config/storageKeys';
+import { DEFAULT_PREFERENCES } from '../config/preferences';
+import { HISTORY_LIMIT } from '../config/quran';
+import { ayahKey } from '../lib/ayahKey';
+import { hydrateStudyState } from '../services/storage/studyStorage';
+import { writeJson, removeKey } from '../services/storage/asyncJson';
 
 interface StudyContextType {
   lastStudied: LastStudiedState | null;
@@ -70,28 +55,17 @@ export function StudyProvider({ children }: { children: ReactNode }) {
   const [hasOnboarded, setHasOnboarded] = useState<boolean>(true);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Hydrate from AsyncStorage
   useEffect(() => {
     async function loadData() {
       try {
-        const [savedLast, savedHistory, savedBookmarks, savedHighlights, savedNotes, savedPrefs, savedOnboard] =
-          await Promise.all([
-            AsyncStorage.getItem(STORAGE_KEYS.LAST_STUDIED),
-            AsyncStorage.getItem(STORAGE_KEYS.HISTORY),
-            AsyncStorage.getItem(STORAGE_KEYS.BOOKMARKS),
-            AsyncStorage.getItem(STORAGE_KEYS.HIGHLIGHTS),
-            AsyncStorage.getItem(STORAGE_KEYS.NOTES),
-            AsyncStorage.getItem(STORAGE_KEYS.PREFERENCES),
-            AsyncStorage.getItem(STORAGE_KEYS.HAS_ONBOARDED),
-          ]);
-
-        if (savedLast) setLastStudied(JSON.parse(savedLast));
-        if (savedHistory) setHistory(JSON.parse(savedHistory));
-        if (savedBookmarks) setBookmarks(JSON.parse(savedBookmarks));
-        if (savedHighlights) setHighlights(JSON.parse(savedHighlights));
-        if (savedNotes) setNotes(JSON.parse(savedNotes));
-        if (savedPrefs) setPreferences({ ...DEFAULT_PREFERENCES, ...JSON.parse(savedPrefs) });
-        setHasOnboarded(savedOnboard === 'true');
+        const hydrated = await hydrateStudyState();
+        if (hydrated.lastStudied) setLastStudied(hydrated.lastStudied);
+        if (hydrated.history.length) setHistory(hydrated.history);
+        if (hydrated.bookmarks.length) setBookmarks(hydrated.bookmarks);
+        if (Object.keys(hydrated.highlights).length) setHighlights(hydrated.highlights);
+        if (Object.keys(hydrated.notes).length) setNotes(hydrated.notes);
+        setPreferences(hydrated.preferences);
+        setHasOnboarded(hydrated.hasOnboarded);
       } catch (err) {
         console.error('Failed to load study state from storage:', err);
       } finally {
@@ -111,7 +85,6 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     await AsyncStorage.removeItem(STORAGE_KEYS.HAS_ONBOARDED).catch(console.error);
   };
 
-  // Update Last Studied
   const updateLastStudied = (surahNumber: number, ayahNumber: number, audioPos?: number) => {
     const newState: LastStudiedState = {
       surahNumber,
@@ -120,13 +93,10 @@ export function StudyProvider({ children }: { children: ReactNode }) {
       timestamp: Date.now(),
     };
     setLastStudied(newState);
-    AsyncStorage.setItem(STORAGE_KEYS.LAST_STUDIED, JSON.stringify(newState)).catch(console.error);
-
-    // Also record in history
+    writeJson(STORAGE_KEYS.LAST_STUDIED, newState);
     addToHistory(surahNumber, ayahNumber);
   };
 
-  // Add to History
   const addToHistory = (surahNumber: number, ayahNumber: number) => {
     setHistory((prev) => {
       const filtered = prev.filter((h) => !(h.surahNumber === surahNumber && h.ayahNumber === ayahNumber));
@@ -138,21 +108,20 @@ export function StudyProvider({ children }: { children: ReactNode }) {
           timestamp: Date.now(),
         },
         ...filtered,
-      ].slice(0, 50); // limit to 50 items
+      ].slice(0, HISTORY_LIMIT);
 
-      AsyncStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(newHistory)).catch(console.error);
+      writeJson(STORAGE_KEYS.HISTORY, newHistory);
       return newHistory;
     });
   };
 
-  // Toggle Bookmark
   const toggleBookmark = (
     surahNumber: number,
     ayahNumber: number,
     arabicSnippet: string = '',
     urduSnippet: string = ''
   ): boolean => {
-    const id = `${surahNumber}:${ayahNumber}`;
+    const id = ayahKey(surahNumber, ayahNumber);
     const exists = bookmarks.some((b) => b.surahNumber === surahNumber && b.ayahNumber === ayahNumber);
 
     let nextBookmarks: Bookmark[];
@@ -171,23 +140,22 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     }
 
     setBookmarks(nextBookmarks);
-    AsyncStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(nextBookmarks)).catch(console.error);
+    writeJson(STORAGE_KEYS.BOOKMARKS, nextBookmarks);
     return !exists;
   };
 
   const removeBookmark = (surahNumber: number, ayahNumber: number) => {
     const nextBookmarks = bookmarks.filter((b) => !(b.surahNumber === surahNumber && b.ayahNumber === ayahNumber));
     setBookmarks(nextBookmarks);
-    AsyncStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(nextBookmarks)).catch(console.error);
+    writeJson(STORAGE_KEYS.BOOKMARKS, nextBookmarks);
   };
 
   const isBookmarked = (surahNumber: number, ayahNumber: number): boolean => {
     return bookmarks.some((b) => b.surahNumber === surahNumber && b.ayahNumber === ayahNumber);
   };
 
-  // Toggle Highlight
   const toggleHighlight = (surahNumber: number, ayahNumber: number): boolean => {
-    const key = `${surahNumber}:${ayahNumber}`;
+    const key = ayahKey(surahNumber, ayahNumber);
     const nextHighlights = { ...highlights };
     let added = false;
 
@@ -204,15 +172,14 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     }
 
     setHighlights(nextHighlights);
-    AsyncStorage.setItem(STORAGE_KEYS.HIGHLIGHTS, JSON.stringify(nextHighlights)).catch(console.error);
+    writeJson(STORAGE_KEYS.HIGHLIGHTS, nextHighlights);
     return added;
   };
 
   const isHighlighted = (surahNumber: number, ayahNumber: number): boolean => {
-    return Boolean(highlights[`${surahNumber}:${ayahNumber}`]);
+    return Boolean(highlights[ayahKey(surahNumber, ayahNumber)]);
   };
 
-  // Notes
   const saveNote = (
     surahNumber: number,
     ayahNumber: number,
@@ -220,7 +187,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     arabicSnippet?: string,
     urduSnippet?: string
   ) => {
-    const key = `${surahNumber}:${ayahNumber}`;
+    const key = ayahKey(surahNumber, ayahNumber);
     const trimmed = text.trim();
 
     if (!trimmed) {
@@ -242,33 +209,32 @@ export function StudyProvider({ children }: { children: ReactNode }) {
 
     const nextNotes = { ...notes, [key]: newNote };
     setNotes(nextNotes);
-    AsyncStorage.setItem(STORAGE_KEYS.NOTES, JSON.stringify(nextNotes)).catch(console.error);
+    writeJson(STORAGE_KEYS.NOTES, nextNotes);
   };
 
   const deleteNote = (surahNumber: number, ayahNumber: number) => {
-    const key = `${surahNumber}:${ayahNumber}`;
+    const key = ayahKey(surahNumber, ayahNumber);
     const nextNotes = { ...notes };
     delete nextNotes[key];
     setNotes(nextNotes);
-    AsyncStorage.setItem(STORAGE_KEYS.NOTES, JSON.stringify(nextNotes)).catch(console.error);
+    writeJson(STORAGE_KEYS.NOTES, nextNotes);
   };
 
   const getNote = (surahNumber: number, ayahNumber: number): StudyNote | undefined => {
-    return notes[`${surahNumber}:${ayahNumber}`];
+    return notes[ayahKey(surahNumber, ayahNumber)];
   };
 
-  // Preferences
   const updatePreferences = (newPrefs: Partial<ReadingPreferences>) => {
     setPreferences((prev) => {
       const updated = { ...prev, ...newPrefs };
-      AsyncStorage.setItem(STORAGE_KEYS.PREFERENCES, JSON.stringify(updated)).catch(console.error);
+      writeJson(STORAGE_KEYS.PREFERENCES, updated);
       return updated;
     });
   };
 
   const clearHistory = () => {
     setHistory([]);
-    AsyncStorage.removeItem(STORAGE_KEYS.HISTORY).catch(console.error);
+    removeKey(STORAGE_KEYS.HISTORY);
   };
 
   const exportBackup = (): string => {

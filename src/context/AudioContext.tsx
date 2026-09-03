@@ -1,14 +1,13 @@
 import React, { createContext, useContext, useEffect, useRef, useState, ReactNode } from 'react';
-import { Platform } from 'react-native';
-import Constants, { ExecutionEnvironment } from 'expo-constants';
 import { createAudioPlayer, setAudioModeAsync, AudioPlayer, AudioStatus } from 'expo-audio';
-import { RECITERS, getAudioUrl, getUrduAudioUrl, URDU_TRANSLATION_RECITER, SURAHS } from '../data/surahs';
+import { RECITERS, URDU_TRANSLATION_RECITER } from '../config/reciters';
+import { AUDIO_UPDATE_INTERVAL_MS } from '../config/audio';
+import { getAudioUrl, getUrduAudioUrl } from '../services/audio/urls';
+import { advanceToNextAyah, nextTrackAfterFinish } from '../services/audio/sequencer';
+import { isExpoGo } from '../lib/audioEnvironment';
+import { SURAHS } from '../data/surahs';
 import { Reciter, SurahMetadata, PlaybackMode, PlaybackPhase } from '../types';
 import { useStudyState } from './StudyContext';
-
-const isExpoGo =
-  Constants.appOwnership === 'expo' ||
-  Constants.executionEnvironment === ExecutionEnvironment.StoreClient;
 
 interface AudioContextType {
   // Playback State
@@ -57,11 +56,9 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   const [playbackSpeed, setPlaybackSpeedState] = useState(preferences.playbackSpeed || 1.0);
   const [isFullPlayerVisible, setIsFullPlayerVisible] = useState(false);
 
-  // Reciter
   const activeReciter = RECITERS.find((r) => r.id === preferences.reciterId) || RECITERS[0];
   const [reciter, setReciterState] = useState<Reciter>(activeReciter);
 
-  // AudioPlayer instance reference
   const playerRef = useRef<AudioPlayer | null>(null);
   const lastFinishedKeyRef = useRef<string>('');
   const currentSurahNumberRef = useRef<number | null>(null);
@@ -78,14 +75,12 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   reciterRef.current = reciter;
   playbackSpeedRef.current = playbackSpeed;
 
-  // Sync with preferences when loaded
   useEffect(() => {
     if (preferences.playbackMode && preferences.playbackMode !== playbackMode) {
       setPlaybackModeState(preferences.playbackMode);
     }
   }, [preferences.playbackMode]);
 
-  // Setup Audio Session for background playback
   useEffect(() => {
     async function configureAudio() {
       try {
@@ -101,7 +96,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     configureAudio();
 
     try {
-      const player = createAudioPlayer(null, { updateInterval: 250 });
+      const player = createAudioPlayer(null, { updateInterval: AUDIO_UPDATE_INTERVAL_MS });
       playerRef.current = player;
 
       const subscription = player.addListener('playbackStatusUpdate', (status: AudioStatus) => {
@@ -112,7 +107,6 @@ export function AudioProvider({ children }: { children: ReactNode }) {
           setDuration(status.duration);
         }
 
-        // Automatic playback sequencer
         if (status.didJustFinish) {
           const sNum = currentSurahNumberRef.current;
           const aNum = currentAyahNumberRef.current;
@@ -138,45 +132,29 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  // Track sequencer: Arabic -> Urdu -> Next Ayah
   const handleTrackFinish = (
     sNum: number,
     aNum: number,
     phase: PlaybackPhase,
     mode: PlaybackMode
   ) => {
-    if (mode === 'both') {
-      if (phase === 'arabic') {
-        // Step 1: Arabic recitation finished -> Now play Urdu translation for the SAME ayah!
-        playAyahInternal(sNum, aNum, 'translation');
-      } else {
-        // Step 2: Urdu translation finished -> Now advance to next ayah in Arabic!
-        handleAdvanceToNextAyah(sNum, aNum, 'arabic');
-      }
-    } else if (mode === 'arabic_only') {
-      handleAdvanceToNextAyah(sNum, aNum, 'arabic');
-    } else if (mode === 'translation_only') {
-      handleAdvanceToNextAyah(sNum, aNum, 'translation');
-    }
-  };
-
-  const handleAdvanceToNextAyah = (sNum: number, aNum: number, targetPhase: PlaybackPhase) => {
-    const surah = SURAHS.find((s) => s.number === sNum);
-    if (!surah) return;
-
-    if (aNum < surah.numberOfAyahs) {
-      // Next Ayah in same Surah
-      playAyahInternal(sNum, aNum + 1, targetPhase);
-    } else if (sNum < 114) {
-      // Next Surah, Ayah 1
-      playAyahInternal(sNum + 1, 1, targetPhase);
+    const result = nextTrackAfterFinish(sNum, aNum, phase, mode, SURAHS);
+    if (result.type === 'play') {
+      playAyahInternal(result.surahNumber, result.ayahNumber, result.phase);
     } else {
-      // Quran finished
       setIsPlaying(false);
     }
   };
 
-  // Internal Play Method
+  const handleAdvanceToNextAyah = (sNum: number, aNum: number, targetPhase: PlaybackPhase) => {
+    const result = advanceToNextAyah(sNum, aNum, targetPhase, SURAHS);
+    if (result.type === 'play') {
+      playAyahInternal(result.surahNumber, result.ayahNumber, result.phase);
+    } else {
+      setIsPlaying(false);
+    }
+  };
+
   const playAyahInternal = (surahNum: number, ayahNum: number, phase: PlaybackPhase) => {
     const player = playerRef.current;
     if (!player) return;
@@ -225,7 +203,6 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  // Public Play Ayah
   const playAyah = (surahNum: number, ayahNum: number, phase?: PlaybackPhase) => {
     lastFinishedKeyRef.current = '';
     const initialPhase: PlaybackPhase =
@@ -273,7 +250,6 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   const previousAyah = () => {
     if (currentSurahNumber === null || currentAyahNumber === null) return;
 
-    // If we are currently playing translation in 'both' mode, rewind to Arabic of same ayah
     if (playbackModeRef.current === 'both' && playbackPhase === 'translation') {
       playAyah(currentSurahNumber, currentAyahNumber, 'arabic');
       return;
