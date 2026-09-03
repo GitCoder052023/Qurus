@@ -457,6 +457,49 @@ export default function SettingsScreen() {
           </View>
         </View>
 
+        {/* SECTION: The Story Behind Qurus */}
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.textSecondary }]}>
+            ABOUT & ORIGIN
+          </Text>
+          <TouchableOpacity
+            activeOpacity={0.88}
+            onPress={() => router.push('/story')}
+            style={[
+              styles.storyCard,
+              {
+                backgroundColor: theme.cardElevated,
+                borderColor: theme.borderSubtle,
+              },
+            ]}
+          >
+            <View style={styles.storyCardTopRow}>
+              <View style={[styles.storyCardIconBox, { backgroundColor: theme.primaryMuted }]}>
+                <Ionicons name="sparkles" size={18} color={theme.primary} />
+              </View>
+              <View style={[styles.storyCardTag, { backgroundColor: theme.chipBg }]}>
+                <Text style={[styles.storyCardTagText, { color: theme.primary }]}>
+                  HAMDAN KHUBAIB
+                </Text>
+              </View>
+            </View>
+
+            <Text style={[styles.storyCardTitle, { color: theme.textPrimary }]}>
+              The Story Behind Qurus
+            </Text>
+            <Text style={[styles.storyCardSubtitle, { color: theme.textSecondary }]}>
+              Why I built an Ayah-based Quran study sanctuary in the palm of your hand—from struggling with traditional formats to discovering the advice that changed everything.
+            </Text>
+
+            <View style={[styles.storyCardFooter, { borderTopColor: theme.borderSubtle }]}>
+              <Text style={[styles.storyCardActionText, { color: theme.primary }]}>
+                Read Founder's Note
+              </Text>
+              <Ionicons name="arrow-forward" size={14} color={theme.primary} />
+            </View>
+          </TouchableOpacity>
+        </View>
+
         {/* App Info & Integrity Acknowledgments */}
         <View style={styles.appInfoSection}>
           <Text style={[styles.appInfoTitle, { color: theme.textPrimary }]}>Qurus v1.0.0</Text>
@@ -619,6 +662,56 @@ const styles = StyleSheet.create({
   modeOptionDesc: {
     fontSize: 11,
     lineHeight: 15,
+  },
+  storyCard: {
+    borderRadius: 20,
+    borderWidth: 1,
+    padding: 18,
+  },
+  storyCardTopRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 12,
+  },
+  storyCardIconBox: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  storyCardTag: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 10,
+  },
+  storyCardTagText: {
+    fontSize: 10,
+    fontWeight: '800',
+    letterSpacing: 0.8,
+  },
+  storyCardTitle: {
+    fontSize: 18,
+    fontWeight: '800',
+    letterSpacing: -0.3,
+    marginBottom: 6,
+  },
+  storyCardSubtitle: {
+    fontSize: 13,
+    lineHeight: 19,
+    marginBottom: 14,
+  },
+  storyCardFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingTop: 12,
+    borderTopWidth: StyleSheet.hairlineWidth,
+  },
+  storyCardActionText: {
+    fontSize: 13,
+    fontWeight: '700',
   },
   appInfoSection: {
     alignItems: 'center',

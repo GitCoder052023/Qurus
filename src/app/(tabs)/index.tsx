@@ -440,6 +440,47 @@ export default function HomeScreen() {
           </View>
         </View>
 
+        {/* SECTION: Origin Story Card */}
+        <View style={styles.section}>
+          <TouchableOpacity
+            activeOpacity={0.9}
+            onPress={() => router.push('/story')}
+            style={[
+              styles.storyBanner,
+              {
+                backgroundColor: theme.cardElevated,
+                borderColor: theme.borderSubtle,
+              },
+            ]}
+          >
+            <View style={styles.storyBannerHeader}>
+              <View style={[styles.storyBadge, { backgroundColor: theme.primaryMuted }]}>
+                <Ionicons name="sparkles" size={13} color={theme.primary} />
+                <Text style={[styles.storyBadgeText, { color: theme.primary }]}>ORIGIN STORY</Text>
+              </View>
+              <Text style={[styles.storyAuthorText, { color: theme.textTertiary }]}>
+                Hamdan Khubaib
+              </Text>
+            </View>
+
+            <Text style={[styles.storyBannerTitle, { color: theme.textPrimary }]}>
+              Why I Built Qurus
+            </Text>
+
+            <Text style={[styles.storyBannerDesc, { color: theme.textSecondary }]}>
+              “I wanted Quran in the palm of my hand like my distractions. Then my brother told me:
+              ‘Just start reading with translation... you will find an ayah that sticks like a hook in your mind.’”
+            </Text>
+
+            <View style={[styles.storyBannerFooter, { borderTopColor: theme.borderSubtle }]}>
+              <Text style={[styles.storyBannerAction, { color: theme.primary }]}>
+                Read Developer's Story
+              </Text>
+              <Ionicons name="arrow-forward" size={14} color={theme.primary} />
+            </View>
+          </TouchableOpacity>
+        </View>
+
         {/* RECENT JOURNEYS (If Any) */}
         {history.length > 0 && (
           <View style={[styles.section, { marginBottom: 30 }]}>
@@ -797,5 +838,56 @@ const styles = StyleSheet.create({
   recentItemAyah: {
     fontSize: 11,
     marginTop: 1,
+  },
+  storyBanner: {
+    borderRadius: 20,
+    borderWidth: 1,
+    padding: 18,
+  },
+  storyBannerHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
+  storyBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 10,
+  },
+  storyBadgeText: {
+    fontSize: 10,
+    fontWeight: '800',
+    letterSpacing: 0.7,
+  },
+  storyAuthorText: {
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  storyBannerTitle: {
+    fontSize: 18,
+    fontWeight: '800',
+    letterSpacing: -0.3,
+    marginBottom: 6,
+  },
+  storyBannerDesc: {
+    fontSize: 13,
+    lineHeight: 19,
+    fontStyle: 'italic',
+    marginBottom: 14,
+  },
+  storyBannerFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingTop: 12,
+    borderTopWidth: StyleSheet.hairlineWidth,
+  },
+  storyBannerAction: {
+    fontSize: 13,
+    fontWeight: '700',
   },
 });
