@@ -1,8 +1,14 @@
 import React, { createContext, useContext, useEffect, useRef, useState, ReactNode } from 'react';
+import { Platform } from 'react-native';
+import Constants, { ExecutionEnvironment } from 'expo-constants';
 import { createAudioPlayer, setAudioModeAsync, AudioPlayer, AudioStatus } from 'expo-audio';
 import { RECITERS, getAudioUrl, getUrduAudioUrl, URDU_TRANSLATION_RECITER, SURAHS } from '../data/surahs';
 import { Reciter, SurahMetadata, PlaybackMode, PlaybackPhase } from '../types';
 import { useStudyState } from './StudyContext';
+
+const isExpoGo =
+  Constants.appOwnership === 'expo' ||
+  Constants.executionEnvironment === ExecutionEnvironment.StoreClient;
 
 interface AudioContextType {
   // Playback State
@@ -85,7 +91,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       try {
         await setAudioModeAsync({
           playsInSilentMode: true,
-          shouldPlayInBackground: true,
+          shouldPlayInBackground: !isExpoGo,
           interruptionMode: 'doNotMix',
         });
       } catch (err) {
@@ -203,11 +209,17 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       player.setPlaybackRate(playbackSpeedRef.current);
       player.play();
 
-      player.setActiveForLockScreen(true, {
-        title: trackTitle,
-        artist: artistName,
-        albumTitle: 'Qurus Quran Study',
-      });
+      if (!isExpoGo) {
+        try {
+          player.setActiveForLockScreen(true, {
+            title: trackTitle,
+            artist: artistName,
+            albumTitle: 'Qurus Quran Study',
+          });
+        } catch (e) {
+          // Gracefully ignore if platform/service unavailable
+        }
+      }
     } catch (err) {
       console.error('Error in audio playback:', err);
     }
