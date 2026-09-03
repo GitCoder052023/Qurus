@@ -42,7 +42,7 @@ export function MiniPlayer() {
     return getAyah(currentSurahNumber, currentAyahNumber);
   }, [currentSurahNumber, currentAyahNumber]);
 
-  if (!currentSurahNumber || !currentAyahNumber) {
+  if (pathname?.includes('/onboarding') || !currentSurahNumber || !currentAyahNumber) {
     return null;
   }
 
