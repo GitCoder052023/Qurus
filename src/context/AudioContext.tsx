@@ -1,14 +1,9 @@
 import React, { createContext, useContext, useEffect, useRef, useState, ReactNode } from 'react';
 import { Platform } from 'react-native';
-import Constants, { ExecutionEnvironment } from 'expo-constants';
-import { createAudioPlayer, setAudioModeAsync, AudioPlayer, AudioStatus } from 'expo-audio';
+import { createAudioPlayer, setAudioModeAsync, preload, AudioPlayer, AudioStatus } from 'expo-audio';
 import { RECITERS, getAudioUrl, getUrduAudioUrl, URDU_TRANSLATION_RECITER, SURAHS } from '../data/surahs';
 import { Reciter, SurahMetadata, PlaybackMode, PlaybackPhase } from '../types';
 import { useStudyState } from './StudyContext';
-
-const isExpoGo =
-  Constants.appOwnership === 'expo' ||
-  Constants.executionEnvironment === ExecutionEnvironment.StoreClient;
 
 interface AudioContextType {
   // Playback State
@@ -70,6 +65,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   const playbackModeRef = useRef<PlaybackMode>(playbackMode);
   const reciterRef = useRef<Reciter>(activeReciter);
   const playbackSpeedRef = useRef<number>(playbackSpeed);
+  const isLockScreenActiveRef = useRef<boolean>(false);
 
   currentSurahNumberRef.current = currentSurahNumber;
   currentAyahNumberRef.current = currentAyahNumber;
@@ -85,13 +81,18 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     }
   }, [preferences.playbackMode]);
 
-  // Setup Audio Session for background playback
+  // Ref to hold the latest sequencer callback, preventing stale closures in native listeners
+  const handleTrackFinishRef = useRef<
+    (sNum: number, aNum: number, phase: PlaybackPhase, mode: PlaybackMode) => void
+  >(() => {});
+
+  // Setup Audio Session for sustained background playback on Android
   useEffect(() => {
     async function configureAudio() {
       try {
         await setAudioModeAsync({
           playsInSilentMode: true,
-          shouldPlayInBackground: !isExpoGo,
+          shouldPlayInBackground: true,
           interruptionMode: 'doNotMix',
         });
       } catch (err) {
@@ -101,7 +102,11 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     configureAudio();
 
     try {
-      const player = createAudioPlayer(null, { updateInterval: 250 });
+      const player = createAudioPlayer(null, {
+        updateInterval: 250,
+        keepAudioSessionActive: true,
+        preferredForwardBufferDuration: 15,
+      });
       playerRef.current = player;
 
       const subscription = player.addListener('playbackStatusUpdate', (status: AudioStatus) => {
@@ -123,7 +128,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
             const finishKey = `${sNum}:${aNum}:${phase}`;
             if (lastFinishedKeyRef.current !== finishKey) {
               lastFinishedKeyRef.current = finishKey;
-              handleTrackFinish(sNum, aNum, phase, mode);
+              handleTrackFinishRef.current(sNum, aNum, phase, mode);
             }
           }
         }
@@ -131,12 +136,56 @@ export function AudioProvider({ children }: { children: ReactNode }) {
 
       return () => {
         subscription?.remove();
+        if (isLockScreenActiveRef.current && playerRef.current) {
+          try {
+            playerRef.current.clearLockScreenControls();
+          } catch (_) {}
+        }
         player.remove();
       };
     } catch (err) {
       console.warn('AudioPlayer creation error:', err);
     }
   }, []);
+
+  // Compute next track audio URL for preloading ahead of time
+  const getNextTrackUrl = (
+    sNum: number,
+    aNum: number,
+    phase: PlaybackPhase,
+    mode: PlaybackMode,
+    reciterSubfolder: string
+  ): string | null => {
+    const surah = SURAHS.find((s) => s.number === sNum);
+    if (!surah) return null;
+
+    if (mode === 'both') {
+      if (phase === 'arabic') {
+        // Next is Urdu translation for the same Ayah
+        return getUrduAudioUrl(sNum, aNum);
+      } else {
+        // Next is Arabic recitation for the next Ayah
+        if (aNum < surah.numberOfAyahs) {
+          return getAudioUrl(reciterSubfolder, sNum, aNum + 1);
+        } else if (sNum < 114) {
+          return getAudioUrl(reciterSubfolder, sNum + 1, 1);
+        }
+      }
+    } else if (mode === 'arabic_only') {
+      if (aNum < surah.numberOfAyahs) {
+        return getAudioUrl(reciterSubfolder, sNum, aNum + 1);
+      } else if (sNum < 114) {
+        return getAudioUrl(reciterSubfolder, sNum + 1, 1);
+      }
+    } else if (mode === 'translation_only') {
+      if (aNum < surah.numberOfAyahs) {
+        return getUrduAudioUrl(sNum, aNum + 1);
+      } else if (sNum < 114) {
+        return getUrduAudioUrl(sNum + 1, 1);
+      }
+    }
+    return null;
+  };
 
   // Track sequencer: Arabic -> Urdu -> Next Ayah
   const handleTrackFinish = (
@@ -159,6 +208,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       handleAdvanceToNextAyah(sNum, aNum, 'translation');
     }
   };
+  handleTrackFinishRef.current = handleTrackFinish;
 
   const handleAdvanceToNextAyah = (sNum: number, aNum: number, targetPhase: PlaybackPhase) => {
     const surah = SURAHS.find((s) => s.number === sNum);
@@ -181,10 +231,14 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     const player = playerRef.current;
     if (!player) return;
 
+    // Immediately keep tracking refs in sync so background sequencer never reads stale data
+    currentSurahNumberRef.current = surahNum;
+    currentAyahNumberRef.current = ayahNum;
+    playbackPhaseRef.current = phase;
+
     setCurrentSurahNumber(surahNum);
     setCurrentAyahNumber(ayahNum);
     setPlaybackPhase(phase);
-    playbackPhaseRef.current = phase;
     updateLastStudied(surahNum, ayahNum);
 
     let url: string;
@@ -209,16 +263,41 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       player.setPlaybackRate(playbackSpeedRef.current);
       player.play();
 
-      if (!isExpoGo) {
+      const metadata = {
+        title: trackTitle,
+        artist: artistName,
+        albumTitle: 'Qurus Quran Study',
+      };
+
+      // On Android, calling setActiveForLockScreen on every track tears down the MediaSession.
+      // Call setActiveForLockScreen on initial start, then updateLockScreenMetadata for transitions.
+      if (!isLockScreenActiveRef.current) {
         try {
-          player.setActiveForLockScreen(true, {
-            title: trackTitle,
-            artist: artistName,
-            albumTitle: 'Qurus Quran Study',
-          });
+          player.setActiveForLockScreen(true, metadata);
+          isLockScreenActiveRef.current = true;
         } catch (e) {
           // Gracefully ignore if platform/service unavailable
         }
+      } else {
+        try {
+          player.updateLockScreenMetadata(metadata);
+        } catch (e) {
+          try {
+            player.setActiveForLockScreen(true, metadata);
+          } catch (_) {}
+        }
+      }
+
+      // Preload next track in background so ExoPlayer has audio pre-buffered
+      const nextUrl = getNextTrackUrl(
+        surahNum,
+        ayahNum,
+        phase,
+        playbackModeRef.current,
+        reciterRef.current.subfolder
+      );
+      if (nextUrl) {
+        preload(nextUrl).catch(() => {});
       }
     } catch (err) {
       console.error('Error in audio playback:', err);
@@ -250,8 +329,12 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       } catch (e) {
         console.warn(e);
       }
-    } else if (currentSurahNumber && currentAyahNumber) {
-      playAyah(currentSurahNumber, currentAyahNumber, playbackPhase);
+    } else if (currentSurahNumberRef.current && currentAyahNumberRef.current) {
+      playAyah(
+        currentSurahNumberRef.current,
+        currentAyahNumberRef.current,
+        playbackPhaseRef.current
+      );
     }
   };
 
@@ -264,30 +347,34 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   };
 
   const nextAyah = () => {
-    if (currentSurahNumber === null || currentAyahNumber === null) return;
+    const sNum = currentSurahNumberRef.current;
+    const aNum = currentAyahNumberRef.current;
+    if (sNum === null || aNum === null) return;
     const startPhase: PlaybackPhase =
       playbackModeRef.current === 'translation_only' ? 'translation' : 'arabic';
-    handleAdvanceToNextAyah(currentSurahNumber, currentAyahNumber, startPhase);
+    handleAdvanceToNextAyah(sNum, aNum, startPhase);
   };
 
   const previousAyah = () => {
-    if (currentSurahNumber === null || currentAyahNumber === null) return;
+    const sNum = currentSurahNumberRef.current;
+    const aNum = currentAyahNumberRef.current;
+    if (sNum === null || aNum === null) return;
 
     // If we are currently playing translation in 'both' mode, rewind to Arabic of same ayah
-    if (playbackModeRef.current === 'both' && playbackPhase === 'translation') {
-      playAyah(currentSurahNumber, currentAyahNumber, 'arabic');
+    if (playbackModeRef.current === 'both' && playbackPhaseRef.current === 'translation') {
+      playAyah(sNum, aNum, 'arabic');
       return;
     }
 
     const startPhase: PlaybackPhase =
       playbackModeRef.current === 'translation_only' ? 'translation' : 'arabic';
 
-    if (currentAyahNumber > 1) {
-      playAyah(currentSurahNumber, currentAyahNumber - 1, startPhase);
-    } else if (currentSurahNumber > 1) {
-      const prevSurah = SURAHS.find((s) => s.number === currentSurahNumber - 1);
+    if (aNum > 1) {
+      playAyah(sNum, aNum - 1, startPhase);
+    } else if (sNum > 1) {
+      const prevSurah = SURAHS.find((s) => s.number === sNum - 1);
       if (prevSurah) {
-        playAyah(currentSurahNumber - 1, prevSurah.numberOfAyahs, startPhase);
+        playAyah(sNum - 1, prevSurah.numberOfAyahs, startPhase);
       }
     }
   };
