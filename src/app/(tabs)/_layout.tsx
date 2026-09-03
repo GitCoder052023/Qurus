@@ -17,10 +17,12 @@ export default function TabLayout() {
         headerShown: false,
         tabBarStyle: {
           backgroundColor: theme.tabBarBg,
-          borderTopColor: theme.tabBarBorder,
+          borderTopColor: theme.borderSubtle,
+          borderTopWidth: 1,
           height: 60,
           paddingBottom: 8,
           paddingTop: 6,
+          elevation: 0,
         },
         tabBarActiveTintColor: theme.tabActive,
         tabBarInactiveTintColor: theme.tabInactive,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   View,
   Text,
@@ -14,13 +14,107 @@ import { useStudyState } from '../../context/StudyContext';
 import { useAudio } from '../../context/AudioContext';
 import { SURAHS } from '../../data/surahs';
 
+// Curated peaceful verses for daily contemplation
+const CONTEMPLATIVE_VERSES = [
+  {
+    surahNumber: 13,
+    ayahNumber: 28,
+    surahName: "Ar-Ra'd",
+    arabicText: 'أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ',
+    urduText: 'سنو کہ خدا کے ذکر سے ہی دلوں کو تسلی اور سکون حاصل ہوتا ہے',
+    themeNote: 'Peace of Heart & Tranquility',
+  },
+  {
+    surahNumber: 94,
+    ayahNumber: 5,
+    surahName: 'Ash-Sharh',
+    arabicText: 'فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا',
+    urduText: 'سو بے شک مشکل کے ساتھ آسانی ہے',
+    themeNote: 'Hope & Relief in Trial',
+  },
+  {
+    surahNumber: 2,
+    ayahNumber: 152,
+    surahName: 'Al-Baqarah',
+    arabicText: 'فَٱذْكُرُونِىٓ أَذْكُرْكُمْ وَٱشْكُرُوا۟ لِى وَلَا تَكْفُرُونِ',
+    urduText: 'سو مجھے یاد کرو، میں تمہیں یاد رکھوں گا، اور میرا شکر ادا کرو اور ناشکری نہ کرو',
+    themeNote: 'Gratitude & Divine Presence',
+  },
+  {
+    surahNumber: 93,
+    ayahNumber: 7,
+    surahName: 'Ad-Duhaa',
+    arabicText: 'وَوَجَدَكَ ضَآلًّا فَهَدَىٰ',
+    urduText: 'اور اس نے آپ کو راستہ تلاش کرتے پایا تو راہ دکھا دی',
+    themeNote: 'Guidance & Divine Grace',
+  },
+  {
+    surahNumber: 39,
+    ayahNumber: 53,
+    surahName: 'Az-Zumar',
+    arabicText: 'لَا تَقْنَطُوا۟ مِن رَّحْمَةِ ٱللَّهِ ۚ إِنَّ ٱللَّهَ يَغْفِرُ ٱلذُّنُوبَ جَمِيعًا',
+    urduText: 'خدا کی رحمت سے ناامید نہ ہو، خدا تو سب گناہوں کو بخش دیتا ہے',
+    themeNote: 'Boundless Mercy & Forgiveness',
+  },
+];
+
 export default function HomeScreen() {
   const { theme } = useTheme();
-  const { lastStudied, history, bookmarks, notes, highlights } = useStudyState();
+  const { lastStudied, history, bookmarks, notes } = useStudyState();
   const { playAyah, isPlaying, currentSurahNumber, currentAyahNumber, pause } = useAudio();
   const router = useRouter();
 
-  // Find metadata for last studied Surah
+  // Islamic time-of-day greeting
+  const greeting = useMemo(() => {
+    const hour = new Date().getHours();
+    if (hour >= 4 && hour < 7) {
+      return {
+        time: 'Fajr & Dawn',
+        title: 'Assalamu Alaikum',
+        subtitle: 'Start your morning in Divine peace and light',
+        icon: 'sunny-outline',
+      };
+    } else if (hour >= 7 && hour < 12) {
+      return {
+        time: 'Morning Solace',
+        title: 'Assalamu Alaikum',
+        subtitle: 'May your day be filled with tranquility and barakah',
+        icon: 'sunny',
+      };
+    } else if (hour >= 12 && hour < 17) {
+      return {
+        time: 'Midday Remembrance',
+        title: 'Assalamu Alaikum',
+        subtitle: 'Pause your day to reflect on the words of Allah',
+        icon: 'time-outline',
+      };
+    } else if (hour >= 17 && hour < 20) {
+      return {
+        time: 'Maghrib Serenity',
+        title: 'Assalamu Alaikum',
+        subtitle: 'A peaceful evening of gratitude and quiet reflection',
+        icon: 'partly-sunny-outline',
+      };
+    } else {
+      return {
+        time: 'Night Tranquility',
+        title: 'Assalamu Alaikum',
+        subtitle: 'Rest your heart and mind with peaceful recitation',
+        icon: 'moon-outline',
+      };
+    }
+  }, []);
+
+  // Daily contemplative verse
+  const dailyVerse = useMemo(() => {
+    const now = new Date();
+    const dayOfYear = Math.floor(
+      (now.getTime() - new Date(now.getFullYear(), 0, 0).getTime()) / 1000 / 60 / 60 / 24
+    );
+    return CONTEMPLATIVE_VERSES[dayOfYear % CONTEMPLATIVE_VERSES.length];
+  }, []);
+
+  // Last studied Surah info
   const lastSurah = lastStudied ? SURAHS.find((s) => s.number === lastStudied.surahNumber) : null;
   const isLastStudiedPlaying =
     isPlaying &&
@@ -28,12 +122,22 @@ export default function HomeScreen() {
     currentSurahNumber === lastStudied.surahNumber &&
     currentAyahNumber === lastStudied.ayahNumber;
 
+  const progressPercent =
+    lastSurah && lastStudied
+      ? Math.round((lastStudied.ayahNumber / lastSurah.numberOfAyahs) * 100)
+      : 0;
+
   const handleContinueStudying = () => {
     if (lastStudied) {
-      router.push(`/reader/${lastStudied.surahNumber}?ayah=${lastStudied.ayahNumber}`);
+      router.push({
+        pathname: '/reader/[surah]',
+        params: { surah: String(lastStudied.surahNumber), ayah: String(lastStudied.ayahNumber) },
+      });
     } else {
-      // Default to Surah 1 Al-Fatihah
-      router.push('/reader/1?ayah=1');
+      router.push({
+        pathname: '/reader/[surah]',
+        params: { surah: '1', ayah: '1' },
+      });
     }
   };
 
@@ -48,16 +152,16 @@ export default function HomeScreen() {
     }
   };
 
-  const handleJumpToHistory = (surahNum: number, ayahNum: number) => {
-    router.push(`/reader/${surahNum}?ayah=${ayahNum}`);
+  const handlePlayDailyVerse = () => {
+    playAyah(dailyVerse.surahNumber, dailyVerse.ayahNumber);
   };
 
-  const bookmarkCount = bookmarks.length;
-  const noteCount = Object.keys(notes).length;
-  const highlightCount = Object.keys(highlights).length;
-
-  const progressPercent =
-    lastSurah && lastStudied ? Math.round((lastStudied.ayahNumber / lastSurah.numberOfAyahs) * 100) : 0;
+  const handleOpenDailyVerse = () => {
+    router.push({
+      pathname: '/reader/[surah]',
+      params: { surah: String(dailyVerse.surahNumber), ayah: String(dailyVerse.ayahNumber) },
+    });
+  };
 
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
@@ -66,70 +170,80 @@ export default function HomeScreen() {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        {/* App Bar / Header */}
+        {/* Serene Spiritual Header */}
         <View style={styles.header}>
-          <View>
-            <Text style={[styles.brandTitle, { color: theme.primary }]}>Qurus</Text>
-            <Text style={[styles.brandSubtitle, { color: theme.textSecondary }]}>
-              Personal Quran Study & Listening
+          <View style={styles.headerTextGroup}>
+            <View style={styles.timePill}>
+              <Ionicons name={greeting.icon as any} size={13} color={theme.primary} />
+              <Text style={[styles.timePillText, { color: theme.primary }]}>{greeting.time}</Text>
+            </View>
+            <Text style={[styles.greetingTitle, { color: theme.textPrimary }]}>
+              {greeting.title}
+            </Text>
+            <Text style={[styles.greetingSubtitle, { color: theme.textSecondary }]}>
+              {greeting.subtitle}
             </Text>
           </View>
+
           <TouchableOpacity
             onPress={() => router.push('/(tabs)/settings')}
-            style={[styles.settingsBtn, { backgroundColor: theme.surface }]}
+            style={[styles.settingsBtn, { backgroundColor: theme.chipBg }]}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
           >
             <Ionicons name="settings-outline" size={20} color={theme.textPrimary} />
           </TouchableOpacity>
         </View>
 
-        {/* HERO SECTION: Continue Studying */}
+        {/* HERO SECTION: Resume Sanctuary Card */}
         <View style={styles.section}>
-          <Text style={[styles.sectionHeading, { color: theme.textSecondary }]}>
-            CONTINUE STUDYING
-          </Text>
-
           <TouchableOpacity
-            activeOpacity={0.88}
+            activeOpacity={0.92}
             onPress={handleContinueStudying}
             style={[
               styles.heroCard,
               {
-                backgroundColor: theme.card,
-                borderColor: theme.border,
+                backgroundColor: theme.cardElevated,
+                borderColor: theme.borderSubtle,
                 shadowColor: '#000',
               },
             ]}
           >
-            <View style={styles.heroTopRow}>
-              <View style={styles.heroSurahInfo}>
-                <Text style={[styles.heroArabicName, { color: theme.arabicText }]}>
-                  {lastSurah ? lastSurah.name : 'سُورَةُ ٱلْفَاتِحَةِ'}
-                </Text>
-                <Text style={[styles.heroEnglishName, { color: theme.textPrimary }]}>
+            <View style={styles.heroTopTag}>
+              <View style={[styles.heroStatusDot, { backgroundColor: theme.primary }]} />
+              <Text style={[styles.heroStatusText, { color: theme.primary }]}>
+                RESUME STUDY JOURNEY
+              </Text>
+            </View>
+
+            <View style={styles.heroMainRow}>
+              <View style={styles.heroLeftCol}>
+                <Text style={[styles.heroEnglishTitle, { color: theme.textPrimary }]}>
                   {lastSurah ? lastSurah.englishName : 'Al-Faatiha'}
                 </Text>
-                <Text style={[styles.heroAyahNumber, { color: theme.primary }]}>
-                  Ayah {lastStudied ? lastStudied.ayahNumber : 1}
-                  {lastSurah ? ` of ${lastSurah.numberOfAyahs}` : ' of 7'}
+                <Text style={[styles.heroArabicTitle, { color: theme.arabicText }]}>
+                  {lastSurah ? lastSurah.name : 'سُورَةُ ٱلْفَاتِحَةِ'}
+                </Text>
+                <Text style={[styles.heroVerseCount, { color: theme.textSecondary }]}>
+                  Ayah {lastStudied ? lastStudied.ayahNumber : 1} of {lastSurah ? lastSurah.numberOfAyahs : 7}
                 </Text>
               </View>
 
-              {/* Instant Recitation Play Button */}
+              {/* Large Breathing Play Button */}
               <TouchableOpacity
                 onPress={handlePlayLastStudied}
                 style={[styles.heroPlayBtn, { backgroundColor: theme.primary }]}
-                activeOpacity={0.8}
+                activeOpacity={0.85}
               >
                 <Ionicons
                   name={isLastStudiedPlaying ? 'pause' : 'play'}
-                  size={24}
+                  size={26}
                   color="#FFFFFF"
-                  style={!isLastStudiedPlaying ? { marginLeft: 2 } : undefined}
+                  style={!isLastStudiedPlaying ? { marginLeft: 3 } : undefined}
                 />
               </TouchableOpacity>
             </View>
 
-            {/* Progress indicator */}
+            {/* Smooth Progress Track */}
             <View style={styles.heroProgressSection}>
               <View style={[styles.heroProgressTrack, { backgroundColor: theme.surfaceHighlight }]}>
                 <View
@@ -142,134 +256,236 @@ export default function HomeScreen() {
                   ]}
                 />
               </View>
-              <Text style={[styles.heroProgressText, { color: theme.textTertiary }]}>
-                {progressPercent}% completed in Surah
-              </Text>
-            </View>
-
-            {/* Tap Action Footer */}
-            <View style={[styles.heroFooter, { borderTopColor: theme.borderSubtle }]}>
-              <Text style={[styles.heroFooterText, { color: theme.primary }]}>
-                Resume Reading & Notes
-              </Text>
-              <Ionicons name="arrow-forward" size={16} color={theme.primary} />
+              <View style={styles.heroProgressLabels}>
+                <Text style={[styles.heroProgressText, { color: theme.textTertiary }]}>
+                  {progressPercent}% completed in Surah
+                </Text>
+                <View style={styles.heroResumeTouch}>
+                  <Text style={[styles.heroResumeText, { color: theme.primary }]}>Open Reader</Text>
+                  <Ionicons name="arrow-forward" size={13} color={theme.primary} />
+                </View>
+              </View>
             </View>
           </TouchableOpacity>
         </View>
 
-        {/* RECENTLY STUDIED */}
+        {/* SECTION: Daily Ayah of Peace (Contemplative Verse) */}
         <View style={styles.section}>
-          <Text style={[styles.sectionHeading, { color: theme.textSecondary }]}>
-            RECENTLY STUDIED
-          </Text>
-
-          {history.length === 0 ? (
-            <View style={[styles.emptyCard, { backgroundColor: theme.card, borderColor: theme.borderSubtle }]}>
-              <Ionicons name="time-outline" size={24} color={theme.textTertiary} />
-              <Text style={[styles.emptyCardText, { color: theme.textSecondary }]}>
-                Start reading or listening to begin building your study history.
+          <View style={styles.sectionHeader}>
+            <Text style={[styles.sectionTitle, { color: theme.textPrimary }]}>Verse of Peace</Text>
+            <View style={[styles.verseThemePill, { backgroundColor: theme.primaryMuted }]}>
+              <Text style={[styles.verseThemeText, { color: theme.primary }]}>
+                {dailyVerse.themeNote}
               </Text>
             </View>
-          ) : (
-            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.horizontalScroll}>
-              {history.slice(0, 8).map((item) => {
-                const s = SURAHS.find((meta) => meta.number === item.surahNumber);
-                if (!s) return null;
-                return (
-                  <TouchableOpacity
-                    key={item.id}
-                    onPress={() => handleJumpToHistory(item.surahNumber, item.ayahNumber)}
-                    style={[
-                      styles.historyCard,
-                      {
-                        backgroundColor: theme.card,
-                        borderColor: theme.border,
-                      },
-                    ]}
-                  >
-                    <Text style={[styles.historyArabic, { color: theme.arabicText }]}>{s.name}</Text>
-                    <Text style={[styles.historySurah, { color: theme.textPrimary }]}>{s.englishName}</Text>
-                    <View style={[styles.historyAyahTag, { backgroundColor: theme.primaryMuted }]}>
-                      <Text style={[styles.historyAyahText, { color: theme.primary }]}>
-                        Ayah {item.ayahNumber}
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                );
-              })}
-            </ScrollView>
-          )}
+          </View>
+
+          <View
+            style={[
+              styles.dailyVerseCard,
+              {
+                backgroundColor: theme.cardElevated,
+                borderColor: theme.borderSubtle,
+              },
+            ]}
+          >
+            {/* Arabic */}
+            <Text style={[styles.dailyArabicText, { color: theme.arabicText }]}>
+              {dailyVerse.arabicText}
+            </Text>
+
+            {/* Urdu Translation */}
+            <Text style={[styles.dailyUrduText, { color: theme.urduText }]}>
+              {dailyVerse.urduText}
+            </Text>
+
+            {/* Footer with Citation & Quick Actions */}
+            <View style={[styles.dailyVerseFooter, { borderTopColor: theme.borderSubtle }]}>
+              <Text style={[styles.dailyCitation, { color: theme.textSecondary }]}>
+                Surah {dailyVerse.surahName} • {dailyVerse.surahNumber}:{dailyVerse.ayahNumber}
+              </Text>
+
+              <View style={styles.dailyActions}>
+                <TouchableOpacity
+                  onPress={handlePlayDailyVerse}
+                  style={[styles.dailyActionBtn, { backgroundColor: theme.chipBg }]}
+                >
+                  <Ionicons name="volume-medium-outline" size={16} color={theme.primary} />
+                  <Text style={[styles.dailyActionText, { color: theme.primary }]}>Recite</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  onPress={handleOpenDailyVerse}
+                  style={[styles.dailyActionBtn, { backgroundColor: theme.chipBg }]}
+                >
+                  <Ionicons name="book-outline" size={15} color={theme.textPrimary} />
+                  <Text style={[styles.dailyActionText, { color: theme.textPrimary }]}>Study</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
         </View>
 
-        {/* QUICK ACCESS */}
+        {/* SECTION: Peaceful Quick Sanctuary Paths */}
         <View style={styles.section}>
-          <Text style={[styles.sectionHeading, { color: theme.textSecondary }]}>
-            STUDY TOOLS & SHORTCUTS
+          <Text style={[styles.sectionTitle, { color: theme.textPrimary, marginBottom: 12 }]}>
+            Beloved Surahs & Study
           </Text>
 
-          <View style={styles.shortcutsGrid}>
-            {/* Bookmarks */}
-            <TouchableOpacity
-              onPress={() => router.push('/(tabs)/bookmarks')}
-              style={[styles.shortcutCard, { backgroundColor: theme.card, borderColor: theme.border }]}
-            >
-              <View style={[styles.shortcutIconWrap, { backgroundColor: '#F59E0B18' }]}>
-                <Ionicons name="bookmark" size={22} color={theme.bookmarkIcon} />
-              </View>
-              <View style={styles.shortcutContent}>
-                <Text style={[styles.shortcutTitle, { color: theme.textPrimary }]}>Bookmarks</Text>
-                <Text style={[styles.shortcutSubtitle, { color: theme.textSecondary }]}>
-                  {bookmarkCount} saved {bookmarkCount === 1 ? 'verse' : 'verses'}
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.quickScrollContent}
+          >
+            {[
+              {
+                num: 55,
+                english: 'Ar-Rahman',
+                arabic: 'الرحمن',
+                desc: 'The Beneficent',
+                icon: 'leaf-outline',
+              },
+              {
+                num: 67,
+                english: 'Al-Mulk',
+                arabic: 'الملك',
+                desc: 'Sovereignty & Protection',
+                icon: 'shield-checkmark-outline',
+              },
+              {
+                num: 36,
+                english: 'Ya-Sin',
+                arabic: 'يس',
+                desc: 'Heart of the Quran',
+                icon: 'heart-outline',
+              },
+              {
+                num: 18,
+                english: 'Al-Kahf',
+                arabic: 'الكهف',
+                desc: 'The Cave & Divine Light',
+                icon: 'sparkles-outline',
+              },
+            ].map((s) => (
+              <TouchableOpacity
+                key={s.num}
+                activeOpacity={0.88}
+                onPress={() =>
+                  router.push({
+                    pathname: '/reader/[surah]',
+                    params: { surah: String(s.num) },
+                  })
+                }
+                style={[
+                  styles.quickSurahCard,
+                  {
+                    backgroundColor: theme.cardElevated,
+                    borderColor: theme.borderSubtle,
+                  },
+                ]}
+              >
+                <View style={[styles.quickIconCircle, { backgroundColor: theme.chipBg }]}>
+                  <Ionicons name={s.icon as any} size={18} color={theme.primary} />
+                </View>
+                <Text style={[styles.quickArabicName, { color: theme.arabicText }]}>{s.arabic}</Text>
+                <Text style={[styles.quickEnglishName, { color: theme.textPrimary }]}>
+                  {s.english}
                 </Text>
-              </View>
-              <Ionicons name="chevron-forward" size={16} color={theme.textTertiary} />
-            </TouchableOpacity>
+                <Text style={[styles.quickDesc, { color: theme.textSecondary }]}>{s.desc}</Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </View>
 
-            {/* Notes */}
+        {/* SECTION: Study Overview Cards (Clean & Minimal) */}
+        <View style={styles.section}>
+          <View style={styles.overviewGrid}>
             <TouchableOpacity
-              onPress={() => router.push('/(tabs)/notes')}
-              style={[styles.shortcutCard, { backgroundColor: theme.card, borderColor: theme.border }]}
-            >
-              <View style={[styles.shortcutIconWrap, { backgroundColor: theme.primaryMuted }]}>
-                <Ionicons name="journal" size={22} color={theme.primary} />
-              </View>
-              <View style={styles.shortcutContent}>
-                <Text style={[styles.shortcutTitle, { color: theme.textPrimary }]}>Notebook</Text>
-                <Text style={[styles.shortcutSubtitle, { color: theme.textSecondary }]}>
-                  {noteCount} reflection {noteCount === 1 ? 'entry' : 'entries'}
-                </Text>
-              </View>
-              <Ionicons name="chevron-forward" size={16} color={theme.textTertiary} />
-            </TouchableOpacity>
-
-            {/* Quran Index */}
-            <TouchableOpacity
+              activeOpacity={0.88}
               onPress={() => router.push('/(tabs)/quran')}
-              style={[styles.shortcutCard, { backgroundColor: theme.card, borderColor: theme.border }]}
+              style={[
+                styles.overviewCard,
+                { backgroundColor: theme.cardElevated, borderColor: theme.borderSubtle },
+              ]}
             >
-              <View style={[styles.shortcutIconWrap, { backgroundColor: theme.surfaceHighlight }]}>
-                <Ionicons name="book" size={22} color={theme.textPrimary} />
+              <View style={[styles.overviewIconCircle, { backgroundColor: theme.primaryMuted }]}>
+                <Ionicons name="library-outline" size={20} color={theme.primary} />
               </View>
-              <View style={styles.shortcutContent}>
-                <Text style={[styles.shortcutTitle, { color: theme.textPrimary }]}>Complete Quran</Text>
-                <Text style={[styles.shortcutSubtitle, { color: theme.textSecondary }]}>
-                  114 Surahs • 6,236 Ayahs
-                </Text>
+              <Text style={[styles.overviewCardTitle, { color: theme.textPrimary }]}>
+                All 114 Surahs
+              </Text>
+              <Text style={[styles.overviewCardSub, { color: theme.textSecondary }]}>
+                Browse Quran & Search
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              activeOpacity={0.88}
+              onPress={() => router.push('/(tabs)/notes')}
+              style={[
+                styles.overviewCard,
+                { backgroundColor: theme.cardElevated, borderColor: theme.borderSubtle },
+              ]}
+            >
+              <View style={[styles.overviewIconCircle, { backgroundColor: '#D9770618' }]}>
+                <Ionicons name="document-text-outline" size={20} color={theme.accentGold} />
               </View>
-              <Ionicons name="chevron-forward" size={16} color={theme.textTertiary} />
+              <Text style={[styles.overviewCardTitle, { color: theme.textPrimary }]}>
+                Study Notebook
+              </Text>
+              <Text style={[styles.overviewCardSub, { color: theme.textSecondary }]}>
+                {Object.keys(notes).length} personal reflections
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
 
-        {/* Study Principle Reminder */}
-        <View style={[styles.reflectionPrompt, { backgroundColor: theme.surface, borderColor: theme.borderSubtle }]}>
-          <Text style={[styles.reflectionTitle, { color: theme.textPrimary }]}>
-            Study with Contemplation
-          </Text>
-          <Text style={[styles.reflectionText, { color: theme.textSecondary }]}>
-            “Do they not then reflect upon the Quran, or are there locks upon their hearts?” (47:24)
-          </Text>
-        </View>
+        {/* RECENT JOURNEYS (If Any) */}
+        {history.length > 0 && (
+          <View style={[styles.section, { marginBottom: 30 }]}>
+            <Text style={[styles.sectionTitle, { color: theme.textPrimary, marginBottom: 12 }]}>
+              Recent Passages
+            </Text>
+
+            <View style={styles.recentList}>
+              {history.slice(0, 3).map((item, idx) => {
+                const sMeta = SURAHS.find((s) => s.number === item.surahNumber);
+                return (
+                  <TouchableOpacity
+                    key={`${item.surahNumber}-${item.ayahNumber}-${idx}`}
+                    onPress={() =>
+                      router.push({
+                        pathname: '/reader/[surah]',
+                        params: { surah: String(item.surahNumber), ayah: String(item.ayahNumber) },
+                      })
+                    }
+                    style={[
+                      styles.recentItemRow,
+                      { backgroundColor: theme.cardElevated, borderColor: theme.borderSubtle },
+                    ]}
+                  >
+                    <View style={styles.recentItemLeft}>
+                      <View style={[styles.recentNumberDot, { backgroundColor: theme.chipBg }]}>
+                        <Text style={[styles.recentNumberText, { color: theme.primary }]}>
+                          {item.surahNumber}
+                        </Text>
+                      </View>
+                      <View>
+                        <Text style={[styles.recentItemSurah, { color: theme.textPrimary }]}>
+                          {sMeta ? sMeta.englishName : `Surah ${item.surahNumber}`}
+                        </Text>
+                        <Text style={[styles.recentItemAyah, { color: theme.textSecondary }]}>
+                          Ayah {item.ayahNumber} • {sMeta?.name}
+                        </Text>
+                      </View>
+                    </View>
+                    <Ionicons name="chevron-forward" size={16} color={theme.textTertiary} />
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+          </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
@@ -283,25 +499,41 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingHorizontal: 18,
+    paddingHorizontal: 20,
     paddingTop: 16,
     paddingBottom: 40,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     marginBottom: 24,
   },
-  brandTitle: {
-    fontSize: 28,
-    fontWeight: '800',
-    letterSpacing: -0.5,
+  headerTextGroup: {
+    flex: 1,
+    marginRight: 16,
   },
-  brandSubtitle: {
+  timePill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    marginBottom: 6,
+  },
+  timePillText: {
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 0.3,
+    textTransform: 'uppercase',
+  },
+  greetingTitle: {
+    fontSize: 24,
+    fontWeight: '800',
+    letterSpacing: -0.3,
+  },
+  greetingSubtitle: {
     fontSize: 13,
-    fontWeight: '500',
-    marginTop: 2,
+    lineHeight: 18,
+    marginTop: 4,
   },
   settingsBtn: {
     width: 40,
@@ -309,175 +541,261 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  section: {
-    marginBottom: 28,
-  },
-  sectionHeading: {
-    fontSize: 12,
-    fontWeight: '700',
-    letterSpacing: 1,
-    marginBottom: 12,
-    marginLeft: 2,
-  },
-  heroCard: {
-    borderRadius: 22,
-    borderWidth: 1,
-    padding: 20,
-    elevation: 3,
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.07,
-    shadowRadius: 8,
-  },
-  heroTopRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  heroSurahInfo: {
-    flex: 1,
-  },
-  heroArabicName: {
-    fontSize: 24,
-    fontWeight: '700',
-    marginBottom: 4,
-  },
-  heroEnglishName: {
-    fontSize: 18,
-    fontWeight: '700',
-  },
-  heroAyahNumber: {
-    fontSize: 14,
-    fontWeight: '600',
     marginTop: 4,
   },
-  heroPlayBtn: {
-    width: 52,
-    height: 52,
-    borderRadius: 26,
+  section: {
+    marginBottom: 24,
+  },
+  sectionHeader: {
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 3,
+    justifyContent: 'space-between',
+    marginBottom: 12,
   },
-  heroProgressSection: {
-    marginBottom: 16,
+  sectionTitle: {
+    fontSize: 17,
+    fontWeight: '700',
+    letterSpacing: -0.2,
   },
-  heroProgressTrack: {
+  verseThemePill: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  verseThemeText: {
+    fontSize: 11,
+    fontWeight: '600',
+  },
+  heroCard: {
+    borderRadius: 24,
+    borderWidth: 1,
+    padding: 20,
+    elevation: 4,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 10,
+  },
+  heroTopTag: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginBottom: 14,
+  },
+  heroStatusDot: {
+    width: 6,
     height: 6,
     borderRadius: 3,
-    overflow: 'hidden',
+  },
+  heroStatusText: {
+    fontSize: 11,
+    fontWeight: '800',
+    letterSpacing: 0.6,
+  },
+  heroMainRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 18,
+  },
+  heroLeftCol: {
+    flex: 1,
+    marginRight: 16,
+  },
+  heroEnglishTitle: {
+    fontSize: 22,
+    fontWeight: '800',
+    letterSpacing: -0.3,
+  },
+  heroArabicTitle: {
+    fontSize: 18,
+    marginTop: 2,
     marginBottom: 6,
+    fontFamily: 'serif',
+  },
+  heroVerseCount: {
+    fontSize: 13,
+    fontWeight: '500',
+  },
+  heroPlayBtn: {
+    width: 58,
+    height: 58,
+    borderRadius: 29,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 6,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+  },
+  heroProgressSection: {
+    gap: 8,
+  },
+  heroProgressTrack: {
+    height: 5,
+    borderRadius: 2.5,
+    overflow: 'hidden',
   },
   heroProgressBar: {
     height: '100%',
-    borderRadius: 3,
+    borderRadius: 2.5,
+  },
+  heroProgressLabels: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   heroProgressText: {
     fontSize: 11,
     fontWeight: '500',
   },
-  heroFooter: {
+  heroResumeTouch: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 4,
+  },
+  heroResumeText: {
+    fontSize: 12,
+    fontWeight: '700',
+  },
+  dailyVerseCard: {
+    borderRadius: 22,
+    borderWidth: 1,
+    padding: 20,
+  },
+  dailyArabicText: {
+    fontSize: 20,
+    lineHeight: 38,
+    textAlign: 'center',
+    writingDirection: 'rtl',
+    fontFamily: 'serif',
+    marginBottom: 12,
+  },
+  dailyUrduText: {
+    fontSize: 15,
+    lineHeight: 25,
+    textAlign: 'center',
+    writingDirection: 'rtl',
+    fontFamily: 'serif',
+    marginBottom: 16,
+  },
+  dailyVerseFooter: {
+    flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     borderTopWidth: StyleSheet.hairlineWidth,
     paddingTop: 12,
   },
-  heroFooterText: {
-    fontSize: 14,
-    fontWeight: '700',
+  dailyCitation: {
+    fontSize: 12,
+    fontWeight: '600',
   },
-  horizontalScroll: {
-    marginLeft: -18,
-    paddingLeft: 18,
+  dailyActions: {
+    flexDirection: 'row',
+    gap: 8,
   },
-  historyCard: {
+  dailyActionBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 10,
+  },
+  dailyActionText: {
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  quickScrollContent: {
+    gap: 12,
+    paddingRight: 10,
+  },
+  quickSurahCard: {
     width: 140,
-    borderRadius: 16,
-    borderWidth: 1,
-    padding: 14,
-    marginRight: 12,
-  },
-  historyArabic: {
-    fontSize: 16,
-    fontWeight: '700',
-    textAlign: 'right',
-    marginBottom: 4,
-  },
-  historySurah: {
-    fontSize: 13,
-    fontWeight: '700',
-    marginBottom: 8,
-  },
-  historyAyahTag: {
-    alignSelf: 'flex-start',
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 8,
-  },
-  historyAyahText: {
-    fontSize: 11,
-    fontWeight: '700',
-  },
-  emptyCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    padding: 16,
-    borderRadius: 16,
-    borderWidth: 1,
-  },
-  emptyCardText: {
-    fontSize: 13,
-    flex: 1,
-    lineHeight: 18,
-  },
-  shortcutsGrid: {
-    gap: 12,
-  },
-  shortcutCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 14,
     borderRadius: 18,
     borderWidth: 1,
+    padding: 14,
   },
-  shortcutIconWrap: {
-    width: 44,
-    height: 44,
-    borderRadius: 12,
+  quickIconCircle: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 14,
+    marginBottom: 10,
   },
-  shortcutContent: {
-    flex: 1,
+  quickArabicName: {
+    fontSize: 16,
+    fontFamily: 'serif',
+    marginBottom: 2,
   },
-  shortcutTitle: {
-    fontSize: 15,
-    fontWeight: '700',
-  },
-  shortcutSubtitle: {
-    fontSize: 12,
-    marginTop: 2,
-  },
-  reflectionPrompt: {
-    borderRadius: 16,
-    borderWidth: 1,
-    padding: 18,
-    marginTop: 10,
-    alignItems: 'center',
-  },
-  reflectionTitle: {
+  quickEnglishName: {
     fontSize: 14,
     fontWeight: '700',
-    marginBottom: 6,
+    marginBottom: 4,
   },
-  reflectionText: {
+  quickDesc: {
+    fontSize: 11,
+    lineHeight: 14,
+  },
+  overviewGrid: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  overviewCard: {
+    flex: 1,
+    borderRadius: 18,
+    borderWidth: 1,
+    padding: 16,
+  },
+  overviewIconCircle: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 10,
+  },
+  overviewCardTitle: {
+    fontSize: 14,
+    fontWeight: '700',
+    marginBottom: 2,
+  },
+  overviewCardSub: {
+    fontSize: 11,
+  },
+  recentList: {
+    gap: 8,
+  },
+  recentItemRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 12,
+    borderRadius: 14,
+    borderWidth: 1,
+  },
+  recentItemLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  recentNumberDot: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  recentNumberText: {
+    fontSize: 12,
+    fontWeight: '700',
+  },
+  recentItemSurah: {
     fontSize: 13,
-    textAlign: 'center',
-    lineHeight: 20,
-    fontStyle: 'italic',
+    fontWeight: '700',
+  },
+  recentItemAyah: {
+    fontSize: 11,
+    marginTop: 1,
   },
 });

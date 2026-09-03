@@ -29,6 +29,10 @@ export interface ThemeColors {
   tabActive: string;
   tabInactive: string;
   statusBarStyle: 'light' | 'dark';
+  cardElevated: string;
+  urduHighlight: string;
+  arabicHighlight: string;
+  chipBg: string;
 }
 
 const lightTheme: ThemeColors = {
@@ -58,35 +62,43 @@ const lightTheme: ThemeColors = {
   tabActive: '#0D7A57',
   tabInactive: '#64748B',
   statusBarStyle: 'dark',
+  cardElevated: '#FFFFFF',
+  urduHighlight: '#FFFBEB',
+  arabicHighlight: '#F0FDF4',
+  chipBg: '#F3EFE6',
 };
 
 const darkTheme: ThemeColors = {
-  background: '#0D1117', // deep slate night
-  card: '#161B22',
-  surface: '#21262D',
-  surfaceHighlight: '#30363D',
-  textPrimary: '#F0F6FC',
-  textSecondary: '#8B949E',
-  textTertiary: '#484F58',
-  arabicText: '#F0F6FC',
-  urduText: '#C9D1D9',
-  border: '#30363D',
-  borderSubtle: '#21262D',
-  primary: '#2EA043',
-  primaryMuted: '#2EA04325',
-  primaryLight: '#1B382B',
-  accentGold: '#D29922',
-  activeAyahBg: '#122E22', // deep emerald recitation glow
-  activeAyahBorder: '#2EA043',
+  background: '#0B0F17', // deep atmospheric dusk
+  card: '#151C28',
+  surface: '#1E2638',
+  surfaceHighlight: '#2A344A',
+  textPrimary: '#F1F5F9',
+  textSecondary: '#94A3B8',
+  textTertiary: '#64748B',
+  arabicText: '#F8FAFC',
+  urduText: '#CBD5E1',
+  border: '#232D3F',
+  borderSubtle: '#1A2332',
+  primary: '#10B981', // serene emerald glow
+  primaryMuted: '#10B98122',
+  primaryLight: '#064E3B',
+  accentGold: '#F59E0B',
+  activeAyahBg: '#0D281E',
+  activeAyahBorder: '#10B981',
   bookmarkIcon: '#F59E0B',
-  highlightBg: '#2D2813',
-  noteBg: '#2C2718',
-  miniPlayerBg: '#161B22',
-  tabBarBg: '#161B22',
-  tabBarBorder: '#30363D',
-  tabActive: '#3FB950',
-  tabInactive: '#8B949E',
+  highlightBg: '#2E2611',
+  noteBg: '#2A2312',
+  miniPlayerBg: '#151C28',
+  tabBarBg: '#101622',
+  tabBarBorder: '#1E2638',
+  tabActive: '#10B981',
+  tabInactive: '#64748B',
   statusBarStyle: 'light',
+  cardElevated: '#1C2536',
+  urduHighlight: '#2A200B',
+  arabicHighlight: '#0C2E20',
+  chipBg: '#1E2638',
 };
 
 const sepiaTheme: ThemeColors = {
@@ -116,6 +128,10 @@ const sepiaTheme: ThemeColors = {
   tabActive: '#7C4A1E',
   tabInactive: '#786C5E',
   statusBarStyle: 'dark',
+  cardElevated: '#FFFFFF',
+  urduHighlight: '#FAF0DE',
+  arabicHighlight: '#EFE6D6',
+  chipBg: '#ECE2D3',
 };
 
 interface ThemeContextType {

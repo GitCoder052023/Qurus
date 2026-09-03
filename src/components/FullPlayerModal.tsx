@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   View,
   Text,
@@ -6,14 +6,17 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useAudio } from '../context/AudioContext';
 import { useTheme } from '../context/ThemeContext';
+import { useStudyState } from '../context/StudyContext';
+import { getAyah } from '../data/surahLoader';
 import { RECITERS } from '../data/surahs';
-import { Reciter } from '../types';
+import { PlaybackMode } from '../types';
 
 export function FullPlayerModal() {
   const {
@@ -26,7 +29,6 @@ export function FullPlayerModal() {
     playbackMode,
     setPlaybackMode,
     isPlaying,
-    isBuffering,
     togglePlayPause,
     nextAyah,
     previousAyah,
@@ -40,12 +42,22 @@ export function FullPlayerModal() {
   } = useAudio();
 
   const { theme } = useTheme();
+  const { isBookmarked, toggleBookmark } = useStudyState();
   const router = useRouter();
+
   const [showReciterPicker, setShowReciterPicker] = useState(false);
+
+  // Fetch current Ayah text (Arabic and Urdu)
+  const currentAyah = useMemo(() => {
+    if (!currentSurahNumber || !currentAyahNumber) return null;
+    return getAyah(currentSurahNumber, currentAyahNumber);
+  }, [currentSurahNumber, currentAyahNumber]);
 
   if (!isFullPlayerVisible || !currentSurahNumber || !currentAyahNumber) {
     return null;
   }
+
+  const bookmarked = isBookmarked(currentSurahNumber, currentAyahNumber);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -53,21 +65,54 @@ export function FullPlayerModal() {
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
-  const progressPercent = duration > 0 ? Math.min(100, Math.max(0, (currentTime / duration) * 100)) : 0;
+  const progressPercent =
+    duration > 0 ? Math.min(100, Math.max(0, (currentTime / duration) * 100)) : 0;
 
-  const handleSeekPress = (e: any) => {
-    if (duration <= 0) return;
-    const { locationX } = e.nativeEvent;
-    // Assume full scrubber width is ~300 on typical phones, calculate relative
-    // We can also let user step forward/backward 5 seconds
+  const isArabicPhase = playbackPhase === 'arabic';
+  const isUrduPhase = playbackPhase === 'translation';
+
+  const handleBookmarkToggle = () => {
+    if (currentAyah) {
+      toggleBookmark(
+        currentSurahNumber,
+        currentAyahNumber,
+        currentAyah.arabicText,
+        currentAyah.urduText
+      );
+    }
+  };
+
+  const handleCyclePlaybackMode = () => {
+    const modes: PlaybackMode[] = ['both', 'arabic_only', 'translation_only'];
+    const nextIndex = (modes.indexOf(playbackMode) + 1) % modes.length;
+    setPlaybackMode(modes[nextIndex]);
+  };
+
+  const handleCycleSpeed = () => {
+    const speeds = [1.0, 1.25, 1.5, 0.75];
+    const currentIndex = speeds.indexOf(playbackSpeed);
+    const nextIndex = (currentIndex + 1) % speeds.length;
+    setSpeed(speeds[nextIndex]);
   };
 
   const handleJumpToReader = () => {
     closeFullPlayer();
-    router.push(`/reader/${currentSurahNumber}?ayah=${currentAyahNumber}`);
+    router.push({
+      pathname: '/reader/[surah]',
+      params: { surah: String(currentSurahNumber), ayah: String(currentAyahNumber) },
+    });
   };
 
-  const speeds = [0.75, 1.0, 1.25, 1.5];
+  const getModeLabel = (mode: PlaybackMode) => {
+    switch (mode) {
+      case 'both':
+        return 'Arabic + Urdu';
+      case 'arabic_only':
+        return 'Arabic Only';
+      case 'translation_only':
+        return 'Urdu Only';
+    }
+  };
 
   return (
     <Modal
@@ -77,148 +122,247 @@ export function FullPlayerModal() {
       onRequestClose={closeFullPlayer}
     >
       <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
-        {/* Header */}
+        {/* Minimal Header */}
         <View style={styles.header}>
-          <TouchableOpacity onPress={closeFullPlayer} style={styles.iconBtn}>
-            <Ionicons name="chevron-down" size={28} color={theme.textPrimary} />
-          </TouchableOpacity>
-          <Text style={[styles.headerTitle, { color: theme.textSecondary }]}>Now Reciting</Text>
           <TouchableOpacity
-            onPress={() => setShowReciterPicker(!showReciterPicker)}
-            style={[styles.reciterBadge, { backgroundColor: theme.surface }]}
+            onPress={closeFullPlayer}
+            style={[styles.headerBtn, { backgroundColor: theme.chipBg }]}
+            hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
           >
-            <Ionicons name="person-circle-outline" size={18} color={theme.primary} />
-            <Text style={[styles.reciterBadgeText, { color: theme.primary }]} numberOfLines={1}>
-              {reciter.name.split(' ')[0]}
-            </Text>
+            <Ionicons name="chevron-down" size={24} color={theme.textPrimary} />
           </TouchableOpacity>
-        </View>
 
-        <ScrollView contentContainerStyle={styles.content}>
-          {/* Reciter Picker Dropdown */}
-          {showReciterPicker && (
-            <View style={[styles.reciterDropdown, { backgroundColor: theme.card, borderColor: theme.border }]}>
-              <Text style={[styles.dropdownTitle, { color: theme.textSecondary }]}>Choose Reciter</Text>
-              {RECITERS.map((r) => {
-                const isSelected = r.id === reciter.id;
-                return (
-                  <TouchableOpacity
-                    key={r.id}
-                    onPress={() => {
-                      setReciter(r);
-                      setShowReciterPicker(false);
-                    }}
-                    style={[
-                      styles.reciterItem,
-                      isSelected && { backgroundColor: theme.primaryMuted },
-                    ]}
-                  >
-                    <View>
-                      <Text
-                        style={[
-                          styles.reciterItemName,
-                          { color: isSelected ? theme.primary : theme.textPrimary },
-                          isSelected && { fontWeight: '700' },
-                        ]}
-                      >
-                        {r.name}
-                      </Text>
-                      <Text style={[styles.reciterItemArabic, { color: theme.textTertiary }]}>
-                        {r.arabicName}
-                      </Text>
-                    </View>
-                    {isSelected && <Ionicons name="checkmark-circle" size={20} color={theme.primary} />}
-                  </TouchableOpacity>
-                );
-              })}
-            </View>
-          )}
-
-          {/* Surah Artwork / Visual Frame */}
-          <View style={[styles.artCard, { backgroundColor: theme.card, borderColor: theme.border }]}>
-            <View style={[styles.artCircle, { backgroundColor: theme.surfaceHighlight }]}>
-              <Text style={[styles.artNumber, { color: theme.primary }]}>{currentSurahNumber}</Text>
-            </View>
-            <Text style={[styles.artArabicTitle, { color: theme.arabicText }]}>
-              {currentSurah?.name}
-            </Text>
-            <Text style={[styles.artEnglishTitle, { color: theme.textPrimary }]}>
+          <View style={styles.headerCenter}>
+            <Text style={[styles.headerSurahEnglish, { color: theme.textPrimary }]} numberOfLines={1}>
               {currentSurah?.englishName}
             </Text>
-            <Text style={[styles.artTranslation, { color: theme.textSecondary }]}>
-              {currentSurah?.urduName}
+            <Text style={[styles.headerSurahArabic, { color: theme.textSecondary }]} numberOfLines={1}>
+              {currentSurah?.name} • Ayah {currentAyahNumber} of {currentSurah?.numberOfAyahs}
             </Text>
-            <View style={styles.ayahPillRow}>
-              <View style={[styles.ayahPill, { backgroundColor: theme.primaryMuted }]}>
-                <Text style={[styles.ayahPillText, { color: theme.primary }]}>
-                  Ayah {currentAyahNumber} of {currentSurah?.numberOfAyahs}
-                </Text>
-              </View>
-
-              <View
-                style={[
-                  styles.phasePill,
-                  {
-                    backgroundColor:
-                      playbackPhase === 'translation' ? '#D9770620' : theme.surfaceHighlight,
-                    borderColor:
-                      playbackPhase === 'translation' ? theme.accentGold : theme.border,
-                  },
-                ]}
-              >
-                <Ionicons
-                  name="volume-medium"
-                  size={13}
-                  color={playbackPhase === 'translation' ? theme.accentGold : theme.primary}
-                />
-                <Text
-                  style={[
-                    styles.phasePillText,
-                    {
-                      color:
-                        playbackPhase === 'translation' ? theme.accentGold : theme.primary,
-                    },
-                  ]}
-                >
-                  {playbackPhase === 'translation'
-                    ? 'Urdu: Shamshad Ali Khan'
-                    : `Arabic: ${reciter.name.split(' ')[0]}`}
-                </Text>
-              </View>
-            </View>
           </View>
 
-          {/* Scrubber / Progress Bar */}
+          <View style={styles.headerRightGroup}>
+            <TouchableOpacity
+              onPress={handleBookmarkToggle}
+              style={[
+                styles.headerBtn,
+                { backgroundColor: theme.chipBg },
+                bookmarked && { backgroundColor: theme.accentGold + '20' },
+              ]}
+            >
+              <Ionicons
+                name={bookmarked ? 'bookmark' : 'bookmark-outline'}
+                size={20}
+                color={bookmarked ? theme.bookmarkIcon : theme.textSecondary}
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => setShowReciterPicker(!showReciterPicker)}
+              style={[styles.headerBtn, { backgroundColor: theme.chipBg }]}
+            >
+              <Ionicons name="mic-outline" size={19} color={theme.primary} />
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* Reciter Selector Dropdown */}
+        {showReciterPicker && (
+          <View style={[styles.reciterCard, { backgroundColor: theme.card, borderColor: theme.border }]}>
+            <View style={styles.reciterCardHeader}>
+              <Text style={[styles.reciterCardTitle, { color: theme.textSecondary }]}>Select Arabic Reciter</Text>
+              <TouchableOpacity onPress={() => setShowReciterPicker(false)}>
+                <Ionicons name="close-circle" size={20} color={theme.textTertiary} />
+              </TouchableOpacity>
+            </View>
+            {RECITERS.map((r) => {
+              const isSelected = r.id === reciter.id;
+              return (
+                <TouchableOpacity
+                  key={r.id}
+                  onPress={() => {
+                    setReciter(r);
+                    setShowReciterPicker(false);
+                  }}
+                  style={[
+                    styles.reciterOption,
+                    isSelected && { backgroundColor: theme.primaryMuted },
+                  ]}
+                >
+                  <View style={styles.reciterOptionInfo}>
+                    <Text
+                      style={[
+                        styles.reciterOptionName,
+                        { color: isSelected ? theme.primary : theme.textPrimary },
+                        isSelected && { fontWeight: '700' },
+                      ]}
+                    >
+                      {r.name}
+                    </Text>
+                    <Text style={[styles.reciterOptionArabic, { color: theme.textTertiary }]}>
+                      {r.arabicName}
+                    </Text>
+                  </View>
+                  {isSelected && <Ionicons name="checkmark-circle" size={18} color={theme.primary} />}
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+        )}
+
+        {/* Center Stage: The Synced Ayah Canvas (Spotify Lyrics / Canvas style) */}
+        <View style={styles.centerStage}>
+          <ScrollView
+            style={styles.ayahScrollView}
+            contentContainerStyle={styles.ayahScrollContent}
+            showsVerticalScrollIndicator={false}
+          >
+            {/* Real-time Recitation Phase Badge */}
+            <View
+              style={[
+                styles.phaseBadge,
+                {
+                  backgroundColor: isUrduPhase ? '#D9770618' : theme.primaryMuted,
+                  borderColor: isUrduPhase ? theme.accentGold : theme.primary,
+                },
+              ]}
+            >
+              <Ionicons
+                name="volume-medium"
+                size={14}
+                color={isUrduPhase ? theme.accentGold : theme.primary}
+              />
+              <Text
+                style={[
+                  styles.phaseBadgeText,
+                  { color: isUrduPhase ? theme.accentGold : theme.primary },
+                ]}
+              >
+                {isUrduPhase
+                  ? 'Reciting Urdu Translation • Shamshad Ali Khan'
+                  : `Reciting Arabic Verse • ${reciter.name.split(' ')[0]}`}
+              </Text>
+            </View>
+
+            {/* Quranic Arabic Text */}
+            <View
+              style={[
+                styles.arabicCanvasCard,
+                isArabicPhase && [
+                  styles.activePhaseCard,
+                  {
+                    backgroundColor: theme.arabicHighlight,
+                    borderColor: theme.primary,
+                  },
+                ],
+                !isArabicPhase && {
+                  backgroundColor: theme.card,
+                  borderColor: theme.borderSubtle,
+                  opacity: 0.85,
+                },
+              ]}
+            >
+              <Text
+                style={[
+                  styles.arabicVerseText,
+                  { color: isArabicPhase ? theme.arabicText : theme.textSecondary },
+                  isArabicPhase && styles.activeVerseGlow,
+                ]}
+                selectable
+              >
+                {currentAyah?.arabicText || '...'}
+              </Text>
+            </View>
+
+            {/* Urdu Translation Text */}
+            <View
+              style={[
+                styles.urduCanvasCard,
+                isUrduPhase && [
+                  styles.activePhaseCard,
+                  {
+                    backgroundColor: theme.urduHighlight,
+                    borderColor: theme.accentGold,
+                  },
+                ],
+                !isUrduPhase && {
+                  backgroundColor: theme.card,
+                  borderColor: theme.borderSubtle,
+                  opacity: 0.85,
+                },
+              ]}
+            >
+              <Text
+                style={[
+                  styles.urduVerseText,
+                  { color: isUrduPhase ? theme.textPrimary : theme.textSecondary },
+                  isUrduPhase && { fontWeight: '600' },
+                ]}
+                selectable
+              >
+                {currentAyah?.urduText || '...'}
+              </Text>
+              <Text style={[styles.urduAuthorFootnote, { color: theme.textTertiary }]}>
+                — ترجمہ: فتح محمد جالندھری
+              </Text>
+            </View>
+          </ScrollView>
+        </View>
+
+        {/* Bottom Section: Scrubber & Spotify Controls */}
+        <View style={[styles.bottomSection, { backgroundColor: theme.background }]}>
+          {/* Scrubber Progress Bar */}
           <View style={styles.scrubberSection}>
             <View style={[styles.trackBg, { backgroundColor: theme.surfaceHighlight }]}>
               <View
                 style={[
                   styles.trackFill,
-                  { width: `${progressPercent}%`, backgroundColor: theme.primary },
+                  {
+                    width: `${progressPercent}%`,
+                    backgroundColor: isUrduPhase ? theme.accentGold : theme.primary,
+                  },
                 ]}
               />
             </View>
             <View style={styles.timeRow}>
-              <Text style={[styles.timeText, { color: theme.textTertiary }]}>{formatTime(currentTime)}</Text>
+              <Text style={[styles.timeText, { color: theme.textTertiary }]}>
+                {formatTime(currentTime)}
+              </Text>
               <Text style={[styles.timeText, { color: theme.textTertiary }]}>
                 {duration > 0 ? formatTime(duration) : '--:--'}
               </Text>
             </View>
           </View>
 
-          {/* Primary Audio Controls */}
-          <View style={styles.controlsSection}>
-            <TouchableOpacity onPress={previousAyah} style={styles.controlBtn}>
+          {/* Symmetrical Spotify-Style Audio Controls */}
+          <View style={styles.controlsRow}>
+            <TouchableOpacity
+              onPress={previousAyah}
+              style={styles.skipBtn}
+              hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+            >
               <Ionicons name="play-skip-back" size={26} color={theme.textPrimary} />
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => seekTo(Math.max(0, currentTime - 5))} style={styles.controlBtn}>
+            <TouchableOpacity
+              onPress={() => seekTo(Math.max(0, currentTime - 5))}
+              style={styles.seekBtn}
+              hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+            >
               <Ionicons name="play-back" size={22} color={theme.textSecondary} />
             </TouchableOpacity>
 
+            {/* Center Breathing Play/Pause Button */}
             <TouchableOpacity
               onPress={togglePlayPause}
-              style={[styles.mainPlayBtn, { backgroundColor: theme.primary }]}
+              style={[
+                styles.mainPlayBtn,
+                {
+                  backgroundColor: isUrduPhase ? theme.accentGold : theme.primary,
+                  shadowColor: isUrduPhase ? theme.accentGold : theme.primary,
+                },
+              ]}
+              activeOpacity={0.88}
             >
               <Ionicons
                 name={isPlaying ? 'pause' : 'play'}
@@ -230,101 +374,58 @@ export function FullPlayerModal() {
 
             <TouchableOpacity
               onPress={() => seekTo(Math.min(duration, currentTime + 5))}
-              style={styles.controlBtn}
+              style={styles.seekBtn}
+              hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
             >
               <Ionicons name="play-forward" size={22} color={theme.textSecondary} />
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={nextAyah} style={styles.controlBtn}>
+            <TouchableOpacity
+              onPress={nextAyah}
+              style={styles.skipBtn}
+              hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+            >
               <Ionicons name="play-skip-forward" size={26} color={theme.textPrimary} />
             </TouchableOpacity>
           </View>
 
-          {/* Speed Selector */}
-          <View style={styles.speedRow}>
-            <Text style={[styles.speedLabel, { color: theme.textTertiary }]}>Speed:</Text>
-            {speeds.map((s) => {
-              const isSelected = playbackSpeed === s;
-              return (
-                <TouchableOpacity
-                  key={s}
-                  onPress={() => setSpeed(s)}
-                  style={[
-                    styles.speedChip,
-                    {
-                      backgroundColor: isSelected ? theme.primary : theme.surface,
-                      borderColor: isSelected ? theme.primary : theme.border,
-                    },
-                  ]}
-                >
-                  <Text
-                    style={[
-                      styles.speedText,
-                      { color: isSelected ? '#FFFFFF' : theme.textSecondary },
-                      isSelected && { fontWeight: '700' },
-                    ]}
-                  >
-                    {s}x
-                  </Text>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
+          {/* Bottom Utility Chips (Minimal & Clean) */}
+          <View style={styles.utilitiesRow}>
+            <TouchableOpacity
+              onPress={handleCyclePlaybackMode}
+              style={[styles.utilChip, { backgroundColor: theme.chipBg, borderColor: theme.borderSubtle }]}
+            >
+              <Ionicons name="repeat" size={13} color={theme.primary} />
+              <Text style={[styles.utilChipText, { color: theme.textPrimary }]}>
+                {getModeLabel(playbackMode)}
+              </Text>
+            </TouchableOpacity>
 
-          {/* Playback Mode Switcher (Arabic + Urdu / Arabic Only / Urdu Only) */}
-          <View style={styles.modeSection}>
-            <Text style={[styles.modeLabel, { color: theme.textTertiary }]}>Recitation Mode:</Text>
-            <View style={styles.modeRow}>
-              {[
-                { key: 'both', label: 'Arabic + Urdu', icon: 'repeat' },
-                { key: 'arabic_only', label: 'Arabic Only', icon: 'language' },
-                { key: 'translation_only', label: 'Urdu Only', icon: 'chatbox-ellipses-outline' },
-              ].map((m) => {
-                const isSelected = playbackMode === m.key;
-                return (
-                  <TouchableOpacity
-                    key={m.key}
-                    onPress={() => setPlaybackMode(m.key as any)}
-                    style={[
-                      styles.modeChip,
-                      {
-                        backgroundColor: isSelected ? theme.primary : theme.surface,
-                        borderColor: isSelected ? theme.primary : theme.border,
-                      },
-                    ]}
-                  >
-                    <Ionicons
-                      name={m.icon as any}
-                      size={14}
-                      color={isSelected ? '#FFFFFF' : theme.textSecondary}
-                    />
-                    <Text
-                      style={[
-                        styles.modeText,
-                        { color: isSelected ? '#FFFFFF' : theme.textSecondary },
-                        isSelected && { fontWeight: '700' },
-                      ]}
-                    >
-                      {m.label}
-                    </Text>
-                  </TouchableOpacity>
-                );
-              })}
-            </View>
-          </View>
+            <TouchableOpacity
+              onPress={handleCycleSpeed}
+              style={[styles.utilChip, { backgroundColor: theme.chipBg, borderColor: theme.borderSubtle }]}
+            >
+              <Ionicons name="speedometer-outline" size={13} color={theme.textSecondary} />
+              <Text style={[styles.utilChipText, { color: theme.textPrimary }]}>
+                {playbackSpeed}x
+              </Text>
+            </TouchableOpacity>
 
-          {/* Jump to Reader Button */}
-          <TouchableOpacity
-            onPress={handleJumpToReader}
-            style={[styles.jumpButton, { backgroundColor: theme.surface, borderColor: theme.border }]}
-          >
-            <Ionicons name="book-outline" size={20} color={theme.primary} />
-            <Text style={[styles.jumpButtonText, { color: theme.textPrimary }]}>
-              Open in Quran Study Reader
-            </Text>
-            <Ionicons name="arrow-forward" size={18} color={theme.textTertiary} />
-          </TouchableOpacity>
-        </ScrollView>
+            <TouchableOpacity
+              onPress={handleJumpToReader}
+              style={[
+                styles.utilChip,
+                styles.readerJumpChip,
+                { backgroundColor: theme.primaryMuted, borderColor: theme.primary },
+              ]}
+            >
+              <Ionicons name="book-outline" size={13} color={theme.primary} />
+              <Text style={[styles.utilChipText, { color: theme.primary, fontWeight: '700' }]}>
+                Study in Reader
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </SafeAreaView>
     </Modal>
   );
@@ -339,193 +440,186 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 20,
-    paddingVertical: 14,
+    paddingVertical: 12,
   },
-  headerTitle: {
-    fontSize: 14,
-    fontWeight: '600',
-    textTransform: 'uppercase',
-    letterSpacing: 1,
-  },
-  iconBtn: {
-    padding: 6,
-  },
-  reciterBadge: {
-    flexDirection: 'row',
+  headerBtn: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
     alignItems: 'center',
-    gap: 4,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 14,
+    justifyContent: 'center',
   },
-  reciterBadgeText: {
-    fontSize: 12,
-    fontWeight: '600',
-  },
-  content: {
-    paddingHorizontal: 24,
-    paddingBottom: 40,
+  headerCenter: {
+    flex: 1,
     alignItems: 'center',
-  },
-  reciterDropdown: {
-    width: '100%',
-    borderRadius: 16,
-    borderWidth: 1,
-    padding: 12,
-    marginBottom: 20,
-    elevation: 4,
-  },
-  dropdownTitle: {
-    fontSize: 12,
-    fontWeight: '700',
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
-    marginBottom: 8,
-    marginLeft: 4,
-  },
-  reciterItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: 10,
     paddingHorizontal: 12,
-    borderRadius: 10,
   },
-  reciterItemName: {
-    fontSize: 14,
+  headerSurahEnglish: {
+    fontSize: 16,
+    fontWeight: '700',
+    letterSpacing: 0.2,
   },
-  reciterItemArabic: {
+  headerSurahArabic: {
     fontSize: 12,
     marginTop: 2,
   },
-  artCard: {
-    width: '100%',
-    borderRadius: 24,
-    borderWidth: 1,
-    paddingVertical: 32,
-    paddingHorizontal: 20,
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 28,
-  },
-  artCircle: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 16,
-  },
-  artNumber: {
-    fontSize: 22,
-    fontWeight: '800',
-  },
-  artArabicTitle: {
-    fontSize: 28,
-    fontWeight: '700',
-    textAlign: 'center',
-    marginBottom: 6,
-  },
-  artEnglishTitle: {
-    fontSize: 20,
-    fontWeight: '700',
-    textAlign: 'center',
-    marginBottom: 4,
-  },
-  artTranslation: {
-    fontSize: 14,
-    textAlign: 'center',
-    marginBottom: 14,
-  },
-  ayahPillRow: {
-    flexDirection: 'column',
+  headerRightGroup: {
+    flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    width: '100%',
   },
-  ayahPill: {
-    paddingHorizontal: 14,
-    paddingVertical: 6,
-    borderRadius: 20,
+  reciterCard: {
+    marginHorizontal: 20,
+    marginBottom: 12,
+    borderRadius: 16,
+    borderWidth: 1,
+    padding: 12,
+    elevation: 6,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    zIndex: 10,
   },
-  ayahPillText: {
+  reciterCardHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+    paddingHorizontal: 4,
+  },
+  reciterCardTitle: {
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  reciterOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 9,
+    paddingHorizontal: 12,
+    borderRadius: 10,
+  },
+  reciterOptionInfo: {
+    flex: 1,
+  },
+  reciterOptionName: {
     fontSize: 13,
-    fontWeight: '700',
   },
-  phasePill: {
+  reciterOptionArabic: {
+    fontSize: 11,
+    marginTop: 1,
+  },
+  centerStage: {
+    flex: 1,
+    paddingHorizontal: 20,
+  },
+  ayahScrollView: {
+    flex: 1,
+  },
+  ayahScrollContent: {
+    paddingVertical: 12,
+    alignItems: 'center',
+  },
+  phaseBadge: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
-    paddingHorizontal: 12,
-    paddingVertical: 5,
-    borderRadius: 14,
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+    borderRadius: 20,
     borderWidth: 1,
+    marginBottom: 16,
   },
-  phasePillText: {
+  phaseBadgeText: {
     fontSize: 12,
-    fontWeight: '600',
+    fontWeight: '700',
   },
-  modeSection: {
+  arabicCanvasCard: {
     width: '100%',
-    marginBottom: 20,
-    alignItems: 'center',
-  },
-  modeLabel: {
-    fontSize: 12,
-    fontWeight: '600',
-    marginBottom: 8,
-  },
-  modeRow: {
-    flexDirection: 'row',
-    gap: 8,
-    width: '100%',
-    justifyContent: 'center',
-  },
-  modeChip: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 5,
-    paddingVertical: 8,
-    paddingHorizontal: 8,
-    borderRadius: 12,
+    borderRadius: 20,
     borderWidth: 1,
+    paddingVertical: 20,
+    paddingHorizontal: 18,
+    marginBottom: 14,
   },
-  modeText: {
+  activePhaseCard: {
+    borderWidth: 1.5,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+  },
+  arabicVerseText: {
+    fontSize: 24,
+    lineHeight: 46,
+    textAlign: 'center',
+    writingDirection: 'rtl',
+    fontFamily: 'serif',
+  },
+  activeVerseGlow: {
+    fontWeight: '700',
+  },
+  urduCanvasCard: {
+    width: '100%',
+    borderRadius: 20,
+    borderWidth: 1,
+    paddingVertical: 16,
+    paddingHorizontal: 18,
+    marginBottom: 10,
+  },
+  urduVerseText: {
+    fontSize: 16,
+    lineHeight: 28,
+    textAlign: 'center',
+    writingDirection: 'rtl',
+    fontFamily: 'serif',
+  },
+  urduAuthorFootnote: {
     fontSize: 11,
+    textAlign: 'center',
+    marginTop: 8,
+  },
+  bottomSection: {
+    paddingHorizontal: 24,
+    paddingTop: 8,
+    paddingBottom: Platform.OS === 'ios' ? 12 : 20,
   },
   scrubberSection: {
     width: '100%',
-    marginBottom: 24,
+    marginBottom: 18,
   },
   trackBg: {
-    height: 6,
-    borderRadius: 3,
+    height: 5,
+    borderRadius: 2.5,
     overflow: 'hidden',
   },
   trackFill: {
     height: '100%',
-    borderRadius: 3,
+    borderRadius: 2.5,
   },
   timeRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 8,
+    marginTop: 6,
   },
   timeText: {
-    fontSize: 12,
-    fontWeight: '500',
+    fontSize: 11,
+    fontWeight: '600',
   },
-  controlsSection: {
+  controlsRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    gap: 20,
-    marginBottom: 28,
+    justifyContent: 'space-between',
+    paddingHorizontal: 12,
+    marginBottom: 20,
   },
-  controlBtn: {
-    padding: 10,
+  skipBtn: {
+    padding: 8,
+  },
+  seekBtn: {
+    padding: 8,
   },
   mainPlayBtn: {
     width: 68,
@@ -533,46 +627,31 @@ const styles = StyleSheet.create({
     borderRadius: 34,
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 4,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 8,
+    elevation: 8,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.28,
+    shadowRadius: 10,
   },
-  speedRow: {
+  utilitiesRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-    marginBottom: 28,
+    justifyContent: 'center',
+    gap: 10,
   },
-  speedLabel: {
-    fontSize: 13,
-    fontWeight: '600',
-    marginRight: 4,
-  },
-  speedChip: {
+  utilChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
     paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 14,
-    borderWidth: 1,
-  },
-  speedText: {
-    fontSize: 13,
-  },
-  jumpButton: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingVertical: 14,
-    paddingHorizontal: 16,
+    paddingVertical: 8,
     borderRadius: 16,
     borderWidth: 1,
   },
-  jumpButtonText: {
-    fontSize: 14,
+  readerJumpChip: {
+    borderWidth: 1,
+  },
+  utilChipText: {
+    fontSize: 12,
     fontWeight: '600',
-    flex: 1,
-    marginLeft: 10,
   },
 });

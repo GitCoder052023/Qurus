@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
 import { useAudio } from '../context/AudioContext';
 import { useTheme } from '../context/ThemeContext';
 
@@ -12,7 +11,6 @@ export function MiniPlayer() {
     currentSurah,
     playbackPhase,
     isPlaying,
-    isBuffering,
     togglePlayPause,
     nextAyah,
     currentTime,
@@ -20,117 +18,131 @@ export function MiniPlayer() {
     openFullPlayer,
   } = useAudio();
   const { theme } = useTheme();
-  const router = useRouter();
 
   if (!currentSurahNumber || !currentAyahNumber) {
     return null;
   }
 
   const isUrduPhase = playbackPhase === 'translation';
-  const progressPercent = duration > 0 ? Math.min(100, Math.max(0, (currentTime / duration) * 100)) : 0;
+  const progressPercent =
+    duration > 0 ? Math.min(100, Math.max(0, (currentTime / duration) * 100)) : 0;
 
   const handlePress = () => {
     openFullPlayer();
   };
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.92}
-      onPress={handlePress}
-      style={[
-        styles.container,
-        {
-          backgroundColor: theme.card,
-          borderTopColor: theme.border,
-          shadowColor: '#000',
-        },
-      ]}
-    >
-      {/* Progress line across top */}
-      <View style={[styles.progressTrack, { backgroundColor: theme.surfaceHighlight }]}>
-        <View
-          style={[
-            styles.progressBar,
-            {
-              width: `${progressPercent}%`,
-              backgroundColor: isUrduPhase ? theme.accentGold : theme.primary,
-            },
-          ]}
-        />
-      </View>
+    <View style={styles.outerWrapper}>
+      <TouchableOpacity
+        activeOpacity={0.92}
+        onPress={handlePress}
+        style={[
+          styles.container,
+          {
+            backgroundColor: theme.cardElevated,
+            borderColor: theme.borderSubtle,
+            shadowColor: '#000',
+          },
+        ]}
+      >
+        {/* Progress line across top */}
+        <View style={[styles.progressTrack, { backgroundColor: theme.surfaceHighlight }]}>
+          <View
+            style={[
+              styles.progressBar,
+              {
+                width: `${progressPercent}%`,
+                backgroundColor: isUrduPhase ? theme.accentGold : theme.primary,
+              },
+            ]}
+          />
+        </View>
 
-      <View style={styles.contentRow}>
-        {/* Left: Surah & Ayah info */}
-        <View style={styles.textContainer}>
-          <View style={styles.titleRow}>
-            <Text style={[styles.surahTitle, { color: theme.textPrimary }]} numberOfLines={1}>
-              {currentSurah ? currentSurah.englishName : `Surah ${currentSurahNumber}`}
-            </Text>
-            <View
-              style={[
-                styles.badge,
-                { backgroundColor: isUrduPhase ? '#D9770620' : theme.primaryMuted },
-              ]}
-            >
-              <Text
+        <View style={styles.contentRow}>
+          {/* Left: Surah & Ayah info */}
+          <View style={styles.textContainer}>
+            <View style={styles.titleRow}>
+              <Text style={[styles.surahTitle, { color: theme.textPrimary }]} numberOfLines={1}>
+                {currentSurah ? currentSurah.englishName : `Surah ${currentSurahNumber}`}
+              </Text>
+              <View
                 style={[
-                  styles.badgeText,
-                  { color: isUrduPhase ? theme.accentGold : theme.primary },
+                  styles.badge,
+                  {
+                    backgroundColor: isUrduPhase ? '#D9770618' : theme.primaryMuted,
+                  },
                 ]}
               >
-                Ayah {currentAyahNumber} • {isUrduPhase ? 'Urdu' : 'Arabic'}
-              </Text>
+                <Text
+                  style={[
+                    styles.badgeText,
+                    { color: isUrduPhase ? theme.accentGold : theme.primary },
+                  ]}
+                >
+                  Ayah {currentAyahNumber} • {isUrduPhase ? 'Urdu' : 'Arabic'}
+                </Text>
+              </View>
             </View>
+            <Text style={[styles.arabicSubtitle, { color: theme.textSecondary }]} numberOfLines={1}>
+              {isUrduPhase ? 'ترجمہ: شمشاد علی خان (جالندہری)' : currentSurah?.name}
+            </Text>
           </View>
-          <Text style={[styles.arabicSubtitle, { color: theme.textSecondary }]} numberOfLines={1}>
-            {isUrduPhase ? 'ترجمہ: شمشاد علی خان (جالندہری)' : currentSurah?.name}
-          </Text>
-        </View>
 
-        {/* Right: Controls */}
-        <View style={styles.controlsRow}>
-          <TouchableOpacity
-            onPress={(e) => {
-              e.stopPropagation();
-              togglePlayPause();
-            }}
-            style={[styles.playButton, { backgroundColor: theme.primary }]}
-            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-          >
-            <Ionicons
-              name={isPlaying ? 'pause' : 'play'}
-              size={20}
-              color="#FFFFFF"
-              style={!isPlaying ? { marginLeft: 2 } : undefined}
-            />
-          </TouchableOpacity>
+          {/* Right: Controls */}
+          <View style={styles.controlsRow}>
+            <TouchableOpacity
+              onPress={(e) => {
+                e.stopPropagation();
+                togglePlayPause();
+              }}
+              style={[
+                styles.playButton,
+                { backgroundColor: isUrduPhase ? theme.accentGold : theme.primary },
+              ]}
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            >
+              <Ionicons
+                name={isPlaying ? 'pause' : 'play'}
+                size={19}
+                color="#FFFFFF"
+                style={!isPlaying ? { marginLeft: 2 } : undefined}
+              />
+            </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={(e) => {
-              e.stopPropagation();
-              nextAyah();
-            }}
-            style={styles.controlBtn}
-            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-          >
-            <Ionicons name="play-skip-forward" size={20} color={theme.textSecondary} />
-          </TouchableOpacity>
+            <TouchableOpacity
+              onPress={(e) => {
+                e.stopPropagation();
+                nextAyah();
+              }}
+              style={styles.controlBtn}
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            >
+              <Ionicons name="play-skip-forward" size={19} color={theme.textSecondary} />
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  outerWrapper: {
+    paddingHorizontal: 12,
+    paddingBottom: 6,
+    paddingTop: 2,
+  },
   container: {
     position: 'relative',
-    borderTopWidth: StyleSheet.hairlineWidth,
+    borderRadius: 18,
+    borderWidth: 1,
+    overflow: 'hidden',
     paddingVertical: 10,
-    paddingHorizontal: 16,
+    paddingHorizontal: 14,
     elevation: 8,
-    shadowOffset: { width: 0, height: -3 },
-    shadowOpacity: 0.08,
-    shadowRadius: 6,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
   },
   progressTrack: {
     position: 'absolute',
@@ -146,44 +158,49 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingTop: 2,
   },
   textContainer: {
     flex: 1,
-    marginRight: 12,
+    marginRight: 10,
   },
   titleRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    gap: 7,
   },
   surahTitle: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: '700',
   },
   badge: {
-    paddingHorizontal: 6,
+    paddingHorizontal: 7,
     paddingVertical: 2,
-    borderRadius: 6,
+    borderRadius: 8,
   },
   badgeText: {
-    fontSize: 11,
+    fontSize: 10,
     fontWeight: '700',
   },
   arabicSubtitle: {
-    fontSize: 13,
+    fontSize: 12,
     marginTop: 2,
   },
   controlsRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
+    gap: 10,
   },
   playButton: {
-    width: 38,
-    height: 38,
-    borderRadius: 19,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
     alignItems: 'center',
     justifyContent: 'center',
+    elevation: 3,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
   },
   controlBtn: {
     padding: 4,
