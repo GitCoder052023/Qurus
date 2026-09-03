@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
   },
   listContent: {
     paddingHorizontal: 18,
-    paddingBottom: 40,
+    paddingBottom: 120,
   },
   card: {
     borderRadius: 20,

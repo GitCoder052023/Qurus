@@ -352,7 +352,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   listContent: {
-    paddingBottom: 40,
+    paddingBottom: 110,
   },
   surahHeader: {
     paddingHorizontal: 16,

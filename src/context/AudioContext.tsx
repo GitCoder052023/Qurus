@@ -29,12 +29,19 @@ interface AudioContextType {
   nextAyah: () => void;
   previousAyah: () => void;
   seekTo: (seconds: number) => void;
+  seekBy: (deltaSeconds: number) => void;
+  seekForward: (seconds?: number) => void;
+  seekBackward: (seconds?: number) => void;
   setSpeed: (speed: number) => void;
   setReciter: (reciter: Reciter) => void;
   setPlaybackMode: (mode: PlaybackMode) => void;
   openFullPlayer: () => void;
   closeFullPlayer: () => void;
 }
+
+// High-resolution Quran cover art for Android SystemUI lockscreen palette extraction (Spotify styling)
+export const QURAN_ARTWORK_URL =
+  'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=600&auto=format&fit=crop&q=80';
 
 const AudioContext = createContext<AudioContextType | null>(null);
 
@@ -267,13 +274,19 @@ export function AudioProvider({ children }: { children: ReactNode }) {
         title: trackTitle,
         artist: artistName,
         albumTitle: 'Qurus Quran Study',
+        artworkUrl: QURAN_ARTWORK_URL,
+      };
+
+      const lockScreenOptions = {
+        showSeekForward: true,
+        showSeekBackward: true,
       };
 
       // On Android, calling setActiveForLockScreen on every track tears down the MediaSession.
       // Call setActiveForLockScreen on initial start, then updateLockScreenMetadata for transitions.
       if (!isLockScreenActiveRef.current) {
         try {
-          player.setActiveForLockScreen(true, metadata);
+          player.setActiveForLockScreen(true, metadata, lockScreenOptions);
           isLockScreenActiveRef.current = true;
         } catch (e) {
           // Gracefully ignore if platform/service unavailable
@@ -283,7 +296,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
           player.updateLockScreenMetadata(metadata);
         } catch (e) {
           try {
-            player.setActiveForLockScreen(true, metadata);
+            player.setActiveForLockScreen(true, metadata, lockScreenOptions);
           } catch (_) {}
         }
       }
@@ -389,6 +402,25 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const seekBy = (deltaSeconds: number) => {
+    if (playerRef.current) {
+      try {
+        const target = Math.max(0, Math.min(duration || 0, currentTime + deltaSeconds));
+        playerRef.current.seekTo(target);
+      } catch (e) {
+        console.warn('SeekBy error:', e);
+      }
+    }
+  };
+
+  const seekForward = (seconds: number = 10) => {
+    seekBy(seconds);
+  };
+
+  const seekBackward = (seconds: number = 10) => {
+    seekBy(-seconds);
+  };
+
   const setSpeed = (speed: number) => {
     setPlaybackSpeedState(speed);
     updatePreferences({ playbackSpeed: speed });
@@ -445,6 +477,9 @@ export function AudioProvider({ children }: { children: ReactNode }) {
         nextAyah,
         previousAyah,
         seekTo,
+        seekBy,
+        seekForward,
+        seekBackward,
         setSpeed,
         setReciter,
         setPlaybackMode,

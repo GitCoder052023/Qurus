@@ -1,8 +1,19 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native';
+import React, { useRef, useMemo } from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  GestureResponderEvent,
+  Platform,
+} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { usePathname } from 'expo-router';
 import { useAudio } from '../context/AudioContext';
 import { useTheme } from '../context/ThemeContext';
+import { useStudyState } from '../context/StudyContext';
+import { getAyah } from '../data/surahLoader';
 
 export function MiniPlayer() {
   const {
@@ -13,11 +24,23 @@ export function MiniPlayer() {
     isPlaying,
     togglePlayPause,
     nextAyah,
+    previousAyah,
     currentTime,
     duration,
     openFullPlayer,
+    reciter,
   } = useAudio();
   const { theme } = useTheme();
+  const { isBookmarked, toggleBookmark } = useStudyState();
+  const insets = useSafeAreaInsets();
+  const pathname = usePathname();
+
+  const touchStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
+
+  const currentAyah = useMemo(() => {
+    if (!currentSurahNumber || !currentAyahNumber) return null;
+    return getAyah(currentSurahNumber, currentAyahNumber);
+  }, [currentSurahNumber, currentAyahNumber]);
 
   if (!currentSurahNumber || !currentAyahNumber) {
     return null;
@@ -26,16 +49,70 @@ export function MiniPlayer() {
   const isUrduPhase = playbackPhase === 'translation';
   const progressPercent =
     duration > 0 ? Math.min(100, Math.max(0, (currentTime / duration) * 100)) : 0;
+  const bookmarked = isBookmarked(currentSurahNumber, currentAyahNumber);
 
-  const handlePress = () => {
-    openFullPlayer();
+  // Determine floating positioning: float above tab bar on tabs, or above safe area on reader
+  const isReader = pathname?.includes('/reader');
+  const isStory = pathname?.includes('/story');
+  const isTabs = !isReader && !isStory;
+  const bottomOffset = isTabs ? 68 : Math.max(insets.bottom, 12) + 8;
+
+  const handleBookmarkPress = (e: GestureResponderEvent) => {
+    e.stopPropagation();
+    if (currentAyah) {
+      toggleBookmark(
+        currentSurahNumber,
+        currentAyahNumber,
+        currentAyah.arabicText,
+        currentAyah.urduText
+      );
+    }
   };
 
+  // Horizontal Swipe Gestures (Like Spotify mini-player)
+  const handleTouchStart = (e: GestureResponderEvent) => {
+    touchStartRef.current = {
+      x: e.nativeEvent.pageX,
+      y: e.nativeEvent.pageY,
+      time: Date.now(),
+    };
+  };
+
+  const handleTouchEnd = (e: GestureResponderEvent) => {
+    if (!touchStartRef.current) return;
+    const deltaX = e.nativeEvent.pageX - touchStartRef.current.x;
+    const deltaY = e.nativeEvent.pageY - touchStartRef.current.y;
+    const deltaTime = Date.now() - touchStartRef.current.time;
+    touchStartRef.current = null;
+
+    if (Math.abs(deltaX) > 40 && Math.abs(deltaY) < 35 && deltaTime < 500) {
+      if (deltaX < 0) {
+        nextAyah();
+      } else {
+        previousAyah();
+      }
+    } else if (Math.abs(deltaX) < 10 && Math.abs(deltaY) < 10 && deltaTime < 300) {
+      openFullPlayer();
+    }
+  };
+
+  const artistSubtitle = isUrduPhase
+    ? 'Urdu • Shamshad Ali Khan'
+    : `Arabic • ${reciter?.name?.split(' ')[0] || 'Reciter'}`;
+
   return (
-    <View style={styles.outerWrapper}>
-      <TouchableOpacity
-        activeOpacity={0.92}
-        onPress={handlePress}
+    <View
+      style={[
+        styles.floatingWrapper,
+        {
+          bottom: bottomOffset,
+        },
+      ]}
+      pointerEvents="box-none"
+    >
+      <View
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
         style={[
           styles.container,
           {
@@ -45,21 +122,40 @@ export function MiniPlayer() {
           },
         ]}
       >
-        {/* Progress line across top */}
-        <View style={[styles.progressTrack, { backgroundColor: theme.surfaceHighlight }]}>
+        <View style={styles.contentRow}>
+          {/* Left: Spotify-style Album Art / Surah Thumbnail */}
           <View
             style={[
-              styles.progressBar,
+              styles.artworkThumbnail,
               {
-                width: `${progressPercent}%`,
-                backgroundColor: isUrduPhase ? theme.accentGold : theme.primary,
+                backgroundColor: isUrduPhase ? '#2E1E05' : '#0B2920',
+                borderColor: isUrduPhase ? '#D9770640' : theme.primary + '40',
               },
             ]}
-          />
-        </View>
+          >
+            <Text
+              style={[
+                styles.artworkSurahNum,
+                { color: isUrduPhase ? theme.accentGold : theme.primary },
+              ]}
+            >
+              {currentSurahNumber}
+            </Text>
+            <View
+              style={[
+                styles.artworkGlowDot,
+                {
+                  backgroundColor: isPlaying
+                    ? isUrduPhase
+                      ? theme.accentGold
+                      : theme.primary
+                    : 'transparent',
+                },
+              ]}
+            />
+          </View>
 
-        <View style={styles.contentRow}>
-          {/* Left: Surah & Ayah info */}
+          {/* Center: Track & Recitation Info */}
           <View style={styles.textContainer}>
             <View style={styles.titleRow}>
               <Text style={[styles.surahTitle, { color: theme.textPrimary }]} numberOfLines={1}>
@@ -79,17 +175,45 @@ export function MiniPlayer() {
                     { color: isUrduPhase ? theme.accentGold : theme.primary },
                   ]}
                 >
-                  Ayah {currentAyahNumber} • {isUrduPhase ? 'Urdu' : 'Arabic'}
+                  Ayah {currentAyahNumber}
                 </Text>
               </View>
             </View>
-            <Text style={[styles.arabicSubtitle, { color: theme.textSecondary }]} numberOfLines={1}>
-              {isUrduPhase ? 'ترجمہ: شمشاد علی خان (جالندہری)' : currentSurah?.name}
+            <Text style={[styles.subtitle, { color: theme.textSecondary }]} numberOfLines={1}>
+              {artistSubtitle}
             </Text>
           </View>
 
-          {/* Right: Controls */}
+          {/* Right: Handy Spotify-Grade Audio Controls */}
           <View style={styles.controlsRow}>
+            {/* Quick Bookmark Toggle */}
+            <TouchableOpacity
+              onPress={handleBookmarkPress}
+              style={styles.iconBtn}
+              hitSlop={{ top: 10, bottom: 10, left: 6, right: 6 }}
+              accessibilityLabel="Bookmark Ayah"
+            >
+              <Ionicons
+                name={bookmarked ? 'bookmark' : 'bookmark-outline'}
+                size={19}
+                color={bookmarked ? theme.bookmarkIcon : theme.textTertiary}
+              />
+            </TouchableOpacity>
+
+            {/* Previous Ayah */}
+            <TouchableOpacity
+              onPress={(e) => {
+                e.stopPropagation();
+                previousAyah();
+              }}
+              style={styles.iconBtn}
+              hitSlop={{ top: 10, bottom: 10, left: 6, right: 6 }}
+              accessibilityLabel="Previous Ayah"
+            >
+              <Ionicons name="play-skip-back" size={19} color={theme.textSecondary} />
+            </TouchableOpacity>
+
+            {/* Play / Pause Circular Button */}
             <TouchableOpacity
               onPress={(e) => {
                 e.stopPropagation();
@@ -97,112 +221,160 @@ export function MiniPlayer() {
               }}
               style={[
                 styles.playButton,
-                { backgroundColor: isUrduPhase ? theme.accentGold : theme.primary },
+                {
+                  backgroundColor: isUrduPhase ? theme.accentGold : theme.primary,
+                  shadowColor: isUrduPhase ? theme.accentGold : theme.primary,
+                },
               ]}
-              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+              hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
+              activeOpacity={0.88}
+              accessibilityLabel={isPlaying ? 'Pause' : 'Play'}
             >
               <Ionicons
                 name={isPlaying ? 'pause' : 'play'}
-                size={19}
+                size={18}
                 color="#FFFFFF"
                 style={!isPlaying ? { marginLeft: 2 } : undefined}
               />
             </TouchableOpacity>
 
+            {/* Next Ayah */}
             <TouchableOpacity
               onPress={(e) => {
                 e.stopPropagation();
                 nextAyah();
               }}
-              style={styles.controlBtn}
-              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+              style={styles.iconBtn}
+              hitSlop={{ top: 10, bottom: 10, left: 6, right: 6 }}
+              accessibilityLabel="Next Ayah"
             >
               <Ionicons name="play-skip-forward" size={19} color={theme.textSecondary} />
             </TouchableOpacity>
           </View>
         </View>
-      </TouchableOpacity>
+
+        {/* Bottom Progress Bar (Spotify Floating Pill style) */}
+        <View style={[styles.progressTrack, { backgroundColor: theme.surfaceHighlight }]}>
+          <View
+            style={[
+              styles.progressBar,
+              {
+                width: `${progressPercent}%`,
+                backgroundColor: isUrduPhase ? theme.accentGold : theme.primary,
+              },
+            ]}
+          />
+        </View>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  outerWrapper: {
-    paddingHorizontal: 12,
-    paddingBottom: 6,
-    paddingTop: 2,
+  floatingWrapper: {
+    position: 'absolute',
+    left: 10,
+    right: 10,
+    zIndex: 9999,
   },
   container: {
     position: 'relative',
-    borderRadius: 18,
+    borderRadius: 14,
     borderWidth: 1,
     overflow: 'hidden',
-    paddingVertical: 10,
-    paddingHorizontal: 14,
-    elevation: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    elevation: 10,
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-  },
-  progressTrack: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: 3,
-  },
-  progressBar: {
-    height: '100%',
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
   },
   contentRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingTop: 2,
+    paddingBottom: 4,
+  },
+  artworkThumbnail: {
+    width: 42,
+    height: 42,
+    borderRadius: 9,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 10,
+    position: 'relative',
+  },
+  artworkSurahNum: {
+    fontSize: 14,
+    fontWeight: '800',
+    letterSpacing: -0.5,
+  },
+  artworkGlowDot: {
+    position: 'absolute',
+    bottom: 3,
+    right: 3,
+    width: 5,
+    height: 5,
+    borderRadius: 2.5,
   },
   textContainer: {
     flex: 1,
-    marginRight: 10,
+    marginRight: 6,
+    justifyContent: 'center',
   },
   titleRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 7,
+    gap: 6,
   },
   surahTitle: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: '700',
+    flexShrink: 1,
   },
   badge: {
-    paddingHorizontal: 7,
-    paddingVertical: 2,
-    borderRadius: 8,
+    paddingHorizontal: 6,
+    paddingVertical: 1.5,
+    borderRadius: 6,
   },
   badgeText: {
-    fontSize: 10,
+    fontSize: 9.5,
     fontWeight: '700',
   },
-  arabicSubtitle: {
-    fontSize: 12,
+  subtitle: {
+    fontSize: 11.5,
     marginTop: 2,
   },
   controlsRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
+    gap: 6,
   },
-  playButton: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
+  iconBtn: {
+    padding: 6,
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 3,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
   },
-  controlBtn: {
-    padding: 4,
+  playButton: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 4,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    marginHorizontal: 2,
+  },
+  progressTrack: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 2.5,
+  },
+  progressBar: {
+    height: '100%',
   },
 });

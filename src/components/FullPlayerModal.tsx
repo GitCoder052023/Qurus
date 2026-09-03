@@ -33,6 +33,8 @@ export function FullPlayerModal() {
     nextAyah,
     previousAyah,
     seekTo,
+    seekBackward,
+    seekForward,
     currentTime,
     duration,
     playbackSpeed,
@@ -345,11 +347,13 @@ export function FullPlayerModal() {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => seekTo(Math.max(0, currentTime - 5))}
+              onPress={() => seekBackward(10)}
               style={styles.seekBtn}
               hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+              accessibilityLabel="Seek backward 10 seconds"
             >
               <Ionicons name="play-back" size={22} color={theme.textSecondary} />
+              <Text style={[styles.seekBadgeText, { color: theme.textSecondary }]}>10s</Text>
             </TouchableOpacity>
 
             {/* Center Breathing Play/Pause Button */}
@@ -373,11 +377,13 @@ export function FullPlayerModal() {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => seekTo(Math.min(duration, currentTime + 5))}
+              onPress={() => seekForward(10)}
               style={styles.seekBtn}
               hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+              accessibilityLabel="Seek forward 10 seconds"
             >
               <Ionicons name="play-forward" size={22} color={theme.textSecondary} />
+              <Text style={[styles.seekBadgeText, { color: theme.textSecondary }]}>10s</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -620,6 +626,13 @@ const styles = StyleSheet.create({
   },
   seekBtn: {
     padding: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  seekBadgeText: {
+    fontSize: 9,
+    fontWeight: '700',
+    marginTop: 1,
   },
   mainPlayBtn: {
     width: 68,
