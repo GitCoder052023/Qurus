@@ -10,6 +10,7 @@ export function MiniPlayer() {
     currentSurahNumber,
     currentAyahNumber,
     currentSurah,
+    playbackPhase,
     isPlaying,
     isBuffering,
     togglePlayPause,
@@ -25,6 +26,7 @@ export function MiniPlayer() {
     return null;
   }
 
+  const isUrduPhase = playbackPhase === 'translation';
   const progressPercent = duration > 0 ? Math.min(100, Math.max(0, (currentTime / duration) * 100)) : 0;
 
   const handlePress = () => {
@@ -51,7 +53,7 @@ export function MiniPlayer() {
             styles.progressBar,
             {
               width: `${progressPercent}%`,
-              backgroundColor: theme.primary,
+              backgroundColor: isUrduPhase ? theme.accentGold : theme.primary,
             },
           ]}
         />
@@ -64,12 +66,24 @@ export function MiniPlayer() {
             <Text style={[styles.surahTitle, { color: theme.textPrimary }]} numberOfLines={1}>
               {currentSurah ? currentSurah.englishName : `Surah ${currentSurahNumber}`}
             </Text>
-            <View style={[styles.badge, { backgroundColor: theme.primaryMuted }]}>
-              <Text style={[styles.badgeText, { color: theme.primary }]}>Ayah {currentAyahNumber}</Text>
+            <View
+              style={[
+                styles.badge,
+                { backgroundColor: isUrduPhase ? '#D9770620' : theme.primaryMuted },
+              ]}
+            >
+              <Text
+                style={[
+                  styles.badgeText,
+                  { color: isUrduPhase ? theme.accentGold : theme.primary },
+                ]}
+              >
+                Ayah {currentAyahNumber} • {isUrduPhase ? 'Urdu' : 'Arabic'}
+              </Text>
             </View>
           </View>
           <Text style={[styles.arabicSubtitle, { color: theme.textSecondary }]} numberOfLines={1}>
-            {currentSurah?.name}
+            {isUrduPhase ? 'ترجمہ: شمشاد علی خان (جالندہری)' : currentSurah?.name}
           </Text>
         </View>
 

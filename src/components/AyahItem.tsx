@@ -35,7 +35,7 @@ export const AyahItem = React.memo(function AyahItem({
     toggleHighlight,
     getNote,
   } = useStudyState();
-  const { isPlaying, currentSurahNumber, currentAyahNumber, playAyah, pause, resume } = useAudio();
+  const { isPlaying, currentSurahNumber, currentAyahNumber, playbackPhase, playAyah, pause, resume } = useAudio();
 
   const bookmarked = isBookmarked(surahNumber, ayah.numberInSurah);
   const highlighted = isHighlighted(surahNumber, ayah.numberInSurah);
@@ -43,6 +43,8 @@ export const AyahItem = React.memo(function AyahItem({
 
   const isThisAyahActive = isCurrentAyah;
   const isThisAyahPlaying = isThisAyahActive && isPlaying;
+  const isRecitingArabic = isThisAyahActive && playbackPhase === 'arabic';
+  const isRecitingUrdu = isThisAyahActive && playbackPhase === 'translation';
 
   const handlePlayToggle = () => {
     if (isThisAyahPlaying) {
@@ -114,9 +116,27 @@ export const AyahItem = React.memo(function AyahItem({
           </View>
 
           {isThisAyahActive && (
-            <View style={[styles.recitingBadge, { backgroundColor: theme.primaryMuted }]}>
-              <Ionicons name="volume-medium" size={14} color={theme.primary} />
-              <Text style={[styles.recitingText, { color: theme.primary }]}>Reciting</Text>
+            <View
+              style={[
+                styles.recitingBadge,
+                {
+                  backgroundColor: isRecitingUrdu ? '#D9770620' : theme.primaryMuted,
+                },
+              ]}
+            >
+              <Ionicons
+                name="volume-medium"
+                size={14}
+                color={isRecitingUrdu ? theme.accentGold : theme.primary}
+              />
+              <Text
+                style={[
+                  styles.recitingText,
+                  { color: isRecitingUrdu ? theme.accentGold : theme.primary },
+                ]}
+              >
+                {isRecitingUrdu ? 'Reciting Urdu Translation' : 'Reciting Arabic'}
+              </Text>
             </View>
           )}
         </View>
@@ -136,23 +156,46 @@ export const AyahItem = React.memo(function AyahItem({
       </View>
 
       {/* Quranic Arabic Text */}
-      <Text
+      <View
         style={[
-          styles.arabicText,
-          {
-            color: theme.arabicText,
-            fontSize: arabicFontSize,
-            lineHeight: Math.round(arabicFontSize * 1.8),
+          styles.arabicTextWrapper,
+          isRecitingArabic && {
+            backgroundColor: theme.primaryMuted,
+            borderRadius: 12,
+            paddingHorizontal: 10,
+            paddingVertical: 6,
           },
         ]}
-        selectable
       >
-        {ayah.arabicText}
-      </Text>
+        <Text
+          style={[
+            styles.arabicText,
+            {
+              color: theme.arabicText,
+              fontSize: arabicFontSize,
+              lineHeight: Math.round(arabicFontSize * 1.8),
+            },
+          ]}
+          selectable
+        >
+          {ayah.arabicText}
+        </Text>
+      </View>
 
       {/* Urdu Translation */}
       {showTranslation && (
-        <View style={[styles.translationContainer, { borderTopColor: theme.borderSubtle }]}>
+        <View
+          style={[
+            styles.translationContainer,
+            { borderTopColor: theme.borderSubtle },
+            isRecitingUrdu && {
+              backgroundColor: '#D9770615',
+              borderRadius: 12,
+              padding: 10,
+              marginTop: 4,
+            },
+          ]}
+        >
           <Text
             style={[
               styles.urduText,
@@ -161,6 +204,7 @@ export const AyahItem = React.memo(function AyahItem({
                 fontSize: urduFontSize,
                 lineHeight: Math.round(urduFontSize * 1.8),
               },
+              isRecitingUrdu && { fontWeight: '600' },
             ]}
             selectable
           >
@@ -362,6 +406,9 @@ const styles = StyleSheet.create({
   statusTagText: {
     fontSize: 10,
     fontWeight: '600',
+  },
+  arabicTextWrapper: {
+    marginBottom: 8,
   },
   arabicText: {
     textAlign: 'right',

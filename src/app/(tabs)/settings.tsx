@@ -20,7 +20,7 @@ import { ThemeMode } from '../../types';
 export default function SettingsScreen() {
   const { theme, themeMode, setThemeMode } = useTheme();
   const { preferences, updatePreferences, clearHistory, exportBackup } = useStudyState();
-  const { setSpeed, setReciter, reciter } = useAudio();
+  const { setSpeed, setReciter, setPlaybackMode, reciter } = useAudio();
 
   const handleThemeSelect = (mode: ThemeMode) => {
     setThemeMode(mode);
@@ -226,10 +226,79 @@ export default function SettingsScreen() {
             AUDIO & RECITATION
           </Text>
           <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
+            {/* Recitation Loop Mode */}
+            <View style={styles.settingItem}>
+              <Text style={[styles.settingLabel, { color: theme.textPrimary, marginBottom: 4 }]}>
+                Recitation Sequence
+              </Text>
+              <Text style={[styles.settingSubtext, { color: theme.textSecondary, marginBottom: 10 }]}>
+                Choose how verses and translations are recited
+              </Text>
+              <View style={styles.modeSettingsColumn}>
+                {[
+                  {
+                    key: 'both',
+                    label: 'Arabic + Urdu Translation',
+                    desc: 'Arabic recitation followed by Urdu translation of each verse',
+                  },
+                  {
+                    key: 'arabic_only',
+                    label: 'Arabic Recitation Only',
+                    desc: 'Traditional Arabic recitation without translation audio',
+                  },
+                  {
+                    key: 'translation_only',
+                    label: 'Urdu Translation Only',
+                    desc: 'Verse-by-verse Urdu translation audio by Shamshad Ali Khan',
+                  },
+                ].map((m) => {
+                  const isSelected = (preferences.playbackMode || 'both') === m.key;
+                  return (
+                    <TouchableOpacity
+                      key={m.key}
+                      onPress={() => {
+                        updatePreferences({ playbackMode: m.key as any });
+                        setPlaybackMode(m.key as any);
+                      }}
+                      style={[
+                        styles.modeOptionRow,
+                        {
+                          backgroundColor: isSelected ? theme.primaryMuted : theme.surface,
+                          borderColor: isSelected ? theme.primary : theme.border,
+                        },
+                      ]}
+                    >
+                      <View style={styles.modeOptionTextGroup}>
+                        <Text
+                          style={[
+                            styles.modeOptionLabel,
+                            { color: isSelected ? theme.primary : theme.textPrimary },
+                            isSelected && { fontWeight: '700' },
+                          ]}
+                        >
+                          {m.label}
+                        </Text>
+                        <Text style={[styles.modeOptionDesc, { color: theme.textSecondary }]}>
+                          {m.desc}
+                        </Text>
+                      </View>
+                      <Ionicons
+                        name={isSelected ? 'radio-button-on' : 'radio-button-off'}
+                        size={20}
+                        color={isSelected ? theme.primary : theme.textTertiary}
+                      />
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+            </View>
+
+            <View style={[styles.divider, { backgroundColor: theme.borderSubtle }]} />
+
             {/* Reciter Picker */}
             <View style={styles.settingItem}>
               <Text style={[styles.settingLabel, { color: theme.textPrimary, marginBottom: 8 }]}>
-                Default Reciter
+                Arabic Reciter
               </Text>
               <View style={styles.reciterList}>
                 {RECITERS.map((r) => {
@@ -507,6 +576,30 @@ const styles = StyleSheet.create({
   reciterArabicText: {
     fontSize: 11,
     marginTop: 1,
+  },
+  modeSettingsColumn: {
+    gap: 8,
+    marginBottom: 6,
+  },
+  modeOptionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 12,
+    borderRadius: 14,
+    borderWidth: 1,
+  },
+  modeOptionTextGroup: {
+    flex: 1,
+    marginRight: 10,
+  },
+  modeOptionLabel: {
+    fontSize: 13,
+    marginBottom: 2,
+  },
+  modeOptionDesc: {
+    fontSize: 11,
+    lineHeight: 15,
   },
   appInfoSection: {
     alignItems: 'center',

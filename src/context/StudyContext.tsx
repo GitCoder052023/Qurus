@@ -26,6 +26,7 @@ const DEFAULT_PREFERENCES: ReadingPreferences = {
   reciterId: 'alafasy',
   playbackSpeed: 1.0,
   autoScroll: true,
+  playbackMode: 'both',
 };
 
 interface StudyContextType {

@@ -22,6 +22,9 @@ export function FullPlayerModal() {
     currentSurahNumber,
     currentAyahNumber,
     currentSurah,
+    playbackPhase,
+    playbackMode,
+    setPlaybackMode,
     isPlaying,
     isBuffering,
     togglePlayPause,
@@ -145,10 +148,43 @@ export function FullPlayerModal() {
             <Text style={[styles.artTranslation, { color: theme.textSecondary }]}>
               {currentSurah?.urduName}
             </Text>
-            <View style={[styles.ayahPill, { backgroundColor: theme.primaryMuted }]}>
-              <Text style={[styles.ayahPillText, { color: theme.primary }]}>
-                Ayah {currentAyahNumber} of {currentSurah?.numberOfAyahs}
-              </Text>
+            <View style={styles.ayahPillRow}>
+              <View style={[styles.ayahPill, { backgroundColor: theme.primaryMuted }]}>
+                <Text style={[styles.ayahPillText, { color: theme.primary }]}>
+                  Ayah {currentAyahNumber} of {currentSurah?.numberOfAyahs}
+                </Text>
+              </View>
+
+              <View
+                style={[
+                  styles.phasePill,
+                  {
+                    backgroundColor:
+                      playbackPhase === 'translation' ? '#D9770620' : theme.surfaceHighlight,
+                    borderColor:
+                      playbackPhase === 'translation' ? theme.accentGold : theme.border,
+                  },
+                ]}
+              >
+                <Ionicons
+                  name="volume-medium"
+                  size={13}
+                  color={playbackPhase === 'translation' ? theme.accentGold : theme.primary}
+                />
+                <Text
+                  style={[
+                    styles.phasePillText,
+                    {
+                      color:
+                        playbackPhase === 'translation' ? theme.accentGold : theme.primary,
+                    },
+                  ]}
+                >
+                  {playbackPhase === 'translation'
+                    ? 'Urdu: Shamshad Ali Khan'
+                    : `Arabic: ${reciter.name.split(' ')[0]}`}
+                </Text>
+              </View>
             </View>
           </View>
 
@@ -233,6 +269,48 @@ export function FullPlayerModal() {
                 </TouchableOpacity>
               );
             })}
+          </View>
+
+          {/* Playback Mode Switcher (Arabic + Urdu / Arabic Only / Urdu Only) */}
+          <View style={styles.modeSection}>
+            <Text style={[styles.modeLabel, { color: theme.textTertiary }]}>Recitation Mode:</Text>
+            <View style={styles.modeRow}>
+              {[
+                { key: 'both', label: 'Arabic + Urdu', icon: 'repeat' },
+                { key: 'arabic_only', label: 'Arabic Only', icon: 'language' },
+                { key: 'translation_only', label: 'Urdu Only', icon: 'chatbox-ellipses-outline' },
+              ].map((m) => {
+                const isSelected = playbackMode === m.key;
+                return (
+                  <TouchableOpacity
+                    key={m.key}
+                    onPress={() => setPlaybackMode(m.key as any)}
+                    style={[
+                      styles.modeChip,
+                      {
+                        backgroundColor: isSelected ? theme.primary : theme.surface,
+                        borderColor: isSelected ? theme.primary : theme.border,
+                      },
+                    ]}
+                  >
+                    <Ionicons
+                      name={m.icon as any}
+                      size={14}
+                      color={isSelected ? '#FFFFFF' : theme.textSecondary}
+                    />
+                    <Text
+                      style={[
+                        styles.modeText,
+                        { color: isSelected ? '#FFFFFF' : theme.textSecondary },
+                        isSelected && { fontWeight: '700' },
+                      ]}
+                    >
+                      {m.label}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
           </View>
 
           {/* Jump to Reader Button */}
@@ -359,6 +437,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 14,
   },
+  ayahPillRow: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 8,
+    width: '100%',
+  },
   ayahPill: {
     paddingHorizontal: 14,
     paddingVertical: 6,
@@ -367,6 +451,49 @@ const styles = StyleSheet.create({
   ayahPillText: {
     fontSize: 13,
     fontWeight: '700',
+  },
+  phasePill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingHorizontal: 12,
+    paddingVertical: 5,
+    borderRadius: 14,
+    borderWidth: 1,
+  },
+  phasePillText: {
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  modeSection: {
+    width: '100%',
+    marginBottom: 20,
+    alignItems: 'center',
+  },
+  modeLabel: {
+    fontSize: 12,
+    fontWeight: '600',
+    marginBottom: 8,
+  },
+  modeRow: {
+    flexDirection: 'row',
+    gap: 8,
+    width: '100%',
+    justifyContent: 'center',
+  },
+  modeChip: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 5,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
+    borderRadius: 12,
+    borderWidth: 1,
+  },
+  modeText: {
+    fontSize: 11,
   },
   scrubberSection: {
     width: '100%',

@@ -70,6 +70,9 @@ export interface LastStudiedState {
 
 export type ThemeMode = 'light' | 'dark' | 'sepia' | 'system';
 
+export type PlaybackMode = 'both' | 'arabic_only' | 'translation_only';
+export type PlaybackPhase = 'arabic' | 'translation';
+
 export interface ReadingPreferences {
   arabicFontSize: number;
   urduFontSize: number;
@@ -78,6 +81,7 @@ export interface ReadingPreferences {
   reciterId: string;
   playbackSpeed: number;
   autoScroll: boolean;
+  playbackMode: PlaybackMode;
 }
 
 export interface Reciter {

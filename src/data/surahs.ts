@@ -1181,3 +1181,17 @@ export function getAudioUrl(reciterSubfolder: string, surahNumber: number, ayahN
   const ayahPadded = String(ayahNumber).padStart(3, '0');
   return `https://everyayah.com/data/${reciterSubfolder}/${surahPadded}${ayahPadded}.mp3`;
 }
+
+export const URDU_TRANSLATION_RECITER = {
+  id: 'urdu_shamshad',
+  name: 'Shamshad Ali Khan',
+  arabicName: 'ترجمہ: شمشاد علی خان (جالندہری)',
+  subfolder: 'translations/urdu_shamshad_ali_khan_46kbps',
+};
+
+export function getUrduAudioUrl(surahNumber: number, ayahNumber: number): string {
+  const surahPadded = String(surahNumber).padStart(3, '0');
+  const ayahPadded = String(ayahNumber).padStart(3, '0');
+  return `https://everyayah.com/data/translations/urdu_shamshad_ali_khan_46kbps/${surahPadded}${ayahPadded}.mp3`;
+}
+
