@@ -16,6 +16,7 @@ const STORAGE_KEYS = {
   HIGHLIGHTS: '@qurus_highlights_v1',
   NOTES: '@qurus_notes_v1',
   PREFERENCES: '@qurus_preferences_v1',
+  HAS_ONBOARDED: '@qurus_has_onboarded_v1',
 };
 
 const DEFAULT_PREFERENCES: ReadingPreferences = {
@@ -36,9 +37,12 @@ interface StudyContextType {
   highlights: Record<string, Highlight>; // key: "surah_ayah"
   notes: Record<string, StudyNote>; // key: "surah_ayah"
   preferences: ReadingPreferences;
+  hasOnboarded: boolean;
   isLoaded: boolean;
 
   // Actions
+  completeOnboarding: () => Promise<void>;
+  resetOnboarding: () => Promise<void>;
   updateLastStudied: (surahNumber: number, ayahNumber: number, audioPos?: number) => void;
   addToHistory: (surahNumber: number, ayahNumber: number) => void;
   toggleBookmark: (surahNumber: number, ayahNumber: number, arabicSnippet?: string, urduSnippet?: string) => boolean;
@@ -63,13 +67,14 @@ export function StudyProvider({ children }: { children: ReactNode }) {
   const [highlights, setHighlights] = useState<Record<string, Highlight>>({});
   const [notes, setNotes] = useState<Record<string, StudyNote>>({});
   const [preferences, setPreferences] = useState<ReadingPreferences>(DEFAULT_PREFERENCES);
+  const [hasOnboarded, setHasOnboarded] = useState<boolean>(true);
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Hydrate from AsyncStorage
   useEffect(() => {
     async function loadData() {
       try {
-        const [savedLast, savedHistory, savedBookmarks, savedHighlights, savedNotes, savedPrefs] =
+        const [savedLast, savedHistory, savedBookmarks, savedHighlights, savedNotes, savedPrefs, savedOnboard] =
           await Promise.all([
             AsyncStorage.getItem(STORAGE_KEYS.LAST_STUDIED),
             AsyncStorage.getItem(STORAGE_KEYS.HISTORY),
@@ -77,6 +82,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
             AsyncStorage.getItem(STORAGE_KEYS.HIGHLIGHTS),
             AsyncStorage.getItem(STORAGE_KEYS.NOTES),
             AsyncStorage.getItem(STORAGE_KEYS.PREFERENCES),
+            AsyncStorage.getItem(STORAGE_KEYS.HAS_ONBOARDED),
           ]);
 
         if (savedLast) setLastStudied(JSON.parse(savedLast));
@@ -85,6 +91,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
         if (savedHighlights) setHighlights(JSON.parse(savedHighlights));
         if (savedNotes) setNotes(JSON.parse(savedNotes));
         if (savedPrefs) setPreferences({ ...DEFAULT_PREFERENCES, ...JSON.parse(savedPrefs) });
+        setHasOnboarded(savedOnboard === 'true');
       } catch (err) {
         console.error('Failed to load study state from storage:', err);
       } finally {
@@ -93,6 +100,16 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     }
     loadData();
   }, []);
+
+  const completeOnboarding = async () => {
+    setHasOnboarded(true);
+    await AsyncStorage.setItem(STORAGE_KEYS.HAS_ONBOARDED, 'true').catch(console.error);
+  };
+
+  const resetOnboarding = async () => {
+    setHasOnboarded(false);
+    await AsyncStorage.removeItem(STORAGE_KEYS.HAS_ONBOARDED).catch(console.error);
+  };
 
   // Update Last Studied
   const updateLastStudied = (surahNumber: number, ayahNumber: number, audioPos?: number) => {
@@ -276,7 +293,10 @@ export function StudyProvider({ children }: { children: ReactNode }) {
         highlights,
         notes,
         preferences,
+        hasOnboarded,
         isLoaded,
+        completeOnboarding,
+        resetOnboarding,
         updateLastStudied,
         addToHistory,
         toggleBookmark,

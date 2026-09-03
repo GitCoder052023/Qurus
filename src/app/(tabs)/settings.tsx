@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { useTheme } from '../../context/ThemeContext';
 import { useStudyState } from '../../context/StudyContext';
 import { useAudio } from '../../context/AudioContext';
@@ -18,6 +19,7 @@ import { RECITERS } from '../../data/surahs';
 import { ThemeMode } from '../../types';
 
 export default function SettingsScreen() {
+  const router = useRouter();
   const { theme, themeMode, setThemeMode } = useTheme();
   const { preferences, updatePreferences, clearHistory, exportBackup } = useStudyState();
   const { setSpeed, setReciter, setPlaybackMode, reciter } = useAudio();
@@ -417,6 +419,23 @@ export default function SettingsScreen() {
                 </Text>
               </View>
               <Ionicons name="share-outline" size={20} color={theme.primary} />
+            </TouchableOpacity>
+
+            <View style={[styles.divider, { backgroundColor: theme.borderSubtle }]} />
+
+            <TouchableOpacity
+              onPress={() => router.push('/onboarding')}
+              style={[styles.settingItem, styles.rowBetween]}
+            >
+              <View style={styles.settingTextGroup}>
+                <Text style={[styles.settingLabel, { color: theme.textPrimary }]}>
+                  Replay App Tour
+                </Text>
+                <Text style={[styles.settingSubtext, { color: theme.textSecondary }]}>
+                  View the welcome guide and feature walkthrough again
+                </Text>
+              </View>
+              <Ionicons name="sparkles-outline" size={19} color={theme.primary} />
             </TouchableOpacity>
 
             <View style={[styles.divider, { backgroundColor: theme.borderSubtle }]} />
