@@ -152,8 +152,17 @@ export default function HomeScreen() {
     }
   };
 
+  const isDailyVersePlaying =
+    isPlaying &&
+    currentSurahNumber === dailyVerse.surahNumber &&
+    currentAyahNumber === dailyVerse.ayahNumber;
+
   const handlePlayDailyVerse = () => {
-    playAyah(dailyVerse.surahNumber, dailyVerse.ayahNumber);
+    if (isDailyVersePlaying) {
+      pause();
+    } else {
+      playAyah(dailyVerse.surahNumber, dailyVerse.ayahNumber, undefined, { standalone: true });
+    }
   };
 
   const handleOpenDailyVerse = () => {
@@ -308,10 +317,20 @@ export default function HomeScreen() {
               <View style={styles.dailyActions}>
                 <TouchableOpacity
                   onPress={handlePlayDailyVerse}
-                  style={[styles.dailyActionBtn, { backgroundColor: theme.chipBg }]}
+                  style={[
+                    styles.dailyActionBtn,
+                    { backgroundColor: isDailyVersePlaying ? theme.primaryMuted : theme.chipBg },
+                  ]}
+                  accessibilityLabel={isDailyVersePlaying ? 'Pause recitation' : 'Recite Verse of Peace'}
                 >
-                  <Ionicons name="volume-medium-outline" size={16} color={theme.primary} />
-                  <Text style={[styles.dailyActionText, { color: theme.primary }]}>Recite</Text>
+                  <Ionicons
+                    name={isDailyVersePlaying ? 'pause' : 'volume-medium-outline'}
+                    size={16}
+                    color={theme.primary}
+                  />
+                  <Text style={[styles.dailyActionText, { color: theme.primary }]}>
+                    {isDailyVersePlaying ? 'Pause' : 'Recite'}
+                  </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity

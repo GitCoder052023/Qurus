@@ -1,4 +1,4 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useState } from 'react';
 import {
   View,
   Text,
@@ -14,6 +14,7 @@ import { useAudio } from '../context/AudioContext';
 import { useTheme } from '../context/ThemeContext';
 import { useStudyState } from '../context/StudyContext';
 import { getAyah } from '../data/surahLoader';
+import { NoteEditorModal } from './NoteEditorModal';
 
 export function MiniPlayer() {
   const {
@@ -31,10 +32,19 @@ export function MiniPlayer() {
     reciter,
   } = useAudio();
   const { theme } = useTheme();
-  const { isBookmarked, toggleBookmark } = useStudyState();
+  const {
+    isBookmarked,
+    toggleBookmark,
+    isHighlighted,
+    toggleHighlight,
+    saveNote,
+    deleteNote,
+    getNote,
+  } = useStudyState();
   const insets = useSafeAreaInsets();
   const pathname = usePathname();
 
+  const [isNoteEditorVisible, setIsNoteEditorVisible] = useState(false);
   const touchStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
 
   const currentAyah = useMemo(() => {
@@ -50,6 +60,8 @@ export function MiniPlayer() {
   const progressPercent =
     duration > 0 ? Math.min(100, Math.max(0, (currentTime / duration) * 100)) : 0;
   const bookmarked = isBookmarked(currentSurahNumber, currentAyahNumber);
+  const highlighted = isHighlighted(currentSurahNumber, currentAyahNumber);
+  const currentNote = getNote(currentSurahNumber, currentAyahNumber);
 
   // Determine floating positioning: float above tab bar on tabs, or above safe area on reader
   const isReader = pathname?.includes('/reader');
@@ -67,6 +79,16 @@ export function MiniPlayer() {
         currentAyah.urduText
       );
     }
+  };
+
+  const handleHighlightPress = (e: GestureResponderEvent) => {
+    e.stopPropagation();
+    toggleHighlight(currentSurahNumber, currentAyahNumber);
+  };
+
+  const handleNotePress = (e: GestureResponderEvent) => {
+    e.stopPropagation();
+    setIsNoteEditorVisible(true);
   };
 
   // Horizontal Swipe Gestures (Like Spotify mini-player)
@@ -186,20 +208,6 @@ export function MiniPlayer() {
 
           {/* Right: Handy Spotify-Grade Audio Controls */}
           <View style={styles.controlsRow}>
-            {/* Quick Bookmark Toggle */}
-            <TouchableOpacity
-              onPress={handleBookmarkPress}
-              style={styles.iconBtn}
-              hitSlop={{ top: 10, bottom: 10, left: 6, right: 6 }}
-              accessibilityLabel="Bookmark Ayah"
-            >
-              <Ionicons
-                name={bookmarked ? 'bookmark' : 'bookmark-outline'}
-                size={19}
-                color={bookmarked ? theme.bookmarkIcon : theme.textTertiary}
-              />
-            </TouchableOpacity>
-
             {/* Previous Ayah */}
             <TouchableOpacity
               onPress={(e) => {
@@ -253,6 +261,91 @@ export function MiniPlayer() {
           </View>
         </View>
 
+        {/* Floating Lockscreen Study Action Strip (Bookmark, Mark, Add Note) */}
+        <View style={[styles.studyStrip, { borderTopColor: theme.borderSubtle }]}>
+          {/* Quick Bookmark Toggle */}
+          <TouchableOpacity
+            onPress={handleBookmarkPress}
+            style={[
+              styles.studyStripItem,
+              bookmarked && { backgroundColor: theme.accentGold + '15' },
+            ]}
+            hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
+            accessibilityLabel={bookmarked ? 'Saved to bookmarks' : 'Bookmark Ayah'}
+          >
+            <Ionicons
+              name={bookmarked ? 'bookmark' : 'bookmark-outline'}
+              size={13}
+              color={bookmarked ? theme.bookmarkIcon : theme.textSecondary}
+            />
+            <Text
+              style={[
+                styles.studyStripLabel,
+                { color: bookmarked ? theme.bookmarkIcon : theme.textSecondary },
+                bookmarked && { fontWeight: '700' },
+              ]}
+            >
+              {bookmarked ? 'Saved' : 'Bookmark'}
+            </Text>
+          </TouchableOpacity>
+
+          <View style={[styles.studyStripDivider, { backgroundColor: theme.borderSubtle }]} />
+
+          {/* Quick Highlight / Mark Toggle */}
+          <TouchableOpacity
+            onPress={handleHighlightPress}
+            style={[
+              styles.studyStripItem,
+              highlighted && { backgroundColor: theme.accentGold + '15' },
+            ]}
+            hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
+            accessibilityLabel={highlighted ? 'Marked' : 'Mark Ayah'}
+          >
+            <Ionicons
+              name={highlighted ? 'star' : 'star-outline'}
+              size={13}
+              color={highlighted ? theme.accentGold : theme.textSecondary}
+            />
+            <Text
+              style={[
+                styles.studyStripLabel,
+                { color: highlighted ? theme.accentGold : theme.textSecondary },
+                highlighted && { fontWeight: '700' },
+              ]}
+            >
+              {highlighted ? 'Marked' : 'Mark'}
+            </Text>
+          </TouchableOpacity>
+
+          <View style={[styles.studyStripDivider, { backgroundColor: theme.borderSubtle }]} />
+
+          {/* Add / View Note */}
+          <TouchableOpacity
+            onPress={handleNotePress}
+            style={[
+              styles.studyStripItem,
+              currentNote && { backgroundColor: theme.primaryMuted },
+            ]}
+            hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
+            accessibilityLabel={currentNote ? 'View / Edit Note' : 'Add Note'}
+          >
+            <Ionicons
+              name={currentNote ? 'document-text' : 'create-outline'}
+              size={13}
+              color={currentNote ? theme.primary : theme.textSecondary}
+            />
+            <Text
+              style={[
+                styles.studyStripLabel,
+                { color: currentNote ? theme.primary : theme.textSecondary },
+                currentNote && { fontWeight: '700' },
+              ]}
+            >
+              {currentNote ? 'Note' : 'Add Note'}
+            </Text>
+          </TouchableOpacity>
+        </View>
+
         {/* Bottom Progress Bar (Spotify Floating Pill style) */}
         <View style={[styles.progressTrack, { backgroundColor: theme.surfaceHighlight }]}>
           <View
@@ -266,6 +359,34 @@ export function MiniPlayer() {
           />
         </View>
       </View>
+
+      {/* Reflection Note Editor Modal */}
+      {currentAyah && currentSurahNumber && currentAyahNumber && (
+        <NoteEditorModal
+          visible={isNoteEditorVisible}
+          surahNumber={currentSurahNumber}
+          ayahNumber={currentAyahNumber}
+          surahName={currentSurah?.englishName || `Surah ${currentSurahNumber}`}
+          arabicText={currentAyah.arabicText}
+          urduText={currentAyah.urduText}
+          initialNote={currentNote?.text || ''}
+          onSave={(text) => {
+            saveNote(
+              currentSurahNumber,
+              currentAyahNumber,
+              text,
+              currentAyah.arabicText,
+              currentAyah.urduText
+            );
+            setIsNoteEditorVisible(false);
+          }}
+          onDelete={() => {
+            deleteNote(currentSurahNumber, currentAyahNumber);
+            setIsNoteEditorVisible(false);
+          }}
+          onClose={() => setIsNoteEditorVisible(false)}
+        />
+      )}
     </View>
   );
 }
@@ -376,5 +497,33 @@ const styles = StyleSheet.create({
   },
   progressBar: {
     height: '100%',
+  },
+  studyStrip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    borderTopWidth: StyleSheet.hairlineWidth,
+    marginTop: 6,
+    paddingTop: 5,
+    paddingBottom: 4,
+  },
+  studyStripItem: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 5,
+    paddingVertical: 4,
+    borderRadius: 7,
+    marginHorizontal: 2,
+  },
+  studyStripDivider: {
+    width: StyleSheet.hairlineWidth,
+    height: 12,
+    opacity: 0.6,
+  },
+  studyStripLabel: {
+    fontSize: 11,
+    fontWeight: '600',
   },
 });

@@ -14,6 +14,7 @@ import { useRouter } from 'expo-router';
 import { useAudio } from '../context/AudioContext';
 import { useTheme } from '../context/ThemeContext';
 import { useStudyState } from '../context/StudyContext';
+import { NoteEditorModal } from './NoteEditorModal';
 import { getAyah } from '../data/surahLoader';
 import { RECITERS } from '../data/surahs';
 import { PlaybackMode } from '../types';
@@ -44,10 +45,19 @@ export function FullPlayerModal() {
   } = useAudio();
 
   const { theme } = useTheme();
-  const { isBookmarked, toggleBookmark } = useStudyState();
+  const {
+    isBookmarked,
+    toggleBookmark,
+    isHighlighted,
+    toggleHighlight,
+    saveNote,
+    deleteNote,
+    getNote,
+  } = useStudyState();
   const router = useRouter();
 
   const [showReciterPicker, setShowReciterPicker] = useState(false);
+  const [showNoteModal, setShowNoteModal] = useState(false);
 
   // Fetch current Ayah text (Arabic and Urdu)
   const currentAyah = useMemo(() => {
@@ -60,6 +70,8 @@ export function FullPlayerModal() {
   }
 
   const bookmarked = isBookmarked(currentSurahNumber, currentAyahNumber);
+  const highlighted = isHighlighted(currentSurahNumber, currentAyahNumber);
+  const currentNote = getNote(currentSurahNumber, currentAyahNumber);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -82,6 +94,10 @@ export function FullPlayerModal() {
         currentAyah.urduText
       );
     }
+  };
+
+  const handleHighlightToggle = () => {
+    toggleHighlight(currentSurahNumber, currentAyahNumber);
   };
 
   const handleCyclePlaybackMode = () => {
@@ -308,11 +324,124 @@ export function FullPlayerModal() {
                 — ترجمہ: فتح محمد جالندھری
               </Text>
             </View>
+
+            {/* Reflection Note Preview Card (if user has added a reflection) */}
+            {currentNote && (
+              <TouchableOpacity
+                activeOpacity={0.85}
+                onPress={() => setShowNoteModal(true)}
+                style={[
+                  styles.reflectionCard,
+                  { backgroundColor: theme.noteBg, borderColor: theme.borderSubtle },
+                ]}
+              >
+                <View style={styles.reflectionHeader}>
+                  <View style={styles.reflectionHeaderLeft}>
+                    <Ionicons name="document-text" size={13} color={theme.primary} />
+                    <Text style={[styles.reflectionTitle, { color: theme.primary }]}>Your Reflection</Text>
+                  </View>
+                  <Ionicons name="pencil" size={12} color={theme.textTertiary} />
+                </View>
+                <Text style={[styles.reflectionText, { color: theme.textPrimary }]} numberOfLines={2}>
+                  {currentNote.text}
+                </Text>
+              </TouchableOpacity>
+            )}
           </ScrollView>
         </View>
 
         {/* Bottom Section: Scrubber & Spotify Controls */}
         <View style={[styles.bottomSection, { backgroundColor: theme.background }]}>
+          {/* Ayah Study Actions Bar (Bookmark, Mark, Add Note) */}
+          <View style={styles.studyActionsBar}>
+            {/* Bookmark */}
+            <TouchableOpacity
+              onPress={handleBookmarkToggle}
+              style={[
+                styles.studyActionBtn,
+                {
+                  backgroundColor: bookmarked ? theme.accentGold + '18' : theme.chipBg,
+                  borderColor: bookmarked ? theme.accentGold + '50' : theme.borderSubtle,
+                },
+              ]}
+              hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
+              accessibilityLabel={bookmarked ? 'Saved to bookmarks' : 'Bookmark Ayah'}
+            >
+              <Ionicons
+                name={bookmarked ? 'bookmark' : 'bookmark-outline'}
+                size={16}
+                color={bookmarked ? theme.bookmarkIcon : theme.textSecondary}
+              />
+              <Text
+                style={[
+                  styles.studyActionText,
+                  { color: bookmarked ? theme.bookmarkIcon : theme.textSecondary },
+                  bookmarked && { fontWeight: '700' },
+                ]}
+              >
+                {bookmarked ? 'Saved' : 'Bookmark'}
+              </Text>
+            </TouchableOpacity>
+
+            {/* Mark (Highlight) */}
+            <TouchableOpacity
+              onPress={handleHighlightToggle}
+              style={[
+                styles.studyActionBtn,
+                {
+                  backgroundColor: highlighted ? theme.accentGold + '18' : theme.chipBg,
+                  borderColor: highlighted ? theme.accentGold + '50' : theme.borderSubtle,
+                },
+              ]}
+              hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
+              accessibilityLabel={highlighted ? 'Marked' : 'Mark Ayah'}
+            >
+              <Ionicons
+                name={highlighted ? 'star' : 'star-outline'}
+                size={16}
+                color={highlighted ? theme.accentGold : theme.textSecondary}
+              />
+              <Text
+                style={[
+                  styles.studyActionText,
+                  { color: highlighted ? theme.accentGold : theme.textSecondary },
+                  highlighted && { fontWeight: '700' },
+                ]}
+              >
+                {highlighted ? 'Marked' : 'Mark'}
+              </Text>
+            </TouchableOpacity>
+
+            {/* Add / View Note */}
+            <TouchableOpacity
+              onPress={() => setShowNoteModal(true)}
+              style={[
+                styles.studyActionBtn,
+                {
+                  backgroundColor: currentNote ? theme.primaryMuted : theme.chipBg,
+                  borderColor: currentNote ? theme.primary + '50' : theme.borderSubtle,
+                },
+              ]}
+              hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
+              accessibilityLabel={currentNote ? 'View / Edit Note' : 'Add Note'}
+            >
+              <Ionicons
+                name={currentNote ? 'document-text' : 'create-outline'}
+                size={16}
+                color={currentNote ? theme.primary : theme.textSecondary}
+              />
+              <Text
+                style={[
+                  styles.studyActionText,
+                  { color: currentNote ? theme.primary : theme.textSecondary },
+                  currentNote && { fontWeight: '700' },
+                ]}
+              >
+                {currentNote ? 'Note' : 'Add Note'}
+              </Text>
+            </TouchableOpacity>
+          </View>
+
           {/* Scrubber Progress Bar */}
           <View style={styles.scrubberSection}>
             <View style={[styles.trackBg, { backgroundColor: theme.surfaceHighlight }]}>
@@ -432,6 +561,34 @@ export function FullPlayerModal() {
             </TouchableOpacity>
           </View>
         </View>
+
+        {/* Study Note Editor Modal */}
+        {currentAyah && currentSurahNumber && currentAyahNumber && (
+          <NoteEditorModal
+            visible={showNoteModal}
+            surahNumber={currentSurahNumber}
+            ayahNumber={currentAyahNumber}
+            surahName={currentSurah?.englishName || `Surah ${currentSurahNumber}`}
+            arabicText={currentAyah.arabicText}
+            urduText={currentAyah.urduText}
+            initialNote={currentNote?.text || ''}
+            onSave={(text) => {
+              saveNote(
+                currentSurahNumber,
+                currentAyahNumber,
+                text,
+                currentAyah.arabicText,
+                currentAyah.urduText
+              );
+              setShowNoteModal(false);
+            }}
+            onDelete={() => {
+              deleteNote(currentSurahNumber, currentAyahNumber);
+              setShowNoteModal(false);
+            }}
+            onClose={() => setShowNoteModal(false)}
+          />
+        )}
       </SafeAreaView>
     </Modal>
   );
@@ -666,5 +823,55 @@ const styles = StyleSheet.create({
   utilChipText: {
     fontSize: 12,
     fontWeight: '600',
+  },
+  studyActionsBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 10,
+    marginBottom: 16,
+  },
+  studyActionBtn: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    paddingVertical: 9,
+    paddingHorizontal: 10,
+    borderRadius: 12,
+    borderWidth: 1,
+  },
+  studyActionText: {
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  reflectionCard: {
+    width: '100%',
+    borderRadius: 14,
+    borderWidth: 1,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    marginTop: 4,
+    marginBottom: 10,
+  },
+  reflectionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 4,
+  },
+  reflectionHeaderLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+  },
+  reflectionTitle: {
+    fontSize: 11,
+    fontWeight: '700',
+  },
+  reflectionText: {
+    fontSize: 12,
+    lineHeight: 18,
   },
 });

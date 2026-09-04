@@ -22,7 +22,12 @@ interface AudioContextType {
   isFullPlayerVisible: boolean;
 
   // Controls
-  playAyah: (surahNumber: number, ayahNumber: number, phase?: PlaybackPhase) => void;
+  playAyah: (
+    surahNumber: number,
+    ayahNumber: number,
+    phase?: PlaybackPhase,
+    options?: { standalone?: boolean }
+  ) => void;
   pause: () => void;
   resume: () => void;
   togglePlayPause: () => void;
@@ -73,6 +78,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   const reciterRef = useRef<Reciter>(activeReciter);
   const playbackSpeedRef = useRef<number>(playbackSpeed);
   const isLockScreenActiveRef = useRef<boolean>(false);
+  const isStandaloneRef = useRef<boolean>(false);
 
   currentSurahNumberRef.current = currentSurahNumber;
   currentAyahNumberRef.current = currentAyahNumber;
@@ -206,12 +212,37 @@ export function AudioProvider({ children }: { children: ReactNode }) {
         // Step 1: Arabic recitation finished -> Now play Urdu translation for the SAME ayah!
         playAyahInternal(sNum, aNum, 'translation');
       } else {
-        // Step 2: Urdu translation finished -> Now advance to next ayah in Arabic!
+        // Step 2: Urdu translation finished
+        if (isStandaloneRef.current) {
+          isStandaloneRef.current = false;
+          setIsPlaying(false);
+          try {
+            playerRef.current?.pause();
+          } catch (_) {}
+          return;
+        }
+        // Now advance to next ayah in Arabic!
         handleAdvanceToNextAyah(sNum, aNum, 'arabic');
       }
     } else if (mode === 'arabic_only') {
+      if (isStandaloneRef.current) {
+        isStandaloneRef.current = false;
+        setIsPlaying(false);
+        try {
+          playerRef.current?.pause();
+        } catch (_) {}
+        return;
+      }
       handleAdvanceToNextAyah(sNum, aNum, 'arabic');
     } else if (mode === 'translation_only') {
+      if (isStandaloneRef.current) {
+        isStandaloneRef.current = false;
+        setIsPlaying(false);
+        try {
+          playerRef.current?.pause();
+        } catch (_) {}
+        return;
+      }
       handleAdvanceToNextAyah(sNum, aNum, 'translation');
     }
   };
@@ -302,13 +333,18 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       }
 
       // Preload next track in background so ExoPlayer has audio pre-buffered
-      const nextUrl = getNextTrackUrl(
-        surahNum,
-        ayahNum,
-        phase,
-        playbackModeRef.current,
-        reciterRef.current.subfolder
-      );
+      const shouldPreload =
+        !isStandaloneRef.current ||
+        (playbackModeRef.current === 'both' && phase === 'arabic');
+      const nextUrl = shouldPreload
+        ? getNextTrackUrl(
+            surahNum,
+            ayahNum,
+            phase,
+            playbackModeRef.current,
+            reciterRef.current.subfolder
+          )
+        : null;
       if (nextUrl) {
         preload(nextUrl).catch(() => {});
       }
@@ -318,8 +354,14 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   };
 
   // Public Play Ayah
-  const playAyah = (surahNum: number, ayahNum: number, phase?: PlaybackPhase) => {
+  const playAyah = (
+    surahNum: number,
+    ayahNum: number,
+    phase?: PlaybackPhase,
+    options?: { standalone?: boolean }
+  ) => {
     lastFinishedKeyRef.current = '';
+    isStandaloneRef.current = Boolean(options?.standalone);
     const initialPhase: PlaybackPhase =
       phase || (playbackModeRef.current === 'translation_only' ? 'translation' : 'arabic');
     playAyahInternal(surahNum, ayahNum, initialPhase);
@@ -360,6 +402,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   };
 
   const nextAyah = () => {
+    isStandaloneRef.current = false;
     const sNum = currentSurahNumberRef.current;
     const aNum = currentAyahNumberRef.current;
     if (sNum === null || aNum === null) return;
@@ -369,6 +412,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   };
 
   const previousAyah = () => {
+    isStandaloneRef.current = false;
     const sNum = currentSurahNumberRef.current;
     const aNum = currentAyahNumberRef.current;
     if (sNum === null || aNum === null) return;

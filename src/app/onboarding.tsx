@@ -270,10 +270,7 @@ export default function OnboardingScreen() {
 
   const handleStartDirectStudy = async () => {
     await completeOnboarding();
-    router.replace({
-      pathname: '/reader/[surah]',
-      params: { surah: '1', ayah: '1' },
-    });
+    router.replace('/(tabs)');
   };
 
   // Screen horizontal touch/swipe navigation
