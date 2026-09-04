@@ -86,7 +86,7 @@ export function NoteEditorModal({
             </View>
 
             <TouchableOpacity onPress={handleSave} style={[styles.saveBtn, { backgroundColor: theme.primary }]}>
-              <Text style={styles.saveBtnText}>Save</Text>
+              <Text style={[styles.saveBtnText, { color: theme.onPrimary }]}>Save</Text>
             </TouchableOpacity>
           </View>
 
@@ -133,10 +133,10 @@ export function NoteEditorModal({
             {initialNote ? (
               <TouchableOpacity
                 onPress={handleDelete}
-                style={[styles.deleteBtn, { borderColor: '#EF444430' }]}
+                style={[styles.deleteBtn, { borderColor: theme.destructive + '40' }]}
               >
-                <Ionicons name="trash-outline" size={18} color="#EF4444" />
-                <Text style={styles.deleteBtnText}>Delete This Note</Text>
+                <Ionicons name="trash-outline" size={18} color={theme.destructive} />
+                <Text style={[styles.deleteBtnText, { color: theme.destructive }]}>Delete this note</Text>
               </TouchableOpacity>
             ) : null}
           </ScrollView>
@@ -185,9 +185,8 @@ const styles = StyleSheet.create({
     borderRadius: 14,
   },
   saveBtnText: {
-    color: '#FFFFFF',
     fontSize: 14,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   scroll: {
     flex: 1,
@@ -238,11 +237,10 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     borderRadius: 12,
     borderWidth: 1,
-    backgroundColor: '#FEE2E220',
+    backgroundColor: 'transparent',
   },
   deleteBtnText: {
-    color: '#EF4444',
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: '500',
   },
 });

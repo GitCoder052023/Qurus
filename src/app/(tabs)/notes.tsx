@@ -144,9 +144,9 @@ export default function NotesScreen() {
     <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={[styles.screenTitle, { color: theme.textPrimary }]}>Study Notebook</Text>
+        <Text style={[styles.screenTitle, { color: theme.textPrimary }]}>Notebook</Text>
         <Text style={[styles.screenSubtitle, { color: theme.textSecondary }]}>
-          Your reflections, thoughts, and lessons attached to verses
+          Reflections attached to verses
         </Text>
       </View>
 
@@ -193,7 +193,7 @@ export default function NotesScreen() {
               onPress={() => router.push('/(tabs)/quran')}
               style={[styles.browseBtn, { backgroundColor: theme.primary }]}
             >
-              <Text style={styles.browseBtnText}>Browse the Quran</Text>
+              <Text style={[styles.browseBtnText, { color: theme.onPrimary }]}>Browse the Quran</Text>
             </TouchableOpacity>
           </View>
         }
@@ -240,13 +240,14 @@ const styles = StyleSheet.create({
     paddingBottom: 14,
   },
   screenTitle: {
-    fontSize: 26,
-    fontWeight: '800',
-    letterSpacing: -0.5,
+    fontSize: 28,
+    fontWeight: '600',
+    letterSpacing: -0.4,
   },
   screenSubtitle: {
-    fontSize: 13,
-    marginTop: 2,
+    fontSize: 15,
+    marginTop: 4,
+    lineHeight: 21,
   },
   searchContainer: {
     paddingHorizontal: 18,
@@ -256,7 +257,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 14,
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     paddingHorizontal: 12,
     height: 44,
   },
@@ -273,7 +274,7 @@ const styles = StyleSheet.create({
   },
   card: {
     borderRadius: 20,
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     padding: 16,
     marginBottom: 14,
   },
@@ -290,7 +291,7 @@ const styles = StyleSheet.create({
   },
   surahName: {
     fontSize: 15,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   ayahBadge: {
     paddingHorizontal: 8,
@@ -299,7 +300,7 @@ const styles = StyleSheet.create({
   },
   ayahBadgeText: {
     fontSize: 11,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   headerActions: {
     flexDirection: 'row',
@@ -343,7 +344,7 @@ const styles = StyleSheet.create({
   },
   jumpLinkText: {
     fontSize: 12,
-    fontWeight: '700',
+    fontWeight: '500',
   },
   emptyContainer: {
     alignItems: 'center',
@@ -361,7 +362,7 @@ const styles = StyleSheet.create({
   },
   emptyTitle: {
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: '600',
     textAlign: 'center',
     marginBottom: 8,
   },
@@ -377,8 +378,7 @@ const styles = StyleSheet.create({
     borderRadius: 14,
   },
   browseBtnText: {
-    color: '#FFFFFF',
-    fontSize: 13,
-    fontWeight: '700',
+    fontSize: 14,
+    fontWeight: '600',
   },
 });

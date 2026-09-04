@@ -114,9 +114,9 @@ export default function BookmarksScreen() {
     <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={[styles.screenTitle, { color: theme.textPrimary }]}>Saved Bookmarks</Text>
+        <Text style={[styles.screenTitle, { color: theme.textPrimary }]}>Bookmarks</Text>
         <Text style={[styles.screenSubtitle, { color: theme.textSecondary }]}>
-          Quickly return to verses and study passages you saved
+          Verses you want to return to
         </Text>
       </View>
 
@@ -142,7 +142,7 @@ export default function BookmarksScreen() {
               onPress={() => router.push('/(tabs)/quran')}
               style={[styles.browseBtn, { backgroundColor: theme.primary }]}
             >
-              <Text style={styles.browseBtnText}>Browse the Quran</Text>
+              <Text style={[styles.browseBtnText, { color: theme.onPrimary }]}>Browse the Quran</Text>
             </TouchableOpacity>
           </View>
         }
@@ -161,13 +161,14 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
   },
   screenTitle: {
-    fontSize: 26,
-    fontWeight: '800',
-    letterSpacing: -0.5,
+    fontSize: 28,
+    fontWeight: '600',
+    letterSpacing: -0.4,
   },
   screenSubtitle: {
-    fontSize: 13,
-    marginTop: 2,
+    fontSize: 15,
+    marginTop: 4,
+    lineHeight: 21,
   },
   listContent: {
     paddingHorizontal: 18,
@@ -175,7 +176,7 @@ const styles = StyleSheet.create({
   },
   card: {
     borderRadius: 20,
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     padding: 16,
     marginBottom: 12,
   },
@@ -192,7 +193,7 @@ const styles = StyleSheet.create({
   },
   surahName: {
     fontSize: 15,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   ayahBadge: {
     paddingHorizontal: 8,
@@ -201,7 +202,7 @@ const styles = StyleSheet.create({
   },
   ayahBadgeText: {
     fontSize: 11,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   deleteIconBtn: {
     padding: 4,
@@ -239,7 +240,7 @@ const styles = StyleSheet.create({
   },
   resumeText: {
     fontSize: 12,
-    fontWeight: '700',
+    fontWeight: '500',
   },
   emptyContainer: {
     alignItems: 'center',
@@ -270,11 +271,10 @@ const styles = StyleSheet.create({
   browseBtn: {
     paddingHorizontal: 20,
     paddingVertical: 10,
-    borderRadius: 14,
+    borderRadius: 16,
   },
   browseBtnText: {
-    color: '#FFFFFF',
-    fontSize: 13,
-    fontWeight: '700',
+    fontSize: 14,
+    fontWeight: '600',
   },
 });

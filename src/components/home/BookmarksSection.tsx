@@ -80,7 +80,7 @@ export const BookmarksSection = React.memo(function BookmarksSection() {
                 style={[
                   styles.bookmarkCard,
                   {
-                    backgroundColor: theme.cardElevated,
+                    backgroundColor: theme.card,
                     borderColor: theme.borderSubtle,
                   },
                 ]}
@@ -143,12 +143,12 @@ export const BookmarksSection = React.memo(function BookmarksSection() {
           style={[
             styles.emptyCompactCard,
             {
-              backgroundColor: theme.cardElevated,
+              backgroundColor: theme.card,
               borderColor: theme.borderSubtle,
             },
           ]}
         >
-          <View style={[styles.emptyIconWrap, { backgroundColor: theme.surface }]}>
+          <View style={[styles.emptyIconWrap, { backgroundColor: theme.primaryMuted }]}>
             <Ionicons name="bookmark-outline" size={18} color={theme.bookmarkIcon} />
           </View>
           <View style={styles.emptyTextCol}>
@@ -184,13 +184,13 @@ const styles = StyleSheet.create({
   iconPill: {
     width: 26,
     height: 26,
-    borderRadius: 7,
+    borderRadius: 13,
     justifyContent: 'center',
     alignItems: 'center',
   },
   sectionTitle: {
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: '600',
     letterSpacing: -0.2,
   },
   countBadge: {
@@ -217,13 +217,9 @@ const styles = StyleSheet.create({
   },
   bookmarkCard: {
     width: 260,
-    borderRadius: 16,
+    borderRadius: 18,
     padding: 14,
-    borderWidth: 1,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.03,
-    shadowRadius: 6,
-    elevation: 1,
+    borderWidth: StyleSheet.hairlineWidth,
   },
   cardHeaderRow: {
     flexDirection: 'row',
@@ -240,7 +236,7 @@ const styles = StyleSheet.create({
   },
   surahName: {
     fontSize: 13,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   ayahBadge: {
     paddingHorizontal: 5,
@@ -249,7 +245,7 @@ const styles = StyleSheet.create({
   },
   ayahBadgeText: {
     fontSize: 10,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   dateText: {
     fontSize: 10,
@@ -279,14 +275,14 @@ const styles = StyleSheet.create({
   },
   resumeActionText: {
     fontSize: 11,
-    fontWeight: '700',
+    fontWeight: '500',
   },
   emptyCompactCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 14,
+    borderRadius: 16,
     padding: 12,
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     gap: 10,
   },
   emptyIconWrap: {

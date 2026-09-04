@@ -17,18 +17,20 @@ export default function TabLayout() {
         headerShown: false,
         tabBarStyle: {
           backgroundColor: theme.tabBarBg,
-          borderTopColor: theme.borderSubtle,
-          borderTopWidth: 1,
-          height: 60,
+          borderTopColor: theme.tabBarBorder,
+          borderTopWidth: 0.5,
+          height: 62,
           paddingBottom: 8,
-          paddingTop: 6,
+          paddingTop: 8,
           elevation: 0,
+          shadowOpacity: 0,
         },
         tabBarActiveTintColor: theme.tabActive,
         tabBarInactiveTintColor: theme.tabInactive,
         tabBarLabelStyle: {
-          fontSize: 11,
-          fontWeight: '600',
+          fontSize: 10,
+          fontWeight: '500',
+          letterSpacing: 0.1,
         },
       }}
     >
@@ -36,8 +38,8 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home-outline" size={size || 22} color={color} />
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons name={focused ? 'home' : 'home-outline'} size={size || 22} color={color} />
           ),
         }}
       />
@@ -45,30 +47,48 @@ export default function TabLayout() {
         name="quran"
         options={{
           title: 'Quran',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="book-outline" size={size || 22} color={color} />
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons name={focused ? 'book' : 'book-outline'} size={size || 22} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="bookmarks"
         options={{
-          title: 'Bookmarks',
+          title: 'Saved',
           tabBarBadge: bookmarkCount > 0 ? bookmarkCount : undefined,
-          tabBarBadgeStyle: { backgroundColor: theme.bookmarkIcon, fontSize: 10 },
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="bookmark-outline" size={size || 22} color={color} />
+          tabBarBadgeStyle: {
+            backgroundColor: theme.primary,
+            color: theme.onPrimary,
+            fontSize: 9,
+            fontWeight: '600',
+          },
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons
+              name={focused ? 'bookmark' : 'bookmark-outline'}
+              size={size || 22}
+              color={color}
+            />
           ),
         }}
       />
       <Tabs.Screen
         name="notes"
         options={{
-          title: 'Notebook',
+          title: 'Notes',
           tabBarBadge: noteCount > 0 ? noteCount : undefined,
-          tabBarBadgeStyle: { backgroundColor: theme.primary, fontSize: 10 },
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="journal-outline" size={size || 22} color={color} />
+          tabBarBadgeStyle: {
+            backgroundColor: theme.primary,
+            color: theme.onPrimary,
+            fontSize: 9,
+            fontWeight: '600',
+          },
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons
+              name={focused ? 'journal' : 'journal-outline'}
+              size={size || 22}
+              color={color}
+            />
           ),
         }}
       />
@@ -76,8 +96,12 @@ export default function TabLayout() {
         name="settings"
         options={{
           title: 'Settings',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings-outline" size={size || 22} color={color} />
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons
+              name={focused ? 'settings' : 'settings-outline'}
+              size={size || 22}
+              color={color}
+            />
           ),
         }}
       />

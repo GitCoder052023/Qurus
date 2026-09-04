@@ -14,7 +14,7 @@ export interface ThemeColors {
   urduText: string;
   border: string;
   borderSubtle: string;
-  primary: string; // calming emerald
+  primary: string;
   primaryMuted: string;
   primaryLight: string;
   accentGold: string;
@@ -33,105 +33,113 @@ export interface ThemeColors {
   urduHighlight: string;
   arabicHighlight: string;
   chipBg: string;
+  onPrimary: string;
+  destructive: string;
 }
 
 const lightTheme: ThemeColors = {
-  background: '#FAF8F5', // soft warm ivory
+  background: '#FFFFFF',
   card: '#FFFFFF',
-  surface: '#F4F0E8',
-  surfaceHighlight: '#EAE4D6',
-  textPrimary: '#1E293B',
-  textSecondary: '#475569',
-  textTertiary: '#94A3B8',
-  arabicText: '#0F172A',
-  urduText: '#334155',
-  border: '#E2DCD2',
-  borderSubtle: '#EDE8DF',
-  primary: '#0D7A57', // serene emerald
-  primaryMuted: '#0D7A5720',
-  primaryLight: '#E6F4EA',
-  accentGold: '#B8860B',
-  activeAyahBg: '#EAF7EE', // gentle recitation highlight
-  activeAyahBorder: '#2E8B57',
-  bookmarkIcon: '#D97706',
-  highlightBg: '#FEF9C3',
-  noteBg: '#FEF3C7',
+  surface: '#F2F7F5',
+  surfaceHighlight: '#DCE8E4',
+  textPrimary: '#122824',
+  textSecondary: '#4A605C',
+  textTertiary: '#7E9490',
+  arabicText: '#0C1C1A',
+  urduText: '#2A3E3A',
+  border: '#D8E4E0',
+  borderSubtle: '#EEF3F1',
+  primary: '#0E6B5C',
+  primaryMuted: 'rgba(14, 107, 92, 0.12)',
+  primaryLight: '#E7F2EF',
+  accentGold: '#0A5850',
+  activeAyahBg: '#E8F2EF',
+  activeAyahBorder: '#0E6B5C',
+  bookmarkIcon: '#0E6B5C',
+  highlightBg: '#E8F2EF',
+  noteBg: '#F2F7F5',
   miniPlayerBg: '#FFFFFF',
   tabBarBg: '#FFFFFF',
-  tabBarBorder: '#E2DCD2',
-  tabActive: '#0D7A57',
-  tabInactive: '#64748B',
+  tabBarBorder: '#D8E4E0',
+  tabActive: '#0E6B5C',
+  tabInactive: '#7E9490',
   statusBarStyle: 'dark',
   cardElevated: '#FFFFFF',
-  urduHighlight: '#FFFBEB',
-  arabicHighlight: '#F0FDF4',
-  chipBg: '#F3EFE6',
+  urduHighlight: '#F2F7F5',
+  arabicHighlight: '#E8F2EF',
+  chipBg: '#F2F7F5',
+  onPrimary: '#FFFFFF',
+  destructive: '#C45C56',
 };
 
 const darkTheme: ThemeColors = {
-  background: '#0B0F17', // deep atmospheric dusk
-  card: '#151C28',
-  surface: '#1E2638',
-  surfaceHighlight: '#2A344A',
-  textPrimary: '#F1F5F9',
-  textSecondary: '#94A3B8',
-  textTertiary: '#64748B',
-  arabicText: '#F8FAFC',
-  urduText: '#CBD5E1',
-  border: '#232D3F',
-  borderSubtle: '#1A2332',
-  primary: '#10B981', // serene emerald glow
-  primaryMuted: '#10B98122',
-  primaryLight: '#064E3B',
-  accentGold: '#F59E0B',
-  activeAyahBg: '#0D281E',
-  activeAyahBorder: '#10B981',
-  bookmarkIcon: '#F59E0B',
-  highlightBg: '#2E2611',
-  noteBg: '#2A2312',
-  miniPlayerBg: '#151C28',
-  tabBarBg: '#101622',
-  tabBarBorder: '#1E2638',
-  tabActive: '#10B981',
-  tabInactive: '#64748B',
+  background: '#0A1614',
+  card: '#12201D',
+  surface: '#1A2C28',
+  surfaceHighlight: '#243832',
+  textPrimary: '#ECF4F1',
+  textSecondary: '#9BB0AA',
+  textTertiary: '#6A807A',
+  arabicText: '#F4FAF8',
+  urduText: '#C5D4D0',
+  border: '#243832',
+  borderSubtle: '#152420',
+  primary: '#3D9B88',
+  primaryMuted: 'rgba(61, 155, 136, 0.16)',
+  primaryLight: '#1A322C',
+  accentGold: '#4AAB98',
+  activeAyahBg: '#17302C',
+  activeAyahBorder: '#3D9B88',
+  bookmarkIcon: '#4AAB98',
+  highlightBg: '#17302C',
+  noteBg: '#152824',
+  miniPlayerBg: '#12201D',
+  tabBarBg: '#081210',
+  tabBarBorder: '#243832',
+  tabActive: '#3D9B88',
+  tabInactive: '#6A807A',
   statusBarStyle: 'light',
-  cardElevated: '#1C2536',
-  urduHighlight: '#2A200B',
-  arabicHighlight: '#0C2E20',
-  chipBg: '#1E2638',
+  cardElevated: '#12201D',
+  urduHighlight: '#152824',
+  arabicHighlight: '#17302C',
+  chipBg: '#1A2C28',
+  onPrimary: '#FFFFFF',
+  destructive: '#E0A09A',
 };
 
 const sepiaTheme: ThemeColors = {
-  background: '#F4ECE1', // antique manuscript parchment
-  card: '#FAF4EB',
-  surface: '#ECE2D3',
-  surfaceHighlight: '#DFD2C0',
-  textPrimary: '#2D2319',
-  textSecondary: '#5C4E3E',
-  textTertiary: '#8D7B68',
-  arabicText: '#231A12',
-  urduText: '#44372B',
-  border: '#DDCFBD',
-  borderSubtle: '#E8DDCF',
-  primary: '#7C4A1E', // warm terracotta leather
-  primaryMuted: '#7C4A1E20',
-  primaryLight: '#EAD9C8',
-  accentGold: '#9A6B2F',
-  activeAyahBg: '#EDE1CC',
-  activeAyahBorder: '#9A6B2F',
-  bookmarkIcon: '#C27803',
-  highlightBg: '#EFE0B9',
-  noteBg: '#E9DAC0',
-  miniPlayerBg: '#FAF4EB',
-  tabBarBg: '#FAF4EB',
-  tabBarBorder: '#DDCFBD',
-  tabActive: '#7C4A1E',
-  tabInactive: '#786C5E',
+  background: '#F4F8F6',
+  card: '#FFFFFF',
+  surface: '#E6EEEC',
+  surfaceHighlight: '#D2E0DC',
+  textPrimary: '#122824',
+  textSecondary: '#4A605C',
+  textTertiary: '#7E9490',
+  arabicText: '#0C1C1A',
+  urduText: '#2A3E3A',
+  border: '#D2E0DC',
+  borderSubtle: '#EAF0EE',
+  primary: '#0E6B5C',
+  primaryMuted: 'rgba(14, 107, 92, 0.14)',
+  primaryLight: '#E4EFEB',
+  accentGold: '#0A5850',
+  activeAyahBg: '#E4EFEB',
+  activeAyahBorder: '#0E6B5C',
+  bookmarkIcon: '#0E6B5C',
+  highlightBg: '#E4EFEB',
+  noteBg: '#EAF2F0',
+  miniPlayerBg: '#FFFFFF',
+  tabBarBg: '#FFFFFF',
+  tabBarBorder: '#D2E0DC',
+  tabActive: '#0E6B5C',
+  tabInactive: '#7E9490',
   statusBarStyle: 'dark',
   cardElevated: '#FFFFFF',
-  urduHighlight: '#FAF0DE',
-  arabicHighlight: '#EFE6D6',
-  chipBg: '#ECE2D3',
+  urduHighlight: '#EAF2F0',
+  arabicHighlight: '#E4EFEB',
+  chipBg: '#E6EEEC',
+  onPrimary: '#FFFFFF',
+  destructive: '#C45C56',
 };
 
 interface ThemeContextType {
@@ -163,7 +171,6 @@ export function ThemeProvider({
     if (currentThemeMode === 'dark') return darkTheme;
     if (currentThemeMode === 'light') return lightTheme;
     if (currentThemeMode === 'sepia') return sepiaTheme;
-    // system
     return systemColorScheme === 'dark' ? darkTheme : lightTheme;
   }, [currentThemeMode, systemColorScheme]);
 

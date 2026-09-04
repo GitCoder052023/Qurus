@@ -50,7 +50,7 @@ export default function OriginStoryScreen() {
         </TouchableOpacity>
 
         <View style={styles.topBarTitleGroup}>
-          <Text style={[styles.topBarBadge, { color: theme.primary }]}>ORIGIN STORY</Text>
+          <Text style={[styles.topBarBadge, { color: theme.primary }]}>Origin</Text>
           <Text style={[styles.topBarTitle, { color: theme.textPrimary }]}>Behind Qurus</Text>
         </View>
 
@@ -72,8 +72,8 @@ export default function OriginStoryScreen() {
         {/* Header Title Section */}
         <View style={styles.storyHeader}>
           <View style={[styles.pillBadge, { backgroundColor: theme.primaryMuted }]}>
-            <Ionicons name="sparkles" size={13} color={theme.primary} />
-            <Text style={[styles.pillBadgeText, { color: theme.primary }]}>A FOUNDER'S NOTE</Text>
+            <Ionicons name="leaf-outline" size={13} color={theme.primary} />
+            <Text style={[styles.pillBadgeText, { color: theme.primary }]}>A founder’s note</Text>
           </View>
 
           <Text style={[styles.mainHeadline, { color: theme.textPrimary }]}>
@@ -211,7 +211,7 @@ export default function OriginStoryScreen() {
                 { backgroundColor: theme.cardElevated, borderColor: theme.borderSubtle },
               ]}
             >
-              <View style={[styles.featureIconBox, { backgroundColor: '#D9770618' }]}>
+              <View style={[styles.featureIconBox, { backgroundColor: theme.primaryMuted }]}>
                 <Ionicons name="create-outline" size={22} color={theme.accentGold} />
               </View>
               <Text style={[styles.featureTitle, { color: theme.textPrimary }]}>
@@ -348,7 +348,7 @@ export default function OriginStoryScreen() {
         <View style={[styles.closingCard, { backgroundColor: theme.cardElevated, borderColor: theme.borderSubtle }]}>
           <View style={styles.closingTopRow}>
             <View style={[styles.avatarCircle, { backgroundColor: theme.primary }]}>
-              <Text style={styles.avatarInitial}>H</Text>
+              <Text style={[styles.avatarInitial, { color: theme.onPrimary }]}>H</Text>
             </View>
             <View>
               <Text style={[styles.closingName, { color: theme.textPrimary }]}>Hamdan Khubaib</Text>
@@ -376,8 +376,8 @@ export default function OriginStoryScreen() {
             activeOpacity={0.88}
             style={[styles.startBtn, { backgroundColor: theme.primary }]}
           >
-            <Text style={styles.startBtnText}>Start With Surah Al-Faatiha</Text>
-            <Ionicons name="arrow-forward" size={18} color="#FFFFFF" />
+            <Text style={[styles.startBtnText, { color: theme.onPrimary }]}>Start with Al-Faatiha</Text>
+            <Ionicons name="arrow-forward" size={18} color={theme.onPrimary} />
           </TouchableOpacity>
         </View>
 
@@ -420,9 +420,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   topBarBadge: {
-    fontSize: 10,
-    fontWeight: '800',
-    letterSpacing: 1,
+    fontSize: 12,
+    fontWeight: '500',
   },
   topBarTitle: {
     fontSize: 16,
@@ -451,13 +450,12 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   pillBadgeText: {
-    fontSize: 11,
-    fontWeight: '800',
-    letterSpacing: 0.6,
+    fontSize: 12,
+    fontWeight: '500',
   },
   mainHeadline: {
     fontSize: 32,
-    fontWeight: '800',
+    fontWeight: '600',
     letterSpacing: -0.8,
     lineHeight: 38,
     marginBottom: 8,
@@ -482,7 +480,7 @@ const styles = StyleSheet.create({
   },
   subHeadline: {
     fontSize: 22,
-    fontWeight: '800',
+    fontWeight: '600',
     letterSpacing: -0.4,
     lineHeight: 28,
     marginBottom: 14,
@@ -533,7 +531,7 @@ const styles = StyleSheet.create({
   },
   adviceCardTitle: {
     fontSize: 15,
-    fontWeight: '800',
+    fontWeight: '600',
     letterSpacing: -0.2,
   },
   adviceCardText: {
@@ -617,13 +615,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   avatarInitial: {
-    color: '#FFFFFF',
     fontSize: 20,
-    fontWeight: '800',
+    fontWeight: '600',
   },
   closingName: {
     fontSize: 16,
-    fontWeight: '800',
+    fontWeight: '600',
   },
   closingTitle: {
     fontSize: 12,
@@ -653,9 +650,8 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   startBtnText: {
-    color: '#FFFFFF',
     fontSize: 15,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   backLink: {
     flexDirection: 'row',

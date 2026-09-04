@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stack } from 'expo-router';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, StatusBar } from 'react-native';
 import { StudyProvider, useStudyState } from '../context/StudyContext';
 import { ThemeProvider, useTheme } from '../context/ThemeContext';
 import { AudioProvider } from '../context/AudioContext';
@@ -28,6 +28,9 @@ function AppContent() {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
+      <StatusBar
+        barStyle={theme.statusBarStyle === 'light' ? 'light-content' : 'dark-content'}
+      />
       <Stack
         screenOptions={{
           headerShown: false,

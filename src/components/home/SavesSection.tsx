@@ -33,10 +33,10 @@ export const SavesSection = React.memo(function SavesSection() {
       {/* Section Header */}
       <View style={styles.sectionHeader}>
         <View style={styles.titleRow}>
-          <View style={[styles.iconPill, { backgroundColor: '#F59E0B18' }]}>
-            <Ionicons name="star" size={14} color={theme.accentGold} />
+          <View style={[styles.iconPill, { backgroundColor: theme.primaryMuted }]}>
+            <Ionicons name="star-outline" size={14} color={theme.primary} />
           </View>
-          <Text style={[styles.sectionTitle, { color: theme.textPrimary }]}>Saved Verses</Text>
+          <Text style={[styles.sectionTitle, { color: theme.textPrimary }]}>Marked ayahs</Text>
           {totalSaves > 0 && (
             <View style={[styles.countBadge, { backgroundColor: theme.chipBg }]}>
               <Text style={[styles.countBadgeText, { color: theme.textSecondary }]}>
@@ -47,7 +47,7 @@ export const SavesSection = React.memo(function SavesSection() {
         </View>
 
         <Text style={[styles.subtitleHint, { color: theme.textTertiary }]}>
-          Important Passages
+          Important passages
         </Text>
       </View>
 
@@ -70,7 +70,7 @@ export const SavesSection = React.memo(function SavesSection() {
                 style={[
                   styles.saveCard,
                   {
-                    backgroundColor: theme.cardElevated,
+                    backgroundColor: theme.card,
                     borderColor: theme.borderSubtle,
                   },
                 ]}
@@ -82,8 +82,8 @@ export const SavesSection = React.memo(function SavesSection() {
                     <Text style={[styles.surahName, { color: theme.textPrimary }]} numberOfLines={1}>
                       {surah ? surah.englishName : `Surah ${item.surahNumber}`}
                     </Text>
-                    <View style={[styles.ayahBadge, { backgroundColor: '#F59E0B18' }]}>
-                      <Text style={[styles.ayahBadgeText, { color: theme.accentGold }]}>
+                    <View style={[styles.ayahBadge, { backgroundColor: theme.primaryMuted }]}>
+                      <Text style={[styles.ayahBadgeText, { color: theme.primary }]}>
                         {item.surahNumber}:{item.ayahNumber}
                       </Text>
                     </View>
@@ -131,13 +131,13 @@ export const SavesSection = React.memo(function SavesSection() {
           style={[
             styles.emptyCompactCard,
             {
-              backgroundColor: theme.cardElevated,
+              backgroundColor: theme.card,
               borderColor: theme.borderSubtle,
             },
           ]}
         >
-          <View style={[styles.emptyIconWrap, { backgroundColor: '#F59E0B15' }]}>
-            <Ionicons name="star-outline" size={18} color={theme.accentGold} />
+          <View style={[styles.emptyIconWrap, { backgroundColor: theme.primaryMuted }]}>
+            <Ionicons name="star-outline" size={18} color={theme.primary} />
           </View>
           <View style={styles.emptyTextCol}>
             <Text style={[styles.emptyTitle, { color: theme.textPrimary }]}>
@@ -172,13 +172,13 @@ const styles = StyleSheet.create({
   iconPill: {
     width: 26,
     height: 26,
-    borderRadius: 7,
+    borderRadius: 13,
     justifyContent: 'center',
     alignItems: 'center',
   },
   sectionTitle: {
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: '600',
     letterSpacing: -0.2,
   },
   countBadge: {
@@ -200,13 +200,9 @@ const styles = StyleSheet.create({
   },
   saveCard: {
     width: 260,
-    borderRadius: 16,
+    borderRadius: 18,
     padding: 14,
-    borderWidth: 1,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.03,
-    shadowRadius: 6,
-    elevation: 1,
+    borderWidth: StyleSheet.hairlineWidth,
   },
   cardHeaderRow: {
     flexDirection: 'row',
@@ -223,7 +219,7 @@ const styles = StyleSheet.create({
   },
   surahName: {
     fontSize: 13,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   ayahBadge: {
     paddingHorizontal: 5,
@@ -232,7 +228,7 @@ const styles = StyleSheet.create({
   },
   ayahBadgeText: {
     fontSize: 10,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   arabicSurahName: {
     fontSize: 13,
@@ -263,14 +259,14 @@ const styles = StyleSheet.create({
   },
   openLinkText: {
     fontSize: 11,
-    fontWeight: '700',
+    fontWeight: '500',
   },
   emptyCompactCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 14,
+    borderRadius: 16,
     padding: 12,
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     gap: 10,
   },
   emptyIconWrap: {

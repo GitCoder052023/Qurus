@@ -114,7 +114,7 @@ export default function HomeScreen() {
         <View style={styles.header}>
           <View style={styles.headerTextGroup}>
             <View style={styles.timePill}>
-              <Ionicons name={greeting.icon as any} size={13} color={theme.primary} />
+              <Ionicons name={greeting.icon as any} size={14} color={theme.primary} />
               <Text style={[styles.timePillText, { color: theme.primary }]}>{greeting.time}</Text>
             </View>
             <Text style={[styles.greetingTitle, { color: theme.textPrimary }]}>
@@ -142,18 +142,12 @@ export default function HomeScreen() {
             style={[
               styles.heroCard,
               {
-                backgroundColor: theme.cardElevated,
+                backgroundColor: theme.card,
                 borderColor: theme.borderSubtle,
-                shadowColor: '#000',
               },
             ]}
           >
-            <View style={styles.heroTopTag}>
-              <View style={[styles.heroStatusDot, { backgroundColor: theme.primary }]} />
-              <Text style={[styles.heroStatusText, { color: theme.primary }]}>
-                RESUME STUDY JOURNEY
-              </Text>
-            </View>
+            <Text style={[styles.heroStatusText, { color: theme.textTertiary }]}>Continue</Text>
 
             <View style={styles.heroMainRow}>
               <View style={styles.heroLeftCol}>
@@ -176,9 +170,9 @@ export default function HomeScreen() {
               >
                 <Ionicons
                   name={isLastStudiedPlaying ? 'pause' : 'play'}
-                  size={26}
-                  color="#FFFFFF"
-                  style={!isLastStudiedPlaying ? { marginLeft: 3 } : undefined}
+                  size={24}
+                  color={theme.onPrimary}
+                  style={!isLastStudiedPlaying ? { marginLeft: 2 } : undefined}
                 />
               </TouchableOpacity>
             </View>
@@ -198,7 +192,7 @@ export default function HomeScreen() {
               </View>
               <View style={styles.heroProgressLabels}>
                 <Text style={[styles.heroProgressText, { color: theme.textTertiary }]}>
-                  {progressPercent}% completed in Surah
+                  {progressPercent}% of this surah
                 </Text>
                 <View style={styles.heroResumeTouch}>
                   <Text style={[styles.heroResumeText, { color: theme.primary }]}>Open Reader</Text>
@@ -229,23 +223,20 @@ export default function HomeScreen() {
             style={[
               styles.storyBanner,
               {
-                backgroundColor: theme.cardElevated,
+                backgroundColor: theme.card,
                 borderColor: theme.borderSubtle,
               },
             ]}
           >
             <View style={styles.storyBannerHeader}>
-              <View style={[styles.storyBadge, { backgroundColor: theme.primaryMuted }]}>
-                <Ionicons name="sparkles" size={13} color={theme.primary} />
-                <Text style={[styles.storyBadgeText, { color: theme.primary }]}>ORIGIN STORY</Text>
-              </View>
+              <Text style={[styles.storyBadgeText, { color: theme.primary }]}>A note from Hamdan</Text>
               <Text style={[styles.storyAuthorText, { color: theme.textTertiary }]}>
-                Hamdan Khubaib
+                Founder
               </Text>
             </View>
 
             <Text style={[styles.storyBannerTitle, { color: theme.textPrimary }]}>
-              Why I Built Qurus
+              Why I built Qurus
             </Text>
 
             <Text style={[styles.storyBannerDesc, { color: theme.textSecondary }]}>
@@ -255,7 +246,7 @@ export default function HomeScreen() {
 
             <View style={[styles.storyBannerFooter, { borderTopColor: theme.borderSubtle }]}>
               <Text style={[styles.storyBannerAction, { color: theme.primary }]}>
-                Read Developer's Story
+                Read the story
               </Text>
               <Ionicons name="arrow-forward" size={14} color={theme.primary} />
             </View>
@@ -266,7 +257,7 @@ export default function HomeScreen() {
         {history.length > 0 && (
           <View style={[styles.section, { marginBottom: 30 }]}>
             <Text style={[styles.sectionTitle, { color: theme.textPrimary, marginBottom: 12 }]}>
-              Recent Passages
+              Recent passages
             </Text>
 
             <View style={styles.recentList}>
@@ -283,7 +274,7 @@ export default function HomeScreen() {
                     }
                     style={[
                       styles.recentItemRow,
-                      { backgroundColor: theme.cardElevated, borderColor: theme.borderSubtle },
+                      { backgroundColor: theme.card, borderColor: theme.borderSubtle },
                     ]}
                   >
                     <View style={styles.recentItemLeft}>
@@ -342,20 +333,18 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   timePillText: {
-    fontSize: 12,
-    fontWeight: '700',
-    letterSpacing: 0.3,
-    textTransform: 'uppercase',
+    fontSize: 13,
+    fontWeight: '500',
   },
   greetingTitle: {
-    fontSize: 24,
-    fontWeight: '800',
-    letterSpacing: -0.3,
+    fontSize: 28,
+    fontWeight: '600',
+    letterSpacing: -0.4,
   },
   greetingSubtitle: {
-    fontSize: 13,
-    lineHeight: 18,
-    marginTop: 4,
+    fontSize: 15,
+    lineHeight: 22,
+    marginTop: 6,
   },
   settingsBtn: {
     width: 40,
@@ -370,33 +359,18 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 17,
-    fontWeight: '700',
+    fontWeight: '600',
     letterSpacing: -0.2,
   },
   heroCard: {
     borderRadius: 24,
-    borderWidth: 1,
-    padding: 20,
-    elevation: 4,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.08,
-    shadowRadius: 10,
-  },
-  heroTopTag: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    marginBottom: 14,
-  },
-  heroStatusDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
+    borderWidth: StyleSheet.hairlineWidth,
+    padding: 22,
   },
   heroStatusText: {
-    fontSize: 11,
-    fontWeight: '800',
-    letterSpacing: 0.6,
+    fontSize: 13,
+    fontWeight: '500',
+    marginBottom: 12,
   },
   heroMainRow: {
     flexDirection: 'row',
@@ -409,8 +383,8 @@ const styles = StyleSheet.create({
     marginRight: 16,
   },
   heroEnglishTitle: {
-    fontSize: 22,
-    fontWeight: '800',
+    fontSize: 24,
+    fontWeight: '600',
     letterSpacing: -0.3,
   },
   heroArabicTitle: {
@@ -424,22 +398,18 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   heroPlayBtn: {
-    width: 58,
-    height: 58,
-    borderRadius: 29,
+    width: 56,
+    height: 56,
+    borderRadius: 28,
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 6,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.25,
-    shadowRadius: 8,
   },
   heroProgressSection: {
     gap: 8,
   },
   heroProgressTrack: {
-    height: 5,
-    borderRadius: 2.5,
+    height: 3,
+    borderRadius: 2,
     overflow: 'hidden',
   },
   heroProgressBar: {
@@ -461,8 +431,8 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   heroResumeText: {
-    fontSize: 12,
-    fontWeight: '700',
+    fontSize: 13,
+    fontWeight: '500',
   },
   recentList: {
     gap: 8,
@@ -472,8 +442,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 12,
-    borderRadius: 14,
-    borderWidth: 1,
+    borderRadius: 16,
+    borderWidth: StyleSheet.hairlineWidth,
   },
   recentItemLeft: {
     flexDirection: 'row',
@@ -492,17 +462,17 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   recentItemSurah: {
-    fontSize: 13,
-    fontWeight: '700',
+    fontSize: 14,
+    fontWeight: '600',
   },
   recentItemAyah: {
     fontSize: 11,
     marginTop: 1,
   },
   storyBanner: {
-    borderRadius: 20,
-    borderWidth: 1,
-    padding: 18,
+    borderRadius: 22,
+    borderWidth: StyleSheet.hairlineWidth,
+    padding: 20,
   },
   storyBannerHeader: {
     flexDirection: 'row',
@@ -510,34 +480,24 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 10,
   },
-  storyBadge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 5,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 10,
-  },
   storyBadgeText: {
-    fontSize: 10,
-    fontWeight: '800',
-    letterSpacing: 0.7,
+    fontSize: 13,
+    fontWeight: '500',
   },
   storyAuthorText: {
     fontSize: 12,
     fontWeight: '600',
   },
   storyBannerTitle: {
-    fontSize: 18,
-    fontWeight: '800',
+    fontSize: 20,
+    fontWeight: '600',
     letterSpacing: -0.3,
-    marginBottom: 6,
+    marginBottom: 8,
   },
   storyBannerDesc: {
-    fontSize: 13,
-    lineHeight: 19,
-    fontStyle: 'italic',
-    marginBottom: 14,
+    fontSize: 14,
+    lineHeight: 22,
+    marginBottom: 16,
   },
   storyBannerFooter: {
     flexDirection: 'row',
@@ -547,7 +507,7 @@ const styles = StyleSheet.create({
     borderTopWidth: StyleSheet.hairlineWidth,
   },
   storyBannerAction: {
-    fontSize: 13,
-    fontWeight: '700',
+    fontSize: 14,
+    fontWeight: '500',
   },
 });

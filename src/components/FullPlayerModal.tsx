@@ -240,7 +240,7 @@ export function FullPlayerModal() {
               style={[
                 styles.phaseBadge,
                 {
-                  backgroundColor: isUrduPhase ? '#D9770618' : theme.primaryMuted,
+                  backgroundColor: isUrduPhase ? theme.primaryMuted : theme.primaryMuted,
                   borderColor: isUrduPhase ? theme.accentGold : theme.primary,
                 },
               ]}
@@ -491,8 +491,8 @@ export function FullPlayerModal() {
               style={[
                 styles.mainPlayBtn,
                 {
-                  backgroundColor: isUrduPhase ? theme.accentGold : theme.primary,
-                  shadowColor: isUrduPhase ? theme.accentGold : theme.primary,
+                  backgroundColor: theme.primary,
+                  shadowColor: theme.primary,
                 },
               ]}
               activeOpacity={0.88}
@@ -500,7 +500,7 @@ export function FullPlayerModal() {
               <Ionicons
                 name={isPlaying ? 'pause' : 'play'}
                 size={34}
-                color="#FFFFFF"
+                color={theme.onPrimary}
                 style={!isPlaying ? { marginLeft: 3 } : undefined}
               />
             </TouchableOpacity>
@@ -797,10 +797,8 @@ const styles = StyleSheet.create({
     borderRadius: 34,
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 8,
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.28,
-    shadowRadius: 10,
+    elevation: 0,
+    shadowOpacity: 0,
   },
   utilitiesRow: {
     flexDirection: 'row',

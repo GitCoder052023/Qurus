@@ -165,9 +165,9 @@ export default function ReaderScreen() {
           <Ionicons
             name={isSurahPlaying ? 'pause-circle' : 'play-circle'}
             size={22}
-            color="#FFFFFF"
+            color={theme.onPrimary}
           />
-          <Text style={styles.playSurahBtnText}>
+          <Text style={[styles.playSurahBtnText, { color: theme.onPrimary }]}>
             {isSurahPlaying ? 'Pause Recitation' : 'Play Full Surah Recitation'}
           </Text>
         </TouchableOpacity>
@@ -338,7 +338,7 @@ const styles = StyleSheet.create({
   },
   navBarTitle: {
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   navBarSubtitle: {
     fontSize: 12,
@@ -361,7 +361,7 @@ const styles = StyleSheet.create({
   },
   bannerCard: {
     borderRadius: 22,
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     padding: 20,
     alignItems: 'center',
     marginBottom: 12,
@@ -398,18 +398,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    paddingVertical: 10,
+    paddingVertical: 12,
     paddingHorizontal: 20,
-    borderRadius: 20,
+    borderRadius: 16,
   },
   playSurahBtnText: {
-    color: '#FFFFFF',
-    fontSize: 13,
-    fontWeight: '700',
+    fontSize: 14,
+    fontWeight: '600',
   },
   bismillahCard: {
     borderRadius: 16,
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     padding: 16,
     alignItems: 'center',
     marginBottom: 12,

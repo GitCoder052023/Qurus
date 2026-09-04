@@ -55,7 +55,7 @@ const CHAPTERS: StoryChapter[] = [
     chapterNumber: 1,
     badge: 'CHAPTER 1 • THE HONEST DILEMMA',
     heroIcon: 'phone-portrait-outline',
-    accentColor: '#10B981', // Emerald
+    accentColor: '#0E6B5C',
     title: 'A Question in the Palm of My Hand',
     highlightPhrase: 'Why can’t Allah’s words be as effortless as our daily distractions?',
     proseParagraphs: [
@@ -72,8 +72,8 @@ const CHAPTERS: StoryChapter[] = [
     id: 'turning-point',
     chapterNumber: 2,
     badge: 'CHAPTER 2 • THE TURNING POINT',
-    heroIcon: 'sparkles',
-    accentColor: '#F59E0B', // Amber Gold
+    heroIcon: 'chatbubble-ellipses-outline',
+    accentColor: '#0A5850',
     title: 'The Advice That Changed Everything',
     highlightPhrase: '“You will find an ayah that sticks with you like a hook in your mind.”',
     proseParagraphs: [
@@ -90,7 +90,7 @@ const CHAPTERS: StoryChapter[] = [
     chapterNumber: 3,
     badge: 'CHAPTER 3 • FOUNDER’S NOTE',
     heroIcon: 'heart-half',
-    accentColor: '#F43F5E', // Rose
+    accentColor: '#125E54',
     title: 'Radical Honesty: An Open Invitation',
     highlightPhrase: '“I’m not here to convert you. I am one of you right now.”',
     proseParagraphs: [
@@ -108,7 +108,7 @@ const CHAPTERS: StoryChapter[] = [
     chapterNumber: 4,
     badge: 'CHAPTER 4 • THE SANCTUARY',
     heroIcon: 'book-outline',
-    accentColor: '#06B6D4', // Cyan
+    accentColor: '#0E6B5C',
     title: 'The Soul of Qurus: Ayah-Based Study',
     highlightPhrase: 'Studying that doesn’t feel like a heavy assignment.',
     proseParagraphs: [
@@ -137,7 +137,7 @@ const CHAPTERS: StoryChapter[] = [
     chapterNumber: 5,
     badge: 'CHAPTER 5 • LIFE IN MOTION',
     heroIcon: 'infinite-outline',
-    accentColor: '#10B981', // Emerald
+    accentColor: '#0E6B5C',
     title: 'Your Journey Begins Here',
     highlightPhrase: 'Turning idle moments into tranquil reflection.',
     proseParagraphs: [
@@ -588,7 +588,7 @@ export default function OnboardingScreen() {
                       { backgroundColor: currentChapter.accentColor },
                     ]}
                   >
-                    <Text style={styles.founderAvatarLetter}>H</Text>
+                    <Text style={[styles.founderAvatarLetter, { color: theme.onPrimary }]}>H</Text>
                   </View>
                   <View>
                     <Text style={[styles.founderName, { color: theme.textPrimary }]}>
@@ -686,8 +686,8 @@ export default function OnboardingScreen() {
             ]}
             accessibilityLabel="Begin Quran study"
           >
-            <Text style={styles.primaryActionText}>Begin Study</Text>
-            <Ionicons name="arrow-forward" size={18} color="#FFFFFF" />
+            <Text style={[styles.primaryActionText, { color: theme.onPrimary }]}>Begin study</Text>
+            <Ionicons name="arrow-forward" size={18} color={theme.onPrimary} />
           </TouchableOpacity>
         ) : (
           <TouchableOpacity
@@ -702,8 +702,8 @@ export default function OnboardingScreen() {
             ]}
             accessibilityLabel="Next chapter"
           >
-            <Text style={styles.primaryActionText}>Next</Text>
-            <Ionicons name="arrow-forward" size={17} color="#FFFFFF" />
+            <Text style={[styles.primaryActionText, { color: theme.onPrimary }]}>Continue</Text>
+            <Ionicons name="arrow-forward" size={17} color={theme.onPrimary} />
           </TouchableOpacity>
         )}
       </View>
@@ -748,14 +748,12 @@ const styles = StyleSheet.create({
     width: 9,
     height: 9,
     borderRadius: 4.5,
-    elevation: 4,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.4,
-    shadowRadius: 4,
+    elevation: 0,
+    shadowOpacity: 0,
   },
   brandTitle: {
     fontSize: 18,
-    fontWeight: '800',
+    fontWeight: '600',
     letterSpacing: -0.4,
   },
   chapterPill: {
@@ -766,7 +764,7 @@ const styles = StyleSheet.create({
   },
   chapterPillText: {
     fontSize: 11,
-    fontWeight: '800',
+    fontWeight: '600',
   },
   skipButton: {
     paddingHorizontal: 14,
@@ -828,12 +826,12 @@ const styles = StyleSheet.create({
   },
   badgeChipText: {
     fontSize: 10.5,
-    fontWeight: '800',
+    fontWeight: '600',
     letterSpacing: 0.8,
   },
   chapterTitle: {
     fontSize: 24,
-    fontWeight: '800',
+    fontWeight: '600',
     letterSpacing: -0.5,
     lineHeight: 31,
     textAlign: 'center',
@@ -924,7 +922,7 @@ const styles = StyleSheet.create({
   },
   activitiesHeader: {
     fontSize: 10.5,
-    fontWeight: '800',
+    fontWeight: '600',
     letterSpacing: 0.8,
     marginBottom: 10,
     textAlign: 'center',
@@ -970,13 +968,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   founderAvatarLetter: {
-    color: '#FFFFFF',
     fontSize: 19,
-    fontWeight: '800',
+    fontWeight: '600',
   },
   founderName: {
     fontSize: 15,
-    fontWeight: '800',
+    fontWeight: '600',
   },
   founderRole: {
     fontSize: 11.5,
@@ -1031,15 +1028,12 @@ const styles = StyleSheet.create({
     gap: 8,
     paddingHorizontal: 22,
     paddingVertical: 12,
-    borderRadius: 22,
-    elevation: 4,
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.25,
-    shadowRadius: 6,
+    borderRadius: 16,
+    elevation: 0,
+    shadowOpacity: 0,
   },
   primaryActionText: {
-    color: '#FFFFFF',
-    fontSize: 14.5,
-    fontWeight: '700',
+    fontSize: 15,
+    fontWeight: '600',
   },
 });

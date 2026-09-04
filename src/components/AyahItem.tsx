@@ -108,7 +108,7 @@ export const AyahItem = React.memo(function AyahItem({
             <Text
               style={[
                 styles.numberText,
-                { color: isThisAyahActive ? '#FFFFFF' : theme.textPrimary },
+                { color: isThisAyahActive ? theme.onPrimary : theme.textPrimary },
               ]}
             >
               {ayah.numberInSurah}
@@ -120,7 +120,7 @@ export const AyahItem = React.memo(function AyahItem({
               style={[
                 styles.recitingBadge,
                 {
-                  backgroundColor: isRecitingUrdu ? '#D9770620' : theme.primaryMuted,
+                  backgroundColor: theme.primaryMuted,
                 },
               ]}
             >
@@ -189,7 +189,7 @@ export const AyahItem = React.memo(function AyahItem({
             styles.translationContainer,
             { borderTopColor: theme.borderSubtle },
             isRecitingUrdu && {
-              backgroundColor: '#D9770615',
+              backgroundColor: theme.primaryMuted,
               borderRadius: 12,
               padding: 10,
               marginTop: 4,
@@ -340,21 +340,21 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginVertical: 8,
     borderRadius: 20,
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     paddingTop: 16,
     paddingHorizontal: 18,
     paddingBottom: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.04,
+    shadowOpacity: 0,
     shadowRadius: 3,
-    elevation: 1,
+    elevation: 0,
   },
   activeContainer: {
-    borderLeftWidth: 4,
-    shadowOpacity: 0.1,
-    shadowRadius: 6,
-    elevation: 3,
+    borderLeftWidth: 3,
+    shadowOpacity: 0,
+    shadowRadius: 0,
+    elevation: 0,
   },
   headerRow: {
     flexDirection: 'row',
@@ -376,7 +376,7 @@ const styles = StyleSheet.create({
   },
   numberText: {
     fontSize: 13,
-    fontWeight: '800',
+    fontWeight: '600',
   },
   recitingBadge: {
     flexDirection: 'row',

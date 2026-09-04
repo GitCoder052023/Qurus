@@ -63,20 +63,20 @@ export default function SettingsScreen() {
         <View style={styles.header}>
           <Text style={[styles.screenTitle, { color: theme.textPrimary }]}>Settings</Text>
           <Text style={[styles.screenSubtitle, { color: theme.textSecondary }]}>
-            Customize your reading, audio, and study experience
+            Reading, audio, and how the app feels
           </Text>
         </View>
 
         {/* SECTION: Appearance & Theme */}
         <View style={styles.section}>
-          <Text style={[styles.sectionTitle, { color: theme.textSecondary }]}>APPEARANCE</Text>
+          <Text style={[styles.sectionTitle, { color: theme.textTertiary }]}>Appearance</Text>
           <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
             <View style={styles.themeRow}>
               {[
-                { key: 'light', label: 'Ivory', icon: 'sunny-outline', bg: '#FAF8F5' },
-                { key: 'dark', label: 'Dark', icon: 'moon-outline', bg: '#0D1117' },
-                { key: 'sepia', label: 'Sepia', icon: 'book-outline', bg: '#F4ECE1' },
-                { key: 'system', label: 'Auto', icon: 'phone-portrait-outline', bg: '#88888820' },
+                { key: 'light', label: 'White', icon: 'sunny-outline', bg: '#FFFFFF' },
+                { key: 'dark', label: 'Night', icon: 'moon-outline', bg: '#0A1614' },
+                { key: 'sepia', label: 'Mist', icon: 'water-outline', bg: '#F4F8F6' },
+                { key: 'system', label: 'Auto', icon: 'phone-portrait-outline', bg: '#F2F7F5' },
               ].map((t) => {
                 const isSelected = themeMode === t.key;
                 return (
@@ -115,8 +115,8 @@ export default function SettingsScreen() {
 
         {/* SECTION: Typography */}
         <View style={styles.section}>
-          <Text style={[styles.sectionTitle, { color: theme.textSecondary }]}>
-            READING TYPOGRAPHY
+          <Text style={[styles.sectionTitle, { color: theme.textTertiary }]}>
+            Reading
           </Text>
           <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
             {/* Arabic Font Size */}
@@ -147,8 +147,8 @@ export default function SettingsScreen() {
                       <Text
                         style={[
                           styles.sizePillText,
-                          { color: active ? '#FFFFFF' : theme.textSecondary },
-                          active && { fontWeight: '700' },
+                          { color: active ? theme.onPrimary : theme.textSecondary },
+                          active && { fontWeight: '600' },
                         ]}
                       >
                         {sz}
@@ -189,8 +189,8 @@ export default function SettingsScreen() {
                       <Text
                         style={[
                           styles.sizePillText,
-                          { color: active ? '#FFFFFF' : theme.textSecondary },
-                          active && { fontWeight: '700' },
+                          { color: active ? theme.onPrimary : theme.textSecondary },
+                          active && { fontWeight: '600' },
                         ]}
                       >
                         {sz}
@@ -224,8 +224,8 @@ export default function SettingsScreen() {
 
         {/* SECTION: Audio & Recitation */}
         <View style={styles.section}>
-          <Text style={[styles.sectionTitle, { color: theme.textSecondary }]}>
-            AUDIO & RECITATION
+          <Text style={[styles.sectionTitle, { color: theme.textTertiary }]}>
+            Audio
           </Text>
           <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
             {/* Recitation Loop Mode */}
@@ -367,8 +367,8 @@ export default function SettingsScreen() {
                       <Text
                         style={[
                           styles.sizePillText,
-                          { color: active ? '#FFFFFF' : theme.textSecondary },
-                          active && { fontWeight: '700' },
+                          { color: active ? theme.onPrimary : theme.textSecondary },
+                          active && { fontWeight: '600' },
                         ]}
                       >
                         {s}x
@@ -402,8 +402,8 @@ export default function SettingsScreen() {
 
         {/* SECTION: Personal Study Data */}
         <View style={styles.section}>
-          <Text style={[styles.sectionTitle, { color: theme.textSecondary }]}>
-            STUDY DATA & BACKUP
+          <Text style={[styles.sectionTitle, { color: theme.textTertiary }]}>
+            Study data
           </Text>
           <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
             <TouchableOpacity
@@ -435,7 +435,7 @@ export default function SettingsScreen() {
                   View the welcome guide and feature walkthrough again
                 </Text>
               </View>
-              <Ionicons name="sparkles-outline" size={19} color={theme.primary} />
+              <Ionicons name="leaf-outline" size={19} color={theme.primary} />
             </TouchableOpacity>
 
             <View style={[styles.divider, { backgroundColor: theme.borderSubtle }]} />
@@ -445,22 +445,22 @@ export default function SettingsScreen() {
               style={[styles.settingItem, styles.rowBetween]}
             >
               <View style={styles.settingTextGroup}>
-                <Text style={[styles.settingLabel, { color: '#EF4444' }]}>
-                  Clear Recently Studied History
+                <Text style={[styles.settingLabel, { color: theme.destructive }]}>
+                  Clear recently studied history
                 </Text>
                 <Text style={[styles.settingSubtext, { color: theme.textSecondary }]}>
                   Reset recent reading history without deleting bookmarks or notes
                 </Text>
               </View>
-              <Ionicons name="trash-outline" size={18} color="#EF4444" />
+              <Ionicons name="trash-outline" size={18} color={theme.destructive} />
             </TouchableOpacity>
           </View>
         </View>
 
         {/* SECTION: The Story Behind Qurus */}
         <View style={styles.section}>
-          <Text style={[styles.sectionTitle, { color: theme.textSecondary }]}>
-            ABOUT & ORIGIN
+          <Text style={[styles.sectionTitle, { color: theme.textTertiary }]}>
+            About
           </Text>
           <TouchableOpacity
             activeOpacity={0.88}
@@ -468,24 +468,24 @@ export default function SettingsScreen() {
             style={[
               styles.storyCard,
               {
-                backgroundColor: theme.cardElevated,
+                backgroundColor: theme.card,
                 borderColor: theme.borderSubtle,
               },
             ]}
           >
             <View style={styles.storyCardTopRow}>
               <View style={[styles.storyCardIconBox, { backgroundColor: theme.primaryMuted }]}>
-                <Ionicons name="sparkles" size={18} color={theme.primary} />
+                <Ionicons name="leaf-outline" size={18} color={theme.primary} />
               </View>
               <View style={[styles.storyCardTag, { backgroundColor: theme.chipBg }]}>
                 <Text style={[styles.storyCardTagText, { color: theme.primary }]}>
-                  HAMDAN KHUBAIB
+                  Hamdan Khubaib
                 </Text>
               </View>
             </View>
 
             <Text style={[styles.storyCardTitle, { color: theme.textPrimary }]}>
-              The Story Behind Qurus
+              The story behind Qurus
             </Text>
             <Text style={[styles.storyCardSubtitle, { color: theme.textSecondary }]}>
               Why I built an Ayah-based Quran study sanctuary in the palm of your hand—from struggling with traditional formats to discovering the advice that changed everything.
@@ -493,7 +493,7 @@ export default function SettingsScreen() {
 
             <View style={[styles.storyCardFooter, { borderTopColor: theme.borderSubtle }]}>
               <Text style={[styles.storyCardActionText, { color: theme.primary }]}>
-                Read Founder's Note
+                Read founder’s note
               </Text>
               <Ionicons name="arrow-forward" size={14} color={theme.primary} />
             </View>
@@ -531,27 +531,27 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   screenTitle: {
-    fontSize: 26,
-    fontWeight: '800',
-    letterSpacing: -0.5,
+    fontSize: 28,
+    fontWeight: '600',
+    letterSpacing: -0.4,
   },
   screenSubtitle: {
-    fontSize: 13,
-    marginTop: 2,
+    fontSize: 15,
+    marginTop: 4,
+    lineHeight: 21,
   },
   section: {
     marginBottom: 24,
   },
   sectionTitle: {
-    fontSize: 11,
-    fontWeight: '700',
-    letterSpacing: 1,
+    fontSize: 13,
+    fontWeight: '500',
     marginBottom: 8,
     marginLeft: 4,
   },
   card: {
     borderRadius: 20,
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     padding: 16,
   },
   themeRow: {
@@ -665,7 +665,7 @@ const styles = StyleSheet.create({
   },
   storyCard: {
     borderRadius: 20,
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     padding: 18,
   },
   storyCardTopRow: {
@@ -687,13 +687,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   storyCardTagText: {
-    fontSize: 10,
-    fontWeight: '800',
-    letterSpacing: 0.8,
+    fontSize: 11,
+    fontWeight: '500',
   },
   storyCardTitle: {
     fontSize: 18,
-    fontWeight: '800',
+    fontWeight: '600',
     letterSpacing: -0.3,
     marginBottom: 6,
   },
@@ -710,8 +709,8 @@ const styles = StyleSheet.create({
     borderTopWidth: StyleSheet.hairlineWidth,
   },
   storyCardActionText: {
-    fontSize: 13,
-    fontWeight: '700',
+    fontSize: 14,
+    fontWeight: '500',
   },
   appInfoSection: {
     alignItems: 'center',

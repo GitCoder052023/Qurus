@@ -138,9 +138,8 @@ export function MiniPlayer() {
         style={[
           styles.container,
           {
-            backgroundColor: theme.cardElevated,
+            backgroundColor: theme.card,
             borderColor: theme.borderSubtle,
-            shadowColor: '#000',
           },
         ]}
       >
@@ -150,8 +149,8 @@ export function MiniPlayer() {
             style={[
               styles.artworkThumbnail,
               {
-                backgroundColor: isUrduPhase ? '#2E1E05' : '#0B2920',
-                borderColor: isUrduPhase ? '#D9770640' : theme.primary + '40',
+                backgroundColor: theme.primaryLight,
+                borderColor: theme.borderSubtle,
               },
             ]}
           >
@@ -187,7 +186,7 @@ export function MiniPlayer() {
                 style={[
                   styles.badge,
                   {
-                    backgroundColor: isUrduPhase ? '#D9770618' : theme.primaryMuted,
+                    backgroundColor: isUrduPhase ? theme.primaryMuted : theme.primaryMuted,
                   },
                 ]}
               >
@@ -241,7 +240,7 @@ export function MiniPlayer() {
               <Ionicons
                 name={isPlaying ? 'pause' : 'play'}
                 size={18}
-                color="#FFFFFF"
+                color={theme.onPrimary}
                 style={!isPlaying ? { marginLeft: 2 } : undefined}
               />
             </TouchableOpacity>
@@ -400,15 +399,15 @@ const styles = StyleSheet.create({
   },
   container: {
     position: 'relative',
-    borderRadius: 14,
-    borderWidth: 1,
+    borderRadius: 18,
+    borderWidth: StyleSheet.hairlineWidth,
     overflow: 'hidden',
     paddingVertical: 8,
     paddingHorizontal: 10,
-    elevation: 10,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 10,
+    elevation: 4,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.12,
+    shadowRadius: 16,
   },
   contentRow: {
     flexDirection: 'row',
@@ -427,7 +426,7 @@ const styles = StyleSheet.create({
   },
   artworkSurahNum: {
     fontSize: 14,
-    fontWeight: '800',
+    fontWeight: '600',
     letterSpacing: -0.5,
   },
   artworkGlowDot: {
@@ -482,10 +481,8 @@ const styles = StyleSheet.create({
     borderRadius: 17,
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 4,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
+    elevation: 0,
+    shadowOpacity: 0,
     marginHorizontal: 2,
   },
   progressTrack: {

@@ -123,9 +123,9 @@ export default function QuranScreen() {
     <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
       {/* Top Header */}
       <View style={styles.header}>
-        <Text style={[styles.screenTitle, { color: theme.textPrimary }]}>Holy Quran</Text>
+        <Text style={[styles.screenTitle, { color: theme.textPrimary }]}>Quran</Text>
         <Text style={[styles.screenSubtitle, { color: theme.textSecondary }]}>
-          Browse all 114 Surahs with Urdu Translation
+          All 114 surahs, with Urdu translation
         </Text>
       </View>
 
@@ -168,8 +168,8 @@ export default function QuranScreen() {
               <Text
                 style={[
                   styles.filterChipText,
-                  { color: isActive ? '#FFFFFF' : theme.textSecondary },
-                  isActive && { fontWeight: '700' },
+                  { color: isActive ? theme.onPrimary : theme.textSecondary },
+                  isActive && { fontWeight: '600' },
                 ]}
               >
                 {tab}
@@ -212,13 +212,14 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   screenTitle: {
-    fontSize: 26,
-    fontWeight: '800',
-    letterSpacing: -0.5,
+    fontSize: 28,
+    fontWeight: '600',
+    letterSpacing: -0.4,
   },
   screenSubtitle: {
-    fontSize: 13,
-    marginTop: 2,
+    fontSize: 15,
+    marginTop: 4,
+    lineHeight: 21,
   },
   searchContainer: {
     paddingHorizontal: 18,
@@ -227,8 +228,8 @@ const styles = StyleSheet.create({
   searchBar: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 16,
-    borderWidth: 1,
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
     paddingHorizontal: 14,
     height: 48,
   },
@@ -266,7 +267,7 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     paddingHorizontal: 16,
     borderRadius: 18,
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     marginBottom: 10,
   },
   surahNumberCircle: {
@@ -279,7 +280,7 @@ const styles = StyleSheet.create({
   },
   surahNumberText: {
     fontSize: 14,
-    fontWeight: '800',
+    fontWeight: '600',
   },
   surahDetails: {
     flex: 1,
@@ -287,7 +288,7 @@ const styles = StyleSheet.create({
   },
   surahEnglishTitle: {
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   surahUrduTitle: {
     fontSize: 12,
