@@ -13,54 +13,14 @@ import { useTheme } from '../../context/ThemeContext';
 import { useStudyState } from '../../context/StudyContext';
 import { useAudio } from '../../context/AudioContext';
 import { SURAHS } from '../../data/surahs';
-
-// Curated peaceful verses for daily contemplation
-const CONTEMPLATIVE_VERSES = [
-  {
-    surahNumber: 13,
-    ayahNumber: 28,
-    surahName: "Ar-Ra'd",
-    arabicText: 'أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ',
-    urduText: 'سنو کہ خدا کے ذکر سے ہی دلوں کو تسلی اور سکون حاصل ہوتا ہے',
-    themeNote: 'Peace of Heart & Tranquility',
-  },
-  {
-    surahNumber: 94,
-    ayahNumber: 5,
-    surahName: 'Ash-Sharh',
-    arabicText: 'فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا',
-    urduText: 'سو بے شک مشکل کے ساتھ آسانی ہے',
-    themeNote: 'Hope & Relief in Trial',
-  },
-  {
-    surahNumber: 2,
-    ayahNumber: 152,
-    surahName: 'Al-Baqarah',
-    arabicText: 'فَٱذْكُرُونِىٓ أَذْكُرْكُمْ وَٱشْكُرُوا۟ لِى وَلَا تَكْفُرُونِ',
-    urduText: 'سو مجھے یاد کرو، میں تمہیں یاد رکھوں گا، اور میرا شکر ادا کرو اور ناشکری نہ کرو',
-    themeNote: 'Gratitude & Divine Presence',
-  },
-  {
-    surahNumber: 93,
-    ayahNumber: 7,
-    surahName: 'Ad-Duhaa',
-    arabicText: 'وَوَجَدَكَ ضَآلًّا فَهَدَىٰ',
-    urduText: 'اور اس نے آپ کو راستہ تلاش کرتے پایا تو راہ دکھا دی',
-    themeNote: 'Guidance & Divine Grace',
-  },
-  {
-    surahNumber: 39,
-    ayahNumber: 53,
-    surahName: 'Az-Zumar',
-    arabicText: 'لَا تَقْنَطُوا۟ مِن رَّحْمَةِ ٱللَّهِ ۚ إِنَّ ٱللَّهَ يَغْفِرُ ٱلذُّنُوبَ جَمِيعًا',
-    urduText: 'خدا کی رحمت سے ناامید نہ ہو، خدا تو سب گناہوں کو بخش دیتا ہے',
-    themeNote: 'Boundless Mercy & Forgiveness',
-  },
-];
+import { StreakSection } from '../../components/home/StreakSection';
+import { NotesSection } from '../../components/home/NotesSection';
+import { SavesSection } from '../../components/home/SavesSection';
+import { BookmarksSection } from '../../components/home/BookmarksSection';
 
 export default function HomeScreen() {
   const { theme } = useTheme();
-  const { lastStudied, history, bookmarks, notes } = useStudyState();
+  const { lastStudied, history } = useStudyState();
   const { playAyah, isPlaying, currentSurahNumber, currentAyahNumber, pause } = useAudio();
   const router = useRouter();
 
@@ -105,15 +65,6 @@ export default function HomeScreen() {
     }
   }, []);
 
-  // Daily contemplative verse
-  const dailyVerse = useMemo(() => {
-    const now = new Date();
-    const dayOfYear = Math.floor(
-      (now.getTime() - new Date(now.getFullYear(), 0, 0).getTime()) / 1000 / 60 / 60 / 24
-    );
-    return CONTEMPLATIVE_VERSES[dayOfYear % CONTEMPLATIVE_VERSES.length];
-  }, []);
-
   // Last studied Surah info
   const lastSurah = lastStudied ? SURAHS.find((s) => s.number === lastStudied.surahNumber) : null;
   const isLastStudiedPlaying =
@@ -150,26 +101,6 @@ export default function HomeScreen() {
     } else {
       playAyah(1, 1);
     }
-  };
-
-  const isDailyVersePlaying =
-    isPlaying &&
-    currentSurahNumber === dailyVerse.surahNumber &&
-    currentAyahNumber === dailyVerse.ayahNumber;
-
-  const handlePlayDailyVerse = () => {
-    if (isDailyVersePlaying) {
-      pause();
-    } else {
-      playAyah(dailyVerse.surahNumber, dailyVerse.ayahNumber, undefined, { standalone: true });
-    }
-  };
-
-  const handleOpenDailyVerse = () => {
-    router.push({
-      pathname: '/reader/[surah]',
-      params: { surah: String(dailyVerse.surahNumber), ayah: String(dailyVerse.ayahNumber) },
-    });
   };
 
   return (
@@ -278,186 +209,17 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* SECTION: Daily Ayah of Peace (Contemplative Verse) */}
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Text style={[styles.sectionTitle, { color: theme.textPrimary }]}>Verse of Peace</Text>
-            <View style={[styles.verseThemePill, { backgroundColor: theme.primaryMuted }]}>
-              <Text style={[styles.verseThemeText, { color: theme.primary }]}>
-                {dailyVerse.themeNote}
-              </Text>
-            </View>
-          </View>
+        {/* 1. PERSONALIZED SECTION: Current Streak & Daily Motivation */}
+        <StreakSection />
 
-          <View
-            style={[
-              styles.dailyVerseCard,
-              {
-                backgroundColor: theme.cardElevated,
-                borderColor: theme.borderSubtle,
-              },
-            ]}
-          >
-            {/* Arabic */}
-            <Text style={[styles.dailyArabicText, { color: theme.arabicText }]}>
-              {dailyVerse.arabicText}
-            </Text>
+        {/* 2. PERSONALIZED SECTION: User's Reflections & Notes */}
+        <NotesSection />
 
-            {/* Urdu Translation */}
-            <Text style={[styles.dailyUrduText, { color: theme.urduText }]}>
-              {dailyVerse.urduText}
-            </Text>
+        {/* 3. PERSONALIZED SECTION: Saved Verses (Marked / Important) */}
+        <SavesSection />
 
-            {/* Footer with Citation & Quick Actions */}
-            <View style={[styles.dailyVerseFooter, { borderTopColor: theme.borderSubtle }]}>
-              <Text style={[styles.dailyCitation, { color: theme.textSecondary }]}>
-                Surah {dailyVerse.surahName} • {dailyVerse.surahNumber}:{dailyVerse.ayahNumber}
-              </Text>
-
-              <View style={styles.dailyActions}>
-                <TouchableOpacity
-                  onPress={handlePlayDailyVerse}
-                  style={[
-                    styles.dailyActionBtn,
-                    { backgroundColor: isDailyVersePlaying ? theme.primaryMuted : theme.chipBg },
-                  ]}
-                  accessibilityLabel={isDailyVersePlaying ? 'Pause recitation' : 'Recite Verse of Peace'}
-                >
-                  <Ionicons
-                    name={isDailyVersePlaying ? 'pause' : 'volume-medium-outline'}
-                    size={16}
-                    color={theme.primary}
-                  />
-                  <Text style={[styles.dailyActionText, { color: theme.primary }]}>
-                    {isDailyVersePlaying ? 'Pause' : 'Recite'}
-                  </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  onPress={handleOpenDailyVerse}
-                  style={[styles.dailyActionBtn, { backgroundColor: theme.chipBg }]}
-                >
-                  <Ionicons name="book-outline" size={15} color={theme.textPrimary} />
-                  <Text style={[styles.dailyActionText, { color: theme.textPrimary }]}>Study</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-        </View>
-
-        {/* SECTION: Peaceful Quick Sanctuary Paths */}
-        <View style={styles.section}>
-          <Text style={[styles.sectionTitle, { color: theme.textPrimary, marginBottom: 12 }]}>
-            Beloved Surahs & Study
-          </Text>
-
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.quickScrollContent}
-          >
-            {[
-              {
-                num: 55,
-                english: 'Ar-Rahman',
-                arabic: 'الرحمن',
-                desc: 'The Beneficent',
-                icon: 'leaf-outline',
-              },
-              {
-                num: 67,
-                english: 'Al-Mulk',
-                arabic: 'الملك',
-                desc: 'Sovereignty & Protection',
-                icon: 'shield-checkmark-outline',
-              },
-              {
-                num: 36,
-                english: 'Ya-Sin',
-                arabic: 'يس',
-                desc: 'Heart of the Quran',
-                icon: 'heart-outline',
-              },
-              {
-                num: 18,
-                english: 'Al-Kahf',
-                arabic: 'الكهف',
-                desc: 'The Cave & Divine Light',
-                icon: 'sparkles-outline',
-              },
-            ].map((s) => (
-              <TouchableOpacity
-                key={s.num}
-                activeOpacity={0.88}
-                onPress={() =>
-                  router.push({
-                    pathname: '/reader/[surah]',
-                    params: { surah: String(s.num) },
-                  })
-                }
-                style={[
-                  styles.quickSurahCard,
-                  {
-                    backgroundColor: theme.cardElevated,
-                    borderColor: theme.borderSubtle,
-                  },
-                ]}
-              >
-                <View style={[styles.quickIconCircle, { backgroundColor: theme.chipBg }]}>
-                  <Ionicons name={s.icon as any} size={18} color={theme.primary} />
-                </View>
-                <Text style={[styles.quickArabicName, { color: theme.arabicText }]}>{s.arabic}</Text>
-                <Text style={[styles.quickEnglishName, { color: theme.textPrimary }]}>
-                  {s.english}
-                </Text>
-                <Text style={[styles.quickDesc, { color: theme.textSecondary }]}>{s.desc}</Text>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
-        </View>
-
-        {/* SECTION: Study Overview Cards (Clean & Minimal) */}
-        <View style={styles.section}>
-          <View style={styles.overviewGrid}>
-            <TouchableOpacity
-              activeOpacity={0.88}
-              onPress={() => router.push('/(tabs)/quran')}
-              style={[
-                styles.overviewCard,
-                { backgroundColor: theme.cardElevated, borderColor: theme.borderSubtle },
-              ]}
-            >
-              <View style={[styles.overviewIconCircle, { backgroundColor: theme.primaryMuted }]}>
-                <Ionicons name="library-outline" size={20} color={theme.primary} />
-              </View>
-              <Text style={[styles.overviewCardTitle, { color: theme.textPrimary }]}>
-                All 114 Surahs
-              </Text>
-              <Text style={[styles.overviewCardSub, { color: theme.textSecondary }]}>
-                Browse Quran & Search
-              </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              activeOpacity={0.88}
-              onPress={() => router.push('/(tabs)/notes')}
-              style={[
-                styles.overviewCard,
-                { backgroundColor: theme.cardElevated, borderColor: theme.borderSubtle },
-              ]}
-            >
-              <View style={[styles.overviewIconCircle, { backgroundColor: '#D9770618' }]}>
-                <Ionicons name="document-text-outline" size={20} color={theme.accentGold} />
-              </View>
-              <Text style={[styles.overviewCardTitle, { color: theme.textPrimary }]}>
-                Study Notebook
-              </Text>
-              <Text style={[styles.overviewCardSub, { color: theme.textSecondary }]}>
-                {Object.keys(notes).length} personal reflections
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+        {/* 4. PERSONALIZED SECTION: Bookmarks */}
+        <BookmarksSection />
 
         {/* SECTION: Origin Story Card */}
         <View style={styles.section}>
@@ -606,25 +368,10 @@ const styles = StyleSheet.create({
   section: {
     marginBottom: 24,
   },
-  sectionHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 12,
-  },
   sectionTitle: {
     fontSize: 17,
     fontWeight: '700',
     letterSpacing: -0.2,
-  },
-  verseThemePill: {
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 12,
-  },
-  verseThemeText: {
-    fontSize: 11,
-    fontWeight: '600',
   },
   heroCard: {
     borderRadius: 24,
@@ -716,112 +463,6 @@ const styles = StyleSheet.create({
   heroResumeText: {
     fontSize: 12,
     fontWeight: '700',
-  },
-  dailyVerseCard: {
-    borderRadius: 22,
-    borderWidth: 1,
-    padding: 20,
-  },
-  dailyArabicText: {
-    fontSize: 20,
-    lineHeight: 38,
-    textAlign: 'center',
-    writingDirection: 'rtl',
-    fontFamily: 'serif',
-    marginBottom: 12,
-  },
-  dailyUrduText: {
-    fontSize: 15,
-    lineHeight: 25,
-    textAlign: 'center',
-    writingDirection: 'rtl',
-    fontFamily: 'serif',
-    marginBottom: 16,
-  },
-  dailyVerseFooter: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    borderTopWidth: StyleSheet.hairlineWidth,
-    paddingTop: 12,
-  },
-  dailyCitation: {
-    fontSize: 12,
-    fontWeight: '600',
-  },
-  dailyActions: {
-    flexDirection: 'row',
-    gap: 8,
-  },
-  dailyActionBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 10,
-  },
-  dailyActionText: {
-    fontSize: 12,
-    fontWeight: '600',
-  },
-  quickScrollContent: {
-    gap: 12,
-    paddingRight: 10,
-  },
-  quickSurahCard: {
-    width: 140,
-    borderRadius: 18,
-    borderWidth: 1,
-    padding: 14,
-  },
-  quickIconCircle: {
-    width: 34,
-    height: 34,
-    borderRadius: 17,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 10,
-  },
-  quickArabicName: {
-    fontSize: 16,
-    fontFamily: 'serif',
-    marginBottom: 2,
-  },
-  quickEnglishName: {
-    fontSize: 14,
-    fontWeight: '700',
-    marginBottom: 4,
-  },
-  quickDesc: {
-    fontSize: 11,
-    lineHeight: 14,
-  },
-  overviewGrid: {
-    flexDirection: 'row',
-    gap: 12,
-  },
-  overviewCard: {
-    flex: 1,
-    borderRadius: 18,
-    borderWidth: 1,
-    padding: 16,
-  },
-  overviewIconCircle: {
-    width: 38,
-    height: 38,
-    borderRadius: 19,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 10,
-  },
-  overviewCardTitle: {
-    fontSize: 14,
-    fontWeight: '700',
-    marginBottom: 2,
-  },
-  overviewCardSub: {
-    fontSize: 11,
   },
   recentList: {
     gap: 8,

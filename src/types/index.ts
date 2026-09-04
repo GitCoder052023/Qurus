@@ -90,3 +90,10 @@ export interface Reciter {
   arabicName: string;
   subfolder: string; // e.g. "Alafasy_128kbps"
 }
+
+export interface StreakData {
+  currentStreak: number;
+  bestStreak: number;
+  lastActiveDate: string | null; // YYYY-MM-DD
+  activeDates: string[]; // List of YYYY-MM-DD dates
+}

@@ -7,6 +7,7 @@ import {
   StudyHistoryItem,
   LastStudiedState,
   ReadingPreferences,
+  StreakData,
 } from '../types';
 
 const STORAGE_KEYS = {
@@ -17,6 +18,7 @@ const STORAGE_KEYS = {
   NOTES: '@qurus_notes_v1',
   PREFERENCES: '@qurus_preferences_v1',
   HAS_ONBOARDED: '@qurus_has_onboarded_v1',
+  STREAK: '@qurus_streak_v1',
 };
 
 const DEFAULT_PREFERENCES: ReadingPreferences = {
@@ -30,6 +32,26 @@ const DEFAULT_PREFERENCES: ReadingPreferences = {
   playbackMode: 'both',
 };
 
+const DEFAULT_STREAK: StreakData = {
+  currentStreak: 0,
+  bestStreak: 0,
+  lastActiveDate: null,
+  activeDates: [],
+};
+
+export function getLocalDateString(date: Date = new Date()): string {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+export function getYesterdayDateString(): string {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  return getLocalDateString(d);
+}
+
 interface StudyContextType {
   lastStudied: LastStudiedState | null;
   history: StudyHistoryItem[];
@@ -37,6 +59,7 @@ interface StudyContextType {
   highlights: Record<string, Highlight>; // key: "surah_ayah"
   notes: Record<string, StudyNote>; // key: "surah_ayah"
   preferences: ReadingPreferences;
+  streak: StreakData;
   hasOnboarded: boolean;
   isLoaded: boolean;
 
@@ -45,6 +68,7 @@ interface StudyContextType {
   resetOnboarding: () => Promise<void>;
   updateLastStudied: (surahNumber: number, ayahNumber: number, audioPos?: number) => void;
   addToHistory: (surahNumber: number, ayahNumber: number) => void;
+  recordStreakActivity: () => void;
   toggleBookmark: (surahNumber: number, ayahNumber: number, arabicSnippet?: string, urduSnippet?: string) => boolean;
   isBookmarked: (surahNumber: number, ayahNumber: number) => boolean;
   removeBookmark: (surahNumber: number, ayahNumber: number) => void;
@@ -67,6 +91,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
   const [highlights, setHighlights] = useState<Record<string, Highlight>>({});
   const [notes, setNotes] = useState<Record<string, StudyNote>>({});
   const [preferences, setPreferences] = useState<ReadingPreferences>(DEFAULT_PREFERENCES);
+  const [streak, setStreak] = useState<StreakData>(DEFAULT_STREAK);
   const [hasOnboarded, setHasOnboarded] = useState<boolean>(true);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -74,7 +99,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     async function loadData() {
       try {
-        const [savedLast, savedHistory, savedBookmarks, savedHighlights, savedNotes, savedPrefs, savedOnboard] =
+        const [savedLast, savedHistory, savedBookmarks, savedHighlights, savedNotes, savedPrefs, savedOnboard, savedStreak] =
           await Promise.all([
             AsyncStorage.getItem(STORAGE_KEYS.LAST_STUDIED),
             AsyncStorage.getItem(STORAGE_KEYS.HISTORY),
@@ -83,6 +108,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
             AsyncStorage.getItem(STORAGE_KEYS.NOTES),
             AsyncStorage.getItem(STORAGE_KEYS.PREFERENCES),
             AsyncStorage.getItem(STORAGE_KEYS.HAS_ONBOARDED),
+            AsyncStorage.getItem(STORAGE_KEYS.STREAK),
           ]);
 
         if (savedLast) setLastStudied(JSON.parse(savedLast));
@@ -92,6 +118,61 @@ export function StudyProvider({ children }: { children: ReactNode }) {
         if (savedNotes) setNotes(JSON.parse(savedNotes));
         if (savedPrefs) setPreferences({ ...DEFAULT_PREFERENCES, ...JSON.parse(savedPrefs) });
         setHasOnboarded(savedOnboard === 'true');
+
+        // Streak initialization & hydration
+        const today = getLocalDateString();
+        const yesterday = getYesterdayDateString();
+
+        let initialStreak = DEFAULT_STREAK;
+        if (savedStreak) {
+          try {
+            const parsed: StreakData = JSON.parse(savedStreak);
+            let current = parsed.currentStreak || 0;
+            // If last active was before yesterday, the streak is broken until activity today
+            if (parsed.lastActiveDate !== today && parsed.lastActiveDate !== yesterday) {
+              current = 0;
+            }
+            initialStreak = {
+              ...parsed,
+              currentStreak: current,
+              activeDates: Array.isArray(parsed.activeDates) ? parsed.activeDates : [],
+            };
+          } catch (e) {
+            console.error('Failed to parse streak:', e);
+          }
+        } else {
+          // Reconstruct initial streak from historical records if available
+          const dates = new Set<string>();
+          if (savedHistory) {
+            try {
+              const hList: StudyHistoryItem[] = JSON.parse(savedHistory);
+              hList.forEach((item) => dates.add(getLocalDateString(new Date(item.timestamp))));
+            } catch {}
+          }
+          if (savedNotes) {
+            try {
+              const nObj = JSON.parse(savedNotes);
+              Object.values(nObj).forEach((n: any) =>
+                dates.add(getLocalDateString(new Date(n.updatedAt || n.createdAt)))
+              );
+            } catch {}
+          }
+          const dateList = Array.from(dates).sort();
+          if (dateList.length > 0) {
+            const lastDate = dateList[dateList.length - 1];
+            let streakCount = 0;
+            if (lastDate === today || lastDate === yesterday) {
+              streakCount = 1;
+            }
+            initialStreak = {
+              currentStreak: streakCount,
+              bestStreak: Math.max(streakCount, 1),
+              lastActiveDate: lastDate,
+              activeDates: dateList,
+            };
+          }
+        }
+        setStreak(initialStreak);
       } catch (err) {
         console.error('Failed to load study state from storage:', err);
       } finally {
@@ -111,6 +192,45 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     await AsyncStorage.removeItem(STORAGE_KEYS.HAS_ONBOARDED).catch(console.error);
   };
 
+  const recordStreakActivity = () => {
+    setStreak((prev) => {
+      const today = getLocalDateString();
+      const yesterday = getYesterdayDateString();
+
+      if (prev.lastActiveDate === today) {
+        if (!prev.activeDates.includes(today)) {
+          const updated: StreakData = {
+            ...prev,
+            activeDates: [...prev.activeDates, today],
+          };
+          AsyncStorage.setItem(STORAGE_KEYS.STREAK, JSON.stringify(updated)).catch(console.error);
+          return updated;
+        }
+        return prev;
+      }
+
+      let newCurrentStreak = 1;
+      if (prev.lastActiveDate === yesterday) {
+        newCurrentStreak = prev.currentStreak + 1;
+      }
+
+      const newBestStreak = Math.max(prev.bestStreak, newCurrentStreak);
+      const newActiveDates = prev.activeDates.includes(today)
+        ? prev.activeDates
+        : [...prev.activeDates, today];
+
+      const newStreak: StreakData = {
+        currentStreak: newCurrentStreak,
+        bestStreak: newBestStreak,
+        lastActiveDate: today,
+        activeDates: newActiveDates,
+      };
+
+      AsyncStorage.setItem(STORAGE_KEYS.STREAK, JSON.stringify(newStreak)).catch(console.error);
+      return newStreak;
+    });
+  };
+
   // Update Last Studied
   const updateLastStudied = (surahNumber: number, ayahNumber: number, audioPos?: number) => {
     const newState: LastStudiedState = {
@@ -124,6 +244,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
 
     // Also record in history
     addToHistory(surahNumber, ayahNumber);
+    recordStreakActivity();
   };
 
   // Add to History
@@ -143,6 +264,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
       AsyncStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(newHistory)).catch(console.error);
       return newHistory;
     });
+    recordStreakActivity();
   };
 
   // Toggle Bookmark
@@ -172,6 +294,9 @@ export function StudyProvider({ children }: { children: ReactNode }) {
 
     setBookmarks(nextBookmarks);
     AsyncStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(nextBookmarks)).catch(console.error);
+    if (!exists) {
+      recordStreakActivity();
+    }
     return !exists;
   };
 
@@ -205,6 +330,9 @@ export function StudyProvider({ children }: { children: ReactNode }) {
 
     setHighlights(nextHighlights);
     AsyncStorage.setItem(STORAGE_KEYS.HIGHLIGHTS, JSON.stringify(nextHighlights)).catch(console.error);
+    if (added) {
+      recordStreakActivity();
+    }
     return added;
   };
 
@@ -243,6 +371,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     const nextNotes = { ...notes, [key]: newNote };
     setNotes(nextNotes);
     AsyncStorage.setItem(STORAGE_KEYS.NOTES, JSON.stringify(nextNotes)).catch(console.error);
+    recordStreakActivity();
   };
 
   const deleteNote = (surahNumber: number, ayahNumber: number) => {
@@ -280,6 +409,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
       highlights,
       notes,
       preferences,
+      streak,
     };
     return JSON.stringify(backup, null, 2);
   };
@@ -293,12 +423,14 @@ export function StudyProvider({ children }: { children: ReactNode }) {
         highlights,
         notes,
         preferences,
+        streak,
         hasOnboarded,
         isLoaded,
         completeOnboarding,
         resetOnboarding,
         updateLastStudied,
         addToHistory,
+        recordStreakActivity,
         toggleBookmark,
         isBookmarked,
         removeBookmark,
