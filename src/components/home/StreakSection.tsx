@@ -222,7 +222,7 @@ export const StreakSection = React.memo(function StreakSection() {
             <View
               style={[
                 styles.progressFill,
-                { width: `${milestoneProgress}%`, backgroundColor: theme.primary },
+                { width: `${milestoneProgress}%`, backgroundColor: theme.tertiary },
               ]}
             />
           </View>

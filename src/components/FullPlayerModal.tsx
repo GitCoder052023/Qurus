@@ -165,7 +165,7 @@ export function FullPlayerModal() {
               style={[
                 styles.headerBtn,
                 { backgroundColor: theme.chipBg },
-                bookmarked && { backgroundColor: theme.accentGold + '20' },
+                bookmarked && { backgroundColor: theme.secondaryMuted },
               ]}
             >
               <Ionicons
@@ -337,8 +337,8 @@ export function FullPlayerModal() {
               >
                 <View style={styles.reflectionHeader}>
                   <View style={styles.reflectionHeaderLeft}>
-                    <Ionicons name="document-text" size={13} color={theme.primary} />
-                    <Text style={[styles.reflectionTitle, { color: theme.primary }]}>Your Reflection</Text>
+                    <Ionicons name="document-text" size={13} color={theme.noteAccent} />
+                    <Text style={[styles.reflectionTitle, { color: theme.noteAccent }]}>Your Reflection</Text>
                   </View>
                   <Ionicons name="pencil" size={12} color={theme.textTertiary} />
                 </View>
@@ -360,8 +360,8 @@ export function FullPlayerModal() {
               style={[
                 styles.studyActionBtn,
                 {
-                  backgroundColor: bookmarked ? theme.accentGold + '18' : theme.chipBg,
-                  borderColor: bookmarked ? theme.accentGold + '50' : theme.borderSubtle,
+                  backgroundColor: bookmarked ? theme.secondaryMuted : theme.chipBg,
+                  borderColor: bookmarked ? theme.secondary : theme.borderSubtle,
                 },
               ]}
               hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
@@ -389,8 +389,8 @@ export function FullPlayerModal() {
               style={[
                 styles.studyActionBtn,
                 {
-                  backgroundColor: highlighted ? theme.accentGold + '18' : theme.chipBg,
-                  borderColor: highlighted ? theme.accentGold + '50' : theme.borderSubtle,
+                  backgroundColor: highlighted ? theme.tertiaryMuted : theme.chipBg,
+                  borderColor: highlighted ? theme.tertiary : theme.borderSubtle,
                 },
               ]}
               hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
@@ -418,8 +418,8 @@ export function FullPlayerModal() {
               style={[
                 styles.studyActionBtn,
                 {
-                  backgroundColor: currentNote ? theme.primaryMuted : theme.chipBg,
-                  borderColor: currentNote ? theme.primary + '50' : theme.borderSubtle,
+                  backgroundColor: currentNote ? theme.noteMuted : theme.chipBg,
+                  borderColor: currentNote ? theme.noteAccent : theme.borderSubtle,
                 },
               ]}
               hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
@@ -428,12 +428,12 @@ export function FullPlayerModal() {
               <Ionicons
                 name={currentNote ? 'document-text' : 'create-outline'}
                 size={16}
-                color={currentNote ? theme.primary : theme.textSecondary}
+                color={currentNote ? theme.noteAccent : theme.textSecondary}
               />
               <Text
                 style={[
                   styles.studyActionText,
-                  { color: currentNote ? theme.primary : theme.textSecondary },
+                  { color: currentNote ? theme.noteAccent : theme.textSecondary },
                   currentNote && { fontWeight: '700' },
                 ]}
               >

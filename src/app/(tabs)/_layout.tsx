@@ -58,8 +58,8 @@ export default function TabLayout() {
           title: 'Saved',
           tabBarBadge: bookmarkCount > 0 ? bookmarkCount : undefined,
           tabBarBadgeStyle: {
-            backgroundColor: theme.primary,
-            color: theme.onPrimary,
+            backgroundColor: theme.secondary,
+            color: '#FFFFFF',
             fontSize: 9,
             fontWeight: '600',
           },
@@ -78,8 +78,8 @@ export default function TabLayout() {
           title: 'Notes',
           tabBarBadge: noteCount > 0 ? noteCount : undefined,
           tabBarBadgeStyle: {
-            backgroundColor: theme.primary,
-            color: theme.onPrimary,
+            backgroundColor: theme.noteAccent,
+            color: '#FFFFFF',
             fontSize: 9,
             fontWeight: '600',
           },

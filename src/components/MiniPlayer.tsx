@@ -267,7 +267,7 @@ export function MiniPlayer() {
             onPress={handleBookmarkPress}
             style={[
               styles.studyStripItem,
-              bookmarked && { backgroundColor: theme.accentGold + '15' },
+              bookmarked && { backgroundColor: theme.secondaryMuted },
             ]}
             hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
             accessibilityLabel={bookmarked ? 'Saved to bookmarks' : 'Bookmark Ayah'}
@@ -295,7 +295,7 @@ export function MiniPlayer() {
             onPress={handleHighlightPress}
             style={[
               styles.studyStripItem,
-              highlighted && { backgroundColor: theme.accentGold + '15' },
+              highlighted && { backgroundColor: theme.tertiaryMuted },
             ]}
             hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
             accessibilityLabel={highlighted ? 'Marked' : 'Mark Ayah'}
@@ -323,7 +323,7 @@ export function MiniPlayer() {
             onPress={handleNotePress}
             style={[
               styles.studyStripItem,
-              currentNote && { backgroundColor: theme.primaryMuted },
+              currentNote && { backgroundColor: theme.noteMuted },
             ]}
             hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
             accessibilityLabel={currentNote ? 'View / Edit Note' : 'Add Note'}
@@ -331,12 +331,12 @@ export function MiniPlayer() {
             <Ionicons
               name={currentNote ? 'document-text' : 'create-outline'}
               size={13}
-              color={currentNote ? theme.primary : theme.textSecondary}
+              color={currentNote ? theme.noteAccent : theme.textSecondary}
             />
             <Text
               style={[
                 styles.studyStripLabel,
-                { color: currentNote ? theme.primary : theme.textSecondary },
+                { color: currentNote ? theme.noteAccent : theme.textSecondary },
                 currentNote && { fontWeight: '700' },
               ]}
             >

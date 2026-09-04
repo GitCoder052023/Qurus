@@ -64,8 +64,8 @@ export default function BookmarksScreen() {
             <Text style={[styles.surahName, { color: theme.textPrimary }]}>
               {surah ? surah.englishName : `Surah ${item.surahNumber}`}
             </Text>
-            <View style={[styles.ayahBadge, { backgroundColor: theme.primaryMuted }]}>
-              <Text style={[styles.ayahBadgeText, { color: theme.primary }]}>
+            <View style={[styles.ayahBadge, { backgroundColor: theme.secondaryMuted }]}>
+              <Text style={[styles.ayahBadgeText, { color: theme.secondary }]}>
                 {item.surahNumber}:{item.ayahNumber}
               </Text>
             </View>

@@ -80,12 +80,12 @@ export default function NotesScreen() {
             onPress={() => handleOpenNoteInReader(item)}
             style={styles.surahTag}
           >
-            <Ionicons name="journal" size={16} color={theme.primary} />
+            <Ionicons name="journal" size={16} color={theme.noteAccent} />
             <Text style={[styles.surahName, { color: theme.textPrimary }]}>
               {surah ? surah.englishName : `Surah ${item.surahNumber}`}
             </Text>
-            <View style={[styles.ayahBadge, { backgroundColor: theme.primaryMuted }]}>
-              <Text style={[styles.ayahBadgeText, { color: theme.primary }]}>
+            <View style={[styles.ayahBadge, { backgroundColor: theme.noteMuted }]}>
+              <Text style={[styles.ayahBadgeText, { color: theme.noteAccent }]}>
                 {item.surahNumber}:{item.ayahNumber}
               </Text>
             </View>

@@ -145,7 +145,7 @@ export const AyahItem = React.memo(function AyahItem({
         <View style={styles.tagGroup}>
           {highlighted && (
             <View style={[styles.statusTag, { backgroundColor: theme.surface }]}>
-              <Ionicons name="star" size={12} color={theme.accentGold} />
+              <Ionicons name="star" size={12} color={theme.tertiary} />
               <Text style={[styles.statusTagText, { color: theme.textSecondary }]}>Important</Text>
             </View>
           )}
@@ -222,8 +222,8 @@ export const AyahItem = React.memo(function AyahItem({
         >
           <View style={styles.noteHeader}>
             <View style={styles.noteHeaderLeft}>
-              <Ionicons name="document-text" size={14} color={theme.primary} />
-              <Text style={[styles.noteTitle, { color: theme.primary }]}>My Reflection</Text>
+              <Ionicons name="document-text" size={14} color={theme.noteAccent} />
+              <Text style={[styles.noteTitle, { color: theme.noteAccent }]}>My Reflection</Text>
             </View>
             <Ionicons name="pencil" size={13} color={theme.textTertiary} />
           </View>
@@ -289,7 +289,7 @@ export const AyahItem = React.memo(function AyahItem({
           <Ionicons
             name={highlighted ? 'star' : 'star-outline'}
             size={18}
-            color={highlighted ? theme.accentGold : theme.textSecondary}
+            color={highlighted ? theme.tertiary : theme.textSecondary}
           />
           <Text
             style={[
@@ -310,12 +310,12 @@ export const AyahItem = React.memo(function AyahItem({
           <Ionicons
             name={note ? 'document-text' : 'create-outline'}
             size={18}
-            color={note ? theme.primary : theme.textSecondary}
+            color={note ? theme.noteAccent : theme.textSecondary}
           />
           <Text
             style={[
               styles.actionLabel,
-              { color: note ? theme.primary : theme.textSecondary },
+              { color: note ? theme.noteAccent : theme.textSecondary },
             ]}
           >
             {note ? 'Note' : 'Add Note'}

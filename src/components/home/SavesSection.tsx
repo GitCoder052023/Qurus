@@ -33,8 +33,8 @@ export const SavesSection = React.memo(function SavesSection() {
       {/* Section Header */}
       <View style={styles.sectionHeader}>
         <View style={styles.titleRow}>
-          <View style={[styles.iconPill, { backgroundColor: theme.primaryMuted }]}>
-            <Ionicons name="star-outline" size={14} color={theme.primary} />
+          <View style={[styles.iconPill, { backgroundColor: theme.tertiaryMuted }]}>
+            <Ionicons name="star-outline" size={14} color={theme.tertiary} />
           </View>
           <Text style={[styles.sectionTitle, { color: theme.textPrimary }]}>Marked ayahs</Text>
           {totalSaves > 0 && (
@@ -78,12 +78,12 @@ export const SavesSection = React.memo(function SavesSection() {
                 {/* Header row */}
                 <View style={styles.cardHeaderRow}>
                   <View style={styles.surahInfo}>
-                    <Ionicons name="star" size={13} color={theme.accentGold} />
+                    <Ionicons name="star" size={13} color={theme.tertiary} />
                     <Text style={[styles.surahName, { color: theme.textPrimary }]} numberOfLines={1}>
                       {surah ? surah.englishName : `Surah ${item.surahNumber}`}
                     </Text>
-                    <View style={[styles.ayahBadge, { backgroundColor: theme.primaryMuted }]}>
-                      <Text style={[styles.ayahBadgeText, { color: theme.primary }]}>
+                    <View style={[styles.ayahBadge, { backgroundColor: theme.tertiaryMuted }]}>
+                      <Text style={[styles.ayahBadgeText, { color: theme.tertiary }]}>
                         {item.surahNumber}:{item.ayahNumber}
                       </Text>
                     </View>
@@ -136,8 +136,8 @@ export const SavesSection = React.memo(function SavesSection() {
             },
           ]}
         >
-          <View style={[styles.emptyIconWrap, { backgroundColor: theme.primaryMuted }]}>
-            <Ionicons name="star-outline" size={18} color={theme.primary} />
+          <View style={[styles.emptyIconWrap, { backgroundColor: theme.tertiaryMuted }]}>
+            <Ionicons name="star-outline" size={18} color={theme.tertiary} />
           </View>
           <View style={styles.emptyTextCol}>
             <Text style={[styles.emptyTitle, { color: theme.textPrimary }]}>

@@ -37,8 +37,8 @@ export const BookmarksSection = React.memo(function BookmarksSection() {
       {/* Section Header */}
       <View style={styles.sectionHeader}>
         <View style={styles.titleRow}>
-          <View style={[styles.iconPill, { backgroundColor: theme.primaryMuted }]}>
-            <Ionicons name="bookmark" size={14} color={theme.primary} />
+          <View style={[styles.iconPill, { backgroundColor: theme.secondaryMuted }]}>
+            <Ionicons name="bookmark" size={14} color={theme.secondary} />
           </View>
           <Text style={[styles.sectionTitle, { color: theme.textPrimary }]}>Bookmarks</Text>
           {totalBookmarks > 0 && (
@@ -92,8 +92,8 @@ export const BookmarksSection = React.memo(function BookmarksSection() {
                     <Text style={[styles.surahName, { color: theme.textPrimary }]} numberOfLines={1}>
                       {surah ? surah.englishName : `Surah ${item.surahNumber}`}
                     </Text>
-                    <View style={[styles.ayahBadge, { backgroundColor: theme.primaryMuted }]}>
-                      <Text style={[styles.ayahBadgeText, { color: theme.primary }]}>
+                    <View style={[styles.ayahBadge, { backgroundColor: theme.secondaryMuted }]}>
+                      <Text style={[styles.ayahBadgeText, { color: theme.secondary }]}>
                         {item.surahNumber}:{item.ayahNumber}
                       </Text>
                     </View>
@@ -148,7 +148,7 @@ export const BookmarksSection = React.memo(function BookmarksSection() {
             },
           ]}
         >
-          <View style={[styles.emptyIconWrap, { backgroundColor: theme.primaryMuted }]}>
+          <View style={[styles.emptyIconWrap, { backgroundColor: theme.secondaryMuted }]}>
             <Ionicons name="bookmark-outline" size={18} color={theme.bookmarkIcon} />
           </View>
           <View style={styles.emptyTextCol}>

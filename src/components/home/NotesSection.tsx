@@ -42,8 +42,8 @@ export const NotesSection = React.memo(function NotesSection() {
       {/* Section Header */}
       <View style={styles.sectionHeader}>
         <View style={styles.titleRow}>
-          <View style={[styles.iconPill, { backgroundColor: theme.primaryMuted }]}>
-            <Ionicons name="journal-outline" size={14} color={theme.primary} />
+          <View style={[styles.iconPill, { backgroundColor: theme.noteMuted }]}>
+            <Ionicons name="journal-outline" size={14} color={theme.noteAccent} />
           </View>
           <Text style={[styles.sectionTitle, { color: theme.textPrimary }]}>Reflections</Text>
           {totalNotes > 0 && (
@@ -95,8 +95,8 @@ export const NotesSection = React.memo(function NotesSection() {
                     <Text style={[styles.surahName, { color: theme.textPrimary }]} numberOfLines={1}>
                       {surah ? surah.englishName : `Surah ${item.surahNumber}`}
                     </Text>
-                    <View style={[styles.ayahBadge, { backgroundColor: theme.primaryMuted }]}>
-                      <Text style={[styles.ayahBadgeText, { color: theme.primary }]}>
+                    <View style={[styles.ayahBadge, { backgroundColor: theme.noteMuted }]}>
+                      <Text style={[styles.ayahBadgeText, { color: theme.noteAccent }]}>
                         {item.surahNumber}:{item.ayahNumber}
                       </Text>
                     </View>
@@ -147,8 +147,8 @@ export const NotesSection = React.memo(function NotesSection() {
             },
           ]}
         >
-          <View style={[styles.emptyIconWrap, { backgroundColor: theme.primaryMuted }]}>
-            <Ionicons name="create-outline" size={18} color={theme.primary} />
+          <View style={[styles.emptyIconWrap, { backgroundColor: theme.noteMuted }]}>
+            <Ionicons name="create-outline" size={18} color={theme.noteAccent} />
           </View>
           <View style={styles.emptyTextCol}>
             <Text style={[styles.emptyTitle, { color: theme.textPrimary }]}>
