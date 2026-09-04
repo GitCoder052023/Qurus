@@ -2,14 +2,9 @@ import React from 'react';
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../../context/ThemeContext';
-import { useStudyState } from '../../context/StudyContext';
 
 export default function TabLayout() {
   const { theme } = useTheme();
-  const { bookmarks, notes } = useStudyState();
-
-  const bookmarkCount = bookmarks.length;
-  const noteCount = Object.keys(notes).length;
 
   return (
     <Tabs
@@ -56,13 +51,6 @@ export default function TabLayout() {
         name="bookmarks"
         options={{
           title: 'Saved',
-          tabBarBadge: bookmarkCount > 0 ? bookmarkCount : undefined,
-          tabBarBadgeStyle: {
-            backgroundColor: theme.secondary,
-            color: '#FFFFFF',
-            fontSize: 9,
-            fontWeight: '600',
-          },
           tabBarIcon: ({ color, size, focused }) => (
             <Ionicons
               name={focused ? 'bookmark' : 'bookmark-outline'}
@@ -76,13 +64,6 @@ export default function TabLayout() {
         name="notes"
         options={{
           title: 'Notes',
-          tabBarBadge: noteCount > 0 ? noteCount : undefined,
-          tabBarBadgeStyle: {
-            backgroundColor: theme.noteAccent,
-            color: '#FFFFFF',
-            fontSize: 9,
-            fontWeight: '600',
-          },
           tabBarIcon: ({ color, size, focused }) => (
             <Ionicons
               name={focused ? 'journal' : 'journal-outline'}
