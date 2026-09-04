@@ -1,46 +1,46 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
-  Dimensions,
-  Animated,
   ScrollView,
-  Easing,
-  Platform,
   GestureResponderEvent,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import Animated, {
+  Easing,
+  FadeIn,
+  FadeInDown,
+  FadeInUp,
+  FadeOut,
+  interpolate,
+  useAnimatedStyle,
+  useSharedValue,
+  withRepeat,
+  withTiming,
+} from 'react-native-reanimated';
 import { useTheme } from '../context/ThemeContext';
 import { useStudyState } from '../context/StudyContext';
 
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
-
 interface StoryChapter {
   id: string;
-  chapterNumber: number;
-  badge: string;
+  kicker: string;
   heroIcon: keyof typeof Ionicons.glyphMap;
-  accentColor: string;
+  accent: string;
+  wash: string;
   title: string;
   highlightPhrase: string;
   proseParagraphs: string[];
-  quote?: {
-    text: string;
-    author: string;
-  };
+  quote?: { text: string; author: string };
   features?: {
     icon: keyof typeof Ionicons.glyphMap;
     title: string;
     desc: string;
   }[];
-  activities?: {
-    icon: keyof typeof Ionicons.glyphMap;
-    label: string;
-  }[];
+  activities?: { icon: keyof typeof Ionicons.glyphMap; label: string }[];
   founderSignature?: {
     name: string;
     role: string;
@@ -52,11 +52,11 @@ interface StoryChapter {
 const CHAPTERS: StoryChapter[] = [
   {
     id: 'dilemma',
-    chapterNumber: 1,
-    badge: 'CHAPTER 1 • THE HONEST DILEMMA',
+    kicker: 'The dilemma',
     heroIcon: 'phone-portrait-outline',
-    accentColor: '#0E6B5C',
-    title: 'A Question in the Palm of My Hand',
+    accent: '#0E6B5C',
+    wash: '#D8EFE9',
+    title: 'A question in the palm of my hand',
     highlightPhrase: 'Why can’t Allah’s words be as effortless as our daily distractions?',
     proseParagraphs: [
       'To be completely honest with you, I was looking for a way to study and truly understand the Quran from its pure source with translation.',
@@ -65,34 +65,34 @@ const CHAPTERS: StoryChapter[] = [
     ],
     quote: {
       text: '“Why can’t the pure, unadulterated words of Allah be just as accessible, immediate, and frictionless in the palm of our hands as the distractions that consume our hours?”',
-      author: 'Hamdan Khubaib • Creator of Qurus',
+      author: 'Hamdan Khubaib',
     },
   },
   {
     id: 'turning-point',
-    chapterNumber: 2,
-    badge: 'CHAPTER 2 • THE TURNING POINT',
+    kicker: 'The turning point',
     heroIcon: 'chatbubble-ellipses-outline',
-    accentColor: '#0A5850',
-    title: 'The Advice That Changed Everything',
-    highlightPhrase: '“You will find an ayah that sticks with you like a hook in your mind.”',
+    accent: '#C4455A',
+    wash: '#F8E4E8',
+    title: 'The advice that changed everything',
+    highlightPhrase: 'You will find an ayah that sticks with you like a hook in your mind.',
     proseParagraphs: [
       'I was paralyzed because I genuinely had no idea how to study the Quran. Where do you start? How do you make sense of it without getting lost in complexity?',
       'One day, I opened up to my brother about this confusion. His response was so simple, yet it completely dismantled every mental barrier I had built.',
     ],
     quote: {
       text: '“Don’t overthink anything. Just start reading the Quran with its translation. Whatever framework you view the world through—science, philosophy, history, or common sense—you will find an ayah that sticks with you like a hook in your mind.”',
-      author: 'My brother’s advice to me',
+      author: 'My brother’s advice',
     },
   },
   {
     id: 'invitation',
-    chapterNumber: 3,
-    badge: 'CHAPTER 3 • FOUNDER’S NOTE',
-    heroIcon: 'heart-half',
-    accentColor: '#125E54',
-    title: 'Radical Honesty: An Open Invitation',
-    highlightPhrase: '“I’m not here to convert you. I am one of you right now.”',
+    kicker: 'An invitation',
+    heroIcon: 'heart-outline',
+    accent: '#5548A0',
+    wash: '#EAE6F8',
+    title: 'Radical honesty',
+    highlightPhrase: 'I’m not here to convert you. I am one of you right now.',
     proseParagraphs: [
       'No matter who you are reading this—a 15-year-old wrestling with doubts, an atheist, an agnostic, or someone feeling spiritually numb—I genuinely don’t care about labels.',
       'Because to be completely transparent: I am one of you right now. Exactly. I’m not so religious, and I’m definitely not here to lecture or convert you.',
@@ -100,16 +100,16 @@ const CHAPTERS: StoryChapter[] = [
     ],
     quote: {
       text: '“Just give it an honest shot. Don’t worry about labels. Just open an ayah, read the meaning, and let the words speak for themselves.”',
-      author: 'Hamdan’s personal promise',
+      author: 'Hamdan’s promise',
     },
   },
   {
     id: 'sanctuary',
-    chapterNumber: 4,
-    badge: 'CHAPTER 4 • THE SANCTUARY',
+    kicker: 'The sanctuary',
     heroIcon: 'book-outline',
-    accentColor: '#0E6B5C',
-    title: 'The Soul of Qurus: Ayah-Based Study',
+    accent: '#C46B1A',
+    wash: '#F8E8D4',
+    title: 'Ayah-based study',
     highlightPhrase: 'Studying that doesn’t feel like a heavy assignment.',
     proseParagraphs: [
       'That insight became the soul of Qurus. Instead of pressuring you to speed through pages without retaining anything, Qurus gives you an Ayah-based sanctuary built for the modern world:',
@@ -117,163 +117,126 @@ const CHAPTERS: StoryChapter[] = [
     features: [
       {
         icon: 'finger-print-outline',
-        title: 'Work With Individual Ayahs',
-        desc: 'Every single verse stands on its own dignity. Isolate it, repeat it, reflect on it, and let it take root.',
+        title: 'Work with individual ayahs',
+        desc: 'Every verse stands on its own. Isolate it, repeat it, reflect on it, and let it take root.',
       },
       {
         icon: 'journal-outline',
-        title: 'Private Study Notebook',
-        desc: 'Attach personal reflections, questions, and insights directly to verses. Saved privately forever.',
+        title: 'Private notebook',
+        desc: 'Attach reflections, questions, and insights directly to verses. Saved privately.',
       },
       {
         icon: 'musical-notes-outline',
-        title: 'Arabic + Urdu Paired Audio',
-        desc: 'Listen to the pure Arabic recitation immediately followed by the Urdu translation verse by verse.',
+        title: 'Arabic + Urdu audio',
+        desc: 'Arabic recitation followed by Urdu translation, verse by verse.',
       },
     ],
   },
   {
     id: 'motion-purpose',
-    chapterNumber: 5,
-    badge: 'CHAPTER 5 • LIFE IN MOTION',
-    heroIcon: 'infinite-outline',
-    accentColor: '#0E6B5C',
-    title: 'Your Journey Begins Here',
-    highlightPhrase: 'Turning idle moments into tranquil reflection.',
+    kicker: 'Begin',
+    heroIcon: 'leaf-outline',
+    accent: '#0E6B5C',
+    wash: '#D8EFE9',
+    title: 'Your journey starts here',
+    highlightPhrase: 'Turning idle moments into quiet reflection.',
     proseParagraphs: [
-      'We engineered Qurus with Spotify-grade background audio and lockscreen controls so you can listen while moving through life:',
+      'Qurus is built so you can listen while moving through life—gym, commute, traffic, an evening walk.',
     ],
     activities: [
-      { icon: 'barbell-outline', label: 'At the gym lifting weights' },
-      { icon: 'train-outline', label: 'Commuting on the metro' },
-      { icon: 'car-outline', label: 'Driving through traffic' },
-      { icon: 'walk-outline', label: 'Evening walks under the sky' },
+      { icon: 'barbell-outline', label: 'At the gym' },
+      { icon: 'train-outline', label: 'On the metro' },
+      { icon: 'car-outline', label: 'In traffic' },
+      { icon: 'walk-outline', label: 'Evening walks' },
     ],
     founderSignature: {
       name: 'Hamdan Khubaib',
-      role: 'Creator & Developer of Qurus',
+      role: 'Creator of Qurus',
       note: 'If Qurus can help even one person find an ayah that hooks into their heart, sparks their curiosity, and bridges modern life with the Divine book, every line of code has fulfilled its purpose.',
       dua: 'May Allah bless your study, grant you deep clarity, and make His words a steadfast light in your life.',
     },
   },
 ];
 
+const EASE = Easing.bezier(0.22, 1, 0.36, 1);
+
 export default function OnboardingScreen() {
   const { theme } = useTheme();
   const { completeOnboarding } = useStudyState();
   const router = useRouter();
 
-  const [currentChapterIndex, setCurrentChapterIndex] = useState(0);
-  const currentChapter = CHAPTERS[currentChapterIndex];
+  const [index, setIndex] = useState(0);
+  const chapter = CHAPTERS[index];
+  const isLast = index === CHAPTERS.length - 1;
 
-  // Animation values for butter-smooth storytelling transitions
-  const fadeAnim = useRef(new Animated.Value(1)).current;
-  const slideAnim = useRef(new Animated.Value(0)).current;
-  const scaleAnim = useRef(new Animated.Value(1)).current;
-  const pulseAnim = useRef(new Animated.Value(1)).current;
+  const progress = useSharedValue(1 / CHAPTERS.length);
+  const trackWidth = useSharedValue(1);
+  const breathe = useSharedValue(0);
+  const orbDrift = useSharedValue(0);
 
-  // Ambient breathing pulse for hero icon
   useEffect(() => {
-    const pulseLoop = Animated.loop(
-      Animated.sequence([
-        Animated.timing(pulseAnim, {
-          toValue: 1.08,
-          duration: 1800,
-          easing: Easing.inOut(Easing.ease),
-          useNativeDriver: true,
-        }),
-        Animated.timing(pulseAnim, {
-          toValue: 1.0,
-          duration: 1800,
-          easing: Easing.inOut(Easing.ease),
-          useNativeDriver: true,
-        }),
-      ])
+    progress.value = withTiming((index + 1) / CHAPTERS.length, {
+      duration: 520,
+      easing: EASE,
+    });
+  }, [index, progress]);
+
+  useEffect(() => {
+    breathe.value = withRepeat(
+      withTiming(1, { duration: 4200, easing: Easing.inOut(Easing.sin) }),
+      -1,
+      true
     );
-    pulseLoop.start();
-    return () => pulseLoop.stop();
-  }, [pulseAnim]);
+    orbDrift.value = withRepeat(
+      withTiming(1, { duration: 9000, easing: Easing.inOut(Easing.sin) }),
+      -1,
+      true
+    );
+  }, [breathe, orbDrift]);
 
-  // Butter-smooth transition to a specific chapter index
-  const goToChapter = useCallback(
-    (targetIndex: number) => {
-      if (targetIndex < 0 || targetIndex >= CHAPTERS.length) return;
+  const progressStyle = useAnimatedStyle(() => ({
+    width: progress.value * trackWidth.value,
+  }));
 
-      // Animate out
-      Animated.parallel([
-        Animated.timing(fadeAnim, {
-          toValue: 0,
-          duration: 150,
-          easing: Easing.out(Easing.cubic),
-          useNativeDriver: true,
-        }),
-        Animated.timing(slideAnim, {
-          toValue: targetIndex > currentChapterIndex ? -20 : 20,
-          duration: 150,
-          easing: Easing.out(Easing.cubic),
-          useNativeDriver: true,
-        }),
-        Animated.timing(scaleAnim, {
-          toValue: 0.96,
-          duration: 150,
-          useNativeDriver: true,
-        }),
-      ]).start(() => {
-        // Change state
-        setCurrentChapterIndex(targetIndex);
-        slideAnim.setValue(targetIndex > currentChapterIndex ? 20 : -20);
+  const breatheStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: interpolate(breathe.value, [0, 1], [1, 1.08]) }],
+    opacity: interpolate(breathe.value, [0, 1], [0.55, 0.9]),
+  }));
 
-        // Animate in
-        Animated.parallel([
-          Animated.timing(fadeAnim, {
-            toValue: 1,
-            duration: 260,
-            easing: Easing.out(Easing.cubic),
-            useNativeDriver: true,
-          }),
-          Animated.timing(slideAnim, {
-            toValue: 0,
-            duration: 260,
-            easing: Easing.out(Easing.cubic),
-            useNativeDriver: true,
-          }),
-          Animated.timing(scaleAnim, {
-            toValue: 1.0,
-            duration: 260,
-            easing: Easing.out(Easing.cubic),
-            useNativeDriver: true,
-          }),
-        ]).start();
-      });
-    },
-    [currentChapterIndex, fadeAnim, slideAnim, scaleAnim]
-  );
+  const orbAStyle = useAnimatedStyle(() => ({
+    transform: [
+      { translateX: interpolate(orbDrift.value, [0, 1], [-18, 22]) },
+      { translateY: interpolate(orbDrift.value, [0, 1], [8, -16]) },
+      { scale: interpolate(orbDrift.value, [0, 1], [1, 1.12]) },
+    ],
+  }));
+
+  const orbBStyle = useAnimatedStyle(() => ({
+    transform: [
+      { translateX: interpolate(orbDrift.value, [0, 1], [16, -12]) },
+      { translateY: interpolate(orbDrift.value, [0, 1], [-10, 14]) },
+      { scale: interpolate(orbDrift.value, [0, 1], [1.05, 0.92]) },
+    ],
+  }));
+
+  const goTo = useCallback((next: number) => {
+    if (next < 0 || next >= CHAPTERS.length) return;
+    setIndex(next);
+  }, []);
+
+  const finish = useCallback(async () => {
+    await completeOnboarding();
+    router.replace('/(tabs)');
+  }, [completeOnboarding, router]);
 
   const handleNext = () => {
-    if (currentChapterIndex < CHAPTERS.length - 1) {
-      goToChapter(currentChapterIndex + 1);
+    if (isLast) {
+      finish();
     } else {
-      handleComplete();
+      goTo(index + 1);
     }
   };
 
-  const handlePrev = () => {
-    if (currentChapterIndex > 0) {
-      goToChapter(currentChapterIndex - 1);
-    }
-  };
-
-  const handleComplete = async () => {
-    await completeOnboarding();
-    router.replace('/(tabs)');
-  };
-
-  const handleStartDirectStudy = async () => {
-    await completeOnboarding();
-    router.replace('/(tabs)');
-  };
-
-  // Screen horizontal touch/swipe navigation
   const touchStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
 
   const handleTouchStart = (e: GestureResponderEvent) => {
@@ -290,750 +253,453 @@ export default function OnboardingScreen() {
     const deltaY = e.nativeEvent.pageY - touchStartRef.current.y;
     const deltaTime = Date.now() - touchStartRef.current.time;
     touchStartRef.current = null;
-
-    // Horizontal swipe detection
-    if (Math.abs(deltaX) > 45 && Math.abs(deltaY) < 40 && deltaTime < 500) {
-      if (deltaX < 0) {
-        handleNext();
-      } else {
-        handlePrev();
-      }
+    if (Math.abs(deltaX) > 48 && Math.abs(deltaY) < 42 && deltaTime < 520) {
+      if (deltaX < 0) handleNext();
+      else goTo(index - 1);
     }
   };
 
-  const isFinalChapter = currentChapterIndex === CHAPTERS.length - 1;
+  const stepLabel = String(index + 1).padStart(2, '0');
 
   return (
-    <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
-      {/* Top Bar: Segmented Story Progress Bars (Instagram/Spotify Story style) */}
-      <View style={styles.topSection}>
-        <View style={styles.segmentedProgressRow}>
-          {CHAPTERS.map((ch, idx) => {
-            const isCompleted = idx < currentChapterIndex;
-            const isCurrent = idx === currentChapterIndex;
-            return (
-              <TouchableOpacity
-                key={ch.id}
-                onPress={() => goToChapter(idx)}
-                style={styles.segmentTouchable}
-                activeOpacity={0.7}
-                hitSlop={{ top: 10, bottom: 10, left: 2, right: 2 }}
-              >
-                <View
-                  style={[
-                    styles.segmentBar,
-                    {
-                      backgroundColor: isCompleted
-                        ? currentChapter.accentColor
-                        : isCurrent
-                        ? currentChapter.accentColor
-                        : theme.surfaceHighlight,
-                      opacity: isCompleted ? 0.75 : isCurrent ? 1 : 0.45,
-                    },
-                  ]}
-                />
-              </TouchableOpacity>
-            );
-          })}
-        </View>
+    <View style={[styles.root, { backgroundColor: theme.background }]}>
+      <Animated.View
+        pointerEvents="none"
+        style={[styles.orb, styles.orbA, { backgroundColor: chapter.wash }, orbAStyle]}
+      />
+      <Animated.View
+        pointerEvents="none"
+        style={[styles.orb, styles.orbB, { backgroundColor: chapter.accent + '22' }, orbBStyle]}
+      />
 
-        {/* Brand & Skip Header */}
-        <View style={styles.headerNavRow}>
-          <View style={styles.brandGroup}>
-            <View
-              style={[
-                styles.brandDot,
-                { backgroundColor: currentChapter.accentColor, shadowColor: currentChapter.accentColor },
-              ]}
-            />
-            <Text style={[styles.brandTitle, { color: theme.textPrimary }]}>Qurus</Text>
-            <View
-              style={[
-                styles.chapterPill,
-                { backgroundColor: currentChapter.accentColor + '18' },
-              ]}
-            >
-              <Text style={[styles.chapterPillText, { color: currentChapter.accentColor }]}>
-                {currentChapterIndex + 1}/{CHAPTERS.length}
-              </Text>
-            </View>
-          </View>
-
-          <TouchableOpacity
-            onPress={handleComplete}
-            style={[styles.skipButton, { backgroundColor: theme.chipBg }]}
-            hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
-            accessibilityLabel="Skip intro story"
-          >
-            <Text style={[styles.skipButtonText, { color: theme.textSecondary }]}>Skip</Text>
+      <SafeAreaView style={styles.safe} edges={['top', 'left', 'right']}>
+        <View style={styles.topBar}>
+          <Text style={[styles.wordmark, { color: theme.textPrimary }]}>Qurus</Text>
+          <TouchableOpacity onPress={finish} hitSlop={12} accessibilityLabel="Skip intro">
+            <Text style={[styles.skip, { color: theme.textTertiary }]}>Skip</Text>
           </TouchableOpacity>
         </View>
-      </View>
 
-      {/* Main Story Content Container with Gestures */}
-      <View
-        style={styles.storyCanvas}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        <ScrollView
-          style={styles.scrollCanvas}
-          contentContainerStyle={styles.scrollCanvasContent}
-          showsVerticalScrollIndicator={false}
-          bounces={false}
+        <View
+          style={[styles.track, { backgroundColor: theme.surfaceHighlight }]}
+          onLayout={(e) => {
+            trackWidth.value = e.nativeEvent.layout.width;
+          }}
         >
           <Animated.View
-            style={[
-              styles.animatedSlide,
-              {
-                opacity: fadeAnim,
-                transform: [{ translateY: slideAnim }, { scale: scaleAnim }],
-              },
-            ]}
-          >
-            {/* Hero Icon with Breathing Ambient Glow */}
-            <View style={styles.heroIconWrapper}>
-              <Animated.View
-                style={[
-                  styles.heroGlowRing,
-                  {
-                    backgroundColor: currentChapter.accentColor + '12',
-                    borderColor: currentChapter.accentColor + '30',
-                    transform: [{ scale: pulseAnim }],
-                  },
-                ]}
-              />
-              <View
-                style={[
-                  styles.heroIconInner,
-                  {
-                    backgroundColor: currentChapter.accentColor + '20',
-                    borderColor: currentChapter.accentColor + '50',
-                  },
-                ]}
-              >
-                <Ionicons
-                  name={currentChapter.heroIcon}
-                  size={36}
-                  color={currentChapter.accentColor}
-                />
-              </View>
-            </View>
-
-            {/* Chapter Badge */}
-            <View
-              style={[
-                styles.badgeChip,
-                {
-                  backgroundColor: currentChapter.accentColor + '16',
-                  borderColor: currentChapter.accentColor + '35',
-                },
-              ]}
-            >
-              <Text style={[styles.badgeChipText, { color: currentChapter.accentColor }]}>
-                {currentChapter.badge}
-              </Text>
-            </View>
-
-            {/* Headline */}
-            <Text style={[styles.chapterTitle, { color: theme.textPrimary }]}>
-              {currentChapter.title}
-            </Text>
-
-            {/* Highlight Phrase */}
-            <Text
-              style={[
-                styles.highlightPhrase,
-                {
-                  color: currentChapter.accentColor,
-                  borderLeftColor: currentChapter.accentColor,
-                },
-              ]}
-            >
-              {currentChapter.highlightPhrase}
-            </Text>
-
-            {/* Narrative Prose */}
-            <View style={styles.proseGroup}>
-              {currentChapter.proseParagraphs.map((para, pIdx) => (
-                <Text
-                  key={pIdx}
-                  style={[styles.proseText, { color: theme.textSecondary }]}
-                >
-                  {para}
-                </Text>
-              ))}
-            </View>
-
-            {/* Quote Card (if present) */}
-            {currentChapter.quote && (
-              <View
-                style={[
-                  styles.quoteCard,
-                  {
-                    backgroundColor: theme.cardElevated,
-                    borderLeftColor: currentChapter.accentColor,
-                    borderColor: theme.borderSubtle,
-                  },
-                ]}
-              >
-                <View style={styles.quoteIconHeader}>
-                  <Ionicons
-                    name="chatbubble-ellipses-outline"
-                    size={20}
-                    color={currentChapter.accentColor}
-                  />
-                  <Text
-                    style={[styles.quoteAuthorText, { color: currentChapter.accentColor }]}
-                  >
-                    {currentChapter.quote.author}
-                  </Text>
-                </View>
-                <Text style={[styles.quoteBodyText, { color: theme.textPrimary }]}>
-                  {currentChapter.quote.text}
-                </Text>
-              </View>
-            )}
-
-            {/* Feature Cards (Chapter 4: The Architecture) */}
-            {currentChapter.features && (
-              <View style={styles.featuresStack}>
-                {currentChapter.features.map((feat, fIdx) => (
-                  <View
-                    key={fIdx}
-                    style={[
-                      styles.featurePill,
-                      {
-                        backgroundColor: theme.cardElevated,
-                        borderColor: theme.borderSubtle,
-                      },
-                    ]}
-                  >
-                    <View
-                      style={[
-                        styles.featureIconContainer,
-                        { backgroundColor: currentChapter.accentColor + '18' },
-                      ]}
-                    >
-                      <Ionicons
-                        name={feat.icon}
-                        size={20}
-                        color={currentChapter.accentColor}
-                      />
-                    </View>
-                    <View style={styles.featureTextContainer}>
-                      <Text style={[styles.featureTitle, { color: theme.textPrimary }]}>
-                        {feat.title}
-                      </Text>
-                      <Text
-                        style={[styles.featureDesc, { color: theme.textSecondary }]}
-                      >
-                        {feat.desc}
-                      </Text>
-                    </View>
-                  </View>
-                ))}
-              </View>
-            )}
-
-            {/* Activity Chips (Chapter 5: Life in Motion) */}
-            {currentChapter.activities && (
-              <View style={styles.activitiesContainer}>
-                <Text style={[styles.activitiesHeader, { color: theme.textTertiary }]}>
-                  DESIGNED FOR YOUR DAILY RHYTHM
-                </Text>
-                <View style={styles.activitiesGrid}>
-                  {currentChapter.activities.map((act, aIdx) => (
-                    <View
-                      key={aIdx}
-                      style={[
-                        styles.activityPill,
-                        {
-                          backgroundColor: theme.cardElevated,
-                          borderColor: theme.borderSubtle,
-                        },
-                      ]}
-                    >
-                      <Ionicons
-                        name={act.icon}
-                        size={17}
-                        color={currentChapter.accentColor}
-                      />
-                      <Text
-                        style={[styles.activityPillText, { color: theme.textPrimary }]}
-                      >
-                        {act.label}
-                      </Text>
-                    </View>
-                  ))}
-                </View>
-              </View>
-            )}
-
-            {/* Founder's Signature & Dedication Card (Chapter 5) */}
-            {currentChapter.founderSignature && (
-              <View
-                style={[
-                  styles.founderCard,
-                  {
-                    backgroundColor: theme.cardElevated,
-                    borderColor: currentChapter.accentColor + '40',
-                  },
-                ]}
-              >
-                <View style={styles.founderTopRow}>
-                  <View
-                    style={[
-                      styles.founderAvatarCircle,
-                      { backgroundColor: currentChapter.accentColor },
-                    ]}
-                  >
-                    <Text style={[styles.founderAvatarLetter, { color: theme.onPrimary }]}>H</Text>
-                  </View>
-                  <View>
-                    <Text style={[styles.founderName, { color: theme.textPrimary }]}>
-                      {currentChapter.founderSignature.name}
-                    </Text>
-                    <Text
-                      style={[styles.founderRole, { color: theme.textTertiary }]}
-                    >
-                      {currentChapter.founderSignature.role}
-                    </Text>
-                  </View>
-                </View>
-
-                <Text style={[styles.founderNoteText, { color: theme.textPrimary }]}>
-                  {currentChapter.founderSignature.note}
-                </Text>
-
-                <View
-                  style={[
-                    styles.founderDivider,
-                    { backgroundColor: theme.borderSubtle },
-                  ]}
-                />
-
-                <Text style={[styles.founderDuaText, { color: currentChapter.accentColor }]}>
-                  {currentChapter.founderSignature.dua}
-                </Text>
-              </View>
-            )}
-          </Animated.View>
-        </ScrollView>
-      </View>
-
-      {/* Bottom Floating Navigation Dock */}
-      <View
-        style={[
-          styles.bottomDock,
-          {
-            backgroundColor: theme.background,
-            borderTopColor: theme.borderSubtle,
-          },
-        ]}
-      >
-        {/* Back Step Button */}
-        {currentChapterIndex > 0 ? (
-          <TouchableOpacity
-            onPress={handlePrev}
-            style={[styles.prevButton, { backgroundColor: theme.chipBg }]}
-            hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
-            accessibilityLabel="Previous chapter"
-          >
-            <Ionicons name="chevron-back" size={20} color={theme.textPrimary} />
-          </TouchableOpacity>
-        ) : (
-          <View style={styles.prevPlaceholder} />
-        )}
-
-        {/* Dots Counter */}
-        <View style={styles.dotsGroup}>
-          {CHAPTERS.map((_, dotIdx) => {
-            const isActive = dotIdx === currentChapterIndex;
-            return (
-              <TouchableOpacity
-                key={dotIdx}
-                onPress={() => goToChapter(dotIdx)}
-                hitSlop={{ top: 8, bottom: 8, left: 4, right: 4 }}
-              >
-                <View
-                  style={[
-                    styles.dotIndicator,
-                    {
-                      width: isActive ? 20 : 6,
-                      backgroundColor: isActive
-                        ? currentChapter.accentColor
-                        : theme.surfaceHighlight,
-                    },
-                  ]}
-                />
-              </TouchableOpacity>
-            );
-          })}
+            style={[styles.trackFill, { backgroundColor: chapter.accent }, progressStyle]}
+          />
         </View>
 
-        {/* Primary Action Button */}
-        {isFinalChapter ? (
-          <TouchableOpacity
-            onPress={handleStartDirectStudy}
-            activeOpacity={0.88}
-            style={[
-              styles.primaryActionBtn,
-              {
-                backgroundColor: currentChapter.accentColor,
-                shadowColor: currentChapter.accentColor,
-              },
-            ]}
-            accessibilityLabel="Begin Quran study"
+        <View
+          style={styles.canvas}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles.scroll}
+            bounces={false}
           >
-            <Text style={[styles.primaryActionText, { color: theme.onPrimary }]}>Begin study</Text>
-            <Ionicons name="arrow-forward" size={18} color={theme.onPrimary} />
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            onPress={handleNext}
-            activeOpacity={0.88}
-            style={[
-              styles.primaryActionBtn,
-              {
-                backgroundColor: currentChapter.accentColor,
-                shadowColor: currentChapter.accentColor,
-              },
-            ]}
-            accessibilityLabel="Next chapter"
-          >
-            <Text style={[styles.primaryActionText, { color: theme.onPrimary }]}>Continue</Text>
-            <Ionicons name="arrow-forward" size={17} color={theme.onPrimary} />
-          </TouchableOpacity>
-        )}
-      </View>
-    </SafeAreaView>
+            <Animated.View
+              key={chapter.id}
+              entering={FadeInDown.duration(520).easing(EASE)}
+              exiting={FadeOut.duration(160)}
+            >
+              <View style={styles.stepRow}>
+                <Animated.View
+                  style={[
+                    styles.iconDisc,
+                    { backgroundColor: chapter.wash },
+                    breatheStyle,
+                  ]}
+                >
+                  <Ionicons name={chapter.heroIcon} size={22} color={chapter.accent} />
+                </Animated.View>
+                <Text style={[styles.stepNum, { color: chapter.accent }]}>{stepLabel}</Text>
+                <Text style={[styles.kicker, { color: theme.textTertiary }]}>{chapter.kicker}</Text>
+              </View>
+
+              <Text style={[styles.title, { color: theme.textPrimary }]}>{chapter.title}</Text>
+
+              <Text style={[styles.highlight, { color: chapter.accent }]}>
+                {chapter.highlightPhrase}
+              </Text>
+
+              <View style={styles.prose}>
+                {chapter.proseParagraphs.map((para) => (
+                  <Text key={para.slice(0, 24)} style={[styles.body, { color: theme.textSecondary }]}>
+                    {para}
+                  </Text>
+                ))}
+              </View>
+
+              {chapter.quote ? (
+                <Animated.View
+                  entering={FadeIn.delay(120).duration(480)}
+                  style={[
+                    styles.quote,
+                    { backgroundColor: theme.card, borderColor: chapter.wash },
+                  ]}
+                >
+                  <Text style={[styles.quoteText, { color: theme.textPrimary }]}>
+                    {chapter.quote.text}
+                  </Text>
+                  <Text style={[styles.quoteAuthor, { color: chapter.accent }]}>
+                    {chapter.quote.author}
+                  </Text>
+                </Animated.View>
+              ) : null}
+
+              {chapter.features ? (
+                <View style={styles.stack}>
+                  {chapter.features.map((feat, i) => (
+                    <Animated.View
+                      key={feat.title}
+                      entering={FadeInUp.delay(80 * i).duration(420).easing(EASE)}
+                      style={[
+                        styles.feature,
+                        { backgroundColor: theme.card, borderColor: theme.borderSubtle },
+                      ]}
+                    >
+                      <View style={[styles.featureIcon, { backgroundColor: chapter.wash }]}>
+                        <Ionicons name={feat.icon} size={18} color={chapter.accent} />
+                      </View>
+                      <View style={styles.featureCopy}>
+                        <Text style={[styles.featureTitle, { color: theme.textPrimary }]}>
+                          {feat.title}
+                        </Text>
+                        <Text style={[styles.featureDesc, { color: theme.textSecondary }]}>
+                          {feat.desc}
+                        </Text>
+                      </View>
+                    </Animated.View>
+                  ))}
+                </View>
+              ) : null}
+
+              {chapter.activities ? (
+                <View style={styles.activityWrap}>
+                  {chapter.activities.map((act, i) => (
+                    <Animated.View
+                      key={act.label}
+                      entering={FadeInUp.delay(60 * i).duration(380).easing(EASE)}
+                      style={[styles.activity, { backgroundColor: chapter.wash }]}
+                    >
+                      <Ionicons name={act.icon} size={16} color={chapter.accent} />
+                      <Text style={[styles.activityLabel, { color: theme.textPrimary }]}>
+                        {act.label}
+                      </Text>
+                    </Animated.View>
+                  ))}
+                </View>
+              ) : null}
+
+              {chapter.founderSignature ? (
+                <Animated.View
+                  entering={FadeInUp.delay(160).duration(480).easing(EASE)}
+                  style={[
+                    styles.founder,
+                    { backgroundColor: theme.card, borderColor: theme.borderSubtle },
+                  ]}
+                >
+                  <View style={styles.founderRow}>
+                    <View style={[styles.avatar, { backgroundColor: chapter.accent }]}>
+                      <Text style={styles.avatarLetter}>H</Text>
+                    </View>
+                    <View>
+                      <Text style={[styles.founderName, { color: theme.textPrimary }]}>
+                        {chapter.founderSignature.name}
+                      </Text>
+                      <Text style={[styles.founderRole, { color: theme.textTertiary }]}>
+                        {chapter.founderSignature.role}
+                      </Text>
+                    </View>
+                  </View>
+                  <Text style={[styles.founderNote, { color: theme.textSecondary }]}>
+                    {chapter.founderSignature.note}
+                  </Text>
+                  <Text style={[styles.founderDua, { color: chapter.accent }]}>
+                    {chapter.founderSignature.dua}
+                  </Text>
+                </Animated.View>
+              ) : null}
+            </Animated.View>
+          </ScrollView>
+        </View>
+
+        <SafeAreaView edges={['bottom']} style={styles.dock}>
+          <View style={styles.dockRow}>
+            <TouchableOpacity
+              onPress={() => goTo(index - 1)}
+              disabled={index === 0}
+              style={[
+                styles.backBtn,
+                {
+                  backgroundColor: theme.chipBg,
+                  opacity: index === 0 ? 0 : 1,
+                },
+              ]}
+              accessibilityLabel="Previous"
+            >
+              <Ionicons name="chevron-back" size={20} color={theme.textPrimary} />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={handleNext}
+              activeOpacity={0.88}
+              style={[styles.nextBtn, { backgroundColor: chapter.accent }]}
+              accessibilityLabel={isLast ? 'Begin study' : 'Continue'}
+            >
+              <Text style={styles.nextLabel}>{isLast ? 'Begin study' : 'Continue'}</Text>
+              <Ionicons name="arrow-forward" size={18} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
+        </SafeAreaView>
+      </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
+  root: {
+    flex: 1,
+    overflow: 'hidden',
+  },
+  safe: {
     flex: 1,
   },
-  topSection: {
-    paddingHorizontal: 18,
-    paddingTop: 8,
-    paddingBottom: 4,
+  orb: {
+    position: 'absolute',
+    borderRadius: 999,
   },
-  segmentedProgressRow: {
-    flexDirection: 'row',
-    gap: 6,
-    marginBottom: 10,
+  orbA: {
+    width: 280,
+    height: 280,
+    top: -80,
+    right: -90,
   },
-  segmentTouchable: {
-    flex: 1,
-    paddingVertical: 4,
+  orbB: {
+    width: 220,
+    height: 220,
+    bottom: 120,
+    left: -100,
   },
-  segmentBar: {
-    height: 3.5,
-    borderRadius: 2,
-  },
-  headerNavRow: {
+  topBar: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 4,
+    paddingHorizontal: 24,
+    paddingTop: 6,
+    paddingBottom: 14,
   },
-  brandGroup: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  brandDot: {
-    width: 9,
-    height: 9,
-    borderRadius: 4.5,
-    elevation: 0,
-    shadowOpacity: 0,
-  },
-  brandTitle: {
-    fontSize: 18,
+  wordmark: {
+    fontSize: 20,
     fontWeight: '600',
-    letterSpacing: -0.4,
+    letterSpacing: -0.6,
   },
-  chapterPill: {
-    paddingHorizontal: 8,
-    paddingVertical: 2,
-    borderRadius: 10,
-    marginLeft: 4,
-  },
-  chapterPillText: {
-    fontSize: 11,
-    fontWeight: '600',
-  },
-  skipButton: {
-    paddingHorizontal: 14,
-    paddingVertical: 6,
-    borderRadius: 14,
-  },
-  skipButtonText: {
-    fontSize: 12.5,
-    fontWeight: '600',
-  },
-  storyCanvas: {
-    flex: 1,
-  },
-  scrollCanvas: {
-    flex: 1,
-  },
-  scrollCanvasContent: {
-    paddingHorizontal: 22,
-    paddingTop: 12,
-    paddingBottom: 30,
-  },
-  animatedSlide: {
-    width: '100%',
-  },
-  heroIconWrapper: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: 14,
-    position: 'relative',
-    height: 96,
-  },
-  heroGlowRing: {
-    position: 'absolute',
-    width: 92,
-    height: 92,
-    borderRadius: 46,
-    borderWidth: 1,
-  },
-  heroIconInner: {
-    width: 72,
-    height: 72,
-    borderRadius: 36,
-    borderWidth: 1.5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 6,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 8,
-  },
-  badgeChip: {
-    alignSelf: 'center',
-    paddingHorizontal: 12,
-    paddingVertical: 4.5,
-    borderRadius: 12,
-    borderWidth: 1,
-    marginBottom: 12,
-  },
-  badgeChipText: {
-    fontSize: 10.5,
-    fontWeight: '600',
-    letterSpacing: 0.8,
-  },
-  chapterTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    letterSpacing: -0.5,
-    lineHeight: 31,
-    textAlign: 'center',
-    marginBottom: 10,
-  },
-  highlightPhrase: {
-    fontSize: 14.5,
-    lineHeight: 22,
-    fontWeight: '600',
-    fontStyle: 'italic',
-    textAlign: 'center',
-    marginBottom: 16,
-    paddingHorizontal: 12,
-  },
-  proseGroup: {
-    gap: 10,
-    marginBottom: 16,
-  },
-  proseText: {
-    fontSize: 14.5,
-    lineHeight: 23,
-    letterSpacing: -0.1,
-  },
-  quoteCard: {
-    borderRadius: 16,
-    borderWidth: 1,
-    borderLeftWidth: 4,
-    padding: 16,
-    marginVertical: 10,
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 6,
-  },
-  quoteIconHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    marginBottom: 8,
-  },
-  quoteAuthorText: {
-    fontSize: 12,
-    fontWeight: '700',
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
-  },
-  quoteBodyText: {
-    fontSize: 14.5,
-    lineHeight: 23,
-    fontStyle: 'italic',
+  skip: {
+    fontSize: 15,
     fontWeight: '500',
   },
-  featuresStack: {
-    gap: 10,
-    marginVertical: 8,
+  track: {
+    height: 3,
+    marginHorizontal: 24,
+    borderRadius: 2,
+    overflow: 'hidden',
+    marginBottom: 8,
   },
-  featurePill: {
+  trackFill: {
+    height: '100%',
+    borderRadius: 2,
+  },
+  canvas: {
+    flex: 1,
+  },
+  scroll: {
+    paddingHorizontal: 24,
+    paddingTop: 20,
+    paddingBottom: 28,
+  },
+  stepRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 13,
-    borderRadius: 15,
-    borderWidth: 1,
     gap: 12,
+    marginBottom: 20,
   },
-  featureIconContainer: {
+  iconDisc: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  stepNum: {
+    fontSize: 28,
+    fontWeight: '300',
+    letterSpacing: -1,
+  },
+  kicker: {
+    fontSize: 14,
+    fontWeight: '500',
+    flex: 1,
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: '600',
+    letterSpacing: -0.9,
+    lineHeight: 38,
+    marginBottom: 14,
+  },
+  highlight: {
+    fontSize: 17,
+    lineHeight: 26,
+    fontWeight: '500',
+    marginBottom: 20,
+  },
+  prose: {
+    gap: 14,
+    marginBottom: 20,
+  },
+  body: {
+    fontSize: 16,
+    lineHeight: 26,
+  },
+  quote: {
+    borderRadius: 20,
+    borderWidth: StyleSheet.hairlineWidth,
+    padding: 20,
+    marginBottom: 8,
+  },
+  quoteText: {
+    fontSize: 16,
+    lineHeight: 26,
+    marginBottom: 12,
+  },
+  quoteAuthor: {
+    fontSize: 13,
+    fontWeight: '500',
+  },
+  stack: {
+    gap: 10,
+    marginTop: 8,
+  },
+  feature: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 14,
+    padding: 16,
+    borderRadius: 18,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  featureIcon: {
     width: 40,
     height: 40,
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  featureTextContainer: {
+  featureCopy: {
     flex: 1,
+    paddingTop: 2,
   },
   featureTitle: {
-    fontSize: 14,
-    fontWeight: '700',
-    marginBottom: 2,
+    fontSize: 15,
+    fontWeight: '600',
+    marginBottom: 4,
   },
   featureDesc: {
-    fontSize: 12.5,
-    lineHeight: 18,
+    fontSize: 13,
+    lineHeight: 19,
   },
-  activitiesContainer: {
-    marginTop: 10,
-    marginBottom: 16,
-  },
-  activitiesHeader: {
-    fontSize: 10.5,
-    fontWeight: '600',
-    letterSpacing: 0.8,
-    marginBottom: 10,
-    textAlign: 'center',
-  },
-  activitiesGrid: {
+  activityWrap: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: 8,
+    marginTop: 8,
   },
-  activityPill: {
+  activity: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
+    gap: 8,
     paddingVertical: 10,
     paddingHorizontal: 14,
-    borderRadius: 13,
-    borderWidth: 1,
+    borderRadius: 22,
   },
-  activityPillText: {
+  activityLabel: {
     fontSize: 13,
-    fontWeight: '600',
+    fontWeight: '500',
   },
-  founderCard: {
-    borderRadius: 18,
-    borderWidth: 1,
-    padding: 18,
-    marginVertical: 12,
-    elevation: 4,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
+  founder: {
+    marginTop: 16,
+    borderRadius: 22,
+    borderWidth: StyleSheet.hairlineWidth,
+    padding: 20,
   },
-  founderTopRow: {
+  founderRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
-    marginBottom: 12,
+    marginBottom: 14,
   },
-  founderAvatarCircle: {
-    width: 42,
-    height: 42,
-    borderRadius: 21,
+  avatar: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  founderAvatarLetter: {
-    fontSize: 19,
+  avatarLetter: {
+    color: '#FFFFFF',
+    fontSize: 18,
     fontWeight: '600',
   },
   founderName: {
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: '600',
   },
   founderRole: {
-    fontSize: 11.5,
-    marginTop: 1,
-  },
-  founderNoteText: {
-    fontSize: 13.5,
-    lineHeight: 21,
-    marginBottom: 12,
-  },
-  founderDivider: {
-    height: 1,
-    marginBottom: 12,
-  },
-  founderDuaText: {
     fontSize: 13,
-    lineHeight: 20,
-    fontStyle: 'italic',
-    fontWeight: '600',
+    marginTop: 2,
   },
-  bottomDock: {
+  founderNote: {
+    fontSize: 15,
+    lineHeight: 23,
+    marginBottom: 14,
+  },
+  founderDua: {
+    fontSize: 14,
+    lineHeight: 22,
+    fontStyle: 'italic',
+  },
+  dock: {
+    paddingHorizontal: 20,
+    paddingTop: 8,
+  },
+  dockRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 22,
-    paddingVertical: 14,
-    borderTopWidth: StyleSheet.hairlineWidth,
+    gap: 12,
   },
-  prevButton: {
-    width: 42,
-    height: 42,
-    borderRadius: 21,
+  backBtn: {
+    width: 52,
+    height: 52,
+    borderRadius: 26,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  prevPlaceholder: {
-    width: 42,
-  },
-  dotsGroup: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-  },
-  dotIndicator: {
-    height: 6,
-    borderRadius: 3,
-  },
-  primaryActionBtn: {
+  nextBtn: {
+    flex: 1,
+    height: 52,
+    borderRadius: 26,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
-    paddingHorizontal: 22,
-    paddingVertical: 12,
-    borderRadius: 16,
-    elevation: 0,
-    shadowOpacity: 0,
   },
-  primaryActionText: {
-    fontSize: 15,
+  nextLabel: {
+    color: '#FFFFFF',
+    fontSize: 16,
     fontWeight: '600',
   },
 });
