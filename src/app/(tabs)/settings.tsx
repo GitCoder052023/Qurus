@@ -7,7 +7,6 @@ import {
   Switch,
   StyleSheet,
   Alert,
-  Share,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -16,30 +15,12 @@ import { useTheme } from '../../context/ThemeContext';
 import { useStudyState } from '../../context/StudyContext';
 import { useAudio } from '../../context/AudioContext';
 import { RECITERS } from '../../data/surahs';
-import { ThemeMode } from '../../types';
 
 export default function SettingsScreen() {
   const router = useRouter();
-  const { theme, themeMode, setThemeMode } = useTheme();
-  const { preferences, updatePreferences, clearHistory, exportBackup } = useStudyState();
+  const { theme } = useTheme();
+  const { preferences, updatePreferences, clearHistory } = useStudyState();
   const { setSpeed, setReciter, setPlaybackMode, reciter } = useAudio();
-
-  const handleThemeSelect = (mode: ThemeMode) => {
-    setThemeMode(mode);
-    updatePreferences({ theme: mode });
-  };
-
-  const handleExportBackup = async () => {
-    try {
-      const dataStr = exportBackup();
-      await Share.share({
-        title: 'Qurus Study Backup',
-        message: dataStr,
-      });
-    } catch (e) {
-      console.warn('Backup error:', e);
-    }
-  };
 
   const handleClearHistoryPrompt = () => {
     Alert.alert(
@@ -63,54 +44,8 @@ export default function SettingsScreen() {
         <View style={styles.header}>
           <Text style={[styles.screenTitle, { color: theme.textPrimary }]}>Settings</Text>
           <Text style={[styles.screenSubtitle, { color: theme.textSecondary }]}>
-            Reading, audio, and how the app feels
+            Reading, audio, and study data
           </Text>
-        </View>
-
-        {/* SECTION: Appearance & Theme */}
-        <View style={styles.section}>
-          <Text style={[styles.sectionTitle, { color: theme.textTertiary }]}>Appearance</Text>
-          <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
-            <View style={styles.themeRow}>
-              {[
-                { key: 'light', label: 'White', icon: 'sunny-outline', bg: '#FFFFFF' },
-                { key: 'dark', label: 'Night', icon: 'moon-outline', bg: '#0A1614' },
-                { key: 'sepia', label: 'Mist', icon: 'water-outline', bg: '#F4F8F6' },
-                { key: 'system', label: 'Auto', icon: 'phone-portrait-outline', bg: '#F2F7F5' },
-              ].map((t) => {
-                const isSelected = themeMode === t.key;
-                return (
-                  <TouchableOpacity
-                    key={t.key}
-                    onPress={() => handleThemeSelect(t.key as ThemeMode)}
-                    style={[
-                      styles.themeBtn,
-                      {
-                        backgroundColor: t.bg,
-                        borderColor: isSelected ? theme.primary : theme.border,
-                        borderWidth: isSelected ? 2 : 1,
-                      },
-                    ]}
-                  >
-                    <Ionicons
-                      name={t.icon as any}
-                      size={20}
-                      color={isSelected ? theme.primary : theme.textPrimary}
-                    />
-                    <Text
-                      style={[
-                        styles.themeBtnText,
-                        { color: isSelected ? theme.primary : theme.textPrimary },
-                        isSelected && { fontWeight: '700' },
-                      ]}
-                    >
-                      {t.label}
-                    </Text>
-                  </TouchableOpacity>
-                );
-              })}
-            </View>
-          </View>
         </View>
 
         {/* SECTION: Typography */}
@@ -407,23 +342,6 @@ export default function SettingsScreen() {
           </Text>
           <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
             <TouchableOpacity
-              onPress={handleExportBackup}
-              style={[styles.settingItem, styles.rowBetween]}
-            >
-              <View style={styles.settingTextGroup}>
-                <Text style={[styles.settingLabel, { color: theme.textPrimary }]}>
-                  Backup Study Notebook
-                </Text>
-                <Text style={[styles.settingSubtext, { color: theme.textSecondary }]}>
-                  Export notes and bookmarks as a private JSON file
-                </Text>
-              </View>
-              <Ionicons name="share-outline" size={20} color={theme.primary} />
-            </TouchableOpacity>
-
-            <View style={[styles.divider, { backgroundColor: theme.borderSubtle }]} />
-
-            <TouchableOpacity
               onPress={() => router.push('/onboarding')}
               style={[styles.settingItem, styles.rowBetween]}
             >
@@ -553,22 +471,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: StyleSheet.hairlineWidth,
     padding: 16,
-  },
-  themeRow: {
-    flexDirection: 'row',
-    gap: 10,
-    justifyContent: 'space-between',
-  },
-  themeBtn: {
-    flex: 1,
-    paddingVertical: 12,
-    alignItems: 'center',
-    borderRadius: 14,
-    gap: 6,
-  },
-  themeBtnText: {
-    fontSize: 12,
-    fontWeight: '600',
   },
   settingItem: {
     paddingVertical: 8,

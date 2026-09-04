@@ -1,21 +1,15 @@
 import React from 'react';
 import { Stack } from 'expo-router';
 import { View, StyleSheet, StatusBar } from 'react-native';
-import { StudyProvider, useStudyState } from '../context/StudyContext';
+import { StudyProvider } from '../context/StudyContext';
 import { ThemeProvider, useTheme } from '../context/ThemeContext';
 import { AudioProvider } from '../context/AudioContext';
 import { MiniPlayer } from '../components/MiniPlayer';
 import { FullPlayerModal } from '../components/FullPlayerModal';
 
 function InnerApp() {
-  const { preferences, updatePreferences } = useStudyState();
-  const currentThemeMode = preferences?.theme || 'system';
-
   return (
-    <ThemeProvider
-      currentThemeMode={currentThemeMode}
-      onThemeChange={(mode) => updatePreferences({ theme: mode })}
-    >
+    <ThemeProvider>
       <AudioProvider>
         <AppContent />
       </AudioProvider>

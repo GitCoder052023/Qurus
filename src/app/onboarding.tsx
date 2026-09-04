@@ -86,21 +86,21 @@ const CHAPTERS: StoryChapter[] = [
     },
   },
   {
+
     id: 'invitation',
     kicker: 'An invitation',
     heroIcon: 'heart-outline',
     accent: '#5548A0',
     wash: '#EAE6F8',
     title: 'Radical honesty',
-    highlightPhrase: 'I’m not here to convert you. I am one of you right now.',
+    highlightPhrase: 'I’m figuring this out too.',
     proseParagraphs: [
-      'No matter who you are reading this—a 15-year-old wrestling with doubts, an atheist, an agnostic, or someone feeling spiritually numb—I genuinely don’t care about labels.',
-      'Because to be completely transparent: I am one of you right now. Exactly. I’m not so religious, and I’m definitely not here to lecture or convert you.',
-      'I’m just a normal person who was looking for truth without feeling overwhelmed. My advice to you is the exact same my brother gave to me:',
-    ],
+      'If you’re reading this while questioning everything... whether you’re 17 and confused, an atheist, an agnostic, or just disconnected from religion. It doesn’t matter. And I’m not going to pretend I have all the answers.', 
+      'Honestly, I’m figuring this out too. I’m not some super religious person who suddenly found all the answers. I’m just a normal person with questions, doubts, and a genuine desire to figure out what’s actually true.', 
+      'And the advice I can give you is the same thing my brother told me:'],
     quote: {
-      text: '“Just give it an honest shot. Don’t worry about labels. Just open an ayah, read the meaning, and let the words speak for themselves.”',
-      author: 'Hamdan’s promise',
+      text: '“Just give it an honest shot. You don’t have to decide what you believe right now. Open an ayah, read the meaning, and just see what it does to you.”',
+      author: 'Hamdan’s advice',
     },
   },
   {
@@ -696,6 +696,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
+    marginBottom: 16,
   },
   nextLabel: {
     color: '#FFFFFF',

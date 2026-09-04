@@ -79,7 +79,6 @@ interface StudyContextType {
   getNote: (surahNumber: number, ayahNumber: number) => StudyNote | undefined;
   updatePreferences: (newPrefs: Partial<ReadingPreferences>) => void;
   clearHistory: () => void;
-  exportBackup: () => string;
 }
 
 const StudyContext = createContext<StudyContextType | null>(null);
@@ -116,7 +115,13 @@ export function StudyProvider({ children }: { children: ReactNode }) {
         if (savedBookmarks) setBookmarks(JSON.parse(savedBookmarks));
         if (savedHighlights) setHighlights(JSON.parse(savedHighlights));
         if (savedNotes) setNotes(JSON.parse(savedNotes));
-        if (savedPrefs) setPreferences({ ...DEFAULT_PREFERENCES, ...JSON.parse(savedPrefs) });
+        if (savedPrefs) {
+          setPreferences({
+            ...DEFAULT_PREFERENCES,
+            ...JSON.parse(savedPrefs),
+            theme: 'light',
+          });
+        }
         setHasOnboarded(savedOnboard === 'true');
 
         // Streak initialization & hydration
@@ -400,20 +405,6 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     AsyncStorage.removeItem(STORAGE_KEYS.HISTORY).catch(console.error);
   };
 
-  const exportBackup = (): string => {
-    const backup = {
-      version: 1,
-      exportedAt: new Date().toISOString(),
-      lastStudied,
-      bookmarks,
-      highlights,
-      notes,
-      preferences,
-      streak,
-    };
-    return JSON.stringify(backup, null, 2);
-  };
-
   return (
     <StudyContext.Provider
       value={{
@@ -441,7 +432,6 @@ export function StudyProvider({ children }: { children: ReactNode }) {
         getNote,
         updatePreferences,
         clearHistory,
-        exportBackup,
       }}
     >
       {children}
