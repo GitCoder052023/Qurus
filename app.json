@@ -50,7 +50,8 @@
           "enableBackgroundPlayback": true,
           "microphonePermission": "Qurus uses the microphone so you can attach spoken reflections to verses."
         }
-      ]
+      ],
+      "expo-asset"
     ],
     "experiments": {
       "typedRoutes": true,
