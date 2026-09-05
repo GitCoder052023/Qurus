@@ -1,8 +1,8 @@
 # Qurus (قُرُوص)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
-[![Release](https://img.shields.io/badge/Release-v2.0.0-teal.svg)](https://github.com/GitCoder052023/Qurus/releases/tag/v2.0.0)
-[![Platform](https://img.shields.io/badge/Platform-Android-0E6B5C.svg)](https://github.com/GitCoder052023/Qurus/releases/tag/v2.0.0)
+[![Release](https://img.shields.io/badge/Release-v2.1.0-teal.svg)](https://github.com/GitCoder052023/Qurus/releases/tag/v2.1.0)
+[![Platform](https://img.shields.io/badge/Platform-Android-0E6B5C.svg)](https://github.com/GitCoder052023/Qurus/releases/tag/v2.1.0)
 [![Privacy](https://img.shields.io/badge/Privacy-100%25%20On--Device-blue.svg)](#-privacy--local-data)
 
 **Qurus** is a calm, focused reading and listening space built for everyday life. It offers an unobstructed way to explore the Quran verse by verse—pairing original Arabic recitations with line-by-line Urdu translations, private voice and written reflection notes, and background playback for when you are on the move.
