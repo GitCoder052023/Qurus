@@ -52,7 +52,14 @@ export function MiniPlayer() {
     return getAyah(currentSurahNumber, currentAyahNumber);
   }, [currentSurahNumber, currentAyahNumber]);
 
-  if (pathname?.includes('/onboarding') || !currentSurahNumber || !currentAyahNumber) {
+  if (
+    pathname?.includes('/onboarding') ||
+    pathname?.includes('/legal-consent') ||
+    pathname?.includes('/privacy') ||
+    pathname?.includes('/terms') ||
+    !currentSurahNumber ||
+    !currentAyahNumber
+  ) {
     return null;
   }
 

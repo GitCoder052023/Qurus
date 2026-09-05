@@ -162,7 +162,7 @@ const EASE = Easing.bezier(0.22, 1, 0.36, 1);
 
 export default function OnboardingScreen() {
   const { theme } = useTheme();
-  const { completeOnboarding } = useStudyState();
+  const { completeOnboarding, hasAgreedLegal } = useStudyState();
   const router = useRouter();
 
   const [index, setIndex] = useState(0);
@@ -226,8 +226,12 @@ export default function OnboardingScreen() {
 
   const finish = useCallback(async () => {
     await completeOnboarding();
-    router.replace('/(tabs)');
-  }, [completeOnboarding, router]);
+    if (!hasAgreedLegal) {
+      router.replace('/legal-consent' as any);
+    } else {
+      router.replace('/(tabs)');
+    }
+  }, [completeOnboarding, hasAgreedLegal, router]);
 
   const handleNext = () => {
     if (isLast) {

@@ -19,6 +19,7 @@ const STORAGE_KEYS = {
   NOTES: '@qurus_notes_v1',
   PREFERENCES: '@qurus_preferences_v1',
   HAS_ONBOARDED: '@qurus_has_onboarded_v1',
+  HAS_AGREED_LEGAL: '@qurus_has_agreed_legal_v1',
   STREAK: '@qurus_streak_v1',
 };
 
@@ -62,11 +63,13 @@ interface StudyContextType {
   preferences: ReadingPreferences;
   streak: StreakData;
   hasOnboarded: boolean;
+  hasAgreedLegal: boolean;
   isLoaded: boolean;
 
   // Actions
   completeOnboarding: () => Promise<void>;
   resetOnboarding: () => Promise<void>;
+  agreeToLegal: () => Promise<void>;
   updateLastStudied: (surahNumber: number, ayahNumber: number, audioPos?: number) => void;
   addToHistory: (surahNumber: number, ayahNumber: number) => void;
   recordStreakActivity: () => void;
@@ -102,23 +105,34 @@ export function StudyProvider({ children }: { children: ReactNode }) {
   const [preferences, setPreferences] = useState<ReadingPreferences>(DEFAULT_PREFERENCES);
   const [streak, setStreak] = useState<StreakData>(DEFAULT_STREAK);
   const [hasOnboarded, setHasOnboarded] = useState<boolean>(true);
+  const [hasAgreedLegal, setHasAgreedLegal] = useState<boolean>(true);
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Hydrate from AsyncStorage
   useEffect(() => {
     async function loadData() {
       try {
-        const [savedLast, savedHistory, savedBookmarks, savedHighlights, savedNotes, savedPrefs, savedOnboard, savedStreak] =
-          await Promise.all([
-            AsyncStorage.getItem(STORAGE_KEYS.LAST_STUDIED),
-            AsyncStorage.getItem(STORAGE_KEYS.HISTORY),
-            AsyncStorage.getItem(STORAGE_KEYS.BOOKMARKS),
-            AsyncStorage.getItem(STORAGE_KEYS.HIGHLIGHTS),
-            AsyncStorage.getItem(STORAGE_KEYS.NOTES),
-            AsyncStorage.getItem(STORAGE_KEYS.PREFERENCES),
-            AsyncStorage.getItem(STORAGE_KEYS.HAS_ONBOARDED),
-            AsyncStorage.getItem(STORAGE_KEYS.STREAK),
-          ]);
+        const [
+          savedLast,
+          savedHistory,
+          savedBookmarks,
+          savedHighlights,
+          savedNotes,
+          savedPrefs,
+          savedOnboard,
+          savedLegal,
+          savedStreak,
+        ] = await Promise.all([
+          AsyncStorage.getItem(STORAGE_KEYS.LAST_STUDIED),
+          AsyncStorage.getItem(STORAGE_KEYS.HISTORY),
+          AsyncStorage.getItem(STORAGE_KEYS.BOOKMARKS),
+          AsyncStorage.getItem(STORAGE_KEYS.HIGHLIGHTS),
+          AsyncStorage.getItem(STORAGE_KEYS.NOTES),
+          AsyncStorage.getItem(STORAGE_KEYS.PREFERENCES),
+          AsyncStorage.getItem(STORAGE_KEYS.HAS_ONBOARDED),
+          AsyncStorage.getItem(STORAGE_KEYS.HAS_AGREED_LEGAL),
+          AsyncStorage.getItem(STORAGE_KEYS.STREAK),
+        ]);
 
         if (savedLast) setLastStudied(JSON.parse(savedLast));
         if (savedHistory) setHistory(JSON.parse(savedHistory));
@@ -156,6 +170,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
           });
         }
         setHasOnboarded(savedOnboard === 'true');
+        setHasAgreedLegal(savedLegal === 'true');
 
         // Streak initialization & hydration
         const today = getLocalDateString();
@@ -225,9 +240,18 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     await AsyncStorage.setItem(STORAGE_KEYS.HAS_ONBOARDED, 'true').catch(console.error);
   };
 
+  const agreeToLegal = async () => {
+    setHasAgreedLegal(true);
+    await AsyncStorage.setItem(STORAGE_KEYS.HAS_AGREED_LEGAL, 'true').catch(console.error);
+  };
+
   const resetOnboarding = async () => {
     setHasOnboarded(false);
-    await AsyncStorage.removeItem(STORAGE_KEYS.HAS_ONBOARDED).catch(console.error);
+    setHasAgreedLegal(false);
+    await AsyncStorage.multiRemove([
+      STORAGE_KEYS.HAS_ONBOARDED,
+      STORAGE_KEYS.HAS_AGREED_LEGAL,
+    ]).catch(console.error);
   };
 
   const recordStreakActivity = () => {
@@ -471,9 +495,11 @@ export function StudyProvider({ children }: { children: ReactNode }) {
         preferences,
         streak,
         hasOnboarded,
+        hasAgreedLegal,
         isLoaded,
         completeOnboarding,
         resetOnboarding,
+        agreeToLegal,
         updateLastStudied,
         addToHistory,
         recordStreakActivity,

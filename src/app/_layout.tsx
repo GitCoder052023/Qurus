@@ -35,6 +35,9 @@ function AppContent() {
         <Stack.Screen name="reader/[surah]" options={{ headerShown: false }} />
         <Stack.Screen name="story" options={{ headerShown: false, animation: 'slide_from_right' }} />
         <Stack.Screen name="onboarding" options={{ headerShown: false }} />
+        <Stack.Screen name="legal-consent" options={{ headerShown: false, animation: 'fade' }} />
+        <Stack.Screen name="privacy" options={{ headerShown: false, animation: 'slide_from_right' }} />
+        <Stack.Screen name="terms" options={{ headerShown: false, animation: 'slide_from_right' }} />
       </Stack>
 
       {/* Persistent Spotify-like Mini Player */}

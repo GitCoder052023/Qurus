@@ -418,6 +418,66 @@ export default function SettingsScreen() {
           </TouchableOpacity>
         </View>
 
+        {/* SECTION: Legal & Privacy */}
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.textTertiary }]}>
+            Legal & Privacy
+          </Text>
+          <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => router.push('/terms' as any)}
+              style={[styles.settingItem, styles.rowBetween]}
+            >
+              <View style={styles.settingTextGroup}>
+                <Text style={[styles.settingLabel, { color: theme.textPrimary }]}>
+                  Terms of Use
+                </Text>
+                <Text style={[styles.settingSubtext, { color: theme.textSecondary }]}>
+                  Acceptable use, open-source MIT license & disclaimers
+                </Text>
+              </View>
+              <Ionicons name="chevron-forward" size={18} color={theme.textTertiary} />
+            </TouchableOpacity>
+
+            <View style={[styles.divider, { backgroundColor: theme.borderSubtle }]} />
+
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => router.push('/privacy' as any)}
+              style={[styles.settingItem, styles.rowBetween]}
+            >
+              <View style={styles.settingTextGroup}>
+                <Text style={[styles.settingLabel, { color: theme.textPrimary }]}>
+                  Privacy Policy
+                </Text>
+                <Text style={[styles.settingSubtext, { color: theme.textSecondary }]}>
+                  On-device private data, no tracking & EveryAyah CDN audio
+                </Text>
+              </View>
+              <Ionicons name="chevron-forward" size={18} color={theme.textTertiary} />
+            </TouchableOpacity>
+
+            <View style={[styles.divider, { backgroundColor: theme.borderSubtle }]} />
+
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => router.push('/legal-consent' as any)}
+              style={[styles.settingItem, styles.rowBetween]}
+            >
+              <View style={styles.settingTextGroup}>
+                <Text style={[styles.settingLabel, { color: theme.textPrimary }]}>
+                  Terms & Consent Review
+                </Text>
+                <Text style={[styles.settingSubtext, { color: theme.textSecondary }]}>
+                  Review your first-launch legal agreement
+                </Text>
+              </View>
+              <Ionicons name="shield-checkmark-outline" size={18} color={theme.primary} />
+            </TouchableOpacity>
+          </View>
+        </View>
+
         {/* App Info & Integrity Acknowledgments */}
         <View style={styles.appInfoSection}>
           <Text style={[styles.appInfoTitle, { color: theme.textPrimary }]}>Qurus v2.1.0</Text>
