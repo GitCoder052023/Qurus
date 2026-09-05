@@ -17,7 +17,8 @@ import { getSurah } from '../../data/surahLoader';
 import { SURAHS } from '../../data/surahs';
 import { AyahItem } from '../../components/AyahItem';
 import { NoteEditorModal } from '../../components/NoteEditorModal';
-import { Ayah } from '../../types';
+import { NoteViewerModal } from '../../components/NoteViewerModal';
+import { Ayah, StudyNote } from '../../types';
 
 export default function ReaderScreen() {
   const { surah: surahParam, ayah: ayahParam } = useLocalSearchParams<{
@@ -28,7 +29,7 @@ export default function ReaderScreen() {
   const initialAyah = ayahParam ? parseInt(ayahParam, 10) : 1;
 
   const { theme, isDark } = useTheme();
-  const { preferences, saveNote, deleteNote, getNote } = useStudyState();
+  const { preferences, saveNote, deleteNote } = useStudyState();
   const {
     currentSurahNumber,
     currentAyahNumber,
@@ -44,10 +45,10 @@ export default function ReaderScreen() {
 
   const flatListRef = useRef<FlatList>(null);
   const [selectedAyahForNote, setSelectedAyahForNote] = useState<Ayah | null>(null);
+  const [selectedNoteForEdit, setSelectedNoteForEdit] = useState<StudyNote | null>(null);
   const [noteEditorVisible, setNoteEditorVisible] = useState(false);
-  const selectedNote = selectedAyahForNote
-    ? getNote(surahNumber, selectedAyahForNote.numberInSurah)
-    : undefined;
+  const [viewingNote, setViewingNote] = useState<StudyNote | null>(null);
+  const [noteViewerVisible, setNoteViewerVisible] = useState(false);
 
   // Auto-scroll when currently reciting ayah changes
   useEffect(() => {
@@ -277,9 +278,15 @@ export default function ReaderScreen() {
             arabicFontSize={preferences.arabicFontSize}
             urduFontSize={preferences.urduFontSize}
             showTranslation={preferences.showTranslation}
-            onOpenNote={(ayah) => {
+            onOpenNote={(ayah, noteToEdit) => {
               setSelectedAyahForNote(ayah);
+              setSelectedNoteForEdit(noteToEdit || null);
               setNoteEditorVisible(true);
+            }}
+            onViewNote={(ayah, note) => {
+              setSelectedAyahForNote(ayah);
+              setViewingNote(note);
+              setNoteViewerVisible(true);
             }}
           />
         )}
@@ -302,8 +309,9 @@ export default function ReaderScreen() {
         surahName={surahData.englishName}
         arabicText={selectedAyahForNote?.arabicText}
         urduText={selectedAyahForNote?.urduText}
-        initialNote={selectedNote?.text || ''}
-        initialVoiceNote={selectedNote?.voiceNote}
+        initialNote={selectedNoteForEdit?.text || ''}
+        initialVoiceNote={selectedNoteForEdit?.voiceNote}
+        noteId={selectedNoteForEdit?.id}
         onSave={(text, voiceNote) => {
           if (!selectedAyahForNote) return;
           saveNote(
@@ -312,16 +320,37 @@ export default function ReaderScreen() {
             text,
             selectedAyahForNote.arabicText,
             selectedAyahForNote.urduText,
-            voiceNote
+            voiceNote,
+            selectedNoteForEdit?.id
           );
           setNoteEditorVisible(false);
         }}
         onDelete={() => {
-          if (!selectedAyahForNote) return;
-          deleteNote(surahNumber, selectedAyahForNote.numberInSurah);
+          if (selectedNoteForEdit) {
+            deleteNote(selectedNoteForEdit.id);
+          }
           setNoteEditorVisible(false);
         }}
         onClose={() => setNoteEditorVisible(false)}
+      />
+
+      <NoteViewerModal
+        visible={noteViewerVisible}
+        note={viewingNote}
+        surahName={surahData.englishName}
+        arabicText={selectedAyahForNote?.arabicText}
+        urduText={selectedAyahForNote?.urduText}
+        onClose={() => {
+          setNoteViewerVisible(false);
+          setViewingNote(null);
+        }}
+        onEdit={(note) => {
+          setSelectedNoteForEdit(note);
+          setNoteEditorVisible(true);
+        }}
+        onDelete={(noteId) => {
+          deleteNote(noteId);
+        }}
       />
     </SafeAreaView>
   );

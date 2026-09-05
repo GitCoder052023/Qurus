@@ -375,6 +375,7 @@ export function MiniPlayer() {
       urduText={currentAyah?.urduText}
       initialNote={currentNote?.text || ''}
       initialVoiceNote={currentNote?.voiceNote}
+      noteId={currentNote?.id}
       onSave={(text, voiceNote) => {
         if (!currentAyah) return;
         saveNote(
@@ -383,12 +384,15 @@ export function MiniPlayer() {
           text,
           currentAyah.arabicText,
           currentAyah.urduText,
-          voiceNote
+          voiceNote,
+          currentNote?.id
         );
         setIsNoteEditorVisible(false);
       }}
       onDelete={() => {
-        deleteNote(currentSurahNumber, currentAyahNumber);
+        if (currentNote) {
+          deleteNote(currentNote.id);
+        }
         setIsNoteEditorVisible(false);
       }}
       onClose={() => setIsNoteEditorVisible(false)}

@@ -58,7 +58,7 @@ interface StudyContextType {
   history: StudyHistoryItem[];
   bookmarks: Bookmark[];
   highlights: Record<string, Highlight>; // key: "surah_ayah"
-  notes: Record<string, StudyNote>; // key: "surah_ayah"
+  notes: Record<string, StudyNote>; // key: unique note id
   preferences: ReadingPreferences;
   streak: StreakData;
   hasOnboarded: boolean;
@@ -81,9 +81,11 @@ interface StudyContextType {
     text: string,
     arabicSnippet?: string,
     urduSnippet?: string,
-    voiceNote?: VoiceNote | null
-  ) => void;
-  deleteNote: (surahNumber: number, ayahNumber: number) => void;
+    voiceNote?: VoiceNote | null,
+    noteId?: string
+  ) => string;
+  deleteNote: (noteIdOrSurah: string | number, ayahNumber?: number) => void;
+  getNotesForAyah: (surahNumber: number, ayahNumber: number) => StudyNote[];
   getNote: (surahNumber: number, ayahNumber: number) => StudyNote | undefined;
   updatePreferences: (newPrefs: Partial<ReadingPreferences>) => void;
   clearHistory: () => void;
@@ -122,7 +124,30 @@ export function StudyProvider({ children }: { children: ReactNode }) {
         if (savedHistory) setHistory(JSON.parse(savedHistory));
         if (savedBookmarks) setBookmarks(JSON.parse(savedBookmarks));
         if (savedHighlights) setHighlights(JSON.parse(savedHighlights));
-        if (savedNotes) setNotes(JSON.parse(savedNotes));
+        if (savedNotes) {
+          try {
+            const parsed = JSON.parse(savedNotes);
+            const normalizedNotes: Record<string, StudyNote> = {};
+            if (Array.isArray(parsed)) {
+              parsed.forEach((n) => {
+                if (n && n.id) normalizedNotes[n.id] = n;
+              });
+            } else if (typeof parsed === 'object' && parsed !== null) {
+              Object.entries(parsed).forEach(([key, note]: [string, any]) => {
+                if (note) {
+                  const noteId = note.id || key;
+                  normalizedNotes[noteId] = {
+                    ...note,
+                    id: noteId,
+                  };
+                }
+              });
+            }
+            setNotes(normalizedNotes);
+          } catch (e) {
+            console.error('Failed to parse notes from storage:', e);
+          }
+        }
         if (savedPrefs) {
           setPreferences({
             ...DEFAULT_PREFERENCES,
@@ -354,26 +379,40 @@ export function StudyProvider({ children }: { children: ReactNode }) {
   };
 
   // Notes
+  const getNotesForAyah = (surahNumber: number, ayahNumber: number): StudyNote[] => {
+    return Object.values(notes)
+      .filter((n) => n.surahNumber === surahNumber && n.ayahNumber === ayahNumber)
+      .sort((a, b) => b.createdAt - a.createdAt);
+  };
+
+  const getNote = (surahNumber: number, ayahNumber: number): StudyNote | undefined => {
+    const list = getNotesForAyah(surahNumber, ayahNumber);
+    return list[0];
+  };
+
   const saveNote = (
     surahNumber: number,
     ayahNumber: number,
     text: string,
     arabicSnippet?: string,
     urduSnippet?: string,
-    voiceNote?: VoiceNote | null
-  ) => {
-    const key = `${surahNumber}:${ayahNumber}`;
+    voiceNote?: VoiceNote | null,
+    noteId?: string
+  ): string => {
     const trimmed = text.trim();
-    const existing = notes[key];
+    const existing = noteId ? notes[noteId] : undefined;
     const nextVoice = voiceNote === undefined ? existing?.voiceNote : voiceNote ?? undefined;
 
     if (!trimmed && !nextVoice) {
-      deleteNote(surahNumber, ayahNumber);
-      return;
+      if (noteId) {
+        deleteNote(noteId);
+      }
+      return '';
     }
 
+    const id = noteId || `note_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
     const newNote: StudyNote = {
-      id: key,
+      id,
       surahNumber,
       ayahNumber,
       text: trimmed,
@@ -384,22 +423,27 @@ export function StudyProvider({ children }: { children: ReactNode }) {
       updatedAt: Date.now(),
     };
 
-    const nextNotes = { ...notes, [key]: newNote };
+    const nextNotes = { ...notes, [id]: newNote };
     setNotes(nextNotes);
     AsyncStorage.setItem(STORAGE_KEYS.NOTES, JSON.stringify(nextNotes)).catch(console.error);
     recordStreakActivity();
+    return id;
   };
 
-  const deleteNote = (surahNumber: number, ayahNumber: number) => {
-    const key = `${surahNumber}:${ayahNumber}`;
+  const deleteNote = (noteIdOrSurah: string | number, ayahNumber?: number) => {
     const nextNotes = { ...notes };
-    delete nextNotes[key];
+    if (typeof noteIdOrSurah === 'string') {
+      delete nextNotes[noteIdOrSurah];
+    } else if (typeof noteIdOrSurah === 'number' && typeof ayahNumber === 'number') {
+      Object.keys(nextNotes).forEach((id) => {
+        const n = nextNotes[id];
+        if (n.surahNumber === noteIdOrSurah && n.ayahNumber === ayahNumber) {
+          delete nextNotes[id];
+        }
+      });
+    }
     setNotes(nextNotes);
     AsyncStorage.setItem(STORAGE_KEYS.NOTES, JSON.stringify(nextNotes)).catch(console.error);
-  };
-
-  const getNote = (surahNumber: number, ayahNumber: number): StudyNote | undefined => {
-    return notes[`${surahNumber}:${ayahNumber}`];
   };
 
   // Preferences
@@ -440,6 +484,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
         isHighlighted,
         saveNote,
         deleteNote,
+        getNotesForAyah,
         getNote,
         updatePreferences,
         clearHistory,

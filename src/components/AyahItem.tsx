@@ -1,11 +1,11 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Share } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Share, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Ayah, StudyNote } from '../types';
 import { useTheme } from '../context/ThemeContext';
 import { useStudyState } from '../context/StudyContext';
 import { useAudio } from '../context/AudioContext';
-import { VoiceNotePlayer } from './VoiceNotePlayer';
+import { VoiceNotePlayer, formatDurationMs } from './VoiceNotePlayer';
 
 interface AyahItemProps {
   ayah: Ayah;
@@ -15,7 +15,8 @@ interface AyahItemProps {
   arabicFontSize: number;
   urduFontSize: number;
   showTranslation: boolean;
-  onOpenNote: (ayah: Ayah) => void;
+  onOpenNote: (ayah: Ayah, noteToEdit?: StudyNote) => void;
+  onViewNote?: (ayah: Ayah, note: StudyNote) => void;
 }
 
 export const AyahItem = React.memo(function AyahItem({
@@ -27,20 +28,23 @@ export const AyahItem = React.memo(function AyahItem({
   urduFontSize,
   showTranslation,
   onOpenNote,
+  onViewNote,
 }: AyahItemProps) {
   const { theme } = useTheme();
+  const [isNotesCollapsed, setIsNotesCollapsed] = useState(true);
   const {
     isBookmarked,
     toggleBookmark,
     isHighlighted,
     toggleHighlight,
-    getNote,
+    getNotesForAyah,
+    deleteNote,
   } = useStudyState();
   const { isPlaying, currentSurahNumber, currentAyahNumber, playbackPhase, playAyah, pause, resume } = useAudio();
 
   const bookmarked = isBookmarked(surahNumber, ayah.numberInSurah);
   const highlighted = isHighlighted(surahNumber, ayah.numberInSurah);
-  const note: StudyNote | undefined = getNote(surahNumber, ayah.numberInSurah);
+  const ayahNotes = getNotesForAyah(surahNumber, ayah.numberInSurah);
 
   const isThisAyahActive = isCurrentAyah;
   const isThisAyahPlaying = isThisAyahActive && isPlaying;
@@ -214,28 +218,113 @@ export const AyahItem = React.memo(function AyahItem({
         </View>
       )}
 
-      {/* Personal Reflection Note Card Preview (if exists) */}
-      {note && (
-        <View style={[styles.noteCard, { backgroundColor: theme.noteBg, borderColor: theme.border }]}>
-          <TouchableOpacity activeOpacity={0.8} onPress={() => onOpenNote(ayah)}>
-            <View style={styles.noteHeader}>
-              <View style={styles.noteHeaderLeft}>
-                <Ionicons name={note.voiceNote ? 'mic' : 'document-text'} size={14} color={theme.noteAccent} />
-                <Text style={[styles.noteTitle, { color: theme.noteAccent }]}>My Reflection</Text>
-              </View>
-              <Ionicons name="pencil" size={13} color={theme.textTertiary} />
-            </View>
-            {note.text ? (
-              <Text style={[styles.noteText, { color: theme.textPrimary }]} numberOfLines={3}>
-                {note.text}
+      {/* Sleek, Compact & Collapsible Personal Reflection Notes */}
+      {ayahNotes.length > 0 && (
+        <View style={[styles.notesContainer, { backgroundColor: theme.noteBg, borderColor: theme.border }]}>
+          {/* Header Bar: Tappable to toggle collapse/expand */}
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => setIsNotesCollapsed(!isNotesCollapsed)}
+            style={styles.notesSectionHeader}
+          >
+            <View style={styles.notesHeaderLeft}>
+              <Ionicons name="journal" size={13} color={theme.noteAccent} />
+              <Text style={[styles.notesSectionTitle, { color: theme.noteAccent }]}>
+                Reflections
               </Text>
-            ) : null}
-          </TouchableOpacity>
-          {note.voiceNote ? (
-            <View style={styles.voicePreview}>
-              <VoiceNotePlayer voiceNote={note.voiceNote} compact />
+              <View style={[styles.notesCountBadge, { backgroundColor: theme.noteMuted }]}>
+                <Text style={[styles.notesCountText, { color: theme.noteAccent }]}>
+                  {ayahNotes.length}
+                </Text>
+              </View>
+              {isNotesCollapsed && (
+                <Text
+                  style={[styles.collapsedSnippet, { color: theme.textSecondary }]}
+                  numberOfLines={1}
+                  ellipsizeMode="tail"
+                >
+                  • {ayahNotes[0].text
+                      ? ayahNotes[0].text.trim()
+                      : ayahNotes[0].voiceNote
+                      ? `Voice note (${formatDurationMs(ayahNotes[0].voiceNote.durationMillis || 0)})`
+                      : 'Reflection'}
+                </Text>
+              )}
             </View>
-          ) : null}
+
+            <View style={styles.notesHeaderRight}>
+              <TouchableOpacity
+                onPress={(e) => {
+                  e.stopPropagation();
+                  onOpenNote(ayah);
+                }}
+                style={[styles.addReflectionBtn, { backgroundColor: theme.surface, borderColor: theme.borderSubtle }]}
+                hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
+              >
+                <Ionicons name="add" size={12} color={theme.noteAccent} />
+                <Text style={[styles.addReflectionBtnText, { color: theme.noteAccent }]}>Add</Text>
+              </TouchableOpacity>
+              <Ionicons
+                name={isNotesCollapsed ? 'chevron-down' : 'chevron-up'}
+                size={16}
+                color={theme.textTertiary}
+              />
+            </View>
+          </TouchableOpacity>
+
+          {/* Expanded Compact Notes List */}
+          {!isNotesCollapsed && (
+            <View style={styles.compactNotesList}>
+              {ayahNotes.map((n) => {
+                const isVoice = Boolean(n.voiceNote);
+                const isText = Boolean(n.text && n.text.trim());
+                const dateStr = new Date(n.updatedAt || n.createdAt).toLocaleDateString(undefined, {
+                  month: 'short',
+                  day: 'numeric',
+                });
+                const previewSnippet = isText
+                  ? n.text.trim()
+                  : isVoice
+                  ? `Voice note (${formatDurationMs(n.voiceNote?.durationMillis || 0)})`
+                  : 'Reflection';
+
+                return (
+                  <TouchableOpacity
+                    key={n.id}
+                    activeOpacity={0.7}
+                    onPress={() => (onViewNote ? onViewNote(ayah, n) : onOpenNote(ayah, n))}
+                    style={[
+                      styles.compactNoteRow,
+                      { backgroundColor: theme.card, borderColor: theme.borderSubtle },
+                    ]}
+                  >
+                    <View style={[styles.compactNoteIconWrap, { backgroundColor: theme.noteMuted }]}>
+                      <Ionicons
+                        name={isVoice && !isText ? 'mic' : !isVoice ? 'document-text' : 'chatbubbles'}
+                        size={12}
+                        color={theme.noteAccent}
+                      />
+                    </View>
+
+                    <Text
+                      style={[styles.compactNoteText, { color: theme.textPrimary }]}
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
+                    >
+                      {previewSnippet}
+                    </Text>
+
+                    <View style={styles.compactNoteRight}>
+                      <Text style={[styles.compactNoteDate, { color: theme.textTertiary }]}>
+                        {dateStr}
+                      </Text>
+                      <Ionicons name="chevron-forward" size={13} color={theme.textTertiary} />
+                    </View>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+          )}
         </View>
       )}
 
@@ -314,17 +403,17 @@ export const AyahItem = React.memo(function AyahItem({
           hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
         >
           <Ionicons
-            name={note ? 'document-text' : 'create-outline'}
+            name={ayahNotes.length > 0 ? 'document-text' : 'create-outline'}
             size={18}
-            color={note ? theme.noteAccent : theme.textSecondary}
+            color={ayahNotes.length > 0 ? theme.noteAccent : theme.textSecondary}
           />
           <Text
             style={[
               styles.actionLabel,
-              { color: note ? theme.noteAccent : theme.textSecondary },
+              { color: ayahNotes.length > 0 ? theme.noteAccent : theme.textSecondary },
             ]}
           >
-            {note ? 'Note' : 'Add Note'}
+            {ayahNotes.length > 0 ? `Notes (${ayahNotes.length})` : 'Add Note'}
           </Text>
         </TouchableOpacity>
 
@@ -432,33 +521,94 @@ const styles = StyleSheet.create({
     writingDirection: 'rtl',
     fontFamily: 'serif',
   },
-  noteCard: {
+  notesContainer: {
     borderRadius: 14,
     borderWidth: 1,
-    padding: 12,
-    marginBottom: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 9,
+    marginBottom: 10,
   },
-  noteHeader: {
+  notesSectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 6,
+    minHeight: 28,
   },
-  noteHeaderLeft: {
+  notesHeaderLeft: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
+    flex: 1,
+    marginRight: 8,
   },
-  noteTitle: {
+  notesSectionTitle: {
     fontSize: 12,
     fontWeight: '700',
   },
-  noteText: {
-    fontSize: 13,
-    lineHeight: 19,
+  notesCountBadge: {
+    paddingHorizontal: 6,
+    paddingVertical: 1,
+    borderRadius: 8,
   },
-  voicePreview: {
+  notesCountText: {
+    fontSize: 10,
+    fontWeight: '700',
+  },
+  collapsedSnippet: {
+    fontSize: 11,
+    flex: 1,
+    fontStyle: 'italic',
+  },
+  notesHeaderRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  addReflectionBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 2,
+    paddingHorizontal: 7,
+    paddingVertical: 3,
+    borderRadius: 8,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  addReflectionBtnText: {
+    fontSize: 11,
+    fontWeight: '600',
+  },
+  compactNotesList: {
     marginTop: 8,
+    gap: 6,
+  },
+  compactNoteRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 7,
+    paddingHorizontal: 10,
+    borderRadius: 10,
+    borderWidth: StyleSheet.hairlineWidth,
+    gap: 8,
+  },
+  compactNoteIconWrap: {
+    width: 22,
+    height: 22,
+    borderRadius: 6,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  compactNoteText: {
+    flex: 1,
+    fontSize: 12,
+    lineHeight: 16,
+  },
+  compactNoteRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  compactNoteDate: {
+    fontSize: 10,
   },
   toolbar: {
     flexDirection: 'row',

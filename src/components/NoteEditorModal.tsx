@@ -25,6 +25,7 @@ interface NoteEditorModalProps {
   urduText?: string;
   initialNote?: string;
   initialVoiceNote?: VoiceNote;
+  noteId?: string;
   onSave: (text: string, voiceNote: VoiceNote | null) => void;
   onDelete?: () => void;
   onClose: () => void;
@@ -39,6 +40,7 @@ export function NoteEditorModal({
   urduText,
   initialNote = '',
   initialVoiceNote,
+  noteId,
   onSave,
   onDelete,
   onClose,
@@ -55,7 +57,7 @@ export function NoteEditorModal({
     setIsRecordingVoice(false);
   }, [initialNote, initialVoiceNote, visible]);
 
-  const hasExistingNote = Boolean(initialNote.trim() || initialVoiceNote);
+  const isEditing = Boolean(noteId || initialNote.trim() || initialVoiceNote);
   const canSave = Boolean(noteText.trim() || voiceNote);
 
   const handleSave = () => {
@@ -88,7 +90,9 @@ export function NoteEditorModal({
             </TouchableOpacity>
 
             <View style={styles.headerTitleContainer}>
-              <Text style={[styles.headerTitle, { color: theme.textPrimary }]}>Study Note</Text>
+              <Text style={[styles.headerTitle, { color: theme.textPrimary }]}>
+                {noteId ? 'Edit Reflection' : 'New Reflection'}
+              </Text>
               <Text style={[styles.headerSubtitle, { color: theme.primary }]}>
                 {surahName} {surahNumber}:{ayahNumber}
               </Text>
@@ -96,12 +100,12 @@ export function NoteEditorModal({
 
             <TouchableOpacity
               onPress={handleSave}
-              disabled={isRecordingVoice || (!canSave && !hasExistingNote)}
+              disabled={isRecordingVoice || (!canSave && !isEditing)}
               style={[
                 styles.saveBtn,
                 {
                   backgroundColor: theme.primary,
-                  opacity: isRecordingVoice || (!canSave && !hasExistingNote) ? 0.5 : 1,
+                  opacity: isRecordingVoice || (!canSave && !isEditing) ? 0.5 : 1,
                 },
               ]}
             >
@@ -155,7 +159,7 @@ export function NoteEditorModal({
               onRecordingChange={setIsRecordingVoice}
             />
 
-            {hasExistingNote ? (
+            {isEditing && onDelete ? (
               <TouchableOpacity
                 onPress={handleDelete}
                 style={[styles.deleteBtn, { borderColor: theme.destructive + '40' }]}

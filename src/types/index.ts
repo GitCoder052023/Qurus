@@ -49,7 +49,7 @@ export interface VoiceNote {
 }
 
 export interface StudyNote {
-  id: string; // e.g. "surah_ayah"
+  id: string; // Unique note identifier
   surahNumber: number;
   ayahNumber: number;
   text: string;

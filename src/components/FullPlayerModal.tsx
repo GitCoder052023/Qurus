@@ -585,6 +585,7 @@ export function FullPlayerModal() {
       urduText={currentAyah?.urduText}
       initialNote={currentNote?.text || ''}
       initialVoiceNote={currentNote?.voiceNote}
+      noteId={currentNote?.id}
       onSave={(text, voiceNote) => {
         if (!currentSurahNumber || !currentAyahNumber || !currentAyah) return;
         saveNote(
@@ -593,13 +594,15 @@ export function FullPlayerModal() {
           text,
           currentAyah.arabicText,
           currentAyah.urduText,
-          voiceNote
+          voiceNote,
+          currentNote?.id
         );
         setShowNoteModal(false);
       }}
       onDelete={() => {
-        if (!currentSurahNumber || !currentAyahNumber) return;
-        deleteNote(currentSurahNumber, currentAyahNumber);
+        if (currentNote) {
+          deleteNote(currentNote.id);
+        }
         setShowNoteModal(false);
       }}
       onClose={() => setShowNoteModal(false)}
