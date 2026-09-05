@@ -15,6 +15,7 @@ import { useAudio } from '../context/AudioContext';
 import { useTheme } from '../context/ThemeContext';
 import { useStudyState } from '../context/StudyContext';
 import { NoteEditorModal } from './NoteEditorModal';
+import { VoiceNotePlayer } from './VoiceNotePlayer';
 import { getAyah } from '../data/surahLoader';
 import { RECITERS } from '../data/surahs';
 import { PlaybackMode } from '../types';
@@ -327,25 +328,36 @@ export function FullPlayerModal() {
 
             {/* Reflection Note Preview Card (if user has added a reflection) */}
             {currentNote && (
-              <TouchableOpacity
-                activeOpacity={0.85}
-                onPress={() => setShowNoteModal(true)}
+              <View
                 style={[
                   styles.reflectionCard,
                   { backgroundColor: theme.noteBg, borderColor: theme.borderSubtle },
                 ]}
               >
-                <View style={styles.reflectionHeader}>
-                  <View style={styles.reflectionHeaderLeft}>
-                    <Ionicons name="document-text" size={13} color={theme.noteAccent} />
-                    <Text style={[styles.reflectionTitle, { color: theme.noteAccent }]}>Your Reflection</Text>
+                <TouchableOpacity activeOpacity={0.85} onPress={() => setShowNoteModal(true)}>
+                  <View style={styles.reflectionHeader}>
+                    <View style={styles.reflectionHeaderLeft}>
+                      <Ionicons
+                        name={currentNote.voiceNote ? 'mic' : 'document-text'}
+                        size={13}
+                        color={theme.noteAccent}
+                      />
+                      <Text style={[styles.reflectionTitle, { color: theme.noteAccent }]}>Your Reflection</Text>
+                    </View>
+                    <Ionicons name="pencil" size={12} color={theme.textTertiary} />
                   </View>
-                  <Ionicons name="pencil" size={12} color={theme.textTertiary} />
-                </View>
-                <Text style={[styles.reflectionText, { color: theme.textPrimary }]} numberOfLines={2}>
-                  {currentNote.text}
-                </Text>
-              </TouchableOpacity>
+                  {currentNote.text ? (
+                    <Text style={[styles.reflectionText, { color: theme.textPrimary }]} numberOfLines={2}>
+                      {currentNote.text}
+                    </Text>
+                  ) : null}
+                </TouchableOpacity>
+                {currentNote.voiceNote ? (
+                  <View style={{ marginTop: 8 }}>
+                    <VoiceNotePlayer voiceNote={currentNote.voiceNote} compact />
+                  </View>
+                ) : null}
+              </View>
             )}
           </ScrollView>
         </View>
@@ -572,13 +584,15 @@ export function FullPlayerModal() {
             arabicText={currentAyah.arabicText}
             urduText={currentAyah.urduText}
             initialNote={currentNote?.text || ''}
-            onSave={(text) => {
+            initialVoiceNote={currentNote?.voiceNote}
+            onSave={(text, voiceNote) => {
               saveNote(
                 currentSurahNumber,
                 currentAyahNumber,
                 text,
                 currentAyah.arabicText,
-                currentAyah.urduText
+                currentAyah.urduText,
+                voiceNote
               );
               setShowNoteModal(false);
             }}

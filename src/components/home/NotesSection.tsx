@@ -6,6 +6,7 @@ import { useTheme } from '../../context/ThemeContext';
 import { useStudyState } from '../../context/StudyContext';
 import { SURAHS } from '../../data/surahs';
 import { StudyNote } from '../../types';
+import { VoiceNotePlayer } from '../VoiceNotePlayer';
 
 export const NotesSection = React.memo(function NotesSection() {
   const { theme } = useTheme();
@@ -77,10 +78,8 @@ export const NotesSection = React.memo(function NotesSection() {
           {noteList.map((item) => {
             const surah = SURAHS.find((s) => s.number === item.surahNumber);
             return (
-              <TouchableOpacity
+              <View
                 key={item.id}
-                activeOpacity={0.88}
-                onPress={() => handleOpenNote(item)}
                 style={[
                   styles.noteCard,
                   {
@@ -89,49 +88,57 @@ export const NotesSection = React.memo(function NotesSection() {
                   },
                 ]}
               >
-                {/* Note Card Header */}
-                <View style={styles.cardTopRow}>
-                  <View style={styles.surahInfo}>
-                    <Text style={[styles.surahName, { color: theme.textPrimary }]} numberOfLines={1}>
-                      {surah ? surah.englishName : `Surah ${item.surahNumber}`}
-                    </Text>
-                    <View style={[styles.ayahBadge, { backgroundColor: theme.noteMuted }]}>
-                      <Text style={[styles.ayahBadgeText, { color: theme.noteAccent }]}>
-                        {item.surahNumber}:{item.ayahNumber}
+                <TouchableOpacity activeOpacity={0.88} onPress={() => handleOpenNote(item)}>
+                  <View style={styles.cardTopRow}>
+                    <View style={styles.surahInfo}>
+                      <Text style={[styles.surahName, { color: theme.textPrimary }]} numberOfLines={1}>
+                        {surah ? surah.englishName : `Surah ${item.surahNumber}`}
                       </Text>
+                      <View style={[styles.ayahBadge, { backgroundColor: theme.noteMuted }]}>
+                        <Text style={[styles.ayahBadgeText, { color: theme.noteAccent }]}>
+                          {item.surahNumber}:{item.ayahNumber}
+                        </Text>
+                      </View>
                     </View>
+                    <Text style={[styles.dateText, { color: theme.textTertiary }]}>
+                      {formatDate(item.updatedAt)}
+                    </Text>
                   </View>
-                  <Text style={[styles.dateText, { color: theme.textTertiary }]}>
-                    {formatDate(item.updatedAt)}
-                  </Text>
-                </View>
 
-                {/* Note Content */}
-                <Text
-                  style={[styles.noteContentText, { color: theme.textPrimary }]}
-                  numberOfLines={2}
-                >
-                  {item.text}
-                </Text>
+                  {item.text ? (
+                    <Text
+                      style={[styles.noteContentText, { color: theme.textPrimary }]}
+                      numberOfLines={2}
+                    >
+                      {item.text}
+                    </Text>
+                  ) : null}
+                </TouchableOpacity>
 
-                {/* Ayah Snippet preview (subtle) */}
-                {item.urduSnippet ? (
-                  <Text
-                    style={[styles.urduSnippetText, { color: theme.textTertiary }]}
-                    numberOfLines={1}
-                  >
-                    "{item.urduSnippet}"
-                  </Text>
+                {item.voiceNote ? (
+                  <View style={styles.voiceWrap}>
+                    <VoiceNotePlayer voiceNote={item.voiceNote} compact />
+                  </View>
                 ) : null}
 
-                {/* Card Footer */}
-                <View style={[styles.cardFooter, { borderTopColor: theme.borderSubtle }]}>
-                  <View style={styles.openLink}>
-                    <Text style={[styles.openLinkText, { color: theme.primary }]}>Open in Reader</Text>
-                    <Ionicons name="arrow-forward" size={11} color={theme.primary} />
+                <TouchableOpacity activeOpacity={0.88} onPress={() => handleOpenNote(item)}>
+                  {item.urduSnippet ? (
+                    <Text
+                      style={[styles.urduSnippetText, { color: theme.textTertiary }]}
+                      numberOfLines={1}
+                    >
+                      "{item.urduSnippet}"
+                    </Text>
+                  ) : null}
+
+                  <View style={[styles.cardFooter, { borderTopColor: theme.borderSubtle }]}>
+                    <View style={styles.openLink}>
+                      <Text style={[styles.openLinkText, { color: theme.primary }]}>Open in Reader</Text>
+                      <Ionicons name="arrow-forward" size={11} color={theme.primary} />
+                    </View>
                   </View>
-                </View>
-              </TouchableOpacity>
+                </TouchableOpacity>
+              </View>
             );
           })}
         </ScrollView>
@@ -152,10 +159,10 @@ export const NotesSection = React.memo(function NotesSection() {
           </View>
           <View style={styles.emptyTextCol}>
             <Text style={[styles.emptyTitle, { color: theme.textPrimary }]}>
-              No reflections written yet
+              No reflections yet
             </Text>
             <Text style={[styles.emptyDesc, { color: theme.textTertiary }]}>
-              Tap "Note" on any Ayah to record insights
+              Tap Note on any ayah to write or record a reflection
             </Text>
           </View>
           <Ionicons name="chevron-forward" size={16} color={theme.textTertiary} />
@@ -253,6 +260,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 17,
     marginBottom: 6,
+  },
+  voiceWrap: {
+    marginBottom: 8,
   },
   urduSnippetText: {
     fontSize: 11,

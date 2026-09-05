@@ -17,7 +17,7 @@ import { getSurah } from '../../data/surahLoader';
 import { SURAHS } from '../../data/surahs';
 import { AyahItem } from '../../components/AyahItem';
 import { NoteEditorModal } from '../../components/NoteEditorModal';
-import { Ayah, StudyNote } from '../../types';
+import { Ayah } from '../../types';
 
 export default function ReaderScreen() {
   const { surah: surahParam, ayah: ayahParam } = useLocalSearchParams<{
@@ -28,7 +28,7 @@ export default function ReaderScreen() {
   const initialAyah = ayahParam ? parseInt(ayahParam, 10) : 1;
 
   const { theme, isDark } = useTheme();
-  const { preferences, saveNote, deleteNote } = useStudyState();
+  const { preferences, saveNote, deleteNote, getNote } = useStudyState();
   const {
     currentSurahNumber,
     currentAyahNumber,
@@ -297,13 +297,16 @@ export default function ReaderScreen() {
           surahName={surahData.englishName}
           arabicText={selectedAyahForNote.arabicText}
           urduText={selectedAyahForNote.urduText}
-          onSave={(text) => {
+          initialNote={getNote(surahNumber, selectedAyahForNote.numberInSurah)?.text || ''}
+          initialVoiceNote={getNote(surahNumber, selectedAyahForNote.numberInSurah)?.voiceNote}
+          onSave={(text, voiceNote) => {
             saveNote(
               surahNumber,
               selectedAyahForNote.numberInSurah,
               text,
               selectedAyahForNote.arabicText,
-              selectedAyahForNote.urduText
+              selectedAyahForNote.urduText,
+              voiceNote
             );
             setSelectedAyahForNote(null);
           }}

@@ -43,11 +43,17 @@ export interface Highlight {
   createdAt: number;
 }
 
+export interface VoiceNote {
+  uri: string;
+  durationMillis: number;
+}
+
 export interface StudyNote {
   id: string; // e.g. "surah_ayah"
   surahNumber: number;
   ayahNumber: number;
   text: string;
+  voiceNote?: VoiceNote;
   arabicSnippet?: string;
   urduSnippet?: string;
   createdAt: number;

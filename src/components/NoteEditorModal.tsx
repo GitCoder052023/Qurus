@@ -13,6 +13,8 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../context/ThemeContext';
+import { VoiceNote } from '../types';
+import { VoiceNoteComposer } from './VoiceNoteComposer';
 
 interface NoteEditorModalProps {
   visible: boolean;
@@ -22,7 +24,8 @@ interface NoteEditorModalProps {
   arabicText?: string;
   urduText?: string;
   initialNote?: string;
-  onSave: (text: string) => void;
+  initialVoiceNote?: VoiceNote;
+  onSave: (text: string, voiceNote: VoiceNote | null) => void;
   onDelete?: () => void;
   onClose: () => void;
 }
@@ -35,21 +38,28 @@ export function NoteEditorModal({
   arabicText,
   urduText,
   initialNote = '',
+  initialVoiceNote,
   onSave,
   onDelete,
   onClose,
 }: NoteEditorModalProps) {
   const { theme } = useTheme();
   const [noteText, setNoteText] = useState(initialNote);
+  const [voiceNote, setVoiceNote] = useState<VoiceNote | null>(initialVoiceNote ?? null);
+  const [isRecordingVoice, setIsRecordingVoice] = useState(false);
 
   useEffect(() => {
     setNoteText(initialNote);
-  }, [initialNote, visible]);
+    setVoiceNote(initialVoiceNote ?? null);
+  }, [initialNote, initialVoiceNote, visible]);
 
   if (!visible) return null;
 
+  const hasExistingNote = Boolean(initialNote.trim() || initialVoiceNote);
+  const canSave = Boolean(noteText.trim() || voiceNote);
+
   const handleSave = () => {
-    onSave(noteText);
+    onSave(noteText, voiceNote);
     onClose();
   };
 
@@ -72,7 +82,6 @@ export function NoteEditorModal({
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={styles.container}
         >
-          {/* Header */}
           <View style={[styles.header, { borderBottomColor: theme.border }]}>
             <TouchableOpacity onPress={onClose} style={styles.headerBtn}>
               <Text style={[styles.headerBtnText, { color: theme.textSecondary }]}>Cancel</Text>
@@ -85,13 +94,26 @@ export function NoteEditorModal({
               </Text>
             </View>
 
-            <TouchableOpacity onPress={handleSave} style={[styles.saveBtn, { backgroundColor: theme.primary }]}>
+            <TouchableOpacity
+              onPress={handleSave}
+              disabled={isRecordingVoice || (!canSave && !hasExistingNote)}
+              style={[
+                styles.saveBtn,
+                {
+                  backgroundColor: theme.primary,
+                  opacity: isRecordingVoice || (!canSave && !hasExistingNote) ? 0.5 : 1,
+                },
+              ]}
+            >
               <Text style={[styles.saveBtnText, { color: theme.onPrimary }]}>Save</Text>
             </TouchableOpacity>
           </View>
 
-          <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent}>
-            {/* Verse Snippet Card */}
+          <ScrollView
+            style={styles.scroll}
+            contentContainerStyle={styles.scrollContent}
+            keyboardShouldPersistTaps="handled"
+          >
             <View style={[styles.verseSnippet, { backgroundColor: theme.surface, borderColor: theme.border }]}>
               {arabicText ? (
                 <Text style={[styles.arabicPreview, { color: theme.arabicText }]} numberOfLines={3}>
@@ -105,10 +127,9 @@ export function NoteEditorModal({
               ) : null}
             </View>
 
-            {/* Note Input */}
             <View style={styles.inputContainer}>
               <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>
-                Personal Reflection / Study Notes:
+                Written reflection
               </Text>
               <TextInput
                 style={[
@@ -119,18 +140,22 @@ export function NoteEditorModal({
                     color: theme.textPrimary,
                   },
                 ]}
-                placeholder="What did you reflect upon in this ayah? Write your thoughts, questions, or lessons..."
+                placeholder="What did this ayah bring up for you? Write it here, or record a voice note below."
                 placeholderTextColor={theme.textTertiary}
                 multiline
                 textAlignVertical="top"
-                autoFocus
                 value={noteText}
                 onChangeText={setNoteText}
               />
             </View>
 
-            {/* Delete button if note already exists */}
-            {initialNote ? (
+            <VoiceNoteComposer
+              value={voiceNote}
+              onChange={setVoiceNote}
+              onRecordingChange={setIsRecordingVoice}
+            />
+
+            {hasExistingNote ? (
               <TouchableOpacity
                 onPress={handleDelete}
                 style={[styles.deleteBtn, { borderColor: theme.destructive + '40' }]}
@@ -163,6 +188,8 @@ const styles = StyleSheet.create({
   },
   headerBtn: {
     padding: 6,
+    minHeight: 44,
+    justifyContent: 'center',
   },
   headerBtnText: {
     fontSize: 15,
@@ -183,6 +210,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 6,
     borderRadius: 14,
+    minHeight: 32,
+    justifyContent: 'center',
   },
   saveBtnText: {
     fontSize: 14,
@@ -193,6 +222,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     padding: 16,
+    paddingBottom: 40,
   },
   verseSnippet: {
     padding: 14,
@@ -222,7 +252,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   textInput: {
-    minHeight: 180,
+    minHeight: 140,
     borderRadius: 16,
     borderWidth: 1,
     padding: 16,
@@ -235,6 +265,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 8,
     paddingVertical: 12,
+    minHeight: 48,
     borderRadius: 12,
     borderWidth: 1,
     backgroundColor: 'transparent',

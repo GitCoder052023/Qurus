@@ -5,6 +5,7 @@ import { Ayah, StudyNote } from '../types';
 import { useTheme } from '../context/ThemeContext';
 import { useStudyState } from '../context/StudyContext';
 import { useAudio } from '../context/AudioContext';
+import { VoiceNotePlayer } from './VoiceNotePlayer';
 
 interface AyahItemProps {
   ayah: Ayah;
@@ -215,22 +216,27 @@ export const AyahItem = React.memo(function AyahItem({
 
       {/* Personal Reflection Note Card Preview (if exists) */}
       {note && (
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => onOpenNote(ayah)}
-          style={[styles.noteCard, { backgroundColor: theme.noteBg, borderColor: theme.border }]}
-        >
-          <View style={styles.noteHeader}>
-            <View style={styles.noteHeaderLeft}>
-              <Ionicons name="document-text" size={14} color={theme.noteAccent} />
-              <Text style={[styles.noteTitle, { color: theme.noteAccent }]}>My Reflection</Text>
+        <View style={[styles.noteCard, { backgroundColor: theme.noteBg, borderColor: theme.border }]}>
+          <TouchableOpacity activeOpacity={0.8} onPress={() => onOpenNote(ayah)}>
+            <View style={styles.noteHeader}>
+              <View style={styles.noteHeaderLeft}>
+                <Ionicons name={note.voiceNote ? 'mic' : 'document-text'} size={14} color={theme.noteAccent} />
+                <Text style={[styles.noteTitle, { color: theme.noteAccent }]}>My Reflection</Text>
+              </View>
+              <Ionicons name="pencil" size={13} color={theme.textTertiary} />
             </View>
-            <Ionicons name="pencil" size={13} color={theme.textTertiary} />
-          </View>
-          <Text style={[styles.noteText, { color: theme.textPrimary }]} numberOfLines={3}>
-            {note.text}
-          </Text>
-        </TouchableOpacity>
+            {note.text ? (
+              <Text style={[styles.noteText, { color: theme.textPrimary }]} numberOfLines={3}>
+                {note.text}
+              </Text>
+            ) : null}
+          </TouchableOpacity>
+          {note.voiceNote ? (
+            <View style={styles.voicePreview}>
+              <VoiceNotePlayer voiceNote={note.voiceNote} compact />
+            </View>
+          ) : null}
+        </View>
       )}
 
       {/* Ayah Actions Toolbar */}
@@ -450,6 +456,9 @@ const styles = StyleSheet.create({
   noteText: {
     fontSize: 13,
     lineHeight: 19,
+  },
+  voicePreview: {
+    marginTop: 8,
   },
   toolbar: {
     flexDirection: 'row',

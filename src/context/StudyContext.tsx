@@ -4,6 +4,7 @@ import {
   Bookmark,
   Highlight,
   StudyNote,
+  VoiceNote,
   StudyHistoryItem,
   LastStudiedState,
   ReadingPreferences,
@@ -74,7 +75,14 @@ interface StudyContextType {
   removeBookmark: (surahNumber: number, ayahNumber: number) => void;
   toggleHighlight: (surahNumber: number, ayahNumber: number) => boolean;
   isHighlighted: (surahNumber: number, ayahNumber: number) => boolean;
-  saveNote: (surahNumber: number, ayahNumber: number, text: string, arabicSnippet?: string, urduSnippet?: string) => void;
+  saveNote: (
+    surahNumber: number,
+    ayahNumber: number,
+    text: string,
+    arabicSnippet?: string,
+    urduSnippet?: string,
+    voiceNote?: VoiceNote | null
+  ) => void;
   deleteNote: (surahNumber: number, ayahNumber: number) => void;
   getNote: (surahNumber: number, ayahNumber: number) => StudyNote | undefined;
   updatePreferences: (newPrefs: Partial<ReadingPreferences>) => void;
@@ -351,22 +359,25 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     ayahNumber: number,
     text: string,
     arabicSnippet?: string,
-    urduSnippet?: string
+    urduSnippet?: string,
+    voiceNote?: VoiceNote | null
   ) => {
     const key = `${surahNumber}:${ayahNumber}`;
     const trimmed = text.trim();
+    const existing = notes[key];
+    const nextVoice = voiceNote === undefined ? existing?.voiceNote : voiceNote ?? undefined;
 
-    if (!trimmed) {
+    if (!trimmed && !nextVoice) {
       deleteNote(surahNumber, ayahNumber);
       return;
     }
 
-    const existing = notes[key];
     const newNote: StudyNote = {
       id: key,
       surahNumber,
       ayahNumber,
       text: trimmed,
+      voiceNote: nextVoice,
       arabicSnippet: arabicSnippet || existing?.arabicSnippet || '',
       urduSnippet: urduSnippet || existing?.urduSnippet || '',
       createdAt: existing?.createdAt || Date.now(),

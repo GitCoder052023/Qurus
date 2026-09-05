@@ -16,6 +16,7 @@ import { useStudyState } from '../../context/StudyContext';
 import { SURAHS } from '../../data/surahs';
 import { StudyNote } from '../../types';
 import { NoteEditorModal } from '../../components/NoteEditorModal';
+import { VoiceNotePlayer } from '../../components/VoiceNotePlayer';
 
 export default function NotesScreen() {
   const { theme } = useTheme();
@@ -33,6 +34,7 @@ export default function NotesScreen() {
     return list.filter(
       (n) =>
         n.text.toLowerCase().includes(q) ||
+        (Boolean(n.voiceNote) && 'voice note'.startsWith(q)) ||
         (n.urduSnippet && n.urduSnippet.toLowerCase().includes(q)) ||
         `${n.surahNumber}:${n.ayahNumber}`.includes(q)
     );
@@ -118,8 +120,15 @@ export default function NotesScreen() {
           </View>
         ) : null}
 
-        {/* User Note Text */}
-        <Text style={[styles.noteContent, { color: theme.textPrimary }]}>{item.text}</Text>
+        {item.text ? (
+          <Text style={[styles.noteContent, { color: theme.textPrimary }]}>{item.text}</Text>
+        ) : null}
+
+        {item.voiceNote ? (
+          <View style={styles.voiceWrap}>
+            <VoiceNotePlayer voiceNote={item.voiceNote} compact />
+          </View>
+        ) : null}
 
         {/* Footer */}
         <View style={[styles.cardFooter, { borderTopColor: theme.borderSubtle }]}>
@@ -146,7 +155,7 @@ export default function NotesScreen() {
       <View style={styles.header}>
         <Text style={[styles.screenTitle, { color: theme.textPrimary }]}>Notebook</Text>
         <Text style={[styles.screenSubtitle, { color: theme.textSecondary }]}>
-          Reflections attached to verses
+          Written and spoken reflections on verses
         </Text>
       </View>
 
@@ -187,7 +196,7 @@ export default function NotesScreen() {
               Your Quran study notes will appear here.
             </Text>
             <Text style={[styles.emptyText, { color: theme.textSecondary }]}>
-              While reading any Surah, tap the "Note" icon below an ayah to attach your personal reflections and contemplation.
+              While reading any Surah, tap Note below an ayah to write a reflection or record a voice note.
             </Text>
             <TouchableOpacity
               onPress={() => router.push('/(tabs)/quran')}
@@ -209,13 +218,15 @@ export default function NotesScreen() {
           arabicText={editingNote.arabicSnippet}
           urduText={editingNote.urduSnippet}
           initialNote={editingNote.text}
-          onSave={(newText) => {
+          initialVoiceNote={editingNote.voiceNote}
+          onSave={(newText, voiceNote) => {
             saveNote(
               editingNote.surahNumber,
               editingNote.ayahNumber,
               newText,
               editingNote.arabicSnippet,
-              editingNote.urduSnippet
+              editingNote.urduSnippet,
+              voiceNote
             );
             setEditingNote(null);
           }}
@@ -325,6 +336,9 @@ const styles = StyleSheet.create({
   noteContent: {
     fontSize: 14,
     lineHeight: 22,
+    marginBottom: 14,
+  },
+  voiceWrap: {
     marginBottom: 14,
   },
   cardFooter: {

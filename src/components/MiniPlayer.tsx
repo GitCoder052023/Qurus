@@ -329,7 +329,13 @@ export function MiniPlayer() {
             accessibilityLabel={currentNote ? 'View / Edit Note' : 'Add Note'}
           >
             <Ionicons
-              name={currentNote ? 'document-text' : 'create-outline'}
+              name={
+                currentNote?.voiceNote && !currentNote.text
+                  ? 'mic'
+                  : currentNote
+                    ? 'document-text'
+                    : 'create-outline'
+              }
               size={13}
               color={currentNote ? theme.noteAccent : theme.textSecondary}
             />
@@ -369,13 +375,15 @@ export function MiniPlayer() {
           arabicText={currentAyah.arabicText}
           urduText={currentAyah.urduText}
           initialNote={currentNote?.text || ''}
-          onSave={(text) => {
+          initialVoiceNote={currentNote?.voiceNote}
+          onSave={(text, voiceNote) => {
             saveNote(
               currentSurahNumber,
               currentAyahNumber,
               text,
               currentAyah.arabicText,
-              currentAyah.urduText
+              currentAyah.urduText,
+              voiceNote
             );
             setIsNoteEditorVisible(false);
           }}

@@ -123,7 +123,7 @@ const CHAPTERS: StoryChapter[] = [
       {
         icon: 'journal-outline',
         title: 'Private notebook',
-        desc: 'Attach reflections, questions, and insights directly to verses. Saved privately.',
+        desc: 'Attach written or spoken reflections to verses. Saved privately on your device.',
       },
       {
         icon: 'musical-notes-outline',
