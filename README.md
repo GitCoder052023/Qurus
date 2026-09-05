@@ -1,8 +1,8 @@
 # Qurus (قُرُوص)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
-[![Release](https://img.shields.io/badge/Release-v2.1.0-teal.svg)](https://github.com/GitCoder052023/Qurus/releases/tag/v2.1.0)
-[![Platform](https://img.shields.io/badge/Platform-Android-0E6B5C.svg)](https://github.com/GitCoder052023/Qurus/releases/tag/v2.1.0)
+[![Release](https://img.shields.io/badge/Release-v2.1.1-teal.svg)](https://github.com/GitCoder052023/Qurus/releases/tag/v2.1.1)
+[![Platform](https://img.shields.io/badge/Platform-Android-0E6B5C.svg)](https://github.com/GitCoder052023/Qurus/releases/tag/v2.1.1)
 [![Privacy](https://img.shields.io/badge/Privacy-100%25%20On--Device-blue.svg)](#-privacy--local-data)
 
 **Qurus** is a calm, focused reading and listening space built for everyday life. It offers an unobstructed way to explore the Quran verse by verse—pairing original Arabic recitations with line-by-line Urdu translations, private voice and written reflection notes, and background playback for when you are on the move.
@@ -13,10 +13,10 @@ Getting Qurus on your Android phone takes less than a minute:
 
 1. **Open the Release Page**:  
    Visit the official release page:  
-   👉 **[https://github.com/GitCoder052023/Qurus/releases/tag/v2.1.0](https://github.com/GitCoder052023/Qurus/releases/tag/v2.1.0)**
+   👉 **[https://github.com/GitCoder052023/Qurus/releases/tag/v2.1.1](https://github.com/GitCoder052023/Qurus/releases/tag/v2.1.1)**
 
 2. **Download the APK**:  
-   Scroll down to the **Assets** section at the bottom of the page and tap the **`.apk`** file (e.g., `Qurus_v2.1.0.apk`) to download it.
+   Scroll down to the **Assets** section at the bottom of the page and tap the **`.apk`** file (e.g., `Qurus_v2.1.1.apk`) to download it.
 
 3. **Install & Open**:  
    - Open the downloaded file from your browser's download prompt or your phone's *Downloads* folder.

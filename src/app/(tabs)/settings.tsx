@@ -1,19 +1,18 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  ScrollView,
-  TouchableOpacity,
-  Switch,
-  StyleSheet,
-  Alert,
-} from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { useTheme } from '../../context/ThemeContext';
-import { useStudyState } from '../../context/StudyContext';
+import {
+  Alert,
+  ScrollView,
+  StyleSheet,
+  Switch,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useAudio } from '../../context/AudioContext';
+import { useStudyState } from '../../context/StudyContext';
+import { useTheme } from '../../context/ThemeContext';
 import { RECITERS } from '../../data/surahs';
 
 export default function SettingsScreen() {
@@ -480,7 +479,7 @@ export default function SettingsScreen() {
 
         {/* App Info & Integrity Acknowledgments */}
         <View style={styles.appInfoSection}>
-          <Text style={[styles.appInfoTitle, { color: theme.textPrimary }]}>Qurus v2.1.0</Text>
+          <Text style={[styles.appInfoTitle, { color: theme.textPrimary }]}>Qurus v2.1.1</Text>
           <Text style={[styles.appInfoDesc, { color: theme.textSecondary }]}>
             Dedicated to open, honest reflection & continuous listening.
           </Text>
