@@ -16,7 +16,7 @@ Getting Qurus on your Android phone takes less than a minute:
    👉 **[https://github.com/GitCoder052023/Qurus/releases/tag/v2.1.0](https://github.com/GitCoder052023/Qurus/releases/tag/v2.1.0)**
 
 2. **Download the APK**:  
-   Scroll down to the **Assets** section at the bottom of the page and tap the **`.apk`** file (e.g., `Qurus_v2.0.apk`) to download it.
+   Scroll down to the **Assets** section at the bottom of the page and tap the **`.apk`** file (e.g., `Qurus_v2.1.0.apk`) to download it.
 
 3. **Install & Open**:  
    - Open the downloaded file from your browser's download prompt or your phone's *Downloads* folder.
