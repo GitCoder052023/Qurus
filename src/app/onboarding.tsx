@@ -45,7 +45,7 @@ interface StoryChapter {
     name: string;
     role: string;
     note: string;
-    dua: string;
+    closingWish: string;
   };
 }
 
@@ -57,14 +57,14 @@ const CHAPTERS: StoryChapter[] = [
     accent: '#0E6B5C',
     wash: '#D8EFE9',
     title: 'A question in the palm of my hand',
-    highlightPhrase: 'Why can’t Allah’s words be as effortless as our daily distractions?',
+    highlightPhrase: 'Why can’t honest reflection be as effortless as our daily distractions?',
     proseParagraphs: [
-      'To be completely honest with you, I was looking for a way to study and truly understand the Quran from its pure source with translation.',
-      'As a youngster in this fast-paced world, classical methods felt intimidating. Rigid discipline, heavy volumes of classical commentary, and dense academic texts felt overwhelming. Guilt slowly took over.',
-      'Meanwhile, look at our modern lives: apps like Spotify and Instagram are effortlessly resting right in the palm of our hands anytime we have two idle minutes.',
+      'To be completely honest with you, I was looking for a way to explore and understand the Quran directly through translation—without dogma or preconditions.',
+      'As a youngster in this fast-paced world, classical methods felt intimidating. Rigid academic commentary and heavy traditional formats felt overwhelming.',
+      'Meanwhile, look at our daily lives: apps like Spotify and Instagram are effortlessly resting right in the palm of our hands anytime we have two idle minutes.',
     ],
     quote: {
-      text: '“Why can’t the pure, unadulterated words of Allah be just as accessible, immediate, and frictionless in the palm of our hands as the distractions that consume our hours?”',
+      text: '“Why can’t exploring a text with an open mind be just as frictionless, accessible, and immediate in our hands as the distractions that consume our hours?”',
       author: 'Hamdan Khubaib',
     },
   },
@@ -75,18 +75,17 @@ const CHAPTERS: StoryChapter[] = [
     accent: '#C4455A',
     wash: '#F8E4E8',
     title: 'The advice that changed everything',
-    highlightPhrase: 'You will find an ayah that sticks with you like a hook in your mind.',
+    highlightPhrase: 'You will find a verse that sticks with you like a hook in your mind.',
     proseParagraphs: [
-      'I was paralyzed because I genuinely had no idea how to study the Quran. Where do you start? How do you make sense of it without getting lost in complexity?',
-      'One day, I opened up to my brother about this confusion. His response was so simple, yet it completely dismantled every mental barrier I had built.',
+      'I was stuck because I genuinely had no idea where to start. How do you explore the text without feeling judged or getting lost in complexity?',
+      'One day, I opened up to my brother about this confusion. His response was simple, yet it dismantled every mental barrier I had built.',
     ],
     quote: {
-      text: '“Don’t overthink anything. Just start reading the Quran with its translation. Whatever framework you view the world through—science, philosophy, history, or common sense—you will find an ayah that sticks with you like a hook in your mind.”',
+      text: '“Don’t overthink it. Just start reading the verses with their translations. Whatever lens you view reality through—science, philosophy, history, or common sense—you will find something that sticks with you like a hook in your mind.”',
       author: 'My brother’s advice',
     },
   },
   {
-
     id: 'invitation',
     kicker: 'An invitation',
     heroIcon: 'heart-outline',
@@ -95,40 +94,41 @@ const CHAPTERS: StoryChapter[] = [
     title: 'Radical honesty',
     highlightPhrase: 'I’m figuring this out too.',
     proseParagraphs: [
-      'If you’re reading this while questioning everything... whether you’re 17 and confused, an atheist, an agnostic, or just disconnected from religion. It doesn’t matter. And I’m not going to pretend I have all the answers.', 
-      'Honestly, I’m figuring this out too. I’m not some super religious person who suddenly found all the answers. I’m just a normal person with questions, doubts, and a genuine desire to figure out what’s actually true.', 
-      'And the advice I can give you is the same thing my brother told me:'],
+      'If you’re reading this while questioning everything... whether you’re 17 and confused, an atheist, an agnostic, or just disconnected from organized religion. It doesn’t matter. I’m not going to pretend I have all the answers.',
+      'Honestly, I’m figuring this out too. I’m not here to preach or lecture anyone. I’m just a normal person with questions, doubts, and a genuine desire to seek what’s actually true.',
+      'And the best advice I can share is the same thing my brother told me:',
+    ],
     quote: {
-      text: '“Just give it an honest shot. You don’t have to decide what you believe right now. Open an ayah, read the meaning, and just see what it does to you.”',
+      text: '“Just give it an honest shot. You don’t have to decide what you believe right now. Open a verse, read what it actually says, and see what it sparks in you.”',
       author: 'Hamdan’s advice',
     },
   },
   {
     id: 'sanctuary',
-    kicker: 'The sanctuary',
+    kicker: 'The space',
     heroIcon: 'book-outline',
     accent: '#C46B1A',
     wash: '#F8E8D4',
-    title: 'Ayah-based study',
-    highlightPhrase: 'Studying that doesn’t feel like a heavy assignment.',
+    title: 'Verse-by-verse exploration',
+    highlightPhrase: 'Reading that doesn’t feel like a heavy assignment.',
     proseParagraphs: [
-      'That insight became the soul of Qurus. Instead of pressuring you to speed through pages without retaining anything, Qurus gives you an Ayah-based sanctuary built for the modern world:',
+      'That insight became the soul of Qurus. Instead of pressuring you to rush through pages without absorbing anything, Qurus gives you a focused, modern thinking space:',
     ],
     features: [
       {
         icon: 'finger-print-outline',
-        title: 'Work with individual ayahs',
+        title: 'Work with individual verses',
         desc: 'Every verse stands on its own. Isolate it, repeat it, reflect on it, and let it take root.',
       },
       {
         icon: 'journal-outline',
-        title: 'Private notebook',
-        desc: 'Attach written or spoken reflections to verses. Saved privately on your device.',
+        title: 'Private study notebook',
+        desc: 'Attach written or spoken thoughts, questions, and insights directly to verses. Stored privately on your device.',
       },
       {
         icon: 'musical-notes-outline',
         title: 'Arabic + Urdu audio',
-        desc: 'Arabic recitation followed by Urdu translation, verse by verse.',
+        desc: 'Arabic recitation paired with Urdu translation, verse by verse.',
       },
     ],
   },
@@ -141,19 +141,19 @@ const CHAPTERS: StoryChapter[] = [
     title: 'Your journey starts here',
     highlightPhrase: 'Turning idle moments into quiet reflection.',
     proseParagraphs: [
-      'Qurus is built so you can listen while moving through life—gym, commute, traffic, an evening walk.',
+      'Qurus is built so you can listen and reflect while moving through your day—at the gym, commuting, or on a quiet walk.',
     ],
     activities: [
       { icon: 'barbell-outline', label: 'At the gym' },
-      { icon: 'train-outline', label: 'On the metro' },
-      { icon: 'car-outline', label: 'In traffic' },
+      { icon: 'train-outline', label: 'On the commute' },
+      { icon: 'car-outline', label: 'In transit' },
       { icon: 'walk-outline', label: 'Evening walks' },
     ],
     founderSignature: {
       name: 'Hamdan Khubaib',
       role: 'Creator of Qurus',
-      note: 'If Qurus can help even one person find an ayah that hooks into their heart, sparks their curiosity, and bridges modern life with the Divine book, every line of code has fulfilled its purpose.',
-      dua: 'May Allah bless your study, grant you deep clarity, and make His words a steadfast light in your life.',
+      note: 'If Qurus helps even one person discover a verse that challenges their thinking, sparks genuine curiosity, and makes space for honest contemplation, every line of code has fulfilled its purpose.',
+      closingWish: 'Wishing you clarity of mind, deep perspective, and an open journey of truth-seeking.',
     },
   },
 ];
@@ -420,7 +420,7 @@ export default function OnboardingScreen() {
                     {chapter.founderSignature.note}
                   </Text>
                   <Text style={[styles.founderDua, { color: chapter.accent }]}>
-                    {chapter.founderSignature.dua}
+                    {chapter.founderSignature.closingWish}
                   </Text>
                 </Animated.View>
               ) : null}

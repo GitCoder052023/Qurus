@@ -530,16 +530,16 @@ export default function NotesScreen() {
                 <Ionicons name="journal-outline" size={36} color={theme.textTertiary} />
               </View>
               <Text style={[styles.emptyTitle, { color: theme.textPrimary }]}>
-                Your Quran Notebook is empty
+                Your Study Notebook is empty
               </Text>
               <Text style={[styles.emptyText, { color: theme.textSecondary }]}>
-                While reading any Surah, tap Note below an ayah to write a reflection or record a voice note. You can add multiple voice and text notes per ayah!
+                While reading any chapter, tap Note below a verse to write down your thoughts, questions, or record a voice note.
               </Text>
               <TouchableOpacity
                 onPress={() => router.push('/(tabs)/quran')}
                 style={[styles.browseBtn, { backgroundColor: theme.primary }]}
               >
-                <Text style={[styles.browseBtnText, { color: theme.onPrimary }]}>Browse the Quran</Text>
+                <Text style={[styles.browseBtnText, { color: theme.onPrimary }]}>Explore Chapters</Text>
               </TouchableOpacity>
             </View>
           )

@@ -89,37 +89,36 @@ export default function OriginStoryScreen() {
         {/* Section 1: The Dilemma */}
         <View style={styles.proseBlock}>
           <Text style={[styles.leadParagraph, { color: theme.textPrimary }]}>
-            To be completely honest with you, I was looking for a way to study and truly understand
-            the Quran from its pure source with its translation. But every time I tried, something
+            To be completely honest with you, I was looking for a way to explore and understand the
+            Quran directly from its source through translation. But every time I tried, something
             stood in the way.
           </Text>
 
           <Text style={[styles.bodyParagraph, { color: theme.textSecondary }]}>
-            The traditional methods simply didn't fit my reality. As a youngster living in this
-            fast-paced world, sitting down daily with rigid discipline, opening heavy volumes of
-            tafseer, and trying to digest academic commentaries felt overwhelming. I couldn't
-            maintain the discipline, and like many young people, guilt would slowly take over.
+            Traditional methods simply didn't fit my reality. As a youngster living in this
+            fast-paced world, sitting down with rigid expectations, opening heavy volumes of
+            classical commentary, and trying to digest dense academic text felt overwhelming. I couldn't
+            maintain the discipline, and like many young people, frustration and guilt slowly took over.
           </Text>
 
           <Text style={[styles.bodyParagraph, { color: theme.textSecondary }]}>
             Meanwhile, look at how we live our lives. Our modern distractions—whether it's
             Spotify, Instagram, or YouTube—are effortlessly resting right in the palm of our hands.
-            Whenever we have two minutes of idle time at a red light, in the metro, or waiting for
+            Whenever we have two minutes of idle time at a red light, on the commute, or waiting for
             food, our thumb reflexively opens an app.
           </Text>
 
           <View style={[styles.reflectiveCard, { backgroundColor: theme.cardElevated, borderColor: theme.borderSubtle }]}>
             <Ionicons name="phone-portrait-outline" size={24} color={theme.primary} />
             <Text style={[styles.reflectiveCardText, { color: theme.textPrimary }]}>
-              "Why can't the pure, unadulterated words of Allah be just as frictionless, accessible,
+              "Why can't exploring a text with an open mind be just as frictionless, accessible,
               and immediate in the palm of my hand as the distractions that consume my hours?"
             </Text>
           </View>
 
           <Text style={[styles.bodyParagraph, { color: theme.textSecondary }]}>
-            I had a deep desire to learn, but I was paralyzed because I genuinely had no idea how to
-            actually study the Quran. Where do you start? How do you make sense of it all without
-            getting lost?
+            I had a deep desire to explore, but I was stuck because I genuinely had no idea how to
+            approach it without feeling judged or getting lost in complexity. Where do you start? How do you make sense of it on your own terms?
           </Text>
         </View>
 
@@ -147,12 +146,10 @@ export default function OriginStoryScreen() {
           >
             <Ionicons name="chatbubble-ellipses-outline" size={22} color={theme.primary} />
             <Text style={[styles.quoteCardText, { color: theme.textPrimary }]}>
-              “Don't overthink anything. Just start reading the Quran with its translation.
-              Insha'Allah, you will find something that will be coherent with whatever framework you
-              use to study—whether it is common sense, science, philosophy, history, social
-              sciences, or your own life experience.
+              “Don't overthink anything. Just start reading the verses with their translation.
+              Whatever framework you use to make sense of the world—whether it is common sense, science, philosophy, history, or your own lived experience—you will find something coherent.
               {'\n\n'}
-              You will find something that will stick with you like a hook in your mind.”
+              You will find something that sticks with you like a hook in your mind.”
             </Text>
             <Text style={[styles.quoteCardAuthor, { color: theme.textTertiary }]}>
               — My brother's advice to me
@@ -160,17 +157,14 @@ export default function OriginStoryScreen() {
           </View>
 
           <Text style={[styles.bodyParagraph, { color: theme.textSecondary }]}>
-            That statement hit me with the force of clarity. The Quran does not demand that you be a
-            trained scholar before its words can transform you. Truth resonates naturally. When you
-            approach an ayah with an open, inquiring mind, it hooks into your thoughts and stays
-            with you all day.
+            That statement hit me with the force of clarity. You don't need to be a scholar or have predefined beliefs before words can challenge or move you. When you approach a verse with an honest, inquiring mind, it sparks curiosity and stays with you throughout your day.
           </Text>
         </View>
 
         {/* Section 3: The Philosophy of Qurus */}
         <View style={styles.proseBlock}>
           <Text style={[styles.subHeadline, { color: theme.textPrimary }]}>
-            The Philosophy of Qurus: An Ayah-Based Sanctuary
+            The Philosophy of Qurus: A Modern Thinking Space
           </Text>
 
           <Text style={[styles.bodyParagraph, { color: theme.textSecondary }]}>
@@ -178,10 +172,9 @@ export default function OriginStoryScreen() {
           </Text>
 
           <Text style={[styles.bodyParagraph, { color: theme.textSecondary }]}>
-            Instead of treating the Quran as a dense textbook where you feel pressured to read pages
-            and pages without retaining a single thought, Qurus gives you an{' '}
+            Instead of treating the text as an intimidating assignment where you feel pressured to rush through pages without retaining a single thought, Qurus gives you a{' '}
             <Text style={{ fontWeight: '700', color: theme.textPrimary }}>
-              Ayah-based framework
+              verse-by-verse framework
             </Text>
             .
           </Text>
@@ -197,11 +190,11 @@ export default function OriginStoryScreen() {
                 <Ionicons name="finger-print-outline" size={22} color={theme.primary} />
               </View>
               <Text style={[styles.featureTitle, { color: theme.textPrimary }]}>
-                Work With Individual Ayahs
+                Work With Individual Verses
               </Text>
               <Text style={[styles.featureDesc, { color: theme.textSecondary }]}>
-                Every single verse stands on its own dignity. You can isolate an ayah, examine it,
-                repeat it, and let it take root.
+                Every single verse stands on its own. You can isolate a verse, examine it,
+                repeat it, and let it prompt your own thinking.
               </Text>
             </View>
 
@@ -218,8 +211,8 @@ export default function OriginStoryScreen() {
                 A Personal Study Notebook
               </Text>
               <Text style={[styles.featureDesc, { color: theme.textSecondary }]}>
-                Attach your personal reflections, questions, and insights directly to verses. Your
-                thoughts are saved privately, creating a lifelong record of your spiritual growth.
+                Attach your personal reflections, questions, and doubts directly to verses. Your
+                thoughts are saved privately on your device.
               </Text>
             </View>
 
@@ -236,8 +229,8 @@ export default function OriginStoryScreen() {
                 Arabic + Translation Audio
               </Text>
               <Text style={[styles.featureDesc, { color: theme.textSecondary }]}>
-                Listen to the Arabic recitation immediately followed by the Urdu translation verse by
-                verse, so the meaning sinks directly into your consciousness.
+                Listen to the original Arabic recitation paired with Urdu translation verse by
+                verse, making the meaning immediately accessible.
               </Text>
             </View>
           </View>
@@ -246,25 +239,23 @@ export default function OriginStoryScreen() {
         {/* Section 4: Frictionless UX */}
         <View style={styles.proseBlock}>
           <Text style={[styles.subHeadline, { color: theme.textPrimary }]}>
-            Studying That Doesn't Feel Like Studying
+            Studying That Doesn't Feel Like an Assignment
           </Text>
 
           <Text style={[styles.bodyParagraph, { color: theme.textSecondary }]}>
-            I deliberately engineered the user experience of Qurus to be as frictionless as my
-            distractions. I didn't want study to feel like a tedious school assignment.
+            I deliberately engineered the user experience of Qurus to be as frictionless as our daily apps.
           </Text>
 
           <Text style={[styles.bodyParagraph, { color: theme.textSecondary }]}>
-            With Spotify-style continuous background recitation, lock-screen playback, and a
-            floating player, you can listen to the Quran while doing your daily life activities:
+            With smooth background playback, lock-screen controls, and a floating player, you can listen while moving through life:
           </Text>
 
           {/* Activity tags */}
           <View style={styles.activityRow}>
             {[
               { icon: 'barbell-outline', text: 'At the gym lifting weights' },
-              { icon: 'train-outline', text: 'Commuting on the metro' },
-              { icon: 'car-outline', text: 'Driving through traffic' },
+              { icon: 'train-outline', text: 'Commuting on the train' },
+              { icon: 'car-outline', text: 'Driving in traffic' },
               { icon: 'walk-outline', text: 'Walking in the evening' },
             ].map((act, index) => (
               <View
@@ -283,33 +274,29 @@ export default function OriginStoryScreen() {
           </View>
 
           <Text style={[styles.bodyParagraph, { color: theme.textSecondary }]}>
-            Instead of mindlessly doomscrolling social media feeds when you're fatigued, you can pop
-            in your earphones and let an ayah speak directly to your soul.
+            Instead of mindlessly doomscrolling feeds when you have a free minute, you can pop in earphones and let a verse prompt a moment of genuine contemplation.
           </Text>
         </View>
 
         {/* Section 5: My Personal Advice to You */}
         <View style={styles.proseBlock}>
           <Text style={[styles.subHeadline, { color: theme.textPrimary }]}>
-            My Personal Advice: Just Give It a Shot
+            My Personal Advice: Just Give It an Honest Shot
           </Text>
 
           <Text style={[styles.leadParagraph, { color: theme.textPrimary }]}>
-            No matter who you are reading this—a 15-year-old wrestling with doubts, an atheist, an
-            agnostic, or someone who feels totally disconnected—it honestly does not matter to me,
-            and I genuinely don’t care about labels.
+            No matter who you are reading this—a teenager wrestling with existential questions, an atheist, an agnostic, or someone who has never felt connected to organized religion—labels don't matter here.
           </Text>
 
           <Text style={[styles.bodyParagraph, { color: theme.textSecondary }]}>
-            Because to be completely transparent with you:{' '}
+            Because to be completely honest with you:{' '}
             <Text style={{ fontWeight: '700', color: theme.textPrimary }}>
-              I am one of you right now. Exactly.
+              I am on this journey of figuring things out right alongside you.
             </Text>
           </Text>
 
           <Text style={[styles.bodyParagraph, { color: theme.textSecondary }]}>
-            I’m not so religious, and I am definitely not here to lecture you or convert you to Islam.
-            I’m just a normal person who was looking for meaning and tired of feeling overwhelmed.
+            I'm not here to lecture, preach, or push any dogma on you. I’m just a normal person who wanted to read the text directly, without bias, and tired of feeling overwhelmed.
           </Text>
 
           {/* Sincere Advice Box */}
@@ -325,22 +312,18 @@ export default function OriginStoryScreen() {
             <View style={styles.adviceIconRow}>
               <Ionicons name="heart-half-outline" size={22} color={theme.accentGold} />
               <Text style={[styles.adviceCardTitle, { color: theme.textPrimary }]}>
-                A Personal Promise
+                An Open Perspective
               </Text>
             </View>
             <Text style={[styles.adviceCardText, { color: theme.textPrimary }]}>
-              “I’m studying the Quran with this exact framework given to me by my brother. I read it
-              with its translation, without pressure, letting whatever framework I have—common
-              sense, science, philosophy, history, or my own doubts—interact directly with the text.
+              “I’m exploring the Quran with this exact mindset. I read it with translation, without pressure, letting whatever lens I have—reason, science, philosophy, history, or my own doubts—interact directly with the text.
               {'\n\n'}
-              And my advice to you is the exact same: just give it a shot. Don’t worry about labels.
-              Just open an ayah, read the meaning, and let it speak for itself.”
+              And my advice to you is the exact same: just give it an honest shot. Don’t worry about labels. Just open a verse, read what it says, and see where your thinking takes you.”
             </Text>
           </View>
 
           <Text style={[styles.bodyParagraph, { color: theme.textSecondary }]}>
-            You don’t have to prove anything to anyone. You don’t need to fit into anyone else’s mold.
-            Just explore with honest curiosity, one verse at a time.
+            You don’t have to prove anything to anyone. You don’t need to fit into anyone else’s mold. Just explore with honest curiosity, one verse at a time.
           </Text>
         </View>
 
@@ -359,14 +342,11 @@ export default function OriginStoryScreen() {
           </View>
 
           <Text style={[styles.closingBody, { color: theme.textPrimary }]}>
-            If Qurus can help even one person find an ayah that hooks into their heart, sparks their
-            curiosity, and bridges their modern life with the Divine book, then every single line of
-            code has fulfilled its purpose.
+            If Qurus helps even one person discover a verse that challenges their thinking, sparks genuine curiosity, and makes space for honest reflection, then every single line of code has fulfilled its purpose.
           </Text>
 
           <Text style={[styles.closingDua, { color: theme.textSecondary }]}>
-            May Allah bless your study, grant you deep clarity, and make His words a steadfast light
-            in your life.
+            Wishing you clarity of mind, deep perspective, and an open, fulfilling journey of truth-seeking.
           </Text>
 
           <View style={[styles.signatureDivider, { backgroundColor: theme.borderSubtle }]} />
@@ -376,7 +356,7 @@ export default function OriginStoryScreen() {
             activeOpacity={0.88}
             style={[styles.startBtn, { backgroundColor: theme.primary }]}
           >
-            <Text style={[styles.startBtnText, { color: theme.onPrimary }]}>Start with Al-Faatiha</Text>
+            <Text style={[styles.startBtnText, { color: theme.onPrimary }]}>Start with Chapter 1</Text>
             <Ionicons name="arrow-forward" size={18} color={theme.onPrimary} />
           </TouchableOpacity>
         </View>
@@ -389,7 +369,7 @@ export default function OriginStoryScreen() {
         >
           <Ionicons name="chevron-back" size={16} color={theme.textTertiary} />
           <Text style={[styles.backLinkText, { color: theme.textTertiary }]}>
-            Return to sanctuary
+            Return to home
           </Text>
         </TouchableOpacity>
       </ScrollView>

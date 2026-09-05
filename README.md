@@ -1,83 +1,135 @@
-# Qurus
+# Qurus (قُرُوص)
 
-A calm, study-first Quran app for reading Arabic with Urdu translation, listening ayah by ayah, and keeping personal notes and bookmarks on your device.
+[![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
+[![Release](https://img.shields.io/badge/Release-v2.0.0-teal.svg)](https://github.com/GitCoder052023/Qurus/releases/tag/v2.0.0)
+[![Platform](https://img.shields.io/badge/Platform-Android-0E6B5C.svg)](https://github.com/GitCoder052023/Qurus/releases/tag/v2.0.0)
+[![Privacy](https://img.shields.io/badge/Privacy-100%25%20On--Device-blue.svg)](#-privacy--local-data)
 
-Qurus is built with [Expo](https://expo.dev/) (SDK 57), React Native, and [Expo Router](https://docs.expo.dev/router/introduction/).
+**Qurus** is a calm, focused reading and listening space built for everyday life. It offers an unobstructed way to explore the Quran verse by verse—pairing original Arabic recitations with line-by-line Urdu translations, private voice and written reflection notes, and background playback for when you are on the move.
 
-## Features
+## How to Install (Android)
 
-- **Full Quran** — All 114 surahs, with Arabic text and Fateh Muhammad Jalandhari’s Urdu translation
-- **Reader** — Search by name, number, or `surah:ayah` (for example `2:255`); filter Meccan / Medinan
-- **Audio** — Ayah-by-ayah recitation with optional spoken Urdu after each ayah
-- **Reciters** — Mishary Rashid Alafasy, Abdul Basit (Murattal), Mahmoud Khalil Al-Husary, Abu Bakr Al-Shatri, Saad Al-Ghamdi
-- **Study tools** — Bookmarks, highlights, per-ayah notes, resume last position, recent passages
-- **Share** — Share an ayah with Arabic and Urdu together
-- **Appearance** — Ivory, dark, sepia, or follow the system; adjustable Arabic and Urdu font sizes
-- **Playback** — Arabic only, translation only, or both; speed from 0.75× to 1.5×; mini player and full player; background playback on supported devices
-- **Local data** — Study history, notes, and preferences stay on the device; optional JSON backup via the system share sheet
+Getting Qurus on your Android phone takes less than a minute:
 
-## Requirements
+1. **Open the Release Page**:  
+   Visit the official release page:  
+   👉 **[https://github.com/GitCoder052023/Qurus/releases/tag/v2.0.0](https://github.com/GitCoder052023/Qurus/releases/tag/v2.0.0)**
 
-- Node.js 20 or later
-- [Expo Go](https://expo.dev/go) on a phone, or Xcode / Android Studio for simulators
-- Network access for recitation audio (streamed from EveryAyah)
+2. **Download the APK**:  
+   Scroll down to the **Assets** section at the bottom of the page and tap the **`.apk`** file (e.g., `Qurus_v2.0.apk`) to download it.
 
-## Getting started
+3. **Install & Open**:  
+   - Open the downloaded file from your browser's download prompt or your phone's *Downloads* folder.
+   - If prompted by Android, select **Settings** and toggle **Allow from this source**.
+   - Tap **Install**, then **Open** to launch the app.
 
-```bash
-git clone https://github.com/GitCoder052023/Qurus.git
-cd Qurus
-npm install
-npm start
-```
+## The Story Behind Qurus
 
-Then press `i` for iOS, `a` for Android, or `w` for web. You can also scan the QR code with Expo Go.
+### The Dilemma: A Question in the Palm of My Hand
+I wanted a way to read and understand the Quran directly from its source with a clear translation. But every time I tried to start, the traditional entry points felt heavy and intimidating.
 
-| Script | Description |
-| --- | --- |
-| `npm start` | Start the Expo dev server |
-| `npm run ios` | Open in the iOS simulator |
-| `npm run android` | Open on Android |
-| `npm run web` | Open in a browser |
+Dense academic commentaries, rigid study setups, and multi-volume texts felt out of touch with how we actually live today. When you can't keep up with that level of formal study, it is easy to feel frustrated and give up.
 
-## Project layout
+At the same time, look at how seamless our modern tools are. Apps like Spotify, Instagram, and YouTube rest effortlessly in our hands. Whenever we have two idle minutes—waiting in line, sitting in traffic, or riding the train—our instinct is to reach into our pocket.
+
+It led to a straightforward question:
+
+> *“Why can’t reading and exploring Quran, can be just as immediate, accessible, and frictionless in our daily lives as the digital habits that already fill our day?”*
+
+## Why Qurus is Different
 
 ```
-src/
-  app/           Screens and routes (Expo Router)
-  components/    Reader, player, and note UI
-  context/       Theme, study data, and audio
-  data/          Surah metadata and bundled Quran JSON
-  types/         Shared TypeScript types
-assets/          App icons and splash
+┌──────────────────────────────┬──────────────────────────────┬──────────────────────────────┐
+│ Traditional Textbooks        │ Video Feeds / YouTube        │ Qurus Sanctuary              │
+├──────────────────────────────┼──────────────────────────────┼──────────────────────────────┤
+│ Heavy academic volumes       │ Algorithmic recommendations  │ Verse-by-verse focus         │
+│ High barrier to entry        │ Ads, comments, notifications │ Zero ads, zero social feeds  │
+│ Fixed desk study             │ Requires active screen       │ Lock-screen & audio in motion│
+│ Margin notes lost on paper   │ Public comment sections      │ 100% private notes & voice   │
+└──────────────────────────────┴──────────────────────────────┴──────────────────────────────┘
 ```
 
-Quran text is bundled in `src/data/quran/` so reading works offline. Recitation is fetched over the network.
+### 1. Beyond Heavy Commentary Books
+Academic volumes and exhaustive commentaries have their place, but they rarely fit into a busy day. Qurus breaks the text down into an **ayah-by-ayah interface**, allowing you to explore one verse at a time during normal moments of your day.
 
-## Credits and sources
+### 2. Beyond Video Streaming & Lectures
+Online videos can be interesting, but they come bundled with algorithmic distractions, advertisements, visual clutter, and public comment feeds. Moreover, you cannot easily loop single lines, highlight text, or take private notes while watching a video.
 
-The Quran is the Word of Allah. This app is a study aid. Translations are human work and cannot replace the Arabic.
+**Qurus keeps things quiet and focused**:
+- **Zero ads and zero feeds**: An intentional reading and listening environment.
+- **Line-by-line audio pairing**: Hear the original Arabic recitation immediately followed by the Urdu translation for that exact verse.
+- **Continuous background playback**: Keep listening with your screen turned off while going about your day.
 
-- **Arabic text** — Bundled Uthmani script for offline reading
-- **Urdu translation** — Fateh Muhammad Jalandhari
-- **Spoken Urdu** — Shamshad Ali Khan (Jalandhari), via EveryAyah
-- **Recitation audio** — [EveryAyah](https://everyayah.com/) (verse-by-verse MP3s)
-- **Framework** — [Expo](https://expo.dev/) and React Native
+## Features Built for Everyday Life
 
-Please treat the text with respect. If you redistribute this project, keep these attributions.
+### 1. Granular Ayah-by-Ayah Study
+Every verse stands on its own. Tap any verse to inspect its text and translation, repeat it on a loop, highlight key passages, or bookmark it for later reflection.
 
-## Privacy
+### 2. Synchronized Bilingual Audio
+- **Multiple Reciters**: Switch between distinct recitation styles (including *Mishary Rashid Alafasy*, *Abdul Basit Abdul Samad*, *Mahmoud Khalil Al-Husary*, *Abu Bakr Al-Shatri*, and *Saad Al-Ghamdi*).
+- **Urdu Translation Recitation**: Spoken verse-by-verse translation by *Shamshad Ali Khan*.
+- **Playback Options**: Choose **Arabic + Translation**, **Arabic Only**, or **Translation Only**.
+- **Speed & Flow Controls**: Adjust audio speed (`0.75x`, `1.0x`, `1.25x`, `1.5x`) and enable auto-scroll to keep active verses in view.
 
-Qurus does not require an account. Bookmarks, notes, highlights, reading history, and preferences are stored locally with AsyncStorage. Audio is requested from EveryAyah when you play a verse. There is no in-app analytics or login.
+### 3. Private Written & Voice Notes
+Attach personal observations, questions, and insights directly to any verse:
+- **Written Reflections**: Take notes right next to the text.
+- **Voice Notes**: Speak your reflections when typing isn't convenient.
+- **Complete Privacy**: All notes remain strictly on your physical device.
 
-Export a JSON backup from Settings if you want a copy of your study data.
+### 4. Built for Being on the Move
+Qurus is designed to fit naturally into everyday activities:
+- Working out at the gym
+- Commuting on the train or metro
+- Driving through traffic
+- Taking an evening walk
+
+With persistent lock-screen media controls and background audio support, your phone stays in your pocket while you listen.
+
+### 5. Thoughtful Daily Consistency
+- **Time-Aware Check-ins**: Contextual greetings that shift quietly throughout the day (*Dawn*, *Morning*, *Midday*, *Evening*, *Night*).
+- **Streak Tracking**: A gentle visual tracker to help you build a steady habit of daily reading without pressure.
+- **Instant Resume**: Pick up right where you left off with one tap.
+
+### 6. Reader Customization
+- **Typography Controls**: Adjust Arabic script size (`22pt` to `34pt`) and Urdu translation size (`13pt` to `19pt`).
+- **Clean Aesthetic**: Balanced spacing and typography engineered for clarity and reduced eye strain.
+
+---
+
+## Privacy & Local Data
+
+- **No Account Required**: No sign-ups, email prompts, or profile creation.
+- **No Telemetry or Tracking**: Your reading patterns, bookmarks, and search history are never tracked or uploaded.
+- **Local Storage**: All notes, voice recordings, highlights, and history are stored locally on your device via on-device storage.
+
+## Verified Sources
+
+Accuracy and clarity are central to Qurus:
+
+- **Arabic Text**: Verified Uthmani script (Hafs).
+- **Urdu Translation**: Text by Fateh Muhammad Jalandhry.
+- **Urdu Audio**: Recitation by Shamshad Ali Khan.
+- **Arabic Recitation Audio**: Sourced via the open EveryAyah repository.
 
 ## Contributing
 
-Issues and pull requests are welcome. Please keep changes focused, and test reading plus playback on at least one platform before opening a PR.
+Qurus is an open-source project and welcomes constructive contributions from developers, translators, designers, and readers.
+
+Please review our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before submitting pull requests.
+
+## Security
+
+To report potential security vulnerabilities or data integrity issues responsibly, please check our [Security Policy](SECURITY.md).
 
 ## License
 
-The repository currently includes the MIT license from the Expo project template (copyright 650 Industries, Inc.). Application code in this repo is provided as-is for personal study and learning.
+Qurus is open-source software licensed under the **[MIT License](LICENSE)**.
 
-Quran text, translations, and recitations remain the work of their respective authors and distributors. Using this app does not grant extra rights over that material.
+---
+
+<p align="center">
+  <i>“If Qurus helps even one person discover a passage that sparks thoughtful reflection, encourages questioning, and makes meaningful ideas accessible in daily life, the project has achieved its purpose.”</i><br><br>
+  <b>Hamdan Khubaib</b><br>
+  Creator of Qurus
+</p>

@@ -144,7 +144,7 @@ export const SavesSection = React.memo(function SavesSection() {
               No saved verses yet
             </Text>
             <Text style={[styles.emptyDesc, { color: theme.textTertiary }]}>
-              Tap the star icon on any Ayah while reading to mark it
+              Tap the star icon on any verse while reading to mark it
             </Text>
           </View>
           <Ionicons name="chevron-forward" size={16} color={theme.textTertiary} />

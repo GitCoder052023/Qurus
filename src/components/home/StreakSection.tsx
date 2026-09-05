@@ -7,32 +7,32 @@ import { useStudyState, getLocalDateString, getYesterdayDateString } from '../..
 
 const MOTIVATION_QUOTES = [
   {
-    quote: 'The most beloved deeds to Allah are those done regularly, even if they are small.',
-    source: 'Prophet Muhammad ﷺ • Bukhari',
+    quote: 'An unexamined life is not worth living.',
+    source: 'Socrates',
   },
   {
-    quote: 'Read the Quran, for it will come as an intercessor for its reciters on the Day of Judgment.',
-    source: 'Prophet Muhammad ﷺ • Muslim',
+    quote: 'The pursuit of truth and beauty is a sphere of activity in which we are permitted to remain children all our lives.',
+    source: 'Albert Einstein',
   },
   {
-    quote: 'Whoever reads a letter from Allah’s Book receives a reward multiplied tenfold.',
-    source: 'Prophet Muhammad ﷺ • Tirmidhi',
+    quote: 'Wonder is the beginning of wisdom.',
+    source: 'Socrates',
   },
   {
-    quote: 'The best among you are those who learn the Quran and teach it to others.',
-    source: 'Prophet Muhammad ﷺ • Bukhari',
+    quote: 'A few verses explored with deep reflection are greater than chapters skimmed without thought.',
+    source: 'Contemplative Wisdom',
   },
   {
-    quote: 'Hearts find true peace and solace in the daily remembrance of Allah.',
-    source: 'Surah Ar-Ra`d • 13:28',
+    quote: 'Do not believe anything simply because you have heard it; test it against reason and honest inquiry.',
+    source: 'Universal Principle',
   },
   {
-    quote: 'A few verses recited with deep reflection are greater than chapters skimmed without heart.',
-    source: 'Ibn al-Qayyim',
+    quote: 'Small, consistent daily reflections build a lifetime of clarity.',
+    source: 'Daily Wisdom',
   },
   {
-    quote: 'Be steadfast with the Quran; it illuminates your days and softens the heart.',
-    source: 'Spiritual wisdom',
+    quote: 'The important thing is not to stop questioning. Curiosity has its own reason for existing.',
+    source: 'Albert Einstein',
   },
 ];
 
@@ -117,10 +117,10 @@ export const StreakSection = React.memo(function StreakSection() {
 
   const statusLabel = isActiveToday ? 'Kept today' : isPendingToday ? 'Waiting' : 'Begin';
   const punchline = isActiveToday
-    ? 'A quiet day of presence. Come back tomorrow.'
+    ? 'A quiet day of reflection. Come back tomorrow.'
     : isPendingToday
-    ? `One ayah keeps your ${effectiveStreak}-day rhythm.`
-    : 'One ayah is enough to begin.';
+    ? `One verse keeps your ${effectiveStreak}-day rhythm.`
+    : 'One verse is enough to begin.';
 
   return (
     <View style={styles.container}>
@@ -241,7 +241,7 @@ export const StreakSection = React.memo(function StreakSection() {
           style={[styles.cta, { backgroundColor: theme.primary }]}
         >
           <Text style={[styles.ctaText, { color: theme.onPrimary }]}>
-            {isActiveToday ? 'Continue reading' : 'Read one ayah'}
+            {isActiveToday ? 'Continue reading' : 'Read one verse'}
           </Text>
         </TouchableOpacity>
       </View>

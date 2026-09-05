@@ -406,7 +406,7 @@ export default function SettingsScreen() {
               The story behind Qurus
             </Text>
             <Text style={[styles.storyCardSubtitle, { color: theme.textSecondary }]}>
-              Why I built an Ayah-based Quran study sanctuary in the palm of your hand—from struggling with traditional formats to discovering the advice that changed everything.
+              Why I built a verse-by-verse exploration space in the palm of your hand—from feeling overwhelmed by traditional expectations to seeking truth with an open mind.
             </Text>
 
             <View style={[styles.storyCardFooter, { borderTopColor: theme.borderSubtle }]}>
@@ -422,7 +422,7 @@ export default function SettingsScreen() {
         <View style={styles.appInfoSection}>
           <Text style={[styles.appInfoTitle, { color: theme.textPrimary }]}>Qurus v2.0.0</Text>
           <Text style={[styles.appInfoDesc, { color: theme.textSecondary }]}>
-            Dedicated to quiet personal Quranic reflection & continuous listening.
+            Dedicated to open, honest reflection & continuous listening.
           </Text>
           <Text style={[styles.appInfoSource, { color: theme.textTertiary }]}>
             Arabic Text: Verified Uthmani Hafs • Translation: Fateh Muhammad Jalandhry • Audio: EveryAyah CDN

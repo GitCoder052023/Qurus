@@ -156,7 +156,7 @@ export const BookmarksSection = React.memo(function BookmarksSection() {
               No bookmarks saved yet
             </Text>
             <Text style={[styles.emptyDesc, { color: theme.textTertiary }]}>
-              Tap the bookmark icon to mark your place in the Quran
+              Tap the bookmark icon on any verse to save your place
             </Text>
           </View>
           <Ionicons name="chevron-forward" size={16} color={theme.textTertiary} />

@@ -162,7 +162,7 @@ export const NotesSection = React.memo(function NotesSection() {
               No reflections yet
             </Text>
             <Text style={[styles.emptyDesc, { color: theme.textTertiary }]}>
-              Tap Note on any ayah to write or record a reflection
+              Tap Note on any verse to write or record your thoughts
             </Text>
           </View>
           <Ionicons name="chevron-forward" size={16} color={theme.textTertiary} />

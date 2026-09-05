@@ -133,16 +133,16 @@ export default function BookmarksScreen() {
               <Ionicons name="bookmark-outline" size={36} color={theme.textTertiary} />
             </View>
             <Text style={[styles.emptyTitle, { color: theme.textPrimary }]}>
-              You haven't bookmarked anything yet.
+              You haven't bookmarked any verses yet
             </Text>
             <Text style={[styles.emptyText, { color: theme.textSecondary }]}>
-              Tap the bookmark icon on any ayah while reading to preserve your place and return here later.
+              Tap the bookmark icon on any verse while reading to preserve your place and return here anytime.
             </Text>
             <TouchableOpacity
               onPress={() => router.push('/(tabs)/quran')}
               style={[styles.browseBtn, { backgroundColor: theme.primary }]}
             >
-              <Text style={[styles.browseBtnText, { color: theme.onPrimary }]}>Browse the Quran</Text>
+              <Text style={[styles.browseBtnText, { color: theme.onPrimary }]}>Explore Chapters</Text>
             </TouchableOpacity>
           </View>
         }

@@ -144,7 +144,7 @@ export function NoteEditorModal({
                     color: theme.textPrimary,
                   },
                 ]}
-                placeholder="What did this ayah bring up for you? Write it here, or record a voice note below."
+                placeholder="What thoughts, questions, or insights did this verse spark? Write here, or record a voice note below."
                 placeholderTextColor={theme.textTertiary}
                 multiline
                 textAlignVertical="top"

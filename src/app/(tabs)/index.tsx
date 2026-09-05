@@ -24,42 +24,42 @@ export default function HomeScreen() {
   const { playAyah, isPlaying, currentSurahNumber, currentAyahNumber, pause } = useAudio();
   const router = useRouter();
 
-  // Islamic time-of-day greeting
+  // Contemplative time-of-day greeting
   const greeting = useMemo(() => {
     const hour = new Date().getHours();
     if (hour >= 4 && hour < 7) {
       return {
-        time: 'Fajr & Dawn',
-        title: 'Assalamu Alaikum',
-        subtitle: 'Start your morning in Divine peace and light',
+        time: 'Early Hours',
+        title: 'Good morning',
+        subtitle: 'A quiet space to start your day with clarity and focus.',
         icon: 'sunny-outline',
       };
     } else if (hour >= 7 && hour < 12) {
       return {
-        time: 'Morning Solace',
-        title: 'Assalamu Alaikum',
-        subtitle: 'May your day be filled with tranquility and barakah',
+        time: 'Morning Reflection',
+        title: 'Good morning',
+        subtitle: 'Take a breath and explore a perspective before the day gets busy.',
         icon: 'sunny',
       };
     } else if (hour >= 12 && hour < 17) {
       return {
-        time: 'Midday Remembrance',
-        title: 'Assalamu Alaikum',
-        subtitle: 'Pause your day to reflect on the words of Allah',
+        time: 'Afternoon Pause',
+        title: 'Good afternoon',
+        subtitle: 'Step back from the noise for a few moments of quiet thought.',
         icon: 'time-outline',
       };
     } else if (hour >= 17 && hour < 20) {
       return {
-        time: 'Maghrib Serenity',
-        title: 'Assalamu Alaikum',
-        subtitle: 'A peaceful evening of gratitude and quiet reflection',
+        time: 'Evening Reset',
+        title: 'Good evening',
+        subtitle: 'Unwind your thoughts and explore something timeless.',
         icon: 'partly-sunny-outline',
       };
     } else {
       return {
-        time: 'Night Tranquility',
-        title: 'Assalamu Alaikum',
-        subtitle: 'Rest your heart and mind with peaceful recitation',
+        time: 'Night Stillness',
+        title: 'Good night',
+        subtitle: 'End your day with perspective, calm, and stillness.',
         icon: 'moon-outline',
       };
     }
@@ -240,8 +240,7 @@ export default function HomeScreen() {
             </Text>
 
             <Text style={[styles.storyBannerDesc, { color: theme.textSecondary }]}>
-              “I wanted Quran in the palm of my hand like my distractions. Then my brother told me:
-              ‘Just start reading with translation... you will find an ayah that sticks like a hook in your mind.’”
+              “I wanted to explore the Quran directly with translation, without judgment or complexity. Then my brother told me: ‘Just start reading... whatever framework you use, you will find a verse that sticks like a hook in your mind.’”
             </Text>
 
             <View style={[styles.storyBannerFooter, { borderTopColor: theme.borderSubtle }]}>
