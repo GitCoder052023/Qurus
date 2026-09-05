@@ -420,7 +420,7 @@ export default function SettingsScreen() {
 
         {/* App Info & Integrity Acknowledgments */}
         <View style={styles.appInfoSection}>
-          <Text style={[styles.appInfoTitle, { color: theme.textPrimary }]}>Qurus v1.0.0</Text>
+          <Text style={[styles.appInfoTitle, { color: theme.textPrimary }]}>Qurus v2.0.0</Text>
           <Text style={[styles.appInfoDesc, { color: theme.textSecondary }]}>
             Dedicated to quiet personal Quranic reflection & continuous listening.
           </Text>
