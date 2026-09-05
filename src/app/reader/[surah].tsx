@@ -44,6 +44,10 @@ export default function ReaderScreen() {
 
   const flatListRef = useRef<FlatList>(null);
   const [selectedAyahForNote, setSelectedAyahForNote] = useState<Ayah | null>(null);
+  const [noteEditorVisible, setNoteEditorVisible] = useState(false);
+  const selectedNote = selectedAyahForNote
+    ? getNote(surahNumber, selectedAyahForNote.numberInSurah)
+    : undefined;
 
   // Auto-scroll when currently reciting ayah changes
   useEffect(() => {
@@ -273,7 +277,10 @@ export default function ReaderScreen() {
             arabicFontSize={preferences.arabicFontSize}
             urduFontSize={preferences.urduFontSize}
             showTranslation={preferences.showTranslation}
-            onOpenNote={(ayah) => setSelectedAyahForNote(ayah)}
+            onOpenNote={(ayah) => {
+              setSelectedAyahForNote(ayah);
+              setNoteEditorVisible(true);
+            }}
           />
         )}
         contentContainerStyle={styles.listContent}
@@ -288,35 +295,34 @@ export default function ReaderScreen() {
         }}
       />
 
-      {/* In-place Note Editor Modal */}
-      {selectedAyahForNote && (
-        <NoteEditorModal
-          visible={Boolean(selectedAyahForNote)}
-          surahNumber={surahNumber}
-          ayahNumber={selectedAyahForNote.numberInSurah}
-          surahName={surahData.englishName}
-          arabicText={selectedAyahForNote.arabicText}
-          urduText={selectedAyahForNote.urduText}
-          initialNote={getNote(surahNumber, selectedAyahForNote.numberInSurah)?.text || ''}
-          initialVoiceNote={getNote(surahNumber, selectedAyahForNote.numberInSurah)?.voiceNote}
-          onSave={(text, voiceNote) => {
-            saveNote(
-              surahNumber,
-              selectedAyahForNote.numberInSurah,
-              text,
-              selectedAyahForNote.arabicText,
-              selectedAyahForNote.urduText,
-              voiceNote
-            );
-            setSelectedAyahForNote(null);
-          }}
-          onDelete={() => {
-            deleteNote(surahNumber, selectedAyahForNote.numberInSurah);
-            setSelectedAyahForNote(null);
-          }}
-          onClose={() => setSelectedAyahForNote(null)}
-        />
-      )}
+      <NoteEditorModal
+        visible={noteEditorVisible}
+        surahNumber={surahNumber}
+        ayahNumber={selectedAyahForNote?.numberInSurah ?? 1}
+        surahName={surahData.englishName}
+        arabicText={selectedAyahForNote?.arabicText}
+        urduText={selectedAyahForNote?.urduText}
+        initialNote={selectedNote?.text || ''}
+        initialVoiceNote={selectedNote?.voiceNote}
+        onSave={(text, voiceNote) => {
+          if (!selectedAyahForNote) return;
+          saveNote(
+            surahNumber,
+            selectedAyahForNote.numberInSurah,
+            text,
+            selectedAyahForNote.arabicText,
+            selectedAyahForNote.urduText,
+            voiceNote
+          );
+          setNoteEditorVisible(false);
+        }}
+        onDelete={() => {
+          if (!selectedAyahForNote) return;
+          deleteNote(surahNumber, selectedAyahForNote.numberInSurah);
+          setNoteEditorVisible(false);
+        }}
+        onClose={() => setNoteEditorVisible(false)}
+      />
     </SafeAreaView>
   );
 }

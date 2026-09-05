@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Alert, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import {
@@ -47,6 +47,7 @@ export function VoiceNoteComposer({ value, onChange, onRecordingChange }: VoiceN
   const [isStarting, setIsStarting] = useState(false);
 
   const isRecording = recorderState.isRecording;
+  const changedAudioModeRef = useRef(false);
 
   useEffect(() => {
     onRecordingChange?.(isRecording);
@@ -54,12 +55,11 @@ export function VoiceNoteComposer({ value, onChange, onRecordingChange }: VoiceN
 
   useEffect(() => {
     return () => {
-      if (recorder.isRecording) {
-        recorder.stop().catch(() => {});
-      }
+      if (!changedAudioModeRef.current) return;
+      changedAudioModeRef.current = false;
       restorePlaybackAudioMode();
     };
-  }, [recorder]);
+  }, []);
 
   const startRecording = async () => {
     try {
@@ -84,12 +84,14 @@ export function VoiceNoteComposer({ value, onChange, onRecordingChange }: VoiceN
         allowsRecording: true,
         interruptionMode: 'doNotMix',
       });
+      changedAudioModeRef.current = true;
 
       await recorder.prepareToRecordAsync();
       recorder.record({ forDuration: MAX_RECORDING_SECONDS });
     } catch (err) {
       console.warn('Could not start voice note recording:', err);
       Alert.alert('Could not record', 'Something went wrong starting the microphone. Please try again.');
+      changedAudioModeRef.current = false;
       await restorePlaybackAudioMode();
     } finally {
       setIsStarting(false);
@@ -101,6 +103,7 @@ export function VoiceNoteComposer({ value, onChange, onRecordingChange }: VoiceN
       await recorder.stop();
       const uri = recorder.uri;
       const durationMillis = recorder.getStatus().durationMillis || recorderState.durationMillis || 0;
+      changedAudioModeRef.current = false;
       await restorePlaybackAudioMode();
 
       if (!uri || durationMillis < 400) {
@@ -112,6 +115,7 @@ export function VoiceNoteComposer({ value, onChange, onRecordingChange }: VoiceN
     } catch (err) {
       console.warn('Could not stop voice note recording:', err);
       Alert.alert('Could not save recording', 'Please try recording again.');
+      changedAudioModeRef.current = false;
       await restorePlaybackAudioMode();
     }
   };

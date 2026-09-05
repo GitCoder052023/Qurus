@@ -123,6 +123,7 @@ export function MiniPlayer() {
     : `Arabic • ${reciter?.name?.split(' ')[0] || 'Reciter'}`;
 
   return (
+    <>
     <View
       style={[
         styles.floatingWrapper,
@@ -364,37 +365,35 @@ export function MiniPlayer() {
           />
         </View>
       </View>
-
-      {/* Reflection Note Editor Modal */}
-      {currentAyah && currentSurahNumber && currentAyahNumber && (
-        <NoteEditorModal
-          visible={isNoteEditorVisible}
-          surahNumber={currentSurahNumber}
-          ayahNumber={currentAyahNumber}
-          surahName={currentSurah?.englishName || `Surah ${currentSurahNumber}`}
-          arabicText={currentAyah.arabicText}
-          urduText={currentAyah.urduText}
-          initialNote={currentNote?.text || ''}
-          initialVoiceNote={currentNote?.voiceNote}
-          onSave={(text, voiceNote) => {
-            saveNote(
-              currentSurahNumber,
-              currentAyahNumber,
-              text,
-              currentAyah.arabicText,
-              currentAyah.urduText,
-              voiceNote
-            );
-            setIsNoteEditorVisible(false);
-          }}
-          onDelete={() => {
-            deleteNote(currentSurahNumber, currentAyahNumber);
-            setIsNoteEditorVisible(false);
-          }}
-          onClose={() => setIsNoteEditorVisible(false)}
-        />
-      )}
     </View>
+    <NoteEditorModal
+      visible={isNoteEditorVisible}
+      surahNumber={currentSurahNumber}
+      ayahNumber={currentAyahNumber}
+      surahName={currentSurah?.englishName || `Surah ${currentSurahNumber}`}
+      arabicText={currentAyah?.arabicText}
+      urduText={currentAyah?.urduText}
+      initialNote={currentNote?.text || ''}
+      initialVoiceNote={currentNote?.voiceNote}
+      onSave={(text, voiceNote) => {
+        if (!currentAyah) return;
+        saveNote(
+          currentSurahNumber,
+          currentAyahNumber,
+          text,
+          currentAyah.arabicText,
+          currentAyah.urduText,
+          voiceNote
+        );
+        setIsNoteEditorVisible(false);
+      }}
+      onDelete={() => {
+        deleteNote(currentSurahNumber, currentAyahNumber);
+        setIsNoteEditorVisible(false);
+      }}
+      onClose={() => setIsNoteEditorVisible(false)}
+    />
+    </>
   );
 }
 

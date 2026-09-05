@@ -25,6 +25,7 @@ export default function NotesScreen() {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [editingNote, setEditingNote] = useState<StudyNote | null>(null);
+  const [noteEditorVisible, setNoteEditorVisible] = useState(false);
 
   // Convert notes map to array and sort by updatedAt desc
   const noteList = useMemo(() => {
@@ -95,7 +96,10 @@ export default function NotesScreen() {
 
           <View style={styles.headerActions}>
             <TouchableOpacity
-              onPress={() => setEditingNote(item)}
+              onPress={() => {
+                setEditingNote(item);
+                setNoteEditorVisible(true);
+              }}
               style={styles.iconBtn}
               hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
             >
@@ -208,35 +212,34 @@ export default function NotesScreen() {
         }
       />
 
-      {/* Note Editor Modal */}
-      {editingNote && (
-        <NoteEditorModal
-          visible={Boolean(editingNote)}
-          surahNumber={editingNote.surahNumber}
-          ayahNumber={editingNote.ayahNumber}
-          surahName={activeSurahForModal?.englishName || `Surah ${editingNote.surahNumber}`}
-          arabicText={editingNote.arabicSnippet}
-          urduText={editingNote.urduSnippet}
-          initialNote={editingNote.text}
-          initialVoiceNote={editingNote.voiceNote}
-          onSave={(newText, voiceNote) => {
-            saveNote(
-              editingNote.surahNumber,
-              editingNote.ayahNumber,
-              newText,
-              editingNote.arabicSnippet,
-              editingNote.urduSnippet,
-              voiceNote
-            );
-            setEditingNote(null);
-          }}
-          onDelete={() => {
-            deleteNote(editingNote.surahNumber, editingNote.ayahNumber);
-            setEditingNote(null);
-          }}
-          onClose={() => setEditingNote(null)}
-        />
-      )}
+      <NoteEditorModal
+        visible={noteEditorVisible}
+        surahNumber={editingNote?.surahNumber ?? 1}
+        ayahNumber={editingNote?.ayahNumber ?? 1}
+        surahName={activeSurahForModal?.englishName || `Surah ${editingNote?.surahNumber ?? ''}`}
+        arabicText={editingNote?.arabicSnippet}
+        urduText={editingNote?.urduSnippet}
+        initialNote={editingNote?.text || ''}
+        initialVoiceNote={editingNote?.voiceNote}
+        onSave={(newText, voiceNote) => {
+          if (!editingNote) return;
+          saveNote(
+            editingNote.surahNumber,
+            editingNote.ayahNumber,
+            newText,
+            editingNote.arabicSnippet,
+            editingNote.urduSnippet,
+            voiceNote
+          );
+          setNoteEditorVisible(false);
+        }}
+        onDelete={() => {
+          if (!editingNote) return;
+          deleteNote(editingNote.surahNumber, editingNote.ayahNumber);
+          setNoteEditorVisible(false);
+        }}
+        onClose={() => setNoteEditorVisible(false)}
+      />
     </SafeAreaView>
   );
 }

@@ -134,6 +134,7 @@ export function FullPlayerModal() {
   };
 
   return (
+    <>
     <Modal
       visible={isFullPlayerVisible}
       animationType="slide"
@@ -573,38 +574,37 @@ export function FullPlayerModal() {
             </TouchableOpacity>
           </View>
         </View>
-
-        {/* Study Note Editor Modal */}
-        {currentAyah && currentSurahNumber && currentAyahNumber && (
-          <NoteEditorModal
-            visible={showNoteModal}
-            surahNumber={currentSurahNumber}
-            ayahNumber={currentAyahNumber}
-            surahName={currentSurah?.englishName || `Surah ${currentSurahNumber}`}
-            arabicText={currentAyah.arabicText}
-            urduText={currentAyah.urduText}
-            initialNote={currentNote?.text || ''}
-            initialVoiceNote={currentNote?.voiceNote}
-            onSave={(text, voiceNote) => {
-              saveNote(
-                currentSurahNumber,
-                currentAyahNumber,
-                text,
-                currentAyah.arabicText,
-                currentAyah.urduText,
-                voiceNote
-              );
-              setShowNoteModal(false);
-            }}
-            onDelete={() => {
-              deleteNote(currentSurahNumber, currentAyahNumber);
-              setShowNoteModal(false);
-            }}
-            onClose={() => setShowNoteModal(false)}
-          />
-        )}
       </SafeAreaView>
     </Modal>
+    <NoteEditorModal
+      visible={showNoteModal}
+      surahNumber={currentSurahNumber ?? 1}
+      ayahNumber={currentAyahNumber ?? 1}
+      surahName={currentSurah?.englishName || `Surah ${currentSurahNumber ?? ''}`}
+      arabicText={currentAyah?.arabicText}
+      urduText={currentAyah?.urduText}
+      initialNote={currentNote?.text || ''}
+      initialVoiceNote={currentNote?.voiceNote}
+      onSave={(text, voiceNote) => {
+        if (!currentSurahNumber || !currentAyahNumber || !currentAyah) return;
+        saveNote(
+          currentSurahNumber,
+          currentAyahNumber,
+          text,
+          currentAyah.arabicText,
+          currentAyah.urduText,
+          voiceNote
+        );
+        setShowNoteModal(false);
+      }}
+      onDelete={() => {
+        if (!currentSurahNumber || !currentAyahNumber) return;
+        deleteNote(currentSurahNumber, currentAyahNumber);
+        setShowNoteModal(false);
+      }}
+      onClose={() => setShowNoteModal(false)}
+    />
+    </>
   );
 }
 

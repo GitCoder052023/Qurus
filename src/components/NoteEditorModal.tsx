@@ -49,11 +49,11 @@ export function NoteEditorModal({
   const [isRecordingVoice, setIsRecordingVoice] = useState(false);
 
   useEffect(() => {
+    if (!visible) return;
     setNoteText(initialNote);
     setVoiceNote(initialVoiceNote ?? null);
+    setIsRecordingVoice(false);
   }, [initialNote, initialVoiceNote, visible]);
-
-  if (!visible) return null;
 
   const hasExistingNote = Boolean(initialNote.trim() || initialVoiceNote);
   const canSave = Boolean(noteText.trim() || voiceNote);
