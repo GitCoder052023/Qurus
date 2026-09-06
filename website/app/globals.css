@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --primary: #0E6B5C;
+  --primary-hover: #0A5246;
+  --primary-light: #E8F3F0;
+  --primary-muted: rgba(14, 107, 92, 0.09);
+  --secondary: #C4455A;
+  --secondary-light: #FDF1F3;
+  --accent-gold: #C46B1A;
+  --accent-gold-light: #FAF2E8;
+  --note-accent: #5548A0;
+  --note-accent-light: #F1EFF9;
+  
+  --canvas: #FCFDFD;
+  --surface: #F3F7F5;
+  --surface-hover: #EAF1EE;
+  --card: #FFFFFF;
+  
+  --border: #DDE7E4;
+  --border-subtle: #EEF4F2;
+  
+  --text-primary: #122824;
+  --text-secondary: #4A605C;
+  --text-tertiary: #7E9490;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+  --color-primary-muted: var(--primary-muted);
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-gold-light: var(--accent-gold-light);
+  --color-note: var(--note-accent);
+  --color-note-light: var(--note-accent-light);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--canvas);
+  color: var(--text-primary);
+  font-family: var(--font-sans, "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.font-editorial {
+  font-family: "Newsreader", "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+}
+
+.font-arabic {
+  font-family: "Amiri", "Scheherazade New", "Traditional Arabic", "Noto Naskh Arabic", serif;
+  direction: rtl;
+}
+
+.font-urdu {
+  font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting", "Amiri", serif;
+  direction: rtl;
+}
+
+/* Custom delicate scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F3F7F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C8D8D4;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A6BFB9;
+}
+
+/* Subtle organic patterns and accents */
+.bg-mesh-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(14, 107, 92, 0.07) 0%, rgba(243, 247, 245, 0.4) 45%, transparent 70%);
+}
+
+.bg-amber-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(196, 107, 26, 0.05) 0%, transparent 60%);
+}
+
+/* Gentle pulse for live audio status */
+@keyframes audioWave {
+  0%, 100% { height: 6px; }
+  50% { height: 18px; }
+}
+
+.animate-wave-1 { animation: audioWave 1.1s ease-in-out infinite; }
+.animate-wave-2 { animation: audioWave 0.8s ease-in-out infinite 0.2s; }
+.animate-wave-3 { animation: audioWave 1.3s ease-in-out infinite 0.4s; }
+.animate-wave-4 { animation: audioWave 0.9s ease-in-out infinite 0.1s; }
