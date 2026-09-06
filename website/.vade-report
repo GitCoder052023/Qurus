@@ -1,0 +1,45 @@
+# Vercel Web Analytics Installation Report
+
+## Summary
+Successfully installed and configured Vercel Web Analytics for the Qurus Next.js project.
+
+## Implementation Details
+
+### 1. Fetched Latest Documentation
+- Retrieved the latest installation instructions from https://vercel.com/docs/analytics/quickstart
+- Confirmed the project uses Next.js App Router (based on the presence of `app/layout.tsx`)
+
+### 2. Installed Package
+- Added `@vercel/analytics` version 2.0.1 to project dependencies
+- Used npm (the project's package manager) to install the package
+- Successfully updated package.json and package-lock.json
+
+### 3. Configured Analytics Component
+Modified `website/app/layout.tsx`:
+- Added import: `import { Analytics } from "@vercel/analytics/next";`
+- Added `<Analytics />` component at the end of the body element, following Vercel's recommended placement
+- Preserved all existing code structure, metadata, and styling
+
+### 4. Verification Steps Completed
+✓ Build verification: `npm run build` completed successfully
+✓ Linter check: `npm run lint` passed with no errors
+✓ TypeScript compilation: Passed without errors
+✓ All routes generated successfully
+
+## Files Modified
+- `website/app/layout.tsx` - Added Analytics import and component
+- `website/package.json` - Added @vercel/analytics dependency
+- `website/package-lock.json` - Updated with new package dependencies
+
+## Next Steps for User
+1. Enable Web Analytics in the Vercel dashboard:
+   - Navigate to your project's Analytics tab
+   - Click the "Enable" button in the header
+2. Deploy the changes to Vercel
+3. After deployment, verify setup by checking browser's Network tab for a request from `/<unique-path>/view` when visiting pages
+
+## Technical Notes
+- The Analytics component is framework-agnostic and will automatically track page views
+- No additional configuration is required in the code
+- Analytics data will appear in the Vercel dashboard once enabled and deployed
+- The implementation follows Vercel's official Next.js App Router guidelines
