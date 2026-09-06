@@ -1,7 +1,7 @@
 {
   "name": "qurus",
   "main": "expo-router/entry",
-  "version": "2.1.1",
+  "version": "2.3.0",
   "dependencies": {
     "@expo/ui": "~57.0.16",
     "@expo/vector-icons": "^15.0.2",

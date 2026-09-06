@@ -19,34 +19,143 @@ export interface StudyNoteData {
   updatedAt: number;
 }
 
+export type LanguageKey = "urdu" | "english" | "bengali" | "turkish" | "french";
+
+export interface LanguageMeta {
+  id: LanguageKey;
+  name: string;
+  nativeName: string;
+  flag: string;
+  author: string;
+  reciter: string;
+  isRTL: boolean;
+}
+
+export const LANGUAGES: Record<LanguageKey, LanguageMeta> = {
+  urdu: {
+    id: "urdu",
+    name: "Urdu",
+    nativeName: "اردو",
+    flag: "🇵🇰",
+    author: "Fateh Muhammad Jalandhari",
+    reciter: "Shamshad Ali Khan",
+    isRTL: true,
+  },
+  english: {
+    id: "english",
+    name: "English",
+    nativeName: "English",
+    flag: "🇬🇧",
+    author: "Sahih International",
+    reciter: "Ibrahim Walk",
+    isRTL: false,
+  },
+  bengali: {
+    id: "bengali",
+    name: "Bengali",
+    nativeName: "বাংলা",
+    flag: "🇧🇩",
+    author: "Muhiuddin Khan",
+    reciter: "Bangla Quran Voice",
+    isRTL: false,
+  },
+  turkish: {
+    id: "turkish",
+    name: "Turkish",
+    nativeName: "Türkçe",
+    flag: "🇹🇷",
+    author: "Diyanet İşleri",
+    reciter: "Diyanet Vakfı",
+    isRTL: false,
+  },
+  french: {
+    id: "french",
+    name: "French",
+    nativeName: "Français",
+    flag: "🇫🇷",
+    author: "Muhammad Hamidullah",
+    reciter: "Youssouf Leclerc",
+    isRTL: false,
+  },
+};
+
 interface SampleAyah {
   numberInSurah: number;
   arabicText: string;
-  urduText: string;
   arabicAudio: string;
-  urduAudio: string;
+  translations: Record<
+    LanguageKey,
+    {
+      text: string;
+      audio: string;
+    }
+  >;
 }
 
 const SAMPLE_AYAHS: SampleAyah[] = [
   {
     numberInSurah: 1,
     arabicText: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
-    urduText: "شروع الله کا نام لے کر جو بڑا مہربان نہایت رحم والا ہے",
     arabicAudio: "https://everyayah.com/data/Alafasy_128kbps/001001.mp3",
-    urduAudio:
-      "https://everyayah.com/data/translations/urdu_shamshad_ali_khan_46kbps/001001.mp3",
+    translations: {
+      urdu: {
+        text: "شروع الله کا نام لے کر جو بڑا مہربان نہایت رحم والا ہے",
+        audio:
+          "https://everyayah.com/data/translations/urdu_shamshad_ali_khan_46kbps/001001.mp3",
+      },
+      english: {
+        text: "In the name of Allah, the Entirely Merciful, the Especially Merciful.",
+        audio:
+          "https://everyayah.com/data/English/Sahih_Intnl_Ibrahim_Walk_192kbps/001001.mp3",
+      },
+      bengali: {
+        text: "শুরু করছি আল্লাহর নামে যিনি পরম করুণাময়, অতি দয়ালু।",
+        audio:
+          "https://raw.githubusercontent.com/imranpollob/bangla-quran/master/public/audio/bt/1-1.mp3",
+      },
+      turkish: {
+        text: "Rahmân ve Rahîm olan Allah'ın adıyla.",
+        audio: "https://cdn.islamic.network/quran/audio/128/tr.vakfi-audio/1.mp3",
+      },
+      french: {
+        text: "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux.",
+        audio: "https://cdn.islamic.network/quran/audio/128/fr.leclerc/1.mp3",
+      },
+    },
   },
   {
     numberInSurah: 2,
     arabicText: "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ",
-    urduText: "سب طرح کی تعریف خدا ہی کو (سزاوار) ہے جو تمام مخلوقات کا پروردگار ہے",
     arabicAudio: "https://everyayah.com/data/Alafasy_128kbps/001002.mp3",
-    urduAudio:
-      "https://everyayah.com/data/translations/urdu_shamshad_ali_khan_46kbps/001002.mp3",
+    translations: {
+      urdu: {
+        text: "سب طرح کی تعریف خدا ہی کو (سزاوار) ہے جو تمام مخلوقات کا پروردگار ہے",
+        audio:
+          "https://everyayah.com/data/translations/urdu_shamshad_ali_khan_46kbps/001002.mp3",
+      },
+      english: {
+        text: "[All] praise is [due] to Allah, Lord of the worlds -",
+        audio:
+          "https://everyayah.com/data/English/Sahih_Intnl_Ibrahim_Walk_192kbps/001002.mp3",
+      },
+      bengali: {
+        text: "যাবতীয় প্রশংসা আল্লাহ তাআলার যিনি সকল সৃষ্টি জগতের পালনকর্তা।",
+        audio:
+          "https://raw.githubusercontent.com/imranpollob/bangla-quran/master/public/audio/bt/1-2.mp3",
+      },
+      turkish: {
+        text: "Hamd (övme ve övülme), âlemlerin Rabbi Allah'a mahsustur.",
+        audio: "https://cdn.islamic.network/quran/audio/128/tr.vakfi-audio/2.mp3",
+      },
+      french: {
+        text: "Louange à Allah, Seigneur de l'univers.",
+        audio: "https://cdn.islamic.network/quran/audio/128/fr.leclerc/2.mp3",
+      },
+    },
   },
 ];
 
-type AudioMode = "both" | "arabic" | "urdu";
+type AudioMode = "both" | "arabic" | "translation";
 
 function formatDurationMs(ms: number): string {
   const totalSeconds = Math.max(0, Math.floor(ms / 1000));
@@ -56,10 +165,13 @@ function formatDurationMs(ms: number): string {
 }
 
 export default function InteractivePlayer() {
+  // Selected Translation Language State (v2.3.0 5-language support)
+  const [selectedLanguage, setSelectedLanguage] = useState<LanguageKey>("urdu");
+
   // Recitation Playback State
   const [activeAyahIndex, setActiveAyahIndex] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [playbackPhase, setPlaybackPhase] = useState<"arabic" | "urdu" | "idle">("idle");
+  const [playbackPhase, setPlaybackPhase] = useState<"arabic" | "translation" | "idle">("idle");
   const [audioMode, setAudioMode] = useState<AudioMode>("both");
 
   // Ayah Bookmark and Highlight/Mark State
@@ -121,12 +233,15 @@ export default function InteractivePlayer() {
   };
 
   // Recitation Audio Logic
-  const playPhaseRef = useRef<(phase: "arabic" | "urdu", ayahIdx: number) => void>(() => {});
+  const playPhaseRef = useRef<(phase: "arabic" | "translation", ayahIdx: number) => void>(() => {});
 
   const playPhase = useCallback(
-    (phase: "arabic" | "urdu", ayahIdx: number) => {
+    (phase: "arabic" | "translation", ayahIdx: number) => {
       const ayah = SAMPLE_AYAHS[ayahIdx];
-      const src = phase === "arabic" ? ayah.arabicAudio : ayah.urduAudio;
+      const src =
+        phase === "arabic"
+          ? ayah.arabicAudio
+          : ayah.translations[selectedLanguage].audio;
 
       if (!recitationAudioRef.current) {
         recitationAudioRef.current = new Audio();
@@ -151,8 +266,8 @@ export default function InteractivePlayer() {
 
       audio.onended = () => {
         if (phase === "arabic" && audioMode === "both") {
-          playPhaseRef.current("urdu", ayahIdx);
-        } else if (audioMode === "both" && phase === "urdu" && ayahIdx === 0) {
+          playPhaseRef.current("translation", ayahIdx);
+        } else if (audioMode === "both" && phase === "translation" && ayahIdx === 0) {
           playPhaseRef.current("arabic", 1);
         } else {
           setIsPlaying(false);
@@ -160,7 +275,7 @@ export default function InteractivePlayer() {
         }
       };
     },
-    [audioMode]
+    [audioMode, selectedLanguage]
   );
 
   useEffect(() => {
@@ -175,9 +290,18 @@ export default function InteractivePlayer() {
       setIsPlaying(false);
       setPlaybackPhase("idle");
     } else {
-      const startPhase = audioMode === "urdu" ? "urdu" : "arabic";
+      const startPhase = audioMode === "translation" ? "translation" : "arabic";
       playPhase(startPhase, index);
     }
+  };
+
+  const handleLanguageChange = (lang: LanguageKey) => {
+    if (isPlaying && recitationAudioRef.current) {
+      recitationAudioRef.current.pause();
+      setIsPlaying(false);
+      setPlaybackPhase("idle");
+    }
+    setSelectedLanguage(lang);
   };
 
   const handleBookmarkToggle = (index: number) => {
@@ -189,7 +313,9 @@ export default function InteractivePlayer() {
   };
 
   const handleShare = (ayah: SampleAyah) => {
-    const text = `${ayah.arabicText}\n\n${ayah.urduText}\n\n— [Surah Al-Faatiha 1:${ayah.numberInSurah}] (Urdu: Fateh Muhammad Jalandhari)`;
+    const langMeta = LANGUAGES[selectedLanguage];
+    const transText = ayah.translations[selectedLanguage].text;
+    const text = `${ayah.arabicText}\n\n${transText}\n\n— [Surah Al-Faatiha 1:${ayah.numberInSurah}] (${langMeta.name}: ${langMeta.author})`;
     navigator.clipboard?.writeText(text);
     setCopiedAyah(ayah.numberInSurah);
     setTimeout(() => setCopiedAyah(null), 2200);
@@ -197,7 +323,6 @@ export default function InteractivePlayer() {
 
   // Open Note Editor for new or existing note
   const openNewNoteModal = (ayah: SampleAyah) => {
-    // Pause recitation if playing
     if (recitationAudioRef.current && isPlaying) {
       recitationAudioRef.current.pause();
       setIsPlaying(false);
@@ -269,6 +394,8 @@ export default function InteractivePlayer() {
     setEditorModalOpen(false);
   };
 
+  const currentLang = LANGUAGES[selectedLanguage];
+
   return (
     <section id="experience" className="py-24 md:py-36 bg-surface/50 border-y border-border-subtle overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
@@ -282,13 +409,13 @@ export default function InteractivePlayer() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-muted text-primary text-xs font-semibold uppercase tracking-wider mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-            Interactive Web Preview
+            Interactive 5-Language Preview
           </div>
           <h2 className="text-3xl sm:text-5xl font-semibold tracking-tighter text-text-primary text-balance">
             Try it right here in your browser.
           </h2>
           <p className="mt-4 text-text-secondary text-base sm:text-lg leading-relaxed text-balance">
-            Press <strong>Play</strong> below. You will hear the Arabic recitation first, followed immediately by clear spoken Urdu. You can also tap <strong>Note</strong> to try writing or speaking a private reflection.
+            Select your language below and press <strong>Play</strong>. You will hear authentic Arabic recitation first, followed immediately by clear spoken translation in your chosen language.
           </p>
         </motion.div>
 
@@ -301,6 +428,33 @@ export default function InteractivePlayer() {
           className="doppelrand-shell"
         >
           <div className="doppelrand-core overflow-hidden">
+            {/* Language Selector Bar (v2.3.0 Feature Showcase) */}
+            <div className="bg-surface/90 px-4 py-3 sm:px-6 border-b border-border flex items-center justify-between gap-2 overflow-x-auto">
+              <span className="text-[11px] font-mono uppercase text-text-tertiary tracking-wider shrink-0 hidden sm:inline">
+                Language:
+              </span>
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                {(Object.keys(LANGUAGES) as LanguageKey[]).map((key) => {
+                  const lang = LANGUAGES[key];
+                  const isSelected = selectedLanguage === key;
+                  return (
+                    <button
+                      key={key}
+                      onClick={() => handleLanguageChange(key)}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all cursor-pointer ${
+                        isSelected
+                          ? "bg-primary text-white shadow-xs font-semibold"
+                          : "bg-white text-text-secondary hover:text-text-primary hover:bg-surface border border-border"
+                      }`}
+                    >
+                      <span>{lang.flag}</span>
+                      <span>{lang.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
             {/* Top Bar matching Qurus Mobile Top Bar */}
             <div className="bg-surface/80 px-4 py-3.5 sm:px-6 sm:py-4 border-b border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
               <div className="flex items-center gap-3">
@@ -313,7 +467,7 @@ export default function InteractivePlayer() {
                     <span className="text-xs text-text-tertiary font-serif shrink-0">(The Opening)</span>
                   </div>
                   <div className="text-[11px] text-text-secondary truncate">
-                    Arabic: <strong className="font-medium text-text-primary">Mishary Alafasy</strong> • Urdu: <strong className="font-medium text-text-primary">Shamshad Ali Khan</strong>
+                    Arabic: <strong className="font-medium text-text-primary">Mishary Alafasy</strong> • {currentLang.name}: <strong className="font-medium text-text-primary">{currentLang.reciter}</strong>
                   </div>
                 </div>
               </div>
@@ -329,7 +483,7 @@ export default function InteractivePlayer() {
                       : "text-text-secondary hover:text-text-primary"
                   }`}
                 >
-                  Arabic + Urdu
+                  Arabic + {currentLang.name}
                 </motion.button>
                 <motion.button
                   whileTap={{ scale: 0.96 }}
@@ -344,14 +498,14 @@ export default function InteractivePlayer() {
                 </motion.button>
                 <motion.button
                   whileTap={{ scale: 0.96 }}
-                  onClick={() => setAudioMode("urdu")}
+                  onClick={() => setAudioMode("translation")}
                   className={`px-3 py-1.5 rounded-full transition-all duration-200 text-center ${
-                    audioMode === "urdu"
+                    audioMode === "translation"
                       ? "bg-primary text-white font-medium shadow-xs"
                       : "text-text-secondary hover:text-text-primary"
                   }`}
                 >
-                  Urdu Only
+                  {currentLang.name} Only
                 </motion.button>
               </div>
             </div>
@@ -362,9 +516,10 @@ export default function InteractivePlayer() {
               const isThisAyahActive = activeAyahIndex === index;
               const isThisAyahPlaying = isThisAyahActive && isPlaying;
               const isRecitingArabic = isThisAyahPlaying && playbackPhase === "arabic";
-              const isRecitingUrdu = isThisAyahPlaying && playbackPhase === "urdu";
+              const isRecitingTranslation = isThisAyahPlaying && playbackPhase === "translation";
               const isBookmarked = bookmarked[index];
               const isHighlighted = highlighted[index];
+              const trans = ayah.translations[selectedLanguage];
 
               const ayahNotes = notes[ayah.numberInSurah] || [];
               const isNotesCollapsed = collapsedNotes[ayah.numberInSurah];
@@ -425,19 +580,26 @@ export default function InteractivePlayer() {
                     </p>
                   </div>
 
-                  {/* Urdu Translation */}
-                  <div className="px-4 sm:px-6 pb-3.5 sm:pb-4 text-right">
+                  {/* Active Language Translation Text */}
+                  <div
+                    className={`px-4 sm:px-6 pb-3.5 sm:pb-4 ${
+                      currentLang.isRTL ? "text-right" : "text-left"
+                    }`}
+                    dir={currentLang.isRTL ? "rtl" : "ltr"}
+                  >
                     <p
-                      className={`font-urdu text-sm sm:text-base md:text-lg leading-[2.0] sm:leading-[2.2] transition-all duration-300 ${
-                        isRecitingUrdu
+                      className={`${
+                        currentLang.isRTL ? "font-urdu" : "font-sans"
+                      } text-sm sm:text-base md:text-lg leading-[1.8] sm:leading-[2.0] transition-all duration-300 ${
+                        isRecitingTranslation
                           ? "text-[#2A3E3A] font-semibold bg-[#F8E8EB] px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl"
                           : "text-[#2A3E3A]"
                       }`}
                     >
-                      {ayah.urduText}
+                      {trans.text}
                     </p>
                     <p className="mt-1 text-[10px] sm:text-[11px] text-[#7E9490]">
-                      — ترجمہ: فتح محمد جالندھری
+                      — {currentLang.name}: {currentLang.author}
                     </p>
                   </div>
 
@@ -767,7 +929,8 @@ export default function InteractivePlayer() {
             surahNumber={1}
             ayahNumber={selectedAyahForNote.numberInSurah}
             arabicText={selectedAyahForNote.arabicText}
-            urduText={selectedAyahForNote.urduText}
+            translationText={selectedAyahForNote.translations[selectedLanguage].text}
+            isRTL={currentLang.isRTL}
             initialNote={editingNote?.text || ""}
             initialVoiceNote={editingNote?.voiceNote || null}
             noteId={editingNote?.id}
@@ -795,7 +958,8 @@ export default function InteractivePlayer() {
             surahNumber={1}
             ayahNumber={selectedAyahForNote.numberInSurah}
             arabicText={selectedAyahForNote.arabicText}
-            urduText={selectedAyahForNote.urduText}
+            translationText={selectedAyahForNote.translations[selectedLanguage].text}
+            isRTL={currentLang.isRTL}
             note={selectedNoteForView}
             onClose={() => setViewerModalOpen(false)}
             onEdit={() => openEditNoteModal(selectedAyahForNote, selectedNoteForView)}
@@ -817,7 +981,8 @@ interface NoteEditorModalProps {
   surahNumber: number;
   ayahNumber: number;
   arabicText?: string;
-  urduText?: string;
+  translationText?: string;
+  isRTL?: boolean;
   initialNote?: string;
   initialVoiceNote?: VoiceNoteData | null;
   noteId?: string;
@@ -831,7 +996,8 @@ function NoteEditorModal({
   surahNumber,
   ayahNumber,
   arabicText,
-  urduText,
+  translationText,
+  isRTL = true,
   initialNote = "",
   initialVoiceNote = null,
   noteId,
@@ -898,9 +1064,14 @@ function NoteEditorModal({
                 {arabicText}
               </p>
             )}
-            {urduText && (
-              <p className="font-urdu text-xs sm:text-sm text-right text-[#2A3E3A] leading-relaxed">
-                {urduText}
+            {translationText && (
+              <p
+                className={`${
+                  isRTL ? "font-urdu text-right" : "font-sans text-left"
+                } text-xs sm:text-sm text-[#2A3E3A] leading-relaxed`}
+                dir={isRTL ? "rtl" : "ltr"}
+              >
+                {translationText}
               </p>
             )}
           </div>
@@ -1326,7 +1497,8 @@ interface NoteViewerModalProps {
   surahNumber: number;
   ayahNumber: number;
   arabicText?: string;
-  urduText?: string;
+  translationText?: string;
+  isRTL?: boolean;
   note: StudyNoteData;
   onClose: () => void;
   onEdit: () => void;
@@ -1338,7 +1510,8 @@ function NoteViewerModal({
   surahNumber,
   ayahNumber,
   arabicText,
-  urduText,
+  translationText,
+  isRTL = true,
   note,
   onClose,
   onEdit,
@@ -1397,9 +1570,14 @@ function NoteViewerModal({
                 {arabicText}
               </p>
             )}
-            {urduText && (
-              <p className="font-urdu text-xs sm:text-sm text-right text-[#2A3E3A] leading-relaxed">
-                {urduText}
+            {translationText && (
+              <p
+                className={`${
+                  isRTL ? "font-urdu text-right" : "font-sans text-left"
+                } text-xs sm:text-sm text-[#2A3E3A] leading-relaxed`}
+                dir={isRTL ? "rtl" : "ltr"}
+              >
+                {translationText}
               </p>
             )}
           </div>
