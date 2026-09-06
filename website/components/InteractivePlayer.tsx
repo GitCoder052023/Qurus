@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "motion/react";
 
 // Types matching Qurus App
 export interface VoiceNoteData {
@@ -269,76 +270,91 @@ export default function InteractivePlayer() {
   };
 
   return (
-    <section id="experience" className="py-20 md:py-28 bg-[#F2F7F5]/60 border-y border-[#EEF3F1]">
-      <div className="max-w-4xl mx-auto px-5 sm:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0E6B5C]/10 text-[#0E6B5C] text-xs font-semibold uppercase tracking-wider mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#0E6B5C]" />
-            A Glimpse of Qurus
+    <section id="experience" className="py-24 md:py-36 bg-surface/50 border-y border-border-subtle overflow-hidden">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        {/* Section Header with Simple, Converting Copy */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-2xl mx-auto mb-14"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-muted text-primary text-xs font-semibold uppercase tracking-wider mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+            Interactive Web Preview
           </div>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-[#122824]">
-            Experience the tranquility of Qurus.
+          <h2 className="text-3xl sm:text-5xl font-semibold tracking-tighter text-text-primary text-balance">
+            Try it right here in your browser.
           </h2>
-          <p className="mt-3 text-[#4A605C] text-base leading-relaxed">
-            Listen to synchronized Arabic & Urdu recitation, or try recording a private voice note
-            and saving written reflections directly to any verse.
+          <p className="mt-4 text-text-secondary text-base sm:text-lg leading-relaxed text-balance">
+            Press <strong>Play</strong> below. You will hear the Arabic recitation first, followed immediately by clear spoken Urdu. You can also tap <strong>Note</strong> to try writing or speaking a private reflection.
           </p>
-        </div>
+        </motion.div>
 
-        {/* The Clean App Frame Glimpse */}
-        <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#D8E4E0] shadow-[0_16px_50px_rgba(18,40,36,0.06)] overflow-hidden">
-          {/* Top Bar matching Qurus Mobile Top Bar */}
-          <div className="bg-[#F2F7F5] px-4 py-3.5 sm:px-6 sm:py-4 border-b border-[#D8E4E0] flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-[#E7F2EF] text-[#0E6B5C] font-bold text-xs flex items-center justify-center shrink-0">
-                1
+        {/* The Machined Hardware Doppelrand App Frame with Motion Entrance */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="doppelrand-shell"
+        >
+          <div className="doppelrand-core overflow-hidden">
+            {/* Top Bar matching Qurus Mobile Top Bar */}
+            <div className="bg-surface/80 px-4 py-3.5 sm:px-6 sm:py-4 border-b border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-primary/10 text-primary font-bold text-xs flex items-center justify-center shrink-0 ring-1 ring-primary/20">
+                  1
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-sm font-semibold text-text-primary truncate">Surah Al-Faatiha</h3>
+                    <span className="text-xs text-text-tertiary font-serif shrink-0">(The Opening)</span>
+                  </div>
+                  <div className="text-[11px] text-text-secondary truncate">
+                    Arabic: <strong className="font-medium text-text-primary">Mishary Alafasy</strong> • Urdu: <strong className="font-medium text-text-primary">Shamshad Ali Khan</strong>
+                  </div>
+                </div>
               </div>
-              <div className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <h3 className="text-sm font-bold text-[#122824] truncate">Surah Al-Faatiha</h3>
-                  <span className="text-xs text-[#7E9490] font-serif shrink-0">(The Opening)</span>
-                </div>
-                <div className="text-[11px] text-[#4A605C] truncate">
-                  Reciter: <strong>Mishary Alafasy</strong> • Urdu: <strong>Shamshad Ali Khan</strong>
-                </div>
+
+              {/* Audio Mode Segmented Control with Motion Tap */}
+              <div className="grid grid-cols-3 sm:flex items-center bg-white/90 rounded-full p-1 border border-border text-xs w-full sm:w-auto text-center shadow-2xs">
+                <motion.button
+                  whileTap={{ scale: 0.96 }}
+                  onClick={() => setAudioMode("both")}
+                  className={`px-3 py-1.5 rounded-full transition-all duration-200 text-center ${
+                    audioMode === "both"
+                      ? "bg-primary text-white font-medium shadow-xs"
+                      : "text-text-secondary hover:text-text-primary"
+                  }`}
+                >
+                  Arabic + Urdu
+                </motion.button>
+                <motion.button
+                  whileTap={{ scale: 0.96 }}
+                  onClick={() => setAudioMode("arabic")}
+                  className={`px-3 py-1.5 rounded-full transition-all duration-200 text-center ${
+                    audioMode === "arabic"
+                      ? "bg-primary text-white font-medium shadow-xs"
+                      : "text-text-secondary hover:text-text-primary"
+                  }`}
+                >
+                  Arabic Only
+                </motion.button>
+                <motion.button
+                  whileTap={{ scale: 0.96 }}
+                  onClick={() => setAudioMode("urdu")}
+                  className={`px-3 py-1.5 rounded-full transition-all duration-200 text-center ${
+                    audioMode === "urdu"
+                      ? "bg-primary text-white font-medium shadow-xs"
+                      : "text-text-secondary hover:text-text-primary"
+                  }`}
+                >
+                  Urdu Only
+                </motion.button>
               </div>
             </div>
-
-            {/* Audio Mode Selectors - Full-width 3-col segmented control on mobile, auto-width on desktop */}
-            <div className="grid grid-cols-3 sm:flex items-center bg-white rounded-xl p-1 border border-[#D8E4E0] text-xs w-full sm:w-auto text-center">
-              <button
-                onClick={() => setAudioMode("both")}
-                className={`px-2 sm:px-3 py-1.5 sm:py-1 rounded-lg transition-all text-center ${
-                  audioMode === "both"
-                    ? "bg-[#0E6B5C] text-white font-medium shadow-xs"
-                    : "text-[#4A605C] hover:text-[#122824]"
-                }`}
-              >
-                Arabic + Urdu
-              </button>
-              <button
-                onClick={() => setAudioMode("arabic")}
-                className={`px-2 sm:px-3 py-1.5 sm:py-1 rounded-lg transition-all text-center ${
-                  audioMode === "arabic"
-                    ? "bg-[#0E6B5C] text-white font-medium shadow-xs"
-                    : "text-[#4A605C] hover:text-[#122824]"
-                }`}
-              >
-                Arabic Only
-              </button>
-              <button
-                onClick={() => setAudioMode("urdu")}
-                className={`px-2 sm:px-3 py-1.5 sm:py-1 rounded-lg transition-all text-center ${
-                  audioMode === "urdu"
-                    ? "bg-[#0E6B5C] text-white font-medium shadow-xs"
-                    : "text-[#4A605C] hover:text-[#122824]"
-                }`}
-              >
-                Urdu Only
-              </button>
-            </div>
-          </div>
 
           {/* Verses List Preview - Replicating AyahItem.tsx */}
           <div className="p-3.5 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
@@ -706,83 +722,89 @@ export default function InteractivePlayer() {
           </div>
 
           {/* Invitation Footer Card */}
-          <div className="bg-[#F2F7F5]/80 p-6 border-t border-[#D8E4E0] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="bg-surface/90 p-5 sm:p-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              <h4 className="text-sm font-semibold text-[#122824]">
+              <h4 className="text-sm font-semibold text-text-primary">
                 Want all 114 Surahs, background audio, and offline reflections?
               </h4>
-              <p className="text-xs text-[#4A605C] mt-0.5">
+              <p className="text-xs text-text-secondary mt-0.5">
                 Install the complete Qurus sanctuary on your Android phone in 30 seconds.
               </p>
             </div>
 
             <a
               href="#download"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0E6B5C] hover:bg-[#0A5347] text-white text-xs sm:text-sm font-semibold shadow-xs transition-colors shrink-0"
+              className="group inline-flex items-center gap-2 pl-4 pr-1.5 py-1.5 rounded-full bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-semibold shadow-xs transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] shrink-0"
             >
-              <svg
-                className="w-4 h-4"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-              >
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                <line x1="12" y1="15" x2="12" y2="3" />
-              </svg>
-              <span>Get Qurus for Android</span>
+              <span>Get for Android</span>
+              <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center transition-transform duration-300 group-hover:translate-y-[-1px]">
+                <svg
+                  className="w-3 h-3"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+              </span>
             </a>
           </div>
         </div>
-      </div>
+      </motion.div>
+    </div>
 
       {/* REPLICATED QURUS APP MODALS */}
+      <AnimatePresence>
+        {/* 1. Note Editor Modal (Replicating NoteEditorModal.tsx + VoiceNoteComposer.tsx) */}
+        {editorModalOpen && selectedAyahForNote && (
+          <NoteEditorModal
+            surahName="Surah Al-Faatiha"
+            surahNumber={1}
+            ayahNumber={selectedAyahForNote.numberInSurah}
+            arabicText={selectedAyahForNote.arabicText}
+            urduText={selectedAyahForNote.urduText}
+            initialNote={editingNote?.text || ""}
+            initialVoiceNote={editingNote?.voiceNote || null}
+            noteId={editingNote?.id}
+            onClose={() => setEditorModalOpen(false)}
+            onSave={(text, voiceNote) =>
+              handleSaveNote(
+                selectedAyahForNote.numberInSurah,
+                text,
+                voiceNote,
+                editingNote?.id
+              )
+            }
+            onDelete={
+              editingNote
+                ? () => handleDeleteNote(selectedAyahForNote.numberInSurah, editingNote.id)
+                : undefined
+            }
+          />
+        )}
 
-      {/* 1. Note Editor Modal (Replicating NoteEditorModal.tsx + VoiceNoteComposer.tsx) */}
-      {editorModalOpen && selectedAyahForNote && (
-        <NoteEditorModal
-          surahName="Surah Al-Faatiha"
-          surahNumber={1}
-          ayahNumber={selectedAyahForNote.numberInSurah}
-          arabicText={selectedAyahForNote.arabicText}
-          urduText={selectedAyahForNote.urduText}
-          initialNote={editingNote?.text || ""}
-          initialVoiceNote={editingNote?.voiceNote || null}
-          noteId={editingNote?.id}
-          onClose={() => setEditorModalOpen(false)}
-          onSave={(text, voiceNote) =>
-            handleSaveNote(
-              selectedAyahForNote.numberInSurah,
-              text,
-              voiceNote,
-              editingNote?.id
-            )
-          }
-          onDelete={
-            editingNote
-              ? () => handleDeleteNote(selectedAyahForNote.numberInSurah, editingNote.id)
-              : undefined
-          }
-        />
-      )}
-
-      {/* 2. Note Viewer Modal (Replicating NoteViewerModal.tsx) */}
-      {viewerModalOpen && selectedNoteForView && selectedAyahForNote && (
-        <NoteViewerModal
-          surahName="Surah Al-Faatiha"
-          surahNumber={1}
-          ayahNumber={selectedAyahForNote.numberInSurah}
-          arabicText={selectedAyahForNote.arabicText}
-          urduText={selectedAyahForNote.urduText}
-          note={selectedNoteForView}
-          onClose={() => setViewerModalOpen(false)}
-          onEdit={() => openEditNoteModal(selectedAyahForNote, selectedNoteForView)}
-          onDelete={() =>
-            handleDeleteNote(selectedAyahForNote.numberInSurah, selectedNoteForView.id)
-          }
-        />
-      )}
+        {/* 2. Note Viewer Modal (Replicating NoteViewerModal.tsx) */}
+        {viewerModalOpen && selectedNoteForView && selectedAyahForNote && (
+          <NoteViewerModal
+            surahName="Surah Al-Faatiha"
+            surahNumber={1}
+            ayahNumber={selectedAyahForNote.numberInSurah}
+            arabicText={selectedAyahForNote.arabicText}
+            urduText={selectedAyahForNote.urduText}
+            note={selectedNoteForView}
+            onClose={() => setViewerModalOpen(false)}
+            onEdit={() => openEditNoteModal(selectedAyahForNote, selectedNoteForView)}
+            onDelete={() =>
+              handleDeleteNote(selectedAyahForNote.numberInSurah, selectedNoteForView.id)
+            }
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }
