@@ -503,7 +503,7 @@ export default function SettingsScreen() {
 
         {/* App Info & Integrity Acknowledgments */}
         <View style={styles.appInfoSection}>
-          <Text style={[styles.appInfoTitle, { color: theme.textPrimary }]}>Qurus v2.1.1</Text>
+          <Text style={[styles.appInfoTitle, { color: theme.textPrimary }]}>Qurus v2.2.0</Text>
           <Text style={[styles.appInfoDesc, { color: theme.textSecondary }]}>
             Dedicated to open, honest reflection & continuous listening.
           </Text>

@@ -17,7 +17,7 @@ import {
   FeedbackSubmittedPayload,
 } from './events';
 
-export const APP_VERSION = '2.1.1';
+export const APP_VERSION = '2.2.0';
 
 let posthogClient: PostHog | null = null;
 let isInitialized = false;
