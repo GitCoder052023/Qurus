@@ -12,6 +12,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useAudio } from '../context/AudioContext';
 import { VoiceNote } from '../types';
 import { VoiceNotePlayer, formatDurationMs } from './VoiceNotePlayer';
+import { trackVoiceNoteRecorded } from '../lib/analytics';
 
 const MAX_RECORDING_SECONDS = 180;
 
@@ -111,6 +112,7 @@ export function VoiceNoteComposer({ value, onChange, onRecordingChange }: VoiceN
         return;
       }
 
+      trackVoiceNoteRecorded(Math.max(1, Math.round(durationMillis / 1000)));
       onChange({ uri, durationMillis });
     } catch (err) {
       console.warn('Could not stop voice note recording:', err);

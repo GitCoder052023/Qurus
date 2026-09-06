@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   View,
   Text,
@@ -13,6 +13,7 @@ import { useRouter } from 'expo-router';
 import { useTheme } from '../../context/ThemeContext';
 import { SURAHS } from '../../data/surahs';
 import { SurahMetadata } from '../../types';
+import { trackSearchPerformed } from '../../lib/analytics';
 
 export default function QuranScreen() {
   const { theme } = useTheme();
@@ -57,6 +58,16 @@ export default function QuranScreen() {
         s.urduName.toLowerCase().includes(q) ||
         String(s.name).includes(q)
     );
+  }, [searchQuery, activeFilter]);
+
+  // Debounced non-sensitive search tracking (only filter type, never query text)
+  useEffect(() => {
+    if (searchQuery.trim().length >= 2) {
+      const timer = setTimeout(() => {
+        trackSearchPerformed(activeFilter);
+      }, 1200);
+      return () => clearTimeout(timer);
+    }
   }, [searchQuery, activeFilter]);
 
   const handleSelectSurah = (surah: SurahMetadata) => {

@@ -10,6 +10,14 @@ import {
   ReadingPreferences,
   StreakData,
 } from '../types';
+import {
+  trackBookmarkCreated,
+  trackHighlightCreated,
+  trackNoteCreated,
+  trackPreferenceChanged,
+  trackOnboardingCompleted,
+  trackLegalConsentAgreed,
+} from '../lib/analytics';
 
 const STORAGE_KEYS = {
   LAST_STUDIED: '@qurus_last_studied_v1',
@@ -237,11 +245,13 @@ export function StudyProvider({ children }: { children: ReactNode }) {
 
   const completeOnboarding = async () => {
     setHasOnboarded(true);
+    trackOnboardingCompleted();
     await AsyncStorage.setItem(STORAGE_KEYS.HAS_ONBOARDED, 'true').catch(console.error);
   };
 
   const agreeToLegal = async () => {
     setHasAgreedLegal(true);
+    trackLegalConsentAgreed();
     await AsyncStorage.setItem(STORAGE_KEYS.HAS_AGREED_LEGAL, 'true').catch(console.error);
   };
 
@@ -357,6 +367,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     setBookmarks(nextBookmarks);
     AsyncStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(nextBookmarks)).catch(console.error);
     if (!exists) {
+      trackBookmarkCreated();
       recordStreakActivity();
     }
     return !exists;
@@ -393,6 +404,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     setHighlights(nextHighlights);
     AsyncStorage.setItem(STORAGE_KEYS.HIGHLIGHTS, JSON.stringify(nextHighlights)).catch(console.error);
     if (added) {
+      trackHighlightCreated();
       recordStreakActivity();
     }
     return added;
@@ -450,6 +462,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     const nextNotes = { ...notes, [id]: newNote };
     setNotes(nextNotes);
     AsyncStorage.setItem(STORAGE_KEYS.NOTES, JSON.stringify(nextNotes)).catch(console.error);
+    trackNoteCreated(Boolean(nextVoice));
     recordStreakActivity();
     return id;
   };
@@ -472,6 +485,11 @@ export function StudyProvider({ children }: { children: ReactNode }) {
 
   // Preferences
   const updatePreferences = (newPrefs: Partial<ReadingPreferences>) => {
+    Object.entries(newPrefs).forEach(([k, v]) => {
+      if (v !== undefined) {
+        trackPreferenceChanged(k, v);
+      }
+    });
     setPreferences((prev) => {
       const updated = { ...prev, ...newPrefs };
       AsyncStorage.setItem(STORAGE_KEYS.PREFERENCES, JSON.stringify(updated)).catch(console.error);

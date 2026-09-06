@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Stack } from 'expo-router';
 import { View, StyleSheet, StatusBar } from 'react-native';
 import { StudyProvider } from '../context/StudyContext';
@@ -6,6 +6,7 @@ import { ThemeProvider, useTheme } from '../context/ThemeContext';
 import { AudioProvider } from '../context/AudioContext';
 import { MiniPlayer } from '../components/MiniPlayer';
 import { FullPlayerModal } from '../components/FullPlayerModal';
+import { initAnalytics, trackAppOpen } from '../lib/analytics';
 
 function InnerApp() {
   return (
@@ -19,6 +20,17 @@ function InnerApp() {
 
 function AppContent() {
   const { theme } = useTheme();
+
+  useEffect(() => {
+    // Initialize PostHog safely and record app_open
+    initAnalytics()
+      .then(() => trackAppOpen())
+      .catch((err) => {
+        if (__DEV__) {
+          console.warn('[RootLayout] Analytics initialization error:', err);
+        }
+      });
+  }, []);
 
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
@@ -38,6 +50,7 @@ function AppContent() {
         <Stack.Screen name="legal-consent" options={{ headerShown: false, animation: 'fade' }} />
         <Stack.Screen name="privacy" options={{ headerShown: false, animation: 'slide_from_right' }} />
         <Stack.Screen name="terms" options={{ headerShown: false, animation: 'slide_from_right' }} />
+        <Stack.Screen name="feedback" options={{ headerShown: false, animation: 'slide_from_right' }} />
       </Stack>
 
       {/* Persistent Spotify-like Mini Player */}

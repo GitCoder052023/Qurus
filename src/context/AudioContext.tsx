@@ -4,6 +4,7 @@ import { createAudioPlayer, setAudioModeAsync, preload, AudioPlayer, AudioStatus
 import { RECITERS, getAudioUrl, getUrduAudioUrl, URDU_TRANSLATION_RECITER, SURAHS } from '../data/surahs';
 import { Reciter, SurahMetadata, PlaybackMode, PlaybackPhase } from '../types';
 import { useStudyState } from './StudyContext';
+import { trackAudioPlayed } from '../lib/analytics';
 
 interface AudioContextType {
   // Playback State
@@ -364,6 +365,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     isStandaloneRef.current = Boolean(options?.standalone);
     const initialPhase: PlaybackPhase =
       phase || (playbackModeRef.current === 'translation_only' ? 'translation' : 'arabic');
+    trackAudioPlayed(reciterRef.current.id, playbackModeRef.current, playbackSpeedRef.current);
     playAyahInternal(surahNum, ayahNum, initialPhase);
   };
 

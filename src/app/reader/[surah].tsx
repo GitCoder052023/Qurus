@@ -19,6 +19,7 @@ import { AyahItem } from '../../components/AyahItem';
 import { NoteEditorModal } from '../../components/NoteEditorModal';
 import { NoteViewerModal } from '../../components/NoteViewerModal';
 import { Ayah, StudyNote } from '../../types';
+import { trackSurahOpened } from '../../lib/analytics';
 
 export default function ReaderScreen() {
   const { surah: surahParam, ayah: ayahParam } = useLocalSearchParams<{
@@ -49,6 +50,13 @@ export default function ReaderScreen() {
   const [noteEditorVisible, setNoteEditorVisible] = useState(false);
   const [viewingNote, setViewingNote] = useState<StudyNote | null>(null);
   const [noteViewerVisible, setNoteViewerVisible] = useState(false);
+
+  // Track surah opened event
+  useEffect(() => {
+    if (!isNaN(surahNumber) && surahNumber >= 1 && surahNumber <= 114) {
+      trackSurahOpened(surahNumber);
+    }
+  }, [surahNumber]);
 
   // Auto-scroll when currently reciting ayah changes
   useEffect(() => {

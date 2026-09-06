@@ -99,9 +99,10 @@ With persistent lock-screen media controls and background audio support, your ph
 
 ## Privacy & Local Data
 
-- **No Account Required**: No sign-ups, email prompts, or profile creation.
-- **No Telemetry or Tracking**: Your reading patterns, bookmarks, and search history are never tracked or uploaded.
-- **Local Storage**: All notes, voice recordings, highlights, and history are stored locally on your device via on-device storage.
+- **No Account Required**: No sign-ups, passwords, or personal profiles.
+- **100% On-Device Private Study**: Your written reflection notes, voice recordings, bookmark snippets, and search terms are strictly stored locally on your device and are **never** uploaded.
+- **Anonymous Product Analytics**: Qurus uses PostHog for minimal, privacy-conscious metrics (like active users and app reliability) using a random, non-PII installation identifier. See our [Analytics Guide](docs/ANALYTICS.md) for full details and developer rules.
+- **In-App Feedback**: Submit bug reports and feature requests directly from Settings without creating an account. Providing an email for replies is completely optional.
 
 ## Verified Sources
 

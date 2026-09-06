@@ -417,6 +417,30 @@ export default function SettingsScreen() {
           </TouchableOpacity>
         </View>
 
+        {/* SECTION: Support & Feedback */}
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.textTertiary }]}>
+            Support & Feedback
+          </Text>
+          <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => router.push('/feedback' as any)}
+              style={[styles.settingItem, styles.rowBetween]}
+            >
+              <View style={styles.settingTextGroup}>
+                <Text style={[styles.settingLabel, { color: theme.textPrimary }]}>
+                  Contact Us & Feedback
+                </Text>
+                <Text style={[styles.settingSubtext, { color: theme.textSecondary }]}>
+                  Report a bug, suggest features, or send general feedback
+                </Text>
+              </View>
+              <Ionicons name="chatbubble-ellipses-outline" size={18} color={theme.primary} />
+            </TouchableOpacity>
+          </View>
+        </View>
+
         {/* SECTION: Legal & Privacy */}
         <View style={styles.section}>
           <Text style={[styles.sectionTitle, { color: theme.textTertiary }]}>
