@@ -1,1 +1,658 @@
-{"number":31,"name":"سُورَةُ لُقۡمَانَ","englishName":"Luqman","englishNameTranslation":"Luqman","urduName":"لقمان / سورۃ لقمان","numberOfAyahs":34,"revelationType":"Meccan","juzStart":21,"ayahs":[{"numberInSurah":1,"globalNumber":3470,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ الٓمٓ","urduText":"الٓمٓ","juz":21,"page":411,"ruku":355,"hizbQuarter":164,"sajda":false},{"numberInSurah":2,"globalNumber":3471,"arabicText":"تِلْكَ ءَايَٰتُ ٱلْكِتَٰبِ ٱلْحَكِيمِ","urduText":"یہ حکمت کی (بھری ہوئی) کتاب کی آیتیں ہیں","juz":21,"page":411,"ruku":355,"hizbQuarter":164,"sajda":false},{"numberInSurah":3,"globalNumber":3472,"arabicText":"هُدًۭى وَرَحْمَةًۭ لِّلْمُحْسِنِينَ","urduText":"نیکوکاروں کے لئے ہدایت اور رحمت ہے","juz":21,"page":411,"ruku":355,"hizbQuarter":164,"sajda":false},{"numberInSurah":4,"globalNumber":3473,"arabicText":"ٱلَّذِينَ يُقِيمُونَ ٱلصَّلَوٰةَ وَيُؤْتُونَ ٱلزَّكَوٰةَ وَهُم بِٱلْءَاخِرَةِ هُمْ يُوقِنُونَ","urduText":"جو نماز کی پابندی کرتے اور زکوٰة دیتے اور آخرت کا یقین رکھتے ہیں","juz":21,"page":411,"ruku":355,"hizbQuarter":164,"sajda":false},{"numberInSurah":5,"globalNumber":3474,"arabicText":"أُو۟لَٰٓئِكَ عَلَىٰ هُدًۭى مِّن رَّبِّهِمْ ۖ وَأُو۟لَٰٓئِكَ هُمُ ٱلْمُفْلِحُونَ","urduText":"یہی اپنے پروردگار (کی طرف) سے ہدایت پر ہیں اور یہی نجات پانے والے ہیں","juz":21,"page":411,"ruku":355,"hizbQuarter":164,"sajda":false},{"numberInSurah":6,"globalNumber":3475,"arabicText":"وَمِنَ ٱلنَّاسِ مَن يَشْتَرِى لَهْوَ ٱلْحَدِيثِ لِيُضِلَّ عَن سَبِيلِ ٱللَّهِ بِغَيْرِ عِلْمٍۢ وَيَتَّخِذَهَا هُزُوًا ۚ أُو۟لَٰٓئِكَ لَهُمْ عَذَابٌۭ مُّهِينٌۭ","urduText":"اور لوگوں میں بعض ایسا ہے جو بیہودہ حکایتیں خریدتا ہے تاکہ (لوگوں کو) بےسمجھے خدا کے رستے سے گمراہ کرے اور اس سے استہزاء کرے یہی لوگ ہیں جن کو ذلیل کرنے والا عذاب ہوگا","juz":21,"page":411,"ruku":355,"hizbQuarter":164,"sajda":false},{"numberInSurah":7,"globalNumber":3476,"arabicText":"وَإِذَا تُتْلَىٰ عَلَيْهِ ءَايَٰتُنَا وَلَّىٰ مُسْتَكْبِرًۭا كَأَن لَّمْ يَسْمَعْهَا كَأَنَّ فِىٓ أُذُنَيْهِ وَقْرًۭا ۖ فَبَشِّرْهُ بِعَذَابٍ أَلِيمٍ","urduText":"اور جب اس کو ہماری آیتیں سنائی جاتی ہیں تو اکڑ کر منہ پھیر لیتا ہے گویا اُن کو سنا ہی نہیں جیسے اُن کے کانوں میں ثقل ہے تو اس کو درد دینے والے عذاب کی خوشخبری سنادو","juz":21,"page":411,"ruku":355,"hizbQuarter":164,"sajda":false},{"numberInSurah":8,"globalNumber":3477,"arabicText":"إِنَّ ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّٰلِحَٰتِ لَهُمْ جَنَّٰتُ ٱلنَّعِيمِ","urduText":"جو لوگ ایمان لائے اور نیک کام کرتے رہے اُن کے لئے نعمت کے باغ ہیں","juz":21,"page":411,"ruku":355,"hizbQuarter":164,"sajda":false},{"numberInSurah":9,"globalNumber":3478,"arabicText":"خَٰلِدِينَ فِيهَا ۖ وَعْدَ ٱللَّهِ حَقًّۭا ۚ وَهُوَ ٱلْعَزِيزُ ٱلْحَكِيمُ","urduText":"ہمیشہ اُن میں رہیں گے۔ خدا کا وعدہ سچا ہے اور وہ غالب حکمت والا ہے","juz":21,"page":411,"ruku":355,"hizbQuarter":164,"sajda":false},{"numberInSurah":10,"globalNumber":3479,"arabicText":"خَلَقَ ٱلسَّمَٰوَٰتِ بِغَيْرِ عَمَدٍۢ تَرَوْنَهَا ۖ وَأَلْقَىٰ فِى ٱلْأَرْضِ رَوَٰسِىَ أَن تَمِيدَ بِكُمْ وَبَثَّ فِيهَا مِن كُلِّ دَآبَّةٍۢ ۚ وَأَنزَلْنَا مِنَ ٱلسَّمَآءِ مَآءًۭ فَأَنۢبَتْنَا فِيهَا مِن كُلِّ زَوْجٍۢ كَرِيمٍ","urduText":"اُسی نے آسمانوں کو ستونوں کے بغیر پیدا کیا جیسا کہ تم دیکھتے ہو اور زمین پر پہاڑ (بنا کر) رکھ دیئے تاکہ تم کو ہلا ہلا نہ دے اور اس میں ہر طرح کے جانور پھیلا دیئے۔ اور ہم ہی نے آسمانوں سے پانی نازل کیا پھر (اُس سے) اس میں ہر قسم کی نفیس چیزیں اُگائیں","juz":21,"page":411,"ruku":355,"hizbQuarter":164,"sajda":false},{"numberInSurah":11,"globalNumber":3480,"arabicText":"هَٰذَا خَلْقُ ٱللَّهِ فَأَرُونِى مَاذَا خَلَقَ ٱلَّذِينَ مِن دُونِهِۦ ۚ بَلِ ٱلظَّٰلِمُونَ فِى ضَلَٰلٍۢ مُّبِينٍۢ","urduText":"یہ تو خدا کی پیدائش ہے تو مجھے دکھاؤ کہ خدا کے سوا جو لوگ ہیں اُنہوں نے کیا پیدا کیا ہے؟ حقیقت یہ ہے کہ یہ ظالم صریح گمراہی میں ہیں","juz":21,"page":411,"ruku":355,"hizbQuarter":164,"sajda":false},{"numberInSurah":12,"globalNumber":3481,"arabicText":"وَلَقَدْ ءَاتَيْنَا لُقْمَٰنَ ٱلْحِكْمَةَ أَنِ ٱشْكُرْ لِلَّهِ ۚ وَمَن يَشْكُرْ فَإِنَّمَا يَشْكُرُ لِنَفْسِهِۦ ۖ وَمَن كَفَرَ فَإِنَّ ٱللَّهَ غَنِىٌّ حَمِيدٌۭ","urduText":"اور ہم نے لقمان کو دانائی بخشی۔ کہ خدا کا شکر کرو۔ اور جو شخص شکر کرتا ہے تو اپنے ہی فائدے کے لئے شکر کرتا ہے۔ اور جو ناشکری کرتا ہے تو خدا بھی بےپروا اور سزاوار حمد (وثنا) ہے","juz":21,"page":412,"ruku":356,"hizbQuarter":164,"sajda":false},{"numberInSurah":13,"globalNumber":3482,"arabicText":"وَإِذْ قَالَ لُقْمَٰنُ لِٱبْنِهِۦ وَهُوَ يَعِظُهُۥ يَٰبُنَىَّ لَا تُشْرِكْ بِٱللَّهِ ۖ إِنَّ ٱلشِّرْكَ لَظُلْمٌ عَظِيمٌۭ","urduText":"اور (اُس وقت کو یاد کرو) جب لقمان نے اپنے بیٹے کو نصیحت کرتے ہوئے کہا کہ بیٹا خدا کے ساتھ شرک نہ کرنا۔ شرک تو بڑا (بھاری) ظلم ہے","juz":21,"page":412,"ruku":356,"hizbQuarter":164,"sajda":false},{"numberInSurah":14,"globalNumber":3483,"arabicText":"وَوَصَّيْنَا ٱلْإِنسَٰنَ بِوَٰلِدَيْهِ حَمَلَتْهُ أُمُّهُۥ وَهْنًا عَلَىٰ وَهْنٍۢ وَفِصَٰلُهُۥ فِى عَامَيْنِ أَنِ ٱشْكُرْ لِى وَلِوَٰلِدَيْكَ إِلَىَّ ٱلْمَصِيرُ","urduText":"اور ہم نے انسان کو جسے اُس کی ماں تکلیف پر تکلیف سہہ کر پیٹ میں اُٹھائے رکھتی ہے (پھر اس کو دودھ پلاتی ہے) اور (آخرکار) دو برس میں اس کا دودھ چھڑانا ہوتا ہے (اپنے نیز) اس کے ماں باپ کے بارے میں تاکید کی ہے کہ میرا بھی شکر کرتا رہ اور اپنے ماں باپ کا بھی (کہ تم کو) میری ہی طرف لوٹ کر آنا ہے","juz":21,"page":412,"ruku":356,"hizbQuarter":164,"sajda":false},{"numberInSurah":15,"globalNumber":3484,"arabicText":"وَإِن جَٰهَدَاكَ عَلَىٰٓ أَن تُشْرِكَ بِى مَا لَيْسَ لَكَ بِهِۦ عِلْمٌۭ فَلَا تُطِعْهُمَا ۖ وَصَاحِبْهُمَا فِى ٱلدُّنْيَا مَعْرُوفًۭا ۖ وَٱتَّبِعْ سَبِيلَ مَنْ أَنَابَ إِلَىَّ ۚ ثُمَّ إِلَىَّ مَرْجِعُكُمْ فَأُنَبِّئُكُم بِمَا كُنتُمْ تَعْمَلُونَ","urduText":"اور اگر وہ تیرے درپے ہوں کہ تو میرے ساتھ کسی ایسی چیز کو شریک کرے جس کا تجھے کچھ بھی علم نہیں تو ان کا کہا نہ ماننا۔ ہاں دنیا (کے کاموں) میں ان کا اچھی طرح ساتھ دینا اور جو شخص میری طرف رجوع لائے اس کے رستے پر چلنا پھر تم کو میری طرف لوٹ کر آنا ہے۔ تو جو کام تم کرتے رہے میں سب سے تم کو آگاہ کروں گا","juz":21,"page":412,"ruku":356,"hizbQuarter":164,"sajda":false},{"numberInSurah":16,"globalNumber":3485,"arabicText":"يَٰبُنَىَّ إِنَّهَآ إِن تَكُ مِثْقَالَ حَبَّةٍۢ مِّنْ خَرْدَلٍۢ فَتَكُن فِى صَخْرَةٍ أَوْ فِى ٱلسَّمَٰوَٰتِ أَوْ فِى ٱلْأَرْضِ يَأْتِ بِهَا ٱللَّهُ ۚ إِنَّ ٱللَّهَ لَطِيفٌ خَبِيرٌۭ","urduText":"(لقمان نے یہ بھی کہا کہ) بیٹا اگر کوئی عمل (بالفرض) رائی کے دانے کے برابر بھی (چھوٹا) ہو اور ہو بھی کسی پتھر کے اندر یا آسمانوں میں (مخفی ہو) یا زمین میں۔ خدا اُس کو قیامت کے دن لاموجود کرے گا۔ کچھ شک نہیں کہ خدا باریک بین (اور) خبردار ہے","juz":21,"page":412,"ruku":356,"hizbQuarter":164,"sajda":false},{"numberInSurah":17,"globalNumber":3486,"arabicText":"يَٰبُنَىَّ أَقِمِ ٱلصَّلَوٰةَ وَأْمُرْ بِٱلْمَعْرُوفِ وَٱنْهَ عَنِ ٱلْمُنكَرِ وَٱصْبِرْ عَلَىٰ مَآ أَصَابَكَ ۖ إِنَّ ذَٰلِكَ مِنْ عَزْمِ ٱلْأُمُورِ","urduText":"بیٹا نماز کی پابندی رکھنا اور (لوگوں کو) اچھے کاموں کے کرنے کا امر اور بری باتوں سے منع کرتے رہنا اور جو مصیبت تجھ پر واقع ہو اس پر صبر کرنا۔ بیشک یہ بڑی ہمت کے کام ہیں","juz":21,"page":412,"ruku":356,"hizbQuarter":164,"sajda":false},{"numberInSurah":18,"globalNumber":3487,"arabicText":"وَلَا تُصَعِّرْ خَدَّكَ لِلنَّاسِ و��لَا تَمْشِ فِى ٱلْأَرْضِ مَرَحًا ۖ إِنَّ ٱللَّهَ لَا يُحِبُّ كُلَّ مُخْتَالٍۢ فَخُورٍۢ","urduText":"اور (ازراہ غرور) لوگوں سے گال نہ پھلانا اور زمین میں اکڑ کر نہ چلنا۔ کہ خدا کسی اترانے والے خود پسند کو پسند نہیں کرتا","juz":21,"page":412,"ruku":356,"hizbQuarter":164,"sajda":false},{"numberInSurah":19,"globalNumber":3488,"arabicText":"وَٱقْصِدْ فِى مَشْيِكَ وَٱغْضُضْ مِن صَوْتِكَ ۚ إِنَّ أَنكَرَ ٱلْأَصْوَٰتِ لَصَوْتُ ٱلْحَمِيرِ","urduText":"اور اپنی چال میں اعتدال کئے رہنا اور (بولتے وقت) آواز نیچی رکھنا کیونکہ (اُونچی آواز گدھوں کی ہے اور کچھ شک نہیں کہ) سب آوازوں سے بُری آواز گدھوں کی ہے","juz":21,"page":412,"ruku":356,"hizbQuarter":164,"sajda":false},{"numberInSurah":20,"globalNumber":3489,"arabicText":"أَلَمْ تَرَوْا۟ أَنَّ ٱللَّهَ سَخَّرَ لَكُم مَّا فِى ٱلسَّمَٰوَٰتِ وَمَا فِى ٱلْأَرْضِ وَأَسْبَغَ عَلَيْكُمْ نِعَمَهُۥ ظَٰهِرَةًۭ وَبَاطِنَةًۭ ۗ وَمِنَ ٱلنَّاسِ مَن يُجَٰدِلُ فِى ٱللَّهِ بِغَيْرِ عِلْمٍۢ وَلَا هُدًۭى وَلَا كِتَٰبٍۢ مُّنِيرٍۢ","urduText":"کیا تم نے نہیں دیکھا کہ جو کچھ آسمانوں میں اور جو کچھ زمین میں ہے سب کو خدا نے تمہارے قابو میں کر دیا ہے اور تم پر اپنی ظاہری اور باطنی نعمتیں پوری کردی ہیں۔ اور بعض لوگ ایسے ہیں کہ خدا کے بارے میں جھگڑتے ہیں نہ علم رکھتے ہیں اور نہ ہدایت اور نہ کتاب روشن","juz":21,"page":413,"ruku":357,"hizbQuarter":164,"sajda":false},{"numberInSurah":21,"globalNumber":3490,"arabicText":"وَإِذَا قِيلَ لَهُمُ ٱتَّبِعُوا۟ مَآ أَنزَلَ ٱللَّهُ قَالُوا۟ بَلْ نَتَّبِعُ مَا وَجَدْنَا عَلَيْهِ ءَابَآءَنَآ ۚ أَوَلَوْ كَانَ ٱلشَّيْطَٰنُ يَدْعُوهُمْ إِلَىٰ عَذَابِ ٱلسَّعِيرِ","urduText":"اور جب اُن سے کہا جاتا ہے کہ جو (کتاب) خدا نے نازل فرمائی ہے اُس کی پیروی کرو۔ تو کہتے ہیں کہ ہم تو اسی کی پیروی کریں گے جس پر اپنے باپ دادا کو پایا۔ بھلا اگرچہ شیطان ان کو دوزخ کے عذاب کی طرف بلاتا ہو (تب بھی؟)","juz":21,"page":413,"ruku":357,"hizbQuarter":164,"sajda":false},{"numberInSurah":22,"globalNumber":3491,"arabicText":"۞ وَمَن يُسْلِمْ وَجْهَهُۥٓ إِلَى ٱللَّهِ وَهُوَ مُحْسِنٌۭ فَقَدِ ٱسْتَمْسَكَ بِٱلْعُرْوَةِ ٱلْوُثْقَىٰ ۗ وَإِلَى ٱللَّهِ عَٰقِبَةُ ٱلْأُمُورِ","urduText":"اور جو شخص اپنے تئیں خدا کا فرمانبردار کردے اور نیکوکار بھی ہو تو اُس نے مضبوط دستاویز ہاتھ میں لے لی۔ اور (سب) کاموں کا انجام خدا ہی کی طرف ہے","juz":21,"page":413,"ruku":357,"hizbQuarter":165,"sajda":false},{"numberInSurah":23,"globalNumber":3492,"arabicText":"وَمَن كَفَرَ فَلَا يَحْزُنكَ كُفْرُهُۥٓ ۚ إِلَيْنَا مَرْجِعُهُمْ فَنُنَبِّئُهُم بِمَا عَمِلُوٓا۟ ۚ إِنَّ ٱللَّهَ عَلِيمٌۢ بِذَاتِ ٱلصُّدُورِ","urduText":"اور جو کفر کرے تو اُس کا کفر تمہیں غمناک نہ کردے ان کو ہماری طرف لوٹ کر آنا ہے پھر جو کام وہ کیا کرتے تھے ہم اُن کو جتا ئیں گے۔ بیشک خدا دلوں کی باتوں سے واقف ہے","juz":21,"page":413,"ruku":357,"hizbQuarter":165,"sajda":false},{"numberInSurah":24,"globalNumber":3493,"arabicText":"نُمَتِّعُهُمْ قَلِيلًۭا ثُمَّ نَضْطَرُّهُمْ إِلَىٰ عَذَابٍ غَلِيظٍۢ","urduText":"ہم اُن کو تھوڑا سا فائدہ پہنچائیں گے پھر عذاب شدید کی طرف مجبور کر کے لیجائیں گے","juz":21,"page":413,"ruku":357,"hizbQuarter":165,"sajda":false},{"numberInSurah":25,"globalNumber":3494,"arabicText":"وَلَئِن سَأَلْتَهُم مَّنْ خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضَ لَيَقُولُنَّ ٱللَّهُ ۚ قُلِ ٱلْحَمْدُ لِلَّهِ ۚ بَلْ أَكْثَرُهُمْ لَا يَعْلَمُونَ","urduText":"اور اگر تم اُن سے پوچھو کہ آسمانوں اور زمین کو کس نے پیدا کیا تو بول اُٹھیں گے کہ خدا نے۔ کہہ دو کہ خدا کا شکر ہے لیکن ان میں اکثر سمجھ نہیں رکھتے","juz":21,"page":413,"ruku":357,"hizbQuarter":165,"sajda":false},{"numberInSurah":26,"globalNumber":3495,"arabicText":"لِلَّهِ مَا فِى ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ ۚ إِنَّ ٱللَّهَ هُوَ ٱلْغَنِىُّ ٱلْحَمِيدُ","urduText":"جو کچھ آسمانوں اور زمین میں ہے (سب) خدا ہی کا ہے۔ بیشک خدا بےپروا اور سزا وارِ حمد (وثنا) ہے","juz":21,"page":413,"ruku":357,"hizbQuarter":165,"sajda":false},{"numberInSurah":27,"globalNumber":3496,"arabicText":"وَلَوْ أَنَّمَا فِى ٱلْأَرْضِ مِن شَجَرَةٍ أَقْلَٰمٌۭ وَٱلْبَحْرُ يَمُدُّهُۥ مِنۢ بَعْدِهِۦ سَبْعَةُ أَبْحُرٍۢ مَّا نَفِدَتْ كَلِمَٰتُ ٱللَّهِ ۗ إِنَّ ٱللَّهَ عَزِيزٌ حَكِيمٌۭ","urduText":"اور اگر یوں ہو کہ زمین میں جتنے درخت ہیں (سب کے سب) قلم ہوں اور سمندر (کا تمام پانی) سیاہی ہو (اور) اس کے بعد سات سمندر اور (سیاہی ہو جائیں) تو خدا کی باتیں (یعنی اس کی صفتیں) ختم نہ ہوں۔ بیشک خدا غالب حکمت والا ہے","juz":21,"page":413,"ruku":357,"hizbQuarter":165,"sajda":false},{"numberInSurah":28,"globalNumber":3497,"arabicText":"مَّا خَلْقُكُمْ وَلَا بَعْثُكُمْ إِلَّا كَنَفْسٍۢ وَٰحِدَةٍ ۗ إِنَّ ٱللَّهَ سَمِيعٌۢ بَصِيرٌ","urduText":"(خدا کو) تمہارا پیدا کرنا اور جِلا اُٹھانا ایک شخص (کے پیدا کرنے اور جلا اُٹھانے) کی طرح ہے۔ بیشک خدا سننے والا دیکھنے والا ہے","juz":21,"page":413,"ruku":357,"hizbQuarter":165,"sajda":false},{"numberInSurah":29,"globalNumber":3498,"arabicText":"أَلَمْ تَرَ أَنَّ ٱللَّهَ يُولِجُ ٱلَّيْلَ فِى ٱلنَّهَارِ وَيُولِجُ ٱلنَّهَارَ فِى ٱلَّيْلِ وَسَخَّرَ ٱلشَّمْسَ وَٱلْقَمَرَ كُلٌّۭ يَجْرِىٓ إِلَىٰٓ أَجَلٍۢ مُّسَمًّۭى وَأَنَّ ٱللَّهَ بِمَا تَعْمَلُونَ خَبِيرٌۭ","urduText":"کیا تم نے نہیں دیکھا کہ خدا ہی رات کو دن میں داخل کرتا ہے اور (وہی) دن کو رات میں داخل کرتا ہے اور اُسی نے سورج اور چاند کو (تمہارے) زیر فرمان کر رکھا ہے۔ ہر ایک ایک وقتِ مقرر تک چل رہا ہے اور یہ کہ خدا تمہارے سب اعمال سے خبردار ہے","juz":21,"page":414,"ruku":357,"hizbQuarter":165,"sajda":false},{"numberInSurah":30,"globalNumber":3499,"arabicText":"ذَٰلِكَ بِأَنَّ ٱللَّهَ هُوَ ٱلْحَقُّ وَأَنَّ مَا يَدْعُونَ مِن دُونِهِ ٱلْبَٰطِلُ وَأَنَّ ٱللَّهَ هُوَ ٱلْعَلِىُّ ٱلْكَبِيرُ","urduText":"یہ اس لئے کہ خدا کی ذات برحق ہے اور جن کو یہ لوگ خدا کے سوا پکارتے ہیں وہ لغو ہیں اور یہ کہ خدا ہی عالی رتبہ اور گرامی قدر ہے","juz":21,"page":414,"ruku":357,"hizbQuarter":165,"sajda":false},{"numberInSurah":31,"globalNumber":3500,"arabicText":"أَلَمْ تَرَ أَنَّ ٱلْفُلْكَ تَجْرِى فِى ٱلْبَحْرِ بِنِعْمَتِ ٱللَّهِ لِيُرِيَكُم مِّنْ ءَايَٰتِهِۦٓ ۚ إِنَّ فِى ذَٰلِكَ لَءَايَٰتٍۢ لِّكُلِّ صَبَّارٍۢ شَكُورٍۢ","urduText":"کیا تم نے نہیں دیکھا کہ خدا ہی کی مہربانی سے کشتیاں دریا میں چلتی ہیں۔ تاکہ وہ تم کو اپنی کچھ نشانیاں دکھائے۔ بیشک اس میں ہر صبر کرنے والے (اور) شکر کرنے والے کے لئے نشانیاں ہیں","juz":21,"page":414,"ruku":357,"hizbQuarter":165,"sajda":false},{"numberInSurah":32,"globalNumber":3501,"arabicText":"وَإِذَا غَشِيَهُم مَّوْجٌۭ كَٱلظُّلَلِ دَعَوُا۟ ٱللَّهَ مُخْلِصِينَ لَهُ ٱلدِّينَ فَلَمَّا نَجَّىٰهُمْ إِلَى ٱلْبَرِّ فَمِنْهُم مُّقْتَصِدٌۭ ۚ وَمَا يَجْحَدُ بِـَٔايَٰتِنَآ إِلَّا كُلُّ خَتَّارٍۢ كَفُورٍۢ","urduText":"اور جب اُن پر (دریا کی) لہریں سائبانوں کی طرح چھا جاتی ہیں تو خدا کو پکارنے (اور) خالص اس کی عبادت کرنے لگتے ہیں پھر جب وہ اُن کو نجات دے کر خشکی پر پہنچا دیتا ہے تو بعض ہی انصاف پر قائم رہتے ہیں۔ اور ہماری نشانیوں سے وہی انکار کرتے ہیں جو عہد شکن اور ناشکرے ہیں","juz":21,"page":414,"ruku":357,"hizbQuarter":165,"sajda":false},{"numberInSurah":33,"globalNumber":3502,"arabicText":"يَٰٓأَيُّهَا ٱلنَّاسُ ٱتَّقُوا۟ رَبَّكُمْ وَٱخْشَوْا۟ يَوْمًۭا لَّا يَجْزِى وَالِدٌ عَن وَلَدِهِۦ وَلَا مَوْلُودٌ هُوَ جَازٍ عَن وَالِدِهِۦ شَيْـًٔا ۚ إِنَّ وَعْدَ ٱللَّهِ حَقٌّۭ ۖ فَلَا تَغُرَّنَّكُمُ ٱلْحَيَوٰةُ ٱلدُّنْيَا وَلَا يَغُرَّنَّكُم بِٱللَّهِ ٱلْغَرُورُ","urduText":"لوگو اپنے پروردگار سے ڈرو اور اُس دن کا خوف کرو کہ نہ تو باپ اپنے بیٹے کے کچھ کام آئے۔ اور نہ بیٹا باپ کے کچھ کام آسکے۔ بیشک خدا کا وعدہ سچا ہے پس دنیا کی زندگی تم کو دھوکے میں نہ ڈال دے۔ اور نہ فریب دینے والا (شیطان) تمہیں خدا کے بارے میں کسی طرح کا فریب دے","juz":21,"page":414,"ruku":357,"hizbQuarter":165,"sajda":false},{"numberInSurah":34,"globalNumber":3503,"arabicText":"إِنَّ ٱللَّهَ عِندَهُۥ عِلْمُ ٱلسَّاعَةِ وَيُنَزِّلُ ٱلْغَيْثَ وَيَعْلَمُ مَا فِى ٱلْأَرْحَامِ ۖ وَمَا تَدْرِى نَفْسٌۭ مَّاذَا تَكْسِبُ غَدًۭا ۖ وَمَا تَدْرِى نَفْسٌۢ بِأَىِّ أَرْضٍۢ تَمُوتُ ۚ إِنَّ ٱللَّهَ عَلِيمٌ خَبِيرٌۢ","urduText":"خدا ہی کو قیامت کا علم ہے اور وہی مینھہ برساتا ہے۔ اور وہی (حاملہ کے) پیٹ کی چیزوں کو جانتا ہے (کہ نر ہے یا مادہ) اور کوئی شخص نہیں جانتا کہ وہ کل کیا کام کرے گا۔ اور کوئی متنفس نہیں جانتا کہ کس سرزمین میں اُسے موت آئے گی بیشک خدا ہی جاننے والا (اور) خبردار ہے","juz":21,"page":414,"ruku":357,"hizbQuarter":165,"sajda":false}]}
+{
+  "number": 31,
+  "name": "سُورَةُ لُقۡمَانَ",
+  "englishName": "Luqman",
+  "englishNameTranslation": "Luqman",
+  "urduName": "لقمان / سورۃ لقمان",
+  "numberOfAyahs": 34,
+  "revelationType": "Meccan",
+  "juzStart": 21,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 3470,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ الٓمٓ",
+      "urduText": "الٓمٓ",
+      "juz": 21,
+      "page": 411,
+      "ruku": 355,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "Alif, Lam, Meem.",
+      "translations": {
+        "urdu": "الٓمٓ",
+        "english": "Alif, Lam, Meem.",
+        "bengali": "আলিফ-লাম-মীম।",
+        "turkish": "Elif, Lam, Mim.",
+        "french": "Alif, Lâm, Mîm."
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 3471,
+      "arabicText": "تِلْكَ ءَايَٰتُ ٱلْكِتَٰبِ ٱلْحَكِيمِ",
+      "urduText": "یہ حکمت کی (بھری ہوئی) کتاب کی آیتیں ہیں",
+      "juz": 21,
+      "page": 411,
+      "ruku": 355,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "These are verses of the wise Book,",
+      "translations": {
+        "urdu": "یہ حکمت کی (بھری ہوئی) کتاب کی آیتیں ہیں",
+        "english": "These are verses of the wise Book,",
+        "bengali": "এগুলো প্রজ্ঞাময় কিতাবের আয়াত।",
+        "turkish": "Bunlar, iyi davranan kimseler için rahmet ve doğru yol rehberi olan hikmetli Kitap'ın ayetleridir.",
+        "french": "Voici les versets du Livre plein de sagesse,"
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 3472,
+      "arabicText": "هُدًۭى وَرَحْمَةًۭ لِّلْمُحْسِنِينَ",
+      "urduText": "نیکوکاروں کے لئے ہدایت اور رحمت ہے",
+      "juz": 21,
+      "page": 411,
+      "ruku": 355,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "As guidance and mercy for the doers of good",
+      "translations": {
+        "urdu": "نیکوکاروں کے لئے ہدایت اور رحمت ہے",
+        "english": "As guidance and mercy for the doers of good",
+        "bengali": "হেদায়েত ও রহমত সৎকর্মপরায়ণদের জন্য।",
+        "turkish": "Bunlar, iyi davranan kimseler için rahmet ve doğru yol rehberi olan hikmetli Kitap'ın ayetleridir.",
+        "french": "c'est un guide et une miséricorde aux bienfaisants,"
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 3473,
+      "arabicText": "ٱلَّذِينَ يُقِيمُونَ ٱلصَّلَوٰةَ وَيُؤْتُونَ ٱلزَّكَوٰةَ وَهُم بِٱلْءَاخِرَةِ هُمْ يُوقِنُونَ",
+      "urduText": "جو نماز کی پابندی کرتے اور زکوٰة دیتے اور آخرت کا یقین رکھتے ہیں",
+      "juz": 21,
+      "page": 411,
+      "ruku": 355,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "Who establish prayer and give zakah, and they, of the Hereafter, are certain [in faith].",
+      "translations": {
+        "urdu": "جو نماز کی پابندی کرتے اور زکوٰة دیتے اور آخرت کا یقین رکھتے ہیں",
+        "english": "Who establish prayer and give zakah, and they, of the Hereafter, are certain [in faith].",
+        "bengali": "যারা সালাত কায়েম করে, যাকাত দেয় এবং আখেরাত সম্পর্কে দৃঢ় বিশ্বাস রাখে।",
+        "turkish": "O kimseler namazı kılarlar, zekatı verirler; ahirete de yakinen inanırlar.",
+        "french": "qui accomplissent la Salât, acquittent la Zakât et qui croient avec certitude en l'au-delà."
+      }
+    },
+    {
+      "numberInSurah": 5,
+      "globalNumber": 3474,
+      "arabicText": "أُو۟لَٰٓئِكَ عَلَىٰ هُدًۭى مِّن رَّبِّهِمْ ۖ وَأُو۟لَٰٓئِكَ هُمُ ٱلْمُفْلِحُونَ",
+      "urduText": "یہی اپنے پروردگار (کی طرف) سے ہدایت پر ہیں اور یہی نجات پانے والے ہیں",
+      "juz": 21,
+      "page": 411,
+      "ruku": 355,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "Those are on [right] guidance from their Lord, and it is those who are the successful.",
+      "translations": {
+        "urdu": "یہی اپنے پروردگار (کی طرف) سے ہدایت پر ہیں اور یہی نجات پانے والے ہیں",
+        "english": "Those are on [right] guidance from their Lord, and it is those who are the successful.",
+        "bengali": "এসব লোকই তাদের পরওয়ারদেগারের তরফ থেকে আগত হেদায়েতের উপর প্রতিষ্ঠিত এবং এরাই সফলকাম।",
+        "turkish": "İşte onlar Rablerinin yolunda olanlardır, işte onlar saadete erenlerdir.",
+        "french": "Ceux-là sont sur le chemin droit de leur Seigneur et ce sont eux les bienheureux."
+      }
+    },
+    {
+      "numberInSurah": 6,
+      "globalNumber": 3475,
+      "arabicText": "وَمِنَ ٱلنَّاسِ مَن يَشْتَرِى لَهْوَ ٱلْحَدِيثِ لِيُضِلَّ عَن سَبِيلِ ٱللَّهِ بِغَيْرِ عِلْمٍۢ وَيَتَّخِذَهَا هُزُوًا ۚ أُو۟لَٰٓئِكَ لَهُمْ عَذَابٌۭ مُّهِينٌۭ",
+      "urduText": "اور لوگوں میں بعض ایسا ہے جو بیہودہ حکایتیں خریدتا ہے تاکہ (لوگوں کو) بےسمجھے خدا کے رستے سے گمراہ کرے اور اس سے استہزاء کرے یہی لوگ ہیں جن کو ذلیل کرنے والا عذاب ہوگا",
+      "juz": 21,
+      "page": 411,
+      "ruku": 355,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "And of the people is he who buys the amusement of speech to mislead [others] from the way of Allah without knowledge and who takes it in ridicule. Those will have a humiliating punishment.",
+      "translations": {
+        "urdu": "اور لوگوں میں بعض ایسا ہے جو بیہودہ حکایتیں خریدتا ہے تاکہ (لوگوں کو) بےسمجھے خدا کے رستے سے گمراہ کرے اور اس سے استہزاء کرے یہی لوگ ہیں جن کو ذلیل کرنے والا عذاب ہوگا",
+        "english": "And of the people is he who buys the amusement of speech to mislead [others] from the way of Allah without knowledge and who takes it in ridicule. Those will have a humiliating punishment.",
+        "bengali": "একশ্রেণীর লোক আছে যারা মানুষকে আল্লাহর পথ থেকে গোমরাহ করার উদ্দেশে অবান্তর কথাবার্তা সংগ্রহ করে অন্ধভাবে এবং উহাকে নিয়ে ঠাট্টা-বিদ্রূপ করে। এদের জন্য রয়েছে অবমাননাকর শাস্তি।",
+        "turkish": "İnsanlar arasında, bir bilgisi olmadığı halde Allah yolundan saptırmak için gerçeği boş sözlerle değişenler ve Allah yolunu alaya alanlar vardır. İşte alçaltıcı azap bunlar içindir.",
+        "french": "Et, parmi les hommes, il est [quelqu'un] qui, dénué de science, achète de plaisants discours pour égarer hors du chemin d'Allah et pour le prendre en raillerie. Ceux-là subiront un châtiment avilissant."
+      }
+    },
+    {
+      "numberInSurah": 7,
+      "globalNumber": 3476,
+      "arabicText": "وَإِذَا تُتْلَىٰ عَلَيْهِ ءَايَٰتُنَا وَلَّىٰ مُسْتَكْبِرًۭا كَأَن لَّمْ يَسْمَعْهَا كَأَنَّ فِىٓ أُذُنَيْهِ وَقْرًۭا ۖ فَبَشِّرْهُ بِعَذَابٍ أَلِيمٍ",
+      "urduText": "اور جب اس کو ہماری آیتیں سنائی جاتی ہیں تو اکڑ کر منہ پھیر لیتا ہے گویا اُن کو سنا ہی نہیں جیسے اُن کے کانوں میں ثقل ہے تو اس کو درد دینے والے عذاب کی خوشخبری سنادو",
+      "juz": 21,
+      "page": 411,
+      "ruku": 355,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "And when our verses are recited to him, he turns away arrogantly as if he had not heard them, as if there was in his ears deafness. So give him tidings of a painful punishment.",
+      "translations": {
+        "urdu": "اور جب اس کو ہماری آیتیں سنائی جاتی ہیں تو اکڑ کر منہ پھیر لیتا ہے گویا اُن کو سنا ہی نہیں جیسے اُن کے کانوں میں ثقل ہے تو اس کو درد دینے والے عذاب کی خوشخبری سنادو",
+        "english": "And when our verses are recited to him, he turns away arrogantly as if he had not heard them, as if there was in his ears deafness. So give him tidings of a painful punishment.",
+        "bengali": "যখন ওদের সামনে আমার আয়তসমূহ পাঠ করা হয়, তখন ওরা দম্ভের সাথে এমনভাবে মুখ ফিরিয়ে নেয়, যেন ওরা তা শুনতেই পায়নি অথবা যেন ওদের দু’কান বধির। সুতরাং ওদেরকে কষ্টদায়ক আযাবের সংবাদ দাও।",
+        "turkish": "Ayetlerimiz sapık kimseye okunduğu zaman sanki kulaklarında ağırlık var da işitmiyormuş gibi büyüklenerek sırt çevirir. İşte ona can yakıcı azabı müjde et.",
+        "french": "Et quand on lui récite Nos versets, il tourne le dos avec orgueil, comme s'il ne les avait point entendus, comme s'il y avait un poids dans ses oreilles. Fais-lui donc l'annonce d'un châtiment douloureux."
+      }
+    },
+    {
+      "numberInSurah": 8,
+      "globalNumber": 3477,
+      "arabicText": "إِنَّ ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّٰلِحَٰتِ لَهُمْ جَنَّٰتُ ٱلنَّعِيمِ",
+      "urduText": "جو لوگ ایمان لائے اور نیک کام کرتے رہے اُن کے لئے نعمت کے باغ ہیں",
+      "juz": 21,
+      "page": 411,
+      "ruku": 355,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "Indeed, those who believe and do righteous deeds - for them are the Gardens of Pleasure.",
+      "translations": {
+        "urdu": "جو لوگ ایمان لائے اور نیک کام کرتے رہے اُن کے لئے نعمت کے باغ ہیں",
+        "english": "Indeed, those who believe and do righteous deeds - for them are the Gardens of Pleasure.",
+        "bengali": "যারা ঈমান আনে আর সৎকাজ করে তাদের জন্য রয়েছে নেয়ামতে ভরা জান্নাত।",
+        "turkish": "İnanıp yararlı iş işleyenler için, Allah'ın vadi gereğince temelli kalacakları nimet cennetleri vardır. O; güçlüdür, hakim'dir.",
+        "french": "Ceux qui croient et accomplissent les bonnes œuvres auront les Jardins des délices,"
+      }
+    },
+    {
+      "numberInSurah": 9,
+      "globalNumber": 3478,
+      "arabicText": "خَٰلِدِينَ فِيهَا ۖ وَعْدَ ٱللَّهِ حَقًّۭا ۚ وَهُوَ ٱلْعَزِيزُ ٱلْحَكِيمُ",
+      "urduText": "ہمیشہ اُن میں رہیں گے۔ خدا کا وعدہ سچا ہے اور وہ غالب حکمت والا ہے",
+      "juz": 21,
+      "page": 411,
+      "ruku": 355,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "Wherein they abide eternally; [it is] the promise of Allah [which is] truth. And He is the Exalted in Might, the Wise.",
+      "translations": {
+        "urdu": "ہمیشہ اُن میں رہیں گے۔ خدا کا وعدہ سچا ہے اور وہ غالب حکمت والا ہے",
+        "english": "Wherein they abide eternally; [it is] the promise of Allah [which is] truth. And He is the Exalted in Might, the Wise.",
+        "bengali": "সেখানে তারা চিরকাল থাকবে। আল্লাহর ওয়াদা যথার্থ। তিনি পরাক্রমশালী ও প্রজ্ঞাময়।",
+        "turkish": "İnanıp yararlı iş işleyenler için, Allah'ın vadi gereğince temelli kalacakları nimet cennetleri vardır. O; güçlüdür, hakim'dir.",
+        "french": "pour y demeurer éternellement, - c'est en vérité une promesse d'Allah-. C'est Lui le Puissant, le Sage."
+      }
+    },
+    {
+      "numberInSurah": 10,
+      "globalNumber": 3479,
+      "arabicText": "خَلَقَ ٱلسَّمَٰوَٰتِ بِغَيْرِ عَمَدٍۢ تَرَوْنَهَا ۖ وَأَلْقَىٰ فِى ٱلْأَرْضِ رَوَٰسِىَ أَن تَمِيدَ بِكُمْ وَبَثَّ فِيهَا مِن كُلِّ دَآبَّةٍۢ ۚ وَأَنزَلْنَا مِنَ ٱلسَّمَآءِ مَآءًۭ فَأَنۢبَتْنَا فِيهَا مِن كُلِّ زَوْجٍۢ كَرِيمٍ",
+      "urduText": "اُسی نے آسمانوں کو ستونوں کے بغیر پیدا کیا جیسا کہ تم دیکھتے ہو اور زمین پر پہاڑ (بنا کر) رکھ دیئے تاکہ تم کو ہلا ہلا نہ دے اور اس میں ہر طرح کے جانور پھیلا دیئے۔ اور ہم ہی نے آسمانوں سے پانی نازل کیا پھر (اُس سے) اس میں ہر قسم کی نفیس چیزیں اُگائیں",
+      "juz": 21,
+      "page": 411,
+      "ruku": 355,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "He created the heavens without pillars that you see and has cast into the earth firmly set mountains, lest it should shift with you, and dispersed therein from every creature. And We sent down rain from the sky and made grow therein [plants] of every noble kind.",
+      "translations": {
+        "urdu": "اُسی نے آسمانوں کو ستونوں کے بغیر پیدا کیا جیسا کہ تم دیکھتے ہو اور زمین پر پہاڑ (بنا کر) رکھ دیئے تاکہ تم کو ہلا ہلا نہ دے اور اس میں ہر طرح کے جانور پھیلا دیئے۔ اور ہم ہی نے آسمانوں سے پانی نازل کیا پھر (اُس سے) اس میں ہر قسم کی نفیس چیزیں اُگائیں",
+        "english": "He created the heavens without pillars that you see and has cast into the earth firmly set mountains, lest it should shift with you, and dispersed therein from every creature. And We sent down rain from the sky and made grow therein [plants] of every noble kind.",
+        "bengali": "তিনি খুঁটি ব্যতীত আকাশমন্ডলী সৃষ্টি করেছেন; তোমরা তা দেখছ। তিনি পৃথিবীতে স্থাপন করেছেন পর্বতমালা, যাতে পৃথিবী তোমাদেরকে নিয়ে ঢলে না পড়ে এবং এতে ছড়িয়ে দিয়েছেন সর্বপ্রকার জন্তু। আমি আকাশ থেকে পানি বর্ষণ করেছি, অতঃপর তাতে উদগত করেছি সর্বপ্রকার কল্যাণকর উদ্ভিদরাজি।",
+        "turkish": "Allah gökleri gördüğünüz gibi direksiz yaratmış, sizi sallar diye yeryüzüne sabit dağlar koymuş; orada her türlü canlıyı yaymıştır. Gökten su indirip orada her hoş çiftten yetiştirmişizdir.",
+        "french": "Il a créé les cieux sans piliers que vous puissiez voir; et Il a enfoncé des montagnes fermes dans la terre pour l'empêcher de basculer avec vous; et Il y a propagé des animaux de toute espèce. Et du ciel, Nous avons fait descendre une eau, avec laquelle Nous avons fait pousser des plantes productives par couples de toute espèce."
+      }
+    },
+    {
+      "numberInSurah": 11,
+      "globalNumber": 3480,
+      "arabicText": "هَٰذَا خَلْقُ ٱللَّهِ فَأَرُونِى مَاذَا خَلَقَ ٱلَّذِينَ مِن دُونِهِۦ ۚ بَلِ ٱلظَّٰلِمُونَ فِى ضَلَٰلٍۢ مُّبِينٍۢ",
+      "urduText": "یہ تو خدا کی پیدائش ہے تو مجھے دکھاؤ کہ خدا کے سوا جو لوگ ہیں اُنہوں نے کیا پیدا کیا ہے؟ حقیقت یہ ہے کہ یہ ظالم صریح گمراہی میں ہیں",
+      "juz": 21,
+      "page": 411,
+      "ruku": 355,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "This is the creation of Allah. So show Me what those other than Him have created. Rather, the wrongdoers are in clear error.",
+      "translations": {
+        "urdu": "یہ تو خدا کی پیدائش ہے تو مجھے دکھاؤ کہ خدا کے سوا جو لوگ ہیں اُنہوں نے کیا پیدا کیا ہے؟ حقیقت یہ ہے کہ یہ ظالم صریح گمراہی میں ہیں",
+        "english": "This is the creation of Allah. So show Me what those other than Him have created. Rather, the wrongdoers are in clear error.",
+        "bengali": "এটা আল্লাহর সৃষ্টি; অতঃপর তিনি ব্যতীত অন্যেরা যা সৃষ্টি করেছে, তা আমাকে দেখাও। বরং জালেমরা সুস্পষ্ট পথভ্রষ্টতায় পতিত আছে।",
+        "turkish": "İşte bu Allah'ın yaratışıdır. Ondan başkasının ne yarattığını Bana gösterin. Hayır; gösteremezler, zalimler apaçık sapıklık içindedir.",
+        "french": "«Voilà la création d'Allah. Montrez-Moi donc ce qu'ont créé, ceux qui sont en dehors de Lui?» Mais les injustes sont dans un égarement évident."
+      }
+    },
+    {
+      "numberInSurah": 12,
+      "globalNumber": 3481,
+      "arabicText": "وَلَقَدْ ءَاتَيْنَا لُقْمَٰنَ ٱلْحِكْمَةَ أَنِ ٱشْكُرْ لِلَّهِ ۚ وَمَن يَشْكُرْ فَإِنَّمَا يَشْكُرُ لِنَفْسِهِۦ ۖ وَمَن كَفَرَ فَإِنَّ ٱللَّهَ غَنِىٌّ حَمِيدٌۭ",
+      "urduText": "اور ہم نے لقمان کو دانائی بخشی۔ کہ خدا کا شکر کرو۔ اور جو شخص شکر کرتا ہے تو اپنے ہی فائدے کے لئے شکر کرتا ہے۔ اور جو ناشکری کرتا ہے تو خدا بھی بےپروا اور سزاوار حمد (وثنا) ہے",
+      "juz": 21,
+      "page": 412,
+      "ruku": 356,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "And We had certainly given Luqman wisdom [and said], \"Be grateful to Allah.\" And whoever is grateful is grateful for [the benefit of] himself. And whoever denies [His favor] - then indeed, Allah is Free of need and Praiseworthy.",
+      "translations": {
+        "urdu": "اور ہم نے لقمان کو دانائی بخشی۔ کہ خدا کا شکر کرو۔ اور جو شخص شکر کرتا ہے تو اپنے ہی فائدے کے لئے شکر کرتا ہے۔ اور جو ناشکری کرتا ہے تو خدا بھی بےپروا اور سزاوار حمد (وثنا) ہے",
+        "english": "And We had certainly given Luqman wisdom [and said], \"Be grateful to Allah.\" And whoever is grateful is grateful for [the benefit of] himself. And whoever denies [His favor] - then indeed, Allah is Free of need and Praiseworthy.",
+        "bengali": "আমি লোকমানকে প্রজ্ঞা দান করেছি এই মর্মে যে, আল্লাহর প্রতি কৃতজ্ঞ হও। যে কৃতজ্ঞ হয়, সে তো কেবল নিজ কল্যানের জন্যই কৃতজ্ঞ হয়। আর যে অকৃতজ্ঞ হয়, আল্লাহ অভাবমুক্ত, প্রশংসিত।",
+        "turkish": "And olsun ki, Lokman'a, Allah'a şükretmesi için hikmet verdik. Şükreden kimse ancak kendisi için şükretmiş olur. Nankörlük eden ise, bilsin ki, Allah her şeyden müstağnidir, övülmeğe layık olandır.",
+        "french": "Nous avons effectivement donné à Luqmân la sagesse: «Sois reconnaissant à Allah, car quiconque est reconnaissant, n'est reconnaissant que pour soi-même; quant à celui qui est ingrat... En vérité, Allah se dispense de tout, et Il est digne de louange»."
+      }
+    },
+    {
+      "numberInSurah": 13,
+      "globalNumber": 3482,
+      "arabicText": "وَإِذْ قَالَ لُقْمَٰنُ لِٱبْنِهِۦ وَهُوَ يَعِظُهُۥ يَٰبُنَىَّ لَا تُشْرِكْ بِٱللَّهِ ۖ إِنَّ ٱلشِّرْكَ لَظُلْمٌ عَظِيمٌۭ",
+      "urduText": "اور (اُس وقت کو یاد کرو) جب لقمان نے اپنے بیٹے کو نصیحت کرتے ہوئے کہا کہ بیٹا خدا کے ساتھ شرک نہ کرنا۔ شرک تو بڑا (بھاری) ظلم ہے",
+      "juz": 21,
+      "page": 412,
+      "ruku": 356,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "And [mention, O Muhammad], when Luqman said to his son while he was instructing him, \"O my son, do not associate [anything] with Allah. Indeed, association [with him] is great injustice.\"",
+      "translations": {
+        "urdu": "اور (اُس وقت کو یاد کرو) جب لقمان نے اپنے بیٹے کو نصیحت کرتے ہوئے کہا کہ بیٹا خدا کے ساتھ شرک نہ کرنا۔ شرک تو بڑا (بھاری) ظلم ہے",
+        "english": "And [mention, O Muhammad], when Luqman said to his son while he was instructing him, \"O my son, do not associate [anything] with Allah. Indeed, association [with him] is great injustice.\"",
+        "bengali": "যখন লোকমান উপদেশচ্ছলে তার পুত্রকে বললঃ হে বৎস, আল্লাহর সাথে শরীক করো না। নিশ্চয় আল্লাহর সাথে শরীক করা মহা অন্যায়।",
+        "turkish": "Lokman, oğluna öğüt vererek: \"Ey oğulcuğum! Allah'a eş koşma, doğrusu eş koşmak büyük zulümdür\" demişti.",
+        "french": "Et lorsque Luqmân dit à son fils tout en l'exhortant: «O mon fils, ne donne pas d'associé à Allah, car l'association à [Allah] est vraiment une injustice énorme.»"
+      }
+    },
+    {
+      "numberInSurah": 14,
+      "globalNumber": 3483,
+      "arabicText": "وَوَصَّيْنَا ٱلْإِنسَٰنَ بِوَٰلِدَيْهِ حَمَلَتْهُ أُمُّهُۥ وَهْنًا عَلَىٰ وَهْنٍۢ وَفِصَٰلُهُۥ فِى عَامَيْنِ أَنِ ٱشْكُرْ لِى وَلِوَٰلِدَيْكَ إِلَىَّ ٱلْمَصِيرُ",
+      "urduText": "اور ہم نے انسان کو جسے اُس کی ماں تکلیف پر تکلیف سہہ کر پیٹ میں اُٹھائے رکھتی ہے (پھر اس کو دودھ پلاتی ہے) اور (آخرکار) دو برس میں اس کا دودھ چھڑانا ہوتا ہے (اپنے نیز) اس کے ماں باپ کے بارے میں تاکید کی ہے کہ میرا بھی شکر کرتا رہ اور اپنے ماں باپ کا بھی (کہ تم کو) میری ہی طرف لوٹ کر آنا ہے",
+      "juz": 21,
+      "page": 412,
+      "ruku": 356,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "And We have enjoined upon man [care] for his parents. His mother carried him, [increasing her] in weakness upon weakness, and his weaning is in two years. Be grateful to Me and to your parents; to Me is the [final] destination.",
+      "translations": {
+        "urdu": "اور ہم نے انسان کو جسے اُس کی ماں تکلیف پر تکلیف سہہ کر پیٹ میں اُٹھائے رکھتی ہے (پھر اس کو دودھ پلاتی ہے) اور (آخرکار) دو برس میں اس کا دودھ چھڑانا ہوتا ہے (اپنے نیز) اس کے ماں باپ کے بارے میں تاکید کی ہے کہ میرا بھی شکر کرتا رہ اور اپنے ماں باپ کا بھی (کہ تم کو) میری ہی طرف لوٹ کر آنا ہے",
+        "english": "And We have enjoined upon man [care] for his parents. His mother carried him, [increasing her] in weakness upon weakness, and his weaning is in two years. Be grateful to Me and to your parents; to Me is the [final] destination.",
+        "bengali": "আর আমি মানুষকে তার পিতা-মাতার সাথে সদ্ব্যবহারের জোর নির্দেশ দিয়েছি। তার মাতা তাকে কষ্টের পর কষ্ট করে গর্ভে ধারণ করেছে। তার দুধ ছাড়ানো দু ব��রে হয়। নির্দেশ দিয়েছি যে, আমার প্রতি ও তোমার পিতা-মতার প্রতি কৃতজ্ঞ হও। অবশেষে আমারই নিকট ফিরে আসতে হবে।",
+        "turkish": "Biz insana, ana ve babasına karşı iyi davranmasını tavsiye etmişizdir. Annesi onu, güçsüzlükten güçsüzlüğe uğrayarak karnında taşımıştı. Çocuğun sütten kesilmesi iki yıl içinde olur. Bana ve ana babana şükret diye tavsiyede bulunmuşuzdur. Dönüş Bana'dır.",
+        "french": "Nous avons commandé à l'homme [la bienfaisance envers] ses père et mère; sa mère l'a porté [subissant pour lui] peine sur peine: son sevrage a lieu à deux ans. «Sois reconnaissant envers Moi ainsi qu'envers tes parents. Vers Moi est la destination."
+      }
+    },
+    {
+      "numberInSurah": 15,
+      "globalNumber": 3484,
+      "arabicText": "وَإِن جَٰهَدَاكَ عَلَىٰٓ أَن تُشْرِكَ بِى مَا لَيْسَ لَكَ بِهِۦ عِلْمٌۭ فَلَا تُطِعْهُمَا ۖ وَصَاحِبْهُمَا فِى ٱلدُّنْيَا مَعْرُوفًۭا ۖ وَٱتَّبِعْ سَبِيلَ مَنْ أَنَابَ إِلَىَّ ۚ ثُمَّ إِلَىَّ مَرْجِعُكُمْ فَأُنَبِّئُكُم بِمَا كُنتُمْ تَعْمَلُونَ",
+      "urduText": "اور اگر وہ تیرے درپے ہوں کہ تو میرے ساتھ کسی ایسی چیز کو شریک کرے جس کا تجھے کچھ بھی علم نہیں تو ان کا کہا نہ ماننا۔ ہاں دنیا (کے کاموں) میں ان کا اچھی طرح ساتھ دینا اور جو شخص میری طرف رجوع لائے اس کے رستے پر چلنا پھر تم کو میری طرف لوٹ کر آنا ہے۔ تو جو کام تم کرتے رہے میں سب سے تم کو آگاہ کروں گا",
+      "juz": 21,
+      "page": 412,
+      "ruku": 356,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "But if they endeavor to make you associate with Me that of which you have no knowledge, do not obey them but accompany them in [this] world with appropriate kindness and follow the way of those who turn back to Me [in repentance]. Then to Me will be your return, and I will inform you about what you used to do.",
+      "translations": {
+        "urdu": "اور اگر وہ تیرے درپے ہوں کہ تو میرے ساتھ کسی ایسی چیز کو شریک کرے جس کا تجھے کچھ بھی علم نہیں تو ان کا کہا نہ ماننا۔ ہاں دنیا (کے کاموں) میں ان کا اچھی طرح ساتھ دینا اور جو شخص میری طرف رجوع لائے اس کے رستے پر چلنا پھر تم کو میری طرف لوٹ کر آنا ہے۔ تو جو کام تم کرتے رہے میں سب سے تم کو آگاہ کروں گا",
+        "english": "But if they endeavor to make you associate with Me that of which you have no knowledge, do not obey them but accompany them in [this] world with appropriate kindness and follow the way of those who turn back to Me [in repentance]. Then to Me will be your return, and I will inform you about what you used to do.",
+        "bengali": "পিতা-মাতা যদি তোমাকে আমার সাথে এমন বিষয়কে শরীক স্থির করতে পীড়াপীড়ি করে, যার জ্ঞান তোমার নেই; তবে তুমি তাদের কথা মানবে না এবং দুনিয়াতে তাদের সাথে সদ্ভাবে সহঅবস্থান করবে। যে আমার অভিমুখী হয়, তার পথ অনুসরণ করবে। অতঃপর তোমাদের প্রত্যাবর্তন আমারই দিকে এবং তোমরা যা করতে, আমি সে বিষয়ে তোমাদেরকে জ্ঞাত করবো।",
+        "turkish": "Ey insanoğlu! Ana baba, seni, körü körüne Bana ortak koşman için zorlarlarsa, onlara itaat etme; dünya işlerinde onlarla güzel geçin; Bana yönelen kimsenin yoluna uy; sonunda dönüşünüz Bana'dır. O zaman, yaptıklarınızı size bildiririm.",
+        "french": "Et si tous deux te forcent à M'associer ce dont tu n'as aucune connaissance, alors ne leur obéis pas; mais reste avec eux ici-bas de façon convenable. Et suis le sentier de celui qui se tourne vers Moi. Vers Moi, ensuite, est votre retour, et alors Je vous informerai de ce que vous faisiez»."
+      }
+    },
+    {
+      "numberInSurah": 16,
+      "globalNumber": 3485,
+      "arabicText": "يَٰبُنَىَّ إِنَّهَآ إِن تَكُ مِثْقَالَ حَبَّةٍۢ مِّنْ خَرْدَلٍۢ فَتَكُن فِى صَخْرَةٍ أَوْ فِى ٱلسَّمَٰوَٰتِ أَوْ فِى ٱلْأَرْضِ يَأْتِ بِهَا ٱللَّهُ ۚ إِنَّ ٱللَّهَ لَطِيفٌ خَبِيرٌۭ",
+      "urduText": "(لقمان نے یہ بھی کہا کہ) بیٹا اگر کوئی عمل (بالفرض) رائی کے دانے کے برابر بھی (چھوٹا) ہو اور ہو بھی کسی پتھر کے اندر یا آسمانوں میں (مخفی ہو) یا زمین میں۔ خدا اُس کو قیامت کے دن لاموجود کرے گا۔ کچھ شک نہیں کہ خدا باریک بین (اور) خبردار ہے",
+      "juz": 21,
+      "page": 412,
+      "ruku": 356,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "[And Luqman said], \"O my son, indeed if wrong should be the weight of a mustard seed and should be within a rock or [anywhere] in the heavens or in the earth, Allah will bring it forth. Indeed, Allah is Subtle and Acquainted.",
+      "translations": {
+        "urdu": "(لقمان نے یہ بھی کہا کہ) بیٹا اگر کوئی عمل (بالفرض) رائی کے دانے کے برابر بھی (چھوٹا) ہو اور ہو بھی کسی پتھر کے اندر یا آسمانوں میں (مخفی ہو) یا زمین میں۔ خدا اُس کو قیامت کے دن لاموجود کرے گا۔ کچھ شک نہیں کہ خدا باریک بین (اور) خبردار ہے",
+        "english": "[And Luqman said], \"O my son, indeed if wrong should be the weight of a mustard seed and should be within a rock or [anywhere] in the heavens or in the earth, Allah will bring it forth. Indeed, Allah is Subtle and Acquainted.",
+        "bengali": "হে বৎস, কোন বস্তু যদি সরিষার দানা পরিমাণও হয় অতঃপর তা যদি থাকে প্রস্তর গর্ভে অথবা আকাশে অথবা ভূ-গর্ভে, তবে আল্লাহ তাও উপস্থিত করবেন। নিশ্চয় আল্লাহ গোপন ভেদ জানেন, সবকিছুর খবর রাখেন।",
+        "turkish": "Lokman: \"Ey oğulcuğum! İşlediğin şey, bir hardal tanesi ağırlığınca olsa da, bir kayanın içinde veya göklerde yahut yerin derinliklerinde bulunsa, Allah onu getirip meydana kor. Doğrusu Allah Latif'tir, haberdardır\".",
+        "french": "«O mon enfant, fût-ce le poids d'un grain de moutarde, au fond d'un rocher, ou dans les cieux ou dans la terre, Allah le fera venir. Allah est infiniment Doux et Parfaitement Connaisseur."
+      }
+    },
+    {
+      "numberInSurah": 17,
+      "globalNumber": 3486,
+      "arabicText": "يَٰبُنَىَّ أَقِمِ ٱلصَّلَوٰةَ وَأْمُرْ بِٱلْمَعْرُوفِ وَٱنْهَ عَنِ ٱلْمُنكَرِ وَٱصْبِرْ عَلَىٰ مَآ أَصَابَكَ ۖ إِنَّ ذَٰلِكَ مِنْ عَزْمِ ٱلْأُمُورِ",
+      "urduText": "بیٹا نماز کی پابندی رکھنا اور (لوگوں کو) اچھے کاموں کے کرنے کا امر اور بری باتوں سے منع کرتے رہنا اور جو مصیبت تجھ پر واقع ہو اس پر صبر کرنا۔ بیشک یہ بڑی ہمت کے کام ہیں",
+      "juz": 21,
+      "page": 412,
+      "ruku": 356,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "O my son, establish prayer, enjoin what is right, forbid what is wrong, and be patient over what befalls you. Indeed, [all] that is of the matters [requiring] determination.",
+      "translations": {
+        "urdu": "بیٹا نماز کی پابندی رکھنا اور (لوگوں کو) اچھے کاموں کے کرنے کا امر اور بری باتوں سے منع کرتے رہنا اور جو مصیبت تجھ پر واقع ہو اس پر صبر کرنا۔ بیشک یہ بڑی ہمت کے کام ہیں",
+        "english": "O my son, establish prayer, enjoin what is right, forbid what is wrong, and be patient over what befalls you. Indeed, [all] that is of the matters [requiring] determination.",
+        "bengali": "হে বৎস, নামায কায়েম কর, সৎকাজে আদেশ দাও, মন্দকাজে নিষেধ কর এবং বিপদাপদে সবর কর। নিশ্চয় এটা সাহসিকতার কাজ।",
+        "turkish": "\"Ey oğulcuğum! Namazı kıl, uygun olanı buyurup fenalığı önle, başına gelene sabret; doğrusu bunlar, azmedilmeğe değer işlerdir.\"",
+        "french": "O mon enfant accomplis la Salât, commande le convenable, interdis le blâmable et endure ce qui t'arrive avec patience. Telle est la résolution à prendre dans toute entreprise!"
+      }
+    },
+    {
+      "numberInSurah": 18,
+      "globalNumber": 3487,
+      "arabicText": "وَلَا تُصَعِّرْ خَدَّكَ لِلنَّاسِ و��لَا تَمْشِ فِى ٱلْأَرْضِ مَرَحًا ۖ إِنَّ ٱللَّهَ لَا يُحِبُّ كُلَّ مُخْتَالٍۢ فَخُورٍۢ",
+      "urduText": "اور (ازراہ غرور) لوگوں سے گال نہ پھلانا اور زمین میں اکڑ کر نہ چلنا۔ کہ خدا کسی اترانے والے خود پسند کو پسند نہیں کرتا",
+      "juz": 21,
+      "page": 412,
+      "ruku": 356,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "And do not turn your cheek [in contempt] toward people and do not walk through the earth exultantly. Indeed, Allah does not like everyone self-deluded and boastful.",
+      "translations": {
+        "urdu": "اور (ازراہ غرور) لوگوں سے گال نہ پھلانا اور زمین میں اکڑ کر نہ چلنا۔ کہ خدا کسی اترانے والے خود پسند کو پسند نہیں کرتا",
+        "english": "And do not turn your cheek [in contempt] toward people and do not walk through the earth exultantly. Indeed, Allah does not like everyone self-deluded and boastful.",
+        "bengali": "অহংকারবশে তুমি মানুষকে অবজ্ঞা করো না এবং পৃথিবীতে গর্বভরে পদচারণ করো না। নিশ্চয় আল্লাহ কোন দাম্ভিক অহংকারীকে পছন্দ করেন না।",
+        "turkish": "\"İnsanları küçümseyip yüz çevirme, yeryüzünde böbürlenerek yürüme; Allah, kendini beğenip övünen hiç kimseyi şüphesiz ki sevmez.\"",
+        "french": "Et ne détourne pas ton visage des hommes, et ne foule pas la terre avec arrogance: car Allah n'aime pas le présomptueux plein de gloriole."
+      }
+    },
+    {
+      "numberInSurah": 19,
+      "globalNumber": 3488,
+      "arabicText": "وَٱقْصِدْ فِى مَشْيِكَ وَٱغْضُضْ مِن صَوْتِكَ ۚ إِنَّ أَنكَرَ ٱلْأَصْوَٰتِ لَصَوْتُ ٱلْحَمِيرِ",
+      "urduText": "اور اپنی چال میں اعتدال کئے رہنا اور (بولتے وقت) آواز نیچی رکھنا کیونکہ (اُونچی آواز گدھوں کی ہے اور کچھ شک نہیں کہ) سب آوازوں سے بُری آواز گدھوں کی ہے",
+      "juz": 21,
+      "page": 412,
+      "ruku": 356,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "And be moderate in your pace and lower your voice; indeed, the most disagreeable of sounds is the voice of donkeys.\"",
+      "translations": {
+        "urdu": "اور اپنی چال میں اعتدال کئے رہنا اور (بولتے وقت) آواز نیچی رکھنا کیونکہ (اُونچی آواز گدھوں کی ہے اور کچھ شک نہیں کہ) سب آوازوں سے بُری آواز گدھوں کی ہے",
+        "english": "And be moderate in your pace and lower your voice; indeed, the most disagreeable of sounds is the voice of donkeys.\"",
+        "bengali": "পদচারণায় মধ্যবর্তিতা অবলম্বন কর এবং কন্ঠস্বর নীচু কর। নিঃসন্দেহে গাধার স্বরই সর্বাপেক্ষা অপ্রীতিকর।",
+        "turkish": "\"Yürüyüşünde tabii ol; sesini kıs. Seslerin en çirkini şüphesiz merkeblerin sesidir.\"",
+        "french": "Sois modeste dans ta démarche, et baisse ta voix, car la plus détestée des voix, c'est bien la voix des ânes»."
+      }
+    },
+    {
+      "numberInSurah": 20,
+      "globalNumber": 3489,
+      "arabicText": "أَلَمْ تَرَوْا۟ أَنَّ ٱللَّهَ سَخَّرَ لَكُم مَّا فِى ٱلسَّمَٰوَٰتِ وَمَا فِى ٱلْأَرْضِ وَأَسْبَغَ عَلَيْكُمْ نِعَمَهُۥ ظَٰهِرَةًۭ وَبَاطِنَةًۭ ۗ وَمِنَ ٱلنَّاسِ مَن يُجَٰدِلُ فِى ٱللَّهِ بِغَيْرِ عِلْمٍۢ وَلَا هُدًۭى وَلَا كِتَٰبٍۢ مُّنِيرٍۢ",
+      "urduText": "کیا تم نے نہیں دیکھا کہ جو کچھ آسمانوں میں اور جو کچھ زمین میں ہے سب کو خدا نے تمہارے قابو میں کر دیا ہے اور تم پر اپنی ظاہری اور باطنی نعمتیں پوری کردی ہیں۔ اور بعض لوگ ایسے ہیں کہ خدا کے بارے میں جھگڑتے ہیں نہ علم رکھتے ہیں اور نہ ہدایت اور نہ کتاب روشن",
+      "juz": 21,
+      "page": 413,
+      "ruku": 357,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "Do you not see that Allah has made subject to you whatever is in the heavens and whatever is in the earth and amply bestowed upon you His favors, [both] apparent and unapparent? But of the people is he who disputes about Allah without knowledge or guidance or an enlightening Book [from Him].",
+      "translations": {
+        "urdu": "کیا تم نے نہیں دیکھا کہ جو کچھ آسمانوں میں اور جو کچھ زمین میں ہے سب کو خدا نے تمہارے قابو میں کر دیا ہے اور تم پر اپنی ظاہری اور باطنی نعمتیں پوری کردی ہیں۔ اور بعض لوگ ایسے ہیں کہ خدا کے بارے میں جھگڑتے ہیں نہ علم رکھتے ہیں اور نہ ہدایت اور نہ کتاب روشن",
+        "english": "Do you not see that Allah has made subject to you whatever is in the heavens and whatever is in the earth and amply bestowed upon you His favors, [both] apparent and unapparent? But of the people is he who disputes about Allah without knowledge or guidance or an enlightening Book [from Him].",
+        "bengali": "তোমরা কি দেখ না আল্লাহ নভোমন্ডল ও ভূ-মন্ডলে যাকিছু আছে, সবই তোমাদের কাজে নিয়োজিত করে দিয়েছেন এবং তোমাদের প্রতি তাঁর প্রকাশ্য ও অপ্রকাশ্য নেয়ামতসমূহ পরিপূর্ন করে দিয়েছেন? এমন লোক ও আছে; যারা জ্ঞান, পথনির্দেশ ও উজ্জল কিতাব ছাড়াই আল্লাহ সম্পর্কে বাকবিতন্ডা করে।",
+        "turkish": "Allah'ın göklerde olanları da, yerde olanları da buyruğunuz altına verdiğini, nimetlerini açık ve gizli olarak size bolca ihsan ettiğini görmez misiniz? İnsanlardan, Allah hakkında hiçbir bilgisi olmadan, doğruluk rehberi ve aydınlatıcı bir Kitap bulunmadan tartışanlar vardır.",
+        "french": "Ne voyez-vous pas qu'Allah vous a assujetti ce qui est dans les cieux et sur la terre? Et Il vous a comblés de Ses bienfaits apparents et cachés. Et parmi les gens, il y en a qui disputent à propos d'Allah, sans science, ni guidée, ni Livre éclairant."
+      }
+    },
+    {
+      "numberInSurah": 21,
+      "globalNumber": 3490,
+      "arabicText": "وَإِذَا قِيلَ لَهُمُ ٱتَّبِعُوا۟ مَآ أَنزَلَ ٱللَّهُ قَالُوا۟ بَلْ نَتَّبِعُ مَا وَجَدْنَا عَلَيْهِ ءَابَآءَنَآ ۚ أَوَلَوْ كَانَ ٱلشَّيْطَٰنُ يَدْعُوهُمْ إِلَىٰ عَذَابِ ٱلسَّعِيرِ",
+      "urduText": "اور جب اُن سے کہا جاتا ہے کہ جو (کتاب) خدا نے نازل فرمائی ہے اُس کی پیروی کرو۔ تو کہتے ہیں کہ ہم تو اسی کی پیروی کریں گے جس پر اپنے باپ دادا کو پایا۔ بھلا اگرچہ شیطان ان کو دوزخ کے عذاب کی طرف بلاتا ہو (تب بھی؟)",
+      "juz": 21,
+      "page": 413,
+      "ruku": 357,
+      "hizbQuarter": 164,
+      "sajda": false,
+      "englishText": "And when it is said to them, \"Follow what Allah has revealed,\" they say, \"Rather, we will follow that upon which we found our fathers.\" Even if Satan was inviting them to the punishment of the Blaze?",
+      "translations": {
+        "urdu": "اور جب اُن سے کہا جاتا ہے کہ جو (کتاب) خدا نے نازل فرمائی ہے اُس کی پیروی کرو۔ تو کہتے ہیں کہ ہم تو اسی کی پیروی کریں گے جس پر اپنے باپ دادا کو پایا۔ بھلا اگرچہ شیطان ان کو دوزخ کے عذاب کی طرف بلاتا ہو (تب بھی؟)",
+        "english": "And when it is said to them, \"Follow what Allah has revealed,\" they say, \"Rather, we will follow that upon which we found our fathers.\" Even if Satan was inviting them to the punishment of the Blaze?",
+        "bengali": "তাদেরকে যখন বলা হয়, আল্লাহ যা নাযিল করেছেন, তোমরা তার অনুসরণ কর, তখন তারা বলে, বরং আমরা আমাদের পূর্বপুরুষদেরকে যে বিষয়ের উপর পেয়েছি, তারই অনুসরণ করব। শয়তান যদি তাদেরকে জাহান্নামের শাস্তির দিকে দাওয়াত দেয়, তবুও কি?",
+        "turkish": "Onlara, \"Allah'ın indirdiğine uyun\" denince: \"Babalarımızı üzerinde bulduğumuz yola uyarız\" derler. Ya şeytan, babalarını alevli ateşin azabına çağırmışsa?",
+        "french": "Et quand on leur dit: «Suivez ce qu'Allah a fait descendre», ils disent: «Nous suivons plutôt ce sur quoi nous avons trouvé nos ancêtres». Est-ce donc même si le Diable les appelait au châtiment de la fournaise!"
+      }
+    },
+    {
+      "numberInSurah": 22,
+      "globalNumber": 3491,
+      "arabicText": "۞ وَمَن يُسْلِمْ وَجْهَهُۥٓ إِلَى ٱللَّهِ وَهُوَ مُحْسِنٌۭ فَقَدِ ٱسْتَمْسَكَ بِٱلْعُرْوَةِ ٱلْوُثْقَىٰ ۗ وَإِلَى ٱللَّهِ عَٰقِبَةُ ٱلْأُمُورِ",
+      "urduText": "اور جو شخص اپنے تئیں خدا کا فرمانبردار کردے اور نیکوکار بھی ہو تو اُس نے مضبوط دستاویز ہاتھ میں لے لی۔ اور (سب) کاموں کا انجام خدا ہی کی طرف ہے",
+      "juz": 21,
+      "page": 413,
+      "ruku": 357,
+      "hizbQuarter": 165,
+      "sajda": false,
+      "englishText": "And whoever submits his face to Allah while he is a doer of good - then he has grasped the most trustworthy handhold. And to Allah will be the outcome of [all] matters.",
+      "translations": {
+        "urdu": "اور جو شخص اپنے تئیں خدا کا فرمانبردار کردے اور نیکوکار بھی ہو تو اُس نے مضبوط دستاویز ہاتھ میں لے لی۔ اور (سب) کاموں کا انجام خدا ہی کی طرف ہے",
+        "english": "And whoever submits his face to Allah while he is a doer of good - then he has grasped the most trustworthy handhold. And to Allah will be the outcome of [all] matters.",
+        "bengali": "যে ব্যক্তি সৎকর্মপরায়ণ হয়ে স্বীয় মুখমন্ডলকে আল্লাহ অভিমূখী করে, সে এক মজবুত হাতল ধারণ করে, সকল কর্মের পরিণাম আল্লাহর দিকে।",
+        "turkish": "İyilik yaparak kendini Allah'a veren kimse, şüphesiz en sağlam kulpa sarılmış olur. İşlerin sonucu Allah'a aittir.",
+        "french": "Et quiconque soumet son être à Allah, tout en étant bienfaisant, s'accroche réellement à l'anse la plus ferme. La fin de toute chose appartient à Allah."
+      }
+    },
+    {
+      "numberInSurah": 23,
+      "globalNumber": 3492,
+      "arabicText": "وَمَن كَفَرَ فَلَا يَحْزُنكَ كُفْرُهُۥٓ ۚ إِلَيْنَا مَرْجِعُهُمْ فَنُنَبِّئُهُم بِمَا عَمِلُوٓا۟ ۚ إِنَّ ٱللَّهَ عَلِيمٌۢ بِذَاتِ ٱلصُّدُورِ",
+      "urduText": "اور جو کفر کرے تو اُس کا کفر تمہیں غمناک نہ کردے ان کو ہماری طرف لوٹ کر آنا ہے پھر جو کام وہ کیا کرتے تھے ہم اُن کو جتا ئیں گے۔ بیشک خدا دلوں کی باتوں سے واقف ہے",
+      "juz": 21,
+      "page": 413,
+      "ruku": 357,
+      "hizbQuarter": 165,
+      "sajda": false,
+      "englishText": "And whoever has disbelieved - let not his disbelief grieve you. To Us is their return, and We will inform them of what they did. Indeed, Allah is Knowing of that within the breasts.",
+      "translations": {
+        "urdu": "اور جو کفر کرے تو اُس کا کفر تمہیں غمناک نہ کردے ان کو ہماری طرف لوٹ کر آنا ہے پھر جو کام وہ کیا کرتے تھے ہم اُن کو جتا ئیں گے۔ بیشک خدا دلوں کی باتوں سے واقف ہے",
+        "english": "And whoever has disbelieved - let not his disbelief grieve you. To Us is their return, and We will inform them of what they did. Indeed, Allah is Knowing of that within the breasts.",
+        "bengali": "যে ব্যক্তি কুফরী করে তার কুফরী যেন আপনাকে চিন্তিত না করে। আমারই দিকে তাদের প্রত্যাবর্তন, অতঃপর আমি তাদের কর্ম সম্পর্কে তাদেরকে অবহিত করব। অন্তরে যা কিছু রয়েছে, সে সম্পর্কে আল্লাহ সবিশেষ পরিজ্ঞাত।",
+        "turkish": "İnkar edenin inkarcılığı seni üzmesin; onların dönüşü Bize'dir; o zaman, yaptıklarını kendilerine haber veririz. Allah, kalblerde olanı şüphesiz bilir.",
+        "french": "Celui qui a mécru, que sa mécréance ne t'afflige pas: vers Nous sera leur retour et Nous les informerons de ce qu'ils faisaient. Allah connaît bien le contenu des poitrines."
+      }
+    },
+    {
+      "numberInSurah": 24,
+      "globalNumber": 3493,
+      "arabicText": "نُمَتِّعُهُمْ قَلِيلًۭا ثُمَّ نَضْطَرُّهُمْ إِلَىٰ عَذَابٍ غَلِيظٍۢ",
+      "urduText": "ہم اُن کو تھوڑا سا فائدہ پہنچائیں گے پھر عذاب شدید کی طرف مجبور کر کے لیجائیں گے",
+      "juz": 21,
+      "page": 413,
+      "ruku": 357,
+      "hizbQuarter": 165,
+      "sajda": false,
+      "englishText": "We grant them enjoyment for a little; then We will force them to a massive punishment.",
+      "translations": {
+        "urdu": "ہم اُن کو تھوڑا سا فائدہ پہنچائیں گے پھر عذاب شدید کی طرف مجبور کر کے لیجائیں گے",
+        "english": "We grant them enjoyment for a little; then We will force them to a massive punishment.",
+        "bengali": "আমি তাদেরকে স্বল্পকালের জন্যে ভোগবিলাস করতে দেব, অতঃপর তাদেরকে বাধ্য করব গুরুতর শাস্তি ভোগ করতে।",
+        "turkish": "Onları az bir süre geçindiririz, sonra da ağır bir azaba sürükleriz.",
+        "french": "Nous leur donnons de la jouissance pour peu de temps; ensuite Nous les forcerons vers un dur châtiment."
+      }
+    },
+    {
+      "numberInSurah": 25,
+      "globalNumber": 3494,
+      "arabicText": "وَلَئِن سَأَلْتَهُم مَّنْ خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضَ لَيَقُولُنَّ ٱللَّهُ ۚ قُلِ ٱلْحَمْدُ لِلَّهِ ۚ بَلْ أَكْثَرُهُمْ لَا يَعْلَمُونَ",
+      "urduText": "اور اگر تم اُن سے پوچھو کہ آسمانوں اور زمین کو کس نے پیدا کیا تو بول اُٹھیں گے کہ خدا نے۔ کہہ دو کہ خدا کا شکر ہے لیکن ان میں اکثر سمجھ نہیں رکھتے",
+      "juz": 21,
+      "page": 413,
+      "ruku": 357,
+      "hizbQuarter": 165,
+      "sajda": false,
+      "englishText": "And if you asked them, \"Who created the heavens and earth?\" they would surely say, \"Allah.\" Say, \"[All] praise is [due] to Allah \"; but most of them do not know.",
+      "translations": {
+        "urdu": "اور اگر تم اُن سے پوچھو کہ آسمانوں اور زمین کو کس نے پیدا کیا تو بول اُٹھیں گے کہ خدا نے۔ کہہ دو کہ خدا کا شکر ہے لیکن ان میں اکثر سمجھ نہیں رکھتے",
+        "english": "And if you asked them, \"Who created the heavens and earth?\" they would surely say, \"Allah.\" Say, \"[All] praise is [due] to Allah \"; but most of them do not know.",
+        "bengali": "আপনি যদি তাদেরকে জিজ্ঞেস করেন, নভোমন্ডল ও ভূ-মন্ডল কে সৃষ্টি করেছে? তারা অবশ্যই বলবে, আল্লাহ। বলুন, সকল প্রশংসাই আল্লাহর। বরং তাদের অধিকাংশই জ্ঞান রাখে না।",
+        "turkish": "And olsun ki onlara: \"Gökleri ve yeri yaratan kimdir?\" diye sorsan, \"Allah'tır\" derler. De ki: \"Hamd Allah'a mahsustur\", ama çoğu bilmezler.",
+        "french": "Si tu leur demandes: «Qui a créé les cieux et la terre?», ils diront, certes: «Allah!» Dis: «Louange à Allah!». Mais la plupart d'entre eux ne savent pas."
+      }
+    },
+    {
+      "numberInSurah": 26,
+      "globalNumber": 3495,
+      "arabicText": "لِلَّهِ مَا فِى ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ ۚ إِنَّ ٱللَّهَ هُوَ ٱلْغَنِىُّ ٱلْحَمِيدُ",
+      "urduText": "جو کچھ آسمانوں اور زمین میں ہے (سب) خدا ہی کا ہے۔ بیشک خدا بےپروا اور سزا وارِ حمد (وثنا) ہے",
+      "juz": 21,
+      "page": 413,
+      "ruku": 357,
+      "hizbQuarter": 165,
+      "sajda": false,
+      "englishText": "To Allah belongs whatever is in the heavens and earth. Indeed, Allah is the Free of need, the Praiseworthy.",
+      "translations": {
+        "urdu": "جو کچھ آسمانوں اور زمین میں ہے (سب) خدا ہی کا ہے۔ بیشک خدا بےپروا اور سزا وارِ حمد (وثنا) ہے",
+        "english": "To Allah belongs whatever is in the heavens and earth. Indeed, Allah is the Free of need, the Praiseworthy.",
+        "bengali": "নভোমন্ডল ও ভূ-মন্ডলে যা কিছু রয়েছে সবই আল্লাহর। আল্লাহ অভাবমুক্ত, প্রশংসিত।",
+        "turkish": "Göklerde ve yerde olanlar Allah'ındır. Şüphesiz Allah müstağnidir, övülmeğe layıktır.",
+        "french": "A Allah appartient tout ce qui est dans les cieux et en terre. Allah est Celui qui se suffit à Lui-même, Il est Le Digne de louange!"
+      }
+    },
+    {
+      "numberInSurah": 27,
+      "globalNumber": 3496,
+      "arabicText": "وَلَوْ أَنَّمَا فِى ٱلْأَرْضِ مِن شَجَرَةٍ أَقْلَٰمٌۭ وَٱلْبَحْرُ يَمُدُّهُۥ مِنۢ بَعْدِهِۦ سَبْعَةُ أَبْحُرٍۢ مَّا نَفِدَتْ كَلِمَٰتُ ٱللَّهِ ۗ إِنَّ ٱللَّهَ عَزِيزٌ حَكِيمٌۭ",
+      "urduText": "اور اگر یوں ہو کہ زمین میں جتنے درخت ہیں (سب کے سب) قلم ہوں اور سمندر (کا تمام پانی) سیاہی ہو (اور) اس کے بعد سات سمندر اور (سیاہی ہو جائیں) تو خدا کی باتیں (یعنی اس کی صفتیں) ختم نہ ہوں۔ بیشک خدا غالب حکمت والا ہے",
+      "juz": 21,
+      "page": 413,
+      "ruku": 357,
+      "hizbQuarter": 165,
+      "sajda": false,
+      "englishText": "And if whatever trees upon the earth were pens and the sea [was ink], replenished thereafter by seven [more] seas, the words of Allah would not be exhausted. Indeed, Allah is Exalted in Might and Wise.",
+      "translations": {
+        "urdu": "اور اگر یوں ہو کہ زمین میں جتنے درخت ہیں (سب کے سب) قلم ہوں اور سمندر (کا تمام پانی) سیاہی ہو (اور) اس کے بعد سات سمندر اور (سیاہی ہو جائیں) تو خدا کی باتیں (یعنی اس کی صفتیں) ختم نہ ہوں۔ بیشک خدا غالب حکمت والا ہے",
+        "english": "And if whatever trees upon the earth were pens and the sea [was ink], replenished thereafter by seven [more] seas, the words of Allah would not be exhausted. Indeed, Allah is Exalted in Might and Wise.",
+        "bengali": "পৃথিবীতে যত বৃক্ষ আছে, সবই যদি কলম হয় এবং সমুদ্রের সাথেও সাত সমুদ্র যুক্ত হয়ে কালি হয়, তবুও তাঁর বাক্যাবলী লিখে শেষ করা যাবে না। নিশ্চয় আল্লাহ পরাক্রমশালী, প্রজ্ঞাময়।",
+        "turkish": "Eğer yeryüzündeki ağaçlar kalem olsa, denizler mürekkep olsa ve yedi misli deniz de yedekte bulunup yazılsa yine de Allah'ın sözleri bitmezdi. Doğrusu Allah güçlüdür, hakim'dir.",
+        "french": "Quand bien même tous les arbres de la terre se changeraient en calames [plumes pour écrire], quand bien même l'océan serait un océan d'encre où conflueraient sept autres océans, les paroles d'Allah ne s'épuiseraient pas. Car Allah est Puissant et Sage."
+      }
+    },
+    {
+      "numberInSurah": 28,
+      "globalNumber": 3497,
+      "arabicText": "مَّا خَلْقُكُمْ وَلَا بَعْثُكُمْ إِلَّا كَنَفْسٍۢ وَٰحِدَةٍ ۗ إِنَّ ٱللَّهَ سَمِيعٌۢ بَصِيرٌ",
+      "urduText": "(خدا کو) تمہارا پیدا کرنا اور جِلا اُٹھانا ایک شخص (کے پیدا کرنے اور جلا اُٹھانے) کی طرح ہے۔ بیشک خدا سننے والا دیکھنے والا ہے",
+      "juz": 21,
+      "page": 413,
+      "ruku": 357,
+      "hizbQuarter": 165,
+      "sajda": false,
+      "englishText": "Your creation and your resurrection will not be but as that of a single soul. Indeed, Allah is Hearing and Seeing.",
+      "translations": {
+        "urdu": "(خدا کو) تمہارا پیدا کرنا اور جِلا اُٹھانا ایک شخص (کے پیدا کرنے اور جلا اُٹھانے) کی طرح ہے۔ بیشک خدا سننے والا دیکھنے والا ہے",
+        "english": "Your creation and your resurrection will not be but as that of a single soul. Indeed, Allah is Hearing and Seeing.",
+        "bengali": "তোমাদের সৃষ্টি ও পুনরুত্থান একটি মাত্র প্রাণীর সৃষ্টি ও পুনরুত্থানের সমান বৈ নয়। নিশ্চয় আল্লাহ সব কিছু শোনেন, সবকিছু দেখেন।",
+        "turkish": "Ey insanlar! Sizin yaratılmanız ve tekrar dirilmeniz tek bir nefsin yaratılması ve tekrar diriltilmesi gibidir. Şüphesiz Allah işitendir, görendir.",
+        "french": "Votre création et votre résurrection [à tous] sont [aussi faciles à Allah] que s'il s'agissait d'une seule âme. Certes Allah est Audient et Clairvoyant."
+      }
+    },
+    {
+      "numberInSurah": 29,
+      "globalNumber": 3498,
+      "arabicText": "أَلَمْ تَرَ أَنَّ ٱللَّهَ يُولِجُ ٱلَّيْلَ فِى ٱلنَّهَارِ وَيُولِجُ ٱلنَّهَارَ فِى ٱلَّيْلِ وَسَخَّرَ ٱلشَّمْسَ وَٱلْقَمَرَ كُلٌّۭ يَجْرِىٓ إِلَىٰٓ أَجَلٍۢ مُّسَمًّۭى وَأَنَّ ٱللَّهَ بِمَا تَعْمَلُونَ خَبِيرٌۭ",
+      "urduText": "کیا تم نے نہیں دیکھا کہ خدا ہی رات کو دن میں داخل کرتا ہے اور (وہی) دن کو رات میں داخل کرتا ہے اور اُسی نے سورج اور چاند کو (تمہارے) زیر فرمان کر رکھا ہے۔ ہر ایک ایک وقتِ مقرر تک چل رہا ہے اور یہ کہ خدا تمہارے سب اعمال سے خبردار ہے",
+      "juz": 21,
+      "page": 414,
+      "ruku": 357,
+      "hizbQuarter": 165,
+      "sajda": false,
+      "englishText": "Do you not see that Allah causes the night to enter the day and causes the day to enter the night and has subjected the sun and the moon, each running [its course] for a specified term, and that Allah, with whatever you do, is Acquainted?",
+      "translations": {
+        "urdu": "کیا تم نے نہیں دیکھا کہ خدا ہی رات کو دن میں داخل کرتا ہے اور (وہی) دن کو رات میں داخل کرتا ہے اور اُسی نے سورج اور چاند کو (تمہارے) زیر فرمان کر رکھا ہے۔ ہر ایک ایک وقتِ مقرر تک چل رہا ہے اور یہ کہ خدا تمہارے سب اعمال سے خبردار ہے",
+        "english": "Do you not see that Allah causes the night to enter the day and causes the day to enter the night and has subjected the sun and the moon, each running [its course] for a specified term, and that Allah, with whatever you do, is Acquainted?",
+        "bengali": "তুমি কি দেখ না যে, আল্লাহ রাত্রিকে দিবসে প্রবিষ্ট করেন এবং দিবসকে রাত্রিতে প্রবিষ্ট করেন? তিনি চন্দ্র ও সূর্যকে কাজে নিয়োজিত করেছেন। প্রত্যেকেই নির্দিষ্টকাল পর্যন্ত পরিভ্রমণ করে। তুমি কি আরও দেখ না যে, তোমরা যা কর, আল্লাহ তার খবর রাখেন?",
+        "turkish": "Allah'ın geceyi gündüze ve gündüzü geceye kattığını, her biri belirli bir süreye kadar hareket edecek olan güneşi ve ayı buyruk altında tuttuğunu; Allah'ın, yaptıklarınızdan haberdar olduğunu bilmez misin?",
+        "french": "N'as-tu pas vu qu'Allah fait pénétrer la nuit dans le jour, et qu'il fait pénétrer le jour dans la nuit, et qu'Il a assujetti le soleil et la lune chacun poursuivant sa course jusqu'à un terme fixé? Et Allah est Parfaitement Connaisseur de ce que vous faites."
+      }
+    },
+    {
+      "numberInSurah": 30,
+      "globalNumber": 3499,
+      "arabicText": "ذَٰلِكَ بِأَنَّ ٱللَّهَ هُوَ ٱلْحَقُّ وَأَنَّ مَا يَدْعُونَ مِن دُونِهِ ٱلْبَٰطِلُ وَأَنَّ ٱللَّهَ هُوَ ٱلْعَلِىُّ ٱلْكَبِيرُ",
+      "urduText": "یہ اس لئے کہ خدا کی ذات برحق ہے اور جن کو یہ لوگ خدا کے سوا پکارتے ہیں وہ لغو ہیں اور یہ کہ خدا ہی عالی رتبہ اور گرامی قدر ہے",
+      "juz": 21,
+      "page": 414,
+      "ruku": 357,
+      "hizbQuarter": 165,
+      "sajda": false,
+      "englishText": "That is because Allah is the Truth, and that what they call upon other than Him is falsehood, and because Allah is the Most High, the Grand.",
+      "translations": {
+        "urdu": "یہ اس لئے کہ خدا کی ذات برحق ہے اور جن کو یہ لوگ خدا کے سوا پکارتے ہیں وہ لغو ہیں اور یہ کہ خدا ہی عالی رتبہ اور گرامی قدر ہے",
+        "english": "That is because Allah is the Truth, and that what they call upon other than Him is falsehood, and because Allah is the Most High, the Grand.",
+        "bengali": "এটাই প্রমাণ যে, আল্লাহ-ই সত্য এবং আল্লাহ ব্যতীত তারা যাদের পূজা করে সব মিথ্যা। আল্লাহ সর্বোচ্চ, মহান।",
+        "turkish": "Bu, Allah'ın hak olmasından ve O'ndan başka taptıkları şeylerin batıl olmasındandır. Doğrusu Allah yücedir, büyüktür.",
+        "french": "Il en est ainsi parce qu'Allah est la Vérité, et que tout ce qu'ils invoquent en dehors de Lui est le Faux, et qu'Allah, c'est Lui le Haut, le Grand."
+      }
+    },
+    {
+      "numberInSurah": 31,
+      "globalNumber": 3500,
+      "arabicText": "أَلَمْ تَرَ أَنَّ ٱلْفُلْكَ تَجْرِى فِى ٱلْبَحْرِ بِنِعْمَتِ ٱللَّهِ لِيُرِيَكُم مِّنْ ءَايَٰتِهِۦٓ ۚ إِنَّ فِى ذَٰلِكَ لَءَايَٰتٍۢ لِّكُلِّ صَبَّارٍۢ شَكُورٍۢ",
+      "urduText": "کیا تم نے نہیں دیکھا کہ خدا ہی کی مہربانی سے کشتیاں دریا میں چلتی ہیں۔ تاکہ وہ تم کو اپنی کچھ نشانیاں دکھائے۔ بیشک اس میں ہر صبر کرنے والے (اور) شکر کرنے والے کے لئے نشانیاں ہیں",
+      "juz": 21,
+      "page": 414,
+      "ruku": 357,
+      "hizbQuarter": 165,
+      "sajda": false,
+      "englishText": "Do you not see that ships sail through the sea by the favor of Allah that He may show you of His signs? Indeed in that are signs for everyone patient and grateful.",
+      "translations": {
+        "urdu": "کیا تم نے نہیں دیکھا کہ خدا ہی کی مہربانی سے کشتیاں دریا میں چلتی ہیں۔ تاکہ وہ تم کو اپنی کچھ نشانیاں دکھائے۔ بیشک اس میں ہر صبر کرنے والے (اور) شکر کرنے والے کے لئے نشانیاں ہیں",
+        "english": "Do you not see that ships sail through the sea by the favor of Allah that He may show you of His signs? Indeed in that are signs for everyone patient and grateful.",
+        "bengali": "তুমি কি দেখ না যে, আল্লাহর অনুগ্রহে জাহাজ সমুদ্রে চলাচল করে, যাতে তিনি তোমাদেরকে তাঁর নিদর্শনাবলী প্রদর্শন করেন? নিশ্চয় এতে প্রত্যেক সহনশীল, কৃতজ্ঞ ব্যক্তির জন্যে নিদর্শন রয়েছে।",
+        "turkish": "Gemilerin denizde Allah'ın lütfuyla yürüdüğünü görmez misin? Allah böylece size varlığının delillerini gösterir. Bunlarda, pek sabırlı ve çok şükreden kimselerin hepsine dersler vardır.",
+        "french": "N'as-tu pas vu que c'est par la grâce d'Allah que le vaisseau vogue dans la mer, afin qu'Il vous fasse voir de Ses merveilles? Il y a en cela des preuves pour tout homme patient et reconnaissant."
+      }
+    },
+    {
+      "numberInSurah": 32,
+      "globalNumber": 3501,
+      "arabicText": "وَإِذَا غَشِيَهُم مَّوْجٌۭ كَٱلظُّلَلِ دَعَوُا۟ ٱللَّهَ مُخْلِصِينَ لَهُ ٱلدِّينَ فَلَمَّا نَجَّىٰهُمْ إِلَى ٱلْبَرِّ فَمِنْهُم مُّقْتَصِدٌۭ ۚ وَمَا يَجْحَدُ بِـَٔايَٰتِنَآ إِلَّا كُلُّ خَتَّارٍۢ كَفُورٍۢ",
+      "urduText": "اور جب اُن پر (دریا کی) لہریں سائبانوں کی طرح چھا جاتی ہیں تو خدا کو پکارنے (اور) خالص اس کی عبادت کرنے لگتے ہیں پھر جب وہ اُن کو نجات دے کر خشکی پر پہنچا دیتا ہے تو بعض ہی انصاف پر قائم رہتے ہیں۔ اور ہماری نشانیوں سے وہی انکار کرتے ہیں جو عہد شکن اور ناشکرے ہیں",
+      "juz": 21,
+      "page": 414,
+      "ruku": 357,
+      "hizbQuarter": 165,
+      "sajda": false,
+      "englishText": "And when waves come over them like canopies, they supplicate Allah, sincere to Him in religion. But when He delivers them to the land, there are [some] of them who are moderate [in faith]. And none rejects Our signs except everyone treacherous and ungrateful.",
+      "translations": {
+        "urdu": "اور جب اُن پر (دریا کی) لہریں سائبانوں کی طرح چھا جاتی ہیں تو خدا کو پکارنے (اور) خالص اس کی عبادت کرنے لگتے ہیں پھر جب وہ اُن کو نجات دے کر خشکی پر پہنچا دیتا ہے تو بعض ہی انصاف پر قائم رہتے ہیں۔ اور ہماری نشانیوں سے وہی انکار کرتے ہیں جو عہد شکن اور ناشکرے ہیں",
+        "english": "And when waves come over them like canopies, they supplicate Allah, sincere to Him in religion. But when He delivers them to the land, there are [some] of them who are moderate [in faith]. And none rejects Our signs except everyone treacherous and ungrateful.",
+        "bengali": "যখন তাদেরকে মেঘমালা সদৃশ তরংগ আচ্ছাদিত করে নেয়, তখন তারা খাঁটি মনে আল্লাহকে ডাকতে থাকে। অতঃপর তিনি যখন তাদেরকে স্থলভাগের দিকে উদ্ধার করে আনেন, তখন তাদের কেউ কেউ সরল পথে চলে। কেবল মিথ্যাচারী, অকৃতজ্ঞ ব্যক্তিই আমার নিদর্শনাবলী অস্বীকার করে।",
+        "turkish": "Dağlar gibi dalgalar insanları kuşattığı zaman, dini tamamen Allah'a has kılarak O'na yalvarırlar; onları karaya çıkararak kurtardığında, içlerinden bir kısmı doğru yolda kalır. Zaten ayetlerimizi bilerek ancak hain nankörler inkar eder.",
+        "french": "Quand une vague les recouvre comme des ombres, ils invoquent Allah, vouant leur culte exclusivement à Lui; et lorsqu'Il les sauve, en les ramenant vers la terre ferme, certains d'entre eux deviennent réticents; mais, seul le grand traître et le grand ingrat renient Nos signes."
+      }
+    },
+    {
+      "numberInSurah": 33,
+      "globalNumber": 3502,
+      "arabicText": "يَٰٓأَيُّهَا ٱلنَّاسُ ٱتَّقُوا۟ رَبَّكُمْ وَٱخْشَوْا۟ يَوْمًۭا لَّا يَجْزِى وَالِدٌ عَن وَلَدِهِۦ وَلَا مَوْلُودٌ هُوَ جَازٍ عَن وَالِدِهِۦ شَيْـًٔا ۚ إِنَّ وَعْدَ ٱللَّهِ حَقٌّۭ ۖ فَلَا تَغُرَّنَّكُمُ ٱلْحَيَوٰةُ ٱلدُّنْيَا وَلَا يَغُرَّنَّكُم بِٱللَّهِ ٱلْغَرُورُ",
+      "urduText": "لوگو اپنے پروردگار سے ڈرو اور اُس دن کا خوف کرو کہ نہ تو باپ اپنے بیٹے کے کچھ کام آئے۔ اور نہ بیٹا باپ کے کچھ کام آسکے۔ بیشک خدا کا وعدہ سچا ہے پس دنیا کی زندگی تم کو دھوکے میں نہ ڈال دے۔ اور نہ فریب دینے والا (شیطان) تمہیں خدا کے بارے میں کسی طرح کا فریب دے",
+      "juz": 21,
+      "page": 414,
+      "ruku": 357,
+      "hizbQuarter": 165,
+      "sajda": false,
+      "englishText": "O mankind, fear your Lord and fear a Day when no father will avail his son, nor will a son avail his father at all. Indeed, the promise of Allah is truth, so let not the worldly life delude you and be not deceived about Allah by the Deceiver.",
+      "translations": {
+        "urdu": "لوگو اپنے پروردگار سے ڈرو اور اُس دن کا خوف کرو کہ نہ تو باپ اپنے بیٹے کے کچھ کام آئے۔ اور نہ بیٹا باپ کے کچھ کام آسکے۔ بیشک خدا کا وعدہ سچا ہے پس دنیا کی زندگی تم کو دھوکے میں نہ ڈال دے۔ اور نہ فریب دینے والا (شیطان) تمہیں خدا کے بارے میں کسی طرح کا فریب دے",
+        "english": "O mankind, fear your Lord and fear a Day when no father will avail his son, nor will a son avail his father at all. Indeed, the promise of Allah is truth, so let not the worldly life delude you and be not deceived about Allah by the Deceiver.",
+        "bengali": "হে মানব জাতি! তোমরা তোমাদের পালনকর্তাকে ভয় কর এবং ভয় কর এমন এক দিবসকে, যখন পিতা পুত্রের কোন কাজে আসবে না এবং পুত্রও তার পিতার কোন উপকার করতে পারবে না। নিঃসন্দেহে আল্লাহর ওয়াদা সত্য। অতএব, পার্থিব জীবন যেন তোমাদেরকে ধোঁকা না দেয় এবং আল্লাহ সম্পর্কে প্রতারক শয়তানও যেন তোমাদেরকে প্রতারিত না করে।",
+        "turkish": "Ey insanlar! Rabbinize karşı gelmekten sakının. Babanın oğlu, oğulun da babası için bir şey ödeyemeyeceği günden korkun. Allah'ın verdiği söz şüphesiz gerçektir. Dünya hayatı sakın sizi aldatmasın. Allah'ın affına güvendirerek şeytan sizi ayartmasın.",
+        "french": "O hommes! Craignez votre Seigneur et redoutez un jour où le père ne répondra en quoi que ce soit pour son enfant, ni l'enfant pour son père. La promesse d'Allah est vérité. Que la vie présente ne vous trompe donc pas, et que le Trompeur (Satan) ne vous induise pas en erreur sur Allah!"
+      }
+    },
+    {
+      "numberInSurah": 34,
+      "globalNumber": 3503,
+      "arabicText": "إِنَّ ٱللَّهَ عِندَهُۥ عِلْمُ ٱلسَّاعَةِ وَيُنَزِّلُ ٱلْغَيْثَ وَيَعْلَمُ مَا فِى ٱلْأَرْحَامِ ۖ وَمَا تَدْرِى نَفْسٌۭ مَّاذَا تَكْسِبُ غَدًۭا ۖ وَمَا تَدْرِى نَفْسٌۢ بِأَىِّ أَرْضٍۢ تَمُوتُ ۚ إِنَّ ٱللَّهَ عَلِيمٌ خَبِيرٌۢ",
+      "urduText": "خدا ہی کو قیامت کا علم ہے اور وہی مینھہ برساتا ہے۔ اور وہی (حاملہ کے) پیٹ کی چیزوں کو جانتا ہے (کہ نر ہے یا مادہ) اور کوئی شخص نہیں جانتا کہ وہ کل کیا کام کرے گا۔ اور کوئی متنفس نہیں جانتا کہ کس سرزمین میں اُسے موت آئے گی بیشک خدا ہی جاننے والا (اور) خبردار ہے",
+      "juz": 21,
+      "page": 414,
+      "ruku": 357,
+      "hizbQuarter": 165,
+      "sajda": false,
+      "englishText": "Indeed, Allah [alone] has knowledge of the Hour and sends down the rain and knows what is in the wombs. And no soul perceives what it will earn tomorrow, and no soul perceives in what land it will die. Indeed, Allah is Knowing and Acquainted.",
+      "translations": {
+        "urdu": "خدا ہی کو قیامت کا علم ہے اور وہی مینھہ برساتا ہے۔ اور وہی (حاملہ کے) پیٹ کی چیزوں کو جانتا ہے (کہ نر ہے یا مادہ) اور کوئی شخص نہیں جانتا کہ وہ کل کیا کام کرے گا۔ اور کوئی متنفس نہیں جانتا کہ کس سرزمین میں اُسے موت آئے گی بیشک خدا ہی جاننے والا (اور) خبردار ہے",
+        "english": "Indeed, Allah [alone] has knowledge of the Hour and sends down the rain and knows what is in the wombs. And no soul perceives what it will earn tomorrow, and no soul perceives in what land it will die. Indeed, Allah is Knowing and Acquainted.",
+        "bengali": "নিশ্চয় আল্লাহর কাছেই কেয়ামতের জ্ঞান রয়েছে। তিনিই বৃষ্টি বর্ষণ করেন এবং গর্ভাশয়ে যা থাকে, তিনি তা জানেন। কেউ জানে না আগামীকল্য সে কি উপার্জন করবে এবং কেউ জানে না কোন দেশে সে মৃত্যুবরণ করবে। আল্লাহ সর্বজ্ঞ, সর্ববিষয়ে সম্যক জ্ঞাত।",
+        "turkish": "Kıyamet saatini bilmek ancak Allah'a mahsustur. Yağmuru O indirir, rahimlerde bulunanı O bilir, kimse yarın ne kazanacağını bilmez ve hiç kimse nerede öleceğini bilemez. Allah şüphesiz bilendir, her şeyden haberdardır.",
+        "french": "La connaissance de l'Heure est auprès d'Allah; et c'est Lui qui fait tomber la pluie salvatrice; et Il sait ce qu'il y a dans les matrices. Et personne ne sait ce qu'il acquerra demain, et personne ne sait dans quelle terre il mourra. Certes, Allah est Omniscient et Parfaitement Connaisseur."
+      }
+    }
+  ]
+}

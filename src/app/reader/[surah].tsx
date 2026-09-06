@@ -14,7 +14,7 @@ import { useTheme } from '../../context/ThemeContext';
 import { useStudyState } from '../../context/StudyContext';
 import { useAudio } from '../../context/AudioContext';
 import { getSurah } from '../../data/surahLoader';
-import { SURAHS } from '../../data/surahs';
+import { SURAHS, TRANSLATION_LANGUAGES, getAyahTranslation } from '../../data/surahs';
 import { AyahItem } from '../../components/AyahItem';
 import { NoteEditorModal } from '../../components/NoteEditorModal';
 import { NoteViewerModal } from '../../components/NoteViewerModal';
@@ -223,16 +223,30 @@ export default function ReaderScreen() {
       </View>
 
       {/* Bismillah Banner (Omitted for Surah 9 At-Tawbah) */}
-      {surahNumber !== 9 && (
-        <View style={[styles.bismillahCard, { backgroundColor: theme.surface, borderColor: theme.borderSubtle }]}>
-          <Text style={[styles.bismillahArabic, { color: theme.arabicText }]}>
-            بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
-          </Text>
-          <Text style={[styles.bismillahUrdu, { color: theme.urduText }]}>
-            شروع الله کا نام لے کر جو بڑا مہربان نہایت رحم والا ہے
-          </Text>
-        </View>
-      )}
+      {surahNumber !== 9 && (() => {
+        const activeLangConfig =
+          TRANSLATION_LANGUAGES[preferences.translationLanguage || 'urdu'] ||
+          TRANSLATION_LANGUAGES.urdu;
+        return (
+          <View style={[styles.bismillahCard, { backgroundColor: theme.surface, borderColor: theme.borderSubtle }]}>
+            <Text style={[styles.bismillahArabic, { color: theme.arabicText }]}>
+              بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+            </Text>
+            <Text
+              style={[
+                styles.bismillahUrdu,
+                {
+                  color: theme.urduText,
+                  textAlign: activeLangConfig.isRTL ? 'right' : 'center',
+                  writingDirection: activeLangConfig.isRTL ? 'rtl' : 'ltr',
+                },
+              ]}
+            >
+              {activeLangConfig.bismillah}
+            </Text>
+          </View>
+        );
+      })()}
     </View>
   );
 
@@ -352,18 +366,19 @@ export default function ReaderScreen() {
         ayahNumber={selectedAyahForNote?.numberInSurah ?? 1}
         surahName={surahData.englishName}
         arabicText={selectedAyahForNote?.arabicText}
-        urduText={selectedAyahForNote?.urduText}
+        urduText={selectedAyahForNote ? getAyahTranslation(selectedAyahForNote, preferences.translationLanguage) : undefined}
         initialNote={selectedNoteForEdit?.text || ''}
         initialVoiceNote={selectedNoteForEdit?.voiceNote}
         noteId={selectedNoteForEdit?.id}
         onSave={(text, voiceNote) => {
           if (!selectedAyahForNote) return;
+          const transSnippet = getAyahTranslation(selectedAyahForNote, preferences.translationLanguage);
           saveNote(
             surahNumber,
             selectedAyahForNote.numberInSurah,
             text,
             selectedAyahForNote.arabicText,
-            selectedAyahForNote.urduText,
+            transSnippet,
             voiceNote,
             selectedNoteForEdit?.id
           );
@@ -383,7 +398,7 @@ export default function ReaderScreen() {
         note={viewingNote}
         surahName={surahData.englishName}
         arabicText={selectedAyahForNote?.arabicText}
-        urduText={selectedAyahForNote?.urduText}
+        urduText={selectedAyahForNote ? getAyahTranslation(selectedAyahForNote, preferences.translationLanguage) : undefined}
         onClose={() => {
           setNoteViewerVisible(false);
           setViewingNote(null);

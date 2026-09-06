@@ -1,1 +1,392 @@
-{"number":90,"name":"سُورَةُ البَلَدِ","englishName":"Al-Balad","englishNameTranslation":"The City","urduName":"شہر / سورۃ البلد","numberOfAyahs":20,"revelationType":"Meccan","juzStart":30,"ayahs":[{"numberInSurah":1,"globalNumber":6024,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ لَآ أُقْسِمُ بِهَٰذَا ٱلْبَلَدِ","urduText":"ہمیں اس شہر (مکہ) کی قسم","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":2,"globalNumber":6025,"arabicText":"وَأَنتَ حِلٌّۢ بِهَٰذَا ٱلْبَلَدِ","urduText":"اور تم اسی شہر میں تو رہتے ہو","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":3,"globalNumber":6026,"arabicText":"وَوَالِدٍۢ وَمَا وَلَدَ","urduText":"اور باپ (یعنی آدم) اور اس کی اولاد کی قسم","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":4,"globalNumber":6027,"arabicText":"لَقَدْ خَلَقْنَا ٱلْإِنسَٰنَ فِى كَبَدٍ","urduText":"کہ ہم نے انسان کو تکلیف (کی حالت) میں (رہنے والا) بنایا ہے","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":5,"globalNumber":6028,"arabicText":"أَيَحْسَبُ أَن لَّن يَقْدِرَ عَلَيْهِ أَحَدٌۭ","urduText":"کیا وہ خیال رکھتا ہے کہ اس پر کوئی قابو نہ پائے گا","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":6,"globalNumber":6029,"arabicText":"يَقُولُ أَهْلَكْتُ مَالًۭا لُّبَدًا","urduText":"کہتا ہے کہ میں نے بہت سا مال برباد کیا","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":7,"globalNumber":6030,"arabicText":"أَيَحْسَبُ أَن لَّمْ يَرَهُۥٓ أَحَدٌ","urduText":"کیا اسے یہ گمان ہے کہ اس کو کسی نے دیکھا نہیں","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":8,"globalNumber":6031,"arabicText":"أَلَمْ نَجْعَل لَّهُۥ عَيْنَيْنِ","urduText":"بھلا ہم نےاس کو دو آنکھیں نہیں دیں؟","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":9,"globalNumber":6032,"arabicText":"وَلِسَانًۭا وَشَفَتَيْنِ","urduText":"اور زبان اور دو ہونٹ (نہیں دیئے)","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":10,"globalNumber":6033,"arabicText":"وَهَدَيْنَٰهُ ٱلنَّجْدَيْنِ","urduText":"(یہ چیزیں بھی دیں) اور اس کو (خیر و شر کے) دونوں رستے بھی دکھا دیئے","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":11,"globalNumber":6034,"arabicText":"فَلَا ٱقْتَحَمَ ٱلْعَقَبَةَ","urduText":"مگر وہ گھاٹی پر سے ہو کر نہ گزرا","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":12,"globalNumber":6035,"arabicText":"وَمَآ أَدْرَىٰكَ مَا ٱلْعَقَبَةُ","urduText":"اور تم کیا سمجھے کہ گھاٹی کیا ہے؟","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":13,"globalNumber":6036,"arabicText":"فَكُّ رَقَبَةٍ","urduText":"کسی (کی) گردن کا چھڑانا","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":14,"globalNumber":6037,"arabicText":"أَوْ إِطْعَٰمٌۭ فِى يَوْمٍۢ ذِى مَسْغَبَةٍۢ","urduText":"یا بھوک کے دن کھانا کھلانا","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":15,"globalNumber":6038,"arabicText":"يَتِيمًۭا ذَا مَقْرَبَةٍ","urduText":"یتیم رشتہ دار کو","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":16,"globalNumber":6039,"arabicText":"أَوْ مِسْكِينًۭا ذَا مَتْرَبَةٍۢ","urduText":"یا فقیر خاکسار کو","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":17,"globalNumber":6040,"arabicText":"ثُمَّ كَانَ مِنَ ٱلَّذِينَ ءَامَنُوا۟ وَتَوَاصَوْا۟ بِٱلصَّبْرِ وَتَوَاصَوْا۟ بِٱلْمَرْحَمَةِ","urduText":"پھر ان لوگوں میں بھی (داخل) ہو جو ایمان لائے اور صبر کی نصیحت اور (لوگوں پر) شفقت کرنے کی وصیت کرتے رہے","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":18,"globalNumber":6041,"arabicText":"أُو۟لَٰٓئِكَ أَصْحَٰبُ ٱلْمَيْمَنَةِ","urduText":"یہی لوگ صاحب سعادت ہیں","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":19,"globalNumber":6042,"arabicText":"وَٱلَّذِينَ كَفَرُوا۟ بِـَٔايَٰتِنَا هُمْ أَصْحَٰبُ ٱلْمَشْـَٔمَةِ","urduText":"اور جنہوں نے ہماری آیتوں کو نہ مانا وہ بدبخت ہیں","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false},{"numberInSurah":20,"globalNumber":6043,"arabicText":"عَلَيْهِمْ نَارٌۭ مُّؤْصَدَةٌۢ","urduText":"یہ لوگ آگ میں بند کر دیئے جائیں گے","juz":30,"page":594,"ruku":532,"hizbQuarter":238,"sajda":false}]}
+{
+  "number": 90,
+  "name": "سُورَةُ البَلَدِ",
+  "englishName": "Al-Balad",
+  "englishNameTranslation": "The City",
+  "urduName": "شہر / سورۃ البلد",
+  "numberOfAyahs": 20,
+  "revelationType": "Meccan",
+  "juzStart": 30,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 6024,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ لَآ أُقْسِمُ بِهَٰذَا ٱلْبَلَدِ",
+      "urduText": "ہمیں اس شہر (مکہ) کی قسم",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "I swear by this city, Makkah -",
+      "translations": {
+        "urdu": "ہمیں اس شہر (مکہ) کی قسم",
+        "english": "I swear by this city, Makkah -",
+        "bengali": "আমি এই নগরীর শপথ করি",
+        "turkish": "Bu şehre (Mekke'ye) yemin ederim; ki sen bu şehirde oturmuşsun.",
+        "french": "Non!... Je jure par cette Cité!"
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 6025,
+      "arabicText": "وَأَنتَ حِلٌّۢ بِهَٰذَا ٱلْبَلَدِ",
+      "urduText": "اور تم اسی شہر میں تو رہتے ہو",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "And you, [O Muhammad], are free of restriction in this city -",
+      "translations": {
+        "urdu": "اور تم اسی شہر میں تو رہتے ہو",
+        "english": "And you, [O Muhammad], are free of restriction in this city -",
+        "bengali": "এবং এই নগরীতে আপনার উপর কোন প্রতিবন্ধকতা নেই।",
+        "turkish": "Bu şehre (Mekke'ye) yemin ederim; ki sen bu şehirde oturmuşsun.",
+        "french": "et toi, tu es un résident dans cette cité -"
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 6026,
+      "arabicText": "وَوَالِدٍۢ وَمَا وَلَدَ",
+      "urduText": "اور باپ (یعنی آدم) اور اس کی اولاد کی قسم",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "And [by] the father and that which was born [of him],",
+      "translations": {
+        "urdu": "اور باپ (یعنی آدم) اور اس کی اولاد کی قسم",
+        "english": "And [by] the father and that which was born [of him],",
+        "bengali": "শপথ জনকের ও যা জন্ম দেয়।",
+        "turkish": "Doğurana ve doğurduğuna and olsun ki;",
+        "french": "Et par le père et ce qu'il engendre!"
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 6027,
+      "arabicText": "لَقَدْ خَلَقْنَا ٱلْإِنسَٰنَ فِى كَبَدٍ",
+      "urduText": "کہ ہم نے انسان کو تکلیف (کی حالت) میں (رہنے والا) بنایا ہے",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "We have certainly created man into hardship.",
+      "translations": {
+        "urdu": "کہ ہم نے انسان کو تکلیف (کی حالت) میں (رہنے والا) بنایا ہے",
+        "english": "We have certainly created man into hardship.",
+        "bengali": "নিশ্চয় আমি মানুষকে শ্রমনির্ভররূপে সৃষ্টি করেছি।",
+        "turkish": "İnsanoğlunu, zorluklara katlanacak şekilde yarattık.",
+        "french": "Nous avons, certes, créé l'homme pour une vie de lutte."
+      }
+    },
+    {
+      "numberInSurah": 5,
+      "globalNumber": 6028,
+      "arabicText": "أَيَحْسَبُ أَن لَّن يَقْدِرَ عَلَيْهِ أَحَدٌۭ",
+      "urduText": "کیا وہ خیال رکھتا ہے کہ اس پر کوئی قابو نہ پائے گا",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "Does he think that never will anyone overcome him?",
+      "translations": {
+        "urdu": "کیا وہ خیال رکھتا ہے کہ اس پر کوئی قابو نہ پائے گا",
+        "english": "Does he think that never will anyone overcome him?",
+        "bengali": "সে কি মনে করে যে, তার উপর কেউ ক্ষমতাবান হবে না ?",
+        "turkish": "İnsanoğlu, kendisine kimsenin güç yetiremeyeceğini mi sanıyor?",
+        "french": "Pense-t-il que personne ne pourra rien contre lui?"
+      }
+    },
+    {
+      "numberInSurah": 6,
+      "globalNumber": 6029,
+      "arabicText": "يَقُولُ أَهْلَكْتُ مَالًۭا لُّبَدًا",
+      "urduText": "کہتا ہے کہ میں نے بہت سا مال برباد کیا",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "He says, \"I have spent wealth in abundance.\"",
+      "translations": {
+        "urdu": "کہتا ہے کہ میں نے بہت سا مال برباد کیا",
+        "english": "He says, \"I have spent wealth in abundance.\"",
+        "bengali": "সে বলেঃ আমি প্রচুর ধন-সম্পদ ব্যয় করেছি।",
+        "turkish": "\"Yığın yığın mal tüketmişimdir\" diyor.",
+        "french": "Il dit: «J'ai gaspillé beaucoup de biens»."
+      }
+    },
+    {
+      "numberInSurah": 7,
+      "globalNumber": 6030,
+      "arabicText": "أَيَحْسَبُ أَن لَّمْ يَرَهُۥٓ أَحَدٌ",
+      "urduText": "کیا اسے یہ گمان ہے کہ اس کو کسی نے دیکھا نہیں",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "Does he think that no one has seen him?",
+      "translations": {
+        "urdu": "کیا اسے یہ گمان ہے کہ اس کو کسی نے دیکھا نہیں",
+        "english": "Does he think that no one has seen him?",
+        "bengali": "সে কি মনে করে যে, তাকে কেউ দেখেনি?",
+        "turkish": "O, kimsenin kendisini görmediğini mi zannediyor?",
+        "french": "Pense-t-il que nul ne l'a vu?"
+      }
+    },
+    {
+      "numberInSurah": 8,
+      "globalNumber": 6031,
+      "arabicText": "أَلَمْ نَجْعَل لَّهُۥ عَيْنَيْنِ",
+      "urduText": "بھلا ہم نےاس کو دو آنکھیں نہیں دیں؟",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "Have We not made for him two eyes?",
+      "translations": {
+        "urdu": "بھلا ہم نےاس کو دو آنکھیں نہیں دیں؟",
+        "english": "Have We not made for him two eyes?",
+        "bengali": "আমি কি তাকে দেইনি চক্ষুদ্বয়,",
+        "turkish": "Biz onun için iki göz, bir dil ve iki dudak var etmedik mi?",
+        "french": "Ne lui avons Nous pas assigné deux yeux,"
+      }
+    },
+    {
+      "numberInSurah": 9,
+      "globalNumber": 6032,
+      "arabicText": "وَلِسَانًۭا وَشَفَتَيْنِ",
+      "urduText": "اور زبان اور دو ہونٹ (نہیں دیئے)",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "And a tongue and two lips?",
+      "translations": {
+        "urdu": "اور زبان اور دو ہونٹ (نہیں دیئے)",
+        "english": "And a tongue and two lips?",
+        "bengali": "জিহবা ও ওষ্ঠদ্বয় ?",
+        "turkish": "Biz onun için iki göz, bir dil ve iki dudak var etmedik mi?",
+        "french": "et une langue et deux lèvres?"
+      }
+    },
+    {
+      "numberInSurah": 10,
+      "globalNumber": 6033,
+      "arabicText": "وَهَدَيْنَٰهُ ٱلنَّجْدَيْنِ",
+      "urduText": "(یہ چیزیں بھی دیں) اور اس کو (خیر و شر کے) دونوں رستے بھی دکھا دیئے",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "And have shown him the two ways?",
+      "translations": {
+        "urdu": "(یہ چیزیں بھی دیں) اور اس کو (خیر و شر کے) دونوں رستے بھی دکھا دیئے",
+        "english": "And have shown him the two ways?",
+        "bengali": "বস্তুতঃ আমি তাকে দু’টি পথ প্রদর্শন করেছি।",
+        "turkish": "Biz ona eğri ve doğru iki yolu da göstermedik mi?",
+        "french": "Ne l'avons-Nous pas guidé aux deux voies."
+      }
+    },
+    {
+      "numberInSurah": 11,
+      "globalNumber": 6034,
+      "arabicText": "فَلَا ٱقْتَحَمَ ٱلْعَقَبَةَ",
+      "urduText": "مگر وہ گھاٹی پر سے ہو کر نہ گزرا",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "But he has not broken through the difficult pass.",
+      "translations": {
+        "urdu": "مگر وہ گھاٹی پر سے ہو کر نہ گزرا",
+        "english": "But he has not broken through the difficult pass.",
+        "bengali": "অতঃপর সে ধর্মের ঘাঁটিতে প্রবেশ করেনি।",
+        "turkish": "Ama o, zor geçidi aşmaya girişemedi.",
+        "french": "Or, il ne s'engage pas dans la voie difficile!"
+      }
+    },
+    {
+      "numberInSurah": 12,
+      "globalNumber": 6035,
+      "arabicText": "وَمَآ أَدْرَىٰكَ مَا ٱلْعَقَبَةُ",
+      "urduText": "اور تم کیا سمجھے کہ گھاٹی کیا ہے؟",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "And what can make you know what is [breaking through] the difficult pass?",
+      "translations": {
+        "urdu": "اور تم کیا سمجھے کہ گھاٹی کیا ہے؟",
+        "english": "And what can make you know what is [breaking through] the difficult pass?",
+        "bengali": "আপনি জানেন, সে ঘাঁটি কি?",
+        "turkish": "O zor geçidin ne olduğunu sen bilir misin?",
+        "french": "Et qui te dira ce qu'est la voie difficile?"
+      }
+    },
+    {
+      "numberInSurah": 13,
+      "globalNumber": 6036,
+      "arabicText": "فَكُّ رَقَبَةٍ",
+      "urduText": "کسی (کی) گردن کا چھڑانا",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "It is the freeing of a slave",
+      "translations": {
+        "urdu": "کسی (کی) گردن کا چھڑانا",
+        "english": "It is the freeing of a slave",
+        "bengali": "তা হচ্ছে দাসমুক্তি",
+        "turkish": "O geçit, bir köle ve esir azadetmek,",
+        "french": "C'est délier un joug [affranchir un esclave],"
+      }
+    },
+    {
+      "numberInSurah": 14,
+      "globalNumber": 6037,
+      "arabicText": "أَوْ إِطْعَٰمٌۭ فِى يَوْمٍۢ ذِى مَسْغَبَةٍۢ",
+      "urduText": "یا بھوک کے دن کھانا کھلانا",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "Or feeding on a day of severe hunger",
+      "translations": {
+        "urdu": "یا بھوک کے دن کھانا کھلانا",
+        "english": "Or feeding on a day of severe hunger",
+        "bengali": "অথবা দুর্ভিক্ষের দিনে অন্নদান।",
+        "turkish": "Yahut, açlık gününde, yakını olan bir öksüzü, yahut toprağa serilmiş bir yoksulu doyurmaktır.",
+        "french": "ou nourrir, en un jour de famine,"
+      }
+    },
+    {
+      "numberInSurah": 15,
+      "globalNumber": 6038,
+      "arabicText": "يَتِيمًۭا ذَا مَقْرَبَةٍ",
+      "urduText": "یتیم رشتہ دار کو",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "An orphan of near relationship",
+      "translations": {
+        "urdu": "یتیم رشتہ دار کو",
+        "english": "An orphan of near relationship",
+        "bengali": "এতীম আত্বীয়কে",
+        "turkish": "Yahut, açlık gününde, yakını olan bir öksüzü, yahut toprağa serilmiş bir yoksulu doyurmaktır.",
+        "french": "un orphelin proche parent"
+      }
+    },
+    {
+      "numberInSurah": 16,
+      "globalNumber": 6039,
+      "arabicText": "أَوْ مِسْكِينًۭا ذَا مَتْرَبَةٍۢ",
+      "urduText": "یا فقیر خاکسار کو",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "Or a needy person in misery",
+      "translations": {
+        "urdu": "یا فقیر خاکسار کو",
+        "english": "Or a needy person in misery",
+        "bengali": "অথবা ধুলি-ধুসরিত মিসকীনকে",
+        "turkish": "Yahut, açlık gününde, yakını olan bir öksüzü, yahut toprağa serilmiş bir yoksulu doyurmaktır.",
+        "french": "ou un pauvre dans le dénuement."
+      }
+    },
+    {
+      "numberInSurah": 17,
+      "globalNumber": 6040,
+      "arabicText": "ثُمَّ كَانَ مِنَ ٱلَّذِينَ ءَامَنُوا۟ وَتَوَاصَوْا۟ بِٱلصَّبْرِ وَتَوَاصَوْا۟ بِٱلْمَرْحَمَةِ",
+      "urduText": "پھر ان لوگوں میں بھی (داخل) ہو جو ایمان لائے اور صبر کی نصیحت اور (لوگوں پر) شفقت کرنے کی وصیت کرتے رہے",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "And then being among those who believed and advised one another to patience and advised one another to compassion.",
+      "translations": {
+        "urdu": "پھر ان لوگوں میں بھی (داخل) ہو جو ایمان لائے اور صبر کی نصیحت اور (لوگوں پر) شفقت کرنے کی وصیت کرتے رہے",
+        "english": "And then being among those who believed and advised one another to patience and advised one another to compassion.",
+        "bengali": "অতঃপর তাদের অন্তর্ভুক্ত হওয়া, যারা ঈমান আনে এবং পরস্পরকে উপদেশ দেয় সবরের ও উপদেশ দেয় দয়ার।",
+        "turkish": "Sonra, inanıp birbirlerine sabır tavsiye edenlerden, merhametlilerden olmayı tavsiye edenlerden olmaktır.",
+        "french": "Et c'est être, en outre, de ceux qui croient et s'enjoignent mutuellement l'endurance, et s'enjoignent mutuellement la miséricorde."
+      }
+    },
+    {
+      "numberInSurah": 18,
+      "globalNumber": 6041,
+      "arabicText": "أُو۟لَٰٓئِكَ أَصْحَٰبُ ٱلْمَيْمَنَةِ",
+      "urduText": "یہی لوگ صاحب سعادت ہیں",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "Those are the companions of the right.",
+      "translations": {
+        "urdu": "یہی لوگ صاحب سعادت ہیں",
+        "english": "Those are the companions of the right.",
+        "bengali": "তারাই সৌভাগ্যশালী।",
+        "turkish": "İşte bunlar amel defterleri sağdan verilenlerdir.",
+        "french": "Ceux-là sont les gens de la droite;"
+      }
+    },
+    {
+      "numberInSurah": 19,
+      "globalNumber": 6042,
+      "arabicText": "وَٱلَّذِينَ كَفَرُوا۟ بِـَٔايَٰتِنَا هُمْ أَصْحَٰبُ ٱلْمَشْـَٔمَةِ",
+      "urduText": "اور جنہوں نے ہماری آیتوں کو نہ مانا وہ بدبخت ہیں",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "But they who disbelieved in Our signs - those are the companions of the left.",
+      "translations": {
+        "urdu": "اور جنہوں نے ہماری آیتوں کو نہ مانا وہ بدبخت ہیں",
+        "english": "But they who disbelieved in Our signs - those are the companions of the left.",
+        "bengali": "আর যারা আমার আয়াতসমূহ অস্বীকার করে তারাই হতভাগা।",
+        "turkish": "Ayetlerimizi inkar edenler, işte onlar amel defterleri sollarından verilenlerdir.",
+        "french": "alors que ceux qui ne croient pas en Nos versets sont les gens de la gauche."
+      }
+    },
+    {
+      "numberInSurah": 20,
+      "globalNumber": 6043,
+      "arabicText": "عَلَيْهِمْ نَارٌۭ مُّؤْصَدَةٌۢ",
+      "urduText": "یہ لوگ آگ میں بند کر دیئے جائیں گے",
+      "juz": 30,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "Over them will be fire closed in.",
+      "translations": {
+        "urdu": "یہ لوگ آگ میں بند کر دیئے جائیں گے",
+        "english": "Over them will be fire closed in.",
+        "bengali": "তারা অগ্নিপরিবেষ্টিত অবস্থায় বন্দী থাকবে।",
+        "turkish": "Onlar her yönden ateşle kapatılacaklardır.",
+        "french": "Le Feu se refermera sur eux."
+      }
+    }
+  ]
+}

@@ -1,1 +1,145 @@
-{"number":107,"name":"سُورَةُ المَاعُونِ","englishName":"Al-Maa'un","englishNameTranslation":"Almsgiving","urduName":"عام استعمال کی چیزیں / سورۃ الماعون","numberOfAyahs":7,"revelationType":"Meccan","juzStart":30,"ayahs":[{"numberInSurah":1,"globalNumber":6198,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ أَرَءَيْتَ ٱلَّذِى يُكَذِّبُ بِٱلدِّينِ","urduText":"بھلا تم نے اس شخص کو دیکھا جو (روزِ) جزا کو جھٹلاتا ہے؟","juz":30,"page":602,"ruku":549,"hizbQuarter":240,"sajda":false},{"numberInSurah":2,"globalNumber":6199,"arabicText":"فَذَٰلِكَ ٱلَّذِى يَدُعُّ ٱلْيَتِيمَ","urduText":"یہ وہی (بدبخت) ہے، جو یتیم کو دھکے دیتا ہے","juz":30,"page":602,"ruku":549,"hizbQuarter":240,"sajda":false},{"numberInSurah":3,"globalNumber":6200,"arabicText":"وَلَا يَحُضُّ عَلَىٰ طَعَامِ ٱلْمِسْكِينِ","urduText":"اور فقیر کو کھانا کھلانے کے لیے (لوگوں کو) ترغیب نہیں دیتا","juz":30,"page":602,"ruku":549,"hizbQuarter":240,"sajda":false},{"numberInSurah":4,"globalNumber":6201,"arabicText":"فَوَيْلٌۭ لِّلْمُصَلِّينَ","urduText":"تو ایسے نمازیوں کی خرابی ہے","juz":30,"page":602,"ruku":549,"hizbQuarter":240,"sajda":false},{"numberInSurah":5,"globalNumber":6202,"arabicText":"ٱلَّذِينَ هُمْ عَن صَلَاتِهِمْ سَاهُونَ","urduText":"جو نماز کی طرف سے غافل رہتے ہیں","juz":30,"page":602,"ruku":549,"hizbQuarter":240,"sajda":false},{"numberInSurah":6,"globalNumber":6203,"arabicText":"ٱلَّذِينَ هُمْ يُرَآءُونَ","urduText":"جو ریا کاری کرتے ہیں","juz":30,"page":602,"ruku":549,"hizbQuarter":240,"sajda":false},{"numberInSurah":7,"globalNumber":6204,"arabicText":"وَيَمْنَعُونَ ٱلْمَاعُونَ","urduText":"اور برتنے کی چیزیں عاریتہً نہیں دیتے","juz":30,"page":602,"ruku":549,"hizbQuarter":240,"sajda":false}]}
+{
+  "number": 107,
+  "name": "سُورَةُ المَاعُونِ",
+  "englishName": "Al-Maa'un",
+  "englishNameTranslation": "Almsgiving",
+  "urduName": "عام استعمال کی چیزیں / سورۃ الماعون",
+  "numberOfAyahs": 7,
+  "revelationType": "Meccan",
+  "juzStart": 30,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 6198,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ أَرَءَيْتَ ٱلَّذِى يُكَذِّبُ بِٱلدِّينِ",
+      "urduText": "بھلا تم نے اس شخص کو دیکھا جو (روزِ) جزا کو جھٹلاتا ہے؟",
+      "juz": 30,
+      "page": 602,
+      "ruku": 549,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Have you seen the one who denies the Recompense?",
+      "translations": {
+        "urdu": "بھلا تم نے اس شخص کو دیکھا جو (روزِ) جزا کو جھٹلاتا ہے؟",
+        "english": "Have you seen the one who denies the Recompense?",
+        "bengali": "আপনি কি দেখেছেন তাকে, যে বিচারদিবসকে মিথ্যা বলে?",
+        "turkish": "Dini yalan sayanı gördün mü?",
+        "french": "Vois-tu celui qui traite de mensonge la Rétribution?"
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 6199,
+      "arabicText": "فَذَٰلِكَ ٱلَّذِى يَدُعُّ ٱلْيَتِيمَ",
+      "urduText": "یہ وہی (بدبخت) ہے، جو یتیم کو دھکے دیتا ہے",
+      "juz": 30,
+      "page": 602,
+      "ruku": 549,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "For that is the one who drives away the orphan",
+      "translations": {
+        "urdu": "یہ وہی (بدبخت) ہے، جو یتیم کو دھکے دیتا ہے",
+        "english": "For that is the one who drives away the orphan",
+        "bengali": "সে সেই ব্যক্তি, যে এতীমকে গলা ধাক্কা দেয়",
+        "turkish": "Öksüzü kakıştıran, yoksulu doyurmaya yanaşmayan kimse işte odur.",
+        "french": "C'est bien lui qui repousse l'orphelin,"
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 6200,
+      "arabicText": "وَلَا يَحُضُّ عَلَىٰ طَعَامِ ٱلْمِسْكِينِ",
+      "urduText": "اور فقیر کو کھانا کھلانے کے لیے (لوگوں کو) ترغیب نہیں دیتا",
+      "juz": 30,
+      "page": 602,
+      "ruku": 549,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "And does not encourage the feeding of the poor.",
+      "translations": {
+        "urdu": "اور فقیر کو کھانا کھلانے کے لیے (لوگوں کو) ترغیب نہیں دیتا",
+        "english": "And does not encourage the feeding of the poor.",
+        "bengali": "এবং মিসকীনকে অন্ন দিতে উৎসাহিত করে না।",
+        "turkish": "Öksüzü kakıştıran, yoksulu doyurmaya yanaşmayan kimse işte odur.",
+        "french": "et qui n'encourage point à nourrir le pauvre."
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 6201,
+      "arabicText": "فَوَيْلٌۭ لِّلْمُصَلِّينَ",
+      "urduText": "تو ایسے نمازیوں کی خرابی ہے",
+      "juz": 30,
+      "page": 602,
+      "ruku": 549,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "So woe to those who pray",
+      "translations": {
+        "urdu": "تو ایسے نمازیوں کی خرابی ہے",
+        "english": "So woe to those who pray",
+        "bengali": "অতএব দুর্ভোগ সেসব নামাযীর,",
+        "turkish": "Vay o namaz kılanların haline ki:",
+        "french": "Malheur donc, à ceux qui prient"
+      }
+    },
+    {
+      "numberInSurah": 5,
+      "globalNumber": 6202,
+      "arabicText": "ٱلَّذِينَ هُمْ عَن صَلَاتِهِمْ سَاهُونَ",
+      "urduText": "جو نماز کی طرف سے غافل رہتے ہیں",
+      "juz": 30,
+      "page": 602,
+      "ruku": 549,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "[But] who are heedless of their prayer -",
+      "translations": {
+        "urdu": "جو نماز کی طرف سے غافل رہتے ہیں",
+        "english": "[But] who are heedless of their prayer -",
+        "bengali": "যারা তাদের নামায সম্বন্ধে বে-খবর;",
+        "turkish": "Onlar kıldıkları namazdan gafildirler.",
+        "french": "tout en négligeant (et retardant) leur Salât,"
+      }
+    },
+    {
+      "numberInSurah": 6,
+      "globalNumber": 6203,
+      "arabicText": "ٱلَّذِينَ هُمْ يُرَآءُونَ",
+      "urduText": "جو ریا کاری کرتے ہیں",
+      "juz": 30,
+      "page": 602,
+      "ruku": 549,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Those who make show [of their deeds]",
+      "translations": {
+        "urdu": "جو ریا کاری کرتے ہیں",
+        "english": "Those who make show [of their deeds]",
+        "bengali": "যারা তা লোক-দেখানোর জন্য করে",
+        "turkish": "Onlar gösteriş yaparlar.",
+        "french": "qui sont pleins d'ostentation,"
+      }
+    },
+    {
+      "numberInSurah": 7,
+      "globalNumber": 6204,
+      "arabicText": "وَيَمْنَعُونَ ٱلْمَاعُونَ",
+      "urduText": "اور برتنے کی چیزیں عاریتہً نہیں دیتے",
+      "juz": 30,
+      "page": 602,
+      "ruku": 549,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "And withhold [simple] assistance.",
+      "translations": {
+        "urdu": "اور برتنے کی چیزیں عاریتہً نہیں دیتے",
+        "english": "And withhold [simple] assistance.",
+        "bengali": "এবং নিত্য ব্যবহার্য্য বস্তু অন্যকে দেয় না।",
+        "turkish": "Onlar basit şeyleri dahi vermezler.",
+        "french": "et refusent l'ustensile (à celui qui en a besoin)."
+      }
+    }
+  ]
+}

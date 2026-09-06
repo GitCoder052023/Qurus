@@ -1,1 +1,164 @@
-{"number":102,"name":"سُورَةُ التَّكَاثُرِ","englishName":"At-Takaathur","englishNameTranslation":"Competition","urduName":"کثرت کی خواہش / سورۃ التکاثر","numberOfAyahs":8,"revelationType":"Meccan","juzStart":30,"ayahs":[{"numberInSurah":1,"globalNumber":6169,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ أَلْهَىٰكُمُ ٱلتَّكَاثُرُ","urduText":"(لوگو) تم کو (مال کی) بہت سی طلب نے غافل کر دیا","juz":30,"page":600,"ruku":544,"hizbQuarter":240,"sajda":false},{"numberInSurah":2,"globalNumber":6170,"arabicText":"حَتَّىٰ زُرْتُمُ ٱلْمَقَابِرَ","urduText":"یہاں تک کہ تم نے قبریں جا دیکھیں","juz":30,"page":600,"ruku":544,"hizbQuarter":240,"sajda":false},{"numberInSurah":3,"globalNumber":6171,"arabicText":"كَلَّا سَوْفَ تَعْلَمُونَ","urduText":"دیکھو تمہیں عنقریب معلوم ہو جائے گا","juz":30,"page":600,"ruku":544,"hizbQuarter":240,"sajda":false},{"numberInSurah":4,"globalNumber":6172,"arabicText":"ثُمَّ كَلَّا سَوْفَ تَعْلَمُونَ","urduText":"پھر دیکھو تمہیں عنقریب معلوم ہو جائے گا","juz":30,"page":600,"ruku":544,"hizbQuarter":240,"sajda":false},{"numberInSurah":5,"globalNumber":6173,"arabicText":"كَلَّا لَوْ تَعْلَمُونَ عِلْمَ ٱلْيَقِينِ","urduText":"دیکھو اگر تم جانتے (یعنی) علم الیقین (رکھتے تو غفلت نہ کرتے)","juz":30,"page":600,"ruku":544,"hizbQuarter":240,"sajda":false},{"numberInSurah":6,"globalNumber":6174,"arabicText":"لَتَرَوُنَّ ٱلْجَحِيمَ","urduText":"تم ضرور دوزخ کو دیکھو گے","juz":30,"page":600,"ruku":544,"hizbQuarter":240,"sajda":false},{"numberInSurah":7,"globalNumber":6175,"arabicText":"ثُمَّ لَتَرَوُنَّهَا عَيْنَ ٱلْيَقِينِ","urduText":"پھر اس کو (ایسا) دیکھو گے (کہ) عین الیقین (آ جائے گا)","juz":30,"page":600,"ruku":544,"hizbQuarter":240,"sajda":false},{"numberInSurah":8,"globalNumber":6176,"arabicText":"ثُمَّ لَتُسْـَٔلُنَّ يَوْمَئِذٍ عَنِ ٱلنَّعِيمِ","urduText":"پھر اس روز تم سے (شکر) نعمت کے بارے میں پرسش ہو گی","juz":30,"page":600,"ruku":544,"hizbQuarter":240,"sajda":false}]}
+{
+  "number": 102,
+  "name": "سُورَةُ التَّكَاثُرِ",
+  "englishName": "At-Takaathur",
+  "englishNameTranslation": "Competition",
+  "urduName": "کثرت کی خواہش / سورۃ التکاثر",
+  "numberOfAyahs": 8,
+  "revelationType": "Meccan",
+  "juzStart": 30,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 6169,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ أَلْهَىٰكُمُ ٱلتَّكَاثُرُ",
+      "urduText": "(لوگو) تم کو (مال کی) بہت سی طلب نے غافل کر دیا",
+      "juz": 30,
+      "page": 600,
+      "ruku": 544,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Competition in [worldly] increase diverts you",
+      "translations": {
+        "urdu": "(لوگو) تم کو (مال کی) بہت سی طلب نے غافل کر دیا",
+        "english": "Competition in [worldly] increase diverts you",
+        "bengali": "প্রাচুর্যের লালসা তোমাদেরকে গাফেল রাখে,",
+        "turkish": "Çoğunluk olmak iddianız sizi o kadar meşgul etti ki, mezarları ziyaretle oradakileri de sayacak kadar oldunuz.",
+        "french": "La course aux richesses vous distrait,"
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 6170,
+      "arabicText": "حَتَّىٰ زُرْتُمُ ٱلْمَقَابِرَ",
+      "urduText": "یہاں تک کہ تم نے قبریں جا دیکھیں",
+      "juz": 30,
+      "page": 600,
+      "ruku": 544,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Until you visit the graveyards.",
+      "translations": {
+        "urdu": "یہاں تک کہ تم نے قبریں جا دیکھیں",
+        "english": "Until you visit the graveyards.",
+        "bengali": "এমনকি, তোমরা কবরস্থানে পৌছে যাও।",
+        "turkish": "Çoğunluk olmak iddianız sizi o kadar meşgul etti ki, mezarları ziyaretle oradakileri de sayacak kadar oldunuz.",
+        "french": "jusqu'à ce que vous visitiez les tombes."
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 6171,
+      "arabicText": "كَلَّا سَوْفَ تَعْلَمُونَ",
+      "urduText": "دیکھو تمہیں عنقریب معلوم ہو جائے گا",
+      "juz": 30,
+      "page": 600,
+      "ruku": 544,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "No! You are going to know.",
+      "translations": {
+        "urdu": "دیکھو تمہیں عنقریب معلوم ہو جائے گا",
+        "english": "No! You are going to know.",
+        "bengali": "এটা কখনও উচিত নয়। তোমরা সত্ত্বরই জেনে নেবে।",
+        "turkish": "Hayır; öyle olmayın; yakında bileceksiniz.",
+        "french": "Mais non! Vous saurez bientôt!"
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 6172,
+      "arabicText": "ثُمَّ كَلَّا سَوْفَ تَعْلَمُونَ",
+      "urduText": "پھر دیکھو تمہیں عنقریب معلوم ہو جائے گا",
+      "juz": 30,
+      "page": 600,
+      "ruku": 544,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Then no! You are going to know.",
+      "translations": {
+        "urdu": "پھر دیکھو تمہیں عنقریب معلوم ہو جائے گا",
+        "english": "Then no! You are going to know.",
+        "bengali": "অতঃপর এটা কখনও উচিত নয়। তোমরা সত্ত্বরই জেনে নেবে।",
+        "turkish": "Hayır; gözünüzü açın; yakında bileceksiniz.",
+        "french": "(Encore une fois)! Vous saurez bientôt!"
+      }
+    },
+    {
+      "numberInSurah": 5,
+      "globalNumber": 6173,
+      "arabicText": "كَلَّا لَوْ تَعْلَمُونَ عِلْمَ ٱلْيَقِينِ",
+      "urduText": "دیکھو اگر تم جانتے (یعنی) علم الیقین (رکھتے تو غفلت نہ کرتے)",
+      "juz": 30,
+      "page": 600,
+      "ruku": 544,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "No! If you only knew with knowledge of certainty...",
+      "translations": {
+        "urdu": "دیکھو اگر تم جانتے (یعنی) علم الیقین (رکھتے تو غفلت نہ کرتے)",
+        "english": "No! If you only knew with knowledge of certainty...",
+        "bengali": "কখনই নয়; যদি তোমরা নিশ্চিত জানতে।",
+        "turkish": "Dikkat edin, şayet yaptığınızın sonucunu kesin olarak bir bilseniz!",
+        "french": "Sûrement! Si vous saviez de science certaine."
+      }
+    },
+    {
+      "numberInSurah": 6,
+      "globalNumber": 6174,
+      "arabicText": "لَتَرَوُنَّ ٱلْجَحِيمَ",
+      "urduText": "تم ضرور دوزخ کو دیکھو گے",
+      "juz": 30,
+      "page": 600,
+      "ruku": 544,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "You will surely see the Hellfire.",
+      "translations": {
+        "urdu": "تم ضرور دوزخ کو دیکھو گے",
+        "english": "You will surely see the Hellfire.",
+        "bengali": "তোমরা অবশ্যই জাহান্নাম দেখবে,",
+        "turkish": "And olsun ki, cehennemi göreceksiniz.",
+        "french": "Vous verrez, certes, la Fournaise."
+      }
+    },
+    {
+      "numberInSurah": 7,
+      "globalNumber": 6175,
+      "arabicText": "ثُمَّ لَتَرَوُنَّهَا عَيْنَ ٱلْيَقِينِ",
+      "urduText": "پھر اس کو (ایسا) دیکھو گے (کہ) عین الیقین (آ جائے گا)",
+      "juz": 30,
+      "page": 600,
+      "ruku": 544,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Then you will surely see it with the eye of certainty.",
+      "translations": {
+        "urdu": "پھر اس کو (ایسا) دیکھو گے (کہ) عین الیقین (آ جائے گا)",
+        "english": "Then you will surely see it with the eye of certainty.",
+        "bengali": "অতঃপর তোমরা তা অবশ্যই দেখবে দিব্য প্রত্যয়ে,",
+        "turkish": "And olsun ki, onu gözünüzle kesin olarak göreceksiniz.",
+        "french": "Puis, vous la verrez certes, avec l'œil de la certitude."
+      }
+    },
+    {
+      "numberInSurah": 8,
+      "globalNumber": 6176,
+      "arabicText": "ثُمَّ لَتُسْـَٔلُنَّ يَوْمَئِذٍ عَنِ ٱلنَّعِيمِ",
+      "urduText": "پھر اس روز تم سے (شکر) نعمت کے بارے میں پرسش ہو گی",
+      "juz": 30,
+      "page": 600,
+      "ruku": 544,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Then you will surely be asked that Day about pleasure.",
+      "translations": {
+        "urdu": "پھر اس روز تم سے (شکر) نعمت کے بارے میں پرسش ہو گی",
+        "english": "Then you will surely be asked that Day about pleasure.",
+        "bengali": "এরপর অবশ্যই সেদিন তোমরা নেয়ামত সম্পর্কে জিজ্ঞাসিত হবে।",
+        "turkish": "Sonra o gün, size verilmiş olan her nimetten sorguya çekileceksiniz.",
+        "french": "Puis, assurément, vous serez interrogés, ce jour-là, sur les délices."
+      }
+    }
+  ]
+}

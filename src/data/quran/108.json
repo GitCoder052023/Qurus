@@ -1,1 +1,69 @@
-{"number":108,"name":"سُورَةُ الكَوۡثَرِ","englishName":"Al-Kawthar","englishNameTranslation":"Abundance","urduName":"حوض کوثر / خیر کثیر / سورۃ الکوثر","numberOfAyahs":3,"revelationType":"Meccan","juzStart":30,"ayahs":[{"numberInSurah":1,"globalNumber":6205,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ إِنَّآ أَعْطَيْنَٰكَ ٱلْكَوْثَرَ","urduText":"(اے محمدﷺ) ہم نے تم کو کوثر عطا فرمائی ہے","juz":30,"page":602,"ruku":550,"hizbQuarter":240,"sajda":false},{"numberInSurah":2,"globalNumber":6206,"arabicText":"فَصَلِّ لِرَبِّكَ وَٱنْحَرْ","urduText":"تو اپنے پروردگار کے لیے نماز پڑھا کرو اور قربانی دیا کرو","juz":30,"page":602,"ruku":550,"hizbQuarter":240,"sajda":false},{"numberInSurah":3,"globalNumber":6207,"arabicText":"إِنَّ شَانِئَكَ هُوَ ٱلْأَبْتَرُ","urduText":"کچھ شک نہیں کہ تمہارا دشمن ہی بےاولاد رہے گا","juz":30,"page":602,"ruku":550,"hizbQuarter":240,"sajda":false}]}
+{
+  "number": 108,
+  "name": "سُورَةُ الكَوۡثَرِ",
+  "englishName": "Al-Kawthar",
+  "englishNameTranslation": "Abundance",
+  "urduName": "حوض کوثر / خیر کثیر / سورۃ الکوثر",
+  "numberOfAyahs": 3,
+  "revelationType": "Meccan",
+  "juzStart": 30,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 6205,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ إِنَّآ أَعْطَيْنَٰكَ ٱلْكَوْثَرَ",
+      "urduText": "(اے محمدﷺ) ہم نے تم کو کوثر عطا فرمائی ہے",
+      "juz": 30,
+      "page": 602,
+      "ruku": 550,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Indeed, We have granted you, [O Muhammad], al-Kawthar.",
+      "translations": {
+        "urdu": "(اے محمدﷺ) ہم نے تم کو کوثر عطا فرمائی ہے",
+        "english": "Indeed, We have granted you, [O Muhammad], al-Kawthar.",
+        "bengali": "নিশ্চয় আমি আপনাকে কাওসার দান করেছি।",
+        "turkish": "Doğrusu sana pek çok nimet vermişizdir.",
+        "french": "Nous t'avons certes, accordé l'Abondance."
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 6206,
+      "arabicText": "فَصَلِّ لِرَبِّكَ وَٱنْحَرْ",
+      "urduText": "تو اپنے پروردگار کے لیے نماز پڑھا کرو اور قربانی دیا کرو",
+      "juz": 30,
+      "page": 602,
+      "ruku": 550,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "So pray to your Lord and sacrifice [to Him alone].",
+      "translations": {
+        "urdu": "تو اپنے پروردگار کے لیے نماز پڑھا کرو اور قربانی دیا کرو",
+        "english": "So pray to your Lord and sacrifice [to Him alone].",
+        "bengali": "অতএব আপনার পালনকর্তার উদ্দেশ্যে নামায পড়ুন এবং কোরবানী করুন।",
+        "turkish": "Öyleyse Rabbin için namaz kıl, kurban kes.",
+        "french": "Accomplis la Salât pour ton Seigneur et sacrifie."
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 6207,
+      "arabicText": "إِنَّ شَانِئَكَ هُوَ ٱلْأَبْتَرُ",
+      "urduText": "کچھ شک نہیں کہ تمہارا دشمن ہی بےاولاد رہے گا",
+      "juz": 30,
+      "page": 602,
+      "ruku": 550,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Indeed, your enemy is the one cut off.",
+      "translations": {
+        "urdu": "کچھ شک نہیں کہ تمہارا دشمن ہی بےاولاد رہے گا",
+        "english": "Indeed, your enemy is the one cut off.",
+        "bengali": "যে আপনার শত্রু, সেই তো লেজকাটা, নির্বংশ।",
+        "turkish": "Doğrusu adı sanı ortadan kalkacak olan, sana kin tutan kimsedir.",
+        "french": "Celui qui te hait sera certes, sans postérité."
+      }
+    }
+  ]
+}

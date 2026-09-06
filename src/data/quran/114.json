@@ -1,1 +1,126 @@
-{"number":114,"name":"سُورَةُ النَّاسِ","englishName":"An-Naas","englishNameTranslation":"Mankind","urduName":"انسان / سورۃ الناس","numberOfAyahs":6,"revelationType":"Meccan","juzStart":30,"ayahs":[{"numberInSurah":1,"globalNumber":6231,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ","urduText":"کہو کہ میں لوگوں کے پروردگار کی پناہ مانگتا ہوں","juz":30,"page":604,"ruku":556,"hizbQuarter":240,"sajda":false},{"numberInSurah":2,"globalNumber":6232,"arabicText":"مَلِكِ ٱلنَّاسِ","urduText":"(یعنی) لوگوں کے حقیقی بادشاہ کی","juz":30,"page":604,"ruku":556,"hizbQuarter":240,"sajda":false},{"numberInSurah":3,"globalNumber":6233,"arabicText":"إِلَٰهِ ٱلنَّاسِ","urduText":"لوگوں کے معبود برحق کی","juz":30,"page":604,"ruku":556,"hizbQuarter":240,"sajda":false},{"numberInSurah":4,"globalNumber":6234,"arabicText":"مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ","urduText":"(شیطان) وسوسہ انداز کی برائی سے جو (خدا کا نام سن کر) پیچھے ہٹ جاتا ہے","juz":30,"page":604,"ruku":556,"hizbQuarter":240,"sajda":false},{"numberInSurah":5,"globalNumber":6235,"arabicText":"ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ","urduText":"جو لوگوں کے دلوں میں وسوسے ڈالتا ہے","juz":30,"page":604,"ruku":556,"hizbQuarter":240,"sajda":false},{"numberInSurah":6,"globalNumber":6236,"arabicText":"مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ","urduText":"وہ جنّات میں سے (ہو) یا انسانوں میں سے","juz":30,"page":604,"ruku":556,"hizbQuarter":240,"sajda":false}]}
+{
+  "number": 114,
+  "name": "سُورَةُ النَّاسِ",
+  "englishName": "An-Naas",
+  "englishNameTranslation": "Mankind",
+  "urduName": "انسان / سورۃ الناس",
+  "numberOfAyahs": 6,
+  "revelationType": "Meccan",
+  "juzStart": 30,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 6231,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ",
+      "urduText": "کہو کہ میں لوگوں کے پروردگار کی پناہ مانگتا ہوں",
+      "juz": 30,
+      "page": 604,
+      "ruku": 556,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Say, \"I seek refuge in the Lord of mankind,",
+      "translations": {
+        "urdu": "کہو کہ میں لوگوں کے پروردگار کی پناہ مانگتا ہوں",
+        "english": "Say, \"I seek refuge in the Lord of mankind,",
+        "bengali": "বলুন, আমি আশ্রয় গ্রহণ করিতেছি মানুষের পালনকর্তার,",
+        "turkish": "De ki: \"İnsanlardan ve cinlerden ve insanların gönüllerine vesvese veren o sinsi vesvesecinin şerrinden, insanların Tanrısı, insanların Hükümranı ve insanların Rabbi olan Allah'a sığınırım.\"",
+        "french": "Dis: «Je cherche protection auprès du Seigneur des hommes."
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 6232,
+      "arabicText": "مَلِكِ ٱلنَّاسِ",
+      "urduText": "(یعنی) لوگوں کے حقیقی بادشاہ کی",
+      "juz": 30,
+      "page": 604,
+      "ruku": 556,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "The Sovereign of mankind.",
+      "translations": {
+        "urdu": "(یعنی) لوگوں کے حقیقی بادشاہ کی",
+        "english": "The Sovereign of mankind.",
+        "bengali": "মানুষের অধিপতির,",
+        "turkish": "De ki: \"İnsanlardan ve cinlerden ve insanların gönüllerine vesvese veren o sinsi vesvesecinin şerrinden, insanların Tanrısı, insanların Hükümranı ve insanların Rabbi olan Allah'a sığınırım.\"",
+        "french": "Le Souverain des hommes,"
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 6233,
+      "arabicText": "إِلَٰهِ ٱلنَّاسِ",
+      "urduText": "لوگوں کے معبود برحق کی",
+      "juz": 30,
+      "page": 604,
+      "ruku": 556,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "The God of mankind,",
+      "translations": {
+        "urdu": "لوگوں کے معبود برحق کی",
+        "english": "The God of mankind,",
+        "bengali": "মানুষের মা’বুদের",
+        "turkish": "De ki: \"İnsanlardan ve cinlerden ve insanların gönüllerine vesvese veren o sinsi vesvesecinin şerrinden, insanların Tanrısı, insanların Hükümranı ve insanların Rabbi olan Allah'a sığınırım.\"",
+        "french": "Dieu des hommes,"
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 6234,
+      "arabicText": "مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ",
+      "urduText": "(شیطان) وسوسہ انداز کی برائی سے جو (خدا کا نام سن کر) پیچھے ہٹ جاتا ہے",
+      "juz": 30,
+      "page": 604,
+      "ruku": 556,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "From the evil of the retreating whisperer -",
+      "translations": {
+        "urdu": "(شیطان) وسوسہ انداز کی برائی سے جو (خدا کا نام سن کر) پیچھے ہٹ جاتا ہے",
+        "english": "From the evil of the retreating whisperer -",
+        "bengali": "তার অনিষ্ট থেকে, যে কুমন্ত্রণা দেয় ও আত্নগোপন করে,",
+        "turkish": "De ki: \"İnsanlardan ve cinlerden ve insanların gönüllerine vesvese veren o sinsi vesvesecinin şerrinden, insanların Tanrısı, insanların Hükümranı ve insanların Rabbi olan Allah'a sığınırım.\"",
+        "french": "contre le mal du mauvais conseiller, furtif,"
+      }
+    },
+    {
+      "numberInSurah": 5,
+      "globalNumber": 6235,
+      "arabicText": "ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ",
+      "urduText": "جو لوگوں کے دلوں میں وسوسے ڈالتا ہے",
+      "juz": 30,
+      "page": 604,
+      "ruku": 556,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Who whispers [evil] into the breasts of mankind -",
+      "translations": {
+        "urdu": "جو لوگوں کے دلوں میں وسوسے ڈالتا ہے",
+        "english": "Who whispers [evil] into the breasts of mankind -",
+        "bengali": "যে কুমন্ত্রণা দেয় মানুষের অন্তরে",
+        "turkish": "De ki: \"İnsanlardan ve cinlerden ve insanların gönüllerine vesvese veren o sinsi vesvesecinin şerrinden, insanların Tanrısı, insanların Hükümranı ve insanların Rabbi olan Allah'a sığınırım.\"",
+        "french": "qui souffle le mal dans les poitrines des hommes,"
+      }
+    },
+    {
+      "numberInSurah": 6,
+      "globalNumber": 6236,
+      "arabicText": "مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ",
+      "urduText": "وہ جنّات میں سے (ہو) یا انسانوں میں سے",
+      "juz": 30,
+      "page": 604,
+      "ruku": 556,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "From among the jinn and mankind.\"",
+      "translations": {
+        "urdu": "وہ جنّات میں سے (ہو) یا انسانوں میں سے",
+        "english": "From among the jinn and mankind.\"",
+        "bengali": "জ্বিনের মধ্য থেকে অথবা মানুষের মধ্য থেকে।",
+        "turkish": "De ki: \"İnsanlardan ve cinlerden ve insanların gönüllerine vesvese veren o sinsi vesvesecinin şerrinden, insanların Tanrısı, insanların Hükümranı ve insanların Rabbi olan Allah'a sığınırım.\"",
+        "french": "qu'il (le conseiller) soit un djinn, ou un être humain»."
+      }
+    }
+  ]
+}

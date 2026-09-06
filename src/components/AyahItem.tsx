@@ -6,6 +6,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useStudyState } from '../context/StudyContext';
 import { useAudio } from '../context/AudioContext';
 import { VoiceNotePlayer, formatDurationMs } from './VoiceNotePlayer';
+import { getAyahTranslation, TRANSLATION_LANGUAGES } from '../data/surahs';
 
 interface AyahItemProps {
   ayah: Ayah;
@@ -42,7 +43,19 @@ export const AyahItem = React.memo(function AyahItem({
     isAyahCompleted,
     markAyahCompleted,
   } = useStudyState();
-  const { isPlaying, currentSurahNumber, currentAyahNumber, playbackPhase, playAyah, pause, resume } = useAudio();
+  const {
+    isPlaying,
+    currentSurahNumber,
+    currentAyahNumber,
+    playbackPhase,
+    playAyah,
+    pause,
+    resume,
+    translationLanguage,
+  } = useAudio();
+
+  const langConfig = TRANSLATION_LANGUAGES[translationLanguage] || TRANSLATION_LANGUAGES.urdu;
+  const translationText = getAyahTranslation(ayah, translationLanguage);
 
   const bookmarked = isBookmarked(surahNumber, ayah.numberInSurah);
   const highlighted = isHighlighted(surahNumber, ayah.numberInSurah);
@@ -51,7 +64,7 @@ export const AyahItem = React.memo(function AyahItem({
   const isThisAyahActive = isCurrentAyah;
   const isThisAyahPlaying = isThisAyahActive && isPlaying;
   const isRecitingArabic = isThisAyahActive && playbackPhase === 'arabic';
-  const isRecitingUrdu = isThisAyahActive && playbackPhase === 'translation';
+  const isRecitingTranslation = isThisAyahActive && playbackPhase === 'translation';
 
   const handlePlayToggle = () => {
     if (isThisAyahPlaying) {
@@ -64,7 +77,7 @@ export const AyahItem = React.memo(function AyahItem({
   };
 
   const handleBookmarkToggle = () => {
-    toggleBookmark(surahNumber, ayah.numberInSurah, ayah.arabicText, ayah.urduText);
+    toggleBookmark(surahNumber, ayah.numberInSurah, ayah.arabicText, translationText);
   };
 
   const handleHighlightToggle = () => {
@@ -73,7 +86,7 @@ export const AyahItem = React.memo(function AyahItem({
 
   const handleShare = async () => {
     try {
-      const message = `${ayah.arabicText}\n\n${ayah.urduText}\n\n— [Surah ${surahName} ${surahNumber}:${ayah.numberInSurah}] (Urdu: Fateh Muhammad Jalandhari)`;
+      const message = `${ayah.arabicText}\n\n${translationText}\n\n— [Surah ${surahName} ${surahNumber}:${ayah.numberInSurah}] (${langConfig.name}: ${langConfig.author})`;
       await Share.share({ message });
     } catch (e) {
       console.warn('Share error:', e);
@@ -134,15 +147,15 @@ export const AyahItem = React.memo(function AyahItem({
               <Ionicons
                 name="volume-medium"
                 size={14}
-                color={isRecitingUrdu ? theme.accentGold : theme.primary}
+                color={isRecitingTranslation ? theme.accentGold : theme.primary}
               />
               <Text
                 style={[
                   styles.recitingText,
-                  { color: isRecitingUrdu ? theme.accentGold : theme.primary },
+                  { color: isRecitingTranslation ? theme.accentGold : theme.primary },
                 ]}
               >
-                {isRecitingUrdu ? 'Reciting Urdu Translation' : 'Reciting Arabic'}
+                {isRecitingTranslation ? `Reciting ${langConfig.name} Translation` : 'Reciting Arabic'}
               </Text>
             </View>
           )}
@@ -197,13 +210,13 @@ export const AyahItem = React.memo(function AyahItem({
         </Text>
       </View>
 
-      {/* Urdu Translation */}
+      {/* Translation Text */}
       {showTranslation && (
         <View
           style={[
             styles.translationContainer,
             { borderTopColor: theme.borderSubtle },
-            isRecitingUrdu && {
+            isRecitingTranslation && {
               backgroundColor: theme.primaryMuted,
               borderRadius: 12,
               padding: 10,
@@ -217,13 +230,15 @@ export const AyahItem = React.memo(function AyahItem({
               {
                 color: theme.urduText,
                 fontSize: urduFontSize,
-                lineHeight: Math.round(urduFontSize * 1.8),
+                lineHeight: Math.round(urduFontSize * 1.7),
+                textAlign: langConfig.isRTL ? 'right' : 'left',
+                writingDirection: langConfig.isRTL ? 'rtl' : 'ltr',
               },
-              isRecitingUrdu && { fontWeight: '600' },
+              isRecitingTranslation && { fontWeight: '600' },
             ]}
             selectable
           >
-            {ayah.urduText}
+            {translationText}
           </Text>
         </View>
       )}

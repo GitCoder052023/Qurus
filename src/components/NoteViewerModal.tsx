@@ -153,7 +153,17 @@ export function NoteViewerModal({
               ) : null}
 
               {urduSnippet ? (
-                <Text style={[styles.urduText, { color: theme.urduText }]} selectable>
+                <Text
+                  style={[
+                    styles.urduText,
+                    {
+                      color: theme.urduText,
+                      textAlign: /[\u0600-\u06FF]/.test(urduSnippet) ? 'right' : 'left',
+                      writingDirection: /[\u0600-\u06FF]/.test(urduSnippet) ? 'rtl' : 'ltr',
+                    },
+                  ]}
+                  selectable
+                >
                   "{urduSnippet}"
                 </Text>
               ) : null}

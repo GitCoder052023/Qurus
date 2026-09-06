@@ -12,6 +12,7 @@ function runVerification() {
 
   console.log('--- Verification Step 2: Checking Ayah counts & contents ---');
   let totalAyahs = 0;
+  const languages = ['urdu', 'english', 'bengali', 'turkish', 'french'];
   for (let sNum = 1; sNum <= 114; sNum++) {
     const filePath = path.join(quranDir, `${sNum}.json`);
     if (!fs.existsSync(filePath)) throw new Error(`Missing ${filePath}`);
@@ -27,12 +28,21 @@ function runVerification() {
       if (!a.urduText || a.urduText.trim().length === 0) {
         throw new Error(`Empty Urdu text in Surah ${sNum} Ayah ${a.numberInSurah}`);
       }
+      if (!a.translations) {
+        throw new Error(`Missing translations object in Surah ${sNum} Ayah ${a.numberInSurah}`);
+      }
+      for (const lang of languages) {
+        if (!a.translations[lang] || a.translations[lang].trim().length === 0) {
+          throw new Error(`Empty ${lang} translation in Surah ${sNum} Ayah ${a.numberInSurah}`);
+        }
+      }
     }
   }
   if (totalAyahs !== 6236) {
     throw new Error(`Expected 6236 total ayahs, got ${totalAyahs}`);
   }
-  console.log(`✓ All 6,236 Ayahs verified with authentic Arabic text and Urdu translation.`);
+  console.log(`✓ All 6,236 Ayahs verified with authentic Arabic text and 5 translations (Urdu, English, Bengali, Turkish, French).`);
+
 
   console.log('--- Verification Step 3: Checking Audio URL Formatting ---');
   function getAudioUrl(reciterSubfolder, surahNumber, ayahNumber) {

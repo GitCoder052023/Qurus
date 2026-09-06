@@ -14,12 +14,21 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useAudio } from '../../context/AudioContext';
 import { useStudyState } from '../../context/StudyContext';
 import { useTheme } from '../../context/ThemeContext';
-import { RECITERS } from '../../data/surahs';
+import { RECITERS, TRANSLATION_LANGUAGES } from '../../data/surahs';
+import { TranslationLanguage } from '../../types';
 import {
   requestNotificationPermissionAsync,
   sendInstantTestNotificationAsync,
   sendInstantFinalCallTestAsync,
 } from '../../services/notificationEngine';
+
+const SETTINGS_LANGUAGES: TranslationLanguage[] = [
+  'urdu',
+  'english',
+  'bengali',
+  'turkish',
+  'french',
+];
 
 export default function SettingsScreen() {
   const router = useRouter();
@@ -35,7 +44,7 @@ export default function SettingsScreen() {
     streak,
     requestNotificationPermission,
   } = useStudyState();
-  const { setSpeed, setReciter, setPlaybackMode, reciter } = useAudio();
+  const { setSpeed, setReciter, setPlaybackMode, setTranslationLanguage, reciter } = useAudio();
 
   const handleClearHistoryPrompt = () => {
     Alert.alert(
@@ -113,6 +122,9 @@ export default function SettingsScreen() {
     { label: 'Night 10:00 PM', hour: 22, minute: 0 },
   ];
 
+  const currentLang = preferences.translationLanguage || 'urdu';
+  const currentLangConfig = TRANSLATION_LANGUAGES[currentLang] || TRANSLATION_LANGUAGES.urdu;
+
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
       <ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
@@ -172,11 +184,11 @@ export default function SettingsScreen() {
 
             <View style={[styles.divider, { backgroundColor: theme.borderSubtle }]} />
 
-            {/* Urdu Font Size */}
+            {/* Translation Font Size */}
             <View style={styles.settingItem}>
               <View style={styles.settingLabelGroup}>
                 <Text style={[styles.settingLabel, { color: theme.textPrimary }]}>
-                  Urdu Translation Size
+                  Translation Text Size
                 </Text>
                 <Text style={[styles.settingValue, { color: theme.primary }]}>
                   {preferences.urduFontSize} pt
@@ -218,10 +230,10 @@ export default function SettingsScreen() {
             <View style={[styles.settingItem, styles.rowBetween]}>
               <View style={styles.settingTextGroup}>
                 <Text style={[styles.settingLabel, { color: theme.textPrimary }]}>
-                  Show Urdu Translation
+                  Show Translation
                 </Text>
                 <Text style={[styles.settingSubtext, { color: theme.textSecondary }]}>
-                  Fateh Muhammad Jalandhry
+                  {currentLangConfig.author} ({currentLangConfig.name})
                 </Text>
               </View>
               <Switch
@@ -239,6 +251,83 @@ export default function SettingsScreen() {
             Audio
           </Text>
           <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
+            {/* Translation Language Selector */}
+            <View style={styles.settingItem}>
+              <Text style={[styles.settingLabel, { color: theme.textPrimary, marginBottom: 4 }]}>
+                Translation Audio Language
+              </Text>
+              <Text style={[styles.settingSubtext, { color: theme.textSecondary, marginBottom: 10 }]}>
+                Choose language voice for verse-by-verse translation recitation
+              </Text>
+              <View style={styles.modeSettingsColumn}>
+                {SETTINGS_LANGUAGES.map((langKey) => {
+                  const l = TRANSLATION_LANGUAGES[langKey];
+                  const isSelected = currentLang === langKey;
+                  return (
+                    <TouchableOpacity
+                      key={langKey}
+                      onPress={() => {
+                        updatePreferences({ translationLanguage: langKey });
+                        setTranslationLanguage(langKey);
+                      }}
+                      style={[
+                        styles.modeOptionRow,
+                        {
+                          backgroundColor: isSelected ? theme.primaryMuted : theme.surface,
+                          borderColor: isSelected ? theme.primary : theme.border,
+                        },
+                      ]}
+                    >
+                      <View style={styles.modeOptionTextGroup}>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                          <Text style={{ fontSize: 16 }}>{l.flag}</Text>
+                          <Text
+                            style={[
+                              styles.modeOptionLabel,
+                              { color: isSelected ? theme.primary : theme.textPrimary },
+                              isSelected && { fontWeight: '700' },
+                            ]}
+                          >
+                            {l.name} {l.nativeName !== l.name ? `(${l.nativeName})` : ''}
+                          </Text>
+                          {l.bitrate ? (
+                            <View
+                              style={{
+                                backgroundColor: isSelected ? theme.primary : theme.chipBg,
+                                paddingHorizontal: 7,
+                                paddingVertical: 2,
+                                borderRadius: 6,
+                              }}
+                            >
+                              <Text
+                                style={{
+                                  color: isSelected ? theme.onPrimary : theme.textTertiary,
+                                  fontSize: 10,
+                                  fontWeight: '600',
+                                }}
+                              >
+                                {l.bitrate}
+                              </Text>
+                            </View>
+                          ) : null}
+                        </View>
+                        <Text style={[styles.modeOptionDesc, { color: theme.textSecondary }]}>
+                          {l.voiceName} • {l.author}
+                        </Text>
+                      </View>
+                      <Ionicons
+                        name={isSelected ? 'radio-button-on' : 'radio-button-off'}
+                        size={20}
+                        color={isSelected ? theme.primary : theme.textTertiary}
+                      />
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+            </View>
+
+            <View style={[styles.divider, { backgroundColor: theme.borderSubtle }]} />
+
             {/* Recitation Loop Mode */}
             <View style={styles.settingItem}>
               <Text style={[styles.settingLabel, { color: theme.textPrimary, marginBottom: 4 }]}>
@@ -251,8 +340,8 @@ export default function SettingsScreen() {
                 {[
                   {
                     key: 'both',
-                    label: 'Arabic + Urdu Translation',
-                    desc: 'Arabic recitation followed by Urdu translation of each verse',
+                    label: `Arabic + ${currentLangConfig.name} Translation`,
+                    desc: `Arabic recitation followed by ${currentLangConfig.name} translation of each verse`,
                   },
                   {
                     key: 'arabic_only',
@@ -261,8 +350,8 @@ export default function SettingsScreen() {
                   },
                   {
                     key: 'translation_only',
-                    label: 'Urdu Translation Only',
-                    desc: 'Verse-by-verse Urdu translation audio by Shamshad Ali Khan',
+                    label: `${currentLangConfig.name} Translation Only`,
+                    desc: `Verse-by-verse ${currentLangConfig.name} translation audio by ${currentLangConfig.voiceName}`,
                   },
                 ].map((m) => {
                   const isSelected = (preferences.playbackMode || 'both') === m.key;

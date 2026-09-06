@@ -1,1 +1,107 @@
-{"number":105,"name":"سُورَةُ الفِيلِ","englishName":"Al-Fil","englishNameTranslation":"The Elephant","urduName":"ہاتھی / سورۃ الفیل","numberOfAyahs":5,"revelationType":"Meccan","juzStart":30,"ayahs":[{"numberInSurah":1,"globalNumber":6189,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَٰبِ ٱلْفِيلِ","urduText":"کیا تم نے نہیں دیکھا کہ تمہارے پروردگار نے ہاتھی والوں کے ساتھ کیا کیا","juz":30,"page":601,"ruku":547,"hizbQuarter":240,"sajda":false},{"numberInSurah":2,"globalNumber":6190,"arabicText":"أَلَمْ يَجْعَلْ كَيْدَهُمْ فِى تَضْلِيلٍۢ","urduText":"کیا ان کا داؤں غلط نہیں کیا؟ (گیا)","juz":30,"page":601,"ruku":547,"hizbQuarter":240,"sajda":false},{"numberInSurah":3,"globalNumber":6191,"arabicText":"وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ","urduText":"اور ان پر جھلڑ کے جھلڑ جانور بھیجے","juz":30,"page":601,"ruku":547,"hizbQuarter":240,"sajda":false},{"numberInSurah":4,"globalNumber":6192,"arabicText":"تَرْمِيهِم بِحِجَارَةٍۢ مِّن سِجِّيلٍۢ","urduText":"جو ان پر کھنگر کی پتھریاں پھینکتے تھے","juz":30,"page":601,"ruku":547,"hizbQuarter":240,"sajda":false},{"numberInSurah":5,"globalNumber":6193,"arabicText":"فَجَعَلَهُمْ كَعَصْفٍۢ مَّأْكُولٍۭ","urduText":"تو ان کو ایسا کر دیا جیسے کھایا ہوا بھس","juz":30,"page":601,"ruku":547,"hizbQuarter":240,"sajda":false}]}
+{
+  "number": 105,
+  "name": "سُورَةُ الفِيلِ",
+  "englishName": "Al-Fil",
+  "englishNameTranslation": "The Elephant",
+  "urduName": "ہاتھی / سورۃ الفیل",
+  "numberOfAyahs": 5,
+  "revelationType": "Meccan",
+  "juzStart": 30,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 6189,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَٰبِ ٱلْفِيلِ",
+      "urduText": "کیا تم نے نہیں دیکھا کہ تمہارے پروردگار نے ہاتھی والوں کے ساتھ کیا کیا",
+      "juz": 30,
+      "page": 601,
+      "ruku": 547,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Have you not considered, [O Muhammad], how your Lord dealt with the companions of the elephant?",
+      "translations": {
+        "urdu": "کیا تم نے نہیں دیکھا کہ تمہارے پروردگار نے ہاتھی والوں کے ساتھ کیا کیا",
+        "english": "Have you not considered, [O Muhammad], how your Lord dealt with the companions of the elephant?",
+        "bengali": "আপনি কি দেখেননি আপনার পালনকর্তা হস্তীবাহিনীর সাথে কিরূপ ব্যবহার করেছেন?",
+        "turkish": "Fil sahiplerine Rabbinin ne ettiğini görmedin mi?",
+        "french": "N'as-tu pas vu comment ton Seigneur a agi envers les gens de l'Eléphant?"
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 6190,
+      "arabicText": "أَلَمْ يَجْعَلْ كَيْدَهُمْ فِى تَضْلِيلٍۢ",
+      "urduText": "کیا ان کا داؤں غلط نہیں کیا؟ (گیا)",
+      "juz": 30,
+      "page": 601,
+      "ruku": 547,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Did He not make their plan into misguidance?",
+      "translations": {
+        "urdu": "کیا ان کا داؤں غلط نہیں کیا؟ (گیا)",
+        "english": "Did He not make their plan into misguidance?",
+        "bengali": "তিনি কি তাদের চক্রান্ত নস্যাৎ করে দেননি?",
+        "turkish": "Onların düzenlerini boşa çıkarmadı mı?",
+        "french": "N'a-t-Il pas rendu leur ruse complètement vaine?"
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 6191,
+      "arabicText": "وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ",
+      "urduText": "اور ان پر جھلڑ کے جھلڑ جانور بھیجے",
+      "juz": 30,
+      "page": 601,
+      "ruku": 547,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "And He sent against them birds in flocks,",
+      "translations": {
+        "urdu": "اور ان پر جھلڑ کے جھلڑ جانور بھیجے",
+        "english": "And He sent against them birds in flocks,",
+        "bengali": "তিনি তাদের উ��র প্রেরণ করেছেন ঝাঁকে ঝাঁকে পাখী,",
+        "turkish": "Onların üzerine, sert taşlar atan sürülerle kuşlar gönderdi.",
+        "french": "et envoyé sur eux des oiseaux par volées"
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 6192,
+      "arabicText": "تَرْمِيهِم بِحِجَارَةٍۢ مِّن سِجِّيلٍۢ",
+      "urduText": "جو ان پر کھنگر کی پتھریاں پھینکتے تھے",
+      "juz": 30,
+      "page": 601,
+      "ruku": 547,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Striking them with stones of hard clay,",
+      "translations": {
+        "urdu": "جو ان پر کھنگر کی پتھریاں پھینکتے تھے",
+        "english": "Striking them with stones of hard clay,",
+        "bengali": "যারা তাদের উপর পাথরের কংকর নিক্ষেপ করছিল।",
+        "turkish": "Onların üzerine, sert taşlar atan sürülerle kuşlar gönderdi.",
+        "french": "qui leur lançaient des pierres d'argile?"
+      }
+    },
+    {
+      "numberInSurah": 5,
+      "globalNumber": 6193,
+      "arabicText": "فَجَعَلَهُمْ كَعَصْفٍۢ مَّأْكُولٍۭ",
+      "urduText": "تو ان کو ایسا کر دیا جیسے کھایا ہوا بھس",
+      "juz": 30,
+      "page": 601,
+      "ruku": 547,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "And He made them like eaten straw.",
+      "translations": {
+        "urdu": "تو ان کو ایسا کر دیا جیسے کھایا ہوا بھس",
+        "english": "And He made them like eaten straw.",
+        "bengali": "অতঃপর তিনি তাদেরকে ভক্ষিত তৃণসদৃশ করে দেন।",
+        "turkish": "Sonunda onları, yenilmiş ekin gibi yaptı.",
+        "french": "Et Il les a rendus semblables à une paille mâchée."
+      }
+    }
+  ]
+}

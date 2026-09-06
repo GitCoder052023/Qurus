@@ -345,7 +345,17 @@ export default function NotesScreen() {
                       ) : null}
 
                       {ayahGroup.urduSnippet ? (
-                        <Text style={[styles.urduSnippetPreview, { color: theme.urduText }]} numberOfLines={1}>
+                        <Text
+                          style={[
+                            styles.urduSnippetPreview,
+                            {
+                              color: theme.urduText,
+                              textAlign: /[\u0600-\u06FF]/.test(ayahGroup.urduSnippet) ? 'right' : 'left',
+                              writingDirection: /[\u0600-\u06FF]/.test(ayahGroup.urduSnippet) ? 'rtl' : 'ltr',
+                            },
+                          ]}
+                          numberOfLines={1}
+                        >
                           "{ayahGroup.urduSnippet}"
                         </Text>
                       ) : null}

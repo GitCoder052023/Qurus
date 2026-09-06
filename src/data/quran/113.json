@@ -1,1 +1,107 @@
-{"number":113,"name":"سُورَةُ الفَلَقِ","englishName":"Al-Falaq","englishNameTranslation":"The Dawn","urduName":"صبح کا نکلنا / سورۃ الفلق","numberOfAyahs":5,"revelationType":"Meccan","juzStart":30,"ayahs":[{"numberInSurah":1,"globalNumber":6226,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ","urduText":"کہو کہ میں صبح کے پروردگار کی پناہ مانگتا ہوں","juz":30,"page":604,"ruku":555,"hizbQuarter":240,"sajda":false},{"numberInSurah":2,"globalNumber":6227,"arabicText":"مِن شَرِّ مَا خَلَقَ","urduText":"ہر چیز کی بدی سے جو اس نے پیدا کی","juz":30,"page":604,"ruku":555,"hizbQuarter":240,"sajda":false},{"numberInSurah":3,"globalNumber":6228,"arabicText":"وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ","urduText":"اور شب تاریکی کی برائی سے جب اس کااندھیرا چھا جائے","juz":30,"page":604,"ruku":555,"hizbQuarter":240,"sajda":false},{"numberInSurah":4,"globalNumber":6229,"arabicText":"وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ","urduText":"اور گنڈوں پر (پڑھ پڑھ کر) پھونکنے والیوں کی برائی سے","juz":30,"page":604,"ruku":555,"hizbQuarter":240,"sajda":false},{"numberInSurah":5,"globalNumber":6230,"arabicText":"وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ","urduText":"اور حسد کرنے والے کی برائی سے جب حسد کرنے لگے","juz":30,"page":604,"ruku":555,"hizbQuarter":240,"sajda":false}]}
+{
+  "number": 113,
+  "name": "سُورَةُ الفَلَقِ",
+  "englishName": "Al-Falaq",
+  "englishNameTranslation": "The Dawn",
+  "urduName": "صبح کا نکلنا / سورۃ الفلق",
+  "numberOfAyahs": 5,
+  "revelationType": "Meccan",
+  "juzStart": 30,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 6226,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ",
+      "urduText": "کہو کہ میں صبح کے پروردگار کی پناہ مانگتا ہوں",
+      "juz": 30,
+      "page": 604,
+      "ruku": 555,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Say, \"I seek refuge in the Lord of daybreak",
+      "translations": {
+        "urdu": "کہو کہ میں صبح کے پروردگار کی پناہ مانگتا ہوں",
+        "english": "Say, \"I seek refuge in the Lord of daybreak",
+        "bengali": "বলুন, আমি আশ্রয় গ্রহণ করছি প্রভাতের পালনকর্তার,",
+        "turkish": "De ki: \"Yaratıkların şerrinden, bastırdığı zaman karanlığın şerrinden, düğümlere nefes eden büyücülerin şerrinden, hased ettiği zaman hasedcilerin şerrinden, tan yerini ağartan Rabbe sığınırım.\"",
+        "french": "Dis: «Je cherche protection auprès du Seigneur de l'aube naissante,"
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 6227,
+      "arabicText": "مِن شَرِّ مَا خَلَقَ",
+      "urduText": "ہر چیز کی بدی سے جو اس نے پیدا کی",
+      "juz": 30,
+      "page": 604,
+      "ruku": 555,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "From the evil of that which He created",
+      "translations": {
+        "urdu": "ہر چیز کی بدی سے جو اس نے پیدا کی",
+        "english": "From the evil of that which He created",
+        "bengali": "তিনি যা সৃষ্টি করেছেন, তার অনিষ্ট থেকে,",
+        "turkish": "De ki: \"Yaratıkların şerrinden, bastırdığı zaman karanlığın şerrinden, düğümlere nefes eden büyücülerin şerrinden, hased ettiği zaman hasedcilerin şerrinden, tan yerini ağartan Rabbe sığınırım.\"",
+        "french": "contre le mal des êtres qu'Il a créés,"
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 6228,
+      "arabicText": "وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ",
+      "urduText": "اور شب تاریکی کی برائی سے جب اس کااندھیرا چھا جائے",
+      "juz": 30,
+      "page": 604,
+      "ruku": 555,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "And from the evil of darkness when it settles",
+      "translations": {
+        "urdu": "اور شب تاریکی کی برائی سے جب اس کااندھیرا چھا جائے",
+        "english": "And from the evil of darkness when it settles",
+        "bengali": "অন্ধকার রাত্রির অনিষ্ট থেকে, যখন তা সমাগত হয়,",
+        "turkish": "De ki: \"Yaratıkların şerrinden, bastırdığı zaman karanlığın şerrinden, düğümlere nefes eden büyücülerin şerrinden, hased ettiği zaman hasedcilerin şerrinden, tan yerini ağartan Rabbe sığınırım.\"",
+        "french": "contre le mal de l'obscurité quand elle s'approfondit,"
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 6229,
+      "arabicText": "وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ",
+      "urduText": "اور گنڈوں پر (پڑھ پڑھ کر) پھونکنے والیوں کی برائی سے",
+      "juz": 30,
+      "page": 604,
+      "ruku": 555,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "And from the evil of the blowers in knots",
+      "translations": {
+        "urdu": "اور گنڈوں پر (پڑھ پڑھ کر) پھونکنے والیوں کی برائی سے",
+        "english": "And from the evil of the blowers in knots",
+        "bengali": "গ্রন্থিতে ফুঁৎকার দিয়ে জাদুকারিনীদের অনিষ্ট থেকে",
+        "turkish": "De ki: \"Yaratıkların şerrinden, bastırdığı zaman karanlığın şerrinden, düğümlere nefes eden büyücülerin şerrinden, hased ettiği zaman hasedcilerin şerrinden, tan yerini ağartan Rabbe sığınırım.\"",
+        "french": "contre le mal de celles qui soufflent [les sorcières] sur les nœuds,"
+      }
+    },
+    {
+      "numberInSurah": 5,
+      "globalNumber": 6230,
+      "arabicText": "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ",
+      "urduText": "اور حسد کرنے والے کی برائی سے جب حسد کرنے لگے",
+      "juz": 30,
+      "page": 604,
+      "ruku": 555,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "And from the evil of an envier when he envies.\"",
+      "translations": {
+        "urdu": "اور حسد کرنے والے کی برائی سے جب حسد کرنے لگے",
+        "english": "And from the evil of an envier when he envies.\"",
+        "bengali": "এবং হিংসুকের অনিষ্ট থেকে যখন সে হিংসা করে।",
+        "turkish": "De ki: \"Yaratıkların şerrinden, bastırdığı zaman karanlığın şerrinden, düğümlere nefes eden büyücülerin şerrinden, hased ettiği zaman hasedcilerin şerrinden, tan yerini ağartan Rabbe sığınırım.\"",
+        "french": "et contre le mal de l'envieux quand il envie»."
+      }
+    }
+  ]
+}

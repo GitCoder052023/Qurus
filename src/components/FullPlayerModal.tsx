@@ -17,7 +17,7 @@ import { useStudyState } from '../context/StudyContext';
 import { NoteEditorModal } from './NoteEditorModal';
 import { VoiceNotePlayer } from './VoiceNotePlayer';
 import { getAyah } from '../data/surahLoader';
-import { RECITERS, SURAHS } from '../data/surahs';
+import { RECITERS, SURAHS, TRANSLATION_LANGUAGES, getAyahTranslation } from '../data/surahs';
 import { PlaybackMode } from '../types';
 
 export function FullPlayerModal() {
@@ -44,6 +44,7 @@ export function FullPlayerModal() {
     reciter,
     setReciter,
     playAyah,
+    translationLanguage,
   } = useAudio();
 
   const { theme } = useTheme();
@@ -97,6 +98,8 @@ export function FullPlayerModal() {
 
   const isArabicPhase = playbackPhase === 'arabic';
   const isUrduPhase = playbackPhase === 'translation';
+  const langConfig = TRANSLATION_LANGUAGES[translationLanguage] || TRANSLATION_LANGUAGES.urdu;
+  const translationText = currentAyah ? getAyahTranslation(currentAyah, translationLanguage) : '...';
 
   const handleBookmarkToggle = () => {
     if (currentAyah) {
@@ -104,7 +107,7 @@ export function FullPlayerModal() {
         currentSurahNumber,
         currentAyahNumber,
         currentAyah.arabicText,
-        currentAyah.urduText
+        translationText
       );
     }
   };
@@ -305,7 +308,7 @@ export function FullPlayerModal() {
                 ]}
               >
                 {isUrduPhase
-                  ? 'Reciting Urdu Translation • Shamshad Ali Khan'
+                  ? `Reciting ${langConfig.name} Translation • ${langConfig.voiceName}`
                   : `Reciting Arabic Verse • ${reciter.name.split(' ')[0]}`}
               </Text>
             </View>
@@ -361,15 +364,27 @@ export function FullPlayerModal() {
               <Text
                 style={[
                   styles.urduVerseText,
-                  { color: isUrduPhase ? theme.textPrimary : theme.textSecondary },
+                  {
+                    color: isUrduPhase ? theme.textPrimary : theme.textSecondary,
+                    textAlign: langConfig.isRTL ? 'right' : 'left',
+                    writingDirection: langConfig.isRTL ? 'rtl' : 'ltr',
+                  },
                   isUrduPhase && { fontWeight: '600' },
                 ]}
                 selectable
               >
-                {currentAyah?.urduText || '...'}
+                {translationText}
               </Text>
-              <Text style={[styles.urduAuthorFootnote, { color: theme.textTertiary }]}>
-                — ترجمہ: فتح محمد جالندھری
+              <Text
+                style={[
+                  styles.urduAuthorFootnote,
+                  {
+                    color: theme.textTertiary,
+                    textAlign: langConfig.isRTL ? 'right' : 'left',
+                  },
+                ]}
+              >
+                {`— Translation: ${langConfig.author} (${langConfig.voiceName})`}
               </Text>
             </View>
 
@@ -628,7 +643,7 @@ export function FullPlayerModal() {
       ayahNumber={currentAyahNumber ?? 1}
       surahName={currentSurah?.englishName || `Surah ${currentSurahNumber ?? ''}`}
       arabicText={currentAyah?.arabicText}
-      urduText={currentAyah?.urduText}
+      urduText={translationText}
       initialNote={currentNote?.text || ''}
       initialVoiceNote={currentNote?.voiceNote}
       noteId={currentNote?.id}
@@ -639,7 +654,7 @@ export function FullPlayerModal() {
           currentAyahNumber,
           text,
           currentAyah.arabicText,
-          currentAyah.urduText,
+          translationText,
           voiceNote,
           currentNote?.id
         );

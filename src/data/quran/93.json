@@ -1,1 +1,221 @@
-{"number":93,"name":"س��ورَةُ الضُّحَىٰ","englishName":"Ad-Dhuhaa","englishNameTranslation":"The Morning Hours","urduName":"چاشت کا وقت / سورۃ الضحیٰ","numberOfAyahs":11,"revelationType":"Meccan","juzStart":30,"ayahs":[{"numberInSurah":1,"globalNumber":6080,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ وَٱلضُّحَىٰ","urduText":"آفتاب کی روشنی کی قسم","juz":30,"page":596,"ruku":535,"hizbQuarter":238,"sajda":false},{"numberInSurah":2,"globalNumber":6081,"arabicText":"وَٱلَّيْلِ إِذَا سَجَىٰ","urduText":"اور رات (کی تاریکی) کی جب چھا جائے","juz":30,"page":596,"ruku":535,"hizbQuarter":238,"sajda":false},{"numberInSurah":3,"globalNumber":6082,"arabicText":"مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ","urduText":"کہ (اے محمدﷺ) تمہارے پروردگار نے نہ تو تم کو چھوڑا اور نہ (تم سے) ناراض ہوا","juz":30,"page":596,"ruku":535,"hizbQuarter":238,"sajda":false},{"numberInSurah":4,"globalNumber":6083,"arabicText":"وَلَلْءَاخِرَةُ خَيْرٌۭ لَّكَ مِنَ ٱلْأُولَىٰ","urduText":"اور آخرت تمہارے لیے پہلی (حالت یعنی دنیا) سے کہیں بہتر ہے","juz":30,"page":596,"ruku":535,"hizbQuarter":238,"sajda":false},{"numberInSurah":5,"globalNumber":6084,"arabicText":"وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰٓ","urduText":"اور تمہیں پروردگار عنقریب وہ کچھ عطا فرمائے گا کہ تم خوش ہو جاؤ گے","juz":30,"page":596,"ruku":535,"hizbQuarter":238,"sajda":false},{"numberInSurah":6,"globalNumber":6085,"arabicText":"أَلَمْ يَجِدْكَ يَتِيمًۭا فَـَٔاوَىٰ","urduText":"بھلا اس نے تمہیں یتیم پا کر جگہ نہیں دی؟ (بےشک دی)","juz":30,"page":596,"ruku":535,"hizbQuarter":238,"sajda":false},{"numberInSurah":7,"globalNumber":6086,"arabicText":"وَوَجَدَكَ ضَآلًّۭا فَهَدَىٰ","urduText":"اور رستے سے ناواقف دیکھا تو رستہ دکھایا","juz":30,"page":596,"ruku":535,"hizbQuarter":238,"sajda":false},{"numberInSurah":8,"globalNumber":6087,"arabicText":"وَوَجَدَكَ عَآئِلًۭا فَأَغْنَىٰ","urduText":"اور تنگ دست پایا تو غنی کر دیا","juz":30,"page":596,"ruku":535,"hizbQuarter":238,"sajda":false},{"numberInSurah":9,"globalNumber":6088,"arabicText":"فَأَمَّا ٱلْيَتِيمَ فَلَا تَقْهَرْ","urduText":"تو تم بھی یتیم پر ستم نہ کرنا","juz":30,"page":596,"ruku":535,"hizbQuarter":238,"sajda":false},{"numberInSurah":10,"globalNumber":6089,"arabicText":"وَأَمَّا ٱلسَّآئِلَ فَلَا تَنْهَرْ","urduText":"اور مانگنے والے کو جھڑکی نہ دینا","juz":30,"page":596,"ruku":535,"hizbQuarter":238,"sajda":false},{"numberInSurah":11,"globalNumber":6090,"arabicText":"وَأَمَّا بِنِعْمَةِ رَبِّكَ فَحَدِّثْ","urduText":"اور اپنے پروردگار کی نعمتوں کا بیان کرتے رہنا","juz":30,"page":596,"ruku":535,"hizbQuarter":238,"sajda":false}]}
+{
+  "number": 93,
+  "name": "س��ورَةُ الضُّحَىٰ",
+  "englishName": "Ad-Dhuhaa",
+  "englishNameTranslation": "The Morning Hours",
+  "urduName": "چاشت کا وقت / سورۃ الضحیٰ",
+  "numberOfAyahs": 11,
+  "revelationType": "Meccan",
+  "juzStart": 30,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 6080,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ وَٱلضُّحَىٰ",
+      "urduText": "آفتاب کی روشنی کی قسم",
+      "juz": 30,
+      "page": 596,
+      "ruku": 535,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "By the morning brightness",
+      "translations": {
+        "urdu": "آفتاب کی روشنی کی قسم",
+        "english": "By the morning brightness",
+        "bengali": "শপথ পূর্বাহ্নের,",
+        "turkish": "Kuşluk vaktine and olsun;",
+        "french": "Par le Jour Montant!"
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 6081,
+      "arabicText": "وَٱلَّيْلِ إِذَا سَجَىٰ",
+      "urduText": "اور رات (کی تاریکی) کی جب چھا جائے",
+      "juz": 30,
+      "page": 596,
+      "ruku": 535,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "And [by] the night when it covers with darkness,",
+      "translations": {
+        "urdu": "اور رات (کی تاریکی) کی جب چھا جائے",
+        "english": "And [by] the night when it covers with darkness,",
+        "bengali": "শপথ রাত্রির যখন তা গভীর হয়,",
+        "turkish": "Sükun erdiği zaman geceye and olsun ki,",
+        "french": "Et par la nuit quand elle couvre tout!"
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 6082,
+      "arabicText": "مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ",
+      "urduText": "کہ (اے محمدﷺ) تمہارے پروردگار نے نہ تو تم کو چھوڑا اور نہ (تم سے) ناراض ہوا",
+      "juz": 30,
+      "page": 596,
+      "ruku": 535,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "Your Lord has not taken leave of you, [O Muhammad], nor has He detested [you].",
+      "translations": {
+        "urdu": "کہ (اے محمدﷺ) تمہارے پروردگار نے نہ تو تم کو چھوڑا اور نہ (تم سے) ناراض ہوا",
+        "english": "Your Lord has not taken leave of you, [O Muhammad], nor has He detested [you].",
+        "bengali": "আপনার পালনকর্তা আপনাকে ত্যাগ করেনি এবং আপনার প্রতি বিরূপও হননি।",
+        "turkish": "Rabbin seni ne bıraktı ve ne de sana darıldı.",
+        "french": "Ton Seigneur ne t'a ni abandonné, ni détesté."
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 6083,
+      "arabicText": "وَلَلْءَاخِرَةُ خَيْرٌۭ لَّكَ مِنَ ٱلْأُولَىٰ",
+      "urduText": "اور آخرت تمہارے لیے پہلی (حالت یعنی دنیا) سے کہیں بہتر ہے",
+      "juz": 30,
+      "page": 596,
+      "ruku": 535,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "And the Hereafter is better for you than the first [life].",
+      "translations": {
+        "urdu": "اور آخرت تمہارے لیے پہلی (حالت یعنی دنیا) سے کہیں بہتر ہے",
+        "english": "And the Hereafter is better for you than the first [life].",
+        "bengali": "আপনার জন্যে পরকাল ইহকাল অপেক্ষা শ্রেয়।",
+        "turkish": "Doğrusu ahiret senin için dünyadan daha hayırlıdır.",
+        "french": "La vie dernière t'est, certes, meilleure que la vie présente."
+      }
+    },
+    {
+      "numberInSurah": 5,
+      "globalNumber": 6084,
+      "arabicText": "وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰٓ",
+      "urduText": "اور تمہیں پروردگار عنقریب وہ کچھ عطا فرمائے گا کہ تم خوش ہو جاؤ گے",
+      "juz": 30,
+      "page": 596,
+      "ruku": 535,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "And your Lord is going to give you, and you will be satisfied.",
+      "translations": {
+        "urdu": "اور تمہیں پروردگار عنقریب وہ کچھ عطا فرمائے گا کہ تم خوش ہو جاؤ گے",
+        "english": "And your Lord is going to give you, and you will be satisfied.",
+        "bengali": "আপনার পালনকর্তা সত্বরই আপনাকে দান করবেন, অতঃপর আপনি সন্তুষ্ট হবেন।",
+        "turkish": "Rabbin şüphesiz sana verecek ve sen de hoşnut olacaksın.",
+        "french": "Ton Seigneur t'accordera certes [Ses faveurs], et alors tu seras satisfait."
+      }
+    },
+    {
+      "numberInSurah": 6,
+      "globalNumber": 6085,
+      "arabicText": "أَلَمْ يَجِدْكَ يَتِيمًۭا فَـَٔاوَىٰ",
+      "urduText": "بھلا اس نے تمہیں یتیم پا کر جگہ نہیں دی؟ (بےشک دی)",
+      "juz": 30,
+      "page": 596,
+      "ruku": 535,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "Did He not find you an orphan and give [you] refuge?",
+      "translations": {
+        "urdu": "بھلا اس نے تمہیں یتیم پا کر جگہ نہیں دی؟ (بےشک دی)",
+        "english": "Did He not find you an orphan and give [you] refuge?",
+        "bengali": "তিনি কি আপনাকে এতীমরূপে পাননি? অতঃপর তিনি আশ্রয় দিয়েছেন।",
+        "turkish": "Seni öksüz bulup da barındırmadı mı?",
+        "french": "Ne t'a-t-Il pas trouvé orphelin? Alors Il t'a accueilli!"
+      }
+    },
+    {
+      "numberInSurah": 7,
+      "globalNumber": 6086,
+      "arabicText": "وَوَجَدَكَ ضَآلًّۭا فَهَدَىٰ",
+      "urduText": "اور رستے سے ناواقف دیکھا تو رستہ دکھایا",
+      "juz": 30,
+      "page": 596,
+      "ruku": 535,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "And He found you lost and guided [you],",
+      "translations": {
+        "urdu": "اور رستے سے ناواقف دیکھا تو رستہ دکھایا",
+        "english": "And He found you lost and guided [you],",
+        "bengali": "তিনি আপনাকে পেয়েছেন পথহারা, অতঃপর পথপ্রদর্শন করেছেন।",
+        "turkish": "Seni şaşırmış bulup, doğru yola eriştirmedi mi?",
+        "french": "Ne t'a-t-Il pas trouvé égaré? Alors Il t'a guidé."
+      }
+    },
+    {
+      "numberInSurah": 8,
+      "globalNumber": 6087,
+      "arabicText": "وَوَجَدَكَ عَآئِلًۭا فَأَغْنَىٰ",
+      "urduText": "اور تنگ دست پایا تو غنی کر دیا",
+      "juz": 30,
+      "page": 596,
+      "ruku": 535,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "And He found you poor and made [you] self-sufficient.",
+      "translations": {
+        "urdu": "اور تنگ دست پایا تو غنی کر دیا",
+        "english": "And He found you poor and made [you] self-sufficient.",
+        "bengali": "তিনি আপনাকে পেয়েছেন নিঃস্ব, অতঃপর অভাবমুক্ত করেছেন।",
+        "turkish": "Seni fakir bulup zenginleştirmedi mi?",
+        "french": "Ne t'a-t-Il pas trouvé pauvre? Alors Il t'a enrichi."
+      }
+    },
+    {
+      "numberInSurah": 9,
+      "globalNumber": 6088,
+      "arabicText": "فَأَمَّا ٱلْيَتِيمَ فَلَا تَقْهَرْ",
+      "urduText": "تو تم بھی یتیم پر ستم نہ کرنا",
+      "juz": 30,
+      "page": 596,
+      "ruku": 535,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "So as for the orphan, do not oppress [him].",
+      "translations": {
+        "urdu": "تو تم بھی یتیم پر ستم نہ کرنا",
+        "english": "So as for the orphan, do not oppress [him].",
+        "bengali": "সুতরাং আপনি এতীমের প্রতি কঠোর হবেন না;",
+        "turkish": "Öyleyse sakın öksüze kötü muamele etme;",
+        "french": "Quant à l'orphelin, donc, ne le maltraite pas."
+      }
+    },
+    {
+      "numberInSurah": 10,
+      "globalNumber": 6089,
+      "arabicText": "وَأَمَّا ٱلسَّآئِلَ فَلَا تَنْهَرْ",
+      "urduText": "اور مانگنے والے کو جھڑکی نہ دینا",
+      "juz": 30,
+      "page": 596,
+      "ruku": 535,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "And as for the petitioner, do not repel [him].",
+      "translations": {
+        "urdu": "اور مانگنے والے کو جھڑکی نہ دینا",
+        "english": "And as for the petitioner, do not repel [him].",
+        "bengali": "সওয়ালকারীকে ধমক দেবেন না।",
+        "turkish": "Ve sakın bir şey isteyeni azarlama;",
+        "french": "Quant au demandeur, ne le repousse pas."
+      }
+    },
+    {
+      "numberInSurah": 11,
+      "globalNumber": 6090,
+      "arabicText": "وَأَمَّا بِنِعْمَةِ رَبِّكَ فَحَدِّثْ",
+      "urduText": "اور اپنے پروردگار کی نعمتوں کا بیان کرتے رہنا",
+      "juz": 30,
+      "page": 596,
+      "ruku": 535,
+      "hizbQuarter": 238,
+      "sajda": false,
+      "englishText": "But as for the favor of your Lord, report [it].",
+      "translations": {
+        "urdu": "اور اپنے پروردگار کی نعمتوں کا بیان کرتے رہنا",
+        "english": "But as for the favor of your Lord, report [it].",
+        "bengali": "এবং আপনার পালনকর্তার নেয়ামতের কথা প্রকাশ করুন।",
+        "turkish": "Yalnızca Rabbinin nimetini anlat.",
+        "french": "Et quant au bienfait de ton Seigneur, proclame-le."
+      }
+    }
+  ]
+}

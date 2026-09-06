@@ -1,1 +1,164 @@
-{"number":94,"name":"سُورَةُ الشَّرۡحِ","englishName":"Ash-Sharh","englishNameTranslation":"The Consolation","urduName":"کشادہ کرنا / سورۃ الشرح","numberOfAyahs":8,"revelationType":"Meccan","juzStart":30,"ayahs":[{"numberInSurah":1,"globalNumber":6091,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ أَلَمْ نَشْرَحْ لَكَ صَدْرَكَ","urduText":"(اے محمدﷺ) کیا ہم نے تمہارا سینہ کھول نہیں دیا؟ (بےشک کھول دیا)","juz":30,"page":596,"ruku":536,"hizbQuarter":239,"sajda":false},{"numberInSurah":2,"globalNumber":6092,"arabicText":"وَوَضَعْنَا عَنكَ وِزْرَكَ","urduText":"اور تم پر سے بوجھ بھی اتار دیا","juz":30,"page":596,"ruku":536,"hizbQuarter":239,"sajda":false},{"numberInSurah":3,"globalNumber":6093,"arabicText":"ٱلَّذِىٓ أَنقَضَ ظَهْرَكَ","urduText":"جس نے تمہاری پیٹھ توڑ رکھی تھی","juz":30,"page":596,"ruku":536,"hizbQuarter":239,"sajda":false},{"numberInSurah":4,"globalNumber":6094,"arabicText":"وَرَفَعْنَا لَ��َ ذِكْرَكَ","urduText":"اور تمہارا ذکر بلند کیا","juz":30,"page":596,"ruku":536,"hizbQuarter":239,"sajda":false},{"numberInSurah":5,"globalNumber":6095,"arabicText":"فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا","urduText":"ہاں ہاں مشکل کے ساتھ آسانی بھی ہے","juz":30,"page":596,"ruku":536,"hizbQuarter":239,"sajda":false},{"numberInSurah":6,"globalNumber":6096,"arabicText":"إِنَّ مَعَ ٱلْعُسْرِ يُسْرًۭا","urduText":"(اور) بے شک مشکل کے ساتھ آسانی ہے","juz":30,"page":596,"ruku":536,"hizbQuarter":239,"sajda":false},{"numberInSurah":7,"globalNumber":6097,"arabicText":"فَإِذَا فَرَغْتَ فَٱنصَبْ","urduText":"تو جب فارغ ہوا کرو تو (عبادت میں) محنت کیا کرو","juz":30,"page":596,"ruku":536,"hizbQuarter":239,"sajda":false},{"numberInSurah":8,"globalNumber":6098,"arabicText":"وَإِلَىٰ رَبِّكَ فَٱرْغَب","urduText":"اور اپنے پروردگار کی طرف متوجہ ہو جایا کرو","juz":30,"page":596,"ruku":536,"hizbQuarter":239,"sajda":false}]}
+{
+  "number": 94,
+  "name": "سُورَةُ الشَّرۡحِ",
+  "englishName": "Ash-Sharh",
+  "englishNameTranslation": "The Consolation",
+  "urduName": "کشادہ کرنا / سورۃ الشرح",
+  "numberOfAyahs": 8,
+  "revelationType": "Meccan",
+  "juzStart": 30,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 6091,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ أَلَمْ نَشْرَحْ لَكَ صَدْرَكَ",
+      "urduText": "(اے محمدﷺ) کیا ہم نے تمہارا سینہ کھول نہیں دیا؟ (بےشک کھول دیا)",
+      "juz": 30,
+      "page": 596,
+      "ruku": 536,
+      "hizbQuarter": 239,
+      "sajda": false,
+      "englishText": "Did We not expand for you, [O Muhammad], your breast?",
+      "translations": {
+        "urdu": "(اے محمدﷺ) کیا ہم نے تمہارا سینہ کھول نہیں دیا؟ (بےشک کھول دیا)",
+        "english": "Did We not expand for you, [O Muhammad], your breast?",
+        "bengali": "আমি কি আপনার বক্ষ উম্মুক্ত করে দেইনি?",
+        "turkish": "Senin gönlünü açmadık mı?",
+        "french": "N'avons-Nous pas ouvert pour toi ta poitrine?"
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 6092,
+      "arabicText": "وَوَضَعْنَا عَنكَ وِزْرَكَ",
+      "urduText": "اور تم پر سے بوجھ بھی اتار دیا",
+      "juz": 30,
+      "page": 596,
+      "ruku": 536,
+      "hizbQuarter": 239,
+      "sajda": false,
+      "englishText": "And We removed from you your burden",
+      "translations": {
+        "urdu": "اور تم پر سے بوجھ بھی اتار دیا",
+        "english": "And We removed from you your burden",
+        "bengali": "আমি লাঘব করেছি আপনার বোঝা,",
+        "turkish": "Belini büken yükünü üzerinden almadık mı?",
+        "french": "Et ne t'avons-Nous pas déchargé du fardeau"
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 6093,
+      "arabicText": "ٱلَّذِىٓ أَنقَضَ ظَهْرَكَ",
+      "urduText": "جس نے تمہاری پیٹھ توڑ رکھی تھی",
+      "juz": 30,
+      "page": 596,
+      "ruku": 536,
+      "hizbQuarter": 239,
+      "sajda": false,
+      "englishText": "Which had weighed upon your back",
+      "translations": {
+        "urdu": "جس نے تمہاری پیٹھ توڑ رکھی تھی",
+        "english": "Which had weighed upon your back",
+        "bengali": "যা ছিল আপনার জন্যে অতিশয় দুঃসহ।",
+        "turkish": "Belini büken yükünü üzerinden almadık mı?",
+        "french": "qui accablait ton dos?"
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 6094,
+      "arabicText": "وَرَفَعْنَا لَ��َ ذِكْرَكَ",
+      "urduText": "اور تمہارا ذکر بلند کیا",
+      "juz": 30,
+      "page": 596,
+      "ruku": 536,
+      "hizbQuarter": 239,
+      "sajda": false,
+      "englishText": "And raised high for you your repute.",
+      "translations": {
+        "urdu": "اور تمہارا ذکر بلند کیا",
+        "english": "And raised high for you your repute.",
+        "bengali": "আমি আপনার আলোচনাকে সমুচ্চ করেছি।",
+        "turkish": "Senin şanını yükseltmedik mi?",
+        "french": "Et exalté pour toi ta renommée?"
+      }
+    },
+    {
+      "numberInSurah": 5,
+      "globalNumber": 6095,
+      "arabicText": "فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا",
+      "urduText": "ہاں ہاں مشکل کے ساتھ آسانی بھی ہے",
+      "juz": 30,
+      "page": 596,
+      "ruku": 536,
+      "hizbQuarter": 239,
+      "sajda": false,
+      "englishText": "For indeed, with hardship [will be] ease.",
+      "translations": {
+        "urdu": "ہاں ہاں مشکل کے ساتھ آسانی بھی ہے",
+        "english": "For indeed, with hardship [will be] ease.",
+        "bengali": "নিশ্চয় কষ্টের সাথে স্বস্তি রয়েছে।",
+        "turkish": "Elbette güçlükle beraber şüphesiz bir kolaylık vardır.",
+        "french": "A côté de la difficulté est, certes, une facilité!"
+      }
+    },
+    {
+      "numberInSurah": 6,
+      "globalNumber": 6096,
+      "arabicText": "إِنَّ مَعَ ٱلْعُسْرِ يُسْرًۭا",
+      "urduText": "(اور) بے شک مشکل کے ساتھ آسانی ہے",
+      "juz": 30,
+      "page": 596,
+      "ruku": 536,
+      "hizbQuarter": 239,
+      "sajda": false,
+      "englishText": "Indeed, with hardship [will be] ease.",
+      "translations": {
+        "urdu": "(اور) بے شک مشکل کے ساتھ آسانی ہے",
+        "english": "Indeed, with hardship [will be] ease.",
+        "bengali": "নিশ্চয় কষ্টের সাথে স্বস্তি রয়েছে।",
+        "turkish": "Gerçekten, güçlükle beraber bir kolaylık vardır.",
+        "french": "A côté de la difficulté est, certes, une facilité!"
+      }
+    },
+    {
+      "numberInSurah": 7,
+      "globalNumber": 6097,
+      "arabicText": "فَإِذَا فَرَغْتَ فَٱنصَبْ",
+      "urduText": "تو جب فارغ ہوا کرو تو (عبادت میں) محنت کیا کرو",
+      "juz": 30,
+      "page": 596,
+      "ruku": 536,
+      "hizbQuarter": 239,
+      "sajda": false,
+      "englishText": "So when you have finished [your duties], then stand up [for worship].",
+      "translations": {
+        "urdu": "تو جب فارغ ہوا کرو تو (عبادت میں) محنت کیا کرو",
+        "english": "So when you have finished [your duties], then stand up [for worship].",
+        "bengali": "অতএব, যখন অবসর পান পরিশ্রম করুন।",
+        "turkish": "Öyleyse, bir işi bitirince diğerine giriş;",
+        "french": "Quand tu te libères, donc, lève-toi,"
+      }
+    },
+    {
+      "numberInSurah": 8,
+      "globalNumber": 6098,
+      "arabicText": "وَإِلَىٰ رَبِّكَ فَٱرْغَب",
+      "urduText": "اور اپنے پروردگار کی طرف متوجہ ہو جایا کرو",
+      "juz": 30,
+      "page": 596,
+      "ruku": 536,
+      "hizbQuarter": 239,
+      "sajda": false,
+      "englishText": "And to your Lord direct [your] longing.",
+      "translations": {
+        "urdu": "اور اپنے پروردگار کی طرف متوجہ ہو جایا کرو",
+        "english": "And to your Lord direct [your] longing.",
+        "bengali": "এবং আপনার পালনকর্তার প্রতি মনোনিবেশ করুন।",
+        "turkish": "Ve ümit edeceğini yalnız Rabbinden iste.",
+        "french": "et à ton Seigneur aspire."
+      }
+    }
+  ]
+}

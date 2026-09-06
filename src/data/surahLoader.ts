@@ -1,4 +1,4 @@
-import { SurahData, SurahMetadata, Ayah } from "../types";
+import { SurahData, SurahMetadata, Ayah, TranslationLanguage } from "../types";
 import { SURAHS } from "./surahs";
 
 const surahDataMap: Record<number, any> = {
@@ -133,7 +133,11 @@ export function getAyah(surahNumber: number, ayahNumber: number): Ayah | null {
   return surah.ayahs.find(a => a.numberInSurah === ayahNumber) || null;
 }
 
-export function searchQuran(query: string, maxResults = 50): Array<{ surah: SurahMetadata; ayah: Ayah }> {
+export function searchQuran(
+  query: string,
+  maxResults = 50,
+  language?: TranslationLanguage
+): Array<{ surah: SurahMetadata; ayah: Ayah }> {
   const q = query.trim().toLowerCase();
   if (!q) return [];
   const results: Array<{ surah: SurahMetadata; ayah: Ayah }> = [];
@@ -141,7 +145,19 @@ export function searchQuran(query: string, maxResults = 50): Array<{ surah: Sura
     const data = getSurah(meta.number);
     if (!data) continue;
     for (const ayah of data.ayahs) {
-      if (ayah.arabicText.includes(q) || ayah.urduText.includes(q)) {
+      const matchArabic = ayah.arabicText.toLowerCase().includes(q);
+      const matchUrdu = ayah.urduText.toLowerCase().includes(q);
+      let matchTrans = false;
+      if (ayah.translations) {
+        if (language && ayah.translations[language]) {
+          matchTrans = (ayah.translations[language] || '').toLowerCase().includes(q);
+        } else {
+          matchTrans = Object.values(ayah.translations).some((t) =>
+            (t || '').toLowerCase().includes(q)
+          );
+        }
+      }
+      if (matchArabic || matchUrdu || matchTrans) {
         results.push({ surah: meta, ayah });
         if (results.length >= maxResults) return results;
       }

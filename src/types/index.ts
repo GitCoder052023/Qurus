@@ -16,6 +16,8 @@ export interface Ayah {
   globalNumber: number;
   arabicText: string;
   urduText: string;
+  englishText?: string;
+  translations?: Partial<Record<TranslationLanguage, string>>;
   juz: number;
   page?: number;
   ruku?: number;
@@ -79,6 +81,13 @@ export type ThemeMode = 'light' | 'dark' | 'sepia' | 'system';
 export type PlaybackMode = 'both' | 'arabic_only' | 'translation_only';
 export type PlaybackPhase = 'arabic' | 'translation';
 
+export type TranslationLanguage =
+  | 'urdu'
+  | 'english'
+  | 'bengali'
+  | 'turkish'
+  | 'french';
+
 export interface ReadingPreferences {
   arabicFontSize: number;
   urduFontSize: number;
@@ -88,6 +97,7 @@ export interface ReadingPreferences {
   playbackSpeed: number;
   autoScroll: boolean;
   playbackMode: PlaybackMode;
+  translationLanguage: TranslationLanguage;
 }
 
 export interface Reciter {

@@ -1,4 +1,4 @@
-import { SurahMetadata } from '../types';
+import { SurahMetadata, TranslationLanguage, Ayah } from '../types';
 
 export const SURAHS: SurahMetadata[] = [
   {
@@ -1182,6 +1182,82 @@ export function getAudioUrl(reciterSubfolder: string, surahNumber: number, ayahN
   return `https://everyayah.com/data/${reciterSubfolder}/${surahPadded}${ayahPadded}.mp3`;
 }
 
+export interface TranslationLanguageConfig {
+  id: TranslationLanguage;
+  name: string;
+  nativeName: string;
+  flag: string;
+  author: string;
+  voiceName: string;
+  bitrate?: string;
+  isRTL: boolean;
+  bismillah: string;
+  speechLocale?: string;
+}
+
+export const TRANSLATION_LANGUAGES: Record<TranslationLanguage, TranslationLanguageConfig> = {
+  urdu: {
+    id: 'urdu',
+    name: 'Urdu',
+    nativeName: 'اردو',
+    flag: '🇵🇰',
+    author: 'Fateh Muhammad Jalandhari',
+    voiceName: 'Shamshad Ali Khan',
+    bitrate: '46 kbps',
+    isRTL: true,
+    bismillah: 'شروع الله کا نام لے کر جو بڑا مہربان نہایت رحم والا ہے',
+    speechLocale: 'ur-PK',
+  },
+  english: {
+    id: 'english',
+    name: 'English',
+    nativeName: 'English',
+    flag: '🇬🇧',
+    author: 'Sahih International',
+    voiceName: 'Ibrahim Walk',
+    bitrate: '192 kbps',
+    isRTL: false,
+    bismillah: 'In the name of Allah, the Entirely Merciful, the Especially Merciful.',
+    speechLocale: 'en-US',
+  },
+  bengali: {
+    id: 'bengali',
+    name: 'Bengali',
+    nativeName: 'বাংলা',
+    flag: '🇧🇩',
+    author: 'Muhiuddin Khan',
+    voiceName: 'Bangla Quran Voice',
+    bitrate: '56 kbps',
+    isRTL: false,
+    bismillah: 'শুরু করছি আল্লাহর নামে যিনি পরম করুণাময়, অতি দয়ালু।',
+    speechLocale: 'bn-BD',
+  },
+  turkish: {
+    id: 'turkish',
+    name: 'Turkish',
+    nativeName: 'Türkçe',
+    flag: '🇹🇷',
+    author: 'Diyanet İşleri',
+    voiceName: 'Diyanet Vakfı',
+    bitrate: '128 kbps',
+    isRTL: false,
+    bismillah: "Rahman ve Rahim olan Allah'ın adıyla:",
+    speechLocale: 'tr-TR',
+  },
+  french: {
+    id: 'french',
+    name: 'French',
+    nativeName: 'Français',
+    flag: '🇫🇷',
+    author: 'Muhammad Hamidullah',
+    voiceName: 'Youssouf Leclerc',
+    bitrate: '128 kbps',
+    isRTL: false,
+    bismillah: "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux.",
+    speechLocale: 'fr-FR',
+  },
+};
+
 export const URDU_TRANSLATION_RECITER = {
   id: 'urdu_shamshad',
   name: 'Shamshad Ali Khan',
@@ -1189,9 +1265,86 @@ export const URDU_TRANSLATION_RECITER = {
   subfolder: 'translations/urdu_shamshad_ali_khan_46kbps',
 };
 
+export const ENGLISH_TRANSLATION_RECITER = {
+  id: 'english_walk',
+  name: 'Ibrahim Walk',
+  arabicName: 'English • Ibrahim Walk (Sahih Int.)',
+  subfolder: 'English/Sahih_Intnl_Ibrahim_Walk_192kbps',
+};
+
+export const TRANSLATION_RECITERS = {
+  urdu: URDU_TRANSLATION_RECITER,
+  english: ENGLISH_TRANSLATION_RECITER,
+};
+
+export function getGlobalAyahNumber(surahNumber: number, ayahNumber: number): number {
+  let count = 0;
+  for (let s = 1; s < surahNumber; s++) {
+    const meta = SURAHS.find((item) => item.number === s);
+    if (meta) count += meta.numberOfAyahs;
+  }
+  return count + ayahNumber;
+}
+
+export function getAyahTranslation(ayah: Ayah, language: TranslationLanguage = 'urdu'): string {
+  if (language === 'urdu') {
+    return ayah.urduText;
+  }
+  if (ayah.translations && ayah.translations[language]) {
+    return ayah.translations[language] || '';
+  }
+  if (language === 'english' && ayah.englishText) {
+    return ayah.englishText;
+  }
+  return ayah.urduText;
+}
+
 export function getUrduAudioUrl(surahNumber: number, ayahNumber: number): string {
   const surahPadded = String(surahNumber).padStart(3, '0');
   const ayahPadded = String(ayahNumber).padStart(3, '0');
   return `https://everyayah.com/data/translations/urdu_shamshad_ali_khan_46kbps/${surahPadded}${ayahPadded}.mp3`;
 }
+
+export function getEnglishAudioUrl(surahNumber: number, ayahNumber: number): string {
+  const surahPadded = String(surahNumber).padStart(3, '0');
+  const ayahPadded = String(ayahNumber).padStart(3, '0');
+  return `https://everyayah.com/data/English/Sahih_Intnl_Ibrahim_Walk_192kbps/${surahPadded}${ayahPadded}.mp3`;
+}
+
+export function getFrenchAudioUrl(surahNumber: number, ayahNumber: number, globalNumber?: number): string {
+  const global = globalNumber || getGlobalAyahNumber(surahNumber, ayahNumber);
+  return `https://cdn.islamic.network/quran/audio/128/fr.leclerc/${global}.mp3`;
+}
+
+export function getTurkishAudioUrl(surahNumber: number, ayahNumber: number, globalNumber?: number): string {
+  const global = globalNumber || getGlobalAyahNumber(surahNumber, ayahNumber);
+  return `https://cdn.islamic.network/quran/audio/128/tr.vakfi-audio/${global}.mp3`;
+}
+
+export function getBengaliAudioUrl(surahNumber: number, ayahNumber: number): string {
+  return `https://raw.githubusercontent.com/imranpollob/bangla-quran/master/public/audio/bt/${surahNumber}-${ayahNumber}.mp3`;
+}
+
+export function getTranslationAudioUrl(
+  surahNumber: number,
+  ayahNumber: number,
+  language: TranslationLanguage = 'urdu',
+  globalNumber?: number
+): string | null {
+  switch (language) {
+    case 'english':
+      return getEnglishAudioUrl(surahNumber, ayahNumber);
+    case 'french':
+      return getFrenchAudioUrl(surahNumber, ayahNumber, globalNumber);
+    case 'turkish':
+      return getTurkishAudioUrl(surahNumber, ayahNumber, globalNumber);
+    case 'bengali':
+      return getBengaliAudioUrl(surahNumber, ayahNumber);
+    case 'urdu':
+    default:
+      return getUrduAudioUrl(surahNumber, ayahNumber);
+  }
+}
+
+
 

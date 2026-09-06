@@ -1,1 +1,107 @@
-{"number":111,"name":"سُورَةُ المَسَدِ","englishName":"Al-Masad","englishNameTranslation":"The Palm Fibre","urduName":"کھجور کی چھال کا بٹا رسا / سورۃ المسد","numberOfAyahs":5,"revelationType":"Meccan","juzStart":30,"ayahs":[{"numberInSurah":1,"globalNumber":6217,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ تَبَّتْ يَدَآ أَبِى لَهَبٍۢ وَتَبَّ","urduText":"ابولہب کے ہاتھ ٹوٹیں اور وہ ہلاک ہو","juz":30,"page":603,"ruku":553,"hizbQuarter":240,"sajda":false},{"numberInSurah":2,"globalNumber":6218,"arabicText":"مَآ أَغْنَىٰ عَنْهُ مَالُهُۥ وَمَا كَسَبَ","urduText":"نہ تو اس کا مال ہی اس کے کچھ کام آیا اور نہ وہ جو اس نے کمایا","juz":30,"page":603,"ruku":553,"hizbQuarter":240,"sajda":false},{"numberInSurah":3,"globalNumber":6219,"arabicText":"سَيَصْلَىٰ نَارًۭا ذَاتَ لَهَبٍۢ","urduText":"وہ جلد بھڑکتی ہوئی آگ میں داخل ہو گا","juz":30,"page":603,"ruku":553,"hizbQuarter":240,"sajda":false},{"numberInSurah":4,"globalNumber":6220,"arabicText":"وَٱمْرَأَتُهُۥ حَمَّالَةَ ٱلْحَطَبِ","urduText":"اور اس کی جورو بھی جو ایندھن سر پر اٹھائے پھرتی ہے","juz":30,"page":603,"ruku":553,"hizbQuarter":240,"sajda":false},{"numberInSurah":5,"globalNumber":6221,"arabicText":"فِى جِيدِهَا حَبْلٌۭ مِّن مَّسَدٍۭ","urduText":"اس کے گلے میں مونج کی رسّی ہو گی","juz":30,"page":603,"ruku":553,"hizbQuarter":240,"sajda":false}]}
+{
+  "number": 111,
+  "name": "سُورَةُ المَسَدِ",
+  "englishName": "Al-Masad",
+  "englishNameTranslation": "The Palm Fibre",
+  "urduName": "کھجور کی چھال کا بٹا رسا / سورۃ المسد",
+  "numberOfAyahs": 5,
+  "revelationType": "Meccan",
+  "juzStart": 30,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 6217,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ تَبَّتْ يَدَآ أَبِى لَهَبٍۢ وَتَبَّ",
+      "urduText": "ابولہب کے ہاتھ ٹوٹیں اور وہ ہلاک ہو",
+      "juz": 30,
+      "page": 603,
+      "ruku": 553,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "May the hands of Abu Lahab be ruined, and ruined is he.",
+      "translations": {
+        "urdu": "ابولہب کے ہاتھ ٹوٹیں اور وہ ہلاک ہو",
+        "english": "May the hands of Abu Lahab be ruined, and ruined is he.",
+        "bengali": "আবু লাহাবের হস্তদ্বয় ধ্বংস হোক এবং ধ্বংস হোক সে নিজে,",
+        "turkish": "Ebu Leheb'in elleri kurusun; kurudu da!",
+        "french": "Que périssent les deux mains d'Abû-Lahab et que lui-même périsse."
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 6218,
+      "arabicText": "مَآ أَغْنَىٰ عَنْهُ مَالُهُۥ وَمَا كَسَبَ",
+      "urduText": "نہ تو اس کا مال ہی اس کے کچھ کام آیا اور نہ وہ جو اس نے کمایا",
+      "juz": 30,
+      "page": 603,
+      "ruku": 553,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "His wealth will not avail him or that which he gained.",
+      "translations": {
+        "urdu": "نہ تو اس کا مال ہی اس کے کچھ کام آیا اور نہ وہ جو اس نے کمایا",
+        "english": "His wealth will not avail him or that which he gained.",
+        "bengali": "কোন কাজে আসেনি তার ধন-সম্পদ ও যা সে উপার্জন করেছে।",
+        "turkish": "Malı ve kazandığı kendisine fayda vermedi.",
+        "french": "Sa fortune ne lui sert à rien, ni ce qu'il a acquis."
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 6219,
+      "arabicText": "سَيَصْلَىٰ نَارًۭا ذَاتَ لَهَبٍۢ",
+      "urduText": "وہ جلد بھڑکتی ہوئی آگ میں داخل ہو گا",
+      "juz": 30,
+      "page": 603,
+      "ruku": 553,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "He will [enter to] burn in a Fire of [blazing] flame",
+      "translations": {
+        "urdu": "وہ جلد بھڑکتی ہوئی آگ میں داخل ہو گا",
+        "english": "He will [enter to] burn in a Fire of [blazing] flame",
+        "bengali": "সত্বরই সে প্রবেশ করবে লেলিহান অগ্নিতে",
+        "turkish": "Alevli ateşe yaslanacaktır.",
+        "french": "Il sera brûlé dans un Feu plein de flammes,"
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 6220,
+      "arabicText": "وَٱمْرَأَتُهُۥ حَمَّالَةَ ٱلْحَطَبِ",
+      "urduText": "اور اس کی جورو بھی جو ایندھن سر پر اٹھائے پھرتی ہے",
+      "juz": 30,
+      "page": 603,
+      "ruku": 553,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "And his wife [as well] - the carrier of firewood.",
+      "translations": {
+        "urdu": "اور اس کی جورو بھی جو ایندھن سر پر اٹھائے پھرتی ہے",
+        "english": "And his wife [as well] - the carrier of firewood.",
+        "bengali": "এবং তার স্ত্রীও-যে ইন্ধন বহন করে,",
+        "turkish": "Karısı da, boynunda bir ip olduğu halde ona odun taşıyacaktır.",
+        "french": "de même sa femme, la porteuse de bois,"
+      }
+    },
+    {
+      "numberInSurah": 5,
+      "globalNumber": 6221,
+      "arabicText": "فِى جِيدِهَا حَبْلٌۭ مِّن مَّسَدٍۭ",
+      "urduText": "اس کے گلے میں مونج کی رسّی ہو گی",
+      "juz": 30,
+      "page": 603,
+      "ruku": 553,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Around her neck is a rope of [twisted] fiber.",
+      "translations": {
+        "urdu": "اس کے گلے میں مونج کی رسّی ہو گی",
+        "english": "Around her neck is a rope of [twisted] fiber.",
+        "bengali": "তার গলদেশে খর্জুরের রশি নিয়ে।",
+        "turkish": "Karısı da, boynunda bir ip olduğu halde ona odun taşıyacaktır.",
+        "french": "à son cou, une corde de fibres."
+      }
+    }
+  ]
+}

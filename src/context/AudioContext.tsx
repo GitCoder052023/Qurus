@@ -1,8 +1,20 @@
 import React, { createContext, useContext, useEffect, useRef, useState, ReactNode } from 'react';
 import { Platform } from 'react-native';
 import { createAudioPlayer, setAudioModeAsync, preload, AudioPlayer, AudioStatus } from 'expo-audio';
-import { RECITERS, getAudioUrl, getUrduAudioUrl, URDU_TRANSLATION_RECITER, SURAHS } from '../data/surahs';
-import { Reciter, SurahMetadata, PlaybackMode, PlaybackPhase } from '../types';
+import {
+  RECITERS,
+  getAudioUrl,
+  getUrduAudioUrl,
+  getEnglishAudioUrl,
+  getTranslationAudioUrl,
+  URDU_TRANSLATION_RECITER,
+  ENGLISH_TRANSLATION_RECITER,
+  TRANSLATION_RECITERS,
+  TRANSLATION_LANGUAGES,
+  TranslationLanguageConfig,
+  SURAHS,
+} from '../data/surahs';
+import { Reciter, SurahMetadata, PlaybackMode, PlaybackPhase, TranslationLanguage } from '../types';
 import { useStudyState } from './StudyContext';
 import { trackAudioPlayed } from '../lib/analytics';
 
@@ -20,6 +32,9 @@ interface AudioContextType {
   playbackSpeed: number;
   reciter: Reciter;
   urduReciter: typeof URDU_TRANSLATION_RECITER;
+  translationReciter: TranslationLanguageConfig;
+  translationLanguage: TranslationLanguage;
+  setTranslationLanguage: (language: TranslationLanguage) => void;
   isFullPlayerVisible: boolean;
 
   // Controls
@@ -69,6 +84,10 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   const activeReciter = RECITERS.find((r) => r.id === preferences.reciterId) || RECITERS[0];
   const [reciter, setReciterState] = useState<Reciter>(activeReciter);
 
+  // Translation Language
+  const translationLanguage = preferences.translationLanguage || 'urdu';
+  const [translationLanguageState, setTranslationLanguageState] = useState<TranslationLanguage>(translationLanguage);
+
   // AudioPlayer instance reference
   const playerRef = useRef<AudioPlayer | null>(null);
   const lastFinishedKeyRef = useRef<string>('');
@@ -78,6 +97,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   const playbackModeRef = useRef<PlaybackMode>(playbackMode);
   const reciterRef = useRef<Reciter>(activeReciter);
   const playbackSpeedRef = useRef<number>(playbackSpeed);
+  const translationLanguageRef = useRef<TranslationLanguage>(translationLanguage);
   const isLockScreenActiveRef = useRef<boolean>(false);
   const isStandaloneRef = useRef<boolean>(false);
   const markAyahCompletedRef = useRef(markAyahCompleted);
@@ -88,6 +108,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   playbackModeRef.current = playbackMode;
   reciterRef.current = reciter;
   playbackSpeedRef.current = playbackSpeed;
+  translationLanguageRef.current = preferences.translationLanguage || translationLanguageState;
   markAyahCompletedRef.current = markAyahCompleted;
 
   // Sync with preferences when loaded
@@ -96,6 +117,12 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       setPlaybackModeState(preferences.playbackMode);
     }
   }, [preferences.playbackMode]);
+
+  useEffect(() => {
+    if (preferences.translationLanguage && preferences.translationLanguage !== translationLanguageState) {
+      setTranslationLanguageState(preferences.translationLanguage);
+    }
+  }, [preferences.translationLanguage, translationLanguageState]);
 
   // Ref to hold the latest sequencer callback, preventing stale closures in native listeners
   const handleTrackFinishRef = useRef<
@@ -170,15 +197,16 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     aNum: number,
     phase: PlaybackPhase,
     mode: PlaybackMode,
-    reciterSubfolder: string
+    reciterSubfolder: string,
+    transLang: TranslationLanguage
   ): string | null => {
     const surah = SURAHS.find((s) => s.number === sNum);
     if (!surah) return null;
 
     if (mode === 'both') {
       if (phase === 'arabic') {
-        // Next is Urdu translation for the same Ayah
-        return getUrduAudioUrl(sNum, aNum);
+        // Next is translation for the same Ayah
+        return getTranslationAudioUrl(sNum, aNum, transLang);
       } else {
         // Next is Arabic recitation for the next Ayah
         if (aNum < surah.numberOfAyahs) {
@@ -195,9 +223,9 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       }
     } else if (mode === 'translation_only') {
       if (aNum < surah.numberOfAyahs) {
-        return getUrduAudioUrl(sNum, aNum + 1);
+        return getTranslationAudioUrl(sNum, aNum + 1, transLang);
       } else if (sNum < 114) {
-        return getUrduAudioUrl(sNum + 1, 1);
+        return getTranslationAudioUrl(sNum + 1, 1, transLang);
       }
     }
     return null;
@@ -285,7 +313,6 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     setPlaybackPhase(phase);
     updateLastStudied(surahNum, ayahNum);
 
-    let url: string;
     let trackTitle: string;
     let artistName: string;
 
@@ -293,20 +320,33 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     const surahName = surah ? surah.englishName : `Surah ${surahNum}`;
 
     if (phase === 'translation') {
-      url = getUrduAudioUrl(surahNum, ayahNum);
-      trackTitle = `${surahName} (${surahNum}:${ayahNum}) • Urdu Translation`;
-      artistName = 'Shamshad Ali Khan (Jalandhari)';
+      const transLang = translationLanguageRef.current;
+      const langConfig = TRANSLATION_LANGUAGES[transLang] || TRANSLATION_LANGUAGES.urdu;
+      const cdnUrl = getTranslationAudioUrl(surahNum, ayahNum, transLang) || getUrduAudioUrl(surahNum, ayahNum);
+      trackTitle = `${surahName} (${surahNum}:${ayahNum}) • ${langConfig.name} Translation`;
+      artistName = `${langConfig.voiceName} (${langConfig.author})`;
+
+      try {
+        player.replace(cdnUrl);
+        player.setPlaybackRate(playbackSpeedRef.current);
+        player.play();
+      } catch (err) {
+        console.error('Error playing translation CDN audio:', err);
+      }
     } else {
-      url = getAudioUrl(reciterRef.current.subfolder, surahNum, ayahNum);
+      const url = getAudioUrl(reciterRef.current.subfolder, surahNum, ayahNum);
       trackTitle = `${surahName} (${surahNum}:${ayahNum}) • Arabic Recitation`;
       artistName = reciterRef.current.name;
+      try {
+        player.replace(url);
+        player.setPlaybackRate(playbackSpeedRef.current);
+        player.play();
+      } catch (err) {
+        console.error('Error playing Arabic audio:', err);
+      }
     }
 
     try {
-      player.replace(url);
-      player.setPlaybackRate(playbackSpeedRef.current);
-      player.play();
-
       const metadata = {
         title: trackTitle,
         artist: artistName,
@@ -319,8 +359,6 @@ export function AudioProvider({ children }: { children: ReactNode }) {
         showSeekBackward: true,
       };
 
-      // On Android, calling setActiveForLockScreen on every track tears down the MediaSession.
-      // Call setActiveForLockScreen on initial start, then updateLockScreenMetadata for transitions.
       if (!isLockScreenActiveRef.current) {
         try {
           player.setActiveForLockScreen(true, metadata, lockScreenOptions);
@@ -348,14 +386,15 @@ export function AudioProvider({ children }: { children: ReactNode }) {
             ayahNum,
             phase,
             playbackModeRef.current,
-            reciterRef.current.subfolder
+            reciterRef.current.subfolder,
+            translationLanguageRef.current
           )
         : null;
       if (nextUrl) {
         preload(nextUrl).catch(() => {});
       }
     } catch (err) {
-      console.error('Error in audio playback:', err);
+      console.error('Error in metadata setup:', err);
     }
   };
 
@@ -375,6 +414,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   };
 
   const pause = () => {
+    setIsPlaying(false);
     if (playerRef.current) {
       try {
         playerRef.current.pause();
@@ -385,18 +425,17 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   };
 
   const resume = () => {
+    const sNum = currentSurahNumberRef.current;
+    const aNum = currentAyahNumberRef.current;
+    const phase = playbackPhaseRef.current;
     if (playerRef.current) {
       try {
         playerRef.current.play();
       } catch (e) {
         console.warn(e);
       }
-    } else if (currentSurahNumberRef.current && currentAyahNumberRef.current) {
-      playAyah(
-        currentSurahNumberRef.current,
-        currentAyahNumberRef.current,
-        playbackPhaseRef.current
-      );
+    } else if (sNum && aNum) {
+      playAyah(sNum, aNum, phase);
     }
   };
 
@@ -500,10 +539,23 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     updatePreferences({ playbackMode: mode });
   };
 
+  const setTranslationLanguage = (newLang: TranslationLanguage) => {
+    setTranslationLanguageState(newLang);
+    translationLanguageRef.current = newLang;
+    updatePreferences({ translationLanguage: newLang });
+    if (currentSurahNumber !== null && currentAyahNumber !== null && playbackPhase === 'translation') {
+      const wasPlaying = isPlaying;
+      playAyah(currentSurahNumber, currentAyahNumber, 'translation');
+      if (!wasPlaying) pause();
+    }
+  };
+
   const openFullPlayer = () => setIsFullPlayerVisible(true);
   const closeFullPlayer = () => setIsFullPlayerVisible(false);
 
   const currentSurah = currentSurahNumber ? SURAHS.find((s) => s.number === currentSurahNumber) || null : null;
+  const currentTranslationReciter =
+    TRANSLATION_LANGUAGES[translationLanguageState] || TRANSLATION_LANGUAGES.urdu;
 
   return (
     <AudioContext.Provider
@@ -520,6 +572,9 @@ export function AudioProvider({ children }: { children: ReactNode }) {
         playbackSpeed,
         reciter,
         urduReciter: URDU_TRANSLATION_RECITER,
+        translationReciter: currentTranslationReciter,
+        translationLanguage: translationLanguageState,
+        setTranslationLanguage,
         isFullPlayerVisible,
         playAyah,
         pause,

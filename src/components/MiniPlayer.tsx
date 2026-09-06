@@ -14,6 +14,7 @@ import { useAudio } from '../context/AudioContext';
 import { useTheme } from '../context/ThemeContext';
 import { useStudyState } from '../context/StudyContext';
 import { getAyah } from '../data/surahLoader';
+import { TRANSLATION_LANGUAGES, getAyahTranslation } from '../data/surahs';
 import { NoteEditorModal } from './NoteEditorModal';
 
 export function MiniPlayer() {
@@ -30,6 +31,8 @@ export function MiniPlayer() {
     duration,
     openFullPlayer,
     reciter,
+    translationReciter,
+    translationLanguage,
   } = useAudio();
   const { theme } = useTheme();
   const {
@@ -84,7 +87,7 @@ export function MiniPlayer() {
         currentSurahNumber,
         currentAyahNumber,
         currentAyah.arabicText,
-        currentAyah.urduText
+        getAyahTranslation(currentAyah, translationLanguage)
       );
     }
   };
@@ -127,8 +130,9 @@ export function MiniPlayer() {
   };
 
   const inSequence = isAyahInSequence(currentSurahNumber, currentAyahNumber);
+  const transConfig = TRANSLATION_LANGUAGES[translationLanguage] || TRANSLATION_LANGUAGES.urdu;
   const artistSubtitle = isUrduPhase
-    ? 'Urdu • Shamshad Ali Khan'
+    ? `${transConfig.name} • ${transConfig.voiceName}`
     : `Arabic • ${reciter?.name?.split(' ')[0] || 'Reciter'}`;
 
   return (
@@ -394,18 +398,19 @@ export function MiniPlayer() {
       ayahNumber={currentAyahNumber}
       surahName={currentSurah?.englishName || `Surah ${currentSurahNumber}`}
       arabicText={currentAyah?.arabicText}
-      urduText={currentAyah?.urduText}
+      urduText={currentAyah ? getAyahTranslation(currentAyah, translationLanguage) : undefined}
       initialNote={currentNote?.text || ''}
       initialVoiceNote={currentNote?.voiceNote}
       noteId={currentNote?.id}
       onSave={(text, voiceNote) => {
         if (!currentAyah) return;
+        const transSnippet = getAyahTranslation(currentAyah, translationLanguage);
         saveNote(
           currentSurahNumber,
           currentAyahNumber,
           text,
           currentAyah.arabicText,
-          currentAyah.urduText,
+          transSnippet,
           voiceNote,
           currentNote?.id
         );

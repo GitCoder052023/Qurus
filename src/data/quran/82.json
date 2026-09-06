@@ -1,1 +1,373 @@
-{"number":82,"name":"سُورَةُ الانفِطَارِ","englishName":"Al-Infitaar","englishNameTranslation":"The Cleaving","urduName":"پھٹ جانا / سورۃ الانفطار","numberOfAyahs":19,"revelationType":"Meccan","juzStart":30,"ayahs":[{"numberInSurah":1,"globalNumber":5830,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ إِذَا ٱلسَّمَآءُ ٱنفَطَرَتْ","urduText":"جب آسمان پھٹ جائے گا","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":2,"globalNumber":5831,"arabicText":"وَإِذَا ٱلْكَوَاكِبُ ٱنتَثَرَتْ","urduText":"اور جب تارے جھڑ پڑیں گے","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":3,"globalNumber":5832,"arabicText":"وَإِذَا ٱلْبِحَارُ فُجِّرَتْ","urduText":"اور جب دریا بہہ (کر ایک دوسرے سے مل) جائیں گے","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":4,"globalNumber":5833,"arabicText":"وَإِذَا ٱلْقُبُورُ بُعْثِرَتْ","urduText":"اور جب قبریں اکھیڑ دی جائیں گی","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":5,"globalNumber":5834,"arabicText":"عَلِمَتْ نَفْسٌۭ مَّا قَدَّمَتْ وَأَخَّرَتْ","urduText":"تب ہر شخص معلوم کرلے گا کہ اس نے آگے کیا بھیجا تھا اور پیچھے کیا چھوڑا تھا","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":6,"globalNumber":5835,"arabicText":"يَٰٓأَيُّهَا ٱلْإِنسَٰنُ مَا غَرَّكَ بِرَبِّكَ ٱلْكَرِيمِ","urduText":"اے انسان تجھ کو اپنے پروردگار کرم گستر کے باب میں کس چیز نے دھوکا دیا","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":7,"globalNumber":5836,"arabicText":"ٱلَّذِى خَلَقَكَ فَسَوَّىٰكَ فَعَدَلَكَ","urduText":"(وہی تو ہے) جس نے تجھے بنایا اور (تیرے اعضا کو) ٹھیک کیا اور (تیرے قامت کو) معتدل رکھا","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":8,"globalNumber":5837,"arabicText":"فِىٓ أَىِّ صُورَةٍۢ مَّا شَآءَ رَكَّبَكَ","urduText":"اور جس صورت میں چاہا تجھے جوڑ دیا","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":9,"globalNumber":5838,"arabicText":"كَلَّا بَلْ تُكَذِّبُونَ بِٱلدِّينِ","urduText":"مگر ہیہات تم لوگ جزا کو جھٹلاتے ہو","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":10,"globalNumber":5839,"arabicText":"وَإِنَّ عَلَيْكُمْ لَحَٰفِظِينَ","urduText":"حالانکہ تم پر نگہبان مقرر ہیں","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":11,"globalNumber":5840,"arabicText":"كِرَامًۭا كَٰتِبِينَ","urduText":"عالی قدر (تمہاری باتوں کے) لکھنے والے","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":12,"globalNumber":5841,"arabicText":"يَعْلَمُونَ مَا تَفْعَلُونَ","urduText":"جو تم کرتے ہو وہ اسے جانتے ہیں","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":13,"globalNumber":5842,"arabicText":"إِنَّ ٱلْأَبْرَارَ لَفِى نَعِيمٍۢ","urduText":"بے شک نیکوکار نعمتوں (کی بہشت) میں ہوں گے۔","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":14,"globalNumber":5843,"arabicText":"وَإِنَّ ٱلْفُجَّارَ لَفِى جَحِيمٍۢ","urduText":"اور بدکردار دوزخ میں","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":15,"globalNumber":5844,"arabicText":"يَصْلَوْنَهَا يَوْمَ ٱلدِّينِ","urduText":"(یعنی) جزا کے دن اس میں داخل ہوں گے","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":16,"globalNumber":5845,"arabicText":"وَمَا هُمْ عَنْهَا بِغَآئِبِينَ","urduText":"اور اس سے چھپ نہیں سکیں گے","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":17,"globalNumber":5846,"arabicText":"وَمَآ أَدْرَىٰكَ مَا يَوْمُ ٱلدِّينِ","urduText":"اور تمہیں کیا معلوم کہ جزا کا دن کیسا ہے؟","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":18,"globalNumber":5847,"arabicText":"ثُمَّ مَآ أَدْرَىٰكَ مَا يَوْمُ ٱلدِّينِ","urduText":"پھر تمہیں کیا معلوم کہ جزا کا دن کیسا ہے؟","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false},{"numberInSurah":19,"globalNumber":5848,"arabicText":"يَوْمَ لَا تَمْلِكُ نَفْسٌۭ لِّنَفْسٍۢ شَيْـًۭٔا ۖ وَٱلْأَمْرُ يَوْمَئِذٍۢ لِّلَّهِ","urduText":"جس روز کوئی کسی کا بھلا نہ کر سکے گا اور حکم اس روز خدا ہی کا ہو گا","juz":30,"page":587,"ruku":524,"hizbQuarter":235,"sajda":false}]}
+{
+  "number": 82,
+  "name": "سُورَةُ الانفِطَارِ",
+  "englishName": "Al-Infitaar",
+  "englishNameTranslation": "The Cleaving",
+  "urduName": "پھٹ جانا / سورۃ الانفطار",
+  "numberOfAyahs": 19,
+  "revelationType": "Meccan",
+  "juzStart": 30,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 5830,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ إِذَا ٱلسَّمَآءُ ٱنفَطَرَتْ",
+      "urduText": "جب آسمان پھٹ جائے گا",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "When the sky breaks apart",
+      "translations": {
+        "urdu": "جب آسمان پھٹ جائے گا",
+        "english": "When the sky breaks apart",
+        "bengali": "যখন আকাশ বিদীর্ণ হবে,",
+        "turkish": "Gök yarıldığı zaman,",
+        "french": "Quand le ciel se rompra,"
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 5831,
+      "arabicText": "وَإِذَا ٱلْكَوَاكِبُ ٱنتَثَرَتْ",
+      "urduText": "اور جب تارے جھڑ پڑیں گے",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "And when the stars fall, scattering,",
+      "translations": {
+        "urdu": "اور جب تارے جھڑ پڑیں گے",
+        "english": "And when the stars fall, scattering,",
+        "bengali": "যখন নক্ষত্রসমূহ ঝরে পড়বে,",
+        "turkish": "Yıldızlar dağılıp döküldüğü zaman,",
+        "french": "et que les étoiles se disperseront,"
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 5832,
+      "arabicText": "وَإِذَا ٱلْبِحَارُ فُجِّرَتْ",
+      "urduText": "اور جب دریا بہہ (کر ایک دوسرے سے مل) جائیں گے",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "And when the seas are erupted",
+      "translations": {
+        "urdu": "اور جب دریا بہہ (کر ایک دوسرے سے مل) جائیں گے",
+        "english": "And when the seas are erupted",
+        "bengali": "যখন সমুদ্রকে উত্তাল করে তোলা হবে,",
+        "turkish": "Denizler kaynaştığı zaman,",
+        "french": "et que les mers confondront leurs eaux,"
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 5833,
+      "arabicText": "وَإِذَا ٱلْقُبُورُ بُعْثِرَتْ",
+      "urduText": "اور جب قبریں اکھیڑ دی جائیں گی",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "And when the [contents of] graves are scattered,",
+      "translations": {
+        "urdu": "اور جب قبریں اکھیڑ دی جائیں گی",
+        "english": "And when the [contents of] graves are scattered,",
+        "bengali": "এবং যখন কবরসমূহ উম্মোচিত হবে,",
+        "turkish": "Kabirlerin içi dışa çıktığı zaman,",
+        "french": "et que les tombeaux seront bouleversés,"
+      }
+    },
+    {
+      "numberInSurah": 5,
+      "globalNumber": 5834,
+      "arabicText": "عَلِمَتْ نَفْسٌۭ مَّا قَدَّمَتْ وَأَخَّرَتْ",
+      "urduText": "تب ہر شخص معلوم کرلے گا کہ اس نے آگے کیا بھیجا تھا اور پیچھے کیا چھوڑا تھا",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "A soul will [then] know what it has put forth and kept back.",
+      "translations": {
+        "urdu": "تب ہر شخص معلوم کرلے گا کہ اس نے آگے کیا بھیجا تھا اور پیچھے کیا چھوڑا تھا",
+        "english": "A soul will [then] know what it has put forth and kept back.",
+        "bengali": "তখন প্রত্যেকে জেনে নিবে সে কি অগ্রে প্রেরণ করেছে এবং কি পশ্চাতে ছেড়ে এসেছে।",
+        "turkish": "İnsanoğlu, ne yaptığını ve ne yapmadığını görür.",
+        "french": "toute âme saura alors ce qu'elle a accompli et ce qu'elle a remis de faire à plus tard."
+      }
+    },
+    {
+      "numberInSurah": 6,
+      "globalNumber": 5835,
+      "arabicText": "يَٰٓأَيُّهَا ٱلْإِنسَٰنُ مَا غَرَّكَ بِرَبِّكَ ٱلْكَرِيمِ",
+      "urduText": "اے انسان تجھ کو اپنے پروردگار کرم گستر کے باب میں کس چیز نے دھوکا دیا",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "O mankind, what has deceived you concerning your Lord, the Generous,",
+      "translations": {
+        "urdu": "اے انسان تجھ کو اپنے پروردگار کرم گستر کے باب میں کس چیز نے دھوکا دیا",
+        "english": "O mankind, what has deceived you concerning your Lord, the Generous,",
+        "bengali": "হে মানুষ, কিসে তোমাকে তোমার মহামহিম পালনকর্তা সম্পর্কে বিভ্রান্ত করল?",
+        "turkish": "Ey insanoğlu! Seni yaratıp sonra şekil veren, düzenleyen, mütenasip kılan, istediği şekilde seni terkip eden, çok cömert olan Rabbine karşı seni aldatan nedir?",
+        "french": "O homme! Qu'est-ce qui t'a trompé au sujet de ton Seigneur, le Noble,"
+      }
+    },
+    {
+      "numberInSurah": 7,
+      "globalNumber": 5836,
+      "arabicText": "ٱلَّذِى خَلَقَكَ فَسَوَّىٰكَ فَعَدَلَكَ",
+      "urduText": "(وہی تو ہے) جس نے تجھے بنایا اور (تیرے اعضا کو) ٹھیک کیا اور (تیرے قامت کو) معتدل رکھا",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "Who created you, proportioned you, and balanced you?",
+      "translations": {
+        "urdu": "(وہی تو ہے) جس نے تجھے بنایا اور (تیرے اعضا کو) ٹھیک کیا اور (تیرے قامت کو) معتدل رکھا",
+        "english": "Who created you, proportioned you, and balanced you?",
+        "bengali": "যিনি তোমাকে সৃষ্টি করেছেন, অতঃপর তোমাকে সুবিন্যস্ত করেছেন এবং সুষম করেছেন।",
+        "turkish": "Ey insanoğlu! Seni yaratıp sonra şekil veren, düzenleyen, mütenasip kılan, istediği şekilde seni terkip eden, çok cömert olan Rabbine karşı seni aldatan nedir?",
+        "french": "qui t'a créé, puis modelé et constitué harmonieusement?"
+      }
+    },
+    {
+      "numberInSurah": 8,
+      "globalNumber": 5837,
+      "arabicText": "فِىٓ أَىِّ صُورَةٍۢ مَّا شَآءَ رَكَّبَكَ",
+      "urduText": "اور جس صورت میں چاہا تجھے جوڑ دیا",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "In whatever form He willed has He assembled you.",
+      "translations": {
+        "urdu": "اور جس صورت میں چاہا تجھے جوڑ دیا",
+        "english": "In whatever form He willed has He assembled you.",
+        "bengali": "যিনি তোমাকে তাঁর ইচ্ছামত আকৃতিতে গঠন করেছেন।",
+        "turkish": "Ey insanoğlu! Seni yaratıp sonra şekil veren, düzenleyen, mütenasip kılan, istediği şekilde seni terkip eden, çok cömert olan Rabbine karşı seni aldatan nedir?",
+        "french": "Il t'a façonné dans la forme qu'Il a voulue."
+      }
+    },
+    {
+      "numberInSurah": 9,
+      "globalNumber": 5838,
+      "arabicText": "كَلَّا بَلْ تُكَذِّبُونَ بِٱلدِّينِ",
+      "urduText": "مگر ہیہات تم لوگ جزا کو جھٹلاتے ہو",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "No! But you deny the Recompense.",
+      "translations": {
+        "urdu": "مگر ہیہات تم لوگ جزا کو جھٹلاتے ہو",
+        "english": "No! But you deny the Recompense.",
+        "bengali": "কখনও বিভ্রান্ত হয়ো না; বরং তোমরা দান-প্রতিদানকে মিথ্যা মনে কর।",
+        "turkish": "Hayır, hayır; doğrusu siz dini yalanlıyorsunuz.",
+        "french": "Non...! [malgré tout] vous traitez la Rétribution de mensonge;"
+      }
+    },
+    {
+      "numberInSurah": 10,
+      "globalNumber": 5839,
+      "arabicText": "وَإِنَّ عَلَيْكُمْ لَحَٰفِظِينَ",
+      "urduText": "حالانکہ تم پر نگہبان مقرر ہیں",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "And indeed, [appointed] over you are keepers,",
+      "translations": {
+        "urdu": "حالانکہ تم پر نگہبان مقرر ہیں",
+        "english": "And indeed, [appointed] over you are keepers,",
+        "bengali": "অবশ্যই তোমাদের উপর তত্ত্বাবধায়ক নিযুক্ত আছে।",
+        "turkish": "Oysa, yaptıklarınızı bilen değerli yazıcılar sizi gözetlemektedirler.",
+        "french": "alors que veillent sur vous des gardiens,"
+      }
+    },
+    {
+      "numberInSurah": 11,
+      "globalNumber": 5840,
+      "arabicText": "كِرَامًۭا كَٰتِبِينَ",
+      "urduText": "عالی قدر (تمہاری باتوں کے) لکھنے والے",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "Noble and recording;",
+      "translations": {
+        "urdu": "عالی قدر (تمہاری باتوں کے) لکھنے والے",
+        "english": "Noble and recording;",
+        "bengali": "সম্মানিত আমল লেখকবৃন্দ।",
+        "turkish": "Oysa, yaptıklarınızı bilen değerli yazıcılar sizi gözetlemektedirler.",
+        "french": "de nobles scribes,"
+      }
+    },
+    {
+      "numberInSurah": 12,
+      "globalNumber": 5841,
+      "arabicText": "يَعْلَمُونَ مَا تَفْعَلُونَ",
+      "urduText": "جو تم کرتے ہو وہ اسے جانتے ہیں",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "They know whatever you do.",
+      "translations": {
+        "urdu": "جو تم کرتے ہو وہ اسے جانتے ہیں",
+        "english": "They know whatever you do.",
+        "bengali": "তারা জানে যা তোমরা কর।",
+        "turkish": "Oysa, yaptıklarınızı bilen değerli yazıcılar sizi gözetlemektedirler.",
+        "french": "qui savent ce que vous faites."
+      }
+    },
+    {
+      "numberInSurah": 13,
+      "globalNumber": 5842,
+      "arabicText": "إِنَّ ٱلْأَبْرَارَ لَفِى نَعِيمٍۢ",
+      "urduText": "بے شک نیکوکار نعمتوں (کی بہشت) میں ہوں گے۔",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "Indeed, the righteous will be in pleasure,",
+      "translations": {
+        "urdu": "بے شک نیکوکار نعمتوں (کی بہشت) میں ہوں گے۔",
+        "english": "Indeed, the righteous will be in pleasure,",
+        "bengali": "সৎকর্মশীলগণ থাকবে জান্নাতে।",
+        "turkish": "İyiler şüphesiz nimet içindedirler.",
+        "french": "Les bons seront, certes, dans un [jardin] de délice,"
+      }
+    },
+    {
+      "numberInSurah": 14,
+      "globalNumber": 5843,
+      "arabicText": "وَإِنَّ ٱلْفُجَّارَ لَفِى جَحِيمٍۢ",
+      "urduText": "اور بدکردار دوزخ میں",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "And indeed, the wicked will be in Hellfire.",
+      "translations": {
+        "urdu": "اور بدکردار دوزخ میں",
+        "english": "And indeed, the wicked will be in Hellfire.",
+        "bengali": "এবং দুষ্কর্মীরা থাকবে জাহান্নামে;",
+        "turkish": "Allah'ın buyruğundan çıkanlar cehennemdedirler.",
+        "french": "et les libertins seront, certes, dans une fournaise"
+      }
+    },
+    {
+      "numberInSurah": 15,
+      "globalNumber": 5844,
+      "arabicText": "يَصْلَوْنَهَا يَوْمَ ٱلدِّينِ",
+      "urduText": "(یعنی) جزا کے دن اس میں داخل ہوں گے",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "They will [enter to] burn therein on the Day of Recompense,",
+      "translations": {
+        "urdu": "(یعنی) جزا کے دن اس میں داخل ہوں گے",
+        "english": "They will [enter to] burn therein on the Day of Recompense,",
+        "bengali": "তারা বিচার দিবসে তথায় প্রবেশ করবে।",
+        "turkish": "Din Günü oraya girerler.",
+        "french": "où ils brûleront, le jour de la Rétribution"
+      }
+    },
+    {
+      "numberInSurah": 16,
+      "globalNumber": 5845,
+      "arabicText": "وَمَا هُمْ عَنْهَا بِغَآئِبِينَ",
+      "urduText": "اور اس سے چھپ نہیں سکیں گے",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "And never therefrom will they be absent.",
+      "translations": {
+        "urdu": "اور اس سے چھپ نہیں سکیں گے",
+        "english": "And never therefrom will they be absent.",
+        "bengali": "তারা সেখান থেকে পৃথক হবে না।",
+        "turkish": "Oradan bir daha ayrılamazlar.",
+        "french": "incapables de s'en échapper."
+      }
+    },
+    {
+      "numberInSurah": 17,
+      "globalNumber": 5846,
+      "arabicText": "وَمَآ أَدْرَىٰكَ مَا يَوْمُ ٱلدِّينِ",
+      "urduText": "اور تمہیں کیا معلوم کہ جزا کا دن کیسا ہے؟",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "And what can make you know what is the Day of Recompense?",
+      "translations": {
+        "urdu": "اور تمہیں کیا معلوم کہ جزا کا دن کیسا ہے؟",
+        "english": "And what can make you know what is the Day of Recompense?",
+        "bengali": "আপনি জানেন, বিচার দিবস কি?",
+        "turkish": "Din gününün ne olduğunu sen nereden bilirsin?",
+        "french": "Et qui te dira ce qu'est le jour de la Rétribution?"
+      }
+    },
+    {
+      "numberInSurah": 18,
+      "globalNumber": 5847,
+      "arabicText": "ثُمَّ مَآ أَدْرَىٰكَ مَا يَوْمُ ٱلدِّينِ",
+      "urduText": "پھر تمہیں کیا معلوم کہ جزا کا دن کیسا ہے؟",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "Then, what can make you know what is the Day of Recompense?",
+      "translations": {
+        "urdu": "پھر تمہیں کیا معلوم کہ جزا کا دن کیسا ہے؟",
+        "english": "Then, what can make you know what is the Day of Recompense?",
+        "bengali": "অতঃপর আপনি জানেন, বিচার দিবস কি?",
+        "turkish": "Evet, din gününün ne olduğunu nereden bileceksin?",
+        "french": "Encore une fois, qui te dira ce qu'est le jour de la Rétribution?"
+      }
+    },
+    {
+      "numberInSurah": 19,
+      "globalNumber": 5848,
+      "arabicText": "يَوْمَ لَا تَمْلِكُ نَفْسٌۭ لِّنَفْسٍۢ شَيْـًۭٔا ۖ وَٱلْأَمْرُ يَوْمَئِذٍۢ لِّلَّهِ",
+      "urduText": "جس روز کوئی کسی کا بھلا نہ کر سکے گا اور حکم اس روز خدا ہی کا ہو گا",
+      "juz": 30,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false,
+      "englishText": "It is the Day when a soul will not possess for another soul [power to do] a thing; and the command, that Day, is [entirely] with Allah.",
+      "translations": {
+        "urdu": "جس روز کوئی کسی کا بھلا نہ کر سکے گا اور حکم اس روز خدا ہی کا ہو گا",
+        "english": "It is the Day when a soul will not possess for another soul [power to do] a thing; and the command, that Day, is [entirely] with Allah.",
+        "bengali": "যেদিন কেউ কারও কোন উপকার করতে পারবে না এবং সেদিন সব কতৃꦣ2468;্ব হবে আল্লাহর।",
+        "turkish": "O gün, kimsenin kimseye hiçbir fayda sağlamayacağı bir gündür. O gün buyruk, yalnız Allah'ındır.",
+        "french": "Le jour où aucune âme ne pourra rien en faveur d'une autre âme. Et ce jour-là, le commandement sera à Allah."
+      }
+    }
+  ]
+}

@@ -67,6 +67,7 @@ const DEFAULT_PREFERENCES: ReadingPreferences = {
   playbackSpeed: 1.0,
   autoScroll: true,
   playbackMode: 'both',
+  translationLanguage: 'urdu',
 };
 
 const DEFAULT_STREAK: StreakData = {

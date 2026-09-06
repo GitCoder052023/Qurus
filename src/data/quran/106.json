@@ -1,1 +1,88 @@
-{"number":106,"name":"سُورَةُ قُرَيۡشٍ","englishName":"Quraish","englishNameTranslation":"Quraysh","urduName":"قریش / سورۃ قریش","numberOfAyahs":4,"revelationType":"Meccan","juzStart":30,"ayahs":[{"numberInSurah":1,"globalNumber":6194,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ لِإِيلَٰفِ قُرَيْشٍ","urduText":"قریش کے مانوس کرنے کے سبب","juz":30,"page":602,"ruku":548,"hizbQuarter":240,"sajda":false},{"numberInSurah":2,"globalNumber":6195,"arabicText":"إِۦلَٰفِهِمْ رِحْلَةَ ٱلشِّتَآءِ وَٱلصَّيْفِ","urduText":"(یعنی) ان کو جاڑے اور گرمی کے سفر سے مانوس کرنے کے سبب","juz":30,"page":602,"ruku":548,"hizbQuarter":240,"sajda":false},{"numberInSurah":3,"globalNumber":6196,"arabicText":"فَلْيَعْبُدُوا۟ رَبَّ هَٰذَا ٱلْبَيْتِ","urduText":"لوگوں کو چاہیئے کہ (اس نعمت کے شکر میں) اس گھر کے مالک کی عبادت کریں","juz":30,"page":602,"ruku":548,"hizbQuarter":240,"sajda":false},{"numberInSurah":4,"globalNumber":6197,"arabicText":"ٱلَّذِىٓ أَطْعَمَهُم مِّن جُوعٍۢ وَءَامَنَهُم مِّنْ خَوْفٍۭ","urduText":"جس نے ان کو بھوک میں کھانا کھلایا اور خوف سے امن بخشا","juz":30,"page":602,"ruku":548,"hizbQuarter":240,"sajda":false}]}
+{
+  "number": 106,
+  "name": "سُورَةُ قُرَيۡشٍ",
+  "englishName": "Quraish",
+  "englishNameTranslation": "Quraysh",
+  "urduName": "قریش / سورۃ قریش",
+  "numberOfAyahs": 4,
+  "revelationType": "Meccan",
+  "juzStart": 30,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 6194,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ لِإِيلَٰفِ قُرَيْشٍ",
+      "urduText": "قریش کے مانوس کرنے کے سبب",
+      "juz": 30,
+      "page": 602,
+      "ruku": 548,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "For the accustomed security of the Quraysh -",
+      "translations": {
+        "urdu": "قریش کے مانوس کرنے کے سبب",
+        "english": "For the accustomed security of the Quraysh -",
+        "bengali": "কোরাইশের আসক্তির কারণে,",
+        "turkish": "Kureyş kabilesinin yaz ve kış yolculuklarında uzlaşması ve anlaşması sağlanmıştır.",
+        "french": "A cause du pacte des Coraïch,"
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 6195,
+      "arabicText": "إِۦلَٰفِهِمْ رِحْلَةَ ٱلشِّتَآءِ وَٱلصَّيْفِ",
+      "urduText": "(یعنی) ان کو جاڑے اور گرمی کے سفر سے مانوس کرنے کے سبب",
+      "juz": 30,
+      "page": 602,
+      "ruku": 548,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Their accustomed security [in] the caravan of winter and summer -",
+      "translations": {
+        "urdu": "(یعنی) ان کو جاڑے اور گرمی کے سفر سے مانوس کرنے کے سبب",
+        "english": "Their accustomed security [in] the caravan of winter and summer -",
+        "bengali": "আসক্তির কারণে তাদের শীত ও গ্রীষ্মকালীন সফরের।",
+        "turkish": "Kureyş kabilesinin yaz ve kış yolculuklarında uzlaşması ve anlaşması sağlanmıştır.",
+        "french": "De leur pacte [concernant] les voyages d'hiver et d'été."
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 6196,
+      "arabicText": "فَلْيَعْبُدُوا۟ رَبَّ هَٰذَا ٱلْبَيْتِ",
+      "urduText": "لوگوں کو چاہیئے کہ (اس نعمت کے شکر میں) اس گھر کے مالک کی عبادت کریں",
+      "juz": 30,
+      "page": 602,
+      "ruku": 548,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Let them worship the Lord of this House,",
+      "translations": {
+        "urdu": "لوگوں کو چاہیئے کہ (اس نعمت کے شکر میں) اس گھر کے مالک کی عبادت کریں",
+        "english": "Let them worship the Lord of this House,",
+        "bengali": "অতএব তারা যেন এবাদত করে এই ঘরের পালনকর্তার",
+        "turkish": "Öyleyse kendilerini açken doyuran ve korku içindeyken güven veren bu Ev'in (Kabe'nin) Rabbine kulluk etsinler.",
+        "french": "Qu'ils adorent donc le Seigneur de cette Maison [la Ka'ba],"
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 6197,
+      "arabicText": "ٱلَّذِىٓ أَطْعَمَهُم مِّن جُوعٍۢ وَءَامَنَهُم مِّنْ خَوْفٍۭ",
+      "urduText": "جس نے ان کو بھوک میں کھانا کھلایا اور خوف سے امن بخشا",
+      "juz": 30,
+      "page": 602,
+      "ruku": 548,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Who has fed them, [saving them] from hunger and made them safe, [saving them] from fear.",
+      "translations": {
+        "urdu": "جس نے ان کو بھوک میں کھانا کھلایا اور خوف سے امن بخشا",
+        "english": "Who has fed them, [saving them] from hunger and made them safe, [saving them] from fear.",
+        "bengali": "যিনি তাদেরকে ক্ষুধায় আহার দিয়েছেন এবং যুদ্ধভীতি থেকে তাদেরকে নিরাপদ করেছেন।",
+        "turkish": "Öyleyse kendilerini açken doyuran ve korku içindeyken güven veren bu Ev'in (Kabe'nin) Rabbine kulluk etsinler.",
+        "french": "qui les a nourris contre la faim et rassurés de la crainte!"
+      }
+    }
+  ]
+}

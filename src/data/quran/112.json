@@ -1,1 +1,88 @@
-{"number":112,"name":"سُورَةُ الإِخۡلَاصِ","englishName":"Al-Ikhlaas","englishNameTranslation":"Sincerity","urduName":"خالص توحید / سورۃ الاخلاص","numberOfAyahs":4,"revelationType":"Meccan","juzStart":30,"ayahs":[{"numberInSurah":1,"globalNumber":6222,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ قُلْ هُوَ ٱللَّهُ أَحَدٌ","urduText":"کہو کہ وہ (ذات پاک جس کا نام) الله (ہے) ایک ہے","juz":30,"page":604,"ruku":554,"hizbQuarter":240,"sajda":false},{"numberInSurah":2,"globalNumber":6223,"arabicText":"ٱللَّهُ ٱلصَّمَدُ","urduText":"معبود برحق جو بےنیاز ہے","juz":30,"page":604,"ruku":554,"hizbQuarter":240,"sajda":false},{"numberInSurah":3,"globalNumber":6224,"arabicText":"لَمْ يَلِدْ وَلَمْ يُولَدْ","urduText":"نہ کسی کا باپ ہے اور نہ کسی کا بیٹا","juz":30,"page":604,"ruku":554,"hizbQuarter":240,"sajda":false},{"numberInSurah":4,"globalNumber":6225,"arabicText":"وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ","urduText":"اور کوئی اس کا ہمسر نہیں","juz":30,"page":604,"ruku":554,"hizbQuarter":240,"sajda":false}]}
+{
+  "number": 112,
+  "name": "سُورَةُ الإِخۡلَاصِ",
+  "englishName": "Al-Ikhlaas",
+  "englishNameTranslation": "Sincerity",
+  "urduName": "خالص توحید / سورۃ الاخلاص",
+  "numberOfAyahs": 4,
+  "revelationType": "Meccan",
+  "juzStart": 30,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 6222,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ قُلْ هُوَ ٱللَّهُ أَحَدٌ",
+      "urduText": "کہو کہ وہ (ذات پاک جس کا نام) الله (ہے) ایک ہے",
+      "juz": 30,
+      "page": 604,
+      "ruku": 554,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Say, \"He is Allah, [who is] One,",
+      "translations": {
+        "urdu": "کہو کہ وہ (ذات پاک جس کا نام) الله (ہے) ایک ہے",
+        "english": "Say, \"He is Allah, [who is] One,",
+        "bengali": "বলুন, তিনি আল্লাহ, এক,",
+        "turkish": "De ki: O Allah bir tektir.",
+        "french": "Dis: «Il est Allah, Unique."
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 6223,
+      "arabicText": "ٱللَّهُ ٱلصَّمَدُ",
+      "urduText": "معبود برحق جو بےنیاز ہے",
+      "juz": 30,
+      "page": 604,
+      "ruku": 554,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Allah, the Eternal Refuge.",
+      "translations": {
+        "urdu": "معبود برحق جو بےنیاز ہے",
+        "english": "Allah, the Eternal Refuge.",
+        "bengali": "আল্লাহ অমুখাপেক্ষী,",
+        "turkish": "Allah her şeyden müstağni ve her şey O'na muhtaçtır.",
+        "french": "Allah, Le Seul à être imploré pour ce que nous désirons."
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 6224,
+      "arabicText": "لَمْ يَلِدْ وَلَمْ يُولَدْ",
+      "urduText": "نہ کسی کا باپ ہے اور نہ کسی کا بیٹا",
+      "juz": 30,
+      "page": 604,
+      "ruku": 554,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "He neither begets nor is born,",
+      "translations": {
+        "urdu": "نہ کسی کا باپ ہے اور نہ کسی کا بیٹا",
+        "english": "He neither begets nor is born,",
+        "bengali": "তিনি কাউকে জন্ম দেননি এবং কেউ তাকে জন্ম দেয়নি",
+        "turkish": "O doğurmamış ve doğmamıştır.",
+        "french": "Il n'a jamais engendré, n'a pas été engendré non plus."
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 6225,
+      "arabicText": "وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ",
+      "urduText": "اور کوئی اس کا ہمسر نہیں",
+      "juz": 30,
+      "page": 604,
+      "ruku": 554,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Nor is there to Him any equivalent.\"",
+      "translations": {
+        "urdu": "اور کوئی اس کا ہمسر نہیں",
+        "english": "Nor is there to Him any equivalent.\"",
+        "bengali": "এবং তার সমতুল্য কেউ নেই।",
+        "turkish": "Hiçbir şey O'na denk değildir.",
+        "french": "Et nul n'est égal à Lui»."
+      }
+    }
+  ]
+}

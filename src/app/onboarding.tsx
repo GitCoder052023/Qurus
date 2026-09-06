@@ -24,6 +24,8 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useTheme } from '../context/ThemeContext';
 import { useStudyState } from '../context/StudyContext';
+import { TranslationLanguage } from '../types';
+import { TRANSLATION_LANGUAGES } from '../data/surahs';
 
 interface StoryChapter {
   id: string;
@@ -127,8 +129,8 @@ const CHAPTERS: StoryChapter[] = [
       },
       {
         icon: 'musical-notes-outline',
-        title: 'Arabic + Urdu audio',
-        desc: 'Arabic recitation paired with Urdu translation, verse by verse.',
+        title: 'Arabic + Translation audio',
+        desc: 'Arabic recitation paired with Urdu or English translation, verse by verse.',
       },
     ],
   },
@@ -202,6 +204,38 @@ const GOAL_OPTIONS = [
   { count: 15, label: 'Deep Immersion', desc: '15 verses/day • ~15 mins' },
 ];
 
+const ONBOARDING_LANGUAGES: {
+  id: TranslationLanguage;
+  badge: string;
+  desc: string;
+}[] = [
+  {
+    id: 'urdu',
+    badge: 'Authentic Urdu',
+    desc: 'Classical, revered Urdu translation recited verse-by-verse with eloquent pronunciation and warm clarity.',
+  },
+  {
+    id: 'english',
+    badge: 'Sahih International',
+    desc: 'Crisp, contemporary English translation audio synchronized per ayah for seamless reflection.',
+  },
+  {
+    id: 'bengali',
+    badge: 'Muhiuddin Khan',
+    desc: 'Widely celebrated Bengali translation recited verse-by-verse with melodious cadence.',
+  },
+  {
+    id: 'turkish',
+    badge: 'Diyanet İşleri',
+    desc: 'Esteemed Turkish translation recited verse-by-verse with crisp resonance.',
+  },
+  {
+    id: 'french',
+    badge: 'Hamidullah',
+    desc: 'Renowned academic French translation recited verse-by-verse with poetic elegance.',
+  },
+];
+
 export default function OnboardingScreen() {
   const { theme } = useTheme();
   const {
@@ -210,32 +244,40 @@ export default function OnboardingScreen() {
     dailyGoalAyahs,
     setDailyGoal,
     updateNotificationPreferences,
+    preferences,
+    updatePreferences,
   } = useStudyState();
   const router = useRouter();
 
   const [index, setIndex] = useState(0);
   const [showIntentionStep, setShowIntentionStep] = useState(false);
+  const [showLanguageStep, setShowLanguageStep] = useState(false);
   const [selectedGoal, setSelectedGoal] = useState(dailyGoalAyahs || 5);
   const [selectedReminderIndex, setSelectedReminderIndex] = useState(2); // 8:30 PM by default
+  const [selectedLanguage, setSelectedLanguage] = useState<TranslationLanguage>(
+    preferences.translationLanguage || 'urdu'
+  );
 
   const chapter = CHAPTERS[index];
   const isLast = index === CHAPTERS.length - 1;
 
-  const progress = useSharedValue(1 / CHAPTERS.length);
+  const progress = useSharedValue(1 / 7);
   const trackWidth = useSharedValue(1);
   const breathe = useSharedValue(0);
   const orbDrift = useSharedValue(0);
 
   useEffect(() => {
-    if (showIntentionStep) {
+    if (showLanguageStep) {
       progress.value = withTiming(1, { duration: 450, easing: EASE });
+    } else if (showIntentionStep) {
+      progress.value = withTiming(6 / 7, { duration: 450, easing: EASE });
     } else {
-      progress.value = withTiming((index + 1) / CHAPTERS.length, {
+      progress.value = withTiming((index + 1) / 7, {
         duration: 520,
         easing: EASE,
       });
     }
-  }, [index, progress, showIntentionStep]);
+  }, [index, progress, showIntentionStep, showLanguageStep]);
 
   useEffect(() => {
     breathe.value = withRepeat(
@@ -280,7 +322,7 @@ export default function OnboardingScreen() {
     setIndex(next);
   }, []);
 
-  const handleSaveIntentionAndProceed = useCallback(async () => {
+  const handleCompleteAndProceed = useCallback(async () => {
     setDailyGoal(selectedGoal);
     const chosenTime = REMINDER_OPTIONS[selectedReminderIndex];
     await updateNotificationPreferences({
@@ -289,6 +331,7 @@ export default function OnboardingScreen() {
       reminderHour: chosenTime.hour,
       reminderMinute: chosenTime.minute,
     });
+    updatePreferences({ translationLanguage: selectedLanguage });
     await completeOnboarding();
     if (!hasAgreedLegal) {
       router.replace('/legal-consent' as any);
@@ -301,13 +344,18 @@ export default function OnboardingScreen() {
     router,
     selectedGoal,
     selectedReminderIndex,
+    selectedLanguage,
     setDailyGoal,
     updateNotificationPreferences,
+    updatePreferences,
   ]);
 
   const handleNext = () => {
-    if (showIntentionStep) {
-      handleSaveIntentionAndProceed();
+    if (showLanguageStep) {
+      handleCompleteAndProceed();
+    } else if (showIntentionStep) {
+      setShowIntentionStep(false);
+      setShowLanguageStep(true);
     } else if (isLast) {
       setShowIntentionStep(true);
     } else {
@@ -316,10 +364,13 @@ export default function OnboardingScreen() {
   };
 
   const handleSkip = () => {
-    if (!showIntentionStep) {
+    if (!showIntentionStep && !showLanguageStep) {
       setShowIntentionStep(true);
+    } else if (showIntentionStep) {
+      setShowIntentionStep(false);
+      setShowLanguageStep(true);
     } else {
-      handleSaveIntentionAndProceed();
+      handleCompleteAndProceed();
     }
   };
 
@@ -363,7 +414,7 @@ export default function OnboardingScreen() {
           <Text style={[styles.wordmark, { color: theme.textPrimary }]}>Qurus</Text>
           <TouchableOpacity onPress={handleSkip} hitSlop={12} accessibilityLabel="Skip">
             <Text style={[styles.skip, { color: theme.textTertiary }]}>
-              {showIntentionStep ? 'Done' : 'Skip'}
+              {showLanguageStep ? 'Done' : 'Skip'}
             </Text>
           </TouchableOpacity>
         </View>
@@ -377,7 +428,13 @@ export default function OnboardingScreen() {
           <Animated.View
             style={[
               styles.trackFill,
-              { backgroundColor: showIntentionStep ? theme.accentAmber : chapter.accent },
+              {
+                backgroundColor: showLanguageStep
+                  ? theme.primary
+                  : showIntentionStep
+                  ? theme.accentAmber
+                  : chapter.accent,
+              },
               progressStyle,
             ]}
           />
@@ -385,15 +442,115 @@ export default function OnboardingScreen() {
 
         <View
           style={styles.canvas}
-          onTouchStart={!showIntentionStep ? handleTouchStart : undefined}
-          onTouchEnd={!showIntentionStep ? handleTouchEnd : undefined}
+          onTouchStart={!showIntentionStep && !showLanguageStep ? handleTouchStart : undefined}
+          onTouchEnd={!showIntentionStep && !showLanguageStep ? handleTouchEnd : undefined}
         >
           <ScrollView
             showsVerticalScrollIndicator={false}
             contentContainerStyle={styles.scroll}
             bounces={false}
           >
-            {showIntentionStep ? (
+            {showLanguageStep ? (
+              <Animated.View
+                key="languages"
+                entering={FadeInDown.duration(420).easing(EASE)}
+                exiting={FadeOut.duration(160)}
+              >
+                <View style={styles.stepRow}>
+                  <View style={[styles.iconDisc, { backgroundColor: theme.primaryMuted }]}>
+                    <Ionicons name="language-outline" size={20} color={theme.primary} />
+                  </View>
+                  <Text style={[styles.stepNum, { color: theme.primary }]}>07</Text>
+                  <Text style={[styles.kicker, { color: theme.primary, fontWeight: '700' }]}>
+                    TRANSLATION AUDIO
+                  </Text>
+                </View>
+
+                <Text style={[styles.title, { color: theme.textPrimary }]}>
+                  Choose your translation language
+                </Text>
+
+                <Text style={[styles.intentionSubtitle, { color: theme.textSecondary }]}>
+                  Qurus recites translations right alongside Arabic verses. Select your preferred translation voice—you can switch anytime in Settings.
+                </Text>
+
+                {/* 1. Language Option Cards */}
+                <View style={styles.languageCardsWrap}>
+                  {ONBOARDING_LANGUAGES.map((item) => {
+                    const config = TRANSLATION_LANGUAGES[item.id];
+                    const isSelected = selectedLanguage === item.id;
+                    return (
+                      <TouchableOpacity
+                        key={item.id}
+                        activeOpacity={0.85}
+                        onPress={() => setSelectedLanguage(item.id)}
+                        style={[
+                          styles.languageCard,
+                          {
+                            backgroundColor: isSelected ? theme.card : theme.surface,
+                            borderColor: isSelected ? theme.primary : theme.borderSubtle,
+                            borderWidth: isSelected ? 2 : StyleSheet.hairlineWidth,
+                          },
+                        ]}
+                      >
+                        <View style={styles.languageCardTop}>
+                          <View style={styles.languageBadgeRow}>
+                            <View style={[styles.langPill, { backgroundColor: theme.primaryMuted }]}>
+                              <Text style={[styles.langPillText, { color: theme.primary }]}>
+                                {config.flag} {item.badge}
+                              </Text>
+                            </View>
+                            {config.bitrate ? (
+                              <View style={[styles.subBadge, { backgroundColor: theme.chipBg }]}>
+                                <Text style={[styles.subBadgeText, { color: theme.textTertiary }]}>
+                                  {config.bitrate}
+                                </Text>
+                              </View>
+                            ) : null}
+                          </View>
+                          <View
+                            style={[
+                              styles.goalRadioCircle,
+                              {
+                                borderColor: isSelected ? theme.primary : theme.border,
+                                backgroundColor: isSelected ? theme.primary : 'transparent',
+                              },
+                            ]}
+                          >
+                            {isSelected && (
+                              <Ionicons name="checkmark" size={12} color="#FFFFFF" />
+                            )}
+                          </View>
+                        </View>
+
+                        <Text style={[styles.languageName, { color: theme.textPrimary }]}>
+                          {config.name} {config.nativeName !== config.name ? `• ${config.nativeName}` : ''}
+                        </Text>
+                        <Text style={[styles.languageReciter, { color: theme.primary }]}>
+                          {config.voiceName} ({config.author})
+                        </Text>
+                        <Text style={[styles.languageDesc, { color: theme.textSecondary }]}>
+                          {item.desc}
+                        </Text>
+                      </TouchableOpacity>
+                    );
+                  })}
+                </View>
+
+                {/* Info Note */}
+                <View
+                  style={[
+                    styles.privacyTipBox,
+                    { backgroundColor: theme.surfaceHighlight, borderColor: theme.borderSubtle, marginTop: 12 },
+                  ]}
+                >
+                  <Ionicons name="information-circle-outline" size={17} color={theme.primary} />
+                  <Text style={[styles.privacyTipText, { color: theme.textSecondary }]}>
+                    Listen to Arabic recitation alone, translation alone, or both intertwined. You can switch translation voices anytime in Settings.
+                  </Text>
+                </View>
+              </Animated.View>
+            ) : showIntentionStep ? (
               <Animated.View
                 key="intentions"
                 entering={FadeInDown.duration(420).easing(EASE)}
@@ -711,18 +868,21 @@ export default function OnboardingScreen() {
           <View style={styles.dockRow}>
             <TouchableOpacity
               onPress={() => {
-                if (showIntentionStep) {
+                if (showLanguageStep) {
+                  setShowLanguageStep(false);
+                  setShowIntentionStep(true);
+                } else if (showIntentionStep) {
                   setShowIntentionStep(false);
                 } else {
                   goTo(index - 1);
                 }
               }}
-              disabled={!showIntentionStep && index === 0}
+              disabled={!showIntentionStep && !showLanguageStep && index === 0}
               style={[
                 styles.backBtn,
                 {
                   backgroundColor: theme.chipBg,
-                  opacity: !showIntentionStep && index === 0 ? 0 : 1,
+                  opacity: !showIntentionStep && !showLanguageStep && index === 0 ? 0 : 1,
                 },
               ]}
               accessibilityLabel="Previous"
@@ -735,12 +895,32 @@ export default function OnboardingScreen() {
               activeOpacity={0.88}
               style={[
                 styles.nextBtn,
-                { backgroundColor: showIntentionStep ? theme.primary : chapter.accent },
+                {
+                  backgroundColor: showLanguageStep
+                    ? theme.primary
+                    : showIntentionStep
+                    ? theme.accentAmber
+                    : chapter.accent,
+                },
               ]}
-              accessibilityLabel={showIntentionStep ? 'Continue to Consent' : isLast ? 'Set Your Rhythm' : 'Continue'}
+              accessibilityLabel={
+                showLanguageStep
+                  ? 'Continue to Consent'
+                  : showIntentionStep
+                  ? 'Choose Translation'
+                  : isLast
+                  ? 'Set Your Rhythm'
+                  : 'Continue'
+              }
             >
               <Text style={styles.nextLabel}>
-                {showIntentionStep ? 'Continue to Consent' : isLast ? 'Set Your Rhythm' : 'Continue'}
+                {showLanguageStep
+                  ? 'Continue to Consent'
+                  : showIntentionStep
+                  ? 'Choose Translation'
+                  : isLast
+                  ? 'Set Your Rhythm'
+                  : 'Continue'}
               </Text>
               <Ionicons name="arrow-forward" size={18} color="#FFFFFF" />
             </TouchableOpacity>
@@ -1119,6 +1299,58 @@ const styles = StyleSheet.create({
   privacyTipText: {
     flex: 1,
     fontSize: 12.5,
+    lineHeight: 18,
+  },
+  languageCardsWrap: {
+    gap: 14,
+    marginBottom: 14,
+  },
+  languageCard: {
+    borderRadius: 20,
+    padding: 16,
+  },
+  languageCardTop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
+  languageBadgeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  langPill: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  langPillText: {
+    fontSize: 12,
+    fontWeight: '700',
+  },
+  subBadge: {
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
+  },
+  subBadgeText: {
+    fontSize: 11,
+    fontWeight: '500',
+  },
+  languageName: {
+    fontSize: 20,
+    fontWeight: '700',
+    letterSpacing: -0.3,
+    marginBottom: 4,
+  },
+  languageReciter: {
+    fontSize: 13.5,
+    fontWeight: '600',
+    marginBottom: 8,
+  },
+  languageDesc: {
+    fontSize: 13,
     lineHeight: 18,
   },
 });

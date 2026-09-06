@@ -1,1 +1,145 @@
-{"number":1,"name":"سُورَةُ ٱلْفَاتِحَةِ","englishName":"Al-Faatiha","englishNameTranslation":"The Opening","urduName":"دیباچہ / سورۃ الفاتحہ","numberOfAyahs":7,"revelationType":"Meccan","juzStart":1,"ayahs":[{"numberInSurah":1,"globalNumber":1,"arabicText":"﻿بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ","urduText":"شروع الله کا نام لے کر جو بڑا مہربان نہایت رحم والا ہے","juz":1,"page":1,"ruku":1,"hizbQuarter":1,"sajda":false},{"numberInSurah":2,"globalNumber":2,"arabicText":"ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ","urduText":"سب طرح کی تعریف خدا ہی کو (سزاوار) ہے جو تمام مخلوقات کا پروردگار ہے","juz":1,"page":1,"ruku":1,"hizbQuarter":1,"sajda":false},{"numberInSurah":3,"globalNumber":3,"arabicText":"ٱلرَّحْمَٰنِ ٱلرَّحِيمِ","urduText":"بڑا مہربان نہایت رحم والا","juz":1,"page":1,"ruku":1,"hizbQuarter":1,"sajda":false},{"numberInSurah":4,"globalNumber":4,"arabicText":"مَٰلِكِ يَوْمِ ٱلدِّينِ","urduText":"انصاف کے دن کا حاکم","juz":1,"page":1,"ruku":1,"hizbQuarter":1,"sajda":false},{"numberInSurah":5,"globalNumber":5,"arabicText":"إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ","urduText":"(اے پروردگار) ہم تیری ہی عبادت کرتے ہیں اور تجھ ہی سے مدد مانگتے ہیں","juz":1,"page":1,"ruku":1,"hizbQuarter":1,"sajda":false},{"numberInSurah":6,"globalNumber":6,"arabicText":"ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ","urduText":"ہم کو سیدھے رستے چلا","juz":1,"page":1,"ruku":1,"hizbQuarter":1,"sajda":false},{"numberInSurah":7,"globalNumber":7,"arabicText":"صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ","urduText":"ان لوگوں کے رستے جن پر تو اپنا فضل وکرم کرتا رہا نہ ان کے جن پر غصے ہوتا رہا اور نہ گمراہوں کے","juz":1,"page":1,"ruku":1,"hizbQuarter":1,"sajda":false}]}
+{
+  "number": 1,
+  "name": "سُورَةُ ٱلْفَاتِحَةِ",
+  "englishName": "Al-Faatiha",
+  "englishNameTranslation": "The Opening",
+  "urduName": "دیباچہ / سورۃ الفاتحہ",
+  "numberOfAyahs": 7,
+  "revelationType": "Meccan",
+  "juzStart": 1,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 1,
+      "arabicText": "﻿بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+      "urduText": "شروع الله کا نام لے کر جو بڑا مہربان نہایت رحم والا ہے",
+      "juz": 1,
+      "page": 1,
+      "ruku": 1,
+      "hizbQuarter": 1,
+      "sajda": false,
+      "englishText": "In the name of Allah, the Entirely Merciful, the Especially Merciful.",
+      "translations": {
+        "urdu": "شروع الله کا نام لے کر جو بڑا مہربان نہایت رحم والا ہے",
+        "english": "In the name of Allah, the Entirely Merciful, the Especially Merciful.",
+        "bengali": "শুরু করছি আল্লাহর নামে যিনি পরম করুণাময়, অতি দয়ালু।",
+        "turkish": "Rahman ve Rahim olan Allah'ın adıyla:",
+        "french": "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux."
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 2,
+      "arabicText": "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ",
+      "urduText": "سب طرح کی تعریف خدا ہی کو (سزاوار) ہے جو تمام مخلوقات کا پروردگار ہے",
+      "juz": 1,
+      "page": 1,
+      "ruku": 1,
+      "hizbQuarter": 1,
+      "sajda": false,
+      "englishText": "[All] praise is [due] to Allah, Lord of the worlds -",
+      "translations": {
+        "urdu": "سب طرح کی تعریف خدا ہی کو (سزاوار) ہے جو تمام مخلوقات کا پروردگار ہے",
+        "english": "[All] praise is [due] to Allah, Lord of the worlds -",
+        "bengali": "যাবতীয় প্রশংসা আল্লাহ তাআলার যিনি সকল সৃষ্টি জগতের পালনকর্তা।",
+        "turkish": "Hamd, Alemlerin Rabbi Allah'a mahsustur.",
+        "french": "Louange à Allah, Seigneur de l'univers."
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 3,
+      "arabicText": "ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+      "urduText": "بڑا مہربان نہایت رحم والا",
+      "juz": 1,
+      "page": 1,
+      "ruku": 1,
+      "hizbQuarter": 1,
+      "sajda": false,
+      "englishText": "The Entirely Merciful, the Especially Merciful,",
+      "translations": {
+        "urdu": "بڑا مہربان نہایت رحم والا",
+        "english": "The Entirely Merciful, the Especially Merciful,",
+        "bengali": "যিনি নিতান্ত মেহেরবান ও দয়ালু।",
+        "turkish": "O Rahman ve Rahim'dir,",
+        "french": "Le Tout Miséricordieux, le Très Miséricordieux,"
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 4,
+      "arabicText": "مَٰلِكِ يَوْمِ ٱلدِّينِ",
+      "urduText": "انصاف کے دن کا حاکم",
+      "juz": 1,
+      "page": 1,
+      "ruku": 1,
+      "hizbQuarter": 1,
+      "sajda": false,
+      "englishText": "Sovereign of the Day of Recompense.",
+      "translations": {
+        "urdu": "انصاف کے دن کا حاکم",
+        "english": "Sovereign of the Day of Recompense.",
+        "bengali": "যিনি বিচার দিনের মালিক।",
+        "turkish": "Din Gününün sahibidir.",
+        "french": "Maître du Jour de la rétribution."
+      }
+    },
+    {
+      "numberInSurah": 5,
+      "globalNumber": 5,
+      "arabicText": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
+      "urduText": "(اے پروردگار) ہم تیری ہی عبادت کرتے ہیں اور تجھ ہی سے مدد مانگتے ہیں",
+      "juz": 1,
+      "page": 1,
+      "ruku": 1,
+      "hizbQuarter": 1,
+      "sajda": false,
+      "englishText": "It is You we worship and You we ask for help.",
+      "translations": {
+        "urdu": "(اے پروردگار) ہم تیری ہی عبادت کرتے ہیں اور تجھ ہی سے مدد مانگتے ہیں",
+        "english": "It is You we worship and You we ask for help.",
+        "bengali": "আমরা একমাত্র তোমারই ইবাদত করি এবং শুধুমাত্র তোমারই সাহায্য প্রার্থনা করি।",
+        "turkish": "Ancak Sana kulluk eder ve yalnız Senden yardım dileriz.",
+        "french": "C'est Toi [Seul] que nous adorons, et c'est Toi [Seul] dont nous implorons secours."
+      }
+    },
+    {
+      "numberInSurah": 6,
+      "globalNumber": 6,
+      "arabicText": "ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ",
+      "urduText": "ہم کو سیدھے رستے چلا",
+      "juz": 1,
+      "page": 1,
+      "ruku": 1,
+      "hizbQuarter": 1,
+      "sajda": false,
+      "englishText": "Guide us to the straight path -",
+      "translations": {
+        "urdu": "ہم کو سیدھے رستے چلا",
+        "english": "Guide us to the straight path -",
+        "bengali": "আমাদেরকে সরল পথ দেখাও,",
+        "turkish": "Bizi doğru yola eriştir.",
+        "french": "Guide-nous dans le droit chemin,"
+      }
+    },
+    {
+      "numberInSurah": 7,
+      "globalNumber": 7,
+      "arabicText": "صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ",
+      "urduText": "ان لوگوں کے رستے جن پر تو اپنا فضل وکرم کرتا رہا نہ ان کے جن پر غصے ہوتا رہا اور نہ گمراہوں کے",
+      "juz": 1,
+      "page": 1,
+      "ruku": 1,
+      "hizbQuarter": 1,
+      "sajda": false,
+      "englishText": "The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray.",
+      "translations": {
+        "urdu": "ان لوگوں کے رستے جن پر تو اپنا فضل وکرم کرتا رہا نہ ان کے جن پر غصے ہوتا رہا اور نہ گمراہوں کے",
+        "english": "The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray.",
+        "bengali": "সে সমস্ত লোকের পথ, যাদেরকে তুমি নেয়ামত দান করেছ। তাদের পথ নয়, যাদের প্রতি তোমার গজব নাযিল হয়েছে এবং যারা পথভ্রষ্ট হয়েছে।",
+        "turkish": "Nimete erdirdiğin kimselerin yoluna; gazaba uğrayanların, ya da sapıtanların yoluna değil.",
+        "french": "le chemin de ceux que Tu as comblés de faveurs, non pas de ceux qui ont encouru Ta colère, ni des égarés."
+      }
+    }
+  ]
+}

@@ -1,1 +1,183 @@
-{"number":104,"name":"سُورَةُ الهُمَزَةِ","englishName":"Al-Humaza","englishNameTranslation":"The Traducer","urduName":"عیب جو / سورۃ الہمزہ","numberOfAyahs":9,"revelationType":"Meccan","juzStart":30,"ayahs":[{"numberInSurah":1,"globalNumber":6180,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ وَيْلٌۭ لِّكُلِّ هُمَزَةٍۢ لُّمَزَةٍ","urduText":"ہر طعن آمیز اشارتیں کرنے والے چغل خور کی خرابی ہے","juz":30,"page":601,"ruku":546,"hizbQuarter":240,"sajda":false},{"numberInSurah":2,"globalNumber":6181,"arabicText":"ٱلَّذِى جَمَعَ مَالًۭا وَعَدَّدَهُۥ","urduText":"جو مال جمع کرتا اور اس کو گن گن کر رکھتا ہے","juz":30,"page":601,"ruku":546,"hizbQuarter":240,"sajda":false},{"numberInSurah":3,"globalNumber":6182,"arabicText":"يَحْسَبُ أَنَّ مَالَهُۥٓ أَخْلَدَهُۥ","urduText":"(اور) خیال کرتا ہے کہ اس کا مال اس کی ہمیشہ کی زندگی کا موجب ہو گا","juz":30,"page":601,"ruku":546,"hizbQuarter":240,"sajda":false},{"numberInSurah":4,"globalNumber":6183,"arabicText":"كَلَّا ۖ لَيُنۢبَذَنَّ فِى ٱلْحُطَمَةِ","urduText":"ہر گز نہیں وہ ضرور حطمہ میں ڈالا جائے گا","juz":30,"page":601,"ruku":546,"hizbQuarter":240,"sajda":false},{"numberInSurah":5,"globalNumber":6184,"arabicText":"وَمَآ أَدْرَىٰكَ مَا ٱلْحُطَمَةُ","urduText":"اور تم کیا سمجھے حطمہ کیا ہے؟","juz":30,"page":601,"ruku":546,"hizbQuarter":240,"sajda":false},{"numberInSurah":6,"globalNumber":6185,"arabicText":"نَارُ ٱللَّهِ ٱلْمُوقَدَةُ","urduText":"وہ خدا کی بھڑکائی ہوئی آگ ہے","juz":30,"page":601,"ruku":546,"hizbQuarter":240,"sajda":false},{"numberInSurah":7,"globalNumber":6186,"arabicText":"ٱلَّتِى تَطَّلِعُ عَلَى ٱلْأَفْـِٔدَةِ","urduText":"جو دلوں پر جا لپٹے گی","juz":30,"page":601,"ruku":546,"hizbQuarter":240,"sajda":false},{"numberInSurah":8,"globalNumber":6187,"arabicText":"إِنَّهَا عَلَيْهِم مُّؤْصَدَةٌۭ","urduText":"(اور) وہ اس میں بند کر دیئے جائیں گے","juz":30,"page":601,"ruku":546,"hizbQuarter":240,"sajda":false},{"numberInSurah":9,"globalNumber":6188,"arabicText":"فِى عَمَدٍۢ مُّمَدَّدَةٍۭ","urduText":"(یعنی آگ کے) لمبے لمبے ستونوں میں","juz":30,"page":601,"ruku":546,"hizbQuarter":240,"sajda":false}]}
+{
+  "number": 104,
+  "name": "سُورَةُ الهُمَزَةِ",
+  "englishName": "Al-Humaza",
+  "englishNameTranslation": "The Traducer",
+  "urduName": "عیب جو / سورۃ الہمزہ",
+  "numberOfAyahs": 9,
+  "revelationType": "Meccan",
+  "juzStart": 30,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 6180,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ وَيْلٌۭ لِّكُلِّ هُمَزَةٍۢ لُّمَزَةٍ",
+      "urduText": "ہر طعن آمیز اشارتیں کرنے والے چغل خور کی خرابی ہے",
+      "juz": 30,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Woe to every scorner and mocker",
+      "translations": {
+        "urdu": "ہر طعن آمیز اشارتیں کرنے والے چغل خور کی خرابی ہے",
+        "english": "Woe to every scorner and mocker",
+        "bengali": "প্রত্যেক পশ্চাতে ও সম্মুখে পরনিন্দাকারীর দুর্ভোগ,",
+        "turkish": "Mal toplayarak onu tekrar tekrar sayan, diliyle çekiştirip alay eden kimsenin vay haline!",
+        "french": "Malheur à tout calomniateur diffamateur,"
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 6181,
+      "arabicText": "ٱلَّذِى جَمَعَ مَالًۭا وَعَدَّدَهُۥ",
+      "urduText": "جو مال جمع کرتا اور اس کو گن گن کر رکھتا ہے",
+      "juz": 30,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Who collects wealth and [continuously] counts it.",
+      "translations": {
+        "urdu": "جو مال جمع کرتا اور اس کو گن گن کر رکھتا ہے",
+        "english": "Who collects wealth and [continuously] counts it.",
+        "bengali": "যে অর্থ সঞ্চিত করে ও গণনা করে",
+        "turkish": "Mal toplayarak onu tekrar tekrar sayan, diliyle çekiştirip alay eden kimsenin vay haline!",
+        "french": "qui amasse une fortune et la compte,"
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 6182,
+      "arabicText": "يَحْسَبُ أَنَّ مَالَهُۥٓ أَخْلَدَهُۥ",
+      "urduText": "(اور) خیال کرتا ہے کہ اس کا مال اس کی ہمیشہ کی زندگی کا موجب ہو گا",
+      "juz": 30,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "He thinks that his wealth will make him immortal.",
+      "translations": {
+        "urdu": "(اور) خیال کرتا ہے کہ اس کا مال اس کی ہمیشہ کی زندگی کا موجب ہو گا",
+        "english": "He thinks that his wealth will make him immortal.",
+        "bengali": "সে মনে করে যে, তার অর্থ চিরকাল তার সাথে থাকবে!",
+        "turkish": "Malının kendisini ölümsüz kılacağını sanır.",
+        "french": "pensant que sa fortune l'immortalisera."
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 6183,
+      "arabicText": "كَلَّا ۖ لَيُنۢبَذَنَّ فِى ٱلْحُطَمَةِ",
+      "urduText": "ہر گز نہیں وہ ضرور حطمہ میں ڈالا جائے گا",
+      "juz": 30,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "No! He will surely be thrown into the Crusher.",
+      "translations": {
+        "urdu": "ہر گز نہیں وہ ضرور حطمہ میں ڈالا جائے گا",
+        "english": "No! He will surely be thrown into the Crusher.",
+        "bengali": "কখনও না, সে অবশ্যই নিক্ষিপ্ত হবে পিষ্টকারীর মধ্যে।",
+        "turkish": "Hayır; o, and olsun ki, Hutame'ye atılacaktır.",
+        "french": "Mais non! Il sera certes, jeté dans la Hutamah."
+      }
+    },
+    {
+      "numberInSurah": 5,
+      "globalNumber": 6184,
+      "arabicText": "وَمَآ أَدْرَىٰكَ مَا ٱلْحُطَمَةُ",
+      "urduText": "اور تم کیا سمجھے حطمہ کیا ہے؟",
+      "juz": 30,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "And what can make you know what is the Crusher?",
+      "translations": {
+        "urdu": "اور تم کیا سمجھے حطمہ کیا ہے؟",
+        "english": "And what can make you know what is the Crusher?",
+        "bengali": "আপনি কি জানেন, পিষ্টকারী কি?",
+        "turkish": "Hutame'nin ne olduğunu sen bilir misin?",
+        "french": "Et qui te dira ce qu'est la Hutamah?"
+      }
+    },
+    {
+      "numberInSurah": 6,
+      "globalNumber": 6185,
+      "arabicText": "نَارُ ٱللَّهِ ٱلْمُوقَدَةُ",
+      "urduText": "وہ خدا کی بھڑکائی ہوئی آگ ہے",
+      "juz": 30,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "It is the fire of Allah, [eternally] fueled,",
+      "translations": {
+        "urdu": "وہ خدا کی بھڑکائی ہوئی آگ ہے",
+        "english": "It is the fire of Allah, [eternally] fueled,",
+        "bengali": "এটা আল্লাহর প্রজ্জ্বলিত অগ্নি,",
+        "turkish": "O, yüreklere çökecek olan, Allah'ın tutuşturulmuş ateşidir.",
+        "french": "Le Feu attisé d'Allah"
+      }
+    },
+    {
+      "numberInSurah": 7,
+      "globalNumber": 6186,
+      "arabicText": "ٱلَّتِى تَطَّلِعُ عَلَى ٱلْأَفْـِٔدَةِ",
+      "urduText": "جو دلوں پر جا لپٹے گی",
+      "juz": 30,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Which mounts directed at the hearts.",
+      "translations": {
+        "urdu": "جو دلوں پر جا لپٹے گی",
+        "english": "Which mounts directed at the hearts.",
+        "bengali": "যা হৃদয় পর্যন্ত পৌছবে।",
+        "turkish": "O, yüreklere çökecek olan, Allah'ın tutuşturulmuş ateşidir.",
+        "french": "qui monte jusqu'aux cœurs."
+      }
+    },
+    {
+      "numberInSurah": 8,
+      "globalNumber": 6187,
+      "arabicText": "إِنَّهَا عَلَيْهِم مُّؤْصَدَةٌۭ",
+      "urduText": "(اور) وہ اس میں بند کر دیئے جائیں گے",
+      "juz": 30,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "Indeed, Hellfire will be closed down upon them",
+      "translations": {
+        "urdu": "(اور) وہ اس میں بند کر دیئے جائیں گے",
+        "english": "Indeed, Hellfire will be closed down upon them",
+        "bengali": "এতে তাদেরকে বেঁধে দেয়া হবে,",
+        "turkish": "Onlar, uzun sütunlar arasında, her yönden o ateşle kapatılmışlardır.",
+        "french": "Il se refermera sur eux,"
+      }
+    },
+    {
+      "numberInSurah": 9,
+      "globalNumber": 6188,
+      "arabicText": "فِى عَمَدٍۢ مُّمَدَّدَةٍۭ",
+      "urduText": "(یعنی آگ کے) لمبے لمبے ستونوں میں",
+      "juz": 30,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false,
+      "englishText": "In extended columns.",
+      "translations": {
+        "urdu": "(یعنی آگ کے) لمبے لمبے ستونوں میں",
+        "english": "In extended columns.",
+        "bengali": "লম্বা লম্বা খুঁটিতে।",
+        "turkish": "Onlar, uzun sütunlar arasında, her yönden o ateşle kapatılmışlardır.",
+        "french": "en colonnes (de flammes) étendues."
+      }
+    }
+  ]
+}

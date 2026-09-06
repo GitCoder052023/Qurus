@@ -1,1 +1,164 @@
-{"number":99,"name":"سُورَةُ الزَّلۡزَلَةِ","englishName":"Az-Zalzala","englishNameTranslation":"The Earthquake","urduName":"زلزلہ / سورۃ الزلزال","numberOfAyahs":8,"revelationType":"Medinan","juzStart":30,"ayahs":[{"numberInSurah":1,"globalNumber":6139,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ إِذَا زُلْزِلَتِ ٱلْأَرْضُ زِلْزَالَهَا","urduText":"جب زمین بھونچال سے ہلا دی جائے گی","juz":30,"page":599,"ruku":541,"hizbQuarter":239,"sajda":false},{"numberInSurah":2,"globalNumber":6140,"arabicText":"وَأَخْرَجَتِ ٱلْأَرْضُ أَثْقَالَهَا","urduText":"اور زمین اپنے (اندر) کے بوجھ نکال ڈالے گی","juz":30,"page":599,"ruku":541,"hizbQuarter":239,"sajda":false},{"numberInSurah":3,"globalNumber":6141,"arabicText":"وَقَالَ ٱلْإِنسَٰنُ مَا لَهَا","urduText":"اور انسان کہے گا کہ اس کو کیا ہوا ہے؟","juz":30,"page":599,"ruku":541,"hizbQuarter":239,"sajda":false},{"numberInSurah":4,"globalNumber":6142,"arabicText":"يَوْمَئِذٍۢ تُحَدِّثُ أَخْبَارَهَا","urduText":"اس روز وہ اپنے حالات بیان کردے گی","juz":30,"page":599,"ruku":541,"hizbQuarter":239,"sajda":false},{"numberInSurah":5,"globalNumber":6143,"arabicText":"بِأَنَّ رَبَّكَ أَوْحَىٰ لَهَا","urduText":"کیونکہ تمہارے پروردگار نے اس کو حکم بھیجا (ہوگا)","juz":30,"page":599,"ruku":541,"hizbQuarter":239,"sajda":false},{"numberInSurah":6,"globalNumber":6144,"arabicText":"يَوْمَئِذٍۢ يَصْدُرُ ٱلنَّاسُ أَشْتَاتًۭا لِّيُرَوْا۟ أَعْمَٰلَهُمْ","urduText":"اس دن لوگ گروہ گروہ ہو کر آئیں گے تاکہ ان کو ان کے اعمال دکھا دیئے جائیں","juz":30,"page":599,"ruku":541,"hizbQuarter":239,"sajda":false},{"numberInSurah":7,"globalNumber":6145,"arabicText":"فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًۭا يَرَهُۥ","urduText":"تو جس نے ذرہ بھر نیکی کی ہو گی وہ اس کو دیکھ لے گا","juz":30,"page":599,"ruku":541,"hizbQuarter":239,"sajda":false},{"numberInSurah":8,"globalNumber":6146,"arabicText":"وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍۢ شَرًّۭا يَرَهُۥ","urduText":"اور جس نے ذرہ بھر برائی کی ہوگی وہ اسے دیکھ لے گا","juz":30,"page":599,"ruku":541,"hizbQuarter":239,"sajda":false}]}
+{
+  "number": 99,
+  "name": "سُورَةُ الزَّلۡزَلَةِ",
+  "englishName": "Az-Zalzala",
+  "englishNameTranslation": "The Earthquake",
+  "urduName": "زلزلہ / سورۃ الزلزال",
+  "numberOfAyahs": 8,
+  "revelationType": "Medinan",
+  "juzStart": 30,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 6139,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ إِذَا زُلْزِلَتِ ٱلْأَرْضُ زِلْزَالَهَا",
+      "urduText": "جب زمین بھونچال سے ہلا دی جائے گی",
+      "juz": 30,
+      "page": 599,
+      "ruku": 541,
+      "hizbQuarter": 239,
+      "sajda": false,
+      "englishText": "When the earth is shaken with its [final] earthquake",
+      "translations": {
+        "urdu": "جب زمین بھونچال سے ہلا دی جائے گی",
+        "english": "When the earth is shaken with its [final] earthquake",
+        "bengali": "যখন পৃথিবী তার কম্পনে প্রকম্পিত হবে,",
+        "turkish": "Yer dehşetle sarsıldıkça sarsıldığı, yeryüzü ağırlıklarını dışarıya çıkardığı ve insanın: \"Buna ne oluyor?\" dediği zaman;",
+        "french": "Quand la terre tremblera d'un violent tremblement,"
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 6140,
+      "arabicText": "وَأَخْرَجَتِ ٱلْأَرْضُ أَثْقَالَهَا",
+      "urduText": "اور زمین اپنے (اندر) کے بوجھ نکال ڈالے گی",
+      "juz": 30,
+      "page": 599,
+      "ruku": 541,
+      "hizbQuarter": 239,
+      "sajda": false,
+      "englishText": "And the earth discharges its burdens",
+      "translations": {
+        "urdu": "اور زمین اپنے (اندر) کے بوجھ نکال ڈالے گی",
+        "english": "And the earth discharges its burdens",
+        "bengali": "যখন সে তার বোঝা বের করে দেবে।",
+        "turkish": "Yer dehşetle sarsıldıkça sarsıldığı, yeryüzü ağırlıklarını dışarıya çıkardığı ve insanın: \"Buna ne oluyor?\" dediği zaman;",
+        "french": "et que la terre fera sortir ses fardeaux,"
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 6141,
+      "arabicText": "وَقَالَ ٱلْإِنسَٰنُ مَا لَهَا",
+      "urduText": "اور انسان کہے گا کہ اس کو کیا ہوا ہے؟",
+      "juz": 30,
+      "page": 599,
+      "ruku": 541,
+      "hizbQuarter": 239,
+      "sajda": false,
+      "englishText": "And man says, \"What is [wrong] with it?\" -",
+      "translations": {
+        "urdu": "اور انسان کہے گا کہ اس کو کیا ہوا ہے؟",
+        "english": "And man says, \"What is [wrong] with it?\" -",
+        "bengali": "এবং মানুষ বলবে, এর কি হল ?",
+        "turkish": "Yer dehşetle sarsıldıkça sarsıldığı, yeryüzü ağırlıklarını dışarıya çıkardığı ve insanın: \"Buna ne oluyor?\" dediği zaman;",
+        "french": "et que l'homme dira: «Qu'a-t-elle?»"
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 6142,
+      "arabicText": "يَوْمَئِذٍۢ تُحَدِّثُ أَخْبَارَهَا",
+      "urduText": "اس روز وہ اپنے حالات بیان کردے گی",
+      "juz": 30,
+      "page": 599,
+      "ruku": 541,
+      "hizbQuarter": 239,
+      "sajda": false,
+      "englishText": "That Day, it will report its news",
+      "translations": {
+        "urdu": "اس روز وہ اپنے حالات بیان کردے گی",
+        "english": "That Day, it will report its news",
+        "bengali": "সেদিন সে তার বৃত্তান্ত বর্ণনা করবে,",
+        "turkish": "İşte o gün, yer, Rabbinin ona vahyetmesiyle kendi haberlerini anlatır.",
+        "french": "ce jour-là, elle contera son histoire,"
+      }
+    },
+    {
+      "numberInSurah": 5,
+      "globalNumber": 6143,
+      "arabicText": "بِأَنَّ رَبَّكَ أَوْحَىٰ لَهَا",
+      "urduText": "کیونکہ تمہارے پروردگار نے اس کو حکم بھیجا (ہوگا)",
+      "juz": 30,
+      "page": 599,
+      "ruku": 541,
+      "hizbQuarter": 239,
+      "sajda": false,
+      "englishText": "Because your Lord has commanded it.",
+      "translations": {
+        "urdu": "کیونکہ تمہارے پروردگار نے اس کو حکم بھیجا (ہوگا)",
+        "english": "Because your Lord has commanded it.",
+        "bengali": "কারণ, আপনার পালনকর্তা তাকে আদেশ করবেন।",
+        "turkish": "İşte o gün, yer, Rabbinin ona vahyetmesiyle kendi haberlerini anlatır.",
+        "french": "selon ce que ton Seigneur lui aura révélé [ordonné]."
+      }
+    },
+    {
+      "numberInSurah": 6,
+      "globalNumber": 6144,
+      "arabicText": "يَوْمَئِذٍۢ يَصْدُرُ ٱلنَّاسُ أَشْتَاتًۭا لِّيُرَوْا۟ أَعْمَٰلَهُمْ",
+      "urduText": "اس دن لوگ گروہ گروہ ہو کر آئیں گے تاکہ ان کو ان کے اعمال دکھا دیئے جائیں",
+      "juz": 30,
+      "page": 599,
+      "ruku": 541,
+      "hizbQuarter": 239,
+      "sajda": false,
+      "englishText": "That Day, the people will depart separated [into categories] to be shown [the result of] their deeds.",
+      "translations": {
+        "urdu": "اس دن لوگ گروہ گروہ ہو کر آئیں گے تاکہ ان کو ان کے اعمال دکھا دیئے جائیں",
+        "english": "That Day, the people will depart separated [into categories] to be shown [the result of] their deeds.",
+        "bengali": "সেদিন মানুষ বিভিন্ন দলে প্রকাশ পাবে, যাতে তাদেরকে তাদের কৃতকর্ম দেখানো হয়।",
+        "turkish": "O gün insanlar işlerinin kendilerine gösterilmesi için bölük bölük dönerler.",
+        "french": "Ce jour-là, les gens sortiront séparément pour que leur soient montrées leurs œuvres."
+      }
+    },
+    {
+      "numberInSurah": 7,
+      "globalNumber": 6145,
+      "arabicText": "فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًۭا يَرَهُۥ",
+      "urduText": "تو جس نے ذرہ بھر نیکی کی ہو گی وہ اس کو دیکھ لے گا",
+      "juz": 30,
+      "page": 599,
+      "ruku": 541,
+      "hizbQuarter": 239,
+      "sajda": false,
+      "englishText": "So whoever does an atom's weight of good will see it,",
+      "translations": {
+        "urdu": "تو جس نے ذرہ بھر نیکی کی ہو گی وہ اس کو دیکھ لے گا",
+        "english": "So whoever does an atom's weight of good will see it,",
+        "bengali": "অতঃপর কেউ অণু পরিমাণ সৎকর্ম করলে তা দেখতে পাবে",
+        "turkish": "Kim zerre kadar iyilik yapmışsa onu görür.",
+        "french": "Quiconque fait un bien fût-ce du poids d'un atome, le verra,"
+      }
+    },
+    {
+      "numberInSurah": 8,
+      "globalNumber": 6146,
+      "arabicText": "وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍۢ شَرًّۭا يَرَهُۥ",
+      "urduText": "اور جس نے ذرہ بھر برائی کی ہوگی وہ اسے دیکھ لے گا",
+      "juz": 30,
+      "page": 599,
+      "ruku": 541,
+      "hizbQuarter": 239,
+      "sajda": false,
+      "englishText": "And whoever does an atom's weight of evil will see it.",
+      "translations": {
+        "urdu": "اور جس نے ذرہ بھر برائی کی ہوگی وہ اسے دیکھ لے گا",
+        "english": "And whoever does an atom's weight of evil will see it.",
+        "bengali": "এবং কেউ অণু পরিমাণ অসৎকর্ম করলে তাও দেখতে পাবে।",
+        "turkish": "Kim de zerre kadar kötülük yapmışsa onu görür.",
+        "french": "et quiconque fait un mal fût-ce du poids d'un atome, le verra."
+      }
+    }
+  ]
+}

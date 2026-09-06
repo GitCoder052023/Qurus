@@ -125,7 +125,17 @@ export function NoteEditorModal({
                 </Text>
               ) : null}
               {urduText ? (
-                <Text style={[styles.urduPreview, { color: theme.urduText }]} numberOfLines={2}>
+                <Text
+                  style={[
+                    styles.urduPreview,
+                    {
+                      color: theme.urduText,
+                      textAlign: /[\u0600-\u06FF]/.test(urduText) ? 'right' : 'left',
+                      writingDirection: /[\u0600-\u06FF]/.test(urduText) ? 'rtl' : 'ltr',
+                    },
+                  ]}
+                  numberOfLines={2}
+                >
                   {urduText}
                 </Text>
               ) : null}

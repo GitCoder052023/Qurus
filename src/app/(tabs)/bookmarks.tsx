@@ -90,9 +90,19 @@ export default function BookmarksScreen() {
           </Text>
         ) : null}
 
-        {/* Urdu Snippet */}
+        {/* Translation Snippet */}
         {item.urduSnippet ? (
-          <Text style={[styles.urduSnippet, { color: theme.urduText }]} numberOfLines={2}>
+          <Text
+            style={[
+              styles.urduSnippet,
+              {
+                color: theme.urduText,
+                textAlign: /[\u0600-\u06FF]/.test(item.urduSnippet) ? 'right' : 'left',
+                writingDirection: /[\u0600-\u06FF]/.test(item.urduSnippet) ? 'rtl' : 'ltr',
+              },
+            ]}
+            numberOfLines={2}
+          >
             {item.urduSnippet}
           </Text>
         ) : null}

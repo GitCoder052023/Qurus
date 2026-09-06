@@ -1,1 +1,1152 @@
-{"number":51,"name":"سُورَةُ الذَّارِيَاتِ","englishName":"Adh-Dhaariyat","englishNameTranslation":"The Winnowing Winds","urduName":"بکھیرنے والیاں / سورۃ الذاریات","numberOfAyahs":60,"revelationType":"Meccan","juzStart":26,"ayahs":[{"numberInSurah":1,"globalNumber":4676,"arabicText":"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ وَٱلذَّٰرِيَٰتِ ذَرْوًۭا","urduText":"بکھیرنے والیوں کی قسم جو اُڑا کر بکھیر دیتی ہیں","juz":26,"page":520,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":2,"globalNumber":4677,"arabicText":"فَٱلْحَٰمِلَٰتِ وِقْرًۭا","urduText":"پھر (پانی کا) بوجھ اٹھاتی ہیں","juz":26,"page":520,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":3,"globalNumber":4678,"arabicText":"فَٱلْجَٰرِيَٰتِ يُسْرًۭا","urduText":"پھر آہستہ آہستہ چلتی ہیں","juz":26,"page":520,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":4,"globalNumber":4679,"arabicText":"فَٱلْمُقَسِّمَٰتِ أَمْرًا","urduText":"پھر چیزیں تقسیم کرتی ہیں","juz":26,"page":520,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":5,"globalNumber":4680,"arabicText":"إِنَّمَا تُوعَدُونَ لَصَادِقٌۭ","urduText":"کہ جس چیز کا تم سے وعدہ کیا جاتا ہے وہ سچا ہے","juz":26,"page":520,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":6,"globalNumber":4681,"arabicText":"وَإِنَّ ٱلدِّينَ لَوَٰقِعٌۭ","urduText":"اور انصاف (کا دن) ضرور واقع ہوگا","juz":26,"page":520,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":7,"globalNumber":4682,"arabicText":"وَٱلسَّمَآءِ ذَاتِ ٱلْحُبُكِ","urduText":"اور آسمان کی قسم جس میں رسے ہیں","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":8,"globalNumber":4683,"arabicText":"إِنَّكُمْ لَفِى قَوْلٍۢ مُّخْتَلِفٍۢ","urduText":"کہ (اے اہل مکہ) تم ایک متناقض بات میں (پڑے ہوئے) ہو","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":9,"globalNumber":4684,"arabicText":"يُؤْفَكُ عَنْهُ مَنْ أُفِكَ","urduText":"اس سے وہی پھرتا ہے جو (خدا کی طرف سے) پھیرا ج��ئے","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":10,"globalNumber":4685,"arabicText":"قُتِلَ ٱلْخَرَّٰصُونَ","urduText":"اٹکل دوڑانے والے ہلاک ہوں","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":11,"globalNumber":4686,"arabicText":"ٱلَّذِينَ هُمْ فِى غَمْرَةٍۢ سَاهُونَ","urduText":"جو بےخبری میں بھولے ہوئے ہیں","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":12,"globalNumber":4687,"arabicText":"يَسْـَٔلُونَ أَيَّانَ يَوْمُ ٱلدِّينِ","urduText":"پوچھتے ہیں کہ جزا کا دن کب ہوگا؟","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":13,"globalNumber":4688,"arabicText":"يَوْمَ هُمْ عَلَى ٱلنَّارِ يُفْتَنُونَ","urduText":"اُس دن (ہوگا) جب ان کو آگ میں عذاب دیا جائے گا","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":14,"globalNumber":4689,"arabicText":"ذُوقُوا۟ فِتْنَتَكُمْ هَٰذَا ٱلَّذِى كُنتُم بِهِۦ تَسْتَعْجِلُونَ","urduText":"اب اپنی شرارت کا مزہ چکھو۔ یہ وہی ہے جس کے لئے تم جلدی مچایا کرتے تھے","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":15,"globalNumber":4690,"arabicText":"إِنَّ ٱلْمُتَّقِينَ فِى جَنَّٰتٍۢ وَعُيُونٍ","urduText":"بےشک پرہیزگار بہشتوں اور چشموں میں (عیش کر رہے) ہوں گے","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":16,"globalNumber":4691,"arabicText":"ءَاخِذِينَ مَآ ءَاتَىٰهُمْ رَبُّهُمْ ۚ إِنَّهُمْ كَانُوا۟ قَبْلَ ذَٰلِكَ مُحْسِنِينَ","urduText":"اور) جو جو (نعمتیں) ان کا پروردگار انہیں دیتا ہوگا ان کو لے رہے ہوں گے۔ بےشک وہ اس سے پہلے نیکیاں کرتے تھے","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":17,"globalNumber":4692,"arabicText":"كَانُوا۟ قَلِيلًۭا مِّنَ ٱلَّيْلِ مَا يَهْجَعُونَ","urduText":"رات کے تھوڑے سے حصے میں سوتے تھے","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":18,"globalNumber":4693,"arabicText":"وَبِٱلْأَسْحَارِ هُمْ يَسْتَغْفِرُون��","urduText":"اور اوقات سحر میں بخشش مانگا کرتے تھے","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":19,"globalNumber":4694,"arabicText":"وَفِىٓ أَمْوَٰلِهِمْ حَقٌّۭ لِّلسَّآئِلِ وَٱلْمَحْرُومِ","urduText":"اور ان کے مال میں مانگنے والے اور نہ مانگنے والے (دونوں) کا حق ہوتا تھا","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":20,"globalNumber":4695,"arabicText":"وَفِى ٱلْأَرْضِ ءَايَٰتٌۭ لِّلْمُوقِنِينَ","urduText":"اور یقین کرنے والوں کے لئے زمین میں (بہت سی) نشانیاں ہیں","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":21,"globalNumber":4696,"arabicText":"وَفِىٓ أَنفُسِكُمْ ۚ أَفَلَا تُبْصِرُونَ","urduText":"اور خود تمہارے نفوس میں تو کیا تم دیکھتے نہیں؟","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":22,"globalNumber":4697,"arabicText":"وَفِى ٱلسَّمَآءِ رِزْقُكُمْ وَمَا تُوعَدُونَ","urduText":"اور تمہارا رزق اور جس چیز کا تم سے وعدہ کیا جاتا ہے آسمان میں ہے","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":23,"globalNumber":4698,"arabicText":"فَوَرَبِّ ٱلسَّمَآءِ وَٱلْأَرْضِ إِنَّهُۥ لَحَقٌّۭ مِّثْلَ مَآ أَنَّكُمْ تَنطِقُونَ","urduText":"تو آسمانوں اور زمین کے مالک کی قسم! یہ (اسی طرح) قابل یقین ہے جس طرح تم بات کرتے ہو","juz":26,"page":521,"ruku":455,"hizbQuarter":208,"sajda":false},{"numberInSurah":24,"globalNumber":4699,"arabicText":"هَلْ أَتَىٰكَ حَدِيثُ ضَيْفِ إِبْرَٰهِيمَ ٱلْمُكْرَمِينَ","urduText":"بھلا تمہارے پاس ابراہیمؑ کے معزز مہمانوں کی خبر پہنچی ہے؟","juz":26,"page":521,"ruku":456,"hizbQuarter":208,"sajda":false},{"numberInSurah":25,"globalNumber":4700,"arabicText":"إِذْ دَخَلُوا۟ عَلَيْهِ فَقَالُوا۟ سَلَٰمًۭا ۖ قَالَ سَلَٰمٌۭ قَوْمٌۭ مُّنكَرُونَ","urduText":"جب وہ ان کے پاس آئے تو سلام کہا۔ انہوں نے بھی (جواب میں) سلام کہا (دیکھا تو) ایسے لوگ کہ نہ جان نہ پہچان","juz":26,"page":521,"ruku":456,"hizbQuarter":208,"sajda":false},{"numberInSurah":26,"globalNumber":4701,"arabicText":"فَرَاغَ إِلَىٰٓ أَهْلِهِۦ فَجَآءَ بِعِجْلٍۢ سَمِينٍۢ","urduText":"تو اپنے گھر جا کر ایک (بھنا ہوا) موٹا بچھڑا لائے","juz":26,"page":521,"ruku":456,"hizbQuarter":208,"sajda":false},{"numberInSurah":27,"globalNumber":4702,"arabicText":"فَقَرَّبَهُۥٓ إِلَيْهِمْ قَالَ أَلَا تَأْكُلُونَ","urduText":"(اور کھانے کے لئے) ان کے آگے رکھ دیا۔ کہنے لگے کہ آپ تناول کیوں نہیں کرتے؟","juz":26,"page":521,"ruku":456,"hizbQuarter":208,"sajda":false},{"numberInSurah":28,"globalNumber":4703,"arabicText":"فَأَوْجَسَ مِنْهُمْ خِيفَةًۭ ۖ قَالُوا۟ لَا تَخَفْ ۖ وَبَشَّرُوهُ بِغُلَٰمٍ عَلِيمٍۢ","urduText":"اور دل میں ان سے خوف معلوم کیا۔ (انہوں نے) کہا کہ خوف نہ کیجیئے۔ اور ان کو ایک دانشمند لڑکے کی بشارت بھی سنائی","juz":26,"page":521,"ruku":456,"hizbQuarter":208,"sajda":false},{"numberInSurah":29,"globalNumber":4704,"arabicText":"فَأَقْبَلَتِ ٱمْرَأَتُهُۥ فِى صَرَّةٍۢ فَصَكَّتْ وَجْهَهَا وَقَالَتْ عَجُوزٌ عَقِيمٌۭ","urduText":"تو ابراہیمؑ کی بیوی چلاّتی آئی اور اپنا منہ پیٹ کر کہنے لگی کہ (اے ہے ایک تو) بڑھیا اور (دوسرے) بانجھ","juz":26,"page":521,"ruku":456,"hizbQuarter":208,"sajda":false},{"numberInSurah":30,"globalNumber":4705,"arabicText":"قَالُوا۟ كَذَٰلِكِ قَالَ رَبُّكِ ۖ إِنَّهُۥ هُوَ ٱلْحَكِيمُ ٱلْعَلِيمُ","urduText":"(انہوں نے) کہا (ہاں) تمہارے پروردگار نے یوں ہی فرمایا ہے۔ وہ بےشک صاحبِ حکمت (اور) خبردار ہے","juz":26,"page":521,"ruku":456,"hizbQuarter":208,"sajda":false},{"numberInSurah":31,"globalNumber":4706,"arabicText":"۞ قَالَ فَمَا خَطْبُكُمْ أَيُّهَا ٱلْمُرْسَلُونَ","urduText":"ابراہیمؑ نے کہا کہ فرشتو! تمہارا مدعا کیا ہے؟","juz":27,"page":522,"ruku":456,"hizbQuarter":209,"sajda":false},{"numberInSurah":32,"globalNumber":4707,"arabicText":"قَالُوٓا۟ إِنَّآ أُرْسِلْنَآ إِلَىٰ قَوْمٍۢ مُّجْرِمِينَ","urduText":"انہوں نے کہا کہ ہم گنہگار لوگوں کی طرف بھیجے گئے ہیں","juz":27,"page":522,"ruku":456,"hizbQuarter":209,"sajda":false},{"numberInSurah":33,"globalNumber":4708,"arabicText":"لِنُرْسِلَ عَلَيْهِمْ حِجَارَةًۭ مِّن طِينٍۢ","urduText":"تاکہ ان پر کھنگر برسائیں","juz":27,"page":522,"ruku":456,"hizbQuarter":209,"sajda":false},{"numberInSurah":34,"globalNumber":4709,"arabicText":"مُّسَوَّمَةً عِندَ رَبِّكَ لِلْمُسْرِفِينَ","urduText":"جن پر حد سے بڑھ جانے والوں کے لئے تمہارے پروردگار کے ہاں سے نشان کردیئے گئے ہیں","juz":27,"page":522,"ruku":456,"hizbQuarter":209,"sajda":false},{"numberInSurah":35,"globalNumber":4710,"arabicText":"فَأَخْرَجْنَا مَن كَانَ فِيهَا مِنَ ٱلْمُؤْمِنِينَ","urduText":"تو وہاں جتنے مومن تھے ان کو ہم نے نکال لیا","juz":27,"page":522,"ruku":456,"hizbQuarter":209,"sajda":false},{"numberInSurah":36,"globalNumber":4711,"arabicText":"فَمَا وَجَدْنَا فِيهَا غَيْرَ بَيْت��ۢ مِّنَ ٱلْمُسْلِمِينَ","urduText":"اور اس میں ایک گھر کے سوا مسلمانوں کا کوئی گھر نہ پایا","juz":27,"page":522,"ruku":456,"hizbQuarter":209,"sajda":false},{"numberInSurah":37,"globalNumber":4712,"arabicText":"وَتَرَكْنَا فِيهَآ ءَايَةًۭ لِّلَّذِينَ يَخَافُونَ ٱلْعَذَابَ ٱلْأَلِيمَ","urduText":"اور جو لوگ عذاب الیم سے ڈرتے ہیں ان کے لئے وہاں نشانی چھوڑ دی","juz":27,"page":522,"ruku":456,"hizbQuarter":209,"sajda":false},{"numberInSurah":38,"globalNumber":4713,"arabicText":"وَفِى مُوسَىٰٓ إِذْ أَرْسَلْنَٰهُ إِلَىٰ فِرْعَوْنَ بِسُلْطَٰنٍۢ مُّبِينٍۢ","urduText":"اور موسیٰ (کے حال) میں (بھی نشانی ہے) جب ہم نے ان کو فرعون کی طرف کھلا ہوا معجزہ دے کر بھیجا","juz":27,"page":522,"ruku":456,"hizbQuarter":209,"sajda":false},{"numberInSurah":39,"globalNumber":4714,"arabicText":"فَتَوَلَّىٰ بِرُكْنِهِۦ وَقَالَ سَٰحِرٌ أَوْ مَجْنُونٌۭ","urduText":"تو اس نے اپنی جماعت (کے گھمنڈ) پر منہ موڑ لیا اور کہنے لگا یہ تو جادوگر ہے یا دیوانہ","juz":27,"page":522,"ruku":456,"hizbQuarter":209,"sajda":false},{"numberInSurah":40,"globalNumber":4715,"arabicText":"فَأَخَذْنَٰهُ وَجُنُودَهُۥ فَنَبَذْنَٰهُمْ فِى ٱلْيَمِّ وَهُوَ مُلِيمٌۭ","urduText":"تو ہم نے اس کو اور اس کے لشکروں کو پکڑ لیا اور ان کو دریا میں پھینک دیا اور وہ کام ہی قابل ملامت کرتا تھا","juz":27,"page":522,"ruku":456,"hizbQuarter":209,"sajda":false},{"numberInSurah":41,"globalNumber":4716,"arabicText":"وَفِى عَادٍ إِذْ أَرْسَلْنَا عَلَيْهِمُ ٱلرِّيحَ ٱلْعَقِيمَ","urduText":"اور عاد (کی قوم کے حال) میں بھی (نشانی ہے) جب ہم نے ان پر نامبارک ہوا چلائی","juz":27,"page":522,"ruku":456,"hizbQuarter":209,"sajda":false},{"numberInSurah":42,"globalNumber":4717,"arabicText":"مَا تَذَرُ مِن شَىْءٍ أَتَتْ عَلَيْهِ إِلَّا جَعَلَتْهُ كَٱلرَّمِيمِ","urduText":"وہ جس چیز پر چلتی اس کو ریزہ ریزہ کئے بغیر نہ چھوڑتی","juz":27,"page":522,"ruku":456,"hizbQuarter":209,"sajda":false},{"numberInSurah":43,"globalNumber":4718,"arabicText":"وَفِى ثَمُودَ إِذْ قِيلَ لَهُمْ تَمَتَّعُوا۟ حَتَّىٰ حِينٍۢ","urduText":"اور (قوم) ثمود (کے حال) میں (نشانی ہے) جب ان سے کہا گیا کہ ایک وقت تک فائدہ اٹھالو","juz":27,"page":522,"ruku":456,"hizbQuarter":209,"sajda":false},{"numberInSurah":44,"globalNumber":4719,"arabicText":"فَعَتَوْا۟ عَنْ أَمْرِ رَبِّهِمْ فَأَخَذَتْهُمُ ٱلصَّٰعِقَةُ وَهُمْ يَنظُرُونَ","urduText":"تو انہوں نے اپنے پروردگار کے حکم سے سرکشی کی۔ سو ان کو کڑک نے آ پکڑا اور وہ دیکھ رہے تھے","juz":27,"page":522,"ruku":456,"hizbQuarter":209,"sajda":false},{"numberInSurah":45,"globalNumber":4720,"arabicText":"فَمَا ٱسْتَطَٰعُوا۟ مِن قِيَامٍۢ وَمَا كَانُوا۟ مُنتَصِرِينَ","urduText":"پھر وہ نہ تو اُٹھنے کی طاقت رکھتے تھے اور نہ مقابلہ ہی کرسکتے تھے","juz":27,"page":522,"ruku":456,"hizbQuarter":209,"sajda":false},{"numberInSurah":46,"globalNumber":4721,"arabicText":"وَقَوْمَ نُوحٍۢ مِّن قَبْلُ ۖ إِنَّهُمْ كَانُوا۟ قَوْمًۭا فَٰسِقِينَ","urduText":"اور اس سے پہلے (ہم) نوح کی قوم کو (ہلاک کرچکے تھے) بےشک وہ نافرمان لوگ تھے","juz":27,"page":522,"ruku":456,"hizbQuarter":209,"sajda":false},{"numberInSurah":47,"globalNumber":4722,"arabicText":"وَٱلسَّمَآءَ بَنَيْنَٰهَا بِأَيْي۟دٍۢ وَإِنَّا لَمُوسِعُونَ","urduText":"اور آسمانوں کو ہم ہی نے ہاتھوں سے بنایا اور ہم کو سب مقدور ہے","juz":27,"page":522,"ruku":457,"hizbQuarter":209,"sajda":false},{"numberInSurah":48,"globalNumber":4723,"arabicText":"وَٱلْأَرْضَ فَرَشْنَٰهَا فَنِعْمَ ٱلْمَٰهِدُونَ","urduText":"اور زمین کو ہم ہی نے بچھایا تو (دیکھو) ہم کیا خوب بچھانے والے ہیں","juz":27,"page":522,"ruku":457,"hizbQuarter":209,"sajda":false},{"numberInSurah":49,"globalNumber":4724,"arabicText":"وَمِن كُلِّ شَىْءٍ خَلَقْنَا زَوْجَيْنِ لَعَلَّكُمْ تَذَكَّرُونَ","urduText":"اور ہر چیز کی ہم نے دو قسمیں بنائیں تاکہ تم نصیحت پکڑو","juz":27,"page":522,"ruku":457,"hizbQuarter":209,"sajda":false},{"numberInSurah":50,"globalNumber":4725,"arabicText":"فَفِرُّوٓا۟ إِلَى ٱللَّهِ ۖ إِنِّى لَكُم مِّنْهُ نَذِيرٌۭ مُّبِينٌۭ","urduText":"تو تم لوگ خدا کی طرف بھاگ چلو میں اس کی طرف سے تم کو صریح رستہ بتانے والا ہوں","juz":27,"page":522,"ruku":457,"hizbQuarter":209,"sajda":false},{"numberInSurah":51,"globalNumber":4726,"arabicText":"وَلَا تَجْعَلُوا۟ مَعَ ٱللَّهِ إِلَٰهًا ءَاخَرَ ۖ إِنِّى لَكُم مِّنْهُ نَذِيرٌۭ مُّبِينٌۭ","urduText":"اور خدا کے ساتھ کسی اَور کو معبود نہ بناؤ۔ میں اس کی طرف سے تم کو صریح رستہ بتانے والا ہوں","juz":27,"page":522,"ruku":457,"hizbQuarter":209,"sajda":false},{"numberInSurah":52,"globalNumber":4727,"arabicText":"كَذَٰلِكَ مَآ أَتَى ٱلَّذِينَ مِن قَبْلِهِم مِّن رَّسُولٍ إِلَّا قَالُوا۟ سَاحِرٌ أَوْ مَجْنُونٌ","urduText":"اسی طرح ان سے پہلے لوگوں کے پاس جو پیغمبر آتا وہ اس کو جادوگر یا دیوانہ کہتے","juz":27,"page":523,"ruku":457,"hizbQuarter":209,"sajda":false},{"numberInSurah":53,"globalNumber":4728,"arabicText":"أَتَوَاصَوْا۟ بِهِۦ ۚ بَلْ هُمْ قَوْمٌۭ طَاغُونَ","urduText":"کیا یہ کہ ایک دوسرے کو اسی بات کی وصیت کرتے آئے ہیں بلکہ یہ شریر لوگ ہیں","juz":27,"page":523,"ruku":457,"hizbQuarter":209,"sajda":false},{"numberInSurah":54,"globalNumber":4729,"arabicText":"فَتَوَلَّ عَنْهُمْ فَمَآ أَنتَ بِمَلُومٍۢ","urduText":"تو ان سے اعراض کرو۔ تم کو (ہماری) طرف سے ملامت نہ ہوگی","juz":27,"page":523,"ruku":457,"hizbQuarter":209,"sajda":false},{"numberInSurah":55,"globalNumber":4730,"arabicText":"وَذَكِّرْ فَإِنَّ ٱلذِّكْرَىٰ تَنفَعُ ٱلْمُؤْمِنِينَ","urduText":"اور نصیحت کرتے رہو کہ نصیحت مومنوں کو نفع دیتی ہے","juz":27,"page":523,"ruku":457,"hizbQuarter":209,"sajda":false},{"numberInSurah":56,"globalNumber":4731,"arabicText":"وَمَا خَلَقْتُ ٱلْجِنَّ وَٱلْإِنسَ إِلَّا لِيَعْبُدُونِ","urduText":"اور میں نے جنوں اور انسانوں کو اس لئے پیدا کیا ہے کہ میری عبادت کریں","juz":27,"page":523,"ruku":457,"hizbQuarter":209,"sajda":false},{"numberInSurah":57,"globalNumber":4732,"arabicText":"مَآ أُرِيدُ مِنْهُم مِّن رِّزْقٍۢ وَمَآ أُرِيدُ أَن يُطْعِمُونِ","urduText":"میں ان سے طالب رزق نہیں اور نہ یہ چاہتا ہوں کہ مجھے (کھانا) کھلائیں","juz":27,"page":523,"ruku":457,"hizbQuarter":209,"sajda":false},{"numberInSurah":58,"globalNumber":4733,"arabicText":"إِنَّ ٱللَّهَ هُوَ ٱلرَّزَّاقُ ذُو ٱلْقُوَّةِ ٱلْمَتِينُ","urduText":"خدا ہی تو رزق دینے والا زور آور اور مضبوط ہے","juz":27,"page":523,"ruku":457,"hizbQuarter":209,"sajda":false},{"numberInSurah":59,"globalNumber":4734,"arabicText":"فَإِنَّ لِلَّذِينَ ظَلَمُوا۟ ذَنُوبًۭا مِّثْلَ ذَنُوبِ أَصْحَٰبِهِمْ فَلَا يَسْتَعْجِلُونِ","urduText":"کچھ شک نہیں کہ ان ظالموں کے لئے بھی (عذاب کی) نوبت مقرر ہے جس طرح ان کے ساتھیوں کی نوبت تھی تو ان کو مجھ سے (عذاب) جلدی نہیں طلب کرنا چاہیئے","juz":27,"page":523,"ruku":457,"hizbQuarter":209,"sajda":false},{"numberInSurah":60,"globalNumber":4735,"arabicText":"فَوَيْلٌۭ لِّلَّذِينَ كَفَرُوا۟ مِن يَوْمِهِمُ ٱلَّذِى يُوعَدُونَ","urduText":"جس دن کا ان کافروں سے وعدہ کیا جاتا ہے اس سے ان کے لئے خرابی ہے","juz":27,"page":523,"ruku":457,"hizbQuarter":209,"sajda":false}]}
+{
+  "number": 51,
+  "name": "سُورَةُ الذَّارِيَاتِ",
+  "englishName": "Adh-Dhaariyat",
+  "englishNameTranslation": "The Winnowing Winds",
+  "urduName": "بکھیرنے والیاں / سورۃ الذاریات",
+  "numberOfAyahs": 60,
+  "revelationType": "Meccan",
+  "juzStart": 26,
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "globalNumber": 4676,
+      "arabicText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ وَٱلذَّٰرِيَٰتِ ذَرْوًۭا",
+      "urduText": "بکھیرنے والیوں کی قسم جو اُڑا کر بکھیر دیتی ہیں",
+      "juz": 26,
+      "page": 520,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "By those [winds] scattering [dust] dispersing",
+      "translations": {
+        "urdu": "بکھیرنے والیوں کی قسم جو اُڑا کر بکھیر دیتی ہیں",
+        "english": "By those [winds] scattering [dust] dispersing",
+        "bengali": "কসম ঝঞ্ঝাবায়ুর।",
+        "turkish": "Esip savuran rüzgarlara, yağmur yüklü bulutlara, kolayca süzülen gemiler ve işleri yöneten meleklere and olsun ki, size söz verilen kıyametin kopması şüphesiz gerçektir. Ödeşme günü gelecektir.",
+        "french": "Par les vents qui éparpillent!"
+      }
+    },
+    {
+      "numberInSurah": 2,
+      "globalNumber": 4677,
+      "arabicText": "فَٱلْحَٰمِلَٰتِ وِقْرًۭا",
+      "urduText": "پھر (پانی کا) بوجھ اٹھاتی ہیں",
+      "juz": 26,
+      "page": 520,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "And those [clouds] carrying a load [of water]",
+      "translations": {
+        "urdu": "پھر (پانی کا) بوجھ اٹھاتی ہیں",
+        "english": "And those [clouds] carrying a load [of water]",
+        "bengali": "অতঃপর বোঝা বহনকারী মেঘের।",
+        "turkish": "Esip savuran rüzgarlara, yağmur yüklü bulutlara, kolayca süzülen gemiler ve işleri yöneten meleklere and olsun ki, size söz verilen kıyametin kopması şüphesiz gerçektir. Ödeşme günü gelecektir.",
+        "french": "Par les porteurs de fardeaux!"
+      }
+    },
+    {
+      "numberInSurah": 3,
+      "globalNumber": 4678,
+      "arabicText": "فَٱلْجَٰرِيَٰتِ يُسْرًۭا",
+      "urduText": "پھر آہستہ آہستہ چلتی ہیں",
+      "juz": 26,
+      "page": 520,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "And those [ships] sailing with ease",
+      "translations": {
+        "urdu": "پھر آہستہ آہستہ چلتی ہیں",
+        "english": "And those [ships] sailing with ease",
+        "bengali": "অতঃপর মৃদু চলমান জলযানের,",
+        "turkish": "Esip savuran rüzgarlara, yağmur yüklü bulutlara, kolayca süzülen gemiler ve işleri yöneten meleklere and olsun ki, size söz verilen kıyametin kopması şüphesiz gerçektir. Ödeşme günü gelecektir.",
+        "french": "Par les glisseurs agiles!"
+      }
+    },
+    {
+      "numberInSurah": 4,
+      "globalNumber": 4679,
+      "arabicText": "فَٱلْمُقَسِّمَٰتِ أَمْرًا",
+      "urduText": "پھر چیزیں تقسیم کرتی ہیں",
+      "juz": 26,
+      "page": 520,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "And those [angels] apportioning [each] matter,",
+      "translations": {
+        "urdu": "پھر چیزیں تقسیم کرتی ہیں",
+        "english": "And those [angels] apportioning [each] matter,",
+        "bengali": "অতঃপর কর্ম বন্টনকারী ফেরেশতাগণের,",
+        "turkish": "Esip savuran rüzgarlara, yağmur yüklü bulutlara, kolayca süzülen gemiler ve işleri yöneten meleklere and olsun ki, size söz verilen kıyametin kopması şüphesiz gerçektir. Ödeşme günü gelecektir.",
+        "french": "Par les distributeurs selon un commandement!"
+      }
+    },
+    {
+      "numberInSurah": 5,
+      "globalNumber": 4680,
+      "arabicText": "إِنَّمَا تُوعَدُونَ لَصَادِقٌۭ",
+      "urduText": "کہ جس چیز کا تم سے وعدہ کیا جاتا ہے وہ سچا ہے",
+      "juz": 26,
+      "page": 520,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "Indeed, what you are promised is true.",
+      "translations": {
+        "urdu": "کہ جس چیز کا تم سے وعدہ کیا جاتا ہے وہ سچا ہے",
+        "english": "Indeed, what you are promised is true.",
+        "bengali": "তোমাদের প্রদত্ত ওয়াদা অবশ্যই সত্য।",
+        "turkish": "Esip savuran rüzgarlara, yağmur yüklü bulutlara, kolayca süzülen gemiler ve işleri yöneten meleklere and olsun ki, size söz verilen kıyametin kopması şüphesiz gerçektir. Ödeşme günü gelecektir.",
+        "french": "Ce qui vous est promis est certainement vrai."
+      }
+    },
+    {
+      "numberInSurah": 6,
+      "globalNumber": 4681,
+      "arabicText": "وَإِنَّ ٱلدِّينَ لَوَٰقِعٌۭ",
+      "urduText": "اور انصاف (کا دن) ضرور واقع ہوگا",
+      "juz": 26,
+      "page": 520,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "And indeed, the recompense is to occur.",
+      "translations": {
+        "urdu": "اور انصاف (کا دن) ضرور واقع ہوگا",
+        "english": "And indeed, the recompense is to occur.",
+        "bengali": "ইনসাফ অবশ্যম্ভাবী।",
+        "turkish": "Esip savuran rüzgarlara, yağmur yüklü bulutlara, kolayca süzülen gemiler ve işleri yöneten meleklere and olsun ki, size söz verilen kıyametin kopması şüphesiz gerçektir. Ödeşme günü gelecektir.",
+        "french": "Et la Rétribution arrivera inévitablement."
+      }
+    },
+    {
+      "numberInSurah": 7,
+      "globalNumber": 4682,
+      "arabicText": "وَٱلسَّمَآءِ ذَاتِ ٱلْحُبُكِ",
+      "urduText": "اور آسمان کی قسم جس میں رسے ہیں",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "By the heaven containing pathways,",
+      "translations": {
+        "urdu": "اور آسمان کی قسم جس میں رسے ہیں",
+        "english": "By the heaven containing pathways,",
+        "bengali": "পথবিশিষ্ট আকাশের কসম,",
+        "turkish": "İçinde yörüngeler bulunan göğe and olsun ki, ey inkarcılar, siz, şüphesiz aykırı görüştesiniz.",
+        "french": "Par le ciel aux voies parfaitement tracées!"
+      }
+    },
+    {
+      "numberInSurah": 8,
+      "globalNumber": 4683,
+      "arabicText": "إِنَّكُمْ لَفِى قَوْلٍۢ مُّخْتَلِفٍۢ",
+      "urduText": "کہ (اے اہل مکہ) تم ایک متناقض بات میں (پڑے ہوئے) ہو",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "Indeed, you are in differing speech.",
+      "translations": {
+        "urdu": "کہ (اے اہل مکہ) تم ایک متناقض بات میں (پڑے ہوئے) ہو",
+        "english": "Indeed, you are in differing speech.",
+        "bengali": "তোমরা তো বিরোধপূর্ণ কথা বলছ।",
+        "turkish": "İçinde yörüngeler bulunan göğe and olsun ki, ey inkarcılar, siz, şüphesiz aykırı görüştesiniz.",
+        "french": "vous divergez sur ce que vous dites."
+      }
+    },
+    {
+      "numberInSurah": 9,
+      "globalNumber": 4684,
+      "arabicText": "يُؤْفَكُ عَنْهُ مَنْ أُفِكَ",
+      "urduText": "اس سے وہی پھرتا ہے جو (خدا کی طرف سے) پھیرا ج��ئے",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "Deluded away from the Qur'an is he who is deluded.",
+      "translations": {
+        "urdu": "اس سے وہی پھرتا ہے جو (خدا کی طرف سے) پھیرا ج��ئے",
+        "english": "Deluded away from the Qur'an is he who is deluded.",
+        "bengali": "যে ভ্রষ্ট, সেই এ থেকে মুখ ফিরায়,",
+        "turkish": "Bundan, dönebilecek kimseler döndürülür.",
+        "french": "Est détourné de lui quiconque a été détourné de la foi."
+      }
+    },
+    {
+      "numberInSurah": 10,
+      "globalNumber": 4685,
+      "arabicText": "قُتِلَ ٱلْخَرَّٰصُونَ",
+      "urduText": "اٹکل دوڑانے والے ہلاک ہوں",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "Destroyed are the falsifiers",
+      "translations": {
+        "urdu": "اٹکل دوڑانے والے ہلاک ہوں",
+        "english": "Destroyed are the falsifiers",
+        "bengali": "অনুমানকারীরা ধ্বংস হোক,",
+        "turkish": "Yalancılığı itiyat edinenlerin, bilgisizliğe saplanıp kalanların canları çıksın!",
+        "french": "Maudits soient les menteurs,"
+      }
+    },
+    {
+      "numberInSurah": 11,
+      "globalNumber": 4686,
+      "arabicText": "ٱلَّذِينَ هُمْ فِى غَمْرَةٍۢ سَاهُونَ",
+      "urduText": "جو بےخبری میں بھولے ہوئے ہیں",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "Who are within a flood [of confusion] and heedless.",
+      "translations": {
+        "urdu": "جو بےخبری میں بھولے ہوئے ہیں",
+        "english": "Who are within a flood [of confusion] and heedless.",
+        "bengali": "যারা উদাসীন, ভ্রান্ত।",
+        "turkish": "Yalancılığı itiyat edinenlerin, bilgisizliğe saplanıp kalanların canları çıksın!",
+        "french": "qui sont plongés dans l'insouciance."
+      }
+    },
+    {
+      "numberInSurah": 12,
+      "globalNumber": 4687,
+      "arabicText": "يَسْـَٔلُونَ أَيَّانَ يَوْمُ ٱلدِّينِ",
+      "urduText": "پوچھتے ہیں کہ جزا کا دن کب ہوگا؟",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "They ask, \"When is the Day of Recompense?\"",
+      "translations": {
+        "urdu": "پوچھتے ہیں کہ جزا کا دن کب ہوگا؟",
+        "english": "They ask, \"When is the Day of Recompense?\"",
+        "bengali": "তারা জিজ্ঞাসা করে, কেয়ামত কবে হবে?",
+        "turkish": "İşlerin karşılık göreceği günün zamanını sorarlar.",
+        "french": "Ils demandent: «A quand le jour de la Rétribution?»"
+      }
+    },
+    {
+      "numberInSurah": 13,
+      "globalNumber": 4688,
+      "arabicText": "يَوْمَ هُمْ عَلَى ٱلنَّارِ يُفْتَنُونَ",
+      "urduText": "اُس دن (ہوگا) جب ان کو آگ میں عذاب دیا جائے گا",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "[It is] the Day they will be tormented over the Fire",
+      "translations": {
+        "urdu": "اُس دن (ہوگا) جب ان کو آگ میں عذاب دیا جائے گا",
+        "english": "[It is] the Day they will be tormented over the Fire",
+        "bengali": "যেদিন তারা অগ্নিতে পতিত হবে,",
+        "turkish": "O, kendilerinin ateşte azap görecekleri gündür.",
+        "french": "Le jour où ils seront éprouvés au Feu:"
+      }
+    },
+    {
+      "numberInSurah": 14,
+      "globalNumber": 4689,
+      "arabicText": "ذُوقُوا۟ فِتْنَتَكُمْ هَٰذَا ٱلَّذِى كُنتُم بِهِۦ تَسْتَعْجِلُونَ",
+      "urduText": "اب اپنی شرارت کا مزہ چکھو۔ یہ وہی ہے جس کے لئے تم جلدی مچایا کرتے تھے",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "[And will be told], \"Taste your torment. This is that for which you were impatient.\"",
+      "translations": {
+        "urdu": "اب اپنی شرارت کا مزہ چکھو۔ یہ وہی ہے جس کے لئے تم جلدی مچایا کرتے تھے",
+        "english": "[And will be told], \"Taste your torment. This is that for which you were impatient.\"",
+        "bengali": "তোমরা তোমাদের শাস্তি আস্বাদন কর। তোমরা একেই ত্বরান্বিত করতে চেয়েছিল।",
+        "turkish": "Onlara: \"Azabınızı tadın; işte acele beklediğiniz bu idi\" denir.",
+        "french": "«Goûtez à votre épreuve [punition]; voici ce que vous cherchiez à hâter»."
+      }
+    },
+    {
+      "numberInSurah": 15,
+      "globalNumber": 4690,
+      "arabicText": "إِنَّ ٱلْمُتَّقِينَ فِى جَنَّٰتٍۢ وَعُيُونٍ",
+      "urduText": "بےشک پرہیزگار بہشتوں اور چشموں میں (عیش کر رہے) ہوں گے",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "Indeed, the righteous will be among gardens and springs,",
+      "translations": {
+        "urdu": "بےشک پرہیزگار بہشتوں اور چشموں میں (عیش کر رہے) ہوں گے",
+        "english": "Indeed, the righteous will be among gardens and springs,",
+        "bengali": "খোদাভীরুরা জান্নাতে ও প্রস্রবণে থাকবে।",
+        "turkish": "Doğrusu, Allah'a karşı gelmekten sakınanlar, Rablerinin kendilerine verdiğini almış olarak bahçelerde ve pınar başlarındadırlar. Çünkü onlar, bundan önce iyi davrananlardı.",
+        "french": "Les pieux seront dans des Jardins et [parmi] des sources,"
+      }
+    },
+    {
+      "numberInSurah": 16,
+      "globalNumber": 4691,
+      "arabicText": "ءَاخِذِينَ مَآ ءَاتَىٰهُمْ رَبُّهُمْ ۚ إِنَّهُمْ كَانُوا۟ قَبْلَ ذَٰلِكَ مُحْسِنِينَ",
+      "urduText": "اور) جو جو (نعمتیں) ان کا پروردگار انہیں دیتا ہوگا ان کو لے رہے ہوں گے۔ بےشک وہ اس سے پہلے نیکیاں کرتے تھے",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "Accepting what their Lord has given them. Indeed, they were before that doers of good.",
+      "translations": {
+        "urdu": "اور) جو جو (نعمتیں) ان کا پروردگار انہیں دیتا ہوگا ان کو لے رہے ہوں گے۔ بےشک وہ اس سے پہلے نیکیاں کرتے تھے",
+        "english": "Accepting what their Lord has given them. Indeed, they were before that doers of good.",
+        "bengali": "এমতাবস্থায় যে, তারা গ্রহণ করবে যা তাদের পালনকর্তা তাদেরকে দেবেন। নিশ্চয় ইতিপূর্বে তারা ছিল সৎকর্মপরায়ণ,",
+        "turkish": "Doğrusu, Allah'a karşı gelmekten sakınanlar, Rablerinin kendilerine verdiğini almış olarak bahçelerde ve pınar başlarındadırlar. Çünkü onlar, bundan önce iyi davrananlardı.",
+        "french": "recevant ce que leur Seigneur leur aura donné. Car ils ont été auparavant des bienfaisants:"
+      }
+    },
+    {
+      "numberInSurah": 17,
+      "globalNumber": 4692,
+      "arabicText": "كَانُوا۟ قَلِيلًۭا مِّنَ ٱلَّيْلِ مَا يَهْجَعُونَ",
+      "urduText": "رات کے تھوڑے سے حصے میں سوتے تھے",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "They used to sleep but little of the night,",
+      "translations": {
+        "urdu": "رات کے تھوڑے سے حصے میں سوتے تھے",
+        "english": "They used to sleep but little of the night,",
+        "bengali": "তারা রাত্রির সামান্য অংশেই নিদ্রা যেত,",
+        "turkish": "Onlar, geceleri az uyuyanlardı.",
+        "french": "ils dormaient peu, la nuit,"
+      }
+    },
+    {
+      "numberInSurah": 18,
+      "globalNumber": 4693,
+      "arabicText": "وَبِٱلْأَسْحَارِ هُمْ يَسْتَغْفِرُون��",
+      "urduText": "اور اوقات سحر میں بخشش مانگا کرتے تھے",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "And in the hours before dawn they would ask forgiveness,",
+      "translations": {
+        "urdu": "اور اوقات سحر میں بخشش مانگا کرتے تھے",
+        "english": "And in the hours before dawn they would ask forgiveness,",
+        "bengali": "রাতের শেষ প্রহরে তারা ক্ষমাপ্রার্থনা করত,",
+        "turkish": "Seher vakitlerinde bağışlanma dilerlerdi.",
+        "french": "et aux dernières heures de la nuit ils imploraient le pardon [d'Allah];"
+      }
+    },
+    {
+      "numberInSurah": 19,
+      "globalNumber": 4694,
+      "arabicText": "وَفِىٓ أَمْوَٰلِهِمْ حَقٌّۭ لِّلسَّآئِلِ وَٱلْمَحْرُومِ",
+      "urduText": "اور ان کے مال میں مانگنے والے اور نہ مانگنے والے (دونوں) کا حق ہوتا تھا",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "And from their properties was [given] the right of the [needy] petitioner and the deprived.",
+      "translations": {
+        "urdu": "اور ان کے مال میں مانگنے والے اور نہ مانگنے والے (دونوں) کا حق ہوتا تھا",
+        "english": "And from their properties was [given] the right of the [needy] petitioner and the deprived.",
+        "bengali": "এবং তাদের ধন-সম্পদে প্রার্থী ও বঞ্চিতের হক ছিল।",
+        "turkish": "Onların mallarında muhtaç ve yoksullar için bir hak vardı, onu verirlerdi.",
+        "french": "et dans leurs biens, il y avait un droit au mendiant et au déshérité."
+      }
+    },
+    {
+      "numberInSurah": 20,
+      "globalNumber": 4695,
+      "arabicText": "وَفِى ٱلْأَرْضِ ءَايَٰتٌۭ لِّلْمُوقِنِينَ",
+      "urduText": "اور یقین کرنے والوں کے لئے زمین میں (بہت سی) نشانیاں ہیں",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "And on the earth are signs for the certain [in faith]",
+      "translations": {
+        "urdu": "اور یقین کرنے والوں کے لئے زمین میں (بہت سی) نشانیاں ہیں",
+        "english": "And on the earth are signs for the certain [in faith]",
+        "bengali": "বিশ্বাসকারীদের জন্যে পৃথিবীতে নিদর্শনাবলী রয়েছে,",
+        "turkish": "Kesin olarak inananlara, yeryüzünde ve kendi içinizde Allah'ın varlığına nice deliller vardır; görmez misiniz?",
+        "french": "Il y a sur terre des preuves pour ceux qui croient avec certitude;"
+      }
+    },
+    {
+      "numberInSurah": 21,
+      "globalNumber": 4696,
+      "arabicText": "وَفِىٓ أَنفُسِكُمْ ۚ أَفَلَا تُبْصِرُونَ",
+      "urduText": "اور خود تمہارے نفوس میں تو کیا تم دیکھتے نہیں؟",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "And in yourselves. Then will you not see?",
+      "translations": {
+        "urdu": "اور خود تمہارے نفوس میں تو کیا تم دیکھتے نہیں؟",
+        "english": "And in yourselves. Then will you not see?",
+        "bengali": "এবং তোমাদের নিজেদের মধ্যেও, তোমরা কি অনুধাবন করবে না?",
+        "turkish": "Kesin olarak inananlara, yeryüzünde ve kendi içinizde Allah'ın varlığına nice deliller vardır; görmez misiniz?",
+        "french": "ainsi qu'en vous-mêmes. N'observez-vous donc pas?"
+      }
+    },
+    {
+      "numberInSurah": 22,
+      "globalNumber": 4697,
+      "arabicText": "وَفِى ٱلسَّمَآءِ رِزْقُكُمْ وَمَا تُوعَدُونَ",
+      "urduText": "اور تمہارا رزق اور جس چیز کا تم سے وعدہ کیا جاتا ہے آسمان میں ہے",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "And in the heaven is your provision and whatever you are promised.",
+      "translations": {
+        "urdu": "اور تمہارا رزق اور جس چیز کا تم سے وعدہ کیا جاتا ہے آسمان میں ہے",
+        "english": "And in the heaven is your provision and whatever you are promised.",
+        "bengali": "আকাশে রয়েছে তোমাদের রিযিক ও প্রতিশ্রুত সবকিছু।",
+        "turkish": "Rızkınız da, size söz verilen azap da yukarıdan gelir.",
+        "french": "Et il y a dans le ciel votre subsistance et ce qui vous a été promis."
+      }
+    },
+    {
+      "numberInSurah": 23,
+      "globalNumber": 4698,
+      "arabicText": "فَوَرَبِّ ٱلسَّمَآءِ وَٱلْأَرْضِ إِنَّهُۥ لَحَقٌّۭ مِّثْلَ مَآ أَنَّكُمْ تَنطِقُونَ",
+      "urduText": "تو آسمانوں اور زمین کے مالک کی قسم! یہ (اسی طرح) قابل یقین ہے جس طرح تم بات کرتے ہو",
+      "juz": 26,
+      "page": 521,
+      "ruku": 455,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "Then by the Lord of the heaven and earth, indeed, it is truth - just as [sure as] it is that you are speaking.",
+      "translations": {
+        "urdu": "تو آسمانوں اور زمین کے مالک کی قسم! یہ (اسی طرح) قابل یقین ہے جس طرح تم بات کرتے ہو",
+        "english": "Then by the Lord of the heaven and earth, indeed, it is truth - just as [sure as] it is that you are speaking.",
+        "bengali": "নভোমন্ডল ও ভূমন্ডলের পালনকর্তার কসম, তোমাদের কথাবার্তার মতই এটা সত্য।",
+        "turkish": "Göğün ve yerin Rabbine and olsun ki bu, sizin konuşmanız kadar kesin ve gerçektir.",
+        "french": "Par le Seigneur du ciel et de la terre! Ceci est tout aussi vrai que le fait que vous parliez."
+      }
+    },
+    {
+      "numberInSurah": 24,
+      "globalNumber": 4699,
+      "arabicText": "هَلْ أَتَىٰكَ حَدِيثُ ضَيْفِ إِبْرَٰهِيمَ ٱلْمُكْرَمِينَ",
+      "urduText": "بھلا تمہارے پاس ابراہیمؑ کے معزز مہمانوں کی خبر پہنچی ہے؟",
+      "juz": 26,
+      "page": 521,
+      "ruku": 456,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "Has there reached you the story of the honored guests of Abraham? -",
+      "translations": {
+        "urdu": "بھلا تمہارے پاس ابراہیمؑ کے معزز مہمانوں کی خبر پہنچی ہے؟",
+        "english": "Has there reached you the story of the honored guests of Abraham? -",
+        "bengali": "আপনার কাছে ইব্রাহীমের সম্মানিত মেহমানদের বৃত্তান্ত এসেছে কি?",
+        "turkish": "İbrahim'in ikram edilmiş konuklarının haberi sana geldi mi?",
+        "french": "T'est-il parvenu le récit des visiteurs honorables d'Abraham?"
+      }
+    },
+    {
+      "numberInSurah": 25,
+      "globalNumber": 4700,
+      "arabicText": "إِذْ دَخَلُوا۟ عَلَيْهِ فَقَالُوا۟ سَلَٰمًۭا ۖ قَالَ سَلَٰمٌۭ قَوْمٌۭ مُّنكَرُونَ",
+      "urduText": "جب وہ ان کے پاس آئے تو سلام کہا۔ انہوں نے بھی (جواب میں) سلام کہا (دیکھا تو) ایسے لوگ کہ نہ جان نہ پہچان",
+      "juz": 26,
+      "page": 521,
+      "ruku": 456,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "When they entered upon him and said, \"[We greet you with] peace.\" He answered, \"[And upon you] peace, [you are] a people unknown.",
+      "translations": {
+        "urdu": "جب وہ ان کے پاس آئے تو سلام کہا۔ انہوں نے بھی (جواب میں) سلام کہا (دیکھا تو) ایسے لوگ کہ نہ جان نہ پہچان",
+        "english": "When they entered upon him and said, \"[We greet you with] peace.\" He answered, \"[And upon you] peace, [you are] a people unknown.",
+        "bengali": "যখন তারা তাঁর কাছে উপস্থিত হয়ে বললঃ সালাম, তখন সে বললঃ সালাম। এরা তো অপরিচিত লোক।",
+        "turkish": "Onlar, İbrahim'in yanına girip: \"Selam sana\" demişlerdi, İbrahim de: \"Selam size\" demişti; içinden de, onların \"tanınmamış bir topluluk\" olduğunu geçirmişti.",
+        "french": "Quand ils entrèrent chez lui et dirent: «Paix!», il [leur] dit: «Paix, visiteurs inconnus»."
+      }
+    },
+    {
+      "numberInSurah": 26,
+      "globalNumber": 4701,
+      "arabicText": "فَرَاغَ إِلَىٰٓ أَهْلِهِۦ فَجَآءَ بِعِجْلٍۢ سَمِينٍۢ",
+      "urduText": "تو اپنے گھر جا کر ایک (بھنا ہوا) موٹا بچھڑا لائے",
+      "juz": 26,
+      "page": 521,
+      "ruku": 456,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "Then he went to his family and came with a fat [roasted] calf",
+      "translations": {
+        "urdu": "تو اپنے گھر جا کر ایک (بھنا ہوا) موٹا بچھڑا لائے",
+        "english": "Then he went to his family and came with a fat [roasted] calf",
+        "bengali": "অতঃপর সে গ্রহে গেল এবং একটি ঘৃতেপক্ক মোটা গোবৎস নিয়ে হাযির হল।",
+        "turkish": "Hemen ailesine giderek semiz bir buzağı getirmiş, onların önüne sürüp: \"Yemez misiniz?\" demişti.",
+        "french": "Puis il alla discrètement à sa famille et apporta un veau gras."
+      }
+    },
+    {
+      "numberInSurah": 27,
+      "globalNumber": 4702,
+      "arabicText": "فَقَرَّبَهُۥٓ إِلَيْهِمْ قَالَ أَلَا تَأْكُلُونَ",
+      "urduText": "(اور کھانے کے لئے) ان کے آگے رکھ دیا۔ کہنے لگے کہ آپ تناول کیوں نہیں کرتے؟",
+      "juz": 26,
+      "page": 521,
+      "ruku": 456,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "And placed it near them; he said, \"Will you not eat?\"",
+      "translations": {
+        "urdu": "(اور کھانے کے لئے) ان کے آگے رکھ دیا۔ کہنے لگے کہ آپ تناول کیوں نہیں کرتے؟",
+        "english": "And placed it near them; he said, \"Will you not eat?\"",
+        "bengali": "সে গোবৎসটি তাদের সামনে রেখে বললঃ তোমরা আহার করছ না কেন?",
+        "turkish": "Hemen ailesine giderek semiz bir buzağı getirmiş, onların önüne sürüp: \"Yemez misiniz?\" demişti.",
+        "french": "Ensuite il l'approcha d'eux... «Ne mangez-vous pas?» dit-il."
+      }
+    },
+    {
+      "numberInSurah": 28,
+      "globalNumber": 4703,
+      "arabicText": "فَأَوْجَسَ مِنْهُمْ خِيفَةًۭ ۖ قَالُوا۟ لَا تَخَفْ ۖ وَبَشَّرُوهُ بِغُلَٰمٍ عَلِيمٍۢ",
+      "urduText": "اور دل میں ان سے خوف معلوم کیا۔ (انہوں نے) کہا کہ خوف نہ کیجیئے۔ اور ان کو ایک دانشمند لڑکے کی بشارت بھی سنائی",
+      "juz": 26,
+      "page": 521,
+      "ruku": 456,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "And he felt from them apprehension. They said, \"Fear not,\" and gave him good tidings of a learned boy.",
+      "translations": {
+        "urdu": "اور دل میں ان سے خوف معلوم کیا۔ (انہوں نے) کہا کہ خوف نہ کیجیئے۔ اور ان کو ایک دانشمند لڑکے کی بشارت بھی سنائی",
+        "english": "And he felt from them apprehension. They said, \"Fear not,\" and gave him good tidings of a learned boy.",
+        "bengali": "অতঃপর তাদের সম্পর্কে সে মনে মনে ভীত হলঃ তারা বললঃ ভীত হবেন না। তারা তাঁকে একট জ্ঞানীগুণী পুত্র সন্তানের সুসংবাদ দিল।",
+        "turkish": "(Yemediklerini görünce) onlardan endişeye düştü; \"Korkma\" dediler ve ona bilgin bir oğul sahibi olacağını müjdelediler.",
+        "french": "Il ressentit alors de la peur vis-à-vis d'eux. Ils dirent: «N'aie pas peur». Et ils lui annoncèrent [la naissance] d'un garçon plein de savoir."
+      }
+    },
+    {
+      "numberInSurah": 29,
+      "globalNumber": 4704,
+      "arabicText": "فَأَقْبَلَتِ ٱمْرَأَتُهُۥ فِى صَرَّةٍۢ فَصَكَّتْ وَجْهَهَا وَقَالَتْ عَجُوزٌ عَقِيمٌۭ",
+      "urduText": "تو ابراہیمؑ کی بیوی چلاّتی آئی اور اپنا منہ پیٹ کر کہنے لگی کہ (اے ہے ایک تو) بڑھیا اور (دوسرے) بانجھ",
+      "juz": 26,
+      "page": 521,
+      "ruku": 456,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "And his wife approached with a cry [of alarm] and struck her face and said, \"[I am] a barren old woman!\"",
+      "translations": {
+        "urdu": "تو ابراہیمؑ کی بیوی چلاّتی آئی اور اپنا منہ پیٹ کر کہنے لگی کہ (اے ہے ایک تو) بڑھیا اور (دوسرے) بانجھ",
+        "english": "And his wife approached with a cry [of alarm] and struck her face and said, \"[I am] a barren old woman!\"",
+        "bengali": "অতঃপর তাঁর স্ত্রী চীৎকার করতে করতে সামনে এল এবং মুখ চাপড়িয়ে বললঃ আমি তো বৃদ্ধা, বন্ধ্যা।",
+        "turkish": "Bunun üzerine karısı hayretle seslenerek geldi, elleriyle yüzünü kapayarak: \"kısır bir kocakarı!\" dedi.",
+        "french": "Alors sa femme s'avança en criant, se frappa le visage et dit: «Une vieille femme stérile...»"
+      }
+    },
+    {
+      "numberInSurah": 30,
+      "globalNumber": 4705,
+      "arabicText": "قَالُوا۟ كَذَٰلِكِ قَالَ رَبُّكِ ۖ إِنَّهُۥ هُوَ ٱلْحَكِيمُ ٱلْعَلِيمُ",
+      "urduText": "(انہوں نے) کہا (ہاں) تمہارے پروردگار نے یوں ہی فرمایا ہے۔ وہ بےشک صاحبِ حکمت (اور) خبردار ہے",
+      "juz": 26,
+      "page": 521,
+      "ruku": 456,
+      "hizbQuarter": 208,
+      "sajda": false,
+      "englishText": "They said, \"Thus has said your Lord; indeed, He is the Wise, the Knowing.\"",
+      "translations": {
+        "urdu": "(انہوں نے) کہا (ہاں) تمہارے پروردگار نے یوں ہی فرمایا ہے۔ وہ بےشک صاحبِ حکمت (اور) خبردار ہے",
+        "english": "They said, \"Thus has said your Lord; indeed, He is the Wise, the Knowing.\"",
+        "bengali": "তারা বললঃ তোমার প��লনকর্তা এরূপই বলেছেন। নিশ্চয় তিনি প্রজ্ঞাময়, সর্বজ্ঞ।",
+        "turkish": "Melekler: \"Bu böyledir, Rabbin söylemiştir; doğrusu O, Hakim olandır, bilendir\" dediler.",
+        "french": "Ils dirent: «Ainsi a dit ton Seigneur. C'est Lui vraiment le Sage, l'Omniscient»."
+      }
+    },
+    {
+      "numberInSurah": 31,
+      "globalNumber": 4706,
+      "arabicText": "۞ قَالَ فَمَا خَطْبُكُمْ أَيُّهَا ٱلْمُرْسَلُونَ",
+      "urduText": "ابراہیمؑ نے کہا کہ فرشتو! تمہارا مدعا کیا ہے؟",
+      "juz": 27,
+      "page": 522,
+      "ruku": 456,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "[Abraham] said, \"Then what is your business [here], O messengers?\"",
+      "translations": {
+        "urdu": "ابراہیمؑ نے کہا کہ فرشتو! تمہارا مدعا کیا ہے؟",
+        "english": "[Abraham] said, \"Then what is your business [here], O messengers?\"",
+        "bengali": "ইব্রাহীম বললঃ হে প্রেরিত ফেরেশতাগণ, তোমাদের উদ্দেশ্য কি?",
+        "turkish": "İbrahim: \"Ey Elçiler! Göreviniz nedir?\" dedi.",
+        "french": "Alors [Abraham] dit: «Quelle est donc votre mission, ô envoyés?»"
+      }
+    },
+    {
+      "numberInSurah": 32,
+      "globalNumber": 4707,
+      "arabicText": "قَالُوٓا۟ إِنَّآ أُرْسِلْنَآ إِلَىٰ قَوْمٍۢ مُّجْرِمِينَ",
+      "urduText": "انہوں نے کہا کہ ہم گنہگار لوگوں کی طرف بھیجے گئے ہیں",
+      "juz": 27,
+      "page": 522,
+      "ruku": 456,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "They said, \"Indeed, we have been sent to a people of criminals",
+      "translations": {
+        "urdu": "انہوں نے کہا کہ ہم گنہگار لوگوں کی طرف بھیجے گئے ہیں",
+        "english": "They said, \"Indeed, we have been sent to a people of criminals",
+        "bengali": "তারা বললঃ আমরা এক অপরাধী সম্প্রদায়ের প্রতি প্রেরিত হয়েছি,",
+        "turkish": "Elçiler: \"Suçlu bir milletin üzerine, Rabbinin katından işaretli olarak, aşırı gidenlere mahsus sert taşlar göndermekle görevlendirildik\" dediler.",
+        "french": "Ils dirent: «Nous avons été envoyés vers des gens criminels,"
+      }
+    },
+    {
+      "numberInSurah": 33,
+      "globalNumber": 4708,
+      "arabicText": "لِنُرْسِلَ عَلَيْهِمْ حِجَارَةًۭ مِّن طِينٍۢ",
+      "urduText": "تاکہ ان پر کھنگر برسائیں",
+      "juz": 27,
+      "page": 522,
+      "ruku": 456,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "To send down upon them stones of clay,",
+      "translations": {
+        "urdu": "تاکہ ان پر کھنگر برسائیں",
+        "english": "To send down upon them stones of clay,",
+        "bengali": "যাতে তাদের উপর মাটির ঢিলা নিক্ষেপ করি।",
+        "turkish": "Elçiler: \"Suçlu bir milletin üzerine, Rabbinin katından işaretli olarak, aşırı gidenlere mahsus sert taşlar göndermekle görevlendirildik\" dediler.",
+        "french": "pour lancer sur eux des pierres de glaise,"
+      }
+    },
+    {
+      "numberInSurah": 34,
+      "globalNumber": 4709,
+      "arabicText": "مُّسَوَّمَةً عِندَ رَبِّكَ لِلْمُسْرِفِينَ",
+      "urduText": "جن پر حد سے بڑھ جانے والوں کے لئے تمہارے پروردگار کے ہاں سے نشان کردیئے گئے ہیں",
+      "juz": 27,
+      "page": 522,
+      "ruku": 456,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "Marked in the presence of your Lord for the transgressors.\"",
+      "translations": {
+        "urdu": "جن پر حد سے بڑھ جانے والوں کے لئے تمہارے پروردگار کے ہاں سے نشان کردیئے گئے ہیں",
+        "english": "Marked in the presence of your Lord for the transgressors.\"",
+        "bengali": "যা সীমাতিক্রমকারীদের জন্যে আপনার পালনকর্তার কাছে চিহিߦ#2468; আছে।",
+        "turkish": "Elçiler: \"Suçlu bir milletin üzerine, Rabbinin katından işaretli olarak, aşırı gidenlere mahsus sert taşlar göndermekle görevlendirildik\" dediler.",
+        "french": "marquées auprès de ton Seigneur à l'intention des outranciers»."
+      }
+    },
+    {
+      "numberInSurah": 35,
+      "globalNumber": 4710,
+      "arabicText": "فَأَخْرَجْنَا مَن كَانَ فِيهَا مِنَ ٱلْمُؤْمِنِينَ",
+      "urduText": "تو وہاں جتنے مومن تھے ان کو ہم نے نکال لیا",
+      "juz": 27,
+      "page": 522,
+      "ruku": 456,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "So We brought out whoever was in the cities of the believers.",
+      "translations": {
+        "urdu": "تو وہاں جتنے مومن تھے ان کو ہم نے نکال لیا",
+        "english": "So We brought out whoever was in the cities of the believers.",
+        "bengali": "অতঃপর সেখানে যারা ঈমানদার ছিল, আমি তাদেরকে উদ্ধার করলাম।",
+        "turkish": "Bunun üzerine, suçlu milletin arasında bulunan müminleri çıkardık.",
+        "french": "Nous en fîmes sortir alors ce qu'il y avait comme croyants,"
+      }
+    },
+    {
+      "numberInSurah": 36,
+      "globalNumber": 4711,
+      "arabicText": "فَمَا وَجَدْنَا فِيهَا غَيْرَ بَيْت��ۢ مِّنَ ٱلْمُسْلِمِينَ",
+      "urduText": "اور اس میں ایک گھر کے سوا مسلمانوں کا کوئی گھر نہ پایا",
+      "juz": 27,
+      "page": 522,
+      "ruku": 456,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "And We found not within them other than a [single] house of Muslims.",
+      "translations": {
+        "urdu": "اور اس میں ایک گھر کے سوا مسلمانوں کا کوئی گھر نہ پایا",
+        "english": "And We found not within them other than a [single] house of Muslims.",
+        "bengali": "এবং সেখানে একটি গৃহ ব্যতীত কোন মুসলমান আমি পাইনি।",
+        "turkish": "Zaten orada, kendini Allah'a vermiş sadece bir tek ev halkı bulduk.",
+        "french": "mais Nous n'y trouvâmes qu'une seule maison de gens soumis."
+      }
+    },
+    {
+      "numberInSurah": 37,
+      "globalNumber": 4712,
+      "arabicText": "وَتَرَكْنَا فِيهَآ ءَايَةًۭ لِّلَّذِينَ يَخَافُونَ ٱلْعَذَابَ ٱلْأَلِيمَ",
+      "urduText": "اور جو لوگ عذاب الیم سے ڈرتے ہیں ان کے لئے وہاں نشانی چھوڑ دی",
+      "juz": 27,
+      "page": 522,
+      "ruku": 456,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "And We left therein a sign for those who fear the painful punishment.",
+      "translations": {
+        "urdu": "اور جو لوگ عذاب الیم سے ڈرتے ہیں ان کے لئے وہاں نشانی چھوڑ دی",
+        "english": "And We left therein a sign for those who fear the painful punishment.",
+        "bengali": "যারা যন্ত্রণাদায়ক শাস্তিকে ভয় করে, আমি তাদের জন্যে সেখানে একটি নিদর্শন রেখেছি।",
+        "turkish": "Can yakıcı azabdan korkanlar için, o beldede bir işaret, bir kalıntı bıraktık.",
+        "french": "Et Nous y laissâmes un signe pour ceux qui redoutent le douloureux châtiment;"
+      }
+    },
+    {
+      "numberInSurah": 38,
+      "globalNumber": 4713,
+      "arabicText": "وَفِى مُوسَىٰٓ إِذْ أَرْسَلْنَٰهُ إِلَىٰ فِرْعَوْنَ بِسُلْطَٰنٍۢ مُّبِينٍۢ",
+      "urduText": "اور موسیٰ (کے حال) میں (بھی نشانی ہے) جب ہم نے ان کو فرعون کی طرف کھلا ہوا معجزہ دے کر بھیجا",
+      "juz": 27,
+      "page": 522,
+      "ruku": 456,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "And in Moses [was a sign], when We sent him to Pharaoh with clear authority.",
+      "translations": {
+        "urdu": "اور موسیٰ (کے حال) میں (بھی نشانی ہے) جب ہم نے ان کو فرعون کی طرف کھلا ہوا معجزہ دے کر بھیجا",
+        "english": "And in Moses [was a sign], when We sent him to Pharaoh with clear authority.",
+        "bengali": "এবং নিদর্শন রয়েছে মূসার বৃত্তান্তে; যখন আমি তাকে সুস্পষ্ট প্রমাণসহ ফেরাউনের কাছে প্রেরণ করেছিলাম।",
+        "turkish": "Musa'nın başından geçenlerde de ibret vardır: Onu apaçık delille Firavun'a gönderdik.",
+        "french": "[Il y a même un signe] en Moïse quand Nous l'envoyâmes, avec une preuve évidente, vers Pharaon."
+      }
+    },
+    {
+      "numberInSurah": 39,
+      "globalNumber": 4714,
+      "arabicText": "فَتَوَلَّىٰ بِرُكْنِهِۦ وَقَالَ سَٰحِرٌ أَوْ مَجْنُونٌۭ",
+      "urduText": "تو اس نے اپنی جماعت (کے گھمنڈ) پر منہ موڑ لیا اور کہنے لگا یہ تو جادوگر ہے یا دیوانہ",
+      "juz": 27,
+      "page": 522,
+      "ruku": 456,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "But he turned away with his supporters and said,\" A magician or a madman.\"",
+      "translations": {
+        "urdu": "تو اس نے اپنی جماعت (کے گھمنڈ) پر منہ موڑ لیا اور کہنے لگا یہ تو جادوگر ہے یا دیوانہ",
+        "english": "But he turned away with his supporters and said,\" A magician or a madman.\"",
+        "bengali": "অতঃপর সে শক্তিবলে মুখ ফিরিয়ে নিল এবং বললঃ সে হয় যাদুকর, না হয় পাগল।",
+        "turkish": "Firavun, erkaniyle birlikte hakdan yüz çevirdi; \"sihirbazdır veya delidir\" dedi.",
+        "french": "Mais [celui-ci] se détourna confiant en sa puissance, et dit: «C'est un magicien ou un possédé!»"
+      }
+    },
+    {
+      "numberInSurah": 40,
+      "globalNumber": 4715,
+      "arabicText": "فَأَخَذْنَٰهُ وَجُنُودَهُۥ فَنَبَذْنَٰهُمْ فِى ٱلْيَمِّ وَهُوَ مُلِيمٌۭ",
+      "urduText": "تو ہم نے اس کو اور اس کے لشکروں کو پکڑ لیا اور ان کو دریا میں پھینک دیا اور وہ کام ہی قابل ملامت کرتا تھا",
+      "juz": 27,
+      "page": 522,
+      "ruku": 456,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "So We took him and his soldiers and cast them into the sea, and he was blameworthy.",
+      "translations": {
+        "urdu": "تو ہم نے اس کو اور اس کے لشکروں کو پکڑ لیا اور ان کو دریا میں پھینک دیا اور وہ کام ہی قابل ملامت کرتا تھا",
+        "english": "So We took him and his soldiers and cast them into the sea, and he was blameworthy.",
+        "bengali": "অতঃপর আমি তাকে ও তার সেনাবাহিনীকে পাকড়াও করলাম এবং তাদেরকে সমুদ্রে নিক্ষেপ করলাম। সে ছিল অভিযুক্ত।",
+        "turkish": "Sonunda onu ve ordularını yakalayıp denize attık. O, kınanmayı haketmişti.",
+        "french": "Nous le saisîmes ainsi que ses troupes, puis les jetâmes dans les flots, pour son comportement blâmable."
+      }
+    },
+    {
+      "numberInSurah": 41,
+      "globalNumber": 4716,
+      "arabicText": "وَفِى عَادٍ إِذْ أَرْسَلْنَا عَلَيْهِمُ ٱلرِّيحَ ٱلْعَقِيمَ",
+      "urduText": "اور عاد (کی قوم کے حال) میں بھی (نشانی ہے) جب ہم نے ان پر نامبارک ہوا چلائی",
+      "juz": 27,
+      "page": 522,
+      "ruku": 456,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "And in 'Aad [was a sign], when We sent against them the barren wind.",
+      "translations": {
+        "urdu": "اور عاد (کی قوم کے حال) میں بھی (نشانی ہے) جب ہم نے ان پر نامبارک ہوا چلائی",
+        "english": "And in 'Aad [was a sign], when We sent against them the barren wind.",
+        "bengali": "এবং নিদর্শন রয়েছে তাদের কাহিনীতে; যখন আমি তাদের উপর প্রেরণ করেছিলাম অশুভ বায়ু।",
+        "turkish": "Ad milletinin başından geçende de ibret vardır: Onların üzerine, uğradığı her şeyi bırakmayıp toza çeviren kuru bir rüzgar gönderdik.",
+        "french": "De même pour les 'Aad, quand Nous envoyâmes contre eux le vent dévastateur"
+      }
+    },
+    {
+      "numberInSurah": 42,
+      "globalNumber": 4717,
+      "arabicText": "مَا تَذَرُ مِن شَىْءٍ أَتَتْ عَلَيْهِ إِلَّا جَعَلَتْهُ كَٱلرَّمِيمِ",
+      "urduText": "وہ جس چیز پر چلتی اس کو ریزہ ریزہ کئے بغیر نہ چھوڑتی",
+      "juz": 27,
+      "page": 522,
+      "ruku": 456,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "It left nothing of what it came upon but that it made it like disintegrated ruins.",
+      "translations": {
+        "urdu": "وہ جس چیز پر چلتی اس کو ریزہ ریزہ کئے بغیر نہ چھوڑتی",
+        "english": "It left nothing of what it came upon but that it made it like disintegrated ruins.",
+        "bengali": "এই বায়ু যার উপর দিয়ে প্রবাহিত হয়েছিলঃ তাকেই চুর্ণ-বিচুর্ণ করে দিয়েছিল।",
+        "turkish": "Ad milletinin başından geçende de ibret vardır: Onların üzerine, uğradığı her şeyi bırakmayıp toza çeviren kuru bir rüzgar gönderdik.",
+        "french": "n'épargnant rien sur son passage sans le réduire en poussière."
+      }
+    },
+    {
+      "numberInSurah": 43,
+      "globalNumber": 4718,
+      "arabicText": "وَفِى ثَمُودَ إِذْ قِيلَ لَهُمْ تَمَتَّعُوا۟ حَتَّىٰ حِينٍۢ",
+      "urduText": "اور (قوم) ثمود (کے حال) میں (نشانی ہے) جب ان سے کہا گیا کہ ایک وقت تک فائدہ اٹھالو",
+      "juz": 27,
+      "page": 522,
+      "ruku": 456,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "And in Thamud, when it was said to them, \"Enjoy yourselves for a time.\"",
+      "translations": {
+        "urdu": "اور (قوم) ثمود (کے حال) میں (نشانی ہے) جب ان سے کہا گیا کہ ایک وقت تک فائدہ اٹھالو",
+        "english": "And in Thamud, when it was said to them, \"Enjoy yourselves for a time.\"",
+        "bengali": "আরও নিদর্শন রয়েছে সামূদের ঘটনায়; যখন তাদেরকে বলা হয়েছিল, কিছুকাল মজা লুটে নাও।",
+        "turkish": "Semud milletinin başına gelende de ibret vardır: Onlara, \"Bir süreye kadar zevklenin\" denmişti.",
+        "french": "De même pour les Thamûd, quand il leur fut dit: «Jouissez jusqu'à un certain temps!»"
+      }
+    },
+    {
+      "numberInSurah": 44,
+      "globalNumber": 4719,
+      "arabicText": "فَعَتَوْا۟ عَنْ أَمْرِ رَبِّهِمْ فَأَخَذَتْهُمُ ٱلصَّٰعِقَةُ وَهُمْ يَنظُرُونَ",
+      "urduText": "تو انہوں نے اپنے پروردگار کے حکم سے سرکشی کی۔ سو ان کو کڑک نے آ پکڑا اور وہ دیکھ رہے تھے",
+      "juz": 27,
+      "page": 522,
+      "ruku": 456,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "But they were insolent toward the command of their Lord, so the thunderbolt seized them while they were looking on.",
+      "translations": {
+        "urdu": "تو انہوں نے اپنے پروردگار کے حکم سے سرکشی کی۔ سو ان کو کڑک نے آ پکڑا اور وہ دیکھ رہے تھے",
+        "english": "But they were insolent toward the command of their Lord, so the thunderbolt seized them while they were looking on.",
+        "bengali": "অতঃপর তারা তাদের পালনকর্তার আদেশ অমান্য করল এবং তাদের প্রতি বজ্রঘাত হল এমতাবস্থায় যে, তারা তা দেখেছিল।",
+        "turkish": "Onlar Rablerinin buyruğundan çıkmışlardı; bunun üzerine kendilerini gözleri göre göre yıldırım çarptı.",
+        "french": "Ils défièrent le commandement de leur Seigneur. La foudre les saisit alors qu'ils regardaient."
+      }
+    },
+    {
+      "numberInSurah": 45,
+      "globalNumber": 4720,
+      "arabicText": "فَمَا ٱسْتَطَٰعُوا۟ مِن قِيَامٍۢ وَمَا كَانُوا۟ مُنتَصِرِينَ",
+      "urduText": "پھر وہ نہ تو اُٹھنے کی طاقت رکھتے تھے اور نہ مقابلہ ہی کرسکتے تھے",
+      "juz": 27,
+      "page": 522,
+      "ruku": 456,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "And they were unable to arise, nor could they defend themselves.",
+      "translations": {
+        "urdu": "پھر وہ نہ تو اُٹھنے کی طاقت رکھتے تھے اور نہ مقابلہ ہی کرسکتے تھے",
+        "english": "And they were unable to arise, nor could they defend themselves.",
+        "bengali": "অতঃপর তারা দাঁড়াতে সক্ষম হল না এবং কোন প্রতিকারও করতে পারল না।",
+        "turkish": "Ayağa kalkacak güçleri kalmadı, yardım da görmediler.",
+        "french": "Ils ne purent ni se mettre debout ni être secourus."
+      }
+    },
+    {
+      "numberInSurah": 46,
+      "globalNumber": 4721,
+      "arabicText": "وَقَوْمَ نُوحٍۢ مِّن قَبْلُ ۖ إِنَّهُمْ كَانُوا۟ قَوْمًۭا فَٰسِقِينَ",
+      "urduText": "اور اس سے پہلے (ہم) نوح کی قوم کو (ہلاک کرچکے تھے) بےشک وہ نافرمان لوگ تھے",
+      "juz": 27,
+      "page": 522,
+      "ruku": 456,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "And [We destroyed] the people of Noah before; indeed, they were a people defiantly disobedient.",
+      "translations": {
+        "urdu": "اور اس سے پہلے (ہم) نوح کی قوم کو (ہلاک کرچکے تھے) بےشک وہ نافرمان لوگ تھے",
+        "english": "And [We destroyed] the people of Noah before; indeed, they were a people defiantly disobedient.",
+        "bengali": "আমি ইতিপূর্বে নূহের সম্প্রদায়কে ধ্বংস করেছি। নিশ্চিতই তারা ছিল পাপাচারী সম্প্রদায়।",
+        "turkish": "Daha önce de Nuh milletini cezalandırmıştık. Çünkü onlar da yoldan çıkmış bir milletti.",
+        "french": "De même, pour le peuple de Noé auparavant. Ils étaient des gens pervers."
+      }
+    },
+    {
+      "numberInSurah": 47,
+      "globalNumber": 4722,
+      "arabicText": "وَٱلسَّمَآءَ بَنَيْنَٰهَا بِأَيْي۟دٍۢ وَإِنَّا لَمُوسِعُونَ",
+      "urduText": "اور آسمانوں کو ہم ہی نے ہاتھوں سے بنایا اور ہم کو سب مقدور ہے",
+      "juz": 27,
+      "page": 522,
+      "ruku": 457,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "And the heaven We constructed with strength, and indeed, We are [its] expander.",
+      "translations": {
+        "urdu": "اور آسمانوں کو ہم ہی نے ہاتھوں سے بنایا اور ہم کو سب مقدور ہے",
+        "english": "And the heaven We constructed with strength, and indeed, We are [its] expander.",
+        "bengali": "আমি স্বীয় ক্ষমতাবলে আকাশ নির্মাণ করেছি এবং আমি অবশ্যই ব্যাপক ক্ষমতাশালী।",
+        "turkish": "Göğü, gücümüzle Biz kurduk; şüphesiz biz onu genişleticiyiz.",
+        "french": "Le ciel, Nous l'avons construit par Notre puissance: et Nous l'étendons [constamment] dans l'immensité."
+      }
+    },
+    {
+      "numberInSurah": 48,
+      "globalNumber": 4723,
+      "arabicText": "وَٱلْأَرْضَ فَرَشْنَٰهَا فَنِعْمَ ٱلْمَٰهِدُونَ",
+      "urduText": "اور زمین کو ہم ہی نے بچھایا تو (دیکھو) ہم کیا خوب بچھانے والے ہیں",
+      "juz": 27,
+      "page": 522,
+      "ruku": 457,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "And the earth We have spread out, and excellent is the preparer.",
+      "translations": {
+        "urdu": "اور زمین کو ہم ہی نے بچھایا تو (دیکھو) ہم کیا خوب بچھانے والے ہیں",
+        "english": "And the earth We have spread out, and excellent is the preparer.",
+        "bengali": "আমি ভূমিকে বিছিয়েছি। আমি কত সুন্দরভাবেই না বিছাতে সক্ষম।",
+        "turkish": "Yeryüzünü biz yayıp döşedik: Ne güzel döşeyiciyiz!",
+        "french": "Et la terre, Nous l'avons étendue. Et de quelle excellente façon Nous l'avons nivelée!"
+      }
+    },
+    {
+      "numberInSurah": 49,
+      "globalNumber": 4724,
+      "arabicText": "وَمِن كُلِّ شَىْءٍ خَلَقْنَا زَوْجَيْنِ لَعَلَّكُمْ تَذَكَّرُونَ",
+      "urduText": "اور ہر چیز کی ہم نے دو قسمیں بنائیں تاکہ تم نصیحت پکڑو",
+      "juz": 27,
+      "page": 522,
+      "ruku": 457,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "And of all things We created two mates; perhaps you will remember.",
+      "translations": {
+        "urdu": "اور ہر چیز کی ہم نے دو قسمیں بنائیں تاکہ تم نصیحت پکڑو",
+        "english": "And of all things We created two mates; perhaps you will remember.",
+        "bengali": "আমি প্রত্যেক বস্তু জোড়ায় জোড়ায় সৃষ্টি করেছি, যাতে তোমরা হৃদয়ঙ্গম কর।",
+        "turkish": "İbret alasınız diye her şeyi çift çift yaratmışızdır.",
+        "french": "Et de toute chose Nous avons créé [deux éléments] de couple. Peut-être vous rappellerez-vous?"
+      }
+    },
+    {
+      "numberInSurah": 50,
+      "globalNumber": 4725,
+      "arabicText": "فَفِرُّوٓا۟ إِلَى ٱللَّهِ ۖ إِنِّى لَكُم مِّنْهُ نَذِيرٌۭ مُّبِينٌۭ",
+      "urduText": "تو تم لوگ خدا کی طرف بھاگ چلو میں اس کی طرف سے تم کو صریح رستہ بتانے والا ہوں",
+      "juz": 27,
+      "page": 522,
+      "ruku": 457,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "So flee to Allah. Indeed, I am to you from Him a clear warner.",
+      "translations": {
+        "urdu": "تو تم لوگ خدا کی طرف بھاگ چلو میں اس کی طرف سے تم کو صریح رستہ بتانے والا ہوں",
+        "english": "So flee to Allah. Indeed, I am to you from Him a clear warner.",
+        "bengali": "অতএব, আল্লাহর দিকে ধাবিত হও। আমি তাঁর তরফ থেকে তোমাদের জন্যে সুস্পষ্ট সতর্ককারী।",
+        "turkish": "De ki: \"Öyleyse Allah'a koşusun; doğrusu ben sizi O'nun azabı ile açıkça uyaranım.\"",
+        "french": "«Fuyez donc vers Allah. Moi, je suis pour vous de Sa part, un avertisseur explicite."
+      }
+    },
+    {
+      "numberInSurah": 51,
+      "globalNumber": 4726,
+      "arabicText": "وَلَا تَجْعَلُوا۟ مَعَ ٱللَّهِ إِلَٰهًا ءَاخَرَ ۖ إِنِّى لَكُم مِّنْهُ نَذِيرٌۭ مُّبِينٌۭ",
+      "urduText": "اور خدا کے ساتھ کسی اَور کو معبود نہ بناؤ۔ میں اس کی طرف سے تم کو صریح رستہ بتانے والا ہوں",
+      "juz": 27,
+      "page": 522,
+      "ruku": 457,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "And do not make [as equal] with Allah another deity. Indeed, I am to you from Him a clear warner.",
+      "translations": {
+        "urdu": "اور خدا کے ساتھ کسی اَور کو معبود نہ بناؤ۔ میں اس کی طرف سے تم کو صریح رستہ بتانے والا ہوں",
+        "english": "And do not make [as equal] with Allah another deity. Indeed, I am to you from Him a clear warner.",
+        "bengali": "তোমরা আল্লাহর সাথে কোন উপাস্য সাব্যস্ত করো না। আমি তাঁর পক্ষ থেকে তোমাদের জন্য সুস্পষ্ট সতর্ককারী।",
+        "turkish": "\"Allah'ın yanında başkasını tanrı kılmayın; doğrusu ben sizi O'nun azabı ile açıkça uyaranım.\"",
+        "french": "Ne placez pas avec Allah une autre divinité. Je suis pour vous de Sa part, un avertisseur explicite»."
+      }
+    },
+    {
+      "numberInSurah": 52,
+      "globalNumber": 4727,
+      "arabicText": "كَذَٰلِكَ مَآ أَتَى ٱلَّذِينَ مِن قَبْلِهِم مِّن رَّسُولٍ إِلَّا قَالُوا۟ سَاحِرٌ أَوْ مَجْنُونٌ",
+      "urduText": "اسی طرح ان سے پہلے لوگوں کے پاس جو پیغمبر آتا وہ اس کو جادوگر یا دیوانہ کہتے",
+      "juz": 27,
+      "page": 523,
+      "ruku": 457,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "Similarly, there came not to those before them any messenger except that they said, \"A magician or a madman.\"",
+      "translations": {
+        "urdu": "اسی طرح ان سے پہلے لوگوں کے پاس جو پیغمبر آتا وہ اس کو جادوگر یا دیوانہ کہتے",
+        "english": "Similarly, there came not to those before them any messenger except that they said, \"A magician or a madman.\"",
+        "bengali": "এমনিভাবে, তাদের পূর্ববর্তীদের কাছে যখনই কোন রসূল আগমন করেছে, তারা বলছেঃ যাদুকর, না হয় উম্মাদ।",
+        "turkish": "Onlardan öncekilere, herhangi bir peygamber gelince: \"sihirbazdır\" veya \"Delidir\" derlerdi.",
+        "french": "Ainsi, aucun Messager n'est venu à leurs prédécesseurs sans qu'ils n'aient dit: «C'est un magicien ou un possédé!»"
+      }
+    },
+    {
+      "numberInSurah": 53,
+      "globalNumber": 4728,
+      "arabicText": "أَتَوَاصَوْا۟ بِهِۦ ۚ بَلْ هُمْ قَوْمٌۭ طَاغُونَ",
+      "urduText": "کیا یہ کہ ایک دوسرے کو اسی بات کی وصیت کرتے آئے ہیں بلکہ یہ شریر لوگ ہیں",
+      "juz": 27,
+      "page": 523,
+      "ruku": 457,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "Did they suggest it to them? Rather, they [themselves] are a transgressing people.",
+      "translations": {
+        "urdu": "کیا یہ کہ ایک دوسرے کو اسی بات کی وصیت کرتے آئے ہیں بلکہ یہ شریر لوگ ہیں",
+        "english": "Did they suggest it to them? Rather, they [themselves] are a transgressing people.",
+        "bengali": "তারা কি একে অপরকে এই উপদেশই দিয়ে গেছে? বস্তুতঃ ওরা দুষ্ট সম্প্রদায়।",
+        "turkish": "Öncekiler sonrakilere böyle mi vasiyet ettiler? Hayır; bunlar azgın bir millettir.",
+        "french": "Est-ce qu'ils se sont transmis cette injonction? Ils sont plutôt des gens transgresseurs."
+      }
+    },
+    {
+      "numberInSurah": 54,
+      "globalNumber": 4729,
+      "arabicText": "فَتَوَلَّ عَنْهُمْ فَمَآ أَنتَ بِمَلُومٍۢ",
+      "urduText": "تو ان سے اعراض کرو۔ تم کو (ہماری) طرف سے ملامت نہ ہوگی",
+      "juz": 27,
+      "page": 523,
+      "ruku": 457,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "So leave them, [O Muhammad], for you are not to be blamed.",
+      "translations": {
+        "urdu": "تو ان سے اعراض کرو۔ تم کو (ہماری) طرف سے ملامت نہ ہوگی",
+        "english": "So leave them, [O Muhammad], for you are not to be blamed.",
+        "bengali": "অতএব, আপনি ওদের থেকে মুখ ফিরিয়ে নিন। এতে আপনি অপরাধী হবেন না।",
+        "turkish": "Onlardan yüz çevir; sen kınanacak değilsin.",
+        "french": "Détourne-toi d'eux, tu ne seras pas blâmé [à leur sujet]."
+      }
+    },
+    {
+      "numberInSurah": 55,
+      "globalNumber": 4730,
+      "arabicText": "وَذَكِّرْ فَإِنَّ ٱلذِّكْرَىٰ تَنفَعُ ٱلْمُؤْمِنِينَ",
+      "urduText": "اور نصیحت کرتے رہو کہ نصیحت مومنوں کو نفع دیتی ہے",
+      "juz": 27,
+      "page": 523,
+      "ruku": 457,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "And remind, for indeed, the reminder benefits the believers.",
+      "translations": {
+        "urdu": "اور نصیحت کرتے رہو کہ نصیحت مومنوں کو نفع دیتی ہے",
+        "english": "And remind, for indeed, the reminder benefits the believers.",
+        "bengali": "এবং বোঝাতে থাকুন; কেননা, বোঝানো মুমিনদের উপকারে আসবে।",
+        "turkish": "Öğüt ver; doğrusu öğüt inananlara fayda verir.",
+        "french": "Et rappelle; car le rappel profite aux croyants."
+      }
+    },
+    {
+      "numberInSurah": 56,
+      "globalNumber": 4731,
+      "arabicText": "وَمَا خَلَقْتُ ٱلْجِنَّ وَٱلْإِنسَ إِلَّا لِيَعْبُدُونِ",
+      "urduText": "اور میں نے جنوں اور انسانوں کو اس لئے پیدا کیا ہے کہ میری عبادت کریں",
+      "juz": 27,
+      "page": 523,
+      "ruku": 457,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "And I did not create the jinn and mankind except to worship Me.",
+      "translations": {
+        "urdu": "اور میں نے جنوں اور انسانوں کو اس لئے پیدا کیا ہے کہ میری عبادت کریں",
+        "english": "And I did not create the jinn and mankind except to worship Me.",
+        "bengali": "আমার এবাদত করার জন্যই আমি মানব ও জিন জাতি সৃষ্টি করেছি।",
+        "turkish": "Cinleri ve insanları ancak Bana kulluk etmeleri için yaratmışımdır.",
+        "french": "Je n'ai créé les djinns et les hommes que pour qu'ils M'adorent."
+      }
+    },
+    {
+      "numberInSurah": 57,
+      "globalNumber": 4732,
+      "arabicText": "مَآ أُرِيدُ مِنْهُم مِّن رِّزْقٍۢ وَمَآ أُرِيدُ أَن يُطْعِمُونِ",
+      "urduText": "میں ان سے طالب رزق نہیں اور نہ یہ چاہتا ہوں کہ مجھے (کھانا) کھلائیں",
+      "juz": 27,
+      "page": 523,
+      "ruku": 457,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "I do not want from them any provision, nor do I want them to feed Me.",
+      "translations": {
+        "urdu": "میں ان سے طالب رزق نہیں اور نہ یہ چاہتا ہوں کہ مجھے (کھانا) کھلائیں",
+        "english": "I do not want from them any provision, nor do I want them to feed Me.",
+        "bengali": "আমি তাদের কাছে জীবিকা চাই না এবং এটাও চাই না যে, তারা আমাকে আহার্য যোগাবে।",
+        "turkish": "Onlardan bir rızık istemem; Beni doyurmalarını da istemem.",
+        "french": "Je ne cherche pas d'eux une subsistance; et Je ne veux pas qu'ils me nourrissent."
+      }
+    },
+    {
+      "numberInSurah": 58,
+      "globalNumber": 4733,
+      "arabicText": "إِنَّ ٱللَّهَ هُوَ ٱلرَّزَّاقُ ذُو ٱلْقُوَّةِ ٱلْمَتِينُ",
+      "urduText": "خدا ہی تو رزق دینے والا زور آور اور مضبوط ہے",
+      "juz": 27,
+      "page": 523,
+      "ruku": 457,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "Indeed, it is Allah who is the [continual] Provider, the firm possessor of strength.",
+      "translations": {
+        "urdu": "خدا ہی تو رزق دینے والا زور آور اور مضبوط ہے",
+        "english": "Indeed, it is Allah who is the [continual] Provider, the firm possessor of strength.",
+        "bengali": "আল্লাহ তা’আলাই তো জীবিকাদাতা শক্তির আধার, পরাক্রান্ত।",
+        "turkish": "Şüphesiz rızıklandıran da, güç ve kuvvet sahibi olan da Allah'tır.",
+        "french": "En vérité, c'est Allah qui est le Grand Pourvoyeur, Le Détenteur de la force, l'Inébranlable."
+      }
+    },
+    {
+      "numberInSurah": 59,
+      "globalNumber": 4734,
+      "arabicText": "فَإِنَّ لِلَّذِينَ ظَلَمُوا۟ ذَنُوبًۭا مِّثْلَ ذَنُوبِ أَصْحَٰبِهِمْ فَلَا يَسْتَعْجِلُونِ",
+      "urduText": "کچھ شک نہیں کہ ان ظالموں کے لئے بھی (عذاب کی) نوبت مقرر ہے جس طرح ان کے ساتھیوں کی نوبت تھی تو ان کو مجھ سے (عذاب) جلدی نہیں طلب کرنا چاہیئے",
+      "juz": 27,
+      "page": 523,
+      "ruku": 457,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "And indeed, for those who have wronged is a portion [of punishment] like the portion of their predecessors, so let them not impatiently urge Me.",
+      "translations": {
+        "urdu": "کچھ شک نہیں کہ ان ظالموں کے لئے بھی (عذاب کی) نوبت مقرر ہے جس طرح ان کے ساتھیوں کی نوبت تھی تو ان کو مجھ سے (عذاب) جلدی نہیں طلب کرنا چاہیئے",
+        "english": "And indeed, for those who have wronged is a portion [of punishment] like the portion of their predecessors, so let them not impatiently urge Me.",
+        "bengali": "অতএব, এই যালেমদের প্রাপ্য তাই, যা ওদের অতীত সহচরদের প্রাপ্য ছিল। কাজেই ওরা যেন আমার কাছে তা তাড়াতাড়ি না চায়।",
+        "turkish": "Zulmedenlerin, geçmiş arkadaşlarının suçlarına benzer suçları vardır; cezalarını Benden acele istemesinler.",
+        "french": "Ceux qui ont été injustes auront une part [de tourments] pareille à celle de leurs compagnons. Qu'ils ne soient pas trop pressés."
+      }
+    },
+    {
+      "numberInSurah": 60,
+      "globalNumber": 4735,
+      "arabicText": "فَوَيْلٌۭ لِّلَّذِينَ كَفَرُوا۟ مِن يَوْمِهِمُ ٱلَّذِى يُوعَدُونَ",
+      "urduText": "جس دن کا ان کافروں سے وعدہ کیا جاتا ہے اس سے ان کے لئے خرابی ہے",
+      "juz": 27,
+      "page": 523,
+      "ruku": 457,
+      "hizbQuarter": 209,
+      "sajda": false,
+      "englishText": "And woe to those who have disbelieved from their Day which they are promised.",
+      "translations": {
+        "urdu": "جس دن کا ان کافروں سے وعدہ کیا جاتا ہے اس سے ان کے لئے خرابی ہے",
+        "english": "And woe to those who have disbelieved from their Day which they are promised.",
+        "bengali": "অতএব, কাফেরদের জন্যে দুর্ভোগ সেই দিনের, যেদিনের প্রতিশ্রুতি ওদেরকে দেয়া হয়েছে।",
+        "turkish": "Söz verilen günün azabından vay o inkar edenlere!",
+        "french": "Malheur donc à ceux qui ont mécru à cause du jour dont ils sont menacés!"
+      }
+    }
+  ]
+}

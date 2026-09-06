@@ -4,14 +4,17 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useTheme } from '../../context/ThemeContext';
 import { useStudyState } from '../../context/StudyContext';
-import { SURAHS } from '../../data/surahs';
+import { SURAHS, TRANSLATION_LANGUAGES, getAyahTranslation } from '../../data/surahs';
 import { getAyah } from '../../data/surahLoader';
 import { Highlight } from '../../types';
 
 export const SavesSection = React.memo(function SavesSection() {
   const { theme } = useTheme();
-  const { highlights } = useStudyState();
+  const { highlights, preferences } = useStudyState();
   const router = useRouter();
+
+  const langConfig =
+    TRANSLATION_LANGUAGES[preferences.translationLanguage || 'urdu'] || TRANSLATION_LANGUAGES.urdu;
 
   const savedList = useMemo(() => {
     return Object.values(highlights)
@@ -103,13 +106,20 @@ export const SavesSection = React.memo(function SavesSection() {
                   </Text>
                 ) : null}
 
-                {/* Urdu Translation */}
-                {ayahData?.urduText ? (
+                {/* Translation */}
+                {ayahData ? (
                   <Text
-                    style={[styles.urduVerseText, { color: theme.urduText }]}
+                    style={[
+                      styles.urduVerseText,
+                      {
+                        color: theme.urduText,
+                        textAlign: langConfig.isRTL ? 'right' : 'left',
+                        writingDirection: langConfig.isRTL ? 'rtl' : 'ltr',
+                      },
+                    ]}
                     numberOfLines={2}
                   >
-                    {ayahData.urduText}
+                    {getAyahTranslation(ayahData, preferences.translationLanguage)}
                   </Text>
                 ) : null}
 

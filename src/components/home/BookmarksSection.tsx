@@ -113,10 +113,17 @@ export const BookmarksSection = React.memo(function BookmarksSection() {
                   </Text>
                 ) : null}
 
-                {/* Urdu Snippet */}
+                {/* Translation Snippet */}
                 {item.urduSnippet ? (
                   <Text
-                    style={[styles.urduSnippetText, { color: theme.urduText }]}
+                    style={[
+                      styles.urduSnippetText,
+                      {
+                        color: theme.urduText,
+                        textAlign: /[\u0600-\u06FF]/.test(item.urduSnippet) ? 'right' : 'left',
+                        writingDirection: /[\u0600-\u06FF]/.test(item.urduSnippet) ? 'rtl' : 'ltr',
+                      },
+                    ]}
                     numberOfLines={2}
                   >
                     {item.urduSnippet}
