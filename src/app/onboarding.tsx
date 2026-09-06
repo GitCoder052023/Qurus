@@ -160,12 +160,64 @@ const CHAPTERS: StoryChapter[] = [
 
 const EASE = Easing.bezier(0.22, 1, 0.36, 1);
 
+const REMINDER_OPTIONS = [
+  {
+    label: 'Morning',
+    timeStr: '7:00 AM',
+    hour: 7,
+    minute: 0,
+    icon: 'sunny-outline' as const,
+    subtitle: 'Start with perspective',
+  },
+  {
+    label: 'Midday',
+    timeStr: '1:30 PM',
+    hour: 13,
+    minute: 30,
+    icon: 'time-outline' as const,
+    subtitle: 'Afternoon quiet pause',
+  },
+  {
+    label: 'Evening',
+    timeStr: '8:30 PM',
+    hour: 20,
+    minute: 30,
+    icon: 'partly-sunny-outline' as const,
+    subtitle: 'Unwind & reflect (Recommended)',
+  },
+  {
+    label: 'Night',
+    timeStr: '10:00 PM',
+    hour: 22,
+    minute: 0,
+    icon: 'moon-outline' as const,
+    subtitle: 'Stillness before rest',
+  },
+];
+
+const GOAL_OPTIONS = [
+  { count: 3, label: 'Gentle Pace', desc: '3 verses/day • ~2 mins' },
+  { count: 5, label: 'Recommended', desc: '5 verses/day • ~5 mins' },
+  { count: 10, label: 'Focused Study', desc: '10 verses/day • ~10 mins' },
+  { count: 15, label: 'Deep Immersion', desc: '15 verses/day • ~15 mins' },
+];
+
 export default function OnboardingScreen() {
   const { theme } = useTheme();
-  const { completeOnboarding, hasAgreedLegal } = useStudyState();
+  const {
+    completeOnboarding,
+    hasAgreedLegal,
+    dailyGoalAyahs,
+    setDailyGoal,
+    updateNotificationPreferences,
+  } = useStudyState();
   const router = useRouter();
 
   const [index, setIndex] = useState(0);
+  const [showIntentionStep, setShowIntentionStep] = useState(false);
+  const [selectedGoal, setSelectedGoal] = useState(dailyGoalAyahs || 5);
+  const [selectedReminderIndex, setSelectedReminderIndex] = useState(2); // 8:30 PM by default
+
   const chapter = CHAPTERS[index];
   const isLast = index === CHAPTERS.length - 1;
 
@@ -175,11 +227,15 @@ export default function OnboardingScreen() {
   const orbDrift = useSharedValue(0);
 
   useEffect(() => {
-    progress.value = withTiming((index + 1) / CHAPTERS.length, {
-      duration: 520,
-      easing: EASE,
-    });
-  }, [index, progress]);
+    if (showIntentionStep) {
+      progress.value = withTiming(1, { duration: 450, easing: EASE });
+    } else {
+      progress.value = withTiming((index + 1) / CHAPTERS.length, {
+        duration: 520,
+        easing: EASE,
+      });
+    }
+  }, [index, progress, showIntentionStep]);
 
   useEffect(() => {
     breathe.value = withRepeat(
@@ -224,20 +280,46 @@ export default function OnboardingScreen() {
     setIndex(next);
   }, []);
 
-  const finish = useCallback(async () => {
+  const handleSaveIntentionAndProceed = useCallback(async () => {
+    setDailyGoal(selectedGoal);
+    const chosenTime = REMINDER_OPTIONS[selectedReminderIndex];
+    await updateNotificationPreferences({
+      dailyReminderEnabled: true,
+      streakSaverEnabled: true,
+      reminderHour: chosenTime.hour,
+      reminderMinute: chosenTime.minute,
+    });
     await completeOnboarding();
     if (!hasAgreedLegal) {
       router.replace('/legal-consent' as any);
     } else {
       router.replace('/(tabs)');
     }
-  }, [completeOnboarding, hasAgreedLegal, router]);
+  }, [
+    completeOnboarding,
+    hasAgreedLegal,
+    router,
+    selectedGoal,
+    selectedReminderIndex,
+    setDailyGoal,
+    updateNotificationPreferences,
+  ]);
 
   const handleNext = () => {
-    if (isLast) {
-      finish();
+    if (showIntentionStep) {
+      handleSaveIntentionAndProceed();
+    } else if (isLast) {
+      setShowIntentionStep(true);
     } else {
       goTo(index + 1);
+    }
+  };
+
+  const handleSkip = () => {
+    if (!showIntentionStep) {
+      setShowIntentionStep(true);
+    } else {
+      handleSaveIntentionAndProceed();
     }
   };
 
@@ -279,8 +361,10 @@ export default function OnboardingScreen() {
       <SafeAreaView style={styles.safe} edges={['top', 'left', 'right']}>
         <View style={styles.topBar}>
           <Text style={[styles.wordmark, { color: theme.textPrimary }]}>Qurus</Text>
-          <TouchableOpacity onPress={finish} hitSlop={12} accessibilityLabel="Skip intro">
-            <Text style={[styles.skip, { color: theme.textTertiary }]}>Skip</Text>
+          <TouchableOpacity onPress={handleSkip} hitSlop={12} accessibilityLabel="Skip">
+            <Text style={[styles.skip, { color: theme.textTertiary }]}>
+              {showIntentionStep ? 'Done' : 'Skip'}
+            </Text>
           </TouchableOpacity>
         </View>
 
@@ -291,157 +375,354 @@ export default function OnboardingScreen() {
           }}
         >
           <Animated.View
-            style={[styles.trackFill, { backgroundColor: chapter.accent }, progressStyle]}
+            style={[
+              styles.trackFill,
+              { backgroundColor: showIntentionStep ? theme.accentAmber : chapter.accent },
+              progressStyle,
+            ]}
           />
         </View>
 
         <View
           style={styles.canvas}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
+          onTouchStart={!showIntentionStep ? handleTouchStart : undefined}
+          onTouchEnd={!showIntentionStep ? handleTouchEnd : undefined}
         >
           <ScrollView
             showsVerticalScrollIndicator={false}
             contentContainerStyle={styles.scroll}
             bounces={false}
           >
-            <Animated.View
-              key={chapter.id}
-              entering={FadeInDown.duration(520).easing(EASE)}
-              exiting={FadeOut.duration(160)}
-            >
-              <View style={styles.stepRow}>
-                <Animated.View
-                  style={[
-                    styles.iconDisc,
-                    { backgroundColor: chapter.wash },
-                    breatheStyle,
-                  ]}
-                >
-                  <Ionicons name={chapter.heroIcon} size={22} color={chapter.accent} />
-                </Animated.View>
-                <Text style={[styles.stepNum, { color: chapter.accent }]}>{stepLabel}</Text>
-                <Text style={[styles.kicker, { color: theme.textTertiary }]}>{chapter.kicker}</Text>
-              </View>
-
-              <Text style={[styles.title, { color: theme.textPrimary }]}>{chapter.title}</Text>
-
-              <Text style={[styles.highlight, { color: chapter.accent }]}>
-                {chapter.highlightPhrase}
-              </Text>
-
-              <View style={styles.prose}>
-                {chapter.proseParagraphs.map((para) => (
-                  <Text key={para.slice(0, 24)} style={[styles.body, { color: theme.textSecondary }]}>
-                    {para}
+            {showIntentionStep ? (
+              <Animated.View
+                key="intentions"
+                entering={FadeInDown.duration(420).easing(EASE)}
+                exiting={FadeOut.duration(160)}
+              >
+                <View style={styles.stepRow}>
+                  <View style={[styles.iconDisc, { backgroundColor: theme.amberMuted }]}>
+                    <Ionicons name="sparkles" size={20} color={theme.accentAmber} />
+                  </View>
+                  <Text style={[styles.stepNum, { color: theme.accentAmber }]}>06</Text>
+                  <Text style={[styles.kicker, { color: theme.accentAmber, fontWeight: '700' }]}>
+                    YOUR CONTEMPLATIVE RHYTHM
                   </Text>
-                ))}
-              </View>
-
-              {chapter.quote ? (
-                <Animated.View
-                  entering={FadeIn.delay(120).duration(480)}
-                  style={[
-                    styles.quote,
-                    { backgroundColor: theme.card, borderColor: chapter.wash },
-                  ]}
-                >
-                  <Text style={[styles.quoteText, { color: theme.textPrimary }]}>
-                    {chapter.quote.text}
-                  </Text>
-                  <Text style={[styles.quoteAuthor, { color: chapter.accent }]}>
-                    {chapter.quote.author}
-                  </Text>
-                </Animated.View>
-              ) : null}
-
-              {chapter.features ? (
-                <View style={styles.stack}>
-                  {chapter.features.map((feat, i) => (
-                    <Animated.View
-                      key={feat.title}
-                      entering={FadeInUp.delay(80 * i).duration(420).easing(EASE)}
-                      style={[
-                        styles.feature,
-                        { backgroundColor: theme.card, borderColor: theme.borderSubtle },
-                      ]}
-                    >
-                      <View style={[styles.featureIcon, { backgroundColor: chapter.wash }]}>
-                        <Ionicons name={feat.icon} size={18} color={chapter.accent} />
-                      </View>
-                      <View style={styles.featureCopy}>
-                        <Text style={[styles.featureTitle, { color: theme.textPrimary }]}>
-                          {feat.title}
-                        </Text>
-                        <Text style={[styles.featureDesc, { color: theme.textSecondary }]}>
-                          {feat.desc}
-                        </Text>
-                      </View>
-                    </Animated.View>
-                  ))}
                 </View>
-              ) : null}
 
-              {chapter.activities ? (
-                <View style={styles.activityWrap}>
-                  {chapter.activities.map((act, i) => (
-                    <Animated.View
-                      key={act.label}
-                      entering={FadeInUp.delay(60 * i).duration(380).easing(EASE)}
-                      style={[styles.activity, { backgroundColor: chapter.wash }]}
-                    >
-                      <Ionicons name={act.icon} size={16} color={chapter.accent} />
-                      <Text style={[styles.activityLabel, { color: theme.textPrimary }]}>
-                        {act.label}
-                      </Text>
-                    </Animated.View>
-                  ))}
-                </View>
-              ) : null}
+                <Text style={[styles.title, { color: theme.textPrimary }]}>
+                  Set your daily study intention
+                </Text>
 
-              {chapter.founderSignature ? (
-                <Animated.View
-                  entering={FadeInUp.delay(160).duration(480).easing(EASE)}
-                  style={[
-                    styles.founder,
-                    { backgroundColor: theme.card, borderColor: theme.borderSubtle },
-                  ]}
-                >
-                  <View style={styles.founderRow}>
-                    <View style={[styles.avatar, { backgroundColor: chapter.accent }]}>
-                      <Text style={styles.avatarLetter}>H</Text>
-                    </View>
-                    <View>
-                      <Text style={[styles.founderName, { color: theme.textPrimary }]}>
-                        {chapter.founderSignature.name}
-                      </Text>
-                      <Text style={[styles.founderRole, { color: theme.textTertiary }]}>
-                        {chapter.founderSignature.role}
+                <Text style={[styles.intentionSubtitle, { color: theme.textSecondary }]}>
+                  Consistency is the core of Tadabbur. Choose an effortless pace you can sustain every single day.
+                </Text>
+
+                {/* 1. Daily Tadabbur Goal */}
+                <View style={styles.intentionBlock}>
+                  <View style={styles.intentionBlockHeader}>
+                    <Text style={[styles.intentionBlockTitle, { color: theme.textPrimary }]}>
+                      Daily Tadabbur Goal
+                    </Text>
+                    <View style={[styles.pillBadgeCompact, { backgroundColor: theme.amberMuted }]}>
+                      <Text style={[styles.pillBadgeCompactText, { color: theme.accentAmber }]}>
+                        {selectedGoal} verses / day
                       </Text>
                     </View>
                   </View>
-                  <Text style={[styles.founderNote, { color: theme.textSecondary }]}>
-                    {chapter.founderSignature.note}
+
+                  <View style={styles.goalGrid}>
+                    {GOAL_OPTIONS.map((g) => {
+                      const isSelected = selectedGoal === g.count;
+                      return (
+                        <TouchableOpacity
+                          key={g.count}
+                          activeOpacity={0.85}
+                          onPress={() => setSelectedGoal(g.count)}
+                          style={[
+                            styles.goalCard,
+                            {
+                              backgroundColor: isSelected ? theme.card : theme.surface,
+                              borderColor: isSelected ? theme.accentAmber : theme.borderSubtle,
+                              borderWidth: isSelected ? 2 : StyleSheet.hairlineWidth,
+                            },
+                          ]}
+                        >
+                          <View style={styles.goalCardTop}>
+                            <Text
+                              style={[
+                                styles.goalCardCount,
+                                { color: isSelected ? theme.accentAmber : theme.textPrimary },
+                              ]}
+                            >
+                              {g.count}
+                            </Text>
+                            <View
+                              style={[
+                                styles.goalRadioCircle,
+                                {
+                                  borderColor: isSelected ? theme.accentAmber : theme.border,
+                                  backgroundColor: isSelected ? theme.accentAmber : 'transparent',
+                                },
+                              ]}
+                            >
+                              {isSelected && (
+                                <Ionicons name="checkmark" size={12} color="#FFFFFF" />
+                              )}
+                            </View>
+                          </View>
+                          <Text style={[styles.goalCardLabel, { color: theme.textPrimary }]}>
+                            {g.label}
+                          </Text>
+                          <Text style={[styles.goalCardDesc, { color: theme.textSecondary }]}>
+                            {g.desc}
+                          </Text>
+                        </TouchableOpacity>
+                      );
+                    })}
+                  </View>
+                </View>
+
+                {/* 2. Preferred Reminder Time */}
+                <View style={styles.intentionBlock}>
+                  <View style={styles.intentionBlockHeader}>
+                    <Text style={[styles.intentionBlockTitle, { color: theme.textPrimary }]}>
+                      Preferred Reminder Time
+                    </Text>
+                    <View style={[styles.pillBadgeCompact, { backgroundColor: theme.primaryMuted }]}>
+                      <Text style={[styles.pillBadgeCompactText, { color: theme.primary }]}>
+                        {REMINDER_OPTIONS[selectedReminderIndex].timeStr}
+                      </Text>
+                    </View>
+                  </View>
+
+                  <View style={styles.reminderList}>
+                    {REMINDER_OPTIONS.map((rem, idx) => {
+                      const isSelected = selectedReminderIndex === idx;
+                      return (
+                        <TouchableOpacity
+                          key={rem.label}
+                          activeOpacity={0.85}
+                          onPress={() => setSelectedReminderIndex(idx)}
+                          style={[
+                            styles.reminderCard,
+                            {
+                              backgroundColor: isSelected ? theme.card : theme.surface,
+                              borderColor: isSelected ? theme.primary : theme.borderSubtle,
+                              borderWidth: isSelected ? 2 : StyleSheet.hairlineWidth,
+                            },
+                          ]}
+                        >
+                          <View
+                            style={[
+                              styles.reminderIconBox,
+                              {
+                                backgroundColor: isSelected ? theme.primaryMuted : theme.chipBg,
+                              },
+                            ]}
+                          >
+                            <Ionicons
+                              name={rem.icon}
+                              size={18}
+                              color={isSelected ? theme.primary : theme.textSecondary}
+                            />
+                          </View>
+
+                          <View style={styles.reminderTextCol}>
+                            <View style={styles.reminderTopRow}>
+                              <Text style={[styles.reminderLabel, { color: theme.textPrimary }]}>
+                                {rem.label}
+                              </Text>
+                              <Text
+                                style={[
+                                  styles.reminderTimeStr,
+                                  { color: isSelected ? theme.primary : theme.textTertiary },
+                                ]}
+                              >
+                                {rem.timeStr}
+                              </Text>
+                            </View>
+                            <Text style={[styles.reminderDesc, { color: theme.textSecondary }]}>
+                              {rem.subtitle}
+                            </Text>
+                          </View>
+
+                          <View
+                            style={[
+                              styles.reminderRadio,
+                              {
+                                borderColor: isSelected ? theme.primary : theme.border,
+                                backgroundColor: isSelected ? theme.primary : 'transparent',
+                              },
+                            ]}
+                          >
+                            {isSelected && (
+                              <Ionicons name="checkmark" size={12} color="#FFFFFF" />
+                            )}
+                          </View>
+                        </TouchableOpacity>
+                      );
+                    })}
+                  </View>
+                </View>
+
+                {/* Info Note */}
+                <View
+                  style={[
+                    styles.privacyTipBox,
+                    { backgroundColor: theme.surfaceHighlight, borderColor: theme.borderSubtle },
+                  ]}
+                >
+                  <Ionicons name="information-circle-outline" size={17} color={theme.primary} />
+                  <Text style={[styles.privacyTipText, { color: theme.textSecondary }]}>
+                    Daily reminders and streak-saver nudges will be ready for you. You can adjust this anytime in Settings.
                   </Text>
-                  <Text style={[styles.founderDua, { color: chapter.accent }]}>
-                    {chapter.founderSignature.closingWish}
-                  </Text>
-                </Animated.View>
-              ) : null}
-            </Animated.View>
+                </View>
+              </Animated.View>
+            ) : (
+              <Animated.View
+                key={chapter.id}
+                entering={FadeInDown.duration(520).easing(EASE)}
+                exiting={FadeOut.duration(160)}
+              >
+                <View style={styles.stepRow}>
+                  <Animated.View
+                    style={[
+                      styles.iconDisc,
+                      { backgroundColor: chapter.wash },
+                      breatheStyle,
+                    ]}
+                  >
+                    <Ionicons name={chapter.heroIcon} size={22} color={chapter.accent} />
+                  </Animated.View>
+                  <Text style={[styles.stepNum, { color: chapter.accent }]}>{stepLabel}</Text>
+                  <Text style={[styles.kicker, { color: theme.textTertiary }]}>{chapter.kicker}</Text>
+                </View>
+
+                <Text style={[styles.title, { color: theme.textPrimary }]}>{chapter.title}</Text>
+
+                <Text style={[styles.highlight, { color: chapter.accent }]}>
+                  {chapter.highlightPhrase}
+                </Text>
+
+                <View style={styles.prose}>
+                  {chapter.proseParagraphs.map((para) => (
+                    <Text key={para.slice(0, 24)} style={[styles.body, { color: theme.textSecondary }]}>
+                      {para}
+                    </Text>
+                  ))}
+                </View>
+
+                {chapter.quote ? (
+                  <Animated.View
+                    entering={FadeIn.delay(120).duration(480)}
+                    style={[
+                      styles.quote,
+                      { backgroundColor: theme.card, borderColor: chapter.wash },
+                    ]}
+                  >
+                    <Text style={[styles.quoteText, { color: theme.textPrimary }]}>
+                      {chapter.quote.text}
+                    </Text>
+                    <Text style={[styles.quoteAuthor, { color: chapter.accent }]}>
+                      {chapter.quote.author}
+                    </Text>
+                  </Animated.View>
+                ) : null}
+
+                {chapter.features ? (
+                  <View style={styles.stack}>
+                    {chapter.features.map((feat, i) => (
+                      <Animated.View
+                        key={feat.title}
+                        entering={FadeInUp.delay(80 * i).duration(420).easing(EASE)}
+                        style={[
+                          styles.feature,
+                          { backgroundColor: theme.card, borderColor: theme.borderSubtle },
+                        ]}
+                      >
+                        <View style={[styles.featureIcon, { backgroundColor: chapter.wash }]}>
+                          <Ionicons name={feat.icon} size={18} color={chapter.accent} />
+                        </View>
+                        <View style={styles.featureCopy}>
+                          <Text style={[styles.featureTitle, { color: theme.textPrimary }]}>
+                            {feat.title}
+                          </Text>
+                          <Text style={[styles.featureDesc, { color: theme.textSecondary }]}>
+                            {feat.desc}
+                          </Text>
+                        </View>
+                      </Animated.View>
+                    ))}
+                  </View>
+                ) : null}
+
+                {chapter.activities ? (
+                  <View style={styles.activityWrap}>
+                    {chapter.activities.map((act, i) => (
+                      <Animated.View
+                        key={act.label}
+                        entering={FadeInUp.delay(60 * i).duration(380).easing(EASE)}
+                        style={[styles.activity, { backgroundColor: chapter.wash }]}
+                      >
+                        <Ionicons name={act.icon} size={16} color={chapter.accent} />
+                        <Text style={[styles.activityLabel, { color: theme.textPrimary }]}>
+                          {act.label}
+                        </Text>
+                      </Animated.View>
+                    ))}
+                  </View>
+                ) : null}
+
+                {chapter.founderSignature ? (
+                  <Animated.View
+                    entering={FadeInUp.delay(160).duration(480).easing(EASE)}
+                    style={[
+                      styles.founder,
+                      { backgroundColor: theme.card, borderColor: theme.borderSubtle },
+                    ]}
+                  >
+                    <View style={styles.founderRow}>
+                      <View style={[styles.avatar, { backgroundColor: chapter.accent }]}>
+                        <Text style={styles.avatarLetter}>H</Text>
+                      </View>
+                      <View>
+                        <Text style={[styles.founderName, { color: theme.textPrimary }]}>
+                          {chapter.founderSignature.name}
+                        </Text>
+                        <Text style={[styles.founderRole, { color: theme.textTertiary }]}>
+                          {chapter.founderSignature.role}
+                        </Text>
+                      </View>
+                    </View>
+                    <Text style={[styles.founderNote, { color: theme.textSecondary }]}>
+                      {chapter.founderSignature.note}
+                    </Text>
+                    <Text style={[styles.founderDua, { color: chapter.accent }]}>
+                      {chapter.founderSignature.closingWish}
+                    </Text>
+                  </Animated.View>
+                ) : null}
+              </Animated.View>
+            )}
           </ScrollView>
         </View>
 
         <SafeAreaView edges={['bottom']} style={styles.dock}>
           <View style={styles.dockRow}>
             <TouchableOpacity
-              onPress={() => goTo(index - 1)}
-              disabled={index === 0}
+              onPress={() => {
+                if (showIntentionStep) {
+                  setShowIntentionStep(false);
+                } else {
+                  goTo(index - 1);
+                }
+              }}
+              disabled={!showIntentionStep && index === 0}
               style={[
                 styles.backBtn,
                 {
                   backgroundColor: theme.chipBg,
-                  opacity: index === 0 ? 0 : 1,
+                  opacity: !showIntentionStep && index === 0 ? 0 : 1,
                 },
               ]}
               accessibilityLabel="Previous"
@@ -452,10 +733,15 @@ export default function OnboardingScreen() {
             <TouchableOpacity
               onPress={handleNext}
               activeOpacity={0.88}
-              style={[styles.nextBtn, { backgroundColor: chapter.accent }]}
-              accessibilityLabel={isLast ? 'Begin study' : 'Continue'}
+              style={[
+                styles.nextBtn,
+                { backgroundColor: showIntentionStep ? theme.primary : chapter.accent },
+              ]}
+              accessibilityLabel={showIntentionStep ? 'Continue to Consent' : isLast ? 'Set Your Rhythm' : 'Continue'}
             >
-              <Text style={styles.nextLabel}>{isLast ? 'Begin study' : 'Continue'}</Text>
+              <Text style={styles.nextLabel}>
+                {showIntentionStep ? 'Continue to Consent' : isLast ? 'Set Your Rhythm' : 'Continue'}
+              </Text>
               <Ionicons name="arrow-forward" size={18} color="#FFFFFF" />
             </TouchableOpacity>
           </View>
@@ -706,5 +992,133 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '600',
+  },
+  intentionSubtitle: {
+    fontSize: 15,
+    lineHeight: 23,
+    marginBottom: 24,
+  },
+  intentionBlock: {
+    marginBottom: 24,
+  },
+  intentionBlockHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 12,
+  },
+  intentionBlockTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    letterSpacing: -0.2,
+  },
+  pillBadgeCompact: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  pillBadgeCompactText: {
+    fontSize: 12,
+    fontWeight: '700',
+  },
+  goalGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 10,
+  },
+  goalCard: {
+    width: '48%',
+    borderRadius: 18,
+    padding: 14,
+    flexGrow: 1,
+  },
+  goalCardTop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 6,
+  },
+  goalCardCount: {
+    fontSize: 22,
+    fontWeight: '700',
+    letterSpacing: -0.5,
+  },
+  goalRadioCircle: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 1.5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  goalCardLabel: {
+    fontSize: 14,
+    fontWeight: '600',
+    marginBottom: 2,
+  },
+  goalCardDesc: {
+    fontSize: 11.5,
+    lineHeight: 15,
+  },
+  reminderList: {
+    gap: 10,
+  },
+  reminderCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    padding: 14,
+    borderRadius: 18,
+  },
+  reminderIconBox: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  reminderTextCol: {
+    flex: 1,
+  },
+  reminderTopRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 2,
+  },
+  reminderLabel: {
+    fontSize: 14.5,
+    fontWeight: '600',
+  },
+  reminderTimeStr: {
+    fontSize: 13,
+    fontWeight: '700',
+  },
+  reminderDesc: {
+    fontSize: 12,
+    lineHeight: 16,
+  },
+  reminderRadio: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 1.5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  privacyTipBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    padding: 14,
+    borderRadius: 16,
+    borderWidth: StyleSheet.hairlineWidth,
+    marginTop: 4,
+    marginBottom: 16,
+  },
+  privacyTipText: {
+    flex: 1,
+    fontSize: 12.5,
+    lineHeight: 18,
   },
 });

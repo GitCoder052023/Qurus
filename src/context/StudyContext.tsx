@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { AppState, AppStateStatus } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from 'expo-haptics';
 import { SURAHS } from '../data/surahs';
@@ -33,6 +34,9 @@ import {
   scheduleStreakSaverReminderAsync,
   cancelAllRemindersAsync,
   cancelTonightStreakSaversAsync,
+  checkNotificationPermissionAsync,
+  promptEnableNotificationsAsync,
+  requestNotificationPermissionAsync,
 } from '../services/notificationEngine';
 
 export const TOTAL_QURAN_AYAHS = 6236;
@@ -73,7 +77,7 @@ const DEFAULT_STREAK: StreakData = {
 };
 
 const DEFAULT_NOTIFICATION_PREFS: NotificationPreferences = {
-  dailyReminderEnabled: false,
+  dailyReminderEnabled: true,
   reminderHour: 20, // 8:30 PM
   reminderMinute: 30,
   streakSaverEnabled: true,
@@ -154,6 +158,9 @@ interface StudyContextType {
   getNote: (surahNumber: number, ayahNumber: number) => StudyNote | undefined;
   updatePreferences: (newPrefs: Partial<ReadingPreferences>) => void;
   clearHistory: () => void;
+  hasNotificationPermission: boolean;
+  refreshNotificationPermission: () => Promise<boolean>;
+  requestNotificationPermission: () => Promise<boolean>;
 }
 
 const StudyContext = createContext<StudyContextType | null>(null);
@@ -175,6 +182,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
   const [hasOnboarded, setHasOnboarded] = useState<boolean>(true);
   const [hasAgreedLegal, setHasAgreedLegal] = useState<boolean>(true);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hasNotificationPermission, setHasNotificationPermission] = useState<boolean>(true);
 
   // Hydrate from AsyncStorage
   useEffect(() => {
@@ -476,10 +484,37 @@ export function StudyProvider({ children }: { children: ReactNode }) {
   };
 
   const isAyahInSequence = (surahNumber: number, ayahNumber: number): boolean => {
-    return (
+    // 1. Exact active checkpoint
+    if (
       surahNumber === journeyCheckpoint.surahNumber &&
       ayahNumber === journeyCheckpoint.ayahNumber
-    );
+    ) {
+      return true;
+    }
+
+    // 2. Previously completed ayah
+    const list = completedAyahs[surahNumber];
+    if (Array.isArray(list) && list.includes(ayahNumber)) {
+      return true;
+    }
+
+    // 3. Completed surahs or past along the continuous Quran Journey
+    if (surahNumber < journeyCheckpoint.surahNumber) {
+      return true;
+    }
+    if (
+      surahNumber === journeyCheckpoint.surahNumber &&
+      ayahNumber <= journeyCheckpoint.ayahNumber
+    ) {
+      return true;
+    }
+
+    const surahMeta = SURAHS.find((s) => s.number === surahNumber);
+    if (surahMeta && list && list.length >= surahMeta.numberOfAyahs) {
+      return true;
+    }
+
+    return false;
   };
 
   const setJourneyCheckpoint = (surahNumber: number, ayahNumber: number) => {
@@ -495,26 +530,32 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     // Any reflection on the Quran keeps the user's daily presence / streak active
     recordStreakActivity();
 
-    // Verify sequential integrity
+    // Verify sequential integrity / completion
     const isInSeq = isAyahInSequence(surahNumber, ayahNumber);
     if (!isInSeq) {
-      // Out-of-sequence exploration: do not advance structured journey or daily goal progress
+      // Out-of-sequence forward jump: do not advance structured journey or daily goal progress
       return;
     }
 
-    // Advance the Journey Checkpoint sequentially
-    const nextAyah = ayahNumber + 1;
-    let nextCheckpoint: JourneyCheckpoint;
-    if (surahMeta && nextAyah <= surahMeta.numberOfAyahs) {
-      nextCheckpoint = { surahNumber, ayahNumber: nextAyah };
-    } else if (surahNumber < 114) {
-      nextCheckpoint = { surahNumber: surahNumber + 1, ayahNumber: 1 };
-    } else {
-      nextCheckpoint = { surahNumber: 1, ayahNumber: 1 };
-    }
-    setJourneyCheckpointState(nextCheckpoint);
-    AsyncStorage.setItem(STORAGE_KEYS.JOURNEY_CHECKPOINT, JSON.stringify(nextCheckpoint)).catch(console.error);
+    // Only advance the Journey Checkpoint if we are at the active checkpoint
+    const isAtCheckpoint = (
+      surahNumber === journeyCheckpoint.surahNumber &&
+      ayahNumber === journeyCheckpoint.ayahNumber
+    );
 
+    if (isAtCheckpoint) {
+      const nextAyah = ayahNumber + 1;
+      let nextCheckpoint: JourneyCheckpoint;
+      if (surahMeta && nextAyah <= surahMeta.numberOfAyahs) {
+        nextCheckpoint = { surahNumber, ayahNumber: nextAyah };
+      } else if (surahNumber < 114) {
+        nextCheckpoint = { surahNumber: surahNumber + 1, ayahNumber: 1 };
+      } else {
+        nextCheckpoint = { surahNumber: 1, ayahNumber: 1 };
+      }
+      setJourneyCheckpointState(nextCheckpoint);
+      AsyncStorage.setItem(STORAGE_KEYS.JOURNEY_CHECKPOINT, JSON.stringify(nextCheckpoint)).catch(console.error);
+    }
     let justCompletedSurah = false;
     setCompletedAyahs((prev) => {
       const existingForSurah = prev[surahNumber] || [];
@@ -687,6 +728,42 @@ export function StudyProvider({ children }: { children: ReactNode }) {
       await cancelAllRemindersAsync();
     }
   };
+
+  const refreshNotificationPermission = async (): Promise<boolean> => {
+    const granted = await checkNotificationPermissionAsync();
+    setHasNotificationPermission(granted);
+    return granted;
+  };
+
+  const requestNotificationPermission = async (): Promise<boolean> => {
+    const granted = await promptEnableNotificationsAsync();
+    setHasNotificationPermission(granted);
+    if (granted && notificationPreferences.dailyReminderEnabled) {
+      const lastSurah = lastStudied ? SURAHS.find((s) => s.number === lastStudied.surahNumber) : null;
+      await scheduleDailyReminderAsync(
+        notificationPreferences.reminderHour,
+        notificationPreferences.reminderMinute,
+        streak.currentStreak,
+        lastSurah?.englishName
+      );
+      if (notificationPreferences.streakSaverEnabled && streak.currentStreak > 0) {
+        await scheduleStreakSaverReminderAsync(streak.currentStreak);
+      }
+    }
+    return granted;
+  };
+
+  useEffect(() => {
+    refreshNotificationPermission();
+    const sub = AppState.addEventListener('change', (state: AppStateStatus) => {
+      if (state === 'active') {
+        refreshNotificationPermission();
+      }
+    });
+    return () => {
+      sub.remove();
+    };
+  }, []);
 
   // Update Last Studied
   const updateLastStudied = (surahNumber: number, ayahNumber: number, audioPos?: number) => {
@@ -953,6 +1030,9 @@ export function StudyProvider({ children }: { children: ReactNode }) {
         getNote,
         updatePreferences,
         clearHistory,
+        hasNotificationPermission,
+        refreshNotificationPermission,
+        requestNotificationPermission,
       }}
     >
       {children}

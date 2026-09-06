@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import { Platform, Linking } from 'react-native';
 import * as Notifications from 'expo-notifications';
 
 // Set standard foreground notification handler according to Expo SDK 57
@@ -90,8 +90,49 @@ export async function requestNotificationPermissionAsync(): Promise<boolean> {
 export async function checkNotificationPermissionAsync(): Promise<boolean> {
   try {
     const settings = await Notifications.getPermissionsAsync();
-    return settings.granted || settings.ios?.status === Notifications.IosAuthorizationStatus.AUTHORIZED;
+    return Boolean(settings.granted || settings.ios?.status === Notifications.IosAuthorizationStatus.AUTHORIZED);
   } catch {
+    return false;
+  }
+}
+
+export async function promptEnableNotificationsAsync(): Promise<boolean> {
+  try {
+    const settings = await Notifications.getPermissionsAsync();
+    const granted = settings.granted || settings.ios?.status === Notifications.IosAuthorizationStatus.AUTHORIZED;
+
+    if (granted) {
+      await setupNotificationChannelAsync();
+      return true;
+    }
+
+    if (settings.canAskAgain) {
+      const requested = await Notifications.requestPermissionsAsync({
+        ios: {
+          allowAlert: true,
+          allowBadge: false,
+          allowSound: true,
+        },
+      });
+      const nowGranted = Boolean(
+        requested.granted || requested.ios?.status === Notifications.IosAuthorizationStatus.AUTHORIZED
+      );
+      if (nowGranted) {
+        await setupNotificationChannelAsync();
+        return true;
+      }
+      return false;
+    } else {
+      // Permission permanently denied, redirect to OS Settings
+      try {
+        await Linking.openSettings();
+      } catch (err) {
+        console.warn('Failed to open OS Settings:', err);
+      }
+      return false;
+    }
+  } catch (err) {
+    console.warn('promptEnableNotificationsAsync error:', err);
     return false;
   }
 }

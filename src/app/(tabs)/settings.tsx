@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import {
   Alert,
+  Linking,
   ScrollView,
   StyleSheet,
   Switch,
@@ -32,6 +33,7 @@ export default function SettingsScreen() {
     notificationPreferences,
     updateNotificationPreferences,
     streak,
+    requestNotificationPermission,
   } = useStudyState();
   const { setSpeed, setReciter, setPlaybackMode, reciter } = useAudio();
 
@@ -48,12 +50,15 @@ export default function SettingsScreen() {
 
   const handleToggleDailyReminder = async (enabled: boolean) => {
     if (enabled) {
-      const granted = await requestNotificationPermissionAsync();
+      const granted = await requestNotificationPermission();
       if (!granted) {
         Alert.alert(
           'Notification Permission Required',
           'Please enable notifications in your device settings so Qurus can send you gentle daily reflection reminders.',
-          [{ text: 'OK' }]
+          [
+            { text: 'Cancel', style: 'cancel' },
+            { text: 'Open Settings', onPress: () => Linking.openSettings() },
+          ]
         );
         return;
       }

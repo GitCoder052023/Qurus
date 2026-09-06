@@ -172,14 +172,12 @@ export const StreakSection = React.memo(function StreakSection() {
               ? '#FF5722'
               : isStreakAtRisk
               ? '#FF8C00'
-              : isActiveToday
-              ? theme.primary
               : theme.borderSubtle,
-            borderWidth: isStreakAtRisk || isActiveToday ? 1.5 : StyleSheet.hairlineWidth,
+            borderWidth: isStreakAtRisk ? 1.5 : StyleSheet.hairlineWidth,
           },
         ]}
       >
-        {/* DUOLINGO-STYLE PRESSURE & FOMO URGENCY BANNER */}
+        {/* DUOLINGO-STYLE PRESSURE & FOMO URGENCY BANNER (Shown only when at risk) */}
         {isStreakAtRisk && (
           <View
             style={[
@@ -239,29 +237,6 @@ export const StreakSection = React.memo(function StreakSection() {
           </View>
         )}
 
-        {/* STREAK SAFE DOPAMINE BANNER */}
-        {isActiveToday && (
-          <View
-            style={[
-              styles.safeBanner,
-              {
-                backgroundColor: theme.primaryMuted,
-                borderColor: theme.primary,
-              },
-            ]}
-          >
-            <View style={styles.safeHeaderRow}>
-              <Ionicons name="checkmark-circle" size={15} color={theme.primary} />
-              <Text style={[styles.safeBadgeText, { color: theme.primary }]}>
-                STREAK PROTECTED TODAY • SAFE UNTIL MIDNIGHT
-              </Text>
-            </View>
-            <Text style={[styles.safeMessage, { color: theme.textSecondary }]}>
-              {effectiveStreak} days of consistency alive. You took time for the Quran today. Al-hamdu lillah!
-            </Text>
-          </View>
-        )}
-
         <View style={styles.heroRow}>
           <View
             style={[
@@ -273,7 +248,7 @@ export const StreakSection = React.memo(function StreakSection() {
                   ? '#FF572225'
                   : isStreakAtRisk
                   ? '#FF8C0020'
-                  : theme.primaryMuted,
+                  : theme.saffronMuted,
               },
             ]}
           >
@@ -287,9 +262,7 @@ export const StreakSection = React.memo(function StreakSection() {
                   ? '#FF5722'
                   : isStreakAtRisk
                   ? '#FF8C00'
-                  : effectiveStreak > 0
-                  ? theme.primary
-                  : theme.textTertiary
+                  : theme.accentSaffron
               }
             />
           </View>
@@ -312,7 +285,7 @@ export const StreakSection = React.memo(function StreakSection() {
                       ? '#FF572220'
                       : isStreakAtRisk
                       ? '#FF8C0020'
-                      : theme.chipBg,
+                      : theme.primaryLight,
                   },
                 ]}
               >
@@ -335,7 +308,11 @@ export const StreakSection = React.memo(function StreakSection() {
                 </Text>
               </View>
             </View>
-            <Text style={[styles.punchline, { color: theme.textSecondary }]}>{punchline}</Text>
+            <Text style={[styles.punchline, { color: theme.textSecondary }]}>
+              {isActiveToday
+                ? 'Consistency alive • Protected from midnight reset'
+                : punchline}
+            </Text>
           </View>
         </View>
 
@@ -351,8 +328,8 @@ export const StreakSection = React.memo(function StreakSection() {
                     style={[
                       styles.dayLetter,
                       {
-                        color: d.isToday ? theme.primary : theme.textTertiary,
-                        fontWeight: d.isToday ? '600' : '500',
+                        color: d.isToday ? theme.accentSaffron : theme.textTertiary,
+                        fontWeight: d.isToday ? '700' : '500',
                       },
                     ]}
                   >
@@ -365,8 +342,8 @@ export const StreakSection = React.memo(function StreakSection() {
                         ? { backgroundColor: theme.primary }
                         : todayOpen
                         ? {
-                            backgroundColor: theme.card,
-                            borderColor: isStreakAtRisk ? '#FF8C00' : theme.primary,
+                            backgroundColor: theme.saffronMuted,
+                            borderColor: theme.accentSaffron,
                             borderWidth: 1.5,
                           }
                         : { backgroundColor: theme.chipBg },
@@ -382,12 +359,22 @@ export const StreakSection = React.memo(function StreakSection() {
           </View>
         </View>
 
-        <View style={[styles.motivationBox, { backgroundColor: theme.surface }]}>
+        {/* LITERARY / WISDOM QUOTE CARD (Warm paper finish) */}
+        <View
+          style={[
+            styles.motivationBox,
+            {
+              backgroundColor: theme.paperWarm,
+              borderColor: theme.borderSubtle,
+              borderWidth: StyleSheet.hairlineWidth,
+            },
+          ]}
+        >
           <View style={styles.milestoneRow}>
             <Text style={[styles.milestoneGoalText, { color: theme.textPrimary }]}>
-              Next: {nextMilestone} days
+              Next milestone: {nextMilestone} days
             </Text>
-            <Text style={[styles.milestoneDaysLeft, { color: theme.textTertiary }]}>
+            <Text style={[styles.milestoneDaysLeft, { color: theme.accentAmber, fontWeight: '600' }]}>
               {daysLeft === 1 ? '1 day left' : `${daysLeft} days left`}
             </Text>
           </View>
@@ -396,7 +383,7 @@ export const StreakSection = React.memo(function StreakSection() {
             <View
               style={[
                 styles.progressFill,
-                { width: `${milestoneProgress}%`, backgroundColor: theme.tertiary },
+                { width: `${milestoneProgress}%`, backgroundColor: theme.accentAmber },
               ]}
             />
           </View>
@@ -404,42 +391,37 @@ export const StreakSection = React.memo(function StreakSection() {
           <Text style={[styles.quoteText, { color: theme.textPrimary }]}>
             “{dailyMotivation.quote}”
           </Text>
-          <Text style={[styles.quoteAuthor, { color: theme.textTertiary }]}>
-            {dailyMotivation.source}
+          <Text style={[styles.quoteAuthor, { color: theme.textSecondary }]}>
+            — {dailyMotivation.source}
           </Text>
         </View>
 
-        <TouchableOpacity
-          activeOpacity={0.85}
-          onPress={handleStudyPress}
-          style={[
-            styles.cta,
-            {
-              backgroundColor: isFinalCall
-                ? '#FF2A00'
+        {/* URGENT ACTION BUTTON (Rendered ONLY when streak is at risk) */}
+        {isStreakAtRisk && (
+          <TouchableOpacity
+            activeOpacity={0.85}
+            onPress={handleStudyPress}
+            style={[
+              styles.cta,
+              {
+                backgroundColor: isFinalCall
+                  ? '#FF2A00'
+                  : isUrgentEvening
+                  ? '#FF5722'
+                  : '#FF8C00',
+              },
+            ]}
+          >
+            <Ionicons name="flame" size={18} color={theme.onPrimary} />
+            <Text style={[styles.ctaText, { color: theme.onPrimary }]}>
+              {isFinalCall
+                ? '🔥 Save Streak Now (Just 1 Verse)'
                 : isUrgentEvening
-                ? '#FF5722'
-                : isStreakAtRisk
-                ? '#FF8C00'
-                : theme.primary,
-            },
-          ]}
-        >
-          <Ionicons
-            name={isStreakAtRisk ? 'flame' : 'book-outline'}
-            size={18}
-            color={theme.onPrimary}
-          />
-          <Text style={[styles.ctaText, { color: theme.onPrimary }]}>
-            {isFinalCall
-              ? '🔥 Save Streak Now (Just 1 Verse)'
-              : isUrgentEvening
-              ? `🔥 Save ${effectiveStreak}-Day Streak (45s)`
-              : isStreakAtRisk
-              ? 'Save Streak with 1 Verse'
-              : 'Continue reading'}
-          </Text>
-        </TouchableOpacity>
+                ? `🔥 Save ${effectiveStreak}-Day Streak (45s)`
+                : 'Save Streak with 1 Verse'}
+            </Text>
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );

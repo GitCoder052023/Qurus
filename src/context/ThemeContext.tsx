@@ -39,6 +39,17 @@ export interface ThemeColors {
   chipBg: string;
   onPrimary: string;
   destructive: string;
+  accentAmber: string;
+  amberMuted: string;
+  accentSaffron: string;
+  saffronMuted: string;
+  accentTwilight: string;
+  twilightMuted: string;
+  accentWarning: string;
+  warningMuted: string;
+  accentAlert: string;
+  alertMuted: string;
+  paperWarm: string;
 }
 
 const lightTheme: ThemeColors = {
@@ -80,6 +91,17 @@ const lightTheme: ThemeColors = {
   chipBg: '#F2F7F5',
   onPrimary: '#FFFFFF',
   destructive: '#C45C56',
+  accentAmber: '#C88028',
+  amberMuted: 'rgba(200, 128, 40, 0.12)',
+  accentSaffron: '#E0632C',
+  saffronMuted: 'rgba(224, 99, 44, 0.12)',
+  accentTwilight: '#4A5878',
+  twilightMuted: 'rgba(74, 88, 120, 0.12)',
+  accentWarning: '#D97706',
+  warningMuted: 'rgba(217, 119, 6, 0.12)',
+  accentAlert: '#C24E48',
+  alertMuted: 'rgba(194, 78, 72, 0.12)',
+  paperWarm: '#FAF8F4',
 };
 
 interface ThemeContextType {

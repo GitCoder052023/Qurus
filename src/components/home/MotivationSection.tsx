@@ -53,7 +53,7 @@ export const MotivationSection = React.memo(function MotivationSection() {
 
   return (
     <View style={styles.container}>
-      {/* 1. DAILY TADABBUR GOAL CARD (Duolingo-style Dopamine Meter) */}
+      {/* 1. DAILY TADABBUR GOAL CARD (Warm Golden Amber Mindfulness Theme) */}
       <View
         style={[
           styles.mainCard,
@@ -65,11 +65,11 @@ export const MotivationSection = React.memo(function MotivationSection() {
       >
         <View style={styles.cardHeaderRow}>
           <View style={styles.titleGroup}>
-            <View style={[styles.iconBadge, { backgroundColor: theme.primaryMuted }]}>
+            <View style={[styles.iconBadge, { backgroundColor: theme.amberMuted }]}>
               <Ionicons
                 name={dailyProgress.isGoalMet ? 'checkmark-circle' : 'sparkles'}
                 size={18}
-                color={theme.primary}
+                color={theme.accentAmber}
               />
             </View>
             <View>
@@ -84,8 +84,8 @@ export const MotivationSection = React.memo(function MotivationSection() {
             </View>
           </View>
 
-          <View style={[styles.pillBadge, { backgroundColor: theme.chipBg }]}>
-            <Text style={[styles.pillBadgeText, { color: theme.primary }]}>
+          <View style={[styles.pillBadge, { backgroundColor: theme.amberMuted }]}>
+            <Text style={[styles.pillBadgeText, { color: theme.accentAmber }]}>
               {dailyProgress.ayahsToday} / {dailyProgress.goalAyahs}
             </Text>
           </View>
@@ -98,7 +98,7 @@ export const MotivationSection = React.memo(function MotivationSection() {
               styles.progressFill,
               {
                 width: `${dailyProgress.percent}%`,
-                backgroundColor: dailyProgress.isGoalMet ? theme.primary : theme.tertiary,
+                backgroundColor: dailyProgress.isGoalMet ? theme.primary : theme.accentAmber,
               },
             ]}
           />
@@ -118,13 +118,13 @@ export const MotivationSection = React.memo(function MotivationSection() {
             onPress={() => router.push('/(tabs)/settings')}
             style={styles.adjustGoalTouch}
           >
-            <Text style={[styles.adjustGoalText, { color: theme.primary }]}>Adjust Goal</Text>
-            <Ionicons name="chevron-forward" size={12} color={theme.primary} />
+            <Text style={[styles.adjustGoalText, { color: theme.accentAmber }]}>Adjust Goal</Text>
+            <Ionicons name="chevron-forward" size={12} color={theme.accentAmber} />
           </TouchableOpacity>
         </View>
       </View>
 
-      {/* 2. OVERALL QURAN & ACTIVE SURAH PROGRESSION */}
+      {/* 2. OVERALL QURAN JOURNEY MILESTONE */}
       <View
         style={[
           styles.secondaryCard,
@@ -137,9 +137,12 @@ export const MotivationSection = React.memo(function MotivationSection() {
         {/* Overall Quran Bar */}
         <View style={styles.quranRow}>
           <View style={styles.quranTextRow}>
-            <Text style={[styles.quranTitle, { color: theme.textPrimary }]}>
-              Quran Journey
-            </Text>
+            <View style={styles.quranTitleGroup}>
+              <Ionicons name="compass-outline" size={16} color={theme.primary} />
+              <Text style={[styles.quranTitle, { color: theme.textPrimary }]}>
+                Quran Journey
+              </Text>
+            </View>
             <Text style={[styles.quranPercentage, { color: theme.primary }]}>
               {quranProgress.percent}%
             </Text>
@@ -161,44 +164,17 @@ export const MotivationSection = React.memo(function MotivationSection() {
             <Text style={[styles.quranSubtext, { color: theme.textTertiary }]}>
               {quranProgress.completedAyahs} of {quranProgress.totalAyahs} Ayahs
             </Text>
-            <Text style={[styles.quranSubtext, { color: theme.textTertiary }]}>
-              {quranProgress.completedSurahsCount} of 114 Surahs complete
-            </Text>
+            <TouchableOpacity
+              onPress={() => router.push('/(tabs)/quran')}
+              style={styles.exploreAllTouch}
+            >
+              <Text style={[styles.exploreAllText, { color: theme.primary }]}>
+                {quranProgress.completedSurahsCount} of 114 Surahs
+              </Text>
+              <Ionicons name="chevron-forward" size={11} color={theme.primary} />
+            </TouchableOpacity>
           </View>
         </View>
-
-        <View style={[styles.divider, { backgroundColor: theme.borderSubtle }]} />
-
-        {/* Active Surah Progress */}
-        <TouchableOpacity
-          activeOpacity={0.88}
-          onPress={handleContinueSurah}
-          style={styles.surahProgressRow}
-        >
-          <View style={styles.surahLeftCol}>
-            <View style={styles.surahNameRow}>
-              <Text style={[styles.surahNameText, { color: theme.textPrimary }]}>
-                {activeSurahMeta ? activeSurahMeta.englishName : 'Al-Faatiha'}
-              </Text>
-              <Text style={[styles.surahArabicSnippet, { color: theme.arabicText }]}>
-                {activeSurahMeta ? activeSurahMeta.name : ''}
-              </Text>
-            </View>
-            <Text style={[styles.surahRemainingText, { color: theme.textSecondary }]}>
-              {surahProgress.completedCount} of {surahProgress.totalCount} ayahs •{' '}
-              {formatRemainingTime(surahProgress.estimatedMinutesRemaining)}
-            </Text>
-          </View>
-
-          <View style={styles.surahActionRight}>
-            <View style={[styles.surahPercentPill, { backgroundColor: theme.surfaceHighlight }]}>
-              <Text style={[styles.surahPercentText, { color: theme.textPrimary }]}>
-                {surahProgress.percent}%
-              </Text>
-            </View>
-            <Ionicons name="chevron-forward" size={16} color={theme.textTertiary} />
-          </View>
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -292,29 +268,34 @@ const styles = StyleSheet.create({
     padding: 18,
   },
   quranRow: {
-    gap: 8,
+    gap: 10,
   },
   quranTextRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  quranTitleGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
   quranTitle: {
-    fontSize: 14,
+    fontSize: 14.5,
     fontWeight: '600',
   },
   quranPercentage: {
-    fontSize: 14,
+    fontSize: 14.5,
     fontWeight: '700',
   },
   smallTrack: {
-    height: 4,
-    borderRadius: 2,
+    height: 5,
+    borderRadius: 2.5,
     overflow: 'hidden',
   },
   smallFill: {
     height: '100%',
-    borderRadius: 2,
+    borderRadius: 2.5,
   },
   quranSubRow: {
     flexDirection: 'row',
@@ -322,51 +303,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   quranSubtext: {
-    fontSize: 11,
+    fontSize: 11.5,
     fontWeight: '500',
   },
-  divider: {
-    height: StyleSheet.hairlineWidth,
-    marginVertical: 14,
-  },
-  surahProgressRow: {
+  exploreAllTouch: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    gap: 3,
   },
-  surahLeftCol: {
-    flex: 1,
-    marginRight: 10,
-  },
-  surahNameRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    marginBottom: 2,
-  },
-  surahNameText: {
-    fontSize: 15,
-    fontWeight: '600',
-  },
-  surahArabicSnippet: {
-    fontSize: 14,
-    fontFamily: 'serif',
-  },
-  surahRemainingText: {
-    fontSize: 12,
-  },
-  surahActionRight: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  surahPercentPill: {
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 10,
-  },
-  surahPercentText: {
-    fontSize: 11,
+  exploreAllText: {
+    fontSize: 11.5,
     fontWeight: '600',
   },
 });

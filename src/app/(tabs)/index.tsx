@@ -22,11 +22,16 @@ import { CelebrationModal } from '../../components/CelebrationModal';
 
 export default function HomeScreen() {
   const { theme } = useTheme();
-  const { lastStudied, history } = useStudyState();
+  const {
+    lastStudied,
+    history,
+    hasNotificationPermission,
+    requestNotificationPermission,
+  } = useStudyState();
   const { playAyah, isPlaying, currentSurahNumber, currentAyahNumber, pause } = useAudio();
   const router = useRouter();
 
-  // Contemplative time-of-day greeting
+  // Contemplative time-of-day greeting with contextual secondary colors
   const greeting = useMemo(() => {
     const hour = new Date().getHours();
     if (hour >= 4 && hour < 7) {
@@ -34,38 +39,48 @@ export default function HomeScreen() {
         time: 'Early Hours',
         title: 'Good morning',
         subtitle: 'A quiet space to start your day with clarity and focus.',
-        icon: 'sunny-outline',
+        icon: 'sunny-outline' as const,
+        accent: theme.accentAmber,
+        wash: theme.amberMuted,
       };
     } else if (hour >= 7 && hour < 12) {
       return {
         time: 'Morning Reflection',
         title: 'Good morning',
         subtitle: 'Take a breath and explore a perspective before the day gets busy.',
-        icon: 'sunny',
+        icon: 'sunny' as const,
+        accent: theme.accentAmber,
+        wash: theme.amberMuted,
       };
     } else if (hour >= 12 && hour < 17) {
       return {
         time: 'Afternoon Pause',
         title: 'Good afternoon',
         subtitle: 'Step back from the noise for a few moments of quiet thought.',
-        icon: 'time-outline',
+        icon: 'time-outline' as const,
+        accent: theme.tertiary,
+        wash: theme.tertiaryMuted,
       };
     } else if (hour >= 17 && hour < 20) {
       return {
         time: 'Evening Reset',
         title: 'Good evening',
         subtitle: 'Unwind your thoughts and explore something timeless.',
-        icon: 'partly-sunny-outline',
+        icon: 'partly-sunny-outline' as const,
+        accent: theme.accentSaffron,
+        wash: theme.saffronMuted,
       };
     } else {
       return {
         time: 'Night Stillness',
         title: 'Good night',
         subtitle: 'End your day with perspective, calm, and stillness.',
-        icon: 'moon-outline',
+        icon: 'moon-outline' as const,
+        accent: theme.accentTwilight,
+        wash: theme.twilightMuted,
       };
     }
-  }, []);
+  }, [theme]);
 
   // Last studied Surah info
   const lastSurah = lastStudied ? SURAHS.find((s) => s.number === lastStudied.surahNumber) : null;
@@ -112,12 +127,12 @@ export default function HomeScreen() {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        {/* Serene Spiritual Header */}
+        {/* Serene Spiritual Header with Contextual Secondary Hue */}
         <View style={styles.header}>
           <View style={styles.headerTextGroup}>
-            <View style={styles.timePill}>
-              <Ionicons name={greeting.icon as any} size={14} color={theme.primary} />
-              <Text style={[styles.timePillText, { color: theme.primary }]}>{greeting.time}</Text>
+            <View style={[styles.timePill, { backgroundColor: greeting.wash }]}>
+              <Ionicons name={greeting.icon} size={14} color={greeting.accent} />
+              <Text style={[styles.timePillText, { color: greeting.accent }]}>{greeting.time}</Text>
             </View>
             <Text style={[styles.greetingTitle, { color: theme.textPrimary }]}>
               {greeting.title}
@@ -136,6 +151,42 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
 
+        {/* NOTIFICATION DISABLED PROMINENT ALERT BANNER */}
+        {!hasNotificationPermission && (
+          <View
+            style={[
+              styles.notifBanner,
+              {
+                backgroundColor: theme.alertMuted,
+                borderColor: theme.accentAlert,
+              },
+            ]}
+          >
+            <View style={styles.notifBannerHeader}>
+              <View style={[styles.notifIconCircle, { backgroundColor: '#FFFFFF' }]}>
+                <Ionicons name="notifications-off" size={18} color={theme.accentAlert} />
+              </View>
+              <View style={styles.notifTextCol}>
+                <Text style={[styles.notifBannerTitle, { color: theme.textPrimary }]}>
+                  Notifications are disabled
+                </Text>
+                <Text style={[styles.notifBannerBody, { color: theme.textSecondary }]}>
+                  You will not receive reminder notifications or streak-saver alerts. Please enable notifications to get the full experience of Qurus.
+                </Text>
+              </View>
+            </View>
+
+            <TouchableOpacity
+              activeOpacity={0.88}
+              onPress={() => requestNotificationPermission()}
+              style={[styles.notifActionBtn, { backgroundColor: theme.primary }]}
+            >
+              <Ionicons name="notifications" size={15} color="#FFFFFF" />
+              <Text style={styles.notifActionBtnText}>Enable Notifications</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+
         {/* HERO SECTION: Resume Sanctuary Card */}
         <View style={styles.section}>
           <TouchableOpacity
@@ -149,7 +200,12 @@ export default function HomeScreen() {
               },
             ]}
           >
-            <Text style={[styles.heroStatusText, { color: theme.textTertiary }]}>Continue</Text>
+            <View style={styles.heroEyebrowRow}>
+              <View style={[styles.heroEyebrowPill, { backgroundColor: theme.chipBg }]}>
+                <Ionicons name="book-outline" size={12} color={theme.primary} />
+                <Text style={[styles.heroStatusText, { color: theme.primary }]}>CONTINUE READING</Text>
+              </View>
+            </View>
 
             <View style={styles.heroMainRow}>
               <View style={styles.heroLeftCol}>
@@ -337,11 +393,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 5,
-    marginBottom: 6,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 14,
+    alignSelf: 'flex-start',
+    marginBottom: 8,
   },
   timePillText: {
-    fontSize: 13,
-    fontWeight: '500',
+    fontSize: 12,
+    fontWeight: '600',
   },
   greetingTitle: {
     fontSize: 28,
@@ -361,6 +421,50 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 4,
   },
+  notifBanner: {
+    borderRadius: 20,
+    borderWidth: 1,
+    padding: 16,
+    marginBottom: 20,
+    gap: 14,
+  },
+  notifBannerHeader: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 12,
+  },
+  notifIconCircle: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  notifTextCol: {
+    flex: 1,
+  },
+  notifBannerTitle: {
+    fontSize: 15,
+    fontWeight: '700',
+    marginBottom: 4,
+  },
+  notifBannerBody: {
+    fontSize: 13,
+    lineHeight: 18,
+  },
+  notifActionBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    height: 44,
+    borderRadius: 22,
+  },
+  notifActionBtnText: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontWeight: '600',
+  },
   section: {
     marginBottom: 24,
   },
@@ -374,10 +478,22 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     padding: 22,
   },
-  heroStatusText: {
-    fontSize: 13,
-    fontWeight: '500',
+  heroEyebrowRow: {
+    flexDirection: 'row',
     marginBottom: 12,
+  },
+  heroEyebrowPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    paddingHorizontal: 9,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  heroStatusText: {
+    fontSize: 10.5,
+    fontWeight: '700',
+    letterSpacing: 0.6,
   },
   heroMainRow: {
     flexDirection: 'row',

@@ -14,7 +14,7 @@ import { useStudyState } from '../context/StudyContext';
 
 export default function LegalConsentScreen() {
   const { theme } = useTheme();
-  const { agreeToLegal, hasAgreedLegal } = useStudyState();
+  const { agreeToLegal, hasAgreedLegal, requestNotificationPermission } = useStudyState();
   const router = useRouter();
 
   const [agreeTerms, setAgreeTerms] = useState(hasAgreedLegal);
@@ -25,6 +25,11 @@ export default function LegalConsentScreen() {
   const handleAgreeAndContinue = async () => {
     if (!canProceed) return;
     await agreeToLegal();
+    try {
+      await requestNotificationPermission();
+    } catch (err) {
+      console.warn('Failed to prompt notification permission:', err);
+    }
     router.replace('/(tabs)');
   };
 
