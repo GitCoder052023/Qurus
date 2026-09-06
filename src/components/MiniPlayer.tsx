@@ -40,6 +40,7 @@ export function MiniPlayer() {
     saveNote,
     deleteNote,
     getNote,
+    isAyahInSequence,
   } = useStudyState();
   const insets = useSafeAreaInsets();
   const pathname = usePathname();
@@ -125,6 +126,7 @@ export function MiniPlayer() {
     }
   };
 
+  const inSequence = isAyahInSequence(currentSurahNumber, currentAyahNumber);
   const artistSubtitle = isUrduPhase
     ? 'Urdu • Shamshad Ali Khan'
     : `Arabic • ${reciter?.name?.split(' ')[0] || 'Reciter'}`;
@@ -207,6 +209,19 @@ export function MiniPlayer() {
                   Ayah {currentAyahNumber}
                 </Text>
               </View>
+              {!inSequence && (
+                <View
+                  style={[
+                    styles.explorationBadge,
+                    { backgroundColor: theme.surfaceHighlight, borderColor: theme.borderSubtle },
+                  ]}
+                >
+                  <Ionicons name="compass-outline" size={10} color={theme.textTertiary} />
+                  <Text style={[styles.explorationBadgeText, { color: theme.textTertiary }]}>
+                    Explore
+                  </Text>
+                </View>
+              )}
             </View>
             <Text style={[styles.subtitle, { color: theme.textSecondary }]} numberOfLines={1}>
               {artistSubtitle}
@@ -478,6 +493,19 @@ const styles = StyleSheet.create({
   badgeText: {
     fontSize: 9.5,
     fontWeight: '700',
+  },
+  explorationBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
+    paddingHorizontal: 5,
+    paddingVertical: 1.5,
+    borderRadius: 6,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  explorationBadgeText: {
+    fontSize: 9,
+    fontWeight: '600',
   },
   subtitle: {
     fontSize: 11.5,

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
@@ -43,12 +43,32 @@ export const StreakSection = React.memo(function StreakSection() {
   const { streak, lastStudied } = useStudyState();
   const router = useRouter();
 
+  const [nowTime, setNowTime] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => setNowTime(new Date()), 30000);
+    return () => clearInterval(interval);
+  }, []);
+
   const todayStr = useMemo(() => getLocalDateString(), []);
   const yesterdayStr = useMemo(() => getYesterdayDateString(), []);
 
   const isActiveToday = streak.lastActiveDate === todayStr;
   const isPendingToday = streak.lastActiveDate === yesterdayStr && !isActiveToday;
   const effectiveStreak = isActiveToday || isPendingToday ? streak.currentStreak : 0;
+
+  const currentHour = nowTime.getHours();
+  const currentMinutes = nowTime.getMinutes();
+  const midnight = new Date(nowTime);
+  midnight.setHours(24, 0, 0, 0);
+  const msLeft = Math.max(0, midnight.getTime() - nowTime.getTime());
+  const hoursLeft = Math.floor(msLeft / (1000 * 60 * 60));
+  const minutesLeft = Math.floor((msLeft % (1000 * 60 * 60)) / (1000 * 60));
+
+  const isStreakAtRisk = !isActiveToday && effectiveStreak > 0;
+  const isFinalCall = isStreakAtRisk && currentHour === 23 && currentMinutes >= 45; // 11:45 PM+
+  const isCriticalHour = isStreakAtRisk && currentHour === 23 && currentMinutes < 45; // 11:00 PM+
+  const isUrgentEvening = isStreakAtRisk && currentHour >= 21; // 9:00 PM+
 
   const nextMilestone = useMemo(() => {
     return STREAK_MILESTONES.find((m) => m > effectiveStreak) || effectiveStreak + 7;
@@ -115,12 +135,29 @@ export const StreakSection = React.memo(function StreakSection() {
     }
   };
 
-  const statusLabel = isActiveToday ? 'Kept today' : isPendingToday ? 'Waiting' : 'Begin';
+  const statusLabel = isActiveToday
+    ? 'Safe Today ✓'
+    : isFinalCall
+    ? 'Final Call 🔥'
+    : isCriticalHour
+    ? 'Critical 🚨'
+    : isUrgentEvening
+    ? 'In Danger ⏳'
+    : isStreakAtRisk
+    ? 'At Risk ⚠️'
+    : 'Begin';
+
   const punchline = isActiveToday
-    ? 'A quiet day of reflection. Come back tomorrow.'
+    ? `${effectiveStreak} days protected from midnight reset. Al-hamdu lillah!`
+    : isFinalCall
+    ? `🚨 15 MINS LEFT: Don't lose your ${effectiveStreak}-day streak!`
+    : isCriticalHour
+    ? `⚠️ 1 HOUR LEFT: Your ${effectiveStreak}-day streak resets to 0 at midnight!`
+    : isUrgentEvening
+    ? `⏳ Resets at midnight: Just 1 verse saves your ${effectiveStreak}-day streak.`
     : isPendingToday
-    ? `One verse keeps your ${effectiveStreak}-day rhythm.`
-    : 'One verse is enough to begin.';
+    ? `Just 1 verse protects your ${effectiveStreak}-day dedication.`
+    : 'One verse is enough to begin your streak.';
 
   return (
     <View style={styles.container}>
@@ -129,23 +166,131 @@ export const StreakSection = React.memo(function StreakSection() {
           styles.card,
           {
             backgroundColor: theme.card,
-            borderColor: theme.borderSubtle,
+            borderColor: isFinalCall
+              ? '#FF2A00'
+              : isUrgentEvening
+              ? '#FF5722'
+              : isStreakAtRisk
+              ? '#FF8C00'
+              : isActiveToday
+              ? theme.primary
+              : theme.borderSubtle,
+            borderWidth: isStreakAtRisk || isActiveToday ? 1.5 : StyleSheet.hairlineWidth,
           },
         ]}
       >
+        {/* DUOLINGO-STYLE PRESSURE & FOMO URGENCY BANNER */}
+        {isStreakAtRisk && (
+          <View
+            style={[
+              styles.urgencyBanner,
+              {
+                backgroundColor: isFinalCall
+                  ? '#FF2A0018'
+                  : isCriticalHour
+                  ? '#FF572218'
+                  : '#FF8C0018',
+                borderColor: isFinalCall
+                  ? '#FF2A00'
+                  : isCriticalHour
+                  ? '#FF5722'
+                  : '#FF8C00',
+              },
+            ]}
+          >
+            <View style={styles.urgencyHeaderRow}>
+              <View style={styles.urgencyBadge}>
+                <Ionicons
+                  name="flame"
+                  size={15}
+                  color={isFinalCall ? '#FF2A00' : isCriticalHour ? '#FF5722' : '#FF8C00'}
+                />
+                <Text
+                  style={[
+                    styles.urgencyBadgeText,
+                    {
+                      color: isFinalCall
+                        ? '#FF2A00'
+                        : isCriticalHour
+                        ? '#FF5722'
+                        : '#FF8C00',
+                    },
+                  ]}
+                >
+                  {isFinalCall
+                    ? 'FINAL CALL • 15 MINS LEFT'
+                    : isCriticalHour
+                    ? `CRITICAL • ${minutesLeft}M TO MIDNIGHT`
+                    : isUrgentEvening
+                    ? `STREAK IN DANGER • ${hoursLeft}H ${minutesLeft}M LEFT`
+                    : `STREAK AT RISK • ${hoursLeft}H ${minutesLeft}M LEFT`}
+                </Text>
+              </View>
+            </View>
+            <Text style={[styles.urgencyMessage, { color: theme.textPrimary }]}>
+              {isFinalCall
+                ? `Don't throw away ${effectiveStreak} days of dedication in the final 15 minutes! Open just 1 verse right now—it takes only 45 seconds to keep your streak alive.`
+                : isCriticalHour
+                ? `In less than 1 hour, your ${effectiveStreak}-day streak will be wiped to Day 0. Don't lose your consistency—read 1 single ayah to protect it!`
+                : isUrgentEvening
+                ? `You haven't studied today. Are you really going to let ${effectiveStreak} days of progress reset at midnight? Just 1 verse saves your streak.`
+                : `Your ${effectiveStreak}-day streak resets at midnight if you don't read today. Just 1 verse (45s) saves your progress.`}
+            </Text>
+          </View>
+        )}
+
+        {/* STREAK SAFE DOPAMINE BANNER */}
+        {isActiveToday && (
+          <View
+            style={[
+              styles.safeBanner,
+              {
+                backgroundColor: theme.primaryMuted,
+                borderColor: theme.primary,
+              },
+            ]}
+          >
+            <View style={styles.safeHeaderRow}>
+              <Ionicons name="checkmark-circle" size={15} color={theme.primary} />
+              <Text style={[styles.safeBadgeText, { color: theme.primary }]}>
+                STREAK PROTECTED TODAY • SAFE UNTIL MIDNIGHT
+              </Text>
+            </View>
+            <Text style={[styles.safeMessage, { color: theme.textSecondary }]}>
+              {effectiveStreak} days of consistency alive. You took time for the Quran today. Al-hamdu lillah!
+            </Text>
+          </View>
+        )}
+
         <View style={styles.heroRow}>
           <View
             style={[
               styles.iconCircle,
               {
-                backgroundColor: theme.primaryMuted,
+                backgroundColor: isFinalCall
+                  ? '#FF2A0025'
+                  : isUrgentEvening
+                  ? '#FF572225'
+                  : isStreakAtRisk
+                  ? '#FF8C0020'
+                  : theme.primaryMuted,
               },
             ]}
           >
             <Ionicons
-              name="leaf-outline"
-              size={22}
-              color={effectiveStreak > 0 ? theme.primary : theme.textTertiary}
+              name={effectiveStreak > 0 ? 'flame' : 'leaf-outline'}
+              size={24}
+              color={
+                isFinalCall
+                  ? '#FF2A00'
+                  : isUrgentEvening
+                  ? '#FF5722'
+                  : isStreakAtRisk
+                  ? '#FF8C00'
+                  : effectiveStreak > 0
+                  ? theme.primary
+                  : theme.textTertiary
+              }
             />
           </View>
 
@@ -157,8 +302,37 @@ export const StreakSection = React.memo(function StreakSection() {
               <Text style={[styles.streakUnit, { color: theme.textSecondary }]}>
                 {effectiveStreak === 1 ? 'day' : 'days'}
               </Text>
-              <View style={[styles.statusPill, { backgroundColor: theme.chipBg }]}>
-                <Text style={[styles.statusText, { color: theme.textSecondary }]}>{statusLabel}</Text>
+              <View
+                style={[
+                  styles.statusPill,
+                  {
+                    backgroundColor: isFinalCall
+                      ? '#FF2A0020'
+                      : isUrgentEvening
+                      ? '#FF572220'
+                      : isStreakAtRisk
+                      ? '#FF8C0020'
+                      : theme.chipBg,
+                  },
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.statusText,
+                    {
+                      color: isFinalCall
+                        ? '#FF2A00'
+                        : isUrgentEvening
+                        ? '#FF5722'
+                        : isStreakAtRisk
+                        ? '#FF8C00'
+                        : theme.primary,
+                      fontWeight: '700',
+                    },
+                  ]}
+                >
+                  {statusLabel}
+                </Text>
               </View>
             </View>
             <Text style={[styles.punchline, { color: theme.textSecondary }]}>{punchline}</Text>
@@ -192,7 +366,7 @@ export const StreakSection = React.memo(function StreakSection() {
                         : todayOpen
                         ? {
                             backgroundColor: theme.card,
-                            borderColor: theme.primary,
+                            borderColor: isStreakAtRisk ? '#FF8C00' : theme.primary,
                             borderWidth: 1.5,
                           }
                         : { backgroundColor: theme.chipBg },
@@ -238,10 +412,32 @@ export const StreakSection = React.memo(function StreakSection() {
         <TouchableOpacity
           activeOpacity={0.85}
           onPress={handleStudyPress}
-          style={[styles.cta, { backgroundColor: theme.primary }]}
+          style={[
+            styles.cta,
+            {
+              backgroundColor: isFinalCall
+                ? '#FF2A00'
+                : isUrgentEvening
+                ? '#FF5722'
+                : isStreakAtRisk
+                ? '#FF8C00'
+                : theme.primary,
+            },
+          ]}
         >
+          <Ionicons
+            name={isStreakAtRisk ? 'flame' : 'book-outline'}
+            size={18}
+            color={theme.onPrimary}
+          />
           <Text style={[styles.ctaText, { color: theme.onPrimary }]}>
-            {isActiveToday ? 'Continue reading' : 'Read one verse'}
+            {isFinalCall
+              ? '🔥 Save Streak Now (Just 1 Verse)'
+              : isUrgentEvening
+              ? `🔥 Save ${effectiveStreak}-Day Streak (45s)`
+              : isStreakAtRisk
+              ? 'Save Streak with 1 Verse'
+              : 'Continue reading'}
           </Text>
         </TouchableOpacity>
       </View>
@@ -363,13 +559,63 @@ const styles = StyleSheet.create({
     marginTop: 6,
   },
   cta: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    gap: 8,
     borderRadius: 16,
     paddingVertical: 14,
   },
   ctaText: {
     fontSize: 15,
-    fontWeight: '600',
+    fontWeight: '700',
+  },
+  urgencyBanner: {
+    borderRadius: 16,
+    borderWidth: 1,
+    padding: 12,
+    marginBottom: 16,
+    gap: 6,
+  },
+  urgencyHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  urgencyBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  urgencyBadgeText: {
+    fontSize: 11,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+  },
+  urgencyMessage: {
+    fontSize: 12.5,
+    lineHeight: 18,
+    fontWeight: '500',
+  },
+  safeBanner: {
+    borderRadius: 16,
+    borderWidth: 1,
+    padding: 12,
+    marginBottom: 16,
+    gap: 5,
+  },
+  safeHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  safeBadgeText: {
+    fontSize: 11,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+  },
+  safeMessage: {
+    fontSize: 12.5,
+    lineHeight: 17,
   },
 });

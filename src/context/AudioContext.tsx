@@ -52,7 +52,7 @@ export const QURAN_ARTWORK_URL =
 const AudioContext = createContext<AudioContextType | null>(null);
 
 export function AudioProvider({ children }: { children: ReactNode }) {
-  const { updateLastStudied, preferences, updatePreferences } = useStudyState();
+  const { updateLastStudied, preferences, updatePreferences, markAyahCompleted } = useStudyState();
 
   const [currentSurahNumber, setCurrentSurahNumber] = useState<number | null>(null);
   const [currentAyahNumber, setCurrentAyahNumber] = useState<number | null>(null);
@@ -80,6 +80,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   const playbackSpeedRef = useRef<number>(playbackSpeed);
   const isLockScreenActiveRef = useRef<boolean>(false);
   const isStandaloneRef = useRef<boolean>(false);
+  const markAyahCompletedRef = useRef(markAyahCompleted);
 
   currentSurahNumberRef.current = currentSurahNumber;
   currentAyahNumberRef.current = currentAyahNumber;
@@ -87,6 +88,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   playbackModeRef.current = playbackMode;
   reciterRef.current = reciter;
   playbackSpeedRef.current = playbackSpeed;
+  markAyahCompletedRef.current = markAyahCompleted;
 
   // Sync with preferences when loaded
   useEffect(() => {
@@ -213,7 +215,8 @@ export function AudioProvider({ children }: { children: ReactNode }) {
         // Step 1: Arabic recitation finished -> Now play Urdu translation for the SAME ayah!
         playAyahInternal(sNum, aNum, 'translation');
       } else {
-        // Step 2: Urdu translation finished
+        // Step 2: Urdu translation finished -> Ayah has been fully explored in both Arabic & Urdu!
+        markAyahCompletedRef.current(sNum, aNum, 25);
         if (isStandaloneRef.current) {
           isStandaloneRef.current = false;
           setIsPlaying(false);
@@ -226,6 +229,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
         handleAdvanceToNextAyah(sNum, aNum, 'arabic');
       }
     } else if (mode === 'arabic_only') {
+      markAyahCompletedRef.current(sNum, aNum, 18);
       if (isStandaloneRef.current) {
         isStandaloneRef.current = false;
         setIsPlaying(false);
@@ -236,6 +240,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       }
       handleAdvanceToNextAyah(sNum, aNum, 'arabic');
     } else if (mode === 'translation_only') {
+      markAyahCompletedRef.current(sNum, aNum, 18);
       if (isStandaloneRef.current) {
         isStandaloneRef.current = false;
         setIsPlaying(false);

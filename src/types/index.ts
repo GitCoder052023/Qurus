@@ -103,3 +103,67 @@ export interface StreakData {
   lastActiveDate: string | null; // YYYY-MM-DD
   activeDates: string[]; // List of YYYY-MM-DD dates
 }
+
+export type CompletedAyahsMap = Record<number, number[]>;
+
+export interface DailyStudyRecord {
+  date: string; // YYYY-MM-DD
+  ayahsCompleted: { surahNumber: number; ayahNumber: number }[];
+  secondsSpent: number;
+  reflectionsCount: number;
+}
+
+export interface NotificationPreferences {
+  dailyReminderEnabled: boolean;
+  reminderHour: number; // 0 - 23
+  reminderMinute: number; // 0 - 59
+  streakSaverEnabled: boolean;
+}
+
+export type CelebrationType = 'surah_completed' | 'daily_goal' | 'streak_milestone' | 'streak_saved';
+
+export interface CelebrationPayload {
+  type: CelebrationType;
+  title: string;
+  subtitle: string;
+  badgeLabel?: string;
+  details?: string;
+  quote?: string;
+  surahNumber?: number;
+  surahName?: string;
+  streakCount?: number;
+  previousStreakCount?: number;
+  ayahsCount?: number;
+}
+
+export interface SurahProgress {
+  surahNumber: number;
+  completedCount: number;
+  totalCount: number;
+  percent: number;
+  isCompleted: boolean;
+  estimatedMinutesRemaining: number;
+}
+
+export interface QuranProgress {
+  completedAyahs: number;
+  totalAyahs: number; // 6236
+  percent: number;
+  completedSurahsCount: number;
+  totalSurahs: number; // 114
+}
+
+export interface DailyProgress {
+  ayahsToday: number;
+  goalAyahs: number;
+  percent: number;
+  isGoalMet: boolean;
+  secondsToday: number;
+  minutesToday: number;
+}
+
+export interface JourneyCheckpoint {
+  surahNumber: number;
+  ayahNumber: number;
+}
+

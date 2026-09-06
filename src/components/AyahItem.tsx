@@ -39,6 +39,8 @@ export const AyahItem = React.memo(function AyahItem({
     toggleHighlight,
     getNotesForAyah,
     deleteNote,
+    isAyahCompleted,
+    markAyahCompleted,
   } = useStudyState();
   const { isPlaying, currentSurahNumber, currentAyahNumber, playbackPhase, playAyah, pause, resume } = useAudio();
 
@@ -148,6 +150,14 @@ export const AyahItem = React.memo(function AyahItem({
 
         {/* Status badges */}
         <View style={styles.tagGroup}>
+          {isAyahCompleted(surahNumber, ayah.numberInSurah) && (
+            <View style={[styles.statusTag, { backgroundColor: theme.primaryMuted }]}>
+              <Ionicons name="checkmark-circle" size={12} color={theme.primary} />
+              <Text style={[styles.statusTagText, { color: theme.primary, fontWeight: '600' }]}>
+                Reflected
+              </Text>
+            </View>
+          )}
           {highlighted && (
             <View style={[styles.statusTag, { backgroundColor: theme.surface }]}>
               <Ionicons name="star" size={12} color={theme.tertiary} />

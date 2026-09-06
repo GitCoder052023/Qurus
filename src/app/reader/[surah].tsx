@@ -18,6 +18,8 @@ import { SURAHS } from '../../data/surahs';
 import { AyahItem } from '../../components/AyahItem';
 import { NoteEditorModal } from '../../components/NoteEditorModal';
 import { NoteViewerModal } from '../../components/NoteViewerModal';
+import { CelebrationModal } from '../../components/CelebrationModal';
+import { SequentialRecommendationBanner } from '../../components/SequentialRecommendationBanner';
 import { Ayah, StudyNote } from '../../types';
 import { trackSurahOpened } from '../../lib/analytics';
 
@@ -30,7 +32,7 @@ export default function ReaderScreen() {
   const initialAyah = ayahParam ? parseInt(ayahParam, 10) : 1;
 
   const { theme, isDark } = useTheme();
-  const { preferences, saveNote, deleteNote } = useStudyState();
+  const { preferences, saveNote, deleteNote, getSurahProgress } = useStudyState();
   const {
     currentSurahNumber,
     currentAyahNumber,
@@ -43,6 +45,7 @@ export default function ReaderScreen() {
 
   const surahData = useMemo(() => getSurah(surahNumber), [surahNumber]);
   const surahMeta = useMemo(() => SURAHS.find((s) => s.number === surahNumber), [surahNumber]);
+  const surahProgress = useMemo(() => getSurahProgress(surahNumber), [getSurahProgress, surahNumber]);
 
   const flatListRef = useRef<FlatList>(null);
   const [selectedAyahForNote, setSelectedAyahForNote] = useState<Ayah | null>(null);
@@ -146,6 +149,14 @@ export default function ReaderScreen() {
 
   const renderHeader = () => (
     <View style={styles.surahHeader}>
+      {/* Gentle in-sequence recommendation banner */}
+      <SequentialRecommendationBanner
+        currentSurahNumber={surahNumber}
+        currentAyahNumber={
+          isCurrentSurahActive && currentAyahNumber ? currentAyahNumber : initialAyah
+        }
+      />
+
       {/* Surah Title Banner */}
       <View style={[styles.bannerCard, { backgroundColor: theme.card, borderColor: theme.border }]}>
         <View style={styles.bannerTopRow}>
@@ -168,6 +179,31 @@ export default function ReaderScreen() {
         <Text style={[styles.urduSurahTitle, { color: theme.textSecondary }]}>
           {surahData.urduName}
         </Text>
+
+        {/* Surah Progress Indicator */}
+        <View style={styles.surahProgressWrapper}>
+          <View style={[styles.surahProgressTrack, { backgroundColor: theme.surfaceHighlight }]}>
+            <View
+              style={[
+                styles.surahProgressBar,
+                {
+                  width: `${Math.max(1, surahProgress.percent)}%`,
+                  backgroundColor: theme.primary,
+                },
+              ]}
+            />
+          </View>
+          <View style={styles.surahProgressMetaRow}>
+            <Text style={[styles.surahProgressMetaText, { color: theme.textTertiary }]}>
+              {surahProgress.completedCount} of {surahProgress.totalCount} Ayahs ({surahProgress.percent}%)
+            </Text>
+            <Text style={[styles.surahProgressMetaText, { color: theme.primary, fontWeight: '600' }]}>
+              {surahProgress.isCompleted
+                ? '✓ Surah Complete'
+                : `~${surahProgress.estimatedMinutesRemaining}m left`}
+            </Text>
+          </View>
+        </View>
 
         {/* Play entire Surah button */}
         <TouchableOpacity
@@ -360,6 +396,9 @@ export default function ReaderScreen() {
           deleteNote(noteId);
         }}
       />
+
+      {/* Celebratory Dopamine Milestone Modal */}
+      <CelebrationModal />
     </SafeAreaView>
   );
 }
@@ -506,5 +545,28 @@ const styles = StyleSheet.create({
   },
   backButton: {
     padding: 10,
+  },
+  surahProgressWrapper: {
+    width: '100%',
+    marginVertical: 12,
+    gap: 6,
+  },
+  surahProgressTrack: {
+    height: 4,
+    borderRadius: 2,
+    overflow: 'hidden',
+  },
+  surahProgressBar: {
+    height: '100%',
+    borderRadius: 2,
+  },
+  surahProgressMetaRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  surahProgressMetaText: {
+    fontSize: 11,
+    fontWeight: '500',
   },
 });

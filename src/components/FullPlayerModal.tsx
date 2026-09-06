@@ -17,7 +17,7 @@ import { useStudyState } from '../context/StudyContext';
 import { NoteEditorModal } from './NoteEditorModal';
 import { VoiceNotePlayer } from './VoiceNotePlayer';
 import { getAyah } from '../data/surahLoader';
-import { RECITERS } from '../data/surahs';
+import { RECITERS, SURAHS } from '../data/surahs';
 import { PlaybackMode } from '../types';
 
 export function FullPlayerModal() {
@@ -43,6 +43,7 @@ export function FullPlayerModal() {
     setSpeed,
     reciter,
     setReciter,
+    playAyah,
   } = useAudio();
 
   const { theme } = useTheme();
@@ -54,6 +55,8 @@ export function FullPlayerModal() {
     saveNote,
     deleteNote,
     getNote,
+    journeyCheckpoint,
+    isAyahInSequence,
   } = useStudyState();
   const router = useRouter();
 
@@ -73,6 +76,15 @@ export function FullPlayerModal() {
   const bookmarked = isBookmarked(currentSurahNumber, currentAyahNumber);
   const highlighted = isHighlighted(currentSurahNumber, currentAyahNumber);
   const currentNote = getNote(currentSurahNumber, currentAyahNumber);
+  const inSequence = isAyahInSequence(currentSurahNumber, currentAyahNumber);
+  const checkpointSurah = useMemo(
+    () => SURAHS.find((s) => s.number === journeyCheckpoint.surahNumber),
+    [journeyCheckpoint.surahNumber]
+  );
+
+  const handleResumeSequence = () => {
+    playAyah(journeyCheckpoint.surahNumber, journeyCheckpoint.ayahNumber);
+  };
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -237,6 +249,40 @@ export function FullPlayerModal() {
             contentContainerStyle={styles.ayahScrollContent}
             showsVerticalScrollIndicator={false}
           >
+            {/* Free Exploration Notice */}
+            {!inSequence && (
+              <View
+                style={[
+                  styles.explorationBanner,
+                  { backgroundColor: theme.surface, borderColor: theme.borderSubtle },
+                ]}
+              >
+                <View style={styles.explorationBannerTop}>
+                  <View style={[styles.explorationIconCircle, { backgroundColor: theme.chipBg }]}>
+                    <Ionicons name="compass-outline" size={15} color={theme.primary} />
+                  </View>
+                  <View style={{ flex: 1 }}>
+                    <Text style={[styles.explorationBannerTitle, { color: theme.textPrimary }]}>
+                      Free Exploration Mode
+                    </Text>
+                    <Text style={[styles.explorationBannerSub, { color: theme.textTertiary }]}>
+                      Does not count towards your structured Quran Journey.
+                    </Text>
+                  </View>
+                </View>
+                <TouchableOpacity
+                  activeOpacity={0.85}
+                  onPress={handleResumeSequence}
+                  style={[styles.resumeSequenceBtn, { backgroundColor: theme.primary }]}
+                >
+                  <Ionicons name="arrow-back" size={13} color={theme.onPrimary} />
+                  <Text style={[styles.resumeSequenceBtnText, { color: theme.onPrimary }]}>
+                    Resume Sequence at {checkpointSurah ? checkpointSurah.englishName : `Surah ${journeyCheckpoint.surahNumber}`} ({journeyCheckpoint.ayahNumber})
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            )}
+
             {/* Real-time Recitation Phase Badge */}
             <View
               style={[
@@ -888,5 +934,47 @@ const styles = StyleSheet.create({
   reflectionText: {
     fontSize: 12,
     lineHeight: 18,
+  },
+  explorationBanner: {
+    borderRadius: 16,
+    borderWidth: StyleSheet.hairlineWidth,
+    padding: 12,
+    marginBottom: 12,
+    gap: 10,
+  },
+  explorationBannerTop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+  },
+  explorationIconCircle: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  explorationBannerTitle: {
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  explorationBannerSub: {
+    fontSize: 11,
+    marginTop: 1,
+    lineHeight: 15,
+  },
+  resumeSequenceBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    paddingVertical: 7,
+    paddingHorizontal: 12,
+    borderRadius: 10,
+    alignSelf: 'flex-start',
+  },
+  resumeSequenceBtnText: {
+    fontSize: 11.5,
+    fontWeight: '600',
   },
 });

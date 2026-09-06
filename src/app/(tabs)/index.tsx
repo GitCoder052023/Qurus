@@ -13,10 +13,12 @@ import { useTheme } from '../../context/ThemeContext';
 import { useStudyState } from '../../context/StudyContext';
 import { useAudio } from '../../context/AudioContext';
 import { SURAHS } from '../../data/surahs';
+import { MotivationSection } from '../../components/home/MotivationSection';
 import { StreakSection } from '../../components/home/StreakSection';
 import { NotesSection } from '../../components/home/NotesSection';
 import { SavesSection } from '../../components/home/SavesSection';
 import { BookmarksSection } from '../../components/home/BookmarksSection';
+import { CelebrationModal } from '../../components/CelebrationModal';
 
 export default function HomeScreen() {
   const { theme } = useTheme();
@@ -203,6 +205,9 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
 
+        {/* 0. DUOLINGO-STYLE MOTIVATION & DYNAMIC TADABBUR PROGRESS ENGINE */}
+        <MotivationSection />
+
         {/* 1. PERSONALIZED SECTION: Current Streak & Daily Motivation */}
         <StreakSection />
 
@@ -299,6 +304,9 @@ export default function HomeScreen() {
           </View>
         )}
       </ScrollView>
+
+      {/* Celebratory Milestone Dopamine Modal */}
+      <CelebrationModal />
     </SafeAreaView>
   );
 }
