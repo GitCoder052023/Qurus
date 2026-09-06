@@ -1,7 +1,7 @@
 "use client";
 
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
 
 export default function ApkDownloadSection() {
   const [showTechnicalDetails, setShowTechnicalDetails] = useState(false);
@@ -47,7 +47,7 @@ export default function ApkDownloadSection() {
                 <span>Android 8.0+</span>
               </span>
               <span className="px-3 py-1 rounded-full bg-white border border-border shadow-2xs font-mono text-[11px]">
-                v2.2.0 Release
+                v2.3.0 Release
               </span>
               <span className="px-3 py-1 rounded-full bg-white border border-border shadow-2xs font-mono text-[11px]">
                 112 MB
@@ -90,7 +90,7 @@ export default function ApkDownloadSection() {
               <motion.a
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                href="https://github.com/GitCoder052023/Qurus/releases/tag/v2.2.0"
+                href="https://github.com/GitCoder052023/Qurus/releases/tag/v2.3.0"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-surface border border-border text-text-primary text-sm font-medium shadow-2xs transition-colors"

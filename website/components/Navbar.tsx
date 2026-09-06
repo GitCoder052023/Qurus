@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
+import { useEffect, useState } from "react";
 
 const NAV_LINKS = [
   { href: "/#experience", label: "Try Live Demo", index: "01" },
@@ -118,7 +118,7 @@ export default function Navbar() {
                   (قُرُوص)
                 </span>
                 <span className="hidden lg:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-primary-muted text-primary border border-primary/15">
-                  v2.2.0
+                  v2.3.0
                 </span>
               </div>
             </Link>
@@ -284,7 +284,7 @@ export default function Navbar() {
                         <span>Download Free APK (112 MB)</span>
                       </div>
                       <span className="text-[10px] font-mono bg-white/20 px-2 py-0.5 rounded-full">
-                        v2.2.0
+                        v2.3.0
                       </span>
                     </Link>
 

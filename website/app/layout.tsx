@@ -1,5 +1,5 @@
-import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -105,8 +105,8 @@ const jsonLd = {
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
       },
-      downloadUrl: "https://github.com/GitCoder052023/Qurus/releases/tag/v2.2.0",
-      softwareVersion: "2.2.0",
+      downloadUrl: "https://github.com/GitCoder052023/Qurus/releases/tag/v2.3.0",
+      softwareVersion: "2.3.0",
       fileSize: "112MB",
       description:
         "A calm, unobstructed Quran reading and listening space built for everyday life. Offers verse-by-verse Arabic paired with line-by-line Urdu translations, 100% private notes, and lock-screen background playback.",

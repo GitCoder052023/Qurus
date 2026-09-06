@@ -16,11 +16,6 @@ import { useStudyState } from '../../context/StudyContext';
 import { useTheme } from '../../context/ThemeContext';
 import { RECITERS, TRANSLATION_LANGUAGES } from '../../data/surahs';
 import { TranslationLanguage } from '../../types';
-import {
-  requestNotificationPermissionAsync,
-  sendInstantTestNotificationAsync,
-  sendInstantFinalCallTestAsync,
-} from '../../services/notificationEngine';
 
 const SETTINGS_LANGUAGES: TranslationLanguage[] = [
   'urdu',
@@ -41,7 +36,6 @@ export default function SettingsScreen() {
     setDailyGoal,
     notificationPreferences,
     updateNotificationPreferences,
-    streak,
     requestNotificationPermission,
   } = useStudyState();
   const { setSpeed, setReciter, setPlaybackMode, setTranslationLanguage, reciter } = useAudio();
@@ -74,40 +68,6 @@ export default function SettingsScreen() {
       await updateNotificationPreferences({ dailyReminderEnabled: true });
     } else {
       await updateNotificationPreferences({ dailyReminderEnabled: false });
-    }
-  };
-
-  const handleTestNotification = async () => {
-    const sent = await sendInstantTestNotificationAsync();
-    if (sent) {
-      Alert.alert(
-        'Test Reminder Sent',
-        'A test notification has been scheduled. You should see it arrive in 2 seconds!',
-        [{ text: 'OK' }]
-      );
-    } else {
-      Alert.alert(
-        'Permission Needed',
-        'Please allow notifications for Qurus in your device settings to receive reminders.',
-        [{ text: 'OK' }]
-      );
-    }
-  };
-
-  const handleTestFinalCallNotification = async () => {
-    const sent = await sendInstantFinalCallTestAsync(streak?.currentStreak || 7);
-    if (sent) {
-      Alert.alert(
-        'Final Call Scheduled 🔥',
-        'A high-urgency 11:45 PM Streak Saver notification will arrive in 2 seconds!',
-        [{ text: 'OK' }]
-      );
-    } else {
-      Alert.alert(
-        'Permission Needed',
-        'Please allow notifications for Qurus in your device settings to receive reminders.',
-        [{ text: 'OK' }]
-      );
     }
   };
 
@@ -245,10 +205,10 @@ export default function SettingsScreen() {
           </View>
         </View>
 
-        {/* SECTION: Audio & Recitation */}
+        {/* SECTION: Translation & Audio */}
         <View style={styles.section}>
           <Text style={[styles.sectionTitle, { color: theme.textTertiary }]}>
-            Audio
+            Translation & Audio
           </Text>
           <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
             {/* Translation Language Selector */}
@@ -290,26 +250,6 @@ export default function SettingsScreen() {
                           >
                             {l.name} {l.nativeName !== l.name ? `(${l.nativeName})` : ''}
                           </Text>
-                          {l.bitrate ? (
-                            <View
-                              style={{
-                                backgroundColor: isSelected ? theme.primary : theme.chipBg,
-                                paddingHorizontal: 7,
-                                paddingVertical: 2,
-                                borderRadius: 6,
-                              }}
-                            >
-                              <Text
-                                style={{
-                                  color: isSelected ? theme.onPrimary : theme.textTertiary,
-                                  fontSize: 10,
-                                  fontWeight: '600',
-                                }}
-                              >
-                                {l.bitrate}
-                              </Text>
-                            </View>
-                          ) : null}
                         </View>
                         <Text style={[styles.modeOptionDesc, { color: theme.textSecondary }]}>
                           {l.voiceName} • {l.author}
@@ -394,9 +334,15 @@ export default function SettingsScreen() {
                 })}
               </View>
             </View>
+          </View>
+        </View>
 
-            <View style={[styles.divider, { backgroundColor: theme.borderSubtle }]} />
-
+        {/* SECTION: Recitation */}
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.textTertiary }]}>
+            Recitation
+          </Text>
+          <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
             {/* Reciter Picker */}
             <View style={styles.settingItem}>
               <Text style={[styles.settingLabel, { color: theme.textPrimary, marginBottom: 8 }]}>
@@ -500,10 +446,10 @@ export default function SettingsScreen() {
           </View>
         </View>
 
-        {/* SECTION: Motivation & Daily Reminders */}
+        {/* SECTION: Reminders */}
         <View style={styles.section}>
           <Text style={[styles.sectionTitle, { color: theme.textTertiary }]}>
-            Motivation & Reminders
+            Reminders
           </Text>
           <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
             {/* Daily Tadabbur Goal */}
@@ -635,44 +581,32 @@ export default function SettingsScreen() {
                     trackColor={{ false: theme.surfaceHighlight, true: theme.primary }}
                   />
                 </View>
-
-                <View style={[styles.divider, { backgroundColor: theme.borderSubtle }]} />
-
-                {/* Send Test Reminder */}
-                <TouchableOpacity
-                  onPress={handleTestNotification}
-                  style={[styles.settingItem, styles.rowBetween]}
-                >
-                  <View style={styles.settingTextGroup}>
-                    <Text style={[styles.settingLabel, { color: theme.primary }]}>
-                      Send Test Reminder Now
-                    </Text>
-                    <Text style={[styles.settingSubtext, { color: theme.textSecondary }]}>
-                      Preview how notifications appear on your device
-                    </Text>
-                  </View>
-                  <Ionicons name="paper-plane-outline" size={18} color={theme.primary} />
-                </TouchableOpacity>
-
-                <View style={[styles.divider, { backgroundColor: theme.borderSubtle }]} />
-
-                {/* Send Final Call Pressure Test */}
-                <TouchableOpacity
-                  onPress={handleTestFinalCallNotification}
-                  style={[styles.settingItem, styles.rowBetween]}
-                >
-                  <View style={styles.settingTextGroup}>
-                    <Text style={[styles.settingLabel, { color: '#FF4500' }]}>
-                      Preview 11:45 PM Final Call Alert
-                    </Text>
-                    <Text style={[styles.settingSubtext, { color: theme.textSecondary }]}>
-                      Test the high-urgency midnight streak loss notification
-                    </Text>
-                  </View>
-                  <Ionicons name="flame" size={19} color="#FF4500" />
-                </TouchableOpacity>
               </>
             )}
+          </View>
+        </View>
+
+        {/* SECTION: Support */}
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.textTertiary }]}>
+            Support
+          </Text>
+          <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => router.push('/feedback' as any)}
+              style={[styles.settingItem, styles.rowBetween]}
+            >
+              <View style={styles.settingTextGroup}>
+                <Text style={[styles.settingLabel, { color: theme.textPrimary }]}>
+                  Contact Us & Feedback
+                </Text>
+                <Text style={[styles.settingSubtext, { color: theme.textSecondary }]}>
+                  Report a bug, suggest features, or send general feedback
+                </Text>
+              </View>
+              <Ionicons name="chatbubble-ellipses-outline" size={18} color={theme.primary} />
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -716,10 +650,10 @@ export default function SettingsScreen() {
           </View>
         </View>
 
-        {/* SECTION: The Story Behind Qurus */}
+        {/* SECTION: About Qurus */}
         <View style={styles.section}>
           <Text style={[styles.sectionTitle, { color: theme.textTertiary }]}>
-            About
+            About Qurus
           </Text>
           <TouchableOpacity
             activeOpacity={0.88}
@@ -759,34 +693,10 @@ export default function SettingsScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* SECTION: Support & Feedback */}
+        {/* SECTION: Legal */}
         <View style={styles.section}>
           <Text style={[styles.sectionTitle, { color: theme.textTertiary }]}>
-            Support & Feedback
-          </Text>
-          <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
-            <TouchableOpacity
-              activeOpacity={0.7}
-              onPress={() => router.push('/feedback' as any)}
-              style={[styles.settingItem, styles.rowBetween]}
-            >
-              <View style={styles.settingTextGroup}>
-                <Text style={[styles.settingLabel, { color: theme.textPrimary }]}>
-                  Contact Us & Feedback
-                </Text>
-                <Text style={[styles.settingSubtext, { color: theme.textSecondary }]}>
-                  Report a bug, suggest features, or send general feedback
-                </Text>
-              </View>
-              <Ionicons name="chatbubble-ellipses-outline" size={18} color={theme.primary} />
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        {/* SECTION: Legal & Privacy */}
-        <View style={styles.section}>
-          <Text style={[styles.sectionTitle, { color: theme.textTertiary }]}>
-            Legal & Privacy
+            Legal
           </Text>
           <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
             <TouchableOpacity
@@ -845,7 +755,7 @@ export default function SettingsScreen() {
 
         {/* App Info & Integrity Acknowledgments */}
         <View style={styles.appInfoSection}>
-          <Text style={[styles.appInfoTitle, { color: theme.textPrimary }]}>Qurus v2.2.0</Text>
+          <Text style={[styles.appInfoTitle, { color: theme.textPrimary }]}>Qurus v2.3.0</Text>
           <Text style={[styles.appInfoDesc, { color: theme.textSecondary }]}>
             Dedicated to open, honest reflection & continuous listening.
           </Text>

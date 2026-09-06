@@ -27,7 +27,7 @@ export default function Footer() {
                 (قُرُوص)
               </span>
               <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-primary-muted text-primary border border-primary/20">
-                v2.2.0
+                v2.3.0
               </span>
             </div>
 
@@ -87,7 +87,7 @@ export default function Footer() {
                     <polyline points="7 10 12 15 17 10" />
                     <line x1="12" y1="15" x2="12" y2="3" />
                   </svg>
-                  <span>Download APK (v2.2.0)</span>
+                  <span>Download APK (v2.3.0)</span>
                 </a>
               </li>
               <li>

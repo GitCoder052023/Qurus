@@ -500,13 +500,6 @@ export default function OnboardingScreen() {
                                 {config.flag} {item.badge}
                               </Text>
                             </View>
-                            {config.bitrate ? (
-                              <View style={[styles.subBadge, { backgroundColor: theme.chipBg }]}>
-                                <Text style={[styles.subBadgeText, { color: theme.textTertiary }]}>
-                                  {config.bitrate}
-                                </Text>
-                              </View>
-                            ) : null}
                           </View>
                           <View
                             style={[

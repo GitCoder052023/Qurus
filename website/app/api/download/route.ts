@@ -5,13 +5,13 @@ import { Readable } from "stream";
 export const dynamic = "force-dynamic";
 
 const GITHUB_RELEASE_URL =
-  "https://github.com/GitCoder052023/Qurus/releases/download/v2.2.0/Qurus_v2.2.0.apk";
+  "https://github.com/GitCoder052023/Qurus/releases/download/v2.3.0/Qurus_v2.3.0.apk";
 
 export async function GET() {
   const localApkPaths = [
-    path.resolve(process.cwd(), "public/downloads/Qurus_v2.2.0.apk"),
-    path.resolve(process.cwd(), "../build/Qurus_v2.2.0.apk"),
-    path.resolve(process.cwd(), "build/Qurus_v2.2.0.apk"),
+    path.resolve(process.cwd(), "public/downloads/Qurus_v2.3.0.apk"),
+    path.resolve(process.cwd(), "../build/Qurus_v2.3.0.apk"),
+    path.resolve(process.cwd(), "build/Qurus_v2.3.0.apk"),
   ];
 
   let apkPath: string | null = null;
@@ -40,7 +40,7 @@ export async function GET() {
         status: 200,
         headers: {
           "Content-Type": "application/vnd.android.package-archive",
-          "Content-Disposition": 'attachment; filename="Qurus_v2.2.0.apk"',
+          "Content-Disposition": 'attachment; filename="Qurus_v2.3.0.apk"',
           "Content-Length": stat.size.toString(),
           "Cache-Control": "public, max-age=3600",
         },

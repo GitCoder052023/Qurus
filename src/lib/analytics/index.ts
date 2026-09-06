@@ -1,23 +1,23 @@
-import { Platform } from 'react-native';
 import PostHog from 'posthog-react-native';
+import { Platform } from 'react-native';
 import { getAnalyticsConfig } from './config';
-import { getOrCreateAnonymousId, getCachedAnonymousId } from './identity';
 import {
-  ANALYTICS_EVENTS,
-  AnalyticsEventName,
-  AppOpenPayload,
-  SurahOpenedPayload,
-  AudioPlayedPayload,
-  SearchPerformedPayload,
-  BookmarkCreatedPayload,
-  HighlightCreatedPayload,
-  NoteCreatedPayload,
-  VoiceNoteRecordedPayload,
-  PreferenceChangedPayload,
-  FeedbackSubmittedPayload,
+    ANALYTICS_EVENTS,
+    AnalyticsEventName,
+    AppOpenPayload,
+    AudioPlayedPayload,
+    BookmarkCreatedPayload,
+    FeedbackSubmittedPayload,
+    HighlightCreatedPayload,
+    NoteCreatedPayload,
+    PreferenceChangedPayload,
+    SearchPerformedPayload,
+    SurahOpenedPayload,
+    VoiceNoteRecordedPayload,
 } from './events';
+import { getCachedAnonymousId, getOrCreateAnonymousId } from './identity';
 
-export const APP_VERSION = '2.2.0';
+export const APP_VERSION = '2.3.0';
 
 let posthogClient: PostHog | null = null;
 let isInitialized = false;
@@ -251,6 +251,7 @@ export async function submitFeedback(params: {
   }
 }
 
-export { ANALYTICS_EVENTS };
-export { getOrCreateAnonymousId, getCachedAnonymousId } from './identity';
 export { getAnalyticsConfig } from './config';
+export { getCachedAnonymousId, getOrCreateAnonymousId } from './identity';
+export { ANALYTICS_EVENTS };
+
