@@ -236,7 +236,7 @@ Any dispute relating to Qurus will be subject to the jurisdiction and dispute-re
 For questions relating to Qurus, these Terms, or privacy-related concerns, contact:
 
 **Qurus / Hamdan Khubaib**  
-**Email:** [CONTACT EMAIL]  
+**Email:** [hamdankhubaib959@gmail.com](mailto:hamdankhubaib959@gmail.com)  
 **Project:** Qurus  
 **Repository:** https://github.com/GitCoder052023/Qurus
 

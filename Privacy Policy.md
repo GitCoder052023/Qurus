@@ -100,16 +100,22 @@ Qurus also disables PostHog session replay and does not use analytics as a condi
 
 ## 5. Contact Us and In-App Feedback
 
-Qurus provides a native Contact Us & Feedback feature.
+Qurus provides a native Contact Us & Feedback feature within the application.
+
+If you have a question, encounter a problem, want to report a bug, or have other feedback about Qurus, we encourage you to **contact us through the in-app Contact Us & Feedback feature first**. This is the preferred method for contacting Qurus because it provides relevant application information that can help us understand and respond to your request.
 
 Unlike ordinary product-usage analytics, a feedback submission contains the information you explicitly choose to submit so that Qurus can receive and respond to your feedback.
 
 A feedback submission may include:
 
 * Category, such as Bug Report, Feature Request, General Feedback, or Other
+
 * The message you write
+
 * Your Qurus app version
+
 * Your platform
+
 * An email address, only if you voluntarily provide one
 
 Feedback is currently submitted through PostHog's event-capture infrastructure; Qurus does not require a separate custom feedback backend for this feature.
@@ -119,6 +125,16 @@ You can submit feedback without providing an email address. If you provide an em
 **Please do not include passwords, authentication secrets, private Quran reflections, confidential personal information, or other sensitive information in a feedback message.**
 
 Qurus does not intentionally attach your local bookmarks, highlights, notes, voice recordings, reading history, or Quran-study content to feedback submissions.
+
+### Support Contact Preference
+
+For support requests and general questions, please **use the in-app Contact Us & Feedback feature first**.
+
+If you have submitted a request through the in-app support system and **do not receive a response**, you may contact us directly by email using the address provided in the Contact Us section below:
+
+**Email:** [hamdankhubaib959@gmail.com](mailto:hamdankhubaib959@gmail.com)
+
+## When contacting us by email about an existing in-app support request, please provide enough information for us to identify and understand the issue. Do not send passwords, authentication secrets, or other sensitive information unnecessarily.
 
 ## 6. Search and Reading Interactions
 
@@ -240,11 +256,16 @@ Your continued use of Qurus after an updated policy becomes effective means the 
 
 ## 17. Contact Us
 
-For privacy questions, requests, or concerns, contact:
+For privacy questions, privacy requests, or concerns, please use the **in-app Contact Us & Feedback feature first**.
 
-**Qurus / Hamdan Khubaib**  
-**Email:** [PRIVACY EMAIL]  
-**Project:** Qurus  
+If you do not receive a response through the in-app support system, you may contact us directly by email:
+
+**Qurus / Hamdan Khubaib**
+
+**Email:** [hamdankhubaib959@gmail.com](mailto:hamdankhubaib959@gmail.com)
+
+**Project:** Qurus
+
 **Repository:** https://github.com/GitCoder052023/Qurus
 
 Please include enough information for us to understand and respond to your request, but do not send passwords, authentication secrets, or other sensitive information unnecessarily.
