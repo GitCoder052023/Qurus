@@ -48,7 +48,7 @@ export default function Hero() {
             <span>Works Offline</span>
           </motion.div>
 
-          {/* Main Headline (clear, simple, relatable, converts) */}
+          {/* Main Headline */}
           <motion.h1
             variants={itemVariants}
             className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tighter text-text-primary max-w-4xl leading-[1.08] text-balance"
@@ -59,20 +59,19 @@ export default function Hero() {
             </span>
           </motion.h1>
 
-          {/* Clear, Benefits-Driven Subtitle */}
+          {/* Brand Positioning */}
           <motion.p
             variants={itemVariants}
             className="mt-5 text-base sm:text-lg md:text-xl text-text-secondary max-w-2xl leading-relaxed font-normal text-balance"
           >
-            A calm, ayah-by-ayah way to listen, study, and understand the Quran.
+            A calm, ayah-by-ayah way to read, listen to, study, and understand the Quran.
           </motion.p>
 
-          {/* High-Converting CTA Button Row */}
+          {/* Primary CTA + Secondary Demo */}
           <motion.div
             variants={itemVariants}
             className="mt-8 flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto"
           >
-            {/* Primary Download Button */}
             <motion.a
               whileHover={{ scale: 1.03, y: -1 }}
               whileTap={{ scale: 0.97 }}
@@ -100,7 +99,6 @@ export default function Hero() {
               </span>
             </motion.a>
 
-            {/* Secondary Live Preview Button */}
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href="#experience"
@@ -114,12 +112,11 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Quick Reassurance */}
           <motion.p variants={itemVariants} className="mt-3.5 text-xs text-text-tertiary">
             For Android 8.0+ • Instant download • No email or account needed
           </motion.p>
 
-          {/* Interactive Glimpse Card with Motion Entry */}
+          {/* Product Preview */}
           <motion.div
             variants={itemVariants}
             className="mt-10 w-full max-w-2xl doppelrand-shell"
