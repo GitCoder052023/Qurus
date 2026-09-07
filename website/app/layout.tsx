@@ -12,11 +12,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://qurus.app"),
   title: {
-    default: "Qurus (قُرُوص) — Calm, Focused Quran Reading & Listening Sanctuary",
+    default: "Qurus (قُرُوص) — A Calm, Focused Way to Understand the Quran",
     template: "%s | Qurus",
   },
   description:
-    "A calm, unobstructed Quran reading and listening space built for everyday life. Verse-by-verse Arabic paired with line-by-line Urdu translations, 100% private notes, and background playback for when you are on the move.",
+    "A calm, focused space to read, listen to, and understand the Quran. Built for everyday life with verse-by-verse Arabic, Urdu translations, private notes, and background playback.",
   keywords: [
     "Qurus",
     "Quran app",
@@ -46,16 +46,16 @@ export const metadata: Metadata = {
       { url: "/images/favicon.png", sizes: "32x32", type: "image/png" },
       { url: "/images/icon.png", sizes: "192x192", type: "image/png" },
     ],
-    apple: [{ url: "/images/icon.png", sizes: "180x180", type: "image/png" }],
+    apple: [{ url: "/images/icon.png", sizes: "180x180" }],
   },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://qurus.app",
     siteName: "Qurus (قُرُوص)",
-    title: "Qurus — Calm, Focused Quran Reading & Listening Sanctuary",
+    title: "Qurus — A Calm, Focused Way to Understand the Quran",
     description:
-      "Verse-by-verse Arabic recitation paired with line-by-line Urdu translation, private voice notes, and background playback. Zero ads, zero algorithmic feeds, 100% on-device privacy.",
+      "A calm, focused space to read, listen to, and understand the Quran. Built for everyday life with verse-by-verse Arabic, Urdu translations, private notes, and background playback.",
     images: [
       {
         url: "/images/icon.png",
@@ -67,9 +67,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Qurus (قُرُوص) — Calm Quran Sanctuary for Everyday Life",
+    title: "Qurus (قُرُوص) — A Calm, Focused Way to Understand the Quran",
     description:
-      "A focused verse-by-verse space pairing Arabic recitations with Urdu translations, lock-screen playback, and private notes. Install APK directly.",
+      "A calm, focused space to read, listen to, and understand the Quran, with verse-by-verse Arabic, Urdu translations, private notes, and background playback.",
     images: ["/images/icon.png"],
     creator: "@GitCoder052023",
   },
@@ -109,7 +109,7 @@ const jsonLd = {
       softwareVersion: "2.3.0",
       fileSize: "112MB",
       description:
-        "A calm, unobstructed Quran reading and listening space built for everyday life. Offers verse-by-verse Arabic paired with line-by-line Urdu translations, 100% private notes, and lock-screen background playback.",
+        "A calm, focused space to read, listen to, and understand the Quran. Built for everyday life with verse-by-verse Arabic, Urdu translations, private notes, and background playback.",
       author: {
         "@type": "Person",
         name: "Hamdan Khubaib",
@@ -122,7 +122,7 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": "https://qurus.app/#website",
       url: "https://qurus.app",
-      name: "Qurus Sanctuary",
+      name: "Qurus",
       publisher: {
         "@type": "Person",
         name: "Hamdan Khubaib",
