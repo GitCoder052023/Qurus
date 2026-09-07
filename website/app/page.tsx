@@ -1,12 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import InteractivePlayer from "@/components/InteractivePlayer";
-import SupportedLanguages from "@/components/SupportedLanguages";
-import MotivationEngineSection from "@/components/MotivationEngineSection";
-import StructuredJourneySection from "@/components/StructuredJourneySection";
-import EverydayLifeGrid from "@/components/EverydayLifeGrid";
+import QurusOverview from "@/components/QurusOverview";
 import ComparisonMatrix from "@/components/ComparisonMatrix";
-import FeatureDeepDives from "@/components/FeatureDeepDives";
 import PhilosophyStory from "@/components/PhilosophyStory";
 import ApkDownloadSection from "@/components/ApkDownloadSection";
 import FaqAccordion from "@/components/FaqAccordion";
@@ -19,12 +15,8 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <InteractivePlayer />
-        <SupportedLanguages />
-        <MotivationEngineSection />
-        <StructuredJourneySection />
-        <EverydayLifeGrid />
+        <QurusOverview />
         <ComparisonMatrix />
-        <FeatureDeepDives />
         <PhilosophyStory />
         <ApkDownloadSection />
         <FaqAccordion />
