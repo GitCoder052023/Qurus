@@ -6,9 +6,9 @@ export default function FeatureDeepDives() {
   const features = [
     {
       title: "One Verse at a Time",
-      tag: "Clean & Focused",
+      tag: "Focused Reading",
       description:
-        "Never feel overwhelmed by giant pages of text. Every verse is isolated cleanly with its Urdu translation right below it. You can adjust font sizes, repeat any verse, or highlight it with one tap.",
+        "Qurus keeps the Quran readable and approachable: one verse, its Arabic text, and its Urdu translation in clear focus. Adjust the reading experience, repeat a verse, or save it for later without visual clutter.",
       highlights: ["Adjustable Arabic & Urdu sizes", "One-tap verse repeat loop", "Clean bookmarks & stars"],
       icon: (
         <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -19,9 +19,9 @@ export default function FeatureDeepDives() {
     },
     {
       title: "Arabic + Urdu Audio in Sync",
-      tag: "Bilingual Recitation",
+      tag: "Understand as You Listen",
       description:
-        "First you hear the Arabic recitation from renowned reciters. Then you immediately hear the clear spoken Urdu translation recited by Shamshad Ali Khan. You never have to guess what was said.",
+        "Listen to the Arabic recitation, followed naturally by a clear spoken Urdu translation. Qurus keeps the two together so listening becomes a practical way to follow and understand each verse.",
       highlights: ["Mishary Alafasy & Abdul Basit", "Shamshad Ali Khan Urdu", "Speed 0.75x to 1.5x"],
       icon: (
         <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -33,9 +33,9 @@ export default function FeatureDeepDives() {
     },
     {
       title: "Private Written & Voice Notes",
-      tag: "100% On-Device Privacy",
+      tag: "Personal by Design",
       description:
-        "Have a personal question, doubt, or thought? Type a reflection or record a quick voice memo directly on the verse. Qurus has no user accounts, so your notes physically never leave your phone.",
+        "When a verse raises a question or stays on your mind, capture the thought beside it. Write a reflection or record a voice memo directly on the verse, with notes kept on your device.",
       highlights: ["Record voice memos", "Zero signups or emails", "Never uploaded to cloud"],
       icon: (
         <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -48,9 +48,9 @@ export default function FeatureDeepDives() {
     },
     {
       title: "Screen-Off Pocket Audio",
-      tag: "Daily Mobility",
+      tag: "Built for Everyday Life",
       description:
-        "Lock your phone screen, slip it in your pocket, and keep listening on your commute or during an evening walk. Skip or repeat verses directly from your lock screen or headphones.",
+        "Keep listening while you walk, commute, or move through your day. Lock the screen and use your lock-screen or headphone controls to pause, skip, and repeat verses without staying glued to your phone.",
       highlights: ["Lock-screen media controls", "Headphone button support", "Saves phone battery"],
       icon: (
         <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -64,7 +64,6 @@ export default function FeatureDeepDives() {
   return (
     <section id="features" className="py-24 md:py-36 bg-canvas overflow-hidden">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -74,17 +73,16 @@ export default function FeatureDeepDives() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-muted text-primary text-xs font-semibold uppercase tracking-wider mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-            Simple Tools
+            The Qurus Experience
           </div>
           <h2 className="text-3xl sm:text-5xl font-semibold tracking-tighter text-text-primary text-balance">
-            Simple features that make reading easy.
+            Everything is designed around understanding.
           </h2>
           <p className="mt-4 text-text-secondary text-base sm:text-lg leading-relaxed text-balance">
-            No complicated settings or cluttered menus. Just what you need to read, listen, and understand.
+            Qurus removes friction between you and the Quran, giving you a focused place to read, listen, reflect, and return to the verses that matter to you.
           </p>
         </motion.div>
 
-        {/* Feature Cards with Doppelrand & Motion Reveal */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {features.map((feat, i) => (
             <motion.div
@@ -115,7 +113,6 @@ export default function FeatureDeepDives() {
                   </p>
                 </div>
 
-                {/* Micro-Capsule Badges */}
                 <div className="pt-5 border-t border-border-subtle flex flex-wrap gap-2">
                   {feat.highlights.map((item, idx) => (
                     <span
