@@ -1,0 +1,203 @@
+import { StyleSheet } from "react-native";
+
+export const styles = StyleSheet.create({
+  container: {
+    marginHorizontal: 16,
+    marginVertical: 8,
+    borderRadius: 20,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingTop: 16,
+    paddingHorizontal: 18,
+    paddingBottom: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0,
+    shadowRadius: 3,
+    elevation: 0,
+  },
+  activeContainer: {
+    borderLeftWidth: 3,
+    shadowOpacity: 0,
+    shadowRadius: 0,
+    elevation: 0,
+  },
+  headerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 14,
+  },
+  badgeGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  numberBadge: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  numberText: {
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  recitingBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  recitingText: {
+    fontSize: 11,
+    fontWeight: '700',
+  },
+  tagGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  statusTag: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
+  },
+  statusTagText: {
+    fontSize: 10,
+    fontWeight: '600',
+  },
+  arabicTextWrapper: {
+    marginBottom: 8,
+  },
+  arabicText: {
+    textAlign: 'right',
+    writingDirection: 'rtl',
+    fontFamily: 'serif',
+    marginBottom: 14,
+  },
+  translationContainer: {
+    borderTopWidth: StyleSheet.hairlineWidth,
+    paddingTop: 12,
+    marginBottom: 12,
+  },
+  urduText: {
+    textAlign: 'right',
+    writingDirection: 'rtl',
+    fontFamily: 'serif',
+  },
+  notesContainer: {
+    borderRadius: 14,
+    borderWidth: 1,
+    paddingHorizontal: 12,
+    paddingVertical: 9,
+    marginBottom: 10,
+  },
+  notesSectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    minHeight: 28,
+  },
+  notesHeaderLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    flex: 1,
+    marginRight: 8,
+  },
+  notesSectionTitle: {
+    fontSize: 12,
+    fontWeight: '700',
+  },
+  notesCountBadge: {
+    paddingHorizontal: 6,
+    paddingVertical: 1,
+    borderRadius: 8,
+  },
+  notesCountText: {
+    fontSize: 10,
+    fontWeight: '700',
+  },
+  collapsedSnippet: {
+    fontSize: 11,
+    flex: 1,
+    fontStyle: 'italic',
+  },
+  notesHeaderRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  addReflectionBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 2,
+    paddingHorizontal: 7,
+    paddingVertical: 3,
+    borderRadius: 8,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  addReflectionBtnText: {
+    fontSize: 11,
+    fontWeight: '600',
+  },
+  compactNotesList: {
+    marginTop: 8,
+    gap: 6,
+  },
+  compactNoteRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 7,
+    paddingHorizontal: 10,
+    borderRadius: 10,
+    borderWidth: StyleSheet.hairlineWidth,
+    gap: 8,
+  },
+  compactNoteIconWrap: {
+    width: 22,
+    height: 22,
+    borderRadius: 6,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  compactNoteText: {
+    flex: 1,
+    fontSize: 12,
+    lineHeight: 16,
+  },
+  compactNoteRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  compactNoteDate: {
+    fontSize: 10,
+  },
+  toolbar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderTopWidth: StyleSheet.hairlineWidth,
+    paddingTop: 10,
+  },
+  actionButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    paddingVertical: 5,
+    paddingHorizontal: 8,
+    borderRadius: 8,
+  },
+  actionLabel: {
+    fontSize: 12,
+    fontWeight: '600',
+  },
+});
+

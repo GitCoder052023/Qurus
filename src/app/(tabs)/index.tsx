@@ -1,13 +1,6 @@
 import React, { useMemo } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import { ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useTheme } from '../../context/ThemeContext';
 import { useStudyState } from '../../context/StudyContext';
@@ -19,6 +12,13 @@ import { NotesSection } from '../../components/home/NotesSection';
 import { SavesSection } from '../../components/home/SavesSection';
 import { BookmarksSection } from '../../components/home/BookmarksSection';
 import { CelebrationModal } from '../../components/CelebrationModal';
+import { getGreeting } from '../../features/home/utils/greeting';
+import { styles } from '../../features/home/styles/home.styles';
+import { HomeHeader } from '../../features/home/components/HomeHeader';
+import { DisabledNotificationsBanner } from '../../features/home/components/DisabledNotificationsBanner';
+import { ResumeStudyCard } from '../../features/home/components/ResumeStudyCard';
+import { OriginStoryBanner } from '../../features/home/components/OriginStoryBanner';
+import { RecentJourneysList } from '../../features/home/components/RecentJourneysList';
 
 export default function HomeScreen() {
   const { theme } = useTheme();
@@ -32,63 +32,16 @@ export default function HomeScreen() {
   const router = useRouter();
 
   // Contemplative time-of-day greeting with contextual secondary colors
-  const greeting = useMemo(() => {
-    const hour = new Date().getHours();
-    if (hour >= 4 && hour < 7) {
-      return {
-        time: 'Early Hours',
-        title: 'Good morning',
-        subtitle: 'A quiet space to start your day with clarity and focus.',
-        icon: 'sunny-outline' as const,
-        accent: theme.accentAmber,
-        wash: theme.amberMuted,
-      };
-    } else if (hour >= 7 && hour < 12) {
-      return {
-        time: 'Morning Reflection',
-        title: 'Good morning',
-        subtitle: 'Take a breath and explore a perspective before the day gets busy.',
-        icon: 'sunny' as const,
-        accent: theme.accentAmber,
-        wash: theme.amberMuted,
-      };
-    } else if (hour >= 12 && hour < 17) {
-      return {
-        time: 'Afternoon Pause',
-        title: 'Good afternoon',
-        subtitle: 'Step back from the noise for a few moments of quiet thought.',
-        icon: 'time-outline' as const,
-        accent: theme.tertiary,
-        wash: theme.tertiaryMuted,
-      };
-    } else if (hour >= 17 && hour < 20) {
-      return {
-        time: 'Evening Reset',
-        title: 'Good evening',
-        subtitle: 'Unwind your thoughts and explore something timeless.',
-        icon: 'partly-sunny-outline' as const,
-        accent: theme.accentSaffron,
-        wash: theme.saffronMuted,
-      };
-    } else {
-      return {
-        time: 'Night Stillness',
-        title: 'Good night',
-        subtitle: 'End your day with perspective, calm, and stillness.',
-        icon: 'moon-outline' as const,
-        accent: theme.accentTwilight,
-        wash: theme.twilightMuted,
-      };
-    }
-  }, [theme]);
+  const greeting = useMemo(() => getGreeting(theme), [theme]);
 
   // Last studied Surah info
   const lastSurah = lastStudied ? SURAHS.find((s) => s.number === lastStudied.surahNumber) : null;
-  const isLastStudiedPlaying =
+  const isLastStudiedPlaying = Boolean(
     isPlaying &&
     lastStudied &&
     currentSurahNumber === lastStudied.surahNumber &&
-    currentAyahNumber === lastStudied.ayahNumber;
+    currentAyahNumber === lastStudied.ayahNumber
+  );
 
   const progressPercent =
     lastSurah && lastStudied
@@ -127,139 +80,24 @@ export default function HomeScreen() {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        {/* Serene Spiritual Header with Contextual Secondary Hue */}
-        <View style={styles.header}>
-          <View style={styles.headerTextGroup}>
-            <View style={[styles.timePill, { backgroundColor: greeting.wash }]}>
-              <Ionicons name={greeting.icon} size={14} color={greeting.accent} />
-              <Text style={[styles.timePillText, { color: greeting.accent }]}>{greeting.time}</Text>
-            </View>
-            <Text style={[styles.greetingTitle, { color: theme.textPrimary }]}>
-              {greeting.title}
-            </Text>
-            <Text style={[styles.greetingSubtitle, { color: theme.textSecondary }]}>
-              {greeting.subtitle}
-            </Text>
-          </View>
+        <HomeHeader greeting={greeting} theme={theme} />
 
-          <TouchableOpacity
-            onPress={() => router.push('/(tabs)/settings')}
-            style={[styles.settingsBtn, { backgroundColor: theme.chipBg }]}
-            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-          >
-            <Ionicons name="settings-outline" size={20} color={theme.textPrimary} />
-          </TouchableOpacity>
-        </View>
-
-        {/* NOTIFICATION DISABLED PROMINENT ALERT BANNER */}
         {!hasNotificationPermission && (
-          <View
-            style={[
-              styles.notifBanner,
-              {
-                backgroundColor: theme.alertMuted,
-                borderColor: theme.accentAlert,
-              },
-            ]}
-          >
-            <View style={styles.notifBannerHeader}>
-              <View style={[styles.notifIconCircle, { backgroundColor: '#FFFFFF' }]}>
-                <Ionicons name="notifications-off" size={18} color={theme.accentAlert} />
-              </View>
-              <View style={styles.notifTextCol}>
-                <Text style={[styles.notifBannerTitle, { color: theme.textPrimary }]}>
-                  Notifications are disabled
-                </Text>
-                <Text style={[styles.notifBannerBody, { color: theme.textSecondary }]}>
-                  You will not receive reminder notifications or streak-saver alerts. Please enable notifications to get the full experience of Qurus.
-                </Text>
-              </View>
-            </View>
-
-            <TouchableOpacity
-              activeOpacity={0.88}
-              onPress={() => requestNotificationPermission()}
-              style={[styles.notifActionBtn, { backgroundColor: theme.primary }]}
-            >
-              <Ionicons name="notifications" size={15} color="#FFFFFF" />
-              <Text style={styles.notifActionBtnText}>Enable Notifications</Text>
-            </TouchableOpacity>
-          </View>
+          <DisabledNotificationsBanner
+            onRequestPermission={requestNotificationPermission}
+            theme={theme}
+          />
         )}
 
-        {/* HERO SECTION: Resume Sanctuary Card */}
-        <View style={styles.section}>
-          <TouchableOpacity
-            activeOpacity={0.92}
-            onPress={handleContinueStudying}
-            style={[
-              styles.heroCard,
-              {
-                backgroundColor: theme.card,
-                borderColor: theme.borderSubtle,
-              },
-            ]}
-          >
-            <View style={styles.heroEyebrowRow}>
-              <View style={[styles.heroEyebrowPill, { backgroundColor: theme.chipBg }]}>
-                <Ionicons name="book-outline" size={12} color={theme.primary} />
-                <Text style={[styles.heroStatusText, { color: theme.primary }]}>CONTINUE READING</Text>
-              </View>
-            </View>
-
-            <View style={styles.heroMainRow}>
-              <View style={styles.heroLeftCol}>
-                <Text style={[styles.heroEnglishTitle, { color: theme.textPrimary }]}>
-                  {lastSurah ? lastSurah.englishName : 'Al-Faatiha'}
-                </Text>
-                <Text style={[styles.heroArabicTitle, { color: theme.arabicText }]}>
-                  {lastSurah ? lastSurah.name : 'سُورَةُ ٱلْفَاتِحَةِ'}
-                </Text>
-                <Text style={[styles.heroVerseCount, { color: theme.textSecondary }]}>
-                  Ayah {lastStudied ? lastStudied.ayahNumber : 1} of {lastSurah ? lastSurah.numberOfAyahs : 7}
-                </Text>
-              </View>
-
-              {/* Large Breathing Play Button */}
-              <TouchableOpacity
-                onPress={handlePlayLastStudied}
-                style={[styles.heroPlayBtn, { backgroundColor: theme.primary }]}
-                activeOpacity={0.85}
-              >
-                <Ionicons
-                  name={isLastStudiedPlaying ? 'pause' : 'play'}
-                  size={24}
-                  color={theme.onPrimary}
-                  style={!isLastStudiedPlaying ? { marginLeft: 2 } : undefined}
-                />
-              </TouchableOpacity>
-            </View>
-
-            {/* Smooth Progress Track */}
-            <View style={styles.heroProgressSection}>
-              <View style={[styles.heroProgressTrack, { backgroundColor: theme.surfaceHighlight }]}>
-                <View
-                  style={[
-                    styles.heroProgressBar,
-                    {
-                      width: `${progressPercent}%`,
-                      backgroundColor: theme.primary,
-                    },
-                  ]}
-                />
-              </View>
-              <View style={styles.heroProgressLabels}>
-                <Text style={[styles.heroProgressText, { color: theme.textTertiary }]}>
-                  {progressPercent}% of this surah
-                </Text>
-                <View style={styles.heroResumeTouch}>
-                  <Text style={[styles.heroResumeText, { color: theme.primary }]}>Open Reader</Text>
-                  <Ionicons name="arrow-forward" size={13} color={theme.primary} />
-                </View>
-              </View>
-            </View>
-          </TouchableOpacity>
-        </View>
+        <ResumeStudyCard
+          lastSurah={lastSurah}
+          lastStudied={lastStudied}
+          isLastStudiedPlaying={isLastStudiedPlaying}
+          progressPercent={progressPercent}
+          onPressCard={handleContinueStudying}
+          onPressPlay={handlePlayLastStudied}
+          theme={theme}
+        />
 
         {/* 0. DUOLINGO-STYLE MOTIVATION & DYNAMIC TADABBUR PROGRESS ENGINE */}
         <MotivationSection />
@@ -277,88 +115,10 @@ export default function HomeScreen() {
         <BookmarksSection />
 
         {/* SECTION: Origin Story Card */}
-        <View style={styles.section}>
-          <TouchableOpacity
-            activeOpacity={0.9}
-            onPress={() => router.push('/story')}
-            style={[
-              styles.storyBanner,
-              {
-                backgroundColor: theme.card,
-                borderColor: theme.borderSubtle,
-              },
-            ]}
-          >
-            <View style={styles.storyBannerHeader}>
-              <Text style={[styles.storyBadgeText, { color: theme.primary }]}>A note from Hamdan</Text>
-              <Text style={[styles.storyAuthorText, { color: theme.textTertiary }]}>
-                Founder
-              </Text>
-            </View>
-
-            <Text style={[styles.storyBannerTitle, { color: theme.textPrimary }]}>
-              Why I built Qurus
-            </Text>
-
-            <Text style={[styles.storyBannerDesc, { color: theme.textSecondary }]}>
-              “I wanted to explore the Quran directly with translation, without judgment or complexity. Then my brother told me: ‘Just start reading... whatever framework you use, you will find a verse that sticks like a hook in your mind.’”
-            </Text>
-
-            <View style={[styles.storyBannerFooter, { borderTopColor: theme.borderSubtle }]}>
-              <Text style={[styles.storyBannerAction, { color: theme.primary }]}>
-                Read the story
-              </Text>
-              <Ionicons name="arrow-forward" size={14} color={theme.primary} />
-            </View>
-          </TouchableOpacity>
-        </View>
+        <OriginStoryBanner theme={theme} />
 
         {/* RECENT JOURNEYS (If Any) */}
-        {history.length > 0 && (
-          <View style={[styles.section, { marginBottom: 30 }]}>
-            <Text style={[styles.sectionTitle, { color: theme.textPrimary, marginBottom: 12 }]}>
-              Recent passages
-            </Text>
-
-            <View style={styles.recentList}>
-              {history.slice(0, 3).map((item, idx) => {
-                const sMeta = SURAHS.find((s) => s.number === item.surahNumber);
-                return (
-                  <TouchableOpacity
-                    key={`${item.surahNumber}-${item.ayahNumber}-${idx}`}
-                    onPress={() =>
-                      router.push({
-                        pathname: '/reader/[surah]',
-                        params: { surah: String(item.surahNumber), ayah: String(item.ayahNumber) },
-                      })
-                    }
-                    style={[
-                      styles.recentItemRow,
-                      { backgroundColor: theme.card, borderColor: theme.borderSubtle },
-                    ]}
-                  >
-                    <View style={styles.recentItemLeft}>
-                      <View style={[styles.recentNumberDot, { backgroundColor: theme.chipBg }]}>
-                        <Text style={[styles.recentNumberText, { color: theme.primary }]}>
-                          {item.surahNumber}
-                        </Text>
-                      </View>
-                      <View>
-                        <Text style={[styles.recentItemSurah, { color: theme.textPrimary }]}>
-                          {sMeta ? sMeta.englishName : `Surah ${item.surahNumber}`}
-                        </Text>
-                        <Text style={[styles.recentItemAyah, { color: theme.textSecondary }]}>
-                          Ayah {item.ayahNumber} • {sMeta?.name}
-                        </Text>
-                      </View>
-                    </View>
-                    <Ionicons name="chevron-forward" size={16} color={theme.textTertiary} />
-                  </TouchableOpacity>
-                );
-              })}
-            </View>
-          </View>
-        )}
+        <RecentJourneysList history={history} theme={theme} />
       </ScrollView>
 
       {/* Celebratory Milestone Dopamine Modal */}
@@ -366,271 +126,3 @@ export default function HomeScreen() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-  },
-  scroll: {
-    flex: 1,
-  },
-  scrollContent: {
-    paddingHorizontal: 20,
-    paddingTop: 16,
-    paddingBottom: 120,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: 24,
-  },
-  headerTextGroup: {
-    flex: 1,
-    marginRight: 16,
-  },
-  timePill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 5,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 14,
-    alignSelf: 'flex-start',
-    marginBottom: 8,
-  },
-  timePillText: {
-    fontSize: 12,
-    fontWeight: '600',
-  },
-  greetingTitle: {
-    fontSize: 28,
-    fontWeight: '600',
-    letterSpacing: -0.4,
-  },
-  greetingSubtitle: {
-    fontSize: 15,
-    lineHeight: 22,
-    marginTop: 6,
-  },
-  settingsBtn: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 4,
-  },
-  notifBanner: {
-    borderRadius: 20,
-    borderWidth: 1,
-    padding: 16,
-    marginBottom: 20,
-    gap: 14,
-  },
-  notifBannerHeader: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: 12,
-  },
-  notifIconCircle: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  notifTextCol: {
-    flex: 1,
-  },
-  notifBannerTitle: {
-    fontSize: 15,
-    fontWeight: '700',
-    marginBottom: 4,
-  },
-  notifBannerBody: {
-    fontSize: 13,
-    lineHeight: 18,
-  },
-  notifActionBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-    height: 44,
-    borderRadius: 22,
-  },
-  notifActionBtnText: {
-    color: '#FFFFFF',
-    fontSize: 14,
-    fontWeight: '600',
-  },
-  section: {
-    marginBottom: 24,
-  },
-  sectionTitle: {
-    fontSize: 17,
-    fontWeight: '600',
-    letterSpacing: -0.2,
-  },
-  heroCard: {
-    borderRadius: 24,
-    borderWidth: StyleSheet.hairlineWidth,
-    padding: 22,
-  },
-  heroEyebrowRow: {
-    flexDirection: 'row',
-    marginBottom: 12,
-  },
-  heroEyebrowPill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 5,
-    paddingHorizontal: 9,
-    paddingVertical: 4,
-    borderRadius: 12,
-  },
-  heroStatusText: {
-    fontSize: 10.5,
-    fontWeight: '700',
-    letterSpacing: 0.6,
-  },
-  heroMainRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 18,
-  },
-  heroLeftCol: {
-    flex: 1,
-    marginRight: 16,
-  },
-  heroEnglishTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    letterSpacing: -0.3,
-  },
-  heroArabicTitle: {
-    fontSize: 18,
-    marginTop: 2,
-    marginBottom: 6,
-    fontFamily: 'serif',
-  },
-  heroVerseCount: {
-    fontSize: 13,
-    fontWeight: '500',
-  },
-  heroPlayBtn: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  heroProgressSection: {
-    gap: 8,
-  },
-  heroProgressTrack: {
-    height: 3,
-    borderRadius: 2,
-    overflow: 'hidden',
-  },
-  heroProgressBar: {
-    height: '100%',
-    borderRadius: 2.5,
-  },
-  heroProgressLabels: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  heroProgressText: {
-    fontSize: 11,
-    fontWeight: '500',
-  },
-  heroResumeTouch: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-  },
-  heroResumeText: {
-    fontSize: 13,
-    fontWeight: '500',
-  },
-  recentList: {
-    gap: 8,
-  },
-  recentItemRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 12,
-    borderRadius: 16,
-    borderWidth: StyleSheet.hairlineWidth,
-  },
-  recentItemLeft: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-  },
-  recentNumberDot: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  recentNumberText: {
-    fontSize: 12,
-    fontWeight: '700',
-  },
-  recentItemSurah: {
-    fontSize: 14,
-    fontWeight: '600',
-  },
-  recentItemAyah: {
-    fontSize: 11,
-    marginTop: 1,
-  },
-  storyBanner: {
-    borderRadius: 22,
-    borderWidth: StyleSheet.hairlineWidth,
-    padding: 20,
-  },
-  storyBannerHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 10,
-  },
-  storyBadgeText: {
-    fontSize: 13,
-    fontWeight: '500',
-  },
-  storyAuthorText: {
-    fontSize: 12,
-    fontWeight: '600',
-  },
-  storyBannerTitle: {
-    fontSize: 20,
-    fontWeight: '600',
-    letterSpacing: -0.3,
-    marginBottom: 8,
-  },
-  storyBannerDesc: {
-    fontSize: 14,
-    lineHeight: 22,
-    marginBottom: 16,
-  },
-  storyBannerFooter: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    paddingTop: 12,
-    borderTopWidth: StyleSheet.hairlineWidth,
-  },
-  storyBannerAction: {
-    fontSize: 14,
-    fontWeight: '500',
-  },
-});

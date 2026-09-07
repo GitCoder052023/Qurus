@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { AppState, AppStateStatus } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from 'expo-haptics';
 import { SURAHS } from '../data/surahs';
 import {
@@ -36,80 +35,43 @@ import {
   cancelTonightStreakSaversAsync,
   checkNotificationPermissionAsync,
   promptEnableNotificationsAsync,
-  requestNotificationPermissionAsync,
 } from '../services/notificationEngine';
+import { getLocalDateString, getYesterdayDateString } from '../utils/date';
+import {
+  TOTAL_QURAN_AYAHS,
+  STORAGE_KEYS,
+  DEFAULT_PREFERENCES,
+  DEFAULT_STREAK,
+  DEFAULT_NOTIFICATION_PREFS,
+  DEFAULT_DAILY_GOAL,
+  DEFAULT_JOURNEY_CHECKPOINT,
+  loadAllStudyData,
+  saveStorageItem,
+  removeStorageItem,
+  multiRemoveStorageItems,
+} from '../services/storage/studyStorage';
+import {
+  calculateSurahProgress,
+  calculateQuranProgress,
+  calculateDailyProgress,
+  checkAyahInSequence,
+} from '../features/study/utils/progress';
+import { computeStreakActivity } from '../features/study/utils/streak';
 
-export const TOTAL_QURAN_AYAHS = 6236;
-
-const STORAGE_KEYS = {
-  LAST_STUDIED: '@qurus_last_studied_v1',
-  HISTORY: '@qurus_history_v1',
-  BOOKMARKS: '@qurus_bookmarks_v1',
-  HIGHLIGHTS: '@qurus_highlights_v1',
-  NOTES: '@qurus_notes_v1',
-  PREFERENCES: '@qurus_preferences_v1',
-  HAS_ONBOARDED: '@qurus_has_onboarded_v1',
-  HAS_AGREED_LEGAL: '@qurus_has_agreed_legal_v1',
-  STREAK: '@qurus_streak_v1',
-  COMPLETED_AYAHS: '@qurus_completed_ayahs_v1',
-  DAILY_ACTIVITY: '@qurus_daily_activity_v1',
-  DAILY_GOAL: '@qurus_daily_goal_v1',
-  NOTIFICATION_PREFS: '@qurus_notification_prefs_v1',
-  JOURNEY_CHECKPOINT: '@qurus_journey_checkpoint_v1',
+// Re-export constants and date helpers for 100% backward compatibility
+export {
+  TOTAL_QURAN_AYAHS,
+  DEFAULT_JOURNEY_CHECKPOINT,
+  getLocalDateString,
+  getYesterdayDateString,
 };
 
-const DEFAULT_PREFERENCES: ReadingPreferences = {
-  arabicFontSize: 28,
-  urduFontSize: 16,
-  showTranslation: true,
-  theme: 'light',
-  reciterId: 'alafasy',
-  playbackSpeed: 1.0,
-  autoScroll: true,
-  playbackMode: 'both',
-  translationLanguage: 'urdu',
-};
-
-const DEFAULT_STREAK: StreakData = {
-  currentStreak: 0,
-  bestStreak: 0,
-  lastActiveDate: null,
-  activeDates: [],
-};
-
-const DEFAULT_NOTIFICATION_PREFS: NotificationPreferences = {
-  dailyReminderEnabled: true,
-  reminderHour: 20, // 8:30 PM
-  reminderMinute: 30,
-  streakSaverEnabled: true,
-};
-
-const DEFAULT_DAILY_GOAL = 5;
-
-export const DEFAULT_JOURNEY_CHECKPOINT: JourneyCheckpoint = {
-  surahNumber: 1,
-  ayahNumber: 1,
-};
-
-export function getLocalDateString(date: Date = new Date()): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-}
-
-export function getYesterdayDateString(): string {
-  const d = new Date();
-  d.setDate(d.getDate() - 1);
-  return getLocalDateString(d);
-}
-
-interface StudyContextType {
+export interface StudyContextType {
   lastStudied: LastStudiedState | null;
   history: StudyHistoryItem[];
   bookmarks: Bookmark[];
-  highlights: Record<string, Highlight>; // key: "surah_ayah"
-  notes: Record<string, StudyNote>; // key: unique note id
+  highlights: Record<string, Highlight>;
+  notes: Record<string, StudyNote>;
   preferences: ReadingPreferences;
   streak: StreakData;
   completedAyahs: CompletedAyahsMap;
@@ -185,189 +147,29 @@ export function StudyProvider({ children }: { children: ReactNode }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasNotificationPermission, setHasNotificationPermission] = useState<boolean>(true);
 
-  // Hydrate from AsyncStorage
+  // Hydrate from Storage
   useEffect(() => {
     async function loadData() {
       try {
-        const [
-          savedLast,
-          savedHistory,
-          savedBookmarks,
-          savedHighlights,
-          savedNotes,
-          savedPrefs,
-          savedOnboard,
-          savedLegal,
-          savedStreak,
-          savedCompletedAyahs,
-          savedDailyActivity,
-          savedDailyGoal,
-          savedNotifPrefs,
-          savedCheckpoint,
-        ] = await Promise.all([
-          AsyncStorage.getItem(STORAGE_KEYS.LAST_STUDIED),
-          AsyncStorage.getItem(STORAGE_KEYS.HISTORY),
-          AsyncStorage.getItem(STORAGE_KEYS.BOOKMARKS),
-          AsyncStorage.getItem(STORAGE_KEYS.HIGHLIGHTS),
-          AsyncStorage.getItem(STORAGE_KEYS.NOTES),
-          AsyncStorage.getItem(STORAGE_KEYS.PREFERENCES),
-          AsyncStorage.getItem(STORAGE_KEYS.HAS_ONBOARDED),
-          AsyncStorage.getItem(STORAGE_KEYS.HAS_AGREED_LEGAL),
-          AsyncStorage.getItem(STORAGE_KEYS.STREAK),
-          AsyncStorage.getItem(STORAGE_KEYS.COMPLETED_AYAHS),
-          AsyncStorage.getItem(STORAGE_KEYS.DAILY_ACTIVITY),
-          AsyncStorage.getItem(STORAGE_KEYS.DAILY_GOAL),
-          AsyncStorage.getItem(STORAGE_KEYS.NOTIFICATION_PREFS),
-          AsyncStorage.getItem(STORAGE_KEYS.JOURNEY_CHECKPOINT),
-        ]);
+        const data = await loadAllStudyData();
+        if (data.lastStudied) setLastStudied(data.lastStudied);
+        setHistory(data.history);
+        setBookmarks(data.bookmarks);
+        setHighlights(data.highlights);
+        setNotes(data.notes);
+        setPreferences(data.preferences);
+        setHasOnboarded(data.hasOnboarded);
+        setHasAgreedLegal(data.hasAgreedLegal);
+        setCompletedAyahs(data.completedAyahs);
+        setDailyActivity(data.dailyActivity);
+        setDailyGoalAyahs(data.dailyGoalAyahs);
+        setNotificationPreferences(data.notificationPreferences);
+        setJourneyCheckpointState(data.journeyCheckpoint);
+        setStreak(data.streak);
 
-        if (savedLast) setLastStudied(JSON.parse(savedLast));
-        if (savedHistory) setHistory(JSON.parse(savedHistory));
-        if (savedBookmarks) setBookmarks(JSON.parse(savedBookmarks));
-        if (savedHighlights) setHighlights(JSON.parse(savedHighlights));
-        if (savedNotes) {
-          try {
-            const parsed = JSON.parse(savedNotes);
-            const normalizedNotes: Record<string, StudyNote> = {};
-            if (Array.isArray(parsed)) {
-              parsed.forEach((n) => {
-                if (n && n.id) normalizedNotes[n.id] = n;
-              });
-            } else if (typeof parsed === 'object' && parsed !== null) {
-              Object.entries(parsed).forEach(([key, note]: [string, any]) => {
-                if (note) {
-                  const noteId = note.id || key;
-                  normalizedNotes[noteId] = {
-                    ...note,
-                    id: noteId,
-                  };
-                }
-              });
-            }
-            setNotes(normalizedNotes);
-          } catch (e) {
-            console.error('Failed to parse notes from storage:', e);
-          }
-        }
-        if (savedPrefs) {
-          setPreferences({
-            ...DEFAULT_PREFERENCES,
-            ...JSON.parse(savedPrefs),
-            theme: 'light',
-          });
-        }
-        setHasOnboarded(savedOnboard === 'true');
-        setHasAgreedLegal(savedLegal === 'true');
-
-        if (savedCompletedAyahs) {
-          try {
-            setCompletedAyahs(JSON.parse(savedCompletedAyahs));
-          } catch (e) {
-            console.error('Failed to parse completed ayahs:', e);
-          }
-        }
-
-        if (savedDailyActivity) {
-          try {
-            setDailyActivity(JSON.parse(savedDailyActivity));
-          } catch (e) {
-            console.error('Failed to parse daily activity:', e);
-          }
-        }
-
-        if (savedDailyGoal) {
-          const numGoal = parseInt(savedDailyGoal, 10);
-          if (!isNaN(numGoal) && numGoal > 0) {
-            setDailyGoalAyahs(numGoal);
-          }
-        }
-
-        if (savedNotifPrefs) {
-          try {
-            setNotificationPreferences({
-              ...DEFAULT_NOTIFICATION_PREFS,
-              ...JSON.parse(savedNotifPrefs),
-            });
-          } catch (e) {
-            console.error('Failed to parse notification preferences:', e);
-          }
-        }
-
-        if (savedCheckpoint) {
-          try {
-            setJourneyCheckpointState(JSON.parse(savedCheckpoint));
-          } catch (e) {
-            console.error('Failed to parse journey checkpoint:', e);
-          }
-        } else if (savedLast) {
-          try {
-            const parsedLast = JSON.parse(savedLast);
-            if (parsedLast && parsedLast.surahNumber) {
-              setJourneyCheckpointState({
-                surahNumber: parsedLast.surahNumber,
-                ayahNumber: parsedLast.ayahNumber || 1,
-              });
-            }
-          } catch {}
-        }
-
-        // Streak initialization & hydration
         const today = getLocalDateString();
-        const yesterday = getYesterdayDateString();
-
-        let initialStreak = DEFAULT_STREAK;
-        if (savedStreak) {
-          try {
-            const parsed: StreakData = JSON.parse(savedStreak);
-            let current = parsed.currentStreak || 0;
-            // If last active was before yesterday, the streak is broken until activity today
-            if (parsed.lastActiveDate !== today && parsed.lastActiveDate !== yesterday) {
-              current = 0;
-            }
-            initialStreak = {
-              ...parsed,
-              currentStreak: current,
-              activeDates: Array.isArray(parsed.activeDates) ? parsed.activeDates : [],
-            };
-          } catch (e) {
-            console.error('Failed to parse streak:', e);
-          }
-        } else {
-          // Reconstruct initial streak from historical records if available
-          const dates = new Set<string>();
-          if (savedHistory) {
-            try {
-              const hList: StudyHistoryItem[] = JSON.parse(savedHistory);
-              hList.forEach((item) => dates.add(getLocalDateString(new Date(item.timestamp))));
-            } catch {}
-          }
-          if (savedNotes) {
-            try {
-              const nObj = JSON.parse(savedNotes);
-              Object.values(nObj).forEach((n: any) =>
-                dates.add(getLocalDateString(new Date(n.updatedAt || n.createdAt)))
-              );
-            } catch {}
-          }
-          const dateList = Array.from(dates).sort();
-          if (dateList.length > 0) {
-            const lastDate = dateList[dateList.length - 1];
-            let streakCount = 0;
-            if (lastDate === today || lastDate === yesterday) {
-              streakCount = 1;
-            }
-            initialStreak = {
-              currentStreak: streakCount,
-              bestStreak: Math.max(streakCount, 1),
-              lastActiveDate: lastDate,
-              activeDates: dateList,
-            };
-          }
-        }
-        setStreak(initialStreak);
-        // If streak is at risk today, re-arm the evening pressure countdown alerts
-        if (initialStreak.lastActiveDate !== today && initialStreak.currentStreak >= 1) {
-          scheduleStreakSaverReminderAsync(initialStreak.currentStreak).catch(() => {});
+        if (data.streak.lastActiveDate !== today && data.streak.currentStreak >= 1) {
+          scheduleStreakSaverReminderAsync(data.streak.currentStreak).catch(() => {});
         }
       } catch (err) {
         console.error('Failed to load study state from storage:', err);
@@ -381,86 +183,54 @@ export function StudyProvider({ children }: { children: ReactNode }) {
   const completeOnboarding = async () => {
     setHasOnboarded(true);
     trackOnboardingCompleted();
-    await AsyncStorage.setItem(STORAGE_KEYS.HAS_ONBOARDED, 'true').catch(console.error);
+    await saveStorageItem(STORAGE_KEYS.HAS_ONBOARDED, 'true');
   };
 
   const agreeToLegal = async () => {
     setHasAgreedLegal(true);
     trackLegalConsentAgreed();
-    await AsyncStorage.setItem(STORAGE_KEYS.HAS_AGREED_LEGAL, 'true').catch(console.error);
+    await saveStorageItem(STORAGE_KEYS.HAS_AGREED_LEGAL, 'true');
   };
 
   const resetOnboarding = async () => {
     setHasOnboarded(false);
     setHasAgreedLegal(false);
-    await AsyncStorage.multiRemove([
-      STORAGE_KEYS.HAS_ONBOARDED,
-      STORAGE_KEYS.HAS_AGREED_LEGAL,
-    ]).catch(console.error);
+    await multiRemoveStorageItems([STORAGE_KEYS.HAS_ONBOARDED, STORAGE_KEYS.HAS_AGREED_LEGAL]);
   };
 
   const recordStreakActivity = () => {
     setStreak((prev) => {
       const today = getLocalDateString();
       const yesterday = getYesterdayDateString();
+      const res = computeStreakActivity(prev, today, yesterday);
 
-      if (prev.lastActiveDate === today) {
-        if (!prev.activeDates.includes(today)) {
-          const updated: StreakData = {
-            ...prev,
-            activeDates: [...prev.activeDates, today],
-          };
-          AsyncStorage.setItem(STORAGE_KEYS.STREAK, JSON.stringify(updated)).catch(console.error);
-          return updated;
-        }
+      if (!res.changed) {
         return prev;
       }
 
-      let newCurrentStreak = 1;
-      if (prev.lastActiveDate === yesterday) {
-        newCurrentStreak = prev.currentStreak + 1;
-      }
-
-      const newBestStreak = Math.max(prev.bestStreak, newCurrentStreak);
-      const newActiveDates = prev.activeDates.includes(today)
-        ? prev.activeDates
-        : [...prev.activeDates, today];
-
-      const newStreak: StreakData = {
-        currentStreak: newCurrentStreak,
-        bestStreak: newBestStreak,
-        lastActiveDate: today,
-        activeDates: newActiveDates,
-      };
-
-      const wasStreakAtRisk = prev.lastActiveDate !== today && prev.currentStreak >= 1;
-      const isMilestone = [3, 7, 14, 30, 50, 100, 365].includes(newCurrentStreak) && newCurrentStreak !== prev.currentStreak;
-
-      // Disarm tonight's evening pressure countdown alerts since user studied today
       cancelTonightStreakSaversAsync().catch(() => {});
 
-      if (isMilestone) {
+      if (res.isMilestone) {
         setTimeout(() => {
           triggerCelebration({
             type: 'streak_milestone',
-            title: `${newCurrentStreak}-Day Rhythm Alive! 🔥`,
-            subtitle: `Your continuous presence with the Quran has reached ${newCurrentStreak} days.`,
-            badgeLabel: `${newCurrentStreak} Days`,
-            streakCount: newCurrentStreak,
+            title: `${res.updatedStreak.currentStreak}-Day Rhythm Alive! 🔥`,
+            subtitle: `Your continuous presence with the Quran has reached ${res.updatedStreak.currentStreak} days.`,
+            badgeLabel: `${res.updatedStreak.currentStreak} Days`,
+            streakCount: res.updatedStreak.currentStreak,
             previousStreakCount: prev.currentStreak,
             details: 'Consistency is the most beloved quality in study. You are building lifelong clarity.',
             quote: '“The most beloved of deeds to Allah are those that are most consistent, even if they are small.”',
           });
         }, 450);
-      } else if (wasStreakAtRisk && newCurrentStreak >= 2) {
-        // High-dopamine streak preserved celebration!
+      } else if (res.wasStreakAtRisk && res.updatedStreak.currentStreak >= 2) {
         setTimeout(() => {
           triggerCelebration({
             type: 'streak_saved',
             title: 'Streak Preserved! 🔥',
-            subtitle: `Your ${newCurrentStreak}-day streak is safe from midnight reset.`,
-            badgeLabel: `${newCurrentStreak} Days Saved`,
-            streakCount: newCurrentStreak,
+            subtitle: `Your ${res.updatedStreak.currentStreak}-day streak is safe from midnight reset.`,
+            badgeLabel: `${res.updatedStreak.currentStreak} Days Saved`,
+            streakCount: res.updatedStreak.currentStreak,
             previousStreakCount: prev.currentStreak,
             details: 'Just 1 verse was enough to keep your habit unbroken. That single reflection protected days of dedication.',
             quote: '“A small, continuous stream cuts through solid rock. Consistency is your true power.”',
@@ -468,8 +238,8 @@ export function StudyProvider({ children }: { children: ReactNode }) {
         }, 450);
       }
 
-      AsyncStorage.setItem(STORAGE_KEYS.STREAK, JSON.stringify(newStreak)).catch(console.error);
-      return newStreak;
+      saveStorageItem(STORAGE_KEYS.STREAK, res.updatedStreak);
+      return res.updatedStreak;
     });
   };
 
@@ -485,60 +255,24 @@ export function StudyProvider({ children }: { children: ReactNode }) {
   };
 
   const isAyahInSequence = (surahNumber: number, ayahNumber: number): boolean => {
-    // 1. Exact active checkpoint
-    if (
-      surahNumber === journeyCheckpoint.surahNumber &&
-      ayahNumber === journeyCheckpoint.ayahNumber
-    ) {
-      return true;
-    }
-
-    // 2. Previously completed ayah
-    const list = completedAyahs[surahNumber];
-    if (Array.isArray(list) && list.includes(ayahNumber)) {
-      return true;
-    }
-
-    // 3. Completed surahs or past along the continuous Quran Journey
-    if (surahNumber < journeyCheckpoint.surahNumber) {
-      return true;
-    }
-    if (
-      surahNumber === journeyCheckpoint.surahNumber &&
-      ayahNumber <= journeyCheckpoint.ayahNumber
-    ) {
-      return true;
-    }
-
-    const surahMeta = SURAHS.find((s) => s.number === surahNumber);
-    if (surahMeta && list && list.length >= surahMeta.numberOfAyahs) {
-      return true;
-    }
-
-    return false;
+    return checkAyahInSequence(surahNumber, ayahNumber, journeyCheckpoint, completedAyahs);
   };
 
   const setJourneyCheckpoint = (surahNumber: number, ayahNumber: number) => {
     const newCp: JourneyCheckpoint = { surahNumber, ayahNumber };
     setJourneyCheckpointState(newCp);
-    AsyncStorage.setItem(STORAGE_KEYS.JOURNEY_CHECKPOINT, JSON.stringify(newCp)).catch(console.error);
+    saveStorageItem(STORAGE_KEYS.JOURNEY_CHECKPOINT, newCp);
   };
 
   const markAyahCompleted = (surahNumber: number, ayahNumber: number, durationSeconds: number = 20) => {
     const today = getLocalDateString();
     const surahMeta = SURAHS.find((s) => s.number === surahNumber);
 
-    // Any reflection on the Quran keeps the user's daily presence / streak active
     recordStreakActivity();
 
-    // Verify sequential integrity / completion
     const isInSeq = isAyahInSequence(surahNumber, ayahNumber);
-    if (!isInSeq) {
-      // Out-of-sequence forward jump: do not advance structured journey or daily goal progress
-      return;
-    }
+    if (!isInSeq) return;
 
-    // Only advance the Journey Checkpoint if we are at the active checkpoint
     const isAtCheckpoint = (
       surahNumber === journeyCheckpoint.surahNumber &&
       ayahNumber === journeyCheckpoint.ayahNumber
@@ -555,8 +289,9 @@ export function StudyProvider({ children }: { children: ReactNode }) {
         nextCheckpoint = { surahNumber: 1, ayahNumber: 1 };
       }
       setJourneyCheckpointState(nextCheckpoint);
-      AsyncStorage.setItem(STORAGE_KEYS.JOURNEY_CHECKPOINT, JSON.stringify(nextCheckpoint)).catch(console.error);
+      saveStorageItem(STORAGE_KEYS.JOURNEY_CHECKPOINT, nextCheckpoint);
     }
+
     let justCompletedSurah = false;
     setCompletedAyahs((prev) => {
       const existingForSurah = prev[surahNumber] || [];
@@ -565,7 +300,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
       }
       const updatedForSurah = [...existingForSurah, ayahNumber].sort((a, b) => a - b);
       const updatedMap = { ...prev, [surahNumber]: updatedForSurah };
-      AsyncStorage.setItem(STORAGE_KEYS.COMPLETED_AYAHS, JSON.stringify(updatedMap)).catch(console.error);
+      saveStorageItem(STORAGE_KEYS.COMPLETED_AYAHS, updatedMap);
 
       if (surahMeta && updatedForSurah.length >= surahMeta.numberOfAyahs) {
         justCompletedSurah = true;
@@ -598,7 +333,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
       };
 
       const updatedActivity = { ...prev, [today]: updatedRecord };
-      AsyncStorage.setItem(STORAGE_KEYS.DAILY_ACTIVITY, JSON.stringify(updatedActivity)).catch(console.error);
+      saveStorageItem(STORAGE_KEYS.DAILY_ACTIVITY, updatedActivity);
 
       if (!alreadyInToday && updatedAyahs.length === dailyGoalAyahs) {
         justMetGoal = true;
@@ -641,78 +376,28 @@ export function StudyProvider({ children }: { children: ReactNode }) {
   };
 
   const getSurahProgress = (surahNumber: number): SurahProgress => {
-    const surahMeta = SURAHS.find((s) => s.number === surahNumber);
-    const totalCount = surahMeta?.numberOfAyahs || 1;
-    const completedList = completedAyahs[surahNumber] || [];
-    const completedCount = Math.min(completedList.length, totalCount);
-    const percent = Math.min(100, Math.round((completedCount / totalCount) * 100));
-    const isCompleted = completedCount >= totalCount;
-    const remainingAyahs = Math.max(0, totalCount - completedCount);
-    const estimatedMinutesRemaining = Math.max(1, Math.round((remainingAyahs * 22) / 60));
-
-    return {
-      surahNumber,
-      completedCount,
-      totalCount,
-      percent,
-      isCompleted,
-      estimatedMinutesRemaining: isCompleted ? 0 : estimatedMinutesRemaining,
-    };
+    return calculateSurahProgress(surahNumber, completedAyahs);
   };
 
   const getQuranProgress = (): QuranProgress => {
-    let totalCompletedAyahs = 0;
-    let completedSurahsCount = 0;
-
-    for (const s of SURAHS) {
-      const list = completedAyahs[s.number] || [];
-      const count = Math.min(list.length, s.numberOfAyahs);
-      totalCompletedAyahs += count;
-      if (count >= s.numberOfAyahs) {
-        completedSurahsCount += 1;
-      }
-    }
-
-    const percent = Number(((totalCompletedAyahs / TOTAL_QURAN_AYAHS) * 100).toFixed(1));
-
-    return {
-      completedAyahs: totalCompletedAyahs,
-      totalAyahs: TOTAL_QURAN_AYAHS,
-      percent,
-      completedSurahsCount,
-      totalSurahs: 114,
-    };
+    return calculateQuranProgress(completedAyahs);
   };
 
   const getDailyProgress = (): DailyProgress => {
     const today = getLocalDateString();
-    const record = dailyActivity[today];
-    const ayahsToday = record ? record.ayahsCompleted.length : 0;
-    const secondsToday = record ? record.secondsSpent : 0;
-    const minutesToday = Math.round(secondsToday / 60);
-    const percent = Math.min(100, Math.round((ayahsToday / dailyGoalAyahs) * 100));
-    const isGoalMet = ayahsToday >= dailyGoalAyahs;
-
-    return {
-      ayahsToday,
-      goalAyahs: dailyGoalAyahs,
-      percent,
-      isGoalMet,
-      secondsToday,
-      minutesToday,
-    };
+    return calculateDailyProgress(dailyActivity, dailyGoalAyahs, today);
   };
 
   const setDailyGoal = (goal: number) => {
     const valid = Math.max(1, Math.min(50, goal));
     setDailyGoalAyahs(valid);
-    AsyncStorage.setItem(STORAGE_KEYS.DAILY_GOAL, String(valid)).catch(console.error);
+    saveStorageItem(STORAGE_KEYS.DAILY_GOAL, String(valid));
   };
 
   const updateNotificationPreferences = async (newPrefs: Partial<NotificationPreferences>) => {
     const updated = { ...notificationPreferences, ...newPrefs };
     setNotificationPreferences(updated);
-    await AsyncStorage.setItem(STORAGE_KEYS.NOTIFICATION_PREFS, JSON.stringify(updated)).catch(console.error);
+    await saveStorageItem(STORAGE_KEYS.NOTIFICATION_PREFS, updated);
 
     if (updated.dailyReminderEnabled) {
       const lastSurah = lastStudied ? SURAHS.find((s) => s.number === lastStudied.surahNumber) : null;
@@ -766,7 +451,6 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  // Update Last Studied
   const updateLastStudied = (surahNumber: number, ayahNumber: number, audioPos?: number) => {
     const newState: LastStudiedState = {
       surahNumber,
@@ -775,14 +459,11 @@ export function StudyProvider({ children }: { children: ReactNode }) {
       timestamp: Date.now(),
     };
     setLastStudied(newState);
-    AsyncStorage.setItem(STORAGE_KEYS.LAST_STUDIED, JSON.stringify(newState)).catch(console.error);
-
-    // Also record in history
+    saveStorageItem(STORAGE_KEYS.LAST_STUDIED, newState);
     addToHistory(surahNumber, ayahNumber);
     recordStreakActivity();
   };
 
-  // Add to History
   const addToHistory = (surahNumber: number, ayahNumber: number) => {
     setHistory((prev) => {
       const filtered = prev.filter((h) => !(h.surahNumber === surahNumber && h.ayahNumber === ayahNumber));
@@ -794,15 +475,14 @@ export function StudyProvider({ children }: { children: ReactNode }) {
           timestamp: Date.now(),
         },
         ...filtered,
-      ].slice(0, 50); // limit to 50 items
+      ].slice(0, 50);
 
-      AsyncStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(newHistory)).catch(console.error);
+      saveStorageItem(STORAGE_KEYS.HISTORY, newHistory);
       return newHistory;
     });
     recordStreakActivity();
   };
 
-  // Toggle Bookmark
   const toggleBookmark = (
     surahNumber: number,
     ayahNumber: number,
@@ -828,7 +508,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     }
 
     setBookmarks(nextBookmarks);
-    AsyncStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(nextBookmarks)).catch(console.error);
+    saveStorageItem(STORAGE_KEYS.BOOKMARKS, nextBookmarks);
     if (!exists) {
       trackBookmarkCreated();
       recordStreakActivity();
@@ -839,14 +519,13 @@ export function StudyProvider({ children }: { children: ReactNode }) {
   const removeBookmark = (surahNumber: number, ayahNumber: number) => {
     const nextBookmarks = bookmarks.filter((b) => !(b.surahNumber === surahNumber && b.ayahNumber === ayahNumber));
     setBookmarks(nextBookmarks);
-    AsyncStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(nextBookmarks)).catch(console.error);
+    saveStorageItem(STORAGE_KEYS.BOOKMARKS, nextBookmarks);
   };
 
   const isBookmarked = (surahNumber: number, ayahNumber: number): boolean => {
     return bookmarks.some((b) => b.surahNumber === surahNumber && b.ayahNumber === ayahNumber);
   };
 
-  // Toggle Highlight
   const toggleHighlight = (surahNumber: number, ayahNumber: number): boolean => {
     const key = `${surahNumber}:${ayahNumber}`;
     const nextHighlights = { ...highlights };
@@ -865,7 +544,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     }
 
     setHighlights(nextHighlights);
-    AsyncStorage.setItem(STORAGE_KEYS.HIGHLIGHTS, JSON.stringify(nextHighlights)).catch(console.error);
+    saveStorageItem(STORAGE_KEYS.HIGHLIGHTS, nextHighlights);
     if (added) {
       trackHighlightCreated();
       recordStreakActivity();
@@ -877,7 +556,6 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     return Boolean(highlights[`${surahNumber}:${ayahNumber}`]);
   };
 
-  // Notes
   const getNotesForAyah = (surahNumber: number, ayahNumber: number): StudyNote[] => {
     return Object.values(notes)
       .filter((n) => n.surahNumber === surahNumber && n.ayahNumber === ayahNumber)
@@ -924,9 +602,8 @@ export function StudyProvider({ children }: { children: ReactNode }) {
 
     const nextNotes = { ...notes, [id]: newNote };
     setNotes(nextNotes);
-    AsyncStorage.setItem(STORAGE_KEYS.NOTES, JSON.stringify(nextNotes)).catch(console.error);
+    saveStorageItem(STORAGE_KEYS.NOTES, nextNotes);
 
-    // Record reflection in daily activity for tadabbur tracking
     const today = getLocalDateString();
     setDailyActivity((prevAct) => {
       const todayRec = prevAct[today] || {
@@ -940,7 +617,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
         reflectionsCount: todayRec.reflectionsCount + 1,
       };
       const nextAct = { ...prevAct, [today]: updatedRec };
-      AsyncStorage.setItem(STORAGE_KEYS.DAILY_ACTIVITY, JSON.stringify(nextAct)).catch(console.error);
+      saveStorageItem(STORAGE_KEYS.DAILY_ACTIVITY, nextAct);
       return nextAct;
     });
 
@@ -962,10 +639,9 @@ export function StudyProvider({ children }: { children: ReactNode }) {
       });
     }
     setNotes(nextNotes);
-    AsyncStorage.setItem(STORAGE_KEYS.NOTES, JSON.stringify(nextNotes)).catch(console.error);
+    saveStorageItem(STORAGE_KEYS.NOTES, nextNotes);
   };
 
-  // Preferences
   const updatePreferences = (newPrefs: Partial<ReadingPreferences>) => {
     Object.entries(newPrefs).forEach(([k, v]) => {
       if (v !== undefined) {
@@ -974,14 +650,14 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     });
     setPreferences((prev) => {
       const updated = { ...prev, ...newPrefs };
-      AsyncStorage.setItem(STORAGE_KEYS.PREFERENCES, JSON.stringify(updated)).catch(console.error);
+      saveStorageItem(STORAGE_KEYS.PREFERENCES, updated);
       return updated;
     });
   };
 
   const clearHistory = () => {
     setHistory([]);
-    AsyncStorage.removeItem(STORAGE_KEYS.HISTORY).catch(console.error);
+    removeStorageItem(STORAGE_KEYS.HISTORY);
   };
 
   return (

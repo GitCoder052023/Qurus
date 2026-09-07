@@ -1,20 +1,20 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  FlatList,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+import { FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useTheme } from '../../context/ThemeContext';
 import { useStudyState } from '../../context/StudyContext';
 import { SURAHS } from '../../data/surahs';
 import { SurahMetadata } from '../../types';
 import { trackSearchPerformed } from '../../lib/analytics';
+import { SurahFilterType } from '../../features/quran-list/types';
+import { filterSurahs } from '../../features/quran-list/utils/filterSurahs';
+import { styles } from '../../features/quran-list/styles/quranList.styles';
+import { QuranHeader } from '../../features/quran-list/components/QuranHeader';
+import { QuranSearchBar } from '../../features/quran-list/components/QuranSearchBar';
+import { QuranFilterTabs } from '../../features/quran-list/components/QuranFilterTabs';
+import { SurahListItemCard } from '../../features/quran-list/components/SurahListItemCard';
+import { QuranEmptyState } from '../../features/quran-list/components/QuranEmptyState';
 
 export default function QuranScreen() {
   const { theme } = useTheme();
@@ -22,45 +22,13 @@ export default function QuranScreen() {
   const router = useRouter();
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeFilter, setActiveFilter] = useState<'All' | 'Meccan' | 'Medinan'>('All');
+  const [activeFilter, setActiveFilter] = useState<SurahFilterType>('All');
 
   // Filter & search logic
-  const filteredSurahs = useMemo(() => {
-    let list = SURAHS;
-
-    if (activeFilter === 'Meccan') {
-      list = list.filter((s) => s.revelationType === 'Meccan');
-    } else if (activeFilter === 'Medinan') {
-      list = list.filter((s) => s.revelationType === 'Medinan');
-    }
-
-    const q = searchQuery.trim().toLowerCase();
-    if (!q) return list;
-
-    // Check if query is like "2:255"
-    if (q.includes(':')) {
-      const [sNum] = q.split(':');
-      const num = parseInt(sNum, 10);
-      if (!isNaN(num)) {
-        return list.filter((s) => s.number === num);
-      }
-    }
-
-    // Number match
-    const asNum = parseInt(q, 10);
-    if (!isNaN(asNum)) {
-      return list.filter((s) => s.number === asNum);
-    }
-
-    // Text match
-    return list.filter(
-      (s) =>
-        s.englishName.toLowerCase().includes(q) ||
-        s.englishNameTranslation.toLowerCase().includes(q) ||
-        s.urduName.toLowerCase().includes(q) ||
-        String(s.name).includes(q)
-    );
-  }, [searchQuery, activeFilter]);
+  const filteredSurahs = useMemo(
+    () => filterSurahs(SURAHS, activeFilter, searchQuery),
+    [searchQuery, activeFilter]
+  );
 
   // Debounced non-sensitive search tracking (only filter type, never query text)
   useEffect(() => {
@@ -86,350 +54,47 @@ export default function QuranScreen() {
     router.push(`/reader/${surah.number}`);
   };
 
-  const renderSurahItem = ({ item }: { item: SurahMetadata }) => {
-    const progress = getSurahProgress(item.number);
-
-    return (
-      <TouchableOpacity
-        activeOpacity={0.82}
-        onPress={() => handleSelectSurah(item)}
-        style={[
-          styles.surahCard,
-          {
-            backgroundColor: theme.card,
-            borderColor: progress.isCompleted ? theme.primaryMuted : theme.border,
-          },
-        ]}
-      >
-        <View style={styles.surahMainContent}>
-          {/* Number Badge */}
-          <View
-            style={[
-              styles.surahNumberCircle,
-              {
-                backgroundColor: progress.isCompleted
-                  ? theme.primary
-                  : theme.surfaceHighlight,
-              },
-            ]}
-          >
-            {progress.isCompleted ? (
-              <Ionicons name="checkmark" size={16} color={theme.onPrimary} />
-            ) : (
-              <Text style={[styles.surahNumberText, { color: theme.primary }]}>
-                {item.number}
-              </Text>
-            )}
-          </View>
-
-          {/* English details */}
-          <View style={styles.surahDetails}>
-            <View style={styles.titleWithBadgeRow}>
-              <Text style={[styles.surahEnglishTitle, { color: theme.textPrimary }]}>
-                {item.englishName}
-              </Text>
-              {progress.isCompleted && (
-                <View style={[styles.completedPill, { backgroundColor: theme.primaryMuted }]}>
-                  <Text style={[styles.completedPillText, { color: theme.primary }]}>
-                    Complete
-                  </Text>
-                </View>
-              )}
-            </View>
-
-            <Text style={[styles.surahUrduTitle, { color: theme.textSecondary }]} numberOfLines={1}>
-              {item.urduName}
-            </Text>
-
-            <View style={styles.metaRow}>
-              <View style={[styles.revBadge, { backgroundColor: theme.surface }]}>
-                <Text style={[styles.revText, { color: theme.textTertiary }]}>
-                  {item.revelationType}
-                </Text>
-              </View>
-              <Text style={[styles.metaText, { color: theme.textTertiary }]}>
-                {item.numberOfAyahs} Ayahs • Juz {item.juzStart}
-              </Text>
-            </View>
-          </View>
-
-          {/* Arabic Calligraphy Title */}
-          <View style={styles.arabicCol}>
-            <Text style={[styles.surahArabicTitle, { color: theme.arabicText }]}>{item.name}</Text>
-          </View>
-        </View>
-
-        {/* Progress Track (if started and not yet 100%) */}
-        {progress.completedCount > 0 && !progress.isCompleted && (
-          <View style={styles.cardProgressFooter}>
-            <View style={[styles.cardProgressTrack, { backgroundColor: theme.surfaceHighlight }]}>
-              <View
-                style={[
-                  styles.cardProgressBar,
-                  {
-                    width: `${progress.percent}%`,
-                    backgroundColor: theme.primary,
-                  },
-                ]}
-              />
-            </View>
-            <Text style={[styles.cardProgressLabel, { color: theme.textTertiary }]}>
-              {progress.completedCount}/{progress.totalCount} ayahs ({progress.percent}%)
-            </Text>
-          </View>
-        )}
-      </TouchableOpacity>
-    );
-  };
-
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
       {/* Top Header */}
-      <View style={styles.header}>
-        <Text style={[styles.screenTitle, { color: theme.textPrimary }]}>Quran</Text>
-        <Text style={[styles.screenSubtitle, { color: theme.textSecondary }]}>
-          All 114 surahs, with Urdu translation
-        </Text>
-      </View>
+      <QuranHeader theme={theme} />
 
       {/* Search Bar */}
-      <View style={styles.searchContainer}>
-        <View style={[styles.searchBar, { backgroundColor: theme.card, borderColor: theme.border }]}>
-          <Ionicons name="search" size={20} color={theme.textTertiary} style={styles.searchIcon} />
-          <TextInput
-            style={[styles.searchInput, { color: theme.textPrimary }]}
-            placeholder="Search Surah, number, or ayah (e.g. 2:255)..."
-            placeholderTextColor={theme.textTertiary}
-            value={searchQuery}
-            onChangeText={setSearchQuery}
-            clearButtonMode="while-editing"
-          />
-          {searchQuery.length > 0 && (
-            <TouchableOpacity onPress={() => setSearchQuery('')}>
-              <Ionicons name="close-circle" size={18} color={theme.textTertiary} />
-            </TouchableOpacity>
-          )}
-        </View>
-      </View>
+      <QuranSearchBar
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        onClear={() => setSearchQuery('')}
+        theme={theme}
+      />
 
       {/* Filter Tabs */}
-      <View style={styles.filterRow}>
-        {(['All', 'Meccan', 'Medinan'] as const).map((tab) => {
-          const isActive = activeFilter === tab;
-          return (
-            <TouchableOpacity
-              key={tab}
-              onPress={() => setActiveFilter(tab)}
-              style={[
-                styles.filterChip,
-                {
-                  backgroundColor: isActive ? theme.primary : theme.surface,
-                  borderColor: isActive ? theme.primary : theme.border,
-                },
-              ]}
-            >
-              <Text
-                style={[
-                  styles.filterChipText,
-                  { color: isActive ? theme.onPrimary : theme.textSecondary },
-                  isActive && { fontWeight: '600' },
-                ]}
-              >
-                {tab}
-              </Text>
-            </TouchableOpacity>
-          );
-        })}
-      </View>
+      <QuranFilterTabs
+        activeFilter={activeFilter}
+        onSelectFilter={setActiveFilter}
+        theme={theme}
+      />
 
       {/* Surahs List */}
       <FlatList
         data={filteredSurahs}
         keyExtractor={(item) => String(item.number)}
-        renderItem={renderSurahItem}
+        renderItem={({ item }) => (
+          <SurahListItemCard
+            item={item}
+            progress={getSurahProgress(item.number)}
+            onPress={() => handleSelectSurah(item)}
+            theme={theme}
+          />
+        )}
         contentContainerStyle={styles.listContent}
         showsVerticalScrollIndicator={false}
         initialNumToRender={15}
         maxToRenderPerBatch={20}
         windowSize={10}
         ListEmptyComponent={
-          <View style={styles.emptyContainer}>
-            <Ionicons name="search-outline" size={36} color={theme.textTertiary} />
-            <Text style={[styles.emptyText, { color: theme.textSecondary }]}>
-              No Surahs found matching "{searchQuery}"
-            </Text>
-          </View>
+          <QuranEmptyState searchQuery={searchQuery} theme={theme} />
         }
       />
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-  },
-  header: {
-    paddingHorizontal: 20,
-    paddingTop: 16,
-    paddingBottom: 10,
-  },
-  screenTitle: {
-    fontSize: 28,
-    fontWeight: '600',
-    letterSpacing: -0.4,
-  },
-  screenSubtitle: {
-    fontSize: 15,
-    marginTop: 4,
-    lineHeight: 21,
-  },
-  searchContainer: {
-    paddingHorizontal: 18,
-    marginBottom: 12,
-  },
-  searchBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius: 14,
-    borderWidth: StyleSheet.hairlineWidth,
-    paddingHorizontal: 14,
-    height: 48,
-  },
-  searchIcon: {
-    marginRight: 10,
-  },
-  searchInput: {
-    flex: 1,
-    fontSize: 14,
-    height: '100%',
-  },
-  filterRow: {
-    flexDirection: 'row',
-    gap: 8,
-    paddingHorizontal: 18,
-    marginBottom: 12,
-  },
-  filterChip: {
-    paddingHorizontal: 16,
-    paddingVertical: 7,
-    borderRadius: 14,
-    borderWidth: 1,
-  },
-  filterChipText: {
-    fontSize: 12,
-    fontWeight: '600',
-  },
-  listContent: {
-    paddingHorizontal: 18,
-    paddingBottom: 120,
-  },
-  surahCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 14,
-    paddingHorizontal: 16,
-    borderRadius: 18,
-    borderWidth: StyleSheet.hairlineWidth,
-    marginBottom: 10,
-  },
-  surahNumberCircle: {
-    width: 42,
-    height: 42,
-    borderRadius: 21,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 14,
-  },
-  surahNumberText: {
-    fontSize: 14,
-    fontWeight: '600',
-  },
-  surahDetails: {
-    flex: 1,
-    marginRight: 12,
-  },
-  surahEnglishTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  surahUrduTitle: {
-    fontSize: 12,
-    marginTop: 2,
-    marginBottom: 6,
-  },
-  metaRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  revBadge: {
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 6,
-  },
-  revText: {
-    fontSize: 10,
-    fontWeight: '700',
-    textTransform: 'uppercase',
-  },
-  metaText: {
-    fontSize: 11,
-    fontWeight: '500',
-  },
-  arabicCol: {
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-  },
-  surahArabicTitle: {
-    fontSize: 20,
-    fontWeight: '700',
-    textAlign: 'right',
-  },
-  emptyContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 60,
-    gap: 12,
-  },
-  emptyText: {
-    fontSize: 14,
-  },
-  surahMainContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '100%',
-  },
-  titleWithBadgeRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  completedPill: {
-    paddingHorizontal: 7,
-    paddingVertical: 2,
-    borderRadius: 8,
-  },
-  completedPillText: {
-    fontSize: 10,
-    fontWeight: '700',
-  },
-  cardProgressFooter: {
-    marginTop: 10,
-    width: '100%',
-    gap: 4,
-  },
-  cardProgressTrack: {
-    height: 3,
-    borderRadius: 1.5,
-    overflow: 'hidden',
-  },
-  cardProgressBar: {
-    height: '100%',
-    borderRadius: 1.5,
-  },
-  cardProgressLabel: {
-    fontSize: 10,
-    fontWeight: '500',
-  },
-});
