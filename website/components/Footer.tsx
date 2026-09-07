@@ -34,14 +34,13 @@ export default function Footer() {
             </div>
 
             <p className="text-sm text-text-secondary max-w-sm leading-relaxed">
-              A calm, focused way to read, listen to, and understand the Quran.
-              Built for everyday life with five languages, background audio,
-              daily Tadabbur habits, and private reflections.
+              A peaceful, focused way to read, listen to, and understand the Quran.
+              Designed for daily life with 5 languages, screen-off audio,
+              quiet consistency, and private reflections.
             </p>
 
             <p className="font-editorial text-sm italic text-text-tertiary max-w-sm leading-relaxed pt-2">
-              “Less friction. More attention. A closer relationship with the
-              verses.”
+              “Less friction. More reflection. A deeper connection with every verse.”
             </p>
           </div>
 

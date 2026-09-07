@@ -10,59 +10,54 @@ interface FaqItem {
 
 const FAQS: FaqItem[] = [
   {
-    question: "Is Qurus really 100% free? Are there any hidden ads or subscriptions?",
+    question: "Is Qurus really 100% free? Are there any ads or subscriptions?",
     answer:
-      "Yes, Qurus is completely free forever. There are zero ads, zero subscriptions, zero paid tiers, and zero tracking SDKs. It is open source under the permissive MIT License.",
+      "Yes, Qurus is completely free forever. There are zero ads, zero paid tiers, no subscriptions, and no data tracking. It is open-source and built purely as a sincere tool for reflection.",
   },
   {
-    question: "How do I install the APK file on my Android phone?",
+    question: "How do I install the app on my Android phone?",
     answer:
-      "It takes about 30 seconds: 1) Tap 'Download Free APK' on this page. 2) When the download finishes, tap the downloaded file. 3) If your phone prompts you to allow installs from your browser, tap 'Allow', then tap 'Install'. Open the app and start reading!",
+      "It takes just a few seconds: Tap 'Download Free APK' on this page. Once the download finishes, tap the file on your phone and choose 'Install'. You can start reading right away.",
   },
   {
-    question: "How does the Arabic and Urdu audio sync work?",
+    question: "How does the bilingual audio playback work?",
     answer:
-      "When you tap play on any verse, Qurus recites the original Arabic text first (recited by Mishary Alafasy or Abdul Basit). As soon as the verse finishes, it immediately plays the spoken Urdu translation (by Shamshad Ali Khan) for that exact verse. You can also toggle to 'Arabic Only' or 'Urdu Only' at any time.",
+      "When you tap play on any verse, Qurus recites the Arabic text first (by Mishary Alafasy or Abdul Basit). As soon as the recitation finishes, it plays the spoken translation in your selected language for that exact verse. You can also listen to Arabic only or translation only whenever you prefer.",
   },
   {
-    question: "Can I listen with my phone screen turned off or in my pocket?",
+    question: "Can I listen with my screen turned off or in my pocket?",
     answer:
-      "Yes! Qurus has full background playback and lock-screen media controls. You can lock your phone and put it in your pocket while at the gym, commuting on the train, or taking a walk.",
+      "Yes. Qurus supports background audio and lock-screen controls. You can lock your phone and put it in your pocket while walking, exercising, or commuting.",
   },
   {
-    question: "Do I need an internet connection to use Qurus?",
+    question: "Do I need an active internet connection to use Qurus?",
     answer:
-      "All Arabic Quran text and Fateh Muhammad Jalandhry Urdu translation text are bundled inside the app and work 100% offline. Audio recitations stream on demand over Wi-Fi or mobile data and cache smoothly on your device.",
+      "All Arabic Quran text and translation text are stored directly inside the app, so reading works completely offline. Audio streams quickly over Wi-Fi or mobile data and caches automatically on your device for smooth listening.",
   },
   {
     question: "Where are my personal reflection notes and voice memos saved?",
     answer:
-      "100% on your own device. Qurus has no user accounts, no passwords, and no cloud servers storing your personal thoughts. Your private reflections and voice notes physically never leave your phone.",
+      "Completely on your own device. Qurus has no user accounts, no passwords, and no cloud servers. Your personal reflections, bookmarks, and voice memos physically never leave your phone.",
   },
   {
     question: "What verified text and translation sources are used?",
     answer:
-      "The Arabic text follows the verified Uthmani script (Hafs). The Urdu translation is the renowned text of Fateh Muhammad Jalandhry. Audio recitations are sourced via the verified EveryAyah archive.",
+      "The Arabic text follows the verified Uthmani script (Hafs). All translations and recitations are verified from trusted, scholarly archives (including Fateh Muhammad Jalandhari for Urdu, Sahih International for English, and EveryAyah audio recordings).",
   },
   {
-    question: "How does the new Motivation Engine and Streak-Saver work in v2.3.0?",
+    question: "How do the daily reminders help me stay consistent?",
     answer:
-      "Qurus actively helps you build and protect a daily Tadabbur habit without turning study into a stressful race. Features include a real-time countdown to midnight, gentle progressive evening reminders, configurable daily targets (e.g. 5, 10, or 20 Ayahs), and celebration moments with haptic feedback and reflective wisdom. The moment you complete your daily reflection, all remaining reminders for that evening are automatically dismissed.",
+      "Qurus helps you protect a peaceful daily habit without pressure or guilt. You can set a gentle daily goal (such as 5 verses). If you haven't read by evening, it gives you a quiet nudge — and automatically stops reminding you the moment you complete your verses.",
   },
   {
-    question: "What is the difference between my structured journey and free exploration?",
+    question: "Can I browse other Surahs without losing my place?",
     answer:
-      "In v2.3.0, Qurus keeps your sequential study path distinct from free browsing. You can resume your sequential reading checkpoint with one tap from the reader or home screen. Meanwhile, you can freely browse, bookmark, annotate, read, or listen to any of the 114 Surahs—or review past verses—without ever resetting or disrupting your forward journey checkpoint.",
+      "Yes. You can open any of the 114 Surahs, look up verses, add notes, or listen freely. Your main reading checkpoint stays safely saved so you can resume your continuous journey in one tap anytime.",
   },
   {
-    question: "Which 5 languages and translations are supported in Qurus?",
+    question: "Which languages are supported?",
     answer:
-      "Qurus supports complete verse-by-verse translation and authentic recitation pairing across 5 languages: Urdu (Fateh Muhammad Jalandhari / Shamshad Ali Khan), English (Sahih International / Ibrahim Walk), Bengali (Muhiuddin Khan / Bangla Quran Audio), Turkish (Diyanet İşleri / Diyanet Vakfı), and French (Muhammad Hamidullah / Youssouf Leclerc). Each language dynamically renders in its authentic typography, text direction (RTL/LTR), and paired audio.",
-  },
-  {
-    question: "How do the smarter notifications and reminder previews work?",
-    answer:
-      "Daily Reminders and Streak-Savers are configured smoothly during onboarding, requesting system notification permissions at the appropriate moment. Qurus detects real-time permission status with a direct recovery action if notifications were turned off in Android settings. You can also test and preview your notification reminders directly inside Settings before enabling them.",
+      "Qurus supports complete verse-by-verse translation and spoken recitation in 5 languages: Urdu, English, Bengali, Turkish, and French. Each language is displayed in its native typography and script direction.",
   },
 ];
 

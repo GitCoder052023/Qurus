@@ -409,13 +409,13 @@ export default function InteractivePlayer() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-muted text-primary text-xs font-semibold uppercase tracking-wider mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-            Interactive 5-Language Preview
+            Interactive Preview
           </div>
           <h2 className="text-3xl sm:text-5xl font-semibold tracking-tighter text-text-primary text-balance">
-            Try it right here in your browser.
+            Experience how effortless understanding feels.
           </h2>
           <p className="mt-4 text-text-secondary text-base sm:text-lg leading-relaxed text-balance">
-            Select your language below and press <strong>Play</strong>. You will hear authentic Arabic recitation first, followed immediately by clear spoken translation in your chosen language.
+            Choose your language and press <strong>Play</strong>. Listen as the original Arabic recitation flows naturally into clear spoken translation.
           </p>
         </motion.div>
 

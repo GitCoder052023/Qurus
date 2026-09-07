@@ -32,7 +32,7 @@ export default function Hero() {
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="flex flex-col items-center w-full">
           <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-primary/20 text-[11px] font-medium text-primary mb-5 shadow-xs backdrop-blur-md">
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-            <span>100% Free</span><span className="text-primary/30">•</span><span>Zero Ads</span><span className="text-primary/30">•</span><span>Works Offline</span>
+            <span>Free forever</span><span className="text-primary/30">•</span><span>Completely ad-free</span><span className="text-primary/30">•</span><span>Private by design</span>
           </motion.div>
 
           <motion.h1 variants={itemVariants} className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tighter text-text-primary max-w-4xl leading-[1.05] text-balance">
@@ -41,7 +41,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p variants={itemVariants} className="mt-4 text-base sm:text-lg md:text-xl text-text-secondary max-w-2xl leading-relaxed font-normal text-balance">
-            A calm, ayah-by-ayah way to read, listen to, study, and understand the Quran.
+            A peaceful way to bring the Quran into your daily life — with clear spoken translations, pocket audio, and quiet space to reflect.
           </motion.p>
 
           <motion.div variants={itemVariants} className="mt-7 flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto">
@@ -50,11 +50,11 @@ export default function Hero() {
               <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">↓</span>
             </motion.a>
             <Link href="#experience" className="group flex items-center justify-center gap-2.5 w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/95 hover:bg-surface border border-primary/20 text-text-primary text-sm font-semibold shadow-xs transition-colors">
-              <span className="text-primary">▶</span><span>Try 1-Minute Live Demo</span>
+              <span className="text-primary">▶</span><span>Try Live Demo</span>
             </Link>
           </motion.div>
 
-          <motion.p variants={itemVariants} className="mt-3 text-xs text-text-tertiary">For Android 8.0+ • Instant download • No email or account needed</motion.p>
+          <motion.p variants={itemVariants} className="mt-3 text-xs text-text-tertiary">Instant download for Android • No account or sign-up needed</motion.p>
 
           <motion.div variants={itemVariants} className="mt-7 w-full max-w-2xl doppelrand-shell">
             <div className="doppelrand-core p-3.5 sm:p-4 text-left flex items-center justify-between gap-4">

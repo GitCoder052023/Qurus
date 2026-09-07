@@ -11,8 +11,8 @@ export default function ApkDownloadSection() {
       <div className="max-w-5xl mx-auto px-5 sm:px-8">
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-muted text-primary text-xs font-semibold uppercase tracking-wider mb-4"><span className="w-1.5 h-1.5 rounded-full bg-primary" />Start with Qurus</div>
-          <h2 className="text-3xl sm:text-5xl font-semibold tracking-tighter text-text-primary text-balance">A calmer way to spend a few minutes with the Quran.</h2>
-          <p className="mt-4 text-text-secondary text-base sm:text-lg leading-relaxed text-balance">Download Qurus for Android and start with a verse. No account, subscription, or complicated setup required.</p>
+          <h2 className="text-3xl sm:text-5xl font-semibold tracking-tighter text-text-primary text-balance">Start with just one verse today.</h2>
+          <p className="mt-4 text-text-secondary text-base sm:text-lg leading-relaxed text-balance">Download Qurus for Android. No sign-ups, no subscriptions, and zero ads — just open and read.</p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 24, scale: 0.98 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }} className="doppelrand-shell">
@@ -23,7 +23,7 @@ export default function ApkDownloadSection() {
               <span className="px-3 py-1 rounded-full bg-white border border-border shadow-2xs font-mono text-[11px]">112 MB</span>
             </div>
             <h3 className="text-2xl sm:text-4xl font-semibold tracking-tight text-text-primary mb-3">Qurus for Android</h3>
-            <p className="text-text-secondary text-sm sm:text-base max-w-lg mb-8 text-balance">Read verse by verse, listen across 5 languages, protect your daily Tadabbur streak, keep private reflections, and continue listening with the screen off. Qurus is free and open source.</p>
+            <p className="text-text-secondary text-sm sm:text-base max-w-lg mb-8 text-balance">Read verse by verse, listen in 5 languages, protect your daily habit, capture private thoughts, and keep listening with your screen off. 100% free and open source.</p>
 
             <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
               <motion.a whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.97 }} href="/api/download" className="group relative flex items-center justify-between gap-4 w-full sm:w-auto pl-7 pr-2.5 py-2.5 rounded-full bg-primary hover:bg-primary-hover text-white text-base font-semibold shadow-[0_12px_32px_rgba(14,107,92,0.25)] transition-colors active:scale-[0.98]"><span>Download Free APK</span><span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center transition-transform group-hover:translate-y-[-1px]"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg></span></motion.a>
@@ -31,7 +31,7 @@ export default function ApkDownloadSection() {
             </div>
 
             <div className="mt-12 pt-8 border-t border-border-subtle grid grid-cols-1 sm:grid-cols-3 gap-5 text-left w-full max-w-2xl">
-              {[['1','Download','Get the APK directly.'],['2','Install','Open it and complete the Android install.'],['3','Begin','Open Qurus and start with any verse.']].map(([n,title,body]) => <div key={n} className="flex items-start gap-3"><span className="w-6 h-6 rounded-full bg-primary/10 text-primary font-bold text-xs flex items-center justify-center shrink-0">{n}</span><div><div className="text-xs font-bold text-text-primary">{title}</div><div className="text-[11px] text-text-secondary mt-0.5">{body}</div></div></div>)}
+              {[['1','Download','Tap the button to download the APK.'],['2','Install','Open the downloaded file and install.'],['3','Begin','Open Qurus and start your first verse.']].map(([n,title,body]) => <div key={n} className="flex items-start gap-3"><span className="w-6 h-6 rounded-full bg-primary/10 text-primary font-bold text-xs flex items-center justify-center shrink-0">{n}</span><div><div className="text-xs font-bold text-text-primary">{title}</div><div className="text-[11px] text-text-secondary mt-0.5">{body}</div></div></div>)}
             </div>
 
             <button onClick={() => setShowTechnicalDetails(!showTechnicalDetails)} className="mt-8 text-xs font-mono text-text-tertiary hover:text-text-primary transition-colors cursor-pointer flex items-center gap-1.5"><span>{showTechnicalDetails ? "− Hide package details" : "+ Inspect package details & permissions"}</span></button>

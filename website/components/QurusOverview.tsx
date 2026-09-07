@@ -3,12 +3,12 @@
 import { motion } from "motion/react";
 
 const capabilities = [
-  ["01", "Verse-first reading", "Arabic, translation, repeat, bookmark, and highlight without clutter."],
-  ["02", "Arabic + translation audio", "Listen to the verse and its spoken meaning together, across five languages."],
-  ["03", "Private reflection", "Keep written notes and voice memos beside the verse, stored on your device."],
-  ["04", "Background listening", "Put Qurus in your pocket and keep listening with the screen locked."],
-  ["05", "Structured journey", "Resume your sequential checkpoint in one tap without losing freedom to explore."],
-  ["06", "Gentle consistency", "Daily targets, an evening streak-saver, and reflective milestone moments."],
+  ["01", "One Verse at a Time", "Clear Arabic and translation side by side, with zero clutter to distract you."],
+  ["02", "Listen & Understand", "Hear the Arabic recitation and spoken translation together in your native language."],
+  ["03", "Capture Your Thoughts", "Keep private written reflections and voice memos attached right to the verse."],
+  ["04", "Pocket Audio", "Lock your screen and keep listening during your daily walk or commute."],
+  ["05", "Never Lose Your Place", "Pick up right where you left off with a single tap, anytime."],
+  ["06", "Gentle Consistency", "Build a daily habit at your own pace with quiet, respectful evening reminders."],
 ];
 
 const languages = [
@@ -33,7 +33,7 @@ export default function QurusOverview() {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-muted text-primary text-[11px] font-semibold uppercase tracking-wider mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-              The Qurus experience
+              The Qurus Experience
             </div>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tighter text-text-primary text-balance leading-[1.05]">
               Everything around the verse.
@@ -41,7 +41,7 @@ export default function QurusOverview() {
             </h2>
           </div>
           <p className="max-w-md text-sm sm:text-base leading-relaxed text-text-secondary lg:pb-1">
-            Read, listen, understand, reflect, and return. Qurus brings the essential parts of a Quran study session into one quiet place.
+            Read, listen, understand, and reflect. Qurus brings every essential part of your Quran study into one peaceful space.
           </p>
         </motion.div>
 
@@ -56,8 +56,8 @@ export default function QurusOverview() {
             <div className="doppelrand-core p-6 sm:p-8 h-full">
               <div className="flex items-center justify-between gap-4 mb-7">
                 <div>
-                  <p className="text-xs font-mono uppercase tracking-wider text-text-tertiary">Core capabilities</p>
-                  <h3 className="text-xl sm:text-2xl font-semibold text-text-primary tracking-tight mt-1">A complete study loop</h3>
+                  <p className="text-xs font-mono uppercase tracking-wider text-text-tertiary">How Qurus Works For You</p>
+                  <h3 className="text-xl sm:text-2xl font-semibold text-text-primary tracking-tight mt-1">A quiet study loop</h3>
                 </div>
                 <span className="text-xs font-mono text-primary font-semibold">06 essentials</span>
               </div>
@@ -87,10 +87,10 @@ export default function QurusOverview() {
           >
             <div className="doppelrand-core p-6 sm:p-8 h-full flex flex-col justify-between bg-gradient-to-br from-white via-surface to-primary-light/20">
               <div>
-                <p className="text-xs font-mono uppercase tracking-wider text-primary font-semibold">Global understanding</p>
+                <p className="text-xs font-mono uppercase tracking-wider text-primary font-semibold">In Your Language</p>
                 <h3 className="text-xl sm:text-2xl font-semibold text-text-primary tracking-tight mt-1">Five languages. One verse.</h3>
                 <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                  Verse-by-verse translation and paired recitation, with native typography and writing direction for each language.
+                  Spoken translations paired seamlessly with Arabic recitation, rendered in authentic scripts for a natural reading flow.
                 </p>
               </div>
 
@@ -102,7 +102,7 @@ export default function QurusOverview() {
                   </div>
                 ))}
                 <div className="rounded-xl bg-primary text-white px-3.5 py-3 flex items-center justify-between gap-2 col-span-2">
-                  <span className="text-xs font-semibold">Arabic stays at the center</span>
+                  <span className="text-xs font-semibold">Arabic always at the heart</span>
                   <span className="font-arabic text-sm">العربية</span>
                 </div>
               </div>
@@ -119,16 +119,16 @@ export default function QurusOverview() {
             <div className="doppelrand-core p-6 sm:p-8 grid md:grid-cols-2 gap-6 md:gap-10 items-center bg-surface/60">
               <div>
                 <p className="text-xs font-mono uppercase tracking-wider text-primary font-semibold">Structured, never restrictive</p>
-                <h3 className="text-xl sm:text-3xl font-semibold text-text-primary tracking-tight mt-2">Know where to continue. Wander whenever you need.</h3>
+                <h3 className="text-xl sm:text-3xl font-semibold text-text-primary tracking-tight mt-2">Always know where you are. Explore whenever you want.</h3>
               </div>
               <div className="grid sm:grid-cols-2 gap-3">
                 <div className="rounded-2xl bg-white border border-border p-4">
-                  <div className="text-xs font-semibold text-text-primary">Sequential journey</div>
-                  <p className="text-xs text-text-secondary mt-1.5 leading-relaxed">One-tap resume and safe checkpoints keep your daily path intact.</p>
+                  <div className="text-xs font-semibold text-text-primary">Your Daily Path</div>
+                  <p className="text-xs text-text-secondary mt-1.5 leading-relaxed">One-tap resume keeps your main study checkpoint safe and ready.</p>
                 </div>
                 <div className="rounded-2xl bg-white border border-border p-4">
-                  <div className="text-xs font-semibold text-text-primary">Free exploration</div>
-                  <p className="text-xs text-text-secondary mt-1.5 leading-relaxed">Browse any of 114 Surahs without disrupting your forward progress.</p>
+                  <div className="text-xs font-semibold text-text-primary">Free Exploration</div>
+                  <p className="text-xs text-text-secondary mt-1.5 leading-relaxed">Read or listen to any of the 114 Surahs without disrupting your saved place.</p>
                 </div>
               </div>
             </div>
