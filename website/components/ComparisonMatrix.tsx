@@ -5,6 +5,9 @@ import { motion } from "motion/react";
 export default function ComparisonMatrix() {
   const comparisonRows = [
     { dimension: "How You Learn", traditional: "A slower, deeper format that can be difficult to fit into a busy routine", socialFeeds: "Short, disconnected clips designed around the feed", qurus: "One verse at a time, with Arabic and Urdu together" },
+    { dimension: "Daily Consistency", traditional: "Easy to lose momentum when daily life gets demanding", socialFeeds: "Engineered around algorithmic notifications and dopamine loops", qurus: "Daily Tadabbur goals, streak countdown, and gentle evening streak-savers" },
+    { dimension: "Structured Journey", traditional: "Relying on physical markers or remembering where you stopped", socialFeeds: "Random disconnected clips with no continuous reading sequence", qurus: "Sequential journey with one-tap resume, plus total freedom to explore any Ayah" },
+    { dimension: "Global Languages", traditional: "Requires acquiring separate multi-volume translation books", socialFeeds: "Machine-translated captions or unverified voiceovers", qurus: "5 verified languages with paired authentic verse-by-verse recitation" },
     { dimension: "Your Attention", traditional: "Requires setting aside dedicated time and space", socialFeeds: "Ads, notifications, comments, and endless recommendations compete for attention", qurus: "A quiet interface with no ads, feeds, or distracting popups" },
     { dimension: "While Moving", traditional: "Primarily designed around sitting down to read", socialFeeds: "Often tied to an active screen and scrolling", qurus: "Background audio keeps the Quran with you when the screen is locked" },
     { dimension: "Personal Reflection", traditional: "Notes can live separately from the verse", socialFeeds: "Thoughts are often public or tied to a social profile", qurus: "Private written notes and voice memos stay on your device" },

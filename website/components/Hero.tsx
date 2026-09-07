@@ -132,7 +132,7 @@ export default function Hero() {
                       Surah Al-Faatiha (1:1)
                     </span>
                     <span className="text-[10px] text-primary font-medium bg-primary-muted px-2 py-0.5 rounded-full">
-                      Arabic + Urdu
+                      Arabic + 5 Languages
                     </span>
                   </div>
                   <div className="text-[11px] text-text-secondary truncate font-arabic text-right mt-0.5">

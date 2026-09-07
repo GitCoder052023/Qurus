@@ -120,10 +120,12 @@ export default function TermsOfUsePage() {
               </p>
               <ul className="list-disc pl-6 space-y-1 text-sm">
                 <li>Verse-by-verse Quran reading and audio synchronization</li>
-                <li>Original Arabic recitation and spoken Urdu translation</li>
+                <li>Original Arabic recitation and spoken translations in five languages</li>
+                <li>Structured reading journeys and unrestricted Quran exploration</li>
+                <li>Tadabbur motivation engine, daily goals, and evening streak-saver reminders</li>
                 <li>Verse search, bookmarks, and color highlights</li>
                 <li>Private written reflection notes and spoken voice memos</li>
-                <li>Reading streaks, time-aware check-ins, and audio controls</li>
+                <li>Background playback, lock-screen controls, and audio speeds</li>
               </ul>
               <p>
                 Qurus is a software tool for personal reading and reflection. It is not

@@ -6,11 +6,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const NAV_LINKS = [
-  { href: "/#experience", label: "Try Live Demo", index: "01" },
-  { href: "/#everyday-life", label: "Daily Routine", index: "02" },
-  { href: "/#features", label: "Features", index: "03" },
-  { href: "/#story", label: "Why I Built It", index: "04" },
-  { href: "/#faq", label: "Questions", index: "05" },
+  { href: "/#experience", label: "Demo", index: "01" },
+  { href: "/#languages", label: "Languages", index: "02" },
+  { href: "/#motivation", label: "Motivation", index: "03" },
+  { href: "/#features", label: "Features", index: "04" },
+  { href: "/#story", label: "Story", index: "05" },
+  { href: "/#faq", label: "Questions", index: "06" },
 ];
 
 export default function Navbar() {

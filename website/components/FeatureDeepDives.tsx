@@ -59,6 +59,58 @@ export default function FeatureDeepDives() {
         </svg>
       ),
     },
+    {
+      title: "A Motivation Engine for Tadabbur",
+      tag: "Consistency Without Pressure",
+      description:
+        "Qurus helps protect your daily reflection habit with a real-time countdown clock and progressive evening streak-saver reminders. Reminders auto-cancel once you finish, and major milestones are celebrated with haptics and reflective wisdom.",
+      highlights: ["Real-time countdown", "Evening streak-savers", "Celebration wisdom"],
+      icon: (
+        <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Structured Journey & Free Exploration",
+      tag: "Structured Yet Flexible",
+      description:
+        "Maintain a continuous reading path with one-tap resume from the reader, set custom checkpoints, or freely browse, bookmark, and annotate any of the 114 Surahs without ever resetting your journey progression.",
+      highlights: ["One-tap resume", "Sequential checkpoints", "Unrestricted reading"],
+      icon: (
+        <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="10" />
+          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+        </svg>
+      ),
+    },
+    {
+      title: "Translations & Recitations in 5 Languages",
+      tag: "Global Understanding",
+      description:
+        "Complete verse-by-verse translation and authentic recitation pairing in Urdu, English, Bengali, Turkish, and French. Each language dynamically adjusts its typography, font scaling, text direction, and authentic recitation audio.",
+      highlights: ["5 paired languages", "Authentic reciters", "Dynamic typography & RTL"],
+      icon: (
+        <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="2" y1="12" x2="22" y2="12" />
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Smarter Notifications & Refined Calm",
+      tag: "Quiet & Thoughtful",
+      description:
+        "Configure daily reminders naturally during onboarding, monitor real-time permission status with direct recovery, and test reminders inside Settings. Built with an uncluttered home screen and warm sanctuary palette accents.",
+      highlights: ["Auto-dismiss on completion", "In-app test previews", "Refined warm palette"],
+      icon: (
+        <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+          <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+        </svg>
+      ),
+    },
   ];
 
   return (

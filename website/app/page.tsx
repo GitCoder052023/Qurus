@@ -1,6 +1,9 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import InteractivePlayer from "@/components/InteractivePlayer";
+import SupportedLanguages from "@/components/SupportedLanguages";
+import MotivationEngineSection from "@/components/MotivationEngineSection";
+import StructuredJourneySection from "@/components/StructuredJourneySection";
 import EverydayLifeGrid from "@/components/EverydayLifeGrid";
 import ComparisonMatrix from "@/components/ComparisonMatrix";
 import FeatureDeepDives from "@/components/FeatureDeepDives";
@@ -16,6 +19,9 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <InteractivePlayer />
+        <SupportedLanguages />
+        <MotivationEngineSection />
+        <StructuredJourneySection />
         <EverydayLifeGrid />
         <ComparisonMatrix />
         <FeatureDeepDives />

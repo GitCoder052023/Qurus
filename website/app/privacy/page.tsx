@@ -137,9 +137,10 @@ export default function PrivacyPolicyPage() {
                 <li>Bookmarks and verse highlights</li>
                 <li>Written reflection notes and spoken voice notes</li>
                 <li>Recently studied verses and last studied location</li>
-                <li>Reading streak information</li>
+                <li>Daily Tadabbur goals and reading streak information</li>
+                <li>Structured journey checkpoints</li>
                 <li>Reading and audio preferences</li>
-                <li>Onboarding state</li>
+                <li>Onboarding state and notification reminder settings</li>
               </ul>
               <p>
                 The current Qurus application stores this information locally on your

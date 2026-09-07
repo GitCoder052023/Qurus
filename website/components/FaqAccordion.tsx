@@ -44,6 +44,26 @@ const FAQS: FaqItem[] = [
     answer:
       "The Arabic text follows the verified Uthmani script (Hafs). The Urdu translation is the renowned text of Fateh Muhammad Jalandhry. Audio recitations are sourced via the verified EveryAyah archive.",
   },
+  {
+    question: "How does the new Motivation Engine and Streak-Saver work in v2.3.0?",
+    answer:
+      "Qurus actively helps you build and protect a daily Tadabbur habit without turning study into a stressful race. Features include a real-time countdown to midnight, gentle progressive evening reminders, configurable daily targets (e.g. 5, 10, or 20 Ayahs), and celebration moments with haptic feedback and reflective wisdom. The moment you complete your daily reflection, all remaining reminders for that evening are automatically dismissed.",
+  },
+  {
+    question: "What is the difference between my structured journey and free exploration?",
+    answer:
+      "In v2.3.0, Qurus keeps your sequential study path distinct from free browsing. You can resume your sequential reading checkpoint with one tap from the reader or home screen. Meanwhile, you can freely browse, bookmark, annotate, read, or listen to any of the 114 Surahs—or review past verses—without ever resetting or disrupting your forward journey checkpoint.",
+  },
+  {
+    question: "Which 5 languages and translations are supported in Qurus?",
+    answer:
+      "Qurus supports complete verse-by-verse translation and authentic recitation pairing across 5 languages: Urdu (Fateh Muhammad Jalandhari / Shamshad Ali Khan), English (Sahih International / Ibrahim Walk), Bengali (Muhiuddin Khan / Bangla Quran Audio), Turkish (Diyanet İşleri / Diyanet Vakfı), and French (Muhammad Hamidullah / Youssouf Leclerc). Each language dynamically renders in its authentic typography, text direction (RTL/LTR), and paired audio.",
+  },
+  {
+    question: "How do the smarter notifications and reminder previews work?",
+    answer:
+      "Daily Reminders and Streak-Savers are configured smoothly during onboarding, requesting system notification permissions at the appropriate moment. Qurus detects real-time permission status with a direct recovery action if notifications were turned off in Android settings. You can also test and preview your notification reminders directly inside Settings before enabling them.",
+  },
 ];
 
 export default function FaqAccordion() {

@@ -16,15 +16,27 @@ export const metadata: Metadata = {
     template: "%s | Qurus",
   },
   description:
-    "A calm, focused space to read, listen to, and understand the Quran. Built for everyday life with verse-by-verse Arabic, Urdu translations, private notes, and background playback.",
+    "A calm, focused space to read, listen to, and understand the Quran. Built for everyday life with verse-by-verse translation and recitation in 5 languages, an intelligent motivation engine to protect your streak, structured journeys, and background playback.",
   keywords: [
     "Qurus",
     "Quran app",
     "Quran Android APK",
+    "5 languages Quran",
     "Urdu Quran translation",
+    "English Quran translation",
+    "Bengali Quran translation",
+    "Turkish Quran translation",
+    "French Quran translation",
+    "Sahih International",
+    "Fateh Muhammad Jalandhari",
+    "Muhiuddin Khan",
     "Arabic recitation",
     "Shamshad Ali Khan",
     "Mishary Rashid Alafasy",
+    "Ibrahim Walk",
+    "Tadabbur motivation engine",
+    "Quran streak saver",
+    "structured Quran journey",
     "Ayah by ayah Quran",
     "background Quran audio",
     "lock screen Quran player",
@@ -55,7 +67,7 @@ export const metadata: Metadata = {
     siteName: "Qurus (قُرُوص)",
     title: "Qurus — A Calm, Focused Way to Understand the Quran",
     description:
-      "A calm, focused space to read, listen to, and understand the Quran. Built for everyday life with verse-by-verse Arabic, Urdu translations, private notes, and background playback.",
+      "A calm, focused space to read, listen to, and understand the Quran. Built for everyday life with verse-by-verse translation and recitation in 5 languages, an intelligent motivation engine, structured journeys, and background playback.",
     images: [
       {
         url: "/images/icon.png",
@@ -69,7 +81,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Qurus (قُرُوص) — A Calm, Focused Way to Understand the Quran",
     description:
-      "A calm, focused space to read, listen to, and understand the Quran, with verse-by-verse Arabic, Urdu translations, private notes, and background playback.",
+      "A calm, focused space to read, listen to, and understand the Quran, with 5 languages, streak protection, structured journeys, private notes, and background playback.",
     images: ["/images/icon.png"],
     creator: "@GitCoder052023",
   },
@@ -109,7 +121,7 @@ const jsonLd = {
       softwareVersion: "2.3.0",
       fileSize: "112MB",
       description:
-        "A calm, focused space to read, listen to, and understand the Quran. Built for everyday life with verse-by-verse Arabic, Urdu translations, private notes, and background playback.",
+        "A calm, focused space to read, listen to, and understand the Quran. Built for everyday life with verse-by-verse translation and recitation in 5 languages, an intelligent motivation engine, structured journeys, and background playback.",
       author: {
         "@type": "Person",
         name: "Hamdan Khubaib",
