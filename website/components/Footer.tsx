@@ -5,12 +5,13 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-border py-20 text-xs text-text-secondary">
+    <footer className="bg-[#FAFBF9] border-t border-border-subtle pt-20 pb-12 text-xs text-text-secondary">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-16">
-          <div className="md:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="relative w-8 h-8 rounded-full overflow-hidden ring-1 ring-primary/20 shadow-xs flex items-center justify-center bg-surface">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 mb-16">
+          {/* Brand & Mission Column */}
+          <div className="md:col-span-5 space-y-4">
+            <div className="flex items-center gap-2.5">
+              <div className="relative w-8 h-8 rounded-full overflow-hidden ring-1 ring-primary/25 shadow-xs flex items-center justify-center bg-surface">
                 <Image
                   src="/images/icon.png"
                   alt="Qurus Logo"
@@ -20,11 +21,11 @@ export default function Footer() {
                 />
               </div>
 
-              <span className="font-semibold text-base text-text-primary">
+              <span className="font-semibold text-base text-text-primary tracking-tight">
                 Qurus
               </span>
 
-              <span className="font-arabic text-primary text-base select-none">
+              <span className="font-arabic text-primary text-sm opacity-90 select-none">
                 (قُرُوص)
               </span>
 
@@ -35,18 +36,42 @@ export default function Footer() {
 
             <p className="text-sm text-text-secondary max-w-sm leading-relaxed">
               A peaceful, focused way to read, listen to, and understand the Quran.
-              Designed for daily life with 5 languages, screen-off audio,
-              quiet consistency, and private reflections.
+              Built for everyday life with 5 paired languages, screen-off audio,
+              quiet consistency, and on-device privacy.
             </p>
 
-            <p className="font-editorial text-sm italic text-text-tertiary max-w-sm leading-relaxed pt-2">
-              “Less friction. More reflection. A deeper connection with every verse.”
-            </p>
+            <div className="pt-2">
+              <blockquote className="font-editorial text-sm italic text-text-tertiary max-w-sm leading-relaxed border-l-2 border-primary/30 pl-3">
+                “Less friction. More reflection. A deeper connection with every verse.”
+              </blockquote>
+            </div>
+
+            <div className="pt-3 flex items-center gap-3">
+              <a
+                href="https://github.com/GitCoder052023/Qurus"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-border shadow-2xs hover:border-primary/30 hover:text-text-primary transition-colors text-xs font-medium"
+              >
+                <svg className="w-3.5 h-3.5 text-text-secondary" viewBox="0 0 24 24" fill="currentColor">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+                <span>Star on GitHub</span>
+              </a>
+              <a
+                href="/api/download"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-primary-muted text-primary hover:bg-primary-light transition-colors text-xs font-semibold"
+              >
+                <span>Download APK</span>
+                <span>↓</span>
+              </a>
+            </div>
           </div>
 
-          <div className="space-y-3">
+          {/* Navigation Column: Product */}
+          <div className="md:col-span-2 space-y-3">
             <h4 className="font-semibold text-text-primary uppercase tracking-wider text-[11px] font-mono">
-              Explore
+              Experience
             </h4>
 
             <ul className="space-y-2.5 text-sm">
@@ -55,52 +80,25 @@ export default function Footer() {
                   href="/#experience"
                   className="hover:text-primary transition-colors"
                 >
-                  Try Live Demo
+                  Live Interactive Demo
                 </Link>
               </li>
 
               <li>
                 <Link
-                  href="/#languages"
+                  href="/#overview"
                   className="hover:text-primary transition-colors"
                 >
-                  5 Languages
+                  6 Core Essentials
                 </Link>
               </li>
 
               <li>
                 <Link
-                  href="/#motivation"
+                  href="/#comparison"
                   className="hover:text-primary transition-colors"
                 >
-                  Motivation Engine
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/#journey"
-                  className="hover:text-primary transition-colors"
-                >
-                  The Structured Journey
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/#everyday-life"
-                  className="hover:text-primary transition-colors"
-                >
-                  Everyday Life
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/#features"
-                  className="hover:text-primary transition-colors"
-                >
-                  The Qurus Experience
+                  Why Qurus
                 </Link>
               </li>
 
@@ -109,7 +107,16 @@ export default function Footer() {
                   href="/#story"
                   className="hover:text-primary transition-colors"
                 >
-                  The Idea Behind Qurus
+                  The Story Behind Qurus
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/#download"
+                  className="hover:text-primary transition-colors"
+                >
+                  Android Download
                 </Link>
               </li>
 
@@ -124,30 +131,21 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="space-y-3">
+          {/* Navigation Column: Open Source & Code */}
+          <div className="md:col-span-2 space-y-3">
             <h4 className="font-semibold text-text-primary uppercase tracking-wider text-[11px] font-mono">
-              Qurus
+              Open Source
             </h4>
 
             <ul className="space-y-2.5 text-sm">
               <li>
                 <a
-                  href="/api/download"
-                  className="text-primary font-semibold hover:underline flex items-center gap-1.5"
+                  href="https://github.com/GitCoder052023/Qurus"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
                 >
-                  <svg
-                    className="w-3.5 h-3.5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                  >
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <polyline points="7 10 12 15 17 10" />
-                    <line x1="12" y1="15" x2="12" y2="3" />
-                  </svg>
-
-                  <span>Download Qurus</span>
+                  GitHub Repository
                 </a>
               </li>
 
@@ -158,18 +156,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors"
                 >
-                  Releases
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://github.com/GitCoder052023/Qurus"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors"
-                >
-                  Source Code
+                  Release Notes
                 </a>
               </li>
 
@@ -180,15 +167,27 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors"
                 >
-                  MIT License
+                  MIT Permissive License
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://github.com/GitCoder052023/Qurus/issues"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  Report an Issue
                 </a>
               </li>
             </ul>
           </div>
 
-          <div className="space-y-3">
+          {/* Navigation Column: Privacy & Creator */}
+          <div className="md:col-span-3 space-y-3">
             <h4 className="font-semibold text-text-primary uppercase tracking-wider text-[11px] font-mono">
-              Privacy & Contact
+              Privacy & Creator
             </h4>
 
             <ul className="space-y-2.5 text-sm">
@@ -244,6 +243,7 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Bottom Bar: Trust Badges & Copyright */}
         <div className="pt-8 border-t border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-text-tertiary">
           <div>
             © {new Date().getFullYear()} Qurus. Created with intention by{" "}
@@ -253,22 +253,15 @@ export default function Footer() {
             .
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-            <Link
-              href="/privacy"
-              className="hover:text-primary transition-colors"
-            >
-              Privacy
-            </Link>
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-3 sm:gap-4">
+            <span className="inline-flex items-center gap-1 text-text-secondary">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+              100% Free Forever
+            </span>
 
             <span>•</span>
 
-            <Link
-              href="/terms"
-              className="hover:text-primary transition-colors"
-            >
-              Terms
-            </Link>
+            <span>Zero Ads</span>
 
             <span>•</span>
 
@@ -276,15 +269,11 @@ export default function Footer() {
 
             <span>•</span>
 
-            <span>5 Global Translations</span>
+            <span>5 Global Languages</span>
 
             <span>•</span>
 
-            <span>EveryAyah Archive</span>
-
-            <span>•</span>
-
-            <span>100% On-Device Privacy</span>
+            <span>On-Device Privacy</span>
           </div>
         </div>
       </div>
