@@ -15,16 +15,6 @@ const FAQS: FaqItem[] = [
       "Yes, Qurus is completely free forever. There are zero ads, zero paid tiers, no subscriptions, and no data tracking. It is open-source and built purely as a sincere tool for reflection.",
   },
   {
-    question: "How do I install the app on my Android phone?",
-    answer:
-      "It takes just a few seconds: Tap 'Download Free APK' on this page. Once the download finishes, tap the file on your phone and choose 'Install'. You can start reading right away.",
-  },
-  {
-    question: "How does the bilingual audio playback work?",
-    answer:
-      "When you tap play on any verse, Qurus recites the Arabic text first (by Mishary Alafasy or Abdul Basit). As soon as the recitation finishes, it plays the spoken translation in your selected language for that exact verse. You can also listen to Arabic only or translation only whenever you prefer.",
-  },
-  {
     question: "Can I listen with my screen turned off or in my pocket?",
     answer:
       "Yes. Qurus supports background audio and lock-screen controls. You can lock your phone and put it in your pocket while walking, exercising, or commuting.",
@@ -43,16 +33,6 @@ const FAQS: FaqItem[] = [
     question: "What verified text and translation sources are used?",
     answer:
       "The Arabic text follows the verified Uthmani script (Hafs). All translations and recitations are verified from trusted, scholarly archives (including Fateh Muhammad Jalandhari for Urdu, Sahih International for English, and EveryAyah audio recordings).",
-  },
-  {
-    question: "How do the daily reminders help me stay consistent?",
-    answer:
-      "Qurus helps you protect a peaceful daily habit without pressure or guilt. You can set a gentle daily goal (such as 5 verses). If you haven't read by evening, it gives you a quiet nudge — and automatically stops reminding you the moment you complete your verses.",
-  },
-  {
-    question: "Can I browse other Surahs without losing my place?",
-    answer:
-      "Yes. You can open any of the 114 Surahs, look up verses, add notes, or listen freely. Your main reading checkpoint stays safely saved so you can resume your continuous journey in one tap anytime.",
   },
   {
     question: "Which languages are supported?",
