@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
+import { trackDownload } from "@/utils/analytics";
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -45,7 +46,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div variants={itemVariants} className="mt-7 flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto">
-            <motion.a whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.97 }} href="/api/download" className="group relative flex items-center justify-between gap-4 w-full sm:w-auto pl-7 pr-2.5 py-2.5 rounded-full bg-primary hover:bg-primary-hover text-white text-base font-semibold shadow-[0_12px_28px_rgba(14,107,92,0.25)] transition-colors">
+            <motion.a whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.97 }} href="/api/download" onClick={() => trackDownload("hero_direct")} className="group relative flex items-center justify-between gap-4 w-full sm:w-auto pl-7 pr-2.5 py-2.5 rounded-full bg-primary hover:bg-primary-hover text-white text-base font-semibold shadow-[0_12px_28px_rgba(14,107,92,0.25)] transition-colors">
               <div className="flex items-center gap-2"><span>Download Free APK</span><span className="text-xs font-mono opacity-80 font-normal">112 MB</span></div>
               <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">↓</span>
             </motion.a>

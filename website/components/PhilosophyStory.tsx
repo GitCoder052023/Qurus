@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { trackGitHub } from "@/utils/analytics";
 
 export default function PhilosophyStory() {
   return (
@@ -30,7 +31,7 @@ export default function PhilosophyStory() {
 
             <div className="pt-10 border-t border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-4"><div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg ring-2 ring-primary/20 shadow-xs">H</div><div><div className="text-base font-semibold text-text-primary">Hamdan Khubaib</div><div className="text-xs text-text-tertiary">Developer & Creator of Qurus</div></div></div>
-              <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} href="https://github.com/GitCoder052023" target="_blank" rel="noopener noreferrer" className="group text-xs font-semibold text-primary hover:text-primary-hover flex items-center gap-2 py-2 px-4 rounded-full bg-primary-muted hover:bg-primary-light transition-all"><span>Follow Qurus on GitHub</span><span className="transition-transform group-hover:translate-x-0.5">→</span></motion.a>
+              <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} href="https://github.com/GitCoder052023" target="_blank" rel="noopener noreferrer" onClick={() => trackGitHub("philosophy_story", { destination: "creator_profile" })} className="group text-xs font-semibold text-primary hover:text-primary-hover flex items-center gap-2 py-2 px-4 rounded-full bg-primary-muted hover:bg-primary-light transition-all"><span>Follow Qurus on GitHub</span><span className="transition-transform group-hover:translate-x-0.5">→</span></motion.a>
             </div>
           </div>
         </motion.div>

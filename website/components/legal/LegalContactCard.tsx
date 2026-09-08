@@ -1,3 +1,7 @@
+"use client";
+
+import { trackGitHub } from "@/utils/analytics";
+
 interface LegalContactCardProps {
   role?: string;
   repoLabel?: string;
@@ -26,6 +30,9 @@ export function LegalContactCard({
           href="https://github.com/GitCoder052023/Qurus"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() =>
+            trackGitHub("legal_contact_card", { destination: "repository" })
+          }
           className="text-primary hover:underline"
         >
           github.com/GitCoder052023/Qurus

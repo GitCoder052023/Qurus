@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { trackDownload } from "@/utils/analytics";
 
 export function PlayerAppInvitationFooter() {
   return (
@@ -16,6 +17,7 @@ export function PlayerAppInvitationFooter() {
 
       <a
         href="#download"
+        onClick={() => trackDownload("player_invitation")}
         className="group inline-flex items-center gap-2 pl-4 pr-1.5 py-1.5 rounded-full bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-semibold shadow-xs transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] shrink-0"
       >
         <span>Get for Android</span>

@@ -1,9 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import {
   FOOTER_EXPERIENCE_LINKS,
   FOOTER_OPEN_SOURCE_LINKS,
   FOOTER_LEGAL_LINKS,
 } from "@/data/navigation";
+import { trackDownload, trackGitHub } from "@/utils/analytics";
 
 export function FooterNavColumns() {
   return (
@@ -19,6 +22,11 @@ export function FooterNavColumns() {
             <li key={link.href}>
               <Link
                 href={link.href}
+                onClick={() => {
+                  if (link.href.includes("download")) {
+                    trackDownload("footer_nav");
+                  }
+                }}
                 className="hover:text-primary transition-colors"
               >
                 {link.label}
@@ -41,6 +49,12 @@ export function FooterNavColumns() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackGitHub("footer_nav", {
+                    destination: link.label,
+                    url: link.href,
+                  })
+                }
                 className="hover:text-primary transition-colors"
               >
                 {link.label}

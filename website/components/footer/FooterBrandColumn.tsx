@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { trackDownload, trackGitHub } from "@/utils/analytics";
 
 export function FooterBrandColumn() {
   return (
@@ -44,6 +47,7 @@ export function FooterBrandColumn() {
           href="https://github.com/GitCoder052023/Qurus"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackGitHub("footer_brand_star", { destination: "repository" })}
           className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-border shadow-2xs hover:border-primary/30 hover:text-text-primary transition-colors text-xs font-medium"
         >
           <svg className="w-3.5 h-3.5 text-text-secondary" viewBox="0 0 24 24" fill="currentColor">
@@ -53,6 +57,7 @@ export function FooterBrandColumn() {
         </a>
         <a
           href="/api/download"
+          onClick={() => trackDownload("footer_brand_direct")}
           className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-primary-muted text-primary hover:bg-primary-light transition-colors text-xs font-semibold"
         >
           <span>Download APK</span>

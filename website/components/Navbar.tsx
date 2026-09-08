@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { trackDownload, trackGitHub } from "@/utils/analytics";
 
 const NAV_LINKS = [
   { href: "/#experience", label: "Demo" },
@@ -98,11 +99,19 @@ export default function Navbar() {
                 href="https://github.com/GitCoder052023/Qurus"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackGitHub("navbar", { destination: "repository" })}
                 className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-semibold text-text-secondary hover:text-text-primary hover:bg-black/[0.04] transition-colors"
               >
                 GitHub
               </a>
-              <Link href="/#download" onClick={() => setMobileMenuOpen(false)} className="hidden sm:inline-flex items-center gap-2 pl-4 pr-2 py-1.5 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-hover shadow-xs transition-all">
+              <Link
+                href="/#download"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  trackDownload("navbar_desktop");
+                }}
+                className="hidden sm:inline-flex items-center gap-2 pl-4 pr-2 py-1.5 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-hover shadow-xs transition-all"
+              >
                 Download APK
                 <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">↓</span>
               </Link>
@@ -133,7 +142,14 @@ export default function Navbar() {
                       {link.label}
                     </Link>
                   ))}
-                  <Link href="/#download" onClick={() => setMobileMenuOpen(false)} className="mt-2 px-4 py-3 rounded-xl bg-primary text-white text-sm font-semibold text-center">
+                  <Link
+                    href="/#download"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      trackDownload("navbar_mobile");
+                    }}
+                    className="mt-2 px-4 py-3 rounded-xl bg-primary text-white text-sm font-semibold text-center"
+                  >
                     Download Free APK
                   </Link>
                 </div>
